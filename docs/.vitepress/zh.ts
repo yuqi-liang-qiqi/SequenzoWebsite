@@ -55,8 +55,8 @@ export const zh = defineConfig({
     ],
 
     footer: {
-      //message: 'Released under the MIT License.',
-      copyright: '版权所有 © 2025-至今 <a href="https://yuqi-liang.tech">Yuqi Liang</a>, 由 <a href="https://www.mactavish.tech/">Mactavish</a> 开发'
+      message: 'Released under the MIT License.',
+      copyright: '版权所有 © 2025 至今 <a href="https://yuqi-liang.tech">Yuqi Liang</a>, 由 <a href="https://www.mactavish.tech/">Mactavish</a> 开发'
     },
 
     docFooter: {

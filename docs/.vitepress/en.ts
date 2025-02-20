@@ -55,7 +55,7 @@ export const en = defineConfig({
     ],
 
     footer: {
-      //message: 'Released under the MIT License.',
+      message: 'Released under the MIT License.',
       copyright: 'Copyright © 2025-present <a href="https://yuqi-liang.tech">Yuqi Liang</a>, developed by <a href="https://www.mactavish.tech/">Mactavish</a>'
     }
   }
