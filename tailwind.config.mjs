@@ -75,6 +75,9 @@ module.exports = {
         Blue: {
           DEFAULT: "hsl(var(--Blue))",
         },
+        SkyBlue: {
+          DEFAULT: "hsl(var(--Sky-Blue))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -4,25 +4,44 @@
 
 @layer base {
   :root {
-    --background: 220 23% 95%; /* Base */
-    --foreground: 234 16% 35%; /* Text */
-    --muted: 220 23% 95%; /* Base */
-    --muted-foreground: 232 10% 53%; /* Overlay 2 */
-    --popover: 220 21% 89%; /* Crust */
-    --popover-foreground: 234 16% 35%; /* Text */
-    --card: 220 22% 92%; /* Mantle */
-    --card-foreground: 234 16% 35%; /* Text */
-    --border: 223 16% 83%; /* Surface 0 */
-    --input: 223 16% 83%; /* Surface 0 */
-    --primary: 220 91% 54%; /* Blue */
-    --primary-foreground: 220 23% 95%; /* Base */
-    --secondary: 220 91% 85%; /* Blue Modified */
-    --secondary-foreground: 234 16% 35%; /* Text */
-    --accent: 234 16% 35%; /* Text */
-    --accent-foreground: 220 23% 95%; /* Base */
-    --destructive: 347 87% 44%; /* Red */
-    --destructive-foreground: 220 23% 95%; /* Base */
-    --ring: 220 91% 54%; /* Blue */
+    --background: 220 23% 95%;
+    /* Base */
+    --foreground: 234 16% 35%;
+    /* Text */
+    --muted: 220 23% 95%;
+    /* Base */
+    --muted-foreground: 232 10% 53%;
+    /* Overlay 2 */
+    --popover: 220 21% 89%;
+    /* Crust */
+    --popover-foreground: 234 16% 35%;
+    /* Text */
+    --card: 220 22% 92%;
+    /* Mantle */
+    --card-foreground: 234 16% 35%;
+    /* Text */
+    --border: 223 16% 83%;
+    /* Surface 0 */
+    --input: 223 16% 83%;
+    /* Surface 0 */
+    --primary: 220 91% 54%;
+    /* Blue */
+    --primary-foreground: 220 23% 95%;
+    /* Base */
+    --secondary: 220 91% 85%;
+    /* Blue Modified */
+    --secondary-foreground: 234 16% 35%;
+    /* Text */
+    --accent: 234 16% 35%;
+    /* Text */
+    --accent-foreground: 220 23% 95%;
+    /* Base */
+    --destructive: 347 87% 44%;
+    /* Red */
+    --destructive-foreground: 220 23% 95%;
+    /* Base */
+    --ring: 220 91% 54%;
+    /* Blue */
     --radius: 0.3rem;
 
     --Pink: 316 73% 69%;
@@ -34,6 +53,7 @@
     --Teal: 183 74% 35%;
     --Sky: 197 97% 46%;
     --Blue: 220 91% 54%;
+    --Sky-Blue: 212 48% 55%;
   }
 
   .dark {
@@ -66,6 +86,7 @@
     --Teal: 171 47% 69%;
     --Sky: 189 59% 73%;
     --Blue: 220 83% 75%;
+    --Sky-Blue: 212 48% 55%;
   }
 }
 
@@ -73,6 +94,7 @@
   * {
     @apply border-border scroll-smooth;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -222,17 +244,11 @@ td {
   --dot-color: hsl(var(--foreground));
   --dot-size: 1px;
   --dot-space: 80px;
-  background: linear-gradient(
-        90deg,
-        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
-        transparent 1%
-      )
-      center / var(--dot-space) var(--dot-space),
-    linear-gradient(
-        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
-        transparent 1%
-      )
-      center / var(--dot-space) var(--dot-space),
+  background: linear-gradient(90deg,
+      var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+      transparent 1%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+      transparent 1%) center / var(--dot-space) var(--dot-space),
     var(--dot-color);
 }
 

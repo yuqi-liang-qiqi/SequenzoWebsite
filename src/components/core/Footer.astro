@@ -1,10 +1,12 @@
 ---
-import { Socials } from "@/config";
+import { Socials, SITE } from "@/config";
 import { getIconByName } from "@/components/core/Icons";
 import { Button } from "@/components/ui/button";
 
 // To pass the tailwindcss classes to the astro component
 const { class: className } = Astro.props;
+const currentYear = new Date().getFullYear();
+const copyrightText = `© ${currentYear} ${SITE.author}`;
 ---
 
 <footer class:list={["py-[1.2rem] px-6 w-full", className]}>
@@ -14,18 +16,35 @@ const { class: className } = Astro.props;
     <p
       class="text-center text-sm leading-loose text-muted-foreground md:text-left"
     >
-      Built by <a
-        href="https://hyperoot.dev"
-        target="_blank"
-        rel="noreferrer"
-        class="font-medium underline underline-offset-4">HYP3R00T</a
-      >. The source code is available on
-      <a
-        href="https://github.com/HYP3R00T/CelestialDocs"
-        target="_blank"
-        rel="noreferrer"
-        class="font-medium underline underline-offset-4">GitHub</a
-      >.
+      <span>{copyrightText}</span>
+      <span class="lt-sm:hidden">&nbsp;|&nbsp;</span>
+      <span>
+        Powered by
+        <a
+          class="op-100! color-[--fg]!"
+          href="https://github.com/HYP3R00T/CelestialDocs"
+        >
+          Astro CelestialDocs theme
+        </a>
+      </span>
+      <span class="lt-sm:hidden">&nbsp;|&nbsp;</span>
+      <span>
+        Developed by <a
+          href="https://github.com/mactavishz"
+          target="_blank"
+          rel="noreferrer"
+          class="font-medium underline underline-offset-4">Mactavish</a
+        >
+      </span>
+      <span class="lt-sm:hidden">&nbsp;|&nbsp;</span>
+      <span>
+        Designed by <a
+          href="/"
+          target="_blank"
+          rel="noreferrer"
+          class="font-medium underline underline-offset-4">Changyu Yi</a
+        >
+      </span>
     </p>
     <div class="flex gap-4">
       {

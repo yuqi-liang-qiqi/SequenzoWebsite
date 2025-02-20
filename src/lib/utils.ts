@@ -47,6 +47,7 @@ function buildMenu(items: DocsEntry[]): MenuItem[] {
     side_nav_menu_order.map((item, index) => [item, index]),
   );
 
+
   // Helper function to sort top-level items
   function sortTopLevel(items: MenuItemWithDraft[]): MenuItemWithDraft[] {
     const topLevelItems = items.filter((item) => !item.slug.includes("/"));

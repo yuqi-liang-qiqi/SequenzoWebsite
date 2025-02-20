@@ -16,6 +16,7 @@ import {
   Reddit,
   Telegram,
   Mastodon,
+  Vercel
 } from "simple-icons-astro";
 
 type IconComponent = LucideIcon | ((props: any) => JSX.Element);
@@ -37,6 +38,7 @@ export const ICONS: { [key: string]: IconComponent } = {
   Reddit,
   Telegram,
   Mastodon,
+  Website: Vercel
 };
 
 export const getIconByName = (name: string): IconComponent | null => {
