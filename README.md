@@ -3,7 +3,7 @@
 
 **Sequenzo Docs** is the official documentation website for the Sequenzo project. It provides comprehensive guides, tutorials, and resources for developers and users to get started with Sequenzo.
 
-The website is developed based on [CelestialDocs](https://github.com/HYP3R00T/CelestialDocs).
+The website is developed based on [Vitepress](https://github.com/vuejs/vitepress).
 
 ## Contributing
 
@@ -33,6 +33,3 @@ Contributions are welcome! If you have suggestions, improvements, or bug fixes, 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
