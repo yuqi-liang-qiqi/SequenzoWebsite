@@ -5,6 +5,35 @@
 
 The website is developed based on [Vitepress](https://github.com/vuejs/vitepress).
 
+## Pre-requisites
+
+To develop the website locally, you need to have the following installed on your machine:
+
+- [Node.js 22+](https://nodejs.org/en/)
+- [PNPM](https://pnpm.io/)
+
+## Getting Started
+
+In side the project root directory, run the following commands:
+
+```bash
+# 1. install dependencies
+pnpm install
+
+# 2. start the local development server
+pnpm dev
+```
+
+Then open your browser and visit `http://localhost:5173/en` to view the website.
+
+## Writing the Docs
+
+To add or edit the documentation content, you can modify the markdown files in the `docs` directory. The website will automatically update the content when you save the changes.
+
+To change the sidebar, you can modify `en.ts` and `zh.ts` files in the `docs/.vitepress` directory.
+
+For more information on how to write markdown files, refer to the [Vitepress documentation](https://vitepress.dev/).
+
 ## Contributing
 
 Contributions are welcome! If you have suggestions, improvements, or bug fixes, please open an issue or submit a pull request.
