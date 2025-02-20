@@ -11,30 +11,42 @@ export const en = defineConfig({
 
     sidebar: [
       {
-        text: 'Level 0',
-        collapsed: false,
+        text: 'Brief Introduction',
+        link: '/en/brief-introduction'
+      },
+      {
+        text: 'Tutorials',
         items: [
           {
-            text: 'Level 1',
-            //collapsed: false,
-            items: [
-              {
-                text: 'Level 2.1',
-                items: [
-                  { text: 'Level 3.1', link: '/en/markdown-examples' },
-                  { text: 'Level 3.2', link: '/en/markdown-examples-1' }
-                ]
-              },
-              {
-                text: 'Level 2.2',
-                items: [
-                  { text: 'Level 3.3', link: '/en/markdown-examples-2' },
-                  { text: 'Level 3.4', link: '/en/markdown-examples-3' }
-                ]
-              }
-            ]
+            text: 'Short Tutorial',
+            link: '/en/tutorials/short-tutorial'
           },
+          {
+            text: 'Video Tutorial',
+            link: '/en/tutorials/video-tutorial'
+          }
         ]
+      },
+      {
+        text: 'TraMineR and Sequenzo',
+        items: [
+          {
+            text: 'Functions Comparison',
+            link: '/en/traminer-and-sequenzo/functions-comparison'
+          },
+          {
+            text: 'Performance Differences',
+            link: '/en/traminer-and-sequenzo/performance-diff'
+          }
+        ]
+      },
+      {
+        text: 'Frequently Asked Questions',
+        link: '/en/faq'
+      },
+      {
+        text: 'Changelog',
+        link: '/en/changelog'
       }
     ],
 

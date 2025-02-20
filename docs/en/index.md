@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Documentations
-      link: /en/markdown-examples
+      link: /en/brief-introduction
 
 features:
   - title: Feature A

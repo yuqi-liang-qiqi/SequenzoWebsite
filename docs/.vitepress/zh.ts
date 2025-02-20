@@ -11,30 +11,42 @@ export const zh = defineConfig({
 
     sidebar: [
       {
-        text: 'Level 0',
-        collapsed: false,
+        text: '简介',
+        link: '/zh/brief-introduction'
+      },
+      {
+        text: '教程',
         items: [
           {
-            text: 'Level 1',
-            //collapsed: false,
-            items: [
-              {
-                text: 'Level 2.1',
-                items: [
-                  { text: 'Level 3.1', link: '/zh/api-examples' },
-                  { text: 'Level 3.2', link: '/zh/api-examples-1' }
-                ]
-              },
-              {
-                text: 'Level 2.2',
-                items: [
-                  { text: 'Level 3.3', link: '/zh/api-examples-2' },
-                  { text: 'Level 3.4', link: '/zh/api-examples-3' }
-                ]
-              }
-            ]
+            text: '简洁教程',
+            link: '/zh/tutorials/short-tutorial'
           },
+          {
+            text: '视频教程',
+            link: '/zh/tutorials/video-tutorial'
+          }
         ]
+      },
+      {
+        text: 'TraMineR 与 Sequenzo',
+        items: [
+          {
+            text: '函数对比',
+            link: '/zh/traminer-and-sequenzo/functions-comparison'
+          },
+          {
+            text: '性能差异',
+            link: '/zh/traminer-and-sequenzo/performance-diff'
+          }
+        ]
+      },
+      {
+        text: '常见问题',
+        link: '/zh/faq'
+      },
+      {
+        text: '更新日志',
+        link: '/zh/changelog'
       }
     ],
 
