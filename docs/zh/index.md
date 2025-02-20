@@ -3,16 +3,13 @@
 layout: home
 
 hero:
-  name: "Sequenzo Docs"
-  text: "Website for Sequenzo documentations"
-  tagline: My great project tagline
+  name: "Sequenzo"
+  text: "中文文档"
+  tagline: Engineering digital experiences that supercharge your SaaS platform's growth
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 进入文档
+      link: /zh/markdown-examples
 
 features:
   - title: Feature A

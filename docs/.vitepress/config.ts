@@ -1,28 +1,24 @@
 import { defineConfig } from 'vitepress'
+import { shared } from './shared'
+import { en } from './en'
+import { zh } from './zh'
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Sequenzo Docs",
-  description: "Website for Sequenzo documentations",
-  themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
-
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
+  ...shared,
+  locales: {
+    root: {
+      label: 'English',
+      lang: 'en',
+      link: '/en',
+      ...en
+    },
+    zh: {
+      label: '简体中文',
+      lang: 'zh',
+      link: '/zh',
+      ...zh
+    }
+  },
 })
