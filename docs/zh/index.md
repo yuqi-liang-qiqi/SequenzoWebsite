@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 进入文档
-      link: /zh/markdown-examples
+      link: /zh/brief-introduction
 
 features:
   - title: Feature A
