@@ -11,14 +11,19 @@ export const en = defineConfig({
 
     sidebar: [
       {
-        text: 'Brief Introduction',
-        link: '/en/brief-introduction'
+        text: 'Basics',
+        items: [
+          {
+            text: 'Brief Introduction',
+            link: '/en/brief-introduction'
+          }
+          ]
       },
       {
         text: 'Tutorials',
         items: [
           {
-            text: 'Short Tutorial',
+            text: 'Quickstart',
             link: '/en/tutorials/short-tutorial'
           },
           {
@@ -56,7 +61,7 @@ export const en = defineConfig({
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2025-present <a href="https://yuqi-liang.tech">Yuqi Liang</a>, developed by <a href="https://www.mactavish.tech/">Mactavish</a>'
+      copyright: 'Copyright © 2025 - present <a href="https://yuqi-liang.tech">Yuqi Liang</a>, developed by <a href="https://www.mactavish.tech/">Mactavish</a>'
     }
   }
 })
