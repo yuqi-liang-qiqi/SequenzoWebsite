@@ -14,16 +14,24 @@ export const en = defineConfig({
         text: 'Basics',
         items: [
           {
-            text: 'Brief Introduction',
-            link: '/en/brief-introduction'
-          }
+            text: 'About Sequenzo',
+            link: '/en/basics/about-sequenzo'
+          },
+          {
+          text: 'Installing',
+          link: '/en/basics/installing'
+        },
+          {
+          text: 'Quickstart',
+          link: '/en/basics/quickstart'
+        },
           ]
       },
       {
         text: 'Tutorials',
         items: [
           {
-            text: 'Quickstart',
+            text: 'Basic concepts',
             link: '/en/tutorials/short-tutorial'
           },
           {

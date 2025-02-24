@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Documentations
-      link: /en/brief-introduction
+      link: /en/basics/about-sequenzo
 
 features:
   - title: High Performance
@@ -22,7 +22,7 @@ features:
 
   - title: Flexible for Any Scenario
     icon: 🌐
-    details: "Perfect for analyzing categorical data and capturing its evolution—across research, policy, or business."
+    details: "Perfect for analyzing categorical data and capturing its evolution — across research, policy, or business."
 
 ---
 
