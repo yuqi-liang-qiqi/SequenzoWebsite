@@ -41,7 +41,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'TraMineR and Sequenzo',
+        text: 'Sequenzo and R',
         items: [
           {
             text: 'Functions Comparison',
@@ -50,6 +50,19 @@ export const en = defineConfig({
           {
             text: 'Performance Differences',
             link: '/en/traminer-and-sequenzo/performance-diff'
+          }
+        ]
+      },
+      {
+        text: 'Datasets',
+        items: [
+          {
+            text: 'CO₂ Emissions',
+            link: '/en/datasets/co2-emissions'
+          },
+          {
+            text: "Chinese Cities' Colonial History",
+            link: '/en/datasets/chinese-cities-colonial-history'
           }
         ]
       },
