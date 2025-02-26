@@ -41,6 +41,32 @@ export const en = defineConfig({
         ]
       },
       {
+        text: 'API',
+        items: [
+          {
+            text: 'SequenceData',
+            link: '/en/api/sequence-data'
+          },
+          {
+            text: 'get_distance_matrix',
+            link: '/en/api/get-distance-matrix'
+          }
+        ]
+      },
+      {
+        text: 'Big Data',
+        items: [
+          {
+            text: 'Functions Comparison',
+            link: '/en/big-data/functions-comparison'
+          },
+          {
+            text: 'Performance Differences',
+            link: '/en/big-data/performance-diff'
+          }
+        ]
+      },
+      {
         text: 'Sequenzo and R',
         items: [
           {
