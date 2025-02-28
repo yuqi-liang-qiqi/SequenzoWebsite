@@ -83,8 +83,12 @@ export const en = defineConfig({
         text: 'Datasets',
         items: [
           {
-            text: 'CO₂ Emissions',
+            text: 'CO₂ Emissions (1800-2022)',
             link: '/en/datasets/co2-emissions'
+          },
+          {
+            text: 'GDP per capita (1800-2022)',
+            link: '/en/datasets/gdp-per-capita'
           },
           {
             text: "Chinese Cities' Colonial History",
@@ -107,7 +111,7 @@ export const en = defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License.',
+      message: 'Released under the BSD-3-Clause License.',
       copyright: 'Copyright © 2025 - present <a href="https://yuqi-liang.tech">Yuqi Liang</a>, developed by <a href="https://www.mactavish.tech/">Mactavish</a>'
     }
   }
