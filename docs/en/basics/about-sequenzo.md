@@ -74,7 +74,7 @@ Thanks to optimized algorithms and parallel computation, Sequenzo is at least 6 
 * [Xinyi Li, Heilongjiang University](https://github.com/Fantasy201)
 * [Jan Heinrich Ernst Meyerhoff-Liang, Institute for New Economic Thinking Oxford](https://www.inet.ox.ac.uk/people/jan-meyerhoff-liang)
 
-**Contributors**
+**Package Contributors**
 * [Liangxingyun He, Stockholm School of Economics, Sweden](https://www.linkedin.com/in/liangxingyun-he-6aa128304/): 
   - Sequence data sources compilation, analysis and tutorials for education
   - Translation of the documentation into Chinese
