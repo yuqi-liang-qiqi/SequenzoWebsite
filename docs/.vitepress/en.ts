@@ -35,7 +35,7 @@ export const en = defineConfig({
             link: '/en/tutorials/short-tutorial'
           },
           {
-            text: 'Video Tutorial',
+            text: 'Video Tutorials',
             link: '/en/tutorials/video-tutorial'
           }
         ]
@@ -45,11 +45,11 @@ export const en = defineConfig({
         items: [
           {
             text: 'Missing Values',
-            link: '/en/data-preprocessing/missing values'
+            link: '/en/data-preprocessing/missing-values'
           },
           {
             text: 'Wide and Long Format Conversion',
-            link: '/en/data-preprocessing/wide to long format'
+            link: '/en/data-preprocessing/wide-long-format'
           },
         ]
       },
