@@ -14,7 +14,7 @@ hero:
 features:
   - title: High Performance
     icon: 🚀
-    details: "Leverages Python’s speed to deliver over 10× faster processing than R-based tools."
+    details: "Leverages Python’s speed to deliver over 6× faster processing than R-based tools."
 
   - title: Easy-to-use API
     icon: 🎯

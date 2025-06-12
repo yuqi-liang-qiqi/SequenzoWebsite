@@ -41,6 +41,19 @@ export const en = defineConfig({
         ]
       },
       {
+        text: 'Data Preprocessing',
+        items: [
+          {
+            text: 'Missing Values',
+            link: '/en/data-preprocessing/missing values'
+          },
+          {
+            text: 'Wide and Long Format Conversion',
+            link: '/en/data-preprocessing/wide to long format'
+          },
+        ]
+      },
+      {
         text: 'API',
         items: [
           {
