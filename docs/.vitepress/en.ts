@@ -54,15 +54,19 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'API',
+        text: 'Function Library',
         items: [
           {
+            text: 'Introduction',
+            link: '/en/function-library/introduction'
+          },
+          {
             text: 'SequenceData',
-            link: '/en/api/sequence-data'
+            link: '/en/function-library/sequence-data'
           },
           {
             text: 'get_distance_matrix',
-            link: '/en/api/get-distance-matrix'
+            link: '/en/function-library/get-distance-matrix'
           }
         ]
       },
