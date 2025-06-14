@@ -14,7 +14,7 @@ export const zh = defineConfig({
         text: '开始',
         items:[
           {
-            text: 'Sequenzo',
+            text: '序列分析与 Sequenzo',
             link: '/zh/brief-introduction'
           },
           {
