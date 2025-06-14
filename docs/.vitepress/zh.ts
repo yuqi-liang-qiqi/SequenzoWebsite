@@ -11,8 +11,21 @@ export const zh = defineConfig({
 
     sidebar: [
       {
-        text: '简介',
-        link: '/zh/brief-introduction'
+        text: '开始',
+        items:[
+          {
+            text: 'Sequenzo',
+            link: '/zh/brief-introduction'
+          },
+          {
+            text: '下载安装',
+            link: '/zh/basics/installing'
+          },
+          {
+            text: '如何使用',
+            link: '/zh/basics/quickstart'
+          },
+        ]
       },
       {
         text: '教程',
@@ -28,7 +41,50 @@ export const zh = defineConfig({
         ]
       },
       {
-        text: 'TraMineR 与 Sequenzo',
+        text: '数据处理',
+        items: [
+          {
+            text: '缺失值',
+            link: '/zh/traminer-and-sequenzo/functions-comparison'
+          },
+          {
+            text: '宽、长格式转换',
+            link: '/zh/traminer-and-sequenzo/performance-diff'
+          },
+        ]
+      },
+      {
+        text: '函数库',
+        items: [
+          {
+            text: '简介',
+            link: '/zh/function-library/introduction'
+          },
+          {
+            text: 'SequenceData',
+            link: '/zh/function-library/sequence-data'
+          },
+          {
+            text: 'get_distance_matrix',
+            link: '/zh/function-library/get-distance-matrix'
+          }
+        ]
+      },
+      {
+        text: '大数据',
+        items: [
+          {
+            text: '函数对比',
+            link: '/zh/big-data/functions-comparison'
+          },
+          {
+            text: '性能差异',
+            link: '/zh/big-data/performance-diff'
+          }
+        ]
+      },
+      {
+        text: 'Sequenzo 和 R',
         items: [
           {
             text: '函数对比',
@@ -37,6 +93,23 @@ export const zh = defineConfig({
           {
             text: '性能差异',
             link: '/zh/traminer-and-sequenzo/performance-diff'
+          }
+        ]
+      },
+      {
+        text: '数据集',
+        items: [
+          {
+            text: 'CO₂ 排放 (1800-2022)',
+            link: '/zh/datasets/co2-emissions'
+          },
+          {
+            text: '人均 GDP (1800-2022)',
+            link: '/zh/datasets/gdp-per-capita'
+          },
+          {
+            text: "中国城市殖民史",
+            link: '/zh/datasets/chinese-cities-colonial-history'
           }
         ]
       },
