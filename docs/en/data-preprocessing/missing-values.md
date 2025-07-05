@@ -96,24 +96,160 @@ Yuqi Liang
 
 ```python
 import pandas as pd
-from sequenzo.helpers import summarize_missing_values
+from sequenzo.data_preprocessing.helpers import summarize_missing_values
 
 df = pd.DataFrame({
     'A': [1, None, 3, None],
     'B': [None, 2, None, 4],
     'C': [5, 6, 7, 8]
 })
-
-# Basic summary with default matrix plot
+```
+```python
+# 1. Basic summary with default matrix plot
 summarize_missing_values(df)
-
-# Only summarize specific columns
+```
+```python
+# 2. Only summarize specific columns
 summarize_missing_values(df, columns=['A', 'B'])
-
-# Save plot and use bar mode
+```
+```python
+# 3. Save plot and use bar mode
 summarize_missing_values(df, mode='bar', save_as='missing_bar.png', show=False)
+```
+```python
+# 4. Only the textual summary of missing values is printed
+summarize_missing_values(df, plot=False)
+```
+```python
+# 5. Changes the figure size 
+summarize_missing_values(df, figsize=(12, 6))
+```
+```python
+# 6. Focus on selected columns
+summarize_missing_values(df, columns=['A'], show=False)
 ```
 
 ### Output
 
-TODO: Show output examples
+1. `summarize_missing_values(df)`:
+```python
+🔍 Missing Value Summary
+----------------------------------------
+[Columns with Missing Values]
+   Missing Count  Missing (%)
+A              2         50.0
+B              2         50.0
+
+[Top 5 Rows with Most Missing Values]
+   Missing Count
+0              1
+1              1
+2              1
+3              1
+<Figure size 1000x500 with 0 Axes>
+```
+![df_output.png](image/df_output.png)
+
+2. `summarize_missing_values(df, columns=['A', 'B'])`:
+```python
+🔍 Missing Value Summary
+----------------------------------------
+[Columns with Missing Values]
+Missing Count  Missing (%)
+A              2         50.0
+B              2         50.0
+
+[Top 5 Rows with Most Missing Values]
+Missing Count
+0              1
+1              1
+2              1
+3              1
+
+<Figure size 1000x500 with 0 Axes>
+```
+![columns=['A', 'B']_output.png](image/columns%3D%5B%27A%27%2C%20%27B%27%5D_output.png)
+
+3. `summarize_missing_values(df, mode='bar', save_as='missing_bar.png', show=False)`:
+```python
+🔍 Missing Value Summary
+----------------------------------------
+[Columns with Missing Values]
+Missing Count  Missing (%)
+A              2         50.0
+B              2         50.0
+
+[Top 5 Rows with Most Missing Values]
+Missing Count
+0              1
+1              1
+2              1
+3              1
+
+```
+* Because `show=False`, the plot is not displayed.
+* Because `save_as='missing_bar.png'`, the plot is saved to disk instead of shown on screen.
+
+The plot image is saved in the file as follow:
+![missing_bar.png](image/missing_bar.png)
+
+4. `summarize_missing_values(df, plot=False)`
+
+```python
+🔍 Missing Value Summary
+----------------------------------------
+[Columns with Missing Values]
+   Missing Count  Missing (%)
+A              2         50.0
+B              2         50.0
+
+[Top 5 Rows with Most Missing Values]
+   Missing Count
+0              1
+1              1
+2              1
+3              1
+
+```
+Also since `show=False`, the plot is not displayed.
+
+5. `summarize_missing_values(df, figsize=(12, 6))`
+
+```python
+🔍 Missing Value Summary
+----------------------------------------
+[Columns with Missing Values]
+   Missing Count  Missing (%)
+A              2         50.0
+B              2         50.0
+
+[Top 5 Rows with Most Missing Values]
+   Missing Count
+0              1
+1              1
+2              1
+3              1
+
+<Figure size 1200x600 with 0 Axes>
+```
+![output_size.png](image/output_size.png)
+
+6. `summarize_missing_values(df, columns=['A'])`
+```python
+🔍 Missing Value Summary
+----------------------------------------
+[Columns with Missing Values]
+Missing Count  Missing (%)
+A              2         50.0
+
+[Top 5 Rows with Most Missing Values]
+Missing Count
+1              1
+3              1
+0              0
+2              0
+
+<Figure size 1000x500 with 0 Axes>
+```
+![output_col.png](image/output_col.png)
+
