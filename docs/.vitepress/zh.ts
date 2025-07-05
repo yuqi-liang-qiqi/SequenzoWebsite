@@ -15,7 +15,7 @@ export const zh = defineConfig({
         items:[
           {
             text: '序列分析与 Sequenzo',
-            link: '/zh/brief-introduction'
+            link: '/zh/basics/about-sequenzo'
           },
           {
             text: '下载安装',
@@ -45,11 +45,11 @@ export const zh = defineConfig({
         items: [
           {
             text: '缺失值',
-            link: '/zh/traminer-and-sequenzo/functions-comparison'
+            link: '/zh/data-preprocessing/missing-values'
           },
           {
             text: '宽、长格式转换',
-            link: '/zh/traminer-and-sequenzo/performance-diff'
+            link: '/zh/data-preprocessing/wide-long-format'
           },
         ]
       },
@@ -75,11 +75,11 @@ export const zh = defineConfig({
         items: [
           {
             text: '函数对比',
-            link: '/zh/big-data/functions-comparison'
+            link: '/zh/big-data/clara'
           },
           {
             text: '性能差异',
-            link: '/zh/big-data/performance-diff'
+            link: '/zh/big-data/clara'
           }
         ]
       },
