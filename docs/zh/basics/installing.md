@@ -10,7 +10,7 @@ Python 安装后，我们强烈推荐使用 [PyCharm](https://www.jetbrains.com/
 <img src="https://github.com/user-attachments/assets/1e9e3af0-4286-47ba-aa88-29c3288cb7cb" alt="terminal icon" width="30" style="display:inline; vertical-align:middle;">
 来打开内置终端。
 
-终端打开后，请输入以下命令来安装 `sequenzo`：
+终端打开后，请输入以下命令来安装 `sequenzo` ：
 
 ```
 pip install sequenzo
