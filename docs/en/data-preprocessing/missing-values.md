@@ -168,7 +168,7 @@ Missing Count
 
 <Figure size 1000x500 with 0 Axes>
 ```
-![columns=['A', 'B']_output.png](image/columns%3D%5B%27A%27%2C%20%27B%27%5D_output.png)
+![columns_output.png](image/columns_output.png)
 
 3. `summarize_missing_values(df, mode='bar', save_as='missing_bar.png', show=False)`:
 ```python
