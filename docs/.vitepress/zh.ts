@@ -23,7 +23,7 @@ export const zh = defineConfig({
           },
           {
             text: '如何使用',
-            link: '/zh/basics/quickstart'
+            link: '/zh/basics/quickstart_cleaned'
           },
         ]
       },
