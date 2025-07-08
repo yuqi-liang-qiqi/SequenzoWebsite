@@ -135,21 +135,21 @@ om = get_distance_matrix(sequence_data, method="OM", sm="TRATE", indel="auto")
 centroid_indices = [0, 50, 100, 150, 190]
 n_pass = 10
 
-# Example 1: KMedoids, not specifying the initial center point
+# 例1: 未指定中心点的 KMedoids 算法
 clustering = KMedoids(diss=om,
                       k=5,
                       method='KMedoids',
                       npass=n_pass,
                       weights=weights)
 
-# Example 2: PAM, specifying the initial center point
+# 例2: 指定中心点的 PAM 算法
 clustering = KMedoids(diss=om,
                       k=5,
                       method='PAM',
                       initialclust=centroid_indices,
                       npass=n_pass,
                       weights=weights)
-# Example 3: PAMonce
+# 例3: 默认参数的 PAMonce 算法
 clustering = KMedoids(diss=om,
                       k=5,
                       method='PAMonce',
@@ -158,3 +158,4 @@ clustering = KMedoids(diss=om,
 ```
 
 ## 输出
+TODO: 这里是输出
