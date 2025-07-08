@@ -67,6 +67,10 @@ export const zh = defineConfig({
           {
             text: 'get_distance_matrix',
             link: '/zh/function-library/get-distance-matrix'
+          },
+          {
+            text: 'KMedoids',
+            link: '/zh/function-library/KMedoids'
           }
         ]
       },
