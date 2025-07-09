@@ -67,6 +67,10 @@ export const en = defineConfig({
           {
             text: 'get_distance_matrix',
             link: '/en/function-library/get-distance-matrix'
+          },
+          {
+            text: 'KMedoids',
+            link: '/en/function-library/KMedoids'
           }
         ]
       },
