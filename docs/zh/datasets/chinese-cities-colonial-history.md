@@ -1,20 +1,38 @@
 # 近代中国的殖民地序列历史数据
 
-该数据分为两类，一类是永久占领地，一类是租借地。数据的时间范围是1840-1949，即中国近现代的范畴。
+本数据集记录了1840年至1949年间，中国11个城市或地区在不同时点上的主权归属状态，旨在还原近代中国的“殖民地序列”历史。数据以时间序列的形式呈现，每一行代表一个城市，其“状态”为该城市在特定年份所属的政权或国家。
 
-以下是各殖民地所用的参考文献:
+数据共分为两类：
 
-* 南九龙半岛、北九龙半岛、香港岛、新界：刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.
-* 台湾、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
-* Manchuria：王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
+1. **永久割让地（Permanently ceded territory）**：指中国通过条约将某地永久割让给他国，该地长期处于他国主权控制之下。
+2. **租借地（Leased territory）**：指中国将某地在特定年限内租借给外国势力，租期内该地由租借国行使实际控制权。
 
-* Hong Kong Island、Southern Kowloon Peninsula、New Territories、Northern Kowloon Peninsula：刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.( Liu, S. (2019) Jianming Xianggang shi [Concise History of Hong Kong]. Guangzhou: Guangdong People’s Publishing House.)
-* Taiwan、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
-* Manchuria：王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
+其中，“状态”是指某城市在特定年份的主权控制方，例如“UK”代表英国，“Japan”代表日本，“Portugal”代表葡萄牙，“China”代表中国。
 
-TODO: 检查中英文地名是否一致
+以下为一个示例表格：
+
+| ID | Type                        | City             | 1840     | 1841     | 1842     | 1843     | 1844     | ... | 1945     | 1946     | 1947     | 1948     | 1949     |
+| -- | --------------------------- | ---------------- | -------- | -------- | -------- | -------- | -------- | --- | -------- | -------- | -------- | -------- | -------- |
+| 1  | Permanently ceded territory | Hong Kong Island | China    | China    | UK       | UK       | UK       | ... | China    | China    | China    | China    | China    |
+| 2  | Permanently ceded territory | Macau            | Portugal | Portugal | Portugal | Portugal | Portugal | ... | Portugal | Portugal | Portugal | Portugal | Portugal |
+| 3  | Permanently ceded territory | Taiwan           | China    | China    | China    | China    | China    | ... | Japan    | Japan    | Japan    | China    | China    |
+
+例如，表中第一行的香港岛，自1842年南京条约割让起至1941年为英国控制，1945年之后重新归属中国。
+
+## 数据调用方式
+
+你可以通过以下方式直接在 Python 中加载该数据集：
+
+```python
+from sequenzo import *  # 导入包
+df = load_dataset('chinese_colonial_territories')
+```
+
+如果你希望直接下载原始 CSV 数据文件，也可以访问 GitHub 仓库中的[地址](https://github.com/Liang-Team/Sequenzo/blob/main/sequenzo/datasets/chinese_colonial_territories.csv)。
 
 ## 重要地名的具体解释
+
+TODO: 检查中英文地名是否一致
 
 ### 1.九龙半岛（Kowloon Peninsula）
 
@@ -67,3 +85,15 @@ TODO: 检查中英文地名是否一致
 
 20世纪30年代初期，英军意识到日军可能会攻占香港，加上黄泥涌峡在军事上的重要性，所以兴建了大规模的防御工事，包括皇家炮兵第5AA高射炮阵地、榴弹炮炮台以及多个机枪堡等。1941年12月8日香港保卫战爆发，而日军于12月18日成功抢滩香港岛铜锣湾，12月19日已抵达黄泥涌峡。
 当时英军第3义勇军步兵连第7、8、9排，少量苏格兰营及加拿大温尼伯榴弹兵部队D连，为扼守这个通往香港岛南部的要道以及黄泥涌水塘，与日军爆发激战。虽然英军的顽强防守使日军有600多人伤亡使义勇军第3连成为抗战英雄，但日军于12月23日终于成功占领黄泥涌峡。由于英军已经无险可守，加上香港另一主要山峡湾仔峡于12月24日亦失守，惟有选择投降，结束了香港保卫战，并开始了香港日治时期。
+
+## 以下是各殖民地所用的参考文献
+
+* 南九龙半岛、北九龙半岛、香港岛、新界：刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.
+* 台湾、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
+* Manchuria：王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
+
+* Hong Kong Island、Southern Kowloon Peninsula、New Territories、Northern Kowloon Peninsula：刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.( Liu, S. (2019) Jianming Xianggang shi [Concise History of Hong Kong]. Guangzhou: Guangdong People’s Publishing House.)
+* Taiwan、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
+* Manchuria：王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
+
+作者：陈敬瑞、梁彧祺
