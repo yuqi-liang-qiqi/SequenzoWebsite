@@ -32,11 +32,11 @@ export const en = defineConfig({
         items: [
           {
             text: 'Basic concepts',
-            link: '/en/tutorials/short-tutorial'
+            link: '/en/tutorials/basic-concepts'
           },
           {
-            text: 'Video Tutorials',
-            link: '/en/tutorials/video-tutorial'
+            text: 'Timing, duration, and order',
+            link: '/en/tutorials/timing-duration-order'
           }
         ]
       },
@@ -122,8 +122,8 @@ export const en = defineConfig({
         link: '/en/faq'
       },
       {
-        text: 'Changelog',
-        link: '/en/changelog'
+        text: 'Team and Acknowledgements',
+        link: '/en/faq/team_and_acknolwedgements'
       }
     ],
 
