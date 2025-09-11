@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-02-21 03:10:43
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-11 09:33:16
+ * @LastEditTime: 2025-09-11 11:48:16
  * @FilePath: /SequenzoWebsite/docs/en/tutorials/basic-concepts.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -88,7 +88,7 @@ Questions:
 2. What is the state at year 4?
 3. If year 5 is `UNEMP`, what does this mean for the person?
 
-## Exercise 2: Build Subsequences
+### Exercise 2: Build Subsequences
 
 From the same sequence:
 `(EDU, EDU, FT, FT, UNEMP)`
@@ -99,7 +99,7 @@ Questions:
 2. Write a subsequence using only the last two years.
 3. True or False: `(FT, EDU)` is a subsequence of the original sequence.
 
-## Exercise 3: Recognize Spells (Episodes)
+### Exercise 3: Recognize Spells (Episodes)
 
 From the sequence:
 `(EDU, EDU, FT, FT, UNEMP)`
@@ -111,7 +111,7 @@ Questions:
 3. If someone claims to have a “three-year EDU spell,” does that match this sequence?
 
 
-## Exercise 4: Understand the Full Sequence
+### Exercise 4: Understand the Full Sequence
 
 Consider the sequence:
 `(EDU, EDU, EDU, FT, FT, UNEMP, FT)`
@@ -122,7 +122,7 @@ Questions:
 2. What is the spell for the first three years?
 3. How many unique states appear in this sequence?
 
-## Exercise 5: Reflection
+### Exercise 5: Reflection
 
 Questions:
 

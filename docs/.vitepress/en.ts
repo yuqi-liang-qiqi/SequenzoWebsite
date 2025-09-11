@@ -51,6 +51,14 @@ export const en = defineConfig({
             text: 'Wide and Long Format Conversion',
             link: '/en/data-preprocessing/wide-long-format'
           },
+          {
+            text: 'Assign Unique IDs',
+            link: '/en/data-preprocessing/assign_unique_ids'
+          }, 
+          {
+            text: 'Clean Time Columns',
+            link: '/en/data-preprocessing/clean_time_columns'
+          }
         ]
       },
       {
