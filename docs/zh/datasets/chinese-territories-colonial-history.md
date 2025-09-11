@@ -1,3 +1,11 @@
+<!--
+ * @Author: Yuqi Liang dawson1900@live.com
+ * @Date: 2025-08-04 22:39:16
+ * @LastEditors: Yuqi Liang dawson1900@live.com
+ * @LastEditTime: 2025-09-11 14:30:05
+ * @FilePath: /SequenzoWebsite/docs/zh/datasets/chinese-territories-colonial-history.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # 近代中国的殖民地序列历史数据
 
 本数据集记录了1840年至1949年间，中国11个城市或地区在不同时点上的主权归属状态，旨在还原近代中国的“殖民地序列”历史。数据以时间序列的形式呈现，每一行代表一个城市，其“状态”为该城市在特定年份所属的政权或国家。
@@ -31,8 +39,6 @@ df = load_dataset('chinese_colonial_territories')
 如果你希望直接下载原始 CSV 数据文件，也可以访问 GitHub 仓库中的[地址](https://github.com/Liang-Team/Sequenzo/blob/main/sequenzo/datasets/chinese_colonial_territories.csv)。
 
 ## 重要地名的具体解释
-
-TODO: 检查中英文地名是否一致
 
 ### 1.九龙半岛（Kowloon Peninsula）
 
@@ -88,7 +94,7 @@ TODO: 检查中英文地名是否一致
 
 ## 以下是各殖民地所用的参考文献
 
-* 南九龙半岛、北九龙半岛、香港岛、新界：刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.
+* **南九龙半岛、北九龙半岛、香港岛、新界：** 刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.
 * 台湾、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
 * Manchuria：王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
 

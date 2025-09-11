@@ -120,8 +120,8 @@ export const en = defineConfig({
             link: '/en/datasets/gdp-per-capita'
           },
           {
-            text: "Chinese Cities' Colonial History",
-            link: '/en/datasets/chinese-cities-colonial-history'
+            text: "Chinese Territories' Colonial History",
+            link: '/en/datasets/chinese-territories-colonial-history'
           }
         ]
       },

@@ -112,8 +112,8 @@ export const zh = defineConfig({
             link: '/zh/datasets/gdp-per-capita'
           },
           {
-            text: "中国城市殖民史",
-            link: '/zh/datasets/chinese-cities-colonial-history'
+            text: "中国地区殖民史",
+            link: '/zh/datasets/chinese-territories-colonial-history'
           }
         ]
       },

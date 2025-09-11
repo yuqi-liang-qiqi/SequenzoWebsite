@@ -9,12 +9,12 @@ hero:
   actions:
     - theme: brand
       text: 进入文档
-      link: /zh/brief-introduction
+      link: /zh/basics/about-sequenzo
 
 features:
   - title: 高性能计算
     icon: 🚀
-    details: "基于 Python 强大的计算能力，速度比 R 工具提升 10 倍以上。"
+    details: "基于 Python 强大的计算能力，速度比 R 工具提升 6 倍以上。"
 
   - title: 简单易用的 API
     icon: 🎯
