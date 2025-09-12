@@ -133,7 +133,7 @@ export const en = defineConfig({
         items: [
           {
             text: 'CO₂ Emissions (1800-2022)',
-            link: '/en/datasets/co2-emissions'
+            link: '/en/datasets/CO2-emissions'
           },
           {
             text: 'GDP per capita (1800-2022)',
