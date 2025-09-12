@@ -83,10 +83,10 @@ The program uses the following process to optimize the initial medoids based on 
 1. Based on the user-provided input, `cut_tree` is used to divide the data into clusters, resulting in an initial clustering result.
 
 2. For each data point within the same cluster, the sum of distances to all other points in that cluster is calculated.
-   
-   $$
-   D(x)=\sum_{i\not=x}^{N}w_{i}*diss(x_{i}, x)
-   $$
+
+$$
+D(x) = \sum_{i \neq x}^{N} w_i * diss(x_i, x)
+$$
 
 3. The point with the smallest total distance is selected as the medoid of the cluster.
 
@@ -110,13 +110,15 @@ In the actual execution of the algorithm, “better” refers to the following:
 
 ## Authors
 
-Code: Xinyi Li，Cheng Deng
+Code: Xinyi Li, Cheng Deng
 
-Edit: Xinyi Li，Yuqi Liang
+Documentation: Xinyi Li
+
+Editd by: Yuqi Liang
 
 ## Examples
 
-The following is a usage example. The dataset comes from Gapminder and contains CO₂ emissions data for 194 countries from 1800 to 2022. This dataset is built into Sequenzo. For more details, [Click here](https://sequenzo.yuqi-liang.tech/zh/datasets/co2-emissions)。
+The following is a usage example. The dataset comes from Gapminder and contains CO₂ emissions data for 194 countries from 1800 to 2022. This dataset is built into Sequenzo. For more details, [click here](https://sequenzo.yuqi-liang.tech/zh/datasets/co2-emissions)。
 
 We perform clustering on the dataset and visualize the output using t-SNE to provide a more intuitive view of the clustering results.
 
@@ -168,30 +170,28 @@ clustering = KMedoids(diss=om,
 [>] States: ['Very Low', 'Low', 'Middle', 'High', 'Very High']
 [>] Labels: ['Very Low', 'Low', 'Middle', 'High', 'Very High']
 [>] Processing 193 sequences with 5 unique states.
-检查传入参数合法性的耗时： 0.004536151885986328
 [>] Transition-based substitution-cost matrix (TRATE) initiated...
   - Computing transition probabilities for: [Very Low, Low, Middle, High, Very High]
 [>] Indel cost generated.
 
 [>] Identified 175 unique sequences.
-预处理参数的耗时： 0.01733994483947754
 [>] Starting Optimal Matching(OM)...
-计算距离矩阵的耗时： 3.922245979309082
 [>] Computing all pairwise distances...
-填充距离矩阵的耗时： 0.0002129077911376953
 [>] Computed Successfully.
 [>] Starting KMedoids...
+[>] Computed successfully.
 ```
 2. Example 2:
 ```python
 [>] Starting Partitioning Around Medoids (PAM)...
-Total: 30821.60040241706
-PAM loop over pass number  1
+  - PAM loop over pass number  1
+[>] Computed successfully.
 ```
 
 3. Example 3:
 ```python
 [>] Starting Partitioning Around Medoids with a Once-Only Swap Pass (PAMonce)...
+[>] Computed successfully.
 ```
 
 

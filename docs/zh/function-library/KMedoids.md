@@ -112,7 +112,9 @@ clustering = KMedoids(
 
 代码：李欣怡，邓诚
 
-文档：李欣怡，梁彧祺
+文档：李欣怡
+
+编辑：梁彧祺
 
 ## 样例
 
@@ -167,29 +169,27 @@ clustering = KMedoids(diss=om,
 [>] States: ['Very Low', 'Low', 'Middle', 'High', 'Very High']
 [>] Labels: ['Very Low', 'Low', 'Middle', 'High', 'Very High']
 [>] Processing 193 sequences with 5 unique states.
-检查传入参数合法性的耗时： 0.004536151885986328
 [>] Transition-based substitution-cost matrix (TRATE) initiated...
   - Computing transition probabilities for: [Very Low, Low, Middle, High, Very High]
 [>] Indel cost generated.
 
 [>] Identified 175 unique sequences.
-预处理参数的耗时： 0.01733994483947754
 [>] Starting Optimal Matching(OM)...
-计算距离矩阵的耗时： 3.922245979309082
 [>] Computing all pairwise distances...
-填充距离矩阵的耗时： 0.0002129077911376953
 [>] Computed Successfully.
 [>] Starting KMedoids...
+[>] Computed successfully.
 ```
 2. 例2:
 ```python
 [>] Starting Partitioning Around Medoids (PAM)...
-Total: 30821.60040241706
-PAM loop over pass number  1
+  - PAM loop over pass number  1
+[>] Computed successfully.
 ```
 
 3. 例3:
 ```python
 [>] Starting Partitioning Around Medoids with a Once-Only Swap Pass (PAMonce)...
+[>] Computed successfully.
 ```
 

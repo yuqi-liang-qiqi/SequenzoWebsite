@@ -3,8 +3,6 @@ import { shared } from './shared'
 import { en } from './en'
 import { zh } from './zh'
 
-
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   ...shared,
   locales: {
@@ -21,4 +19,15 @@ export default defineConfig({
       ...zh
     }
   },
+  // ✅ 在这里添加 head，用于加载 MathJax
+  head: [
+      [
+          'script',
+        {
+          id: 'mathjax',
+          async: 'async',
+          src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+        }
+      ]
+  ]
 })
