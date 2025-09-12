@@ -25,6 +25,14 @@ export const en = defineConfig({
           text: 'Quickstart',
           link: '/en/basics/quickstart'
         },
+          {
+            text: 'How to View Our Jupyter Notebook Tutorials Online',
+            link: '/en/basics/if_you_cannot_render_ipynb_on_github'
+          },
+          {
+            text: 'Converting numeric data to categorical data',
+            link: '/en/basics/if_you_have_numeric_data'
+          }
           ]
       },
       {
