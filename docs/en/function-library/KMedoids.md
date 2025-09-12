@@ -1,6 +1,6 @@
-# KMedoids
+# `KMedoids()`
 
-Function for center clustering (the center point of each cluster is real), supports: KMedoids, PAM (Partitioning Around Medoids), PAMonce (PAM with a only-once). The three algorithms, their principles and differences are detailed in the document: [KMedoids v.s. PAM (PAMonce)](https://sequenzo.yuqi-liang.tech/en/tutorials/short-tutorial)<mark>待补充</mark>。All parameters of `KMedoids` follow [WeightedCluster::KMedoids](https://cran.r-project.org/web/packages/WeightedCluster/WeightedCluster.pdf)。
+Function for center clustering (the center point of each cluster is real), supports: `KMedoids`, `PAM` (Partitioning Around Medoids), `PAMonce` (PAM with a only-once). The three algorithms, their principles and differences are detailed in the document: [KMedoids v.s. PAM (PAMonce)](https://sequenzo.yuqi-liang.tech/en/tutorials/short-tutorial)<mark>待补充</mark>。All parameters of `KMedoids` follow [WeightedCluster::KMedoids](https://cran.r-project.org/web/packages/WeightedCluster/WeightedCluster.pdf)。
 
 Sequenzo also implements hierarchical clustering. For related learning materials, see the video [How to interpret a hierarchical clustering dendrogram? How to combine sequence analysis with regression analysis?](https://www.bilibili.com/video/BV1qyUwYhEc3/?spm_id_from=333.1387.collection.video_card.click&vd_source=11ad9be9a8cb39e0dcc112066c8cae70).
 
@@ -108,14 +108,6 @@ In the actual execution of the algorithm, “better” refers to the following:
 
 3. If `Loss ＜ 0`, the cost is negative, indicating that the average intra-cluster distance has decreased compared to the previous iteration. If `Loss ＞ 0`, the cost is positive, indicating that the average intra-cluster distance has increased. The search stops when the loss becomes greater than 0, and the loop terminates.
 
-## Authors
-
-Code: Xinyi Li, Cheng Deng
-
-Documentation: Xinyi Li
-
-Editd by: Yuqi Liang
-
 ## Examples
 
 The following is a usage example. The dataset comes from Gapminder and contains CO₂ emissions data for 194 countries from 1800 to 2022. This dataset is built into Sequenzo. For more details, [click here](https://sequenzo.yuqi-liang.tech/zh/datasets/co2-emissions)。
@@ -194,4 +186,10 @@ clustering = KMedoids(diss=om,
 [>] Computed successfully.
 ```
 
+## Authors
 
+Code: Xinyi Li, Cheng Deng
+
+Documentation: Xinyi Li, Sizhu Qu (responsible for testing and writing the examples)
+
+Editd by: Yuqi Liang

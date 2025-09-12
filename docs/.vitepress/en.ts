@@ -49,6 +49,10 @@ export const en = defineConfig({
           {
             text: 'Timing, duration, and order',
             link: '/en/tutorials/timing-duration-order'
+          },
+          {
+            text: 'Dissimilarity measures',
+            link: '/en/tutorials/dissimilarity-measures'
           }
         ]
       },

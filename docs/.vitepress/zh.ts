@@ -45,6 +45,10 @@ export const zh = defineConfig({
           {
             text: 'Timing, duration, 以及 order',
             link: '/zh/tutorials/timing-duration-order'
+          },
+          {
+            text: 'Dissimilarity measures',
+            link: '/zh/tutorials/dissimilarity-measures'
           }
         ]
       },
