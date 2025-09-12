@@ -103,16 +103,25 @@ export const en = defineConfig({
         ]
       },
       {
+        text: 'Visualization',
+        items: [
+          {
+            text: 'Index Plot',
+            link: '/en/visualization/index-plot'
+          },
+          {
+            text: 'State Distribution Plot',
+            link: '/en/visualization/state-distribution-plot'
+          }
+        ]
+      },
+      {
         text: 'Big Data',
         items: [
           {
-            text: 'Functions Comparison',
-            link: '/en/big-data/functions-comparison'
+            text: 'Clara',
+            link: '/en/big-data/clara'
           },
-          {
-            text: 'Performance Differences',
-            link: '/en/big-data/performance-diff'
-          }
         ]
       },
       {

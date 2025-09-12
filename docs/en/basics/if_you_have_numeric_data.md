@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 09:38:53
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 11:35:53
+ * @LastEditTime: 2025-09-12 11:42:19
  * @FilePath: /SequenzoWebsite/docs/en/basics/if_you_have_numeric_data.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -127,7 +127,7 @@ Suppose you measure daily step counts from wearable devices (e.g., 9,950 vs 10,0
 Why might it be unhelpful to treat each exact number as a separate state in sequence analysis?  
 
 ### Exercise 2: Household Electricity Use
-Four households report their **monthly electricity consumption (kWh)**:
+Four households report their monthly electricity consumption (kWh):
 
 | Household | Consumption |
 |-----------|-------------|
@@ -136,7 +136,7 @@ Four households report their **monthly electricity consumption (kWh)**:
 | C         | 350         |
 | D         | 800         |
 
-1. Convert these values into **quartiles** (4 equal-sized groups).  
+1. Convert these values into quartiles (4 equal-sized groups).  
 2. Assign each household to a quartile category (`Q1 = Very Low`, `Q2 = Low-Medium`, `Q3 = Medium-High`, `Q4 = Very High`).  
 
 ### Exercise 3: Blood Pressure Categories
@@ -169,7 +169,7 @@ Average river nitrate concentration (mg/L) is reported for two regions:
 | A      | 0.5  | 1.2  | 2.8  |
 | B      | 6.0  | 6.5  | 7.5  |
 
-1. Define three categories using **equal-width binning**:  
+1. Define three categories using equal-width binning:  
    - Low: 0–2  
    - Medium: 2–5  
    - High: >5  
@@ -179,7 +179,7 @@ Average river nitrate concentration (mg/L) is reported for two regions:
 
 ### Exercise 1
 Tiny numeric differences (e.g., 9,950 vs 10,020 steps) don’t indicate meaningful differences in behavior.  
-Sequence analysis is about **paths of discrete states** (e.g., “Sedentary,” “Moderately Active,” “Highly Active”). Categorization allows us to focus on interpretable patterns.  
+Sequence analysis is about paths of discrete states (e.g., “Sedentary,” “Moderately Active,” “Highly Active”). Categorization allows us to focus on interpretable patterns.  
 
 ### Exercise 2
 Sorted consumption: [120, 220, 350, 800].  

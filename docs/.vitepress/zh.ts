@@ -75,16 +75,25 @@ export const zh = defineConfig({
         ]
       },
       {
+        text: '可视化',
+        items: [
+          {
+            text: '索引图',
+            link: '/zh/visualization/index-plot'
+          },
+          {
+            text: '状态分布图',
+            link: '/zh/visualization/state-distribution-plot'
+          }
+        ]
+      },
+      {
         text: '大数据',
         items: [
           {
-            text: '函数对比',
+            text: 'clara',
             link: '/zh/big-data/clara'
           },
-          {
-            text: '性能差异',
-            link: '/zh/big-data/clara'
-          }
         ]
       },
       {
