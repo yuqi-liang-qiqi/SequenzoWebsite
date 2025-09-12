@@ -21,6 +21,7 @@
     "preview": "vitepress preview docs"
   },
   "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
     "vitepress": "^1.6.3"
   },
   "pnpm": {
@@ -35,7 +36,6 @@
     "@tailwindcss/postcss": "^4.0.8",
     "autoprefixer": "^10.4.20",
     "marked": "^16.2.1",
-    "mathjax": "^4.0.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.8"
   }
