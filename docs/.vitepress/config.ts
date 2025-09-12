@@ -19,15 +19,7 @@ export default defineConfig({
       ...zh
     }
   },
-  // ✅ 在这里添加 head，用于加载 MathJax
-  head: [
-      [
-          'script',
-        {
-          id: 'mathjax',
-          async: 'async',
-          src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
-        }
-      ]
-  ]
+  markdown: {
+    math: true
+  }
 })
