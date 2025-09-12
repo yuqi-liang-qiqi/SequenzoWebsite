@@ -32,6 +32,10 @@ export const zh = defineConfig({
           {
             text: 'Typical workflow',
             link: '/zh/basics/typical_workflow'
+          },
+          {
+            text: 'How to Handle Missing Values',
+            link: '/zh/basics/handle_missing_values'
           }
         ]
       },

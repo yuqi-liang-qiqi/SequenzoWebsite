@@ -36,6 +36,10 @@ export const en = defineConfig({
         {
           text: 'Typical workflow',
           link: '/en/basics/typical_workflow'
+        },
+        {
+          text: 'How to Handle Missing Values',
+          link: '/en/basics/handle_missing_values'
         }
           ]
       },

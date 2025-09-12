@@ -4,7 +4,7 @@ After you have prepared your sequence dataset through preprocessing functions (o
 
 You might ask: why is this step necessary? Think of it as similar to how pandas (a Python package for data analysis) uses a `DataFrame`: before you can analyze tabular data efficiently, you first need a consistent container that standardizes how rows, columns, and metadata are stored.  
 
-In the same way, `SequenceData)` creates a `SequenceData`, a dedicated data structure presenting sequences for social sequence analysis.  
+In the same way, `SequenceData()` creates a `SequenceData`, a dedicated data structure presenting sequences for social sequence analysis.  
 
 By doing so, it ensures that your sequences are stored in a unified format with:  
 - consistent **state definitions and ordering**,  
@@ -38,16 +38,17 @@ This formal definition is what allows all subsequent steps, such as distance com
 ## Function Usage
 
 ```python
-sequence = SequenceData(data=df,
-                        time_type='year',               # or 'age'
-                        time=['1','2','3', ...],     # ordered time columns
-                        states=['EDU','FT','UNEMP'],    # full, ordered state space
-                        labels=['Education','Full-time','Unemployed'],  # optional
-                        id_col='Entity ID',             # optional but recommended
-                        weights=None,                   # optional (defaults to 1 per row)
-                        start=1,                        # start index used in summaries
-                        custom_colors=None              # optional list of colors
-                        )
+sequence = SequenceData(
+    data=df,
+    time_type='year',               # or 'age'
+    time=['1','2','3', ...],     # ordered time columns
+    states=['EDU','FT','UNEMP'],    # full, ordered state space
+    labels=['Education','Full-time','Unemployed'],  # optional
+    id_col='Entity ID',             # optional but recommended
+    weights=None,                   # optional (defaults to 1 per row)
+    start=1,                        # start index used in summaries
+    custom_colors=None              # optional list of colors
+)
 ````
 
 ## Entry Parameters
