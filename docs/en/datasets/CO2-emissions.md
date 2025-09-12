@@ -1,55 +1,109 @@
-# CO₂ Emissions Dataset (1800-2022) 🌍
+<!--
+ * @Author: Yuqi Liang dawson1900@live.com
+ * @Date: 2025-02-28 22:12:43
+ * @LastEditors: Yuqi Liang dawson1900@live.com
+ * @LastEditTime: 2025-09-12 09:14:16
+ * @FilePath: /SequenzoWebsite/docs/en/datasets/CO2-emissions.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 
-TODO: change as I have changed the data sources
+# CO₂ Emissions Dataset (1800–2022) 🌍
+
+In most existing studies, sequence analysis is used based on individual-level sequence data such as education, employment, or family histories. But sequence analysis is not limited to social or demographic trajectories. It can also be applied to **countries, organizations, technologies, or even ecological processes**.
+
+This is why we use the CO₂ emissions dataset as a quickstart example: it demonstrates how sequence analysis can be extended beyond human life-course data. Our hope is that this example helps you both understand the core ideas of sequence analysis and imagine how it could inspire research in other fields.
 
 ## What is this dataset, and where does it come from?
 
-The dataset used in this analysis tracks country-level CO₂ emissions per capita over multiple years. 
-It originates from the publicly available [Kaggle CO₂ Emissions dataset](https://www.kaggle.com/datasets/ravindrasinghrana/carbon-co2-emissions), which compiles CO₂ emission data for various countries. 
+The dataset records country-level CO₂ emissions per capita across multiple years.
+It originates from the public Gapminder data, which compiles CO₂ data for countries worldwide.
+(See raw data sources that we have saved in our Sequenzo GitHub repository: [Gapminder data](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/data_sources/gapminder))
 
-The dataset includes:
+The dataset contains:
 
 * CO₂ emissions in kilotons
 * CO₂ emissions per capita (metric tons per person)
-* Country and region information
-* Annual records covering multiple decades
+* Country and region identifiers
+* Annual records spanning two centuries
 
-* For our analysis, we focus on CO₂ emissions per capita, as it provides a more accurate comparison of a country’s emissions relative to its population size.
+For our purposes, we focus on **per capita emissions** instead of emissions. This measure allows fairer cross-country comparison than raw emissions, since it accounts for population size.
 
-## How is the Overall CO₂ Emissions Data calculated?
+## How is the CO₂ Emissions Data Classified?
 
-To make the dataset suitable for social sequence analysis, we classify each country's per capita CO₂ emissions into five quintile-based categories. The classification is based on all available years' data combined, ensuring a standardized comparison across different time periods.
+To make the data suitable for social sequence analysis (which is based on categorical data instead of numeric data), **we transform continuous emission values into categorical states**. Specifically, we classify each country’s per capita emissions into decile groups (10 equally sized categories).
 
-Step-by-Step Calculation Process:
+The classification is calculated across the **entire dataset (all years × all countries)** to ensure that comparisons are standardized across time.
 
-1. Collect all per capita CO₂ emissions values from all years and all countries.
-Determine the quintile thresholds (using `qcut()` in Python), which divide the data into five equal-sized groups:
+### Global vs. Local Deciles
 
-* Very Low (Bottom 20%)
-* Low (20-40%)
-* Middle (40-60%)
-* High (60-80%)
-* Very High (Top 20%)
+When we say “deciles”, there are actually two different ways to compute them:
 
-2. Assign each country's CO₂ per capita value for each year into one of the quintile groups.
-3. Convert the data into a wide format where each country has a sequence of quintile states over time.
+1. **Global deciles (what we use here):**
 
-4. This classification ensures that a country's emission status is evaluated relative to the global distribution rather than changing dynamically each year. 
+   * We pool together **all countries and all years** into one big dataset.
+   * Then we compute the 10 cut-points once, and apply them to every country and every year.
+   * This way, the categories are **globally comparable**.
+   * Example:
 
-As a result, the quintile-based approach allows for meaningful cross-country and longitudinal comparisons.
+     * Suppose the 2nd decile cutoff is **1.2 tons per person**.
+     * Any country-year with emissions between 0.8–1.2 will always be classified as “2nd decile”, no matter if it’s Pakistan in 2015 or Brazil in 1980.
 
-## **Example: Pakistan's CO₂ Emissions Classification**  
+2. **Local deciles (not used here):**
 
-To illustrate, let's look at Pakistan:  
+   * We compute deciles **separately within each year** (or within each region).
+   * This means cutoffs can change over time (or across groups).
+   * Example:
 
-| Year | CO₂ Per Capita (Metric Tons) | Classification |
-|------|-------------------------------|---------------|
-| 2015 | 0.78                          | Low          |
-| 2016 | 0.85                          | Low          |
-| 2017 | 0.92                          | Low          |
-| 2018 | 0.85                          | Low          |
-| 2019 | 0.85                          | Low          |
+     * In 1960, the 2nd decile cutoff might be 0.3 tons because emissions were generally low.
+     * In 2020, the 2nd decile cutoff might be 1.5 tons because emissions rose worldwide.
+     * As a result, a country with 1.0 tons in 1960 could be in a very high decile locally, but the same 1.0 tons in 2020 might fall into a low decile.
 
-Since Pakistan’s per capita CO₂ emissions consistently ranked in the bottom 20%-40% of all countries' emissions across all years, it falls into the "Low" category.
+### Why Global Deciles?
 
-*Data compiler and writer of this document: Yuqi Liang*
+We choose global deciles because:
+
+* They make comparisons across time possible — you can track whether a country is moving up or down in the **same global ranking system**.
+* Local deciles would always “reshuffle” categories year by year, so even if a country’s absolute emissions never changed, its classification could jump around depending on how other countries changed.
+
+### Step-by-Step Process
+
+1. Gather all per capita CO₂ values across all years and countries.
+2. Use `qcut()` in Python to split the values into deciles (10 equal-sized groups).
+3. Assign each country’s yearly CO₂ per capita to the corresponding decile group.
+4. Convert the dataset into wide **format**, where each country is represented as a sequence of decile states over time.
+
+This approach evaluates each country’s emissions **relative to the global distribution** and enables both cross-country and longitudinal sequence comparisons.
+
+> **Note:**
+> In the source notebook, we implemented **both quantile (quintiles, 5 groups)** and **decile (10 groups)** classifications.
+> After testing, we chose deciles for the final analysis because they provide finer granularity and highlight more subtle differences between countries.
+> You are encouraged to compare the two versions in the notebook to see how the level of grouping changes your interpretation.
+
+👉 See full preprocessing steps and code here:
+[Gapminder CO₂ + GDP notebook](https://github.com/Liang-Team/Sequenzo/blob/main/original_datasets_and_cleaning/country_co2_gdp_gapminder_data.ipynb)
+
+## Example: Pakistan's CO₂ Emissions Classification
+
+To illustrate, here is Pakistan’s classification:
+
+| Year | CO₂ Per Capita (Metric Tons) | Decile Group |
+| ---- | ---------------------------- | ------------ |
+| 2015 | 0.78                         | 2nd decile   |
+| 2016 | 0.85                         | 2nd decile   |
+| 2017 | 0.92                         | 2nd decile   |
+| 2018 | 0.85                         | 2nd decile   |
+| 2019 | 0.85                         | 2nd decile   |
+
+Because Pakistan’s per capita CO₂ emissions consistently ranked in the **second-lowest 10–20%** of the global distribution, all years fall into the **2nd decile group**.
+
+---
+
+### Why Deciles Instead of Quintiles?
+
+If we had used quintiles (5 groups) instead, Pakistan’s emissions during these years would all be classified simply as “Low” (20–40%).
+
+By switching to deciles (10 groups), we gain greater granularity: instead of a broad “Low” label, we see that Pakistan is specifically in the 2nd decile, not the 1st or 3rd.
+
+This finer resolution helps us distinguish between countries that are all “Low” but not equally low, which is particularly important when analyzing patterns across many sequences.
+
+*Data compiler and writer of this document: Yuqi Liang
