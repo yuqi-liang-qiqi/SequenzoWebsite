@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-11 13:46:53
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-11 14:10:29
+ * @LastEditTime: 2025-09-12 13:35:39
  * @FilePath: /SequenzoWebsite/docs/en/data-preprocessing/assign_unique_ids.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -13,9 +13,10 @@
 ## Function Usage
 
 ```python
-df_with_ids = assign_unique_ids(df,
-                                id_col_name="Entity ID"  # optional, default = "Entity ID"
-                                )
+df_with_ids = assign_unique_ids(
+   df,
+   id_col_name="Entity ID"  # optional, default = "Entity ID"
+)
 ```
 
 ## Entry Parameters

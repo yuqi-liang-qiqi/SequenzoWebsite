@@ -25,14 +25,18 @@ export const en = defineConfig({
           text: 'Quickstart',
           link: '/en/basics/quickstart'
         },
-          {
-            text: 'How to View Our Jupyter Notebook Tutorials Online',
-            link: '/en/basics/if_you_cannot_render_ipynb_on_github'
-          },
-          {
-            text: 'Converting numeric data to categorical data',
-            link: '/en/basics/if_you_have_numeric_data'
-          }
+        {
+          text: 'How to View Our Jupyter Notebook Tutorials Online',
+          link: '/en/basics/if_you_cannot_render_ipynb_on_github'
+        },
+        {
+          text: 'Converting numeric data to categorical data',
+          link: '/en/basics/if_you_have_numeric_data'
+        },
+        {
+          text: 'Typical workflow',
+          link: '/en/basics/typical_workflow'
+        }
           ]
       },
       {
@@ -66,6 +70,10 @@ export const en = defineConfig({
           {
             text: 'Clean Time Columns',
             link: '/en/data-preprocessing/clean_time_columns'
+          },
+          {
+            text: 'Replace Cluster ID by Labels',
+            link: '/en/data-preprocessing/replace_cluster_id_by_labels'
           }
         ]
       },
@@ -106,12 +114,40 @@ export const en = defineConfig({
         text: 'Visualization',
         items: [
           {
+            text: 'Common Parameters and Features in Visualization Functions',
+            link: '/en/visualization/introduction'
+          },
+          {
             text: 'Index Plot',
             link: '/en/visualization/index-plot'
           },
           {
             text: 'State Distribution Plot',
             link: '/en/visualization/state-distribution-plot'
+          },
+          {
+            text: 'Modal State Plot',
+            link: '/en/visualization/plot_modal_state'
+          },
+          {
+            text: 'Most Frequent Sequences Plot',
+            link: '/en/visualization/plot_most_frequent_sequences'
+          },
+          {
+            text: 'Mean Time Plot',
+            link: '/en/visualization/plot_mean_time'
+          },
+          {
+            text: 'Transition Matrix Plot',
+            link: '/en/visualization/plot_transition_matrix'
+          },
+          {
+            text: 'Relative Frequency Plot',
+            link: '/en/visualization/plot_relative_frequency'
+          },
+          {
+            text: 'Single Medoid Plot',
+            link: '/en/visualization/plot_single_medoid'
           }
         ]
       },

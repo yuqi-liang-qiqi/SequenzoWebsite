@@ -22,21 +22,29 @@ export const zh = defineConfig({
             link: '/zh/basics/installing'
           },
           {
-            text: '如何使用',
-            link: '/zh/basics/quickstart_cleaned'
+            text: 'How to View Our Jupyter Notebook Tutorials Online',
+            link: '/zh/basics/if_you_cannot_render_ipynb_on_github'
           },
+          {
+            text: 'Converting numeric data to categorical data',
+            link: '/zh/basics/if_you_have_numeric_data'
+          },
+          {
+            text: 'Typical workflow',
+            link: '/zh/basics/typical_workflow'
+          }
         ]
       },
       {
         text: '教程',
         items: [
           {
-            text: '简洁教程',
-            link: '/zh/tutorials/short-tutorial'
+            text: '基本概念',
+            link: '/zh/tutorials/basic-concepts'
           },
           {
-            text: '视频教程',
-            link: '/zh/tutorials/video-tutorial'
+            text: 'Timing, duration, 以及 order',
+            link: '/zh/tutorials/timing-duration-order'
           }
         ]
       },
@@ -50,6 +58,18 @@ export const zh = defineConfig({
           {
             text: '宽、长格式转换',
             link: '/zh/data-preprocessing/wide-long-format'
+          },
+          {
+            text: '分配唯一 ID',
+            link: '/zh/data-preprocessing/assign_unique_ids'
+          }, 
+          {
+            text: '清洗时间列',
+            link: '/zh/data-preprocessing/clean_time_columns'
+          },
+          {
+            text: '替换簇 ID 为标签',
+            link: '/zh/data-preprocessing/replace_cluster_id_by_labels'
           },
         ]
       },
@@ -71,6 +91,18 @@ export const zh = defineConfig({
           {
             text: 'KMedoids',
             link: '/zh/function-library/KMedoids'
+          },
+          {
+            text: '层次聚类',
+            link: '/zh/function-library/hierarchical_clustering'
+          },
+          {
+            text: '聚类质量',
+            link: '/zh/function-library/cluster_quality'
+          },
+          {
+            text: '聚类结果',
+            link: '/zh/function-library/cluster_results'
           }
         ]
       },
@@ -78,12 +110,40 @@ export const zh = defineConfig({
         text: '可视化',
         items: [
           {
+            text: '常见绘图参数和特征',
+            link: '/zh/visualization/introduction'
+          },
+          {
             text: '索引图',
             link: '/zh/visualization/index-plot'
           },
           {
             text: '状态分布图',
             link: '/zh/visualization/state-distribution-plot'
+          },
+          {
+            text: '模态状态图',
+            link: '/zh/visualization/plot_modal_state'
+          },
+          {
+            text: '最频繁序列图',
+            link: '/zh/visualization/plot_most_frequent_sequences'
+          },
+          {
+            text: '平均时间图',
+            link: '/zh/visualization/plot_mean_time'
+          },
+          {
+            text: '转移矩阵图',
+            link: '/zh/visualization/plot_transition_matrix'
+          },
+          {
+            text: '相对频率图',
+            link: '/zh/visualization/plot_relative_frequency'
+          },
+          {
+            text: '单个 Medoid 图',
+            link: '/zh/visualization/plot_single_medoid'
           }
         ]
       },
@@ -91,7 +151,7 @@ export const zh = defineConfig({
         text: '大数据',
         items: [
           {
-            text: 'clara',
+            text: 'Clara 算法',
             link: '/zh/big-data/clara'
           },
         ]
