@@ -122,24 +122,56 @@ sequence = SequenceData(
 
 ## Examples
 
-### 1. Minimal Construction
+### 1. Minimal Construction (with missing values)
 
 ```python
-states = ['EDU','FT','UNEMP','Missing']
-labels = ['Education','Full-time','Unemployed','Missing']
+# Create a SequenceData object
 
-sequence_data = SequenceData(
-    data=df,
-    time_type='year',
-    time=[f'{t}' for t in range(1, 11)],
-    states=states,
-    labels=labels,
-    id_col='Entity ID'
-)
+# Define the time-span variable
+time_list = list(df.columns)[1:]
 
-X = seq.to_numeric()
-cm = seq.get_colormap()
-handles, labs = seq.get_legend()
+# We choose to use 'D1 (Very Low)', 'D10 (Very High)' as the states for readability and interpretation. 
+# states = ['Very Low', 'Low', 'Middle', 'High', 'Very High']
+states = ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9']
+
+sequence_data = SequenceData(df, 
+                             time=time_list, 
+                             time_type="year", 
+                             id_col="country", 
+                             states=states,
+                             labels=states)
+
+sequence_data
+```
+
+Output:
+
+```python
+[!] Detected missing values (empty cells) in the sequence data.
+    → Automatically added 'Missing' to `states` and `labels` for compatibility.
+    However, it's strongly recommended to manually include it when defining `states` and `labels`.
+    For example:
+
+        states = ['At Home', 'Left Home', 'Missing']
+        labels = ['At Home', 'Left Home', 'Missing']
+
+    This ensures consistent color mapping and avoids unexpected visualization errors.
+
+[>] SequenceData initialized successfully! Here's a summary:
+[>] Number of sequences: 194
+[>] Number of time points: 223
+[>] Min/Max sequence length: 216 / 223
+[>] There are 7 missing values across 1 sequences.
+    First few missing sequence IDs: ['Panama'] ...
+[>] Top sequences with the most missing time points:
+    (Each row shows a sequence ID and its number of missing values)
+
+             Missing Count
+Sequence ID               
+Panama                   7
+[>] States: ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'Missing']
+[>] Labels: ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'Missing']
+SequenceData(194 sequences, States: ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'Missing'])
 ```
 
 ### 2. Add IDs If Missing
@@ -155,15 +187,6 @@ sequence = SequenceData(
     states=states,
     id_col='Entity ID'
 )
-```
-
-### 3. Cross-Tab Two Domains
-
-```python
-seq_a = SequenceData(df_a, 'year', year_cols, states_a, id_col='Entity ID')
-seq_b = SequenceData(df_b, 'year', year_cols, states_b, id_col='Entity ID')
-
-xt = seq_a.get_xtabs(seq_b, weighted=True)
 ```
 
 ## Author(s)

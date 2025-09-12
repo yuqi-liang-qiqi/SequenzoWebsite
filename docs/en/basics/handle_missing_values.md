@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 17:50:24
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 17:53:23
+ * @LastEditTime: 2025-09-12 21:25:52
  * @FilePath: /SequenzoWebsite/docs/en/basics/how_sequenzo_handle_missing_values.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -12,8 +12,9 @@ TODO:
 1. 缺失值有的话，可以看preprocessing
 2. 什么情况下保留缺失值，什么情况下不保留
 3. 是否有 missing imputation python 包
-4. 如果状态为 missing 的话，在 sequence data 的时候是怎么进去的，是否需要手动传进去，还是自动就行，还是二者都行？举例子。
+4. 如果状态为 missing 的话，在 sequence data 的时候是怎么进去的，是否需要手动传进去，还是自动就行，还是二者都行？举例子。以及也要提到，sequenzo 还会检测 missing value，在 sequencedata 产生之后 summary 里面写哪里有缺失值。所以这个就不仅是我那个preprocessing
 5. 在 dissimilarity measures 的时候是如何处理缺失值的？
+具体再看看欣怡给的云文档，做确认
 
 One important detail is how **missing values** are treated in Sequenzo when computing the distance matrix.
 
