@@ -106,4 +106,4 @@ By switching to deciles (10 groups), we gain greater granularity: instead of a b
 
 This finer resolution helps us distinguish between countries that are all “Low” but not equally low, which is particularly important when analyzing patterns across many sequences.
 
-*Data compiler and writer of this document: Yuqi Liang
+*Data compiler and writer of this document: Yuqi Liang*
