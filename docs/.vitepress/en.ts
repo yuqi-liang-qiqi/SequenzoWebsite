@@ -77,8 +77,20 @@ export const en = defineConfig({
             link: '/en/function-library/get-distance-matrix'
           },
           {
-            text: 'KMedoids',
+            text: 'K Medoids',
             link: '/en/function-library/KMedoids'
+          },
+          {
+            text: 'Hierarchical Clustering',
+            link: '/en/function-library/hierarchical_clustering'
+          },
+          {
+            text: 'Cluster Quality',
+            link: '/en/function-library/cluster_quality'
+          },
+          {
+            text: 'Cluster Results',
+            link: '/en/function-library/cluster_results'
           }
         ]
       },

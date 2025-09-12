@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-08-04 22:39:16
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-11 14:30:05
+ * @LastEditTime: 2025-09-11 16:12:32
  * @FilePath: /SequenzoWebsite/docs/zh/datasets/chinese-territories-colonial-history.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -95,11 +95,11 @@ df = load_dataset('chinese_colonial_territories')
 ## 以下是各殖民地所用的参考文献
 
 * **南九龙半岛、北九龙半岛、香港岛、新界：** 刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.
-* 台湾、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
-* Manchuria：王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
+* **台湾、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：**宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
+* **Manchuria：**王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
 
-* Hong Kong Island、Southern Kowloon Peninsula、New Territories、Northern Kowloon Peninsula：刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.( Liu, S. (2019) Jianming Xianggang shi [Concise History of Hong Kong]. Guangzhou: Guangdong People’s Publishing House.)
-* Taiwan、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
-* Manchuria：王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
+* **Hong Kong Island、Southern Kowloon Peninsula、New Territories、Northern Kowloon Peninsula：**刘蜀永. 简明香港史[M]. 广州：广东人民出版社, 2019.04.( Liu, S. (2019) Jianming Xianggang shi [Concise History of Hong Kong]. Guangzhou: Guangdong People’s Publishing House.)
+* **Taiwan、Kanto Prefecture、Jiaozhou Bay、Kouang-Tchéou-Wan、Weihaiwei：**宗民著. 条约中的近代中国[M]. 北京：人民文学出版社, 2018.08.( Zong, M. (2018). Modern China in Treaties. Beijing: People's Literature Publishing House.)
+* **Manchuria：** 王庆祥著. 溥仪与伪满洲国[M]. 北京：人民出版社, 2015.05.( Wang, Q. (2015). Puyi and the Puppet Manchukuo. Beijing: People's Publishing House.)
 
 作者：陈敬瑞、梁彧祺
