@@ -70,10 +70,11 @@ By converting them into categorical states, we can treat them as categorical tra
    * Limitation: Categories are relative to the dataset, not absolute values.
 
 3. **Standard Deviation from Mean (Z-Scores)**
-    - Define categories based on how far a value is from the mean. **Here, σ (sigma) denotes the standard deviation, which measures how spread out values are around the mean.**
-    - Example: Test scores → Below −1σ = “Low Performer”, −1σ to +1σ = “Average”, Above +1σ = “High Performer”.
-    - Advantage: Good when data is approximately normal. 
-    - Limitation: Harder for non-technical audiences to interpret.
+
+   * Define categories based on how far a value is from the mean.
+   * Example: Test Scores → Below −1σ = “Low Performer”, −1σ to +1σ = “Average”, Above +1σ = “High Performer”.
+   * Advantage: Good when data is approximately normal.
+   * Limitation: Harder for non-technical audiences to interpret.
 
 ## Step-by-Step Example: CO₂ Emissions
 
@@ -139,18 +140,15 @@ Four households report their monthly electricity consumption (kWh):
 2. Assign each household to a quartile category (`Q1 = Very Low`, `Q2 = Low-Medium`, `Q3 = Medium-High`, `Q4 = Very High`).  
 
 ### Exercise 3: Blood Pressure Categories
-Systolic blood pressure is the **highest pressure** in the arteries when the heart contracts (often called the “top number”), measured in mmHg.  
+A health survey records systolic blood pressure: 110, 125, 138, 162.  
+Use the standard clinical thresholds:
 
-Now we have four patients with systolic readings of 110, 125, 138, and 162 mmHg. Using the clinical thresholds below, assign a category to each patient:
+- Normal: <120  
+- Elevated: 120–129  
+- Hypertension Stage 1: 130–139  
+- Hypertension Stage 2: ≥140  
 
-- Normal: <120
-- Elevated: 120–129
-- Hypertension Stage 1: 130–139
-- Hypertension Stage 2: ≥140
-
-Please assign each patient to a category.
-
-
+Assign each person to a category.  
 
 ### Exercise 4: Student Attendance (Z-Scores)
 Absences from school (days per year) are: 2, 4, 6, 8, 12.  

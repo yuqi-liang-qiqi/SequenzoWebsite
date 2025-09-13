@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 10:17:49
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 11:11:09
+ * @LastEditTime: 2025-09-12 12:50:45
  * @FilePath: /SequenzoWebsite/docs/en/basics/if_you_cannot_render_ipynb_on_github.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -19,9 +19,9 @@ However, sometimes when you click on a notebook (`.ipynb`) file on GitHub, you m
 Unable to render code block
 ```
 
-A screenshot will look like this:
+In such cases, you might see a screen like this:
 
-
+![render_failure_example](./img/render_failure_github.png)
 
 This happens because GitHub’s built-in notebook preview has limitations and may fail to display files with large data, complex outputs, or non-standard formatting.
 
