@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 14:40:49
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-13 11:02:46
+ * @LastEditTime: 2025-09-13 17:33:02
  * @FilePath: /SequenzoWebsite/docs/en/faq/team_and_acknolwedgements.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -55,12 +55,12 @@ We thank the people below for building and supporting Sequenzo.
       <div><a href="www.linkedin.com/in/yukun（stephan）-ming-a13878298">Yukun Ming</a><br/>Master, Business & Finance<br/>Universidad Carlos III de Madrid (Spain)</div>
     </td>
     <td align="center">
-      <div class="placeholder-photo">Photo pending</div>
-      <div>Sizhu Qu<br/>Master, Computer Science<br/>Northeastern University (US)</div>
+      <img src="./img/sizhu.jpeg" width="120" height="120" class="team-photo" alt="Sizhu Qu" />
+      <div><a href="https://www.linkedin.com/in/sizhuq">Sizhu Qu</a><br/>Master, Computer Science<br/>Northeastern University (US)</div>
     </td>
     <td align="center">
-      <div class="placeholder-photo">Photo pending</div>
-      <div>Ziting Yang<br/>Master, Marketing Analytics<br/>Rochester University (US)</div>
+      <img src="./img/ziting.jpeg" width="120" height="120" class="team-photo" alt="Ziting Yang" />
+      <div><a href="www.linkedin.com/in/ziting-yang-7b33832bb">Ziting Yang</a><br/>Master, Marketing Analytics<br/>Rochester University (US)</div>
     </td>
   </tr>
 </table>
