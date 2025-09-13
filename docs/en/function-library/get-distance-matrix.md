@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 14:40:49
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-13 09:35:01
+ * @LastEditTime: 2025-09-13 19:21:29
  * @FilePath: /SequenzoWebsite/docs/en/function-library/get-distance-matrix.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -44,7 +44,7 @@ Here is a list of defaults by each method. You might want to adjust these values
 
 * **OM (general purpose):** sm is set by user, indel="auto", norm="auto".
 * **OMspell (durations matter):** sm is set by user, indel="auto", tpow=1.0, expcost=0.5, norm="auto".
-* **HAM (strict positionwise):** if sm is not defined, it defaults to a constant substitution matrix with all costs = 1 (sm="CONSTANT", cval=1). norm="auto". Equal lengths required. Ensure equal lengths.
+* **HAM (strict positionwise):** if sm is not defined, it defaults to a constant substitution matrix with all costs = 1 (sm="CONSTANT", cval=2). norm="auto". Equal lengths required. Ensure equal lengths.
 * **DHD (positionwise with time-varying costs):** sm="TRATE" if not defined, norm="auto". Equal lengths required.
 * **LCP / RLCP (prefix similarity):** norm="auto". No sm or indel needed.
 
