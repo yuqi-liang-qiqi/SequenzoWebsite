@@ -51,10 +51,10 @@
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+  --vp-c-brand-1: #b75747;
+  --vp-c-brand-2: #c8624f;
+  --vp-c-brand-3: #d4715d;
+  --vp-c-brand-soft: rgba(212, 113, 93, 0.16);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -95,13 +95,27 @@
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
-      #bd34fe 30%,
-      #41d1ff);
+      #e6b9b1 20%,
+      #d4715d);
 
   --vp-home-hero-image-background-image: linear-gradient(-45deg,
-      #bd34fe 50%,
-      #47caff 50%);
+      #f1d6d1 50%,
+      #e6b9b1 50%);
   --vp-home-hero-image-filter: blur(44px);
+}
+
+.dark {
+  /* Rose-gold shimmer for dark mode */
+  --vp-c-brand-1: #f4d4c9; /* links / badges text */
+  --vp-c-brand-2: #eab6aa; /* hover */
+  --vp-c-brand-3: #d58f80; /* solid button bg */
+
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
+      #f6d9cf 25%,
+      #e3a8a1);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg,
+      #7c3f45 50%,
+      #f4d4c9 50%);
 }
 
 @media (min-width: 640px) {
