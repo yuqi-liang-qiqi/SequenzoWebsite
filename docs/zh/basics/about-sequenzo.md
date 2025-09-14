@@ -12,7 +12,7 @@
 
 *  家庭变化（单身 → 结婚 → 生孩子）
 *  职业发展（毕业 → 初入职场 → 转换工作）
-*  迁移轨迹（城市A → 城市B → 回到城市A）
+*  迁移轨迹（城市 A → 城市 B → 回到城市 A）
 
 与股价、温度等数值型时间序列不同，社会序列分析处理的通常是分类数据，这些数据代表的是不同的生活事件或状态，如单身、已婚、失业等，而不是连续的数字。
 
@@ -49,37 +49,29 @@ Sequenzo 旨在帮助研究人员、决策者和数据分析师高效地回答�
 为了解决这些问题，我们开发了 Sequenzo ，一个专门为大数据时代社会序列分析设计的 Python 包。与广泛使用的现有工具（如R语言的 TraMineR ）相比（Gabadinho et al., 2011），Sequenzo 在速度、效率和易用性方面都有显著提升。更多信息请参考[TraMineR 与 Sequenzo 性能对比](/en/traminer-and-sequenzo/performance-diff) 和 [功能对比](/en/traminer-and-sequenzo/functions-comparison)。
 
 ### Sequenzo 的核心功能：
-
 * **全面的序列数据处理：** 轻松管理和转换各种纵向数据格式，自动检测缺失值。
-
 * **丰富的可视化工具：** 提供状态分布图、索引图等清晰的可视化图表，直观展示序列数据。
-
 * **详尽的复杂性指标（微观和宏观层面）：** 计算序列长度、状态持续时间、熵、复杂性、波动性等多种序列度量指标。
-
 * **多样的相似性度量：** 提供最优匹配（Optimal matching）、汉明距离（Hamming）、最长公共子序列（Longest Common Subsequence）、卡方距离（Chi-squared）、欧氏距离（Euclidean）等多种距离度量方法，确保序列比较的准确性。
-
-* **强大的聚类分析：**  支持层次聚类、k-中心点聚类和PAM（围绕中心点分割）等方法，能够有效识别相似轨迹并形成有意义的聚类模式。
-
+* **强大的聚类分析：**  支持层次聚类、k-中心点聚类和 PAM（围绕中心点分割）等方法，能够有效识别相似轨迹并形成有意义的聚类模式。
 * **代表性序列识别：** 自动确定中心点/参考序列。
-
-* **大数据支持：** 基于CLARA算法（Studer et al., 2024），能够高效处理大规模数据集。
-
+* **大数据支持：** 基于 CLARA 算法（Studer et al., 2024），能够高效处理大规模数据集。
 通过算法优化和并行计算，Sequenzo 的运行速度比R语言传统工具快至少6倍，大幅降低了计算成本，真正实现了序列分析的大规模应用。无论是学术研究、商业分析还是政策制定，Sequenzo 都能在这个数据驱动的时代让序列分析变得更加便捷、高效和富有洞察力。
-
 ## 团队介绍
-
 **论文作者**
 * [梁彧祺 , 牛津大学](https://www.yuqi-liang.tech/)
-* [李欣怡, 黑龙江大学](https://github.com/Fantasy201)
+* [李欣怡, 东北大学（中国）](https://github.com/Fantasy201)
 * [Jan Heinrich Ernst Meyerhoff-Liang（马杨杨），牛津新经济思想研究所](https://www.inet.ox.ac.uk/people/jan-meyerhoff-liang)
 
 **项目贡献者**
-* [何梁星云，斯德哥尔摩经济学院](https://www.linkedin.com/in/liangxingyun-he-6aa128304/)：
-    - 序列数据源整理、教育数据分析及教程
-    - 中文文档翻译
+* [何梁星云,斯德哥尔摩经济学院 (瑞典)](https://www.linkedin.com/in/liangxingyun-he-6aa128304/)
+* [明煜坤,马德里卡洛斯三世大学 (西班牙)](https://www.linkedin.com/in/yukun%EF%BC%88stephan%EF%BC%89-ming-a13878298/)
+* [杨子婷,罗切斯特大学 (美国)](www.linkedin.com/in/ziting-yang-7b33832bb)
+* [曲思竹,东北大学 (美国)](https://www.linkedin.com/in/sizhuq)
+
 * 特别感谢早期测试用户（按姓名字母顺序排序）：[Joji Chia](https://sociology.illinois.edu/directory/profile/jbchia2)， [Kass Gonzalez](https://www.linkedin.com/in/kass-gonzalez-72a778276/)， [Sinyee Lu](https://sociology.illinois.edu/directory/profile/qianyil4)，[Sohee Shin](https://sociology.illinois.edu/directory/profile/sohees2)
 * 网站开发及技术支持：[Mactavish](https://github.com/mactavishz)
-* PAM聚类算法开发：邓诚
+* PAM 聚类算法开发：邓诚
 * 序列数据源整理-历史：陈敬瑞
 * 视觉设计顾问：易昌宇
 
