@@ -6,9 +6,9 @@
  * @FilePath: /SequenzoWebsite/docs/en/function-library/hierarchical_clustering.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
-# `Cluster()` (First Step of Hierarchical Clustering)
+# `Cluster()` : First Step of Hierarchical Clustering
 
-Once you have built a precomputed distance matrix (`n×n`, square form) with `get_distance_matrix()`, you are ready to cluster if you follow one of the most common practices in sequence analysis. Hierarchical clustering is a straightforward way to uncover typical trajectory patterns. 
+Once you have built a precomputed distance matrix (`n×n`, square form) with `get_distance_matrix()`, you are ready to cluster if you follow one of the most common practices in sequence analysis. Hierarchical clustering is an unsupervised machine learning algorithm,and it is a straightforward way to uncover typical trajectory patterns 
 
 ## Typical workflow of Hierarchical Clustering
 
@@ -18,7 +18,7 @@ Once you have built a precomputed distance matrix (`n×n`, square form) with `ge
 4. Use `ClusterQuality()` to compare different `k`s with cluster quality indicators (knownn as CQI).
 5. Use `ClusterResults()` to export a membership table and a plot of the proportion of each cluster. 
 
-The downstream analysis after this step would be (1) visualizing each cluster using the state distribution plot or index plot, and (2) fitting a regression model in which you use every individual's membership as either an explanatory variable, or an outcome variable. 
+The downstream analysis after this step would be (1) visualizing each cluster using the  [state distribution plots](https://sequenzo.yuqi-liang.tech/en/visualization/state-distribution-plot) or [index plots](https://sequenzo.yuqi-liang.tech/en/visualization/index-plot), and (2) fitting a regression model in which you use every individual's membership as either an explanatory variable, or an outcome variable. 
 
 The following is an example of how to use `Cluster()`, `ClusterQuality()`, and `ClusterResults()` for hierarchical clustering.
 
@@ -73,7 +73,7 @@ cluster_results.plot_cluster_distribution(num_clusters=6,
 ```
 
 ---
-In this doc, we will go through `Cluster()`. Under the hood, this object uses a Python package called `fastcluster`, which is typically faster and more memory-efficient than the standard SciPy approach to conduct hierarchical clustering analysis. Such a design is especially helpful for large datasets.
+In this doc, we will go through `Cluster()`. Under the hood, this object uses a Python package called `fastcluster`, which is typically faster and more memory-efficient than the standard `SciPy` approach to conduct hierarchical clustering analysis. Such a design is especially helpful for large datasets.
 
 ## Function usage of `Cluster()`
 
@@ -100,7 +100,7 @@ cluster = Cluster(
 * Validates inputs: checks square shape, length match, and uniqueness of `entity_ids`.
 * Handles oddities in the matrix:
 
-  * If the matrix contains NaN/Inf, replaces them with the maximum finite value found.
+  * If the matrix contains `NaN`/`Inf`, replaces them with the maximum finite value found.
   * If not perfectly symmetric within tolerance, symmetrizes it: `(D + D.T) / 2`.
 * Converts the square matrix to condensed form and computes a linkage matrix via a fast hierarchical routine.
 * Stores the resulting linkage for downstream tasks like dendrograms and tree cuts.
@@ -109,17 +109,17 @@ cluster = Cluster(
 
 A `Cluster` instance with these main attributes:
 
-* `entity_ids`: numpy array of your IDs (length n).
-* `full_matrix`: validated n×n distance matrix (numpy array).
-* `condensed_matrix`: condensed vector used by the linkage routine.
+* `entity_ids`: `numpy array` of your IDs (length `n`).
+* `full_matrix`: validated n×n distance matrix (`numpy array`).
+* `condensed_matrix`: condensed vector used by the linkage function.
 * `linkage_matrix`: the hierarchical linkage result.
 
 And these main methods:
 
 * `plot_dendrogram(...)`: render or save a dendrogram.
-* `get_cluster_labels(num_clusters)`: return an array of cluster labels (length n).
+* `get_cluster_labels(num_clusters)`: return an array of cluster labels (length `n`).
 
-## Method 1: `plot_dendrogram()`
+## Function Method 1: `plot_dendrogram()`
 
 Render or save a dendrogram of the fitted hierarchical clustering.
 
@@ -130,7 +130,7 @@ cluster.plot_dendrogram(
     save_as=None,         # e.g., "dendrogram.png" to save; None to just show the figure
     style="whitegrid",    # seaborn style
     title="Dendrogram",
-    xlabel="Entities",
+    xlabel="Entities",    # You can rename this based on your data (e.g., Individuals, Countries).
     ylabel="Distance",
     grid=False,
     dpi=200,
@@ -142,14 +142,14 @@ cluster.plot_dendrogram(
 
 | Parameter | Required | Type               | Description                                                                                    |
 | --------- | -------- | ------------------ | ---------------------------------------------------------------------------------------------- |
-| `save_as` | ✗        | str or None        | Path to save the figure (e.g., "dendrogram.png"). If None, the plot is shown instead of saved. |
-| `style`   | ✗        | str                | Seaborn style name. Common options: "whitegrid", "darkgrid", "white", "dark", "ticks".         |
-| `title`   | ✗        | str                | Figure title. Default = "Dendrogram".                                                          |
-| `xlabel`  | ✗        | str                | X-axis label. Default = "Entities".                                                            |
-| `ylabel`  | ✗        | str                | Y-axis label. Default = "Distance".                                                            |
-| `grid`    | ✗        | bool               | Whether to show grid lines. Default = False.                                                   |
-| `dpi`     | ✗        | int                | Resolution used when saving to file. Default = 200.                                            |
-| `figsize` | ✗        | tuple(float,float) | Figure size in inches. Default = (12, 8).                                                      |
+| `save_as` | ✗        | str or None        | Path to save the figure (e.g., `"dendrogram.png"`). If `None`, the plot is shown instead of saved. |
+| `style`   | ✗        | str                | Seaborn style name. Common options: `"whitegrid"`, `"darkgrid"`, `"white"`, `"dark"`, `"ticks"`.         |
+| `title`   | ✗        | str                | Figure title. Default = `"Dendrogram"`.                                                          |
+| `xlabel`  | ✗        | str                | X-axis label. Default = `"Entities"`.                                                            |
+| `ylabel`  | ✗        | str                | Y-axis label. Default = `"Distance"`.                                                            |
+| `grid`    | ✗        | bool               | Whether to show grid lines. `Default = False`.                                                   |
+| `dpi`     | ✗        | int                | Resolution used when saving to file. `Default = 200`.                                            |
+| `figsize` | ✗        | tuple(float,float) | Figure size in inches. `Default = (12, 8)`.                                                      |
 
 > **Note on `style` vs `grid`**
 >
@@ -162,14 +162,14 @@ cluster.plot_dendrogram(
 ### What it does
 
 * Uses the precomputed `linkage_matrix` to draw a dendrogram.
-* Labels are intentionally hidden to avoid unreadable plots when n is large. If you need labeled leaves for small n, generate a custom dendrogram with `scipy.cluster.hierarchy.dendrogram` outside this helper.
-* If `save_as` is provided, saves the figure at `dpi` and does not block program execution; otherwise shows the plot.
+* Labels are intentionally hidden to avoid unreadable plots when the sample size n is large. If you need labeled leaves for small n, generate a custom dendrogram with `scipy.cluster.hierarchy.dendrogram` outside this helper.
+* If you pass `save_as`, the figure is saved to that path; its resolution is controlled by `dpi` (default 200), and saving won’t block your program. If you don’t pass `save_as`, the plot is shown on screen instead.
 
 ### Returns
 
-* None (side effects: renders and/or saves a figure)
+* None (renders and/or saves a figure)
 
-Note: If your distance matrix had NaN/Inf or was slightly asymmetric, `Cluster()` already repaired it before computing linkage; a warning may have been printed then but it is not an error.
+Note: If your distance matrix had `NaN`/`Inf` or was slightly asymmetric, `Cluster()` already repaired it before computing linkage; a warning may have been printed then but it is not an error.
 
 
 ### Examples
@@ -182,14 +182,14 @@ Output:
 
 ![dendrogram_results](./img/dendrogram_example.png)
 
-## Method 2: `get_cluster_labels(num_clusters)`
+## Function Method 2: `get_cluster_labels(num_clusters)`
 
 Cut the dendrogram at `k` clusters and return an integer label for each entity (aligned to `entity_ids`). It is not very frequently used as plotting the dendrogram is usually sufficient. 
 
 ### Function usage
 
 ```python
-# Let's say if you choose 6 clusters
+# Let's say you choose 6 clusters
 labels = cluster.get_cluster_labels(num_clusters=6)
 ```
 
@@ -201,28 +201,28 @@ labels = cluster.get_cluster_labels(num_clusters=6)
 
 ### Returns
 
-* `numpy.ndarray` of shape (n,) with integer cluster labels (1...k).
+* `numpy.ndarray` of shape `(n,)` with integer cluster labels `(1...k)`.
 
 ### Notes
 
 * **The analysis is deterministic, i.e., given the same distance matrix and method, results are reproducible.**
 
-  In other words, there is no randomness involved in hierarchical clustering (unlike K Medoid). As long as you keep the same input and method, you will always get the same clusters. The only exception is if two or more pairs of entities are at exactly the same distance. 
+  In other words, there is no randomness involved in hierarchical clustering (unlike [K-Medoids](https://sequenzo.yuqi-liang.tech/en/function-library/k-medoids)).. As long as you keep the same input and method, you will always get the same clusters. The only exception is if two or more pairs of entities are at exactly the same distance. 
   
   In that case, different implementations or row/column orders may choose a different merge order, leading to slightly different dendrogram shapes, though the overall cluster quality remains the same.
 
 * **For very large k (≥ n), expect many singletons; for k=1, all observations share the same label.**
 
-  A “singleton” is a cluster containing only one entity. When k approaches n, most clusters will become singletons, which usually makes the results less interpretable. At the other extreme, if you set k=1, then all entities are placed into the same single cluster.
+  A “singleton” is a cluster containing only one entity. When k approaches n, most clusters will become singletons, which usually makes the results less interpretable. At the other extreme, if you set `k=1`, then all entities are placed into the same single cluster.
 
 * **Label IDs are arbitrary numeric codes; they do not imply ordering or size.**
 
-  For example, “Cluster 1” is not necessarily larger, smaller, or more important than “Cluster 2.” The numbers are just identifiers.
+  For example, “Cluster 1” is not necessarily larger, smaller, or more important than “Cluster 2.” The numbers are just identifiers of clusters.
 
 ### Examples
 
 ```python
-# Basic cut at k=6
+# Basic usage: Suppose k=6 (six clusters) is appropriate
 labels_k6 = cluster.get_cluster_labels(num_clusters=6)
 
 # Merge back to a tidy table
@@ -245,7 +245,7 @@ for k in [3, 4, 5, 6, 8]:
 
 ## Examples
 
-### 1) Basic: fit, dendrogram, and labels
+### 1) Basic: Fit, dendrogram, and labels
 
 ```python
 cluster = Cluster(distance_matrix, ids, clustering_method="ward")
@@ -253,7 +253,7 @@ cluster.plot_dendrogram(save_as="dendrogram.png", title="My Dendrogram")
 labels_k6 = cluster.get_cluster_labels(num_clusters=6)
 ```
 
-### 2) Full mini-pipeline (with quality and results)
+### 2) Full mini-pipeline (with `ClusterQuality()` and `ClusterResult()`)
 
 ```python
 from sequenzo.clustering.hierarchical_clustering import ClusterQuality, ClusterResults
@@ -261,16 +261,16 @@ from sequenzo.clustering.hierarchical_clustering import ClusterQuality, ClusterR
 cluster = Cluster(distance_matrix, ids, "ward")
 
 # Compare k using CQI
-cq = ClusterQuality(cluster, max_clusters=20)
-cq.compute_cluster_quality_scores()
-print(cq.get_cqi_table())
-cq.plot_cqi_scores(save_as="quality.png")
+cluster_quality = ClusterQuality(cluster, max_clusters=20)
+cluster_quality.compute_cluster_quality_scores()
+print(cluster_quality.get_cqi_table())
+cluster_quality.plot_cqi_scores(save_as="quality.png")
 
 # Export results for k=6 
-cr = ClusterResults(cluster)
-members = cr.get_cluster_memberships(num_clusters=6)      # "Entity ID" | "Cluster"
-dist    = cr.get_cluster_distribution(num_clusters=6)     # counts and proportions
-cr.plot_cluster_distribution(num_clusters=6, save_as="cluster_sizes.png")
+cluster_result = ClusterResults(cluster)
+members = cluster_result.get_cluster_memberships(num_clusters=6)      # "Entity ID" | "Cluster"
+dist    = cluster_result.get_cluster_distribution(num_clusters=6)     # counts and proportions
+cluster_result.plot_cluster_distribution(num_clusters=6, save_as="cluster_sizes.png")
 ```
 
 ### 3) Troubleshooting distance matrices
@@ -307,7 +307,7 @@ cluster = Cluster(D, ids, "average")
 1. Use `ClusterQuality()` to pick k with multiple CQIs.
 2. Use `ClusterResults()` to export and visualize cluster sizes, then:
 
-   * Show within-cluster state distributions or index plots.
+   * Show within-cluster [state distribution plots](https://sequenzo.yuqi-liang.tech/en/visualization/state-distribution-plot) or [index plots](https://sequenzo.yuqi-liang.tech/en/visualization/index-plot).
    * Merge labels back to your dataframe and run regressions, using cluster membership as an outcome or a predictor.
    
 For further details of `ClusterQuality()` and `ClusterResults()`, please refer to the next two guides. 
