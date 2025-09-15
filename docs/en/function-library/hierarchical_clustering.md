@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 14:40:49
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-14 18:41:59
+ * @LastEditTime: 2025-09-15 10:45:07
  * @FilePath: /SequenzoWebsite/docs/en/function-library/hierarchical_clustering.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -105,12 +105,6 @@ cluster = Cluster(
 * Converts the square matrix to condensed form and computes a linkage matrix via a fast hierarchical routine.
 * Stores the resulting linkage for downstream tasks like dendrograms and tree cuts.
 
-## Key Features
-
-* Practical on large n: uses an efficient backend to compute linkage from a precomputed distance matrix.
-* Safe defaults: input checks, NaN/Inf repair, and auto-symmetrization reduce fragile failures.
-* Method flexibility: common linkage strategies supported, with `"ward"` as the typical default for sequence distances.
-
 ## Returned Object
 
 A `Cluster` instance with these main attributes:
@@ -122,8 +116,8 @@ A `Cluster` instance with these main attributes:
 
 And these main methods:
 
-* `plot_dendrogram(...)` → render or save a dendrogram.
-* `get_cluster_labels(num_clusters)` → return an array of cluster labels (length n).
+* `plot_dendrogram(...)`: render or save a dendrogram.
+* `get_cluster_labels(num_clusters)`: return an array of cluster labels (length n).
 
 ## Method 1: `plot_dendrogram()`
 
@@ -133,7 +127,7 @@ Render or save a dendrogram of the fitted hierarchical clustering.
 
 ```python
 cluster.plot_dendrogram(
-    save_as=None,         # e.g., "dendrogram.png" to save; None to just show
+    save_as=None,         # e.g., "dendrogram.png" to save; None to just show the figure
     style="whitegrid",    # seaborn style
     title="Dendrogram",
     xlabel="Entities",
@@ -190,7 +184,7 @@ Output:
 
 ## Method 2: `get_cluster_labels(num_clusters)`
 
-Cut the dendrogram at k clusters and return an integer label for each entity (aligned to `entity_ids`). It is not very frequently used as plotting the dendrogram is usually sufficient. 
+Cut the dendrogram at `k` clusters and return an integer label for each entity (aligned to `entity_ids`). It is not very frequently used as plotting the dendrogram is usually sufficient. 
 
 ### Function usage
 
@@ -205,16 +199,9 @@ labels = cluster.get_cluster_labels(num_clusters=6)
 | -------------- | -------- | ---- | ------------------------------------------------------------------------------------------------------ |
 | `num_clusters` | ✓        | int  | Desired number of clusters k. Internally mapped to SciPy’s `fcluster(..., t=k, criterion="maxclust")`. |
 
-### What it does
-
-* Cuts the hierarchy so that at most `k` clusters are returned (`criterion="maxclust"`).
-* Produces a length-n numpy array of integers in 1..k, aligned with `cluster.entity_ids`.
-
 ### Returns
 
-* `numpy.ndarray` of shape (n,) with integer cluster labels (1..k).
-
-明白了，我帮你在现有的三点基础上扩展解释，保持原来的格式：
+* `numpy.ndarray` of shape (n,) with integer cluster labels (1...k).
 
 ### Notes
 
@@ -279,7 +266,7 @@ cq.compute_cluster_quality_scores()
 print(cq.get_cqi_table())
 cq.plot_cqi_scores(save_as="quality.png")
 
-# Export results for k=6
+# Export results for k=6 
 cr = ClusterResults(cluster)
 members = cr.get_cluster_memberships(num_clusters=6)      # "Entity ID" | "Cluster"
 dist    = cr.get_cluster_distribution(num_clusters=6)     # counts and proportions
@@ -299,19 +286,31 @@ cluster = Cluster(D, ids, "average")
 
 ## Notes and Warnings
 
-* Distance matrix must be n×n and correspond to `entity_ids` order. If you subset or reorder, keep them aligned.
+* Distance matrix must be `n×n` and correspond to `entity_ids` order. If you subset or reorder, keep them aligned.
 * Ward requires dissimilarities that behave like squared Euclidean distances for strict theoretical guarantees. In practice, for many sequence distances, Ward still performs well, but always sanity-check results.
-* Complexity: linkage is roughly O(n²) memory/time. For very large n, consider sampling, deduplication, or blocking strategies upstream to keep n manageable.
+* Complexity: the complexity of computing linkage is roughly O(n²) in both memory and time.
+  
+  This means the cost grows quadratically with the number of entities `n` in your data. For example:
+
+  * with 1,000 entities: about 1 million pairwise distances, which is easy to handle;
+  * with 10,000 entities: about 100 million distances, which already requires several gigabytes of memory and can be relatively slow;
+  * with 50,000 entities: about 2.5 billion distances, which is usually infeasible on a normal personal computer.
+
+  In practice, if your dataset is very large (e.g., more than 50,000 entities), you would need to use one of the following common strategies:
+
+  * **CLARA algoirthm for big datasets (recommended)**: Details are shown in [this function documentation](../big-data/clara.md). 
+  * **Deduplication (recommended):** If many sequences are identical, keep only one copy (with a weight) to shrink the matrix.
+  * **Sampling:** Randomly select a subset of entities.
 
 ## Typical Next Steps
 
-1. Use `ClusterQuality` to pick k with multiple CQIs.
-2. Use `ClusterResults` to export and visualize cluster sizes, then:
+1. Use `ClusterQuality()` to pick k with multiple CQIs.
+2. Use `ClusterResults()` to export and visualize cluster sizes, then:
 
    * Show within-cluster state distributions or index plots.
    * Merge labels back to your dataframe and run regressions, using cluster membership as an outcome or a predictor.
    
-For further details of `ClusterQuality` and `ClusterResults`, please refer to the next two guides. 
+For further details of `ClusterQuality()` and `ClusterResults()`, please refer to the next two guides. 
 
 ## Authors
 

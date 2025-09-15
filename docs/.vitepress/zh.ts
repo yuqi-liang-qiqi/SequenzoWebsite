@@ -93,11 +93,11 @@ export const zh = defineConfig({
             link: '/zh/function-library/sequence-data'
           },
           {
-            text: 'get_distance_matrix',
+            text: '计算距离矩阵',
             link: '/zh/function-library/get-distance-matrix'
           },
           {
-            text: 'KMedoids',
+            text: 'K Medoids',
             link: '/zh/function-library/KMedoids'
           },
           {

@@ -97,7 +97,7 @@ export const en = defineConfig({
             link: '/en/function-library/sequence-data'
           },
           {
-            text: 'get_distance_matrix',
+            text: 'Get distance matrix',
             link: '/en/function-library/get-distance-matrix'
           },
           {

@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 14:40:49
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-13 09:35:01
+ * @LastEditTime: 2025-09-15 13:10:29
  * @FilePath: /SequenzoWebsite/docs/en/function-library/get-distance-matrix.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,7 +10,7 @@
 
 The `get_distance_matrix()` function is the **heart of sequence comparison** in Sequenzo. It takes a set of categorical sequences (careers, family trajectories, health states, etc.) and produces a matrix of numbers that say how different each sequence is from every other sequence. These numbers are called **dissimilarities**, and the algorithms used to compute them are known as **dissimilarity measures**. 
 
-It is important to remember that the output of `get_distance_matrix()` is aways a `n x n` matrix, in which n is the number of sequences that you have in the data. This distance matrix is the starting point for many downstream analyses. For example, clustering (and in the literature the resulting clusters are often referred to as typologies), as well as visualization and regression on sequence data.
+It is important to remember that the output of `get_distance_matrix()` is aways a `n x n` matrix, in which `n` is the number of sequences that you have in the data. This distance matrix is the starting point for many downstream analyses. For example, clustering (and in the literature the resulting clusters are often referred to as typologies), as well as visualization and regression on sequence data.
 
 If you are a beginner in sequence analysis or you would like to learn more about it, please refer to [the guide on dissimilarity measures](../tutorials/dissimilarity-measures.md). We highly recommend you to read it carefully before you go through this function documentation. 
 
@@ -273,7 +273,7 @@ _Code: Xinyi Li_
 
 _Documentation: Yuqi Liang_
 
-_Edited by: Yuqi Liang_
+_Edited by: Yuqi Liang, Yukun Ming_
 
 ## References
 
