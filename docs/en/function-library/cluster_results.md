@@ -2,14 +2,13 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-11 17:41:19
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-15 18:49:51
+ * @LastEditTime: 2025-09-15 23:45:07
  * @FilePath: /SequenzoWebsite/docs/en/function-library/cluster_results.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 # `ClusterResults()`: Export, summarize, and visualize cluster memberships
 
-Once you have fitted a hierarchical clustering model with `Cluster`, the next step is to interpret and present the results. TODO: how about quality?
-`ClusterResults()` is a small companion class that makes it easy to:
+Once you have fitted a hierarchical clustering model with `Cluster()` and decided on the optimal number of clusters with `ClusterQuality()`, the next step is to interpret and present the results. `ClusterResults()` is a small companion class that makes it easy to:
 
 * Extract cluster memberships for any number of clusters `k`.
 * Summarize how entities are distributed across clusters.
@@ -27,7 +26,7 @@ cluster = Cluster(matrix=distance_matrix,
                   entity_ids=ids,
                   clustering_method="ward")
 
-TODO: how about quality?
+# Here the code of calling ClusterQuality() is omitted
 
 # Wrap the results
 cluster_results = ClusterResults(cluster)

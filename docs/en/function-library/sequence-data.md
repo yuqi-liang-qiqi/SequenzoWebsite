@@ -130,29 +130,6 @@ sequence = SequenceData(
 
 ```python
 # Create a SequenceData object
-<<<<<<< HEAD
-
-# Define the time-span variable
-time_list = list(df.columns)[1:]
-
-# We choose to use 'D1 (Very Low)', 'D10 (Very High)' for readability and interpretation.
-# Note: the order of states controls encodings and legend order.
-# states = ['Very Low', 'Low', 'Middle', 'High', 'Very High']
-states = ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9']
-
-sequence_data = SequenceData(
-    df,
-    time=time_list,
-    time_type="year",   # Use 'year' for calendar year; use 'age' when the time axis is age
-    id_col="country",
-    states=states,
-    labels=states       # labels must correspond one-to-one with states; if omitted, legends fall back to state names
-)
-
-sequence_data
-```
-Output:
-=======
 
 # Define the time-span variable
 time_list = list(df.columns)[1:]
@@ -173,7 +150,6 @@ sequence_data
 
 Output:
 
->>>>>>> b658d86aa9fd2b126669a347d761cf8e04f59839
 ```python
 [!] Detected missing values (empty cells) in the sequence data.
     → Automatically added 'Missing' to `states` and `labels` for compatibility.
