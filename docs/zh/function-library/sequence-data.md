@@ -26,7 +26,7 @@
 每一行代表一个人（individual），也就是一条序列（sequence）；每一列代表一个时间点（time point）。
 
 > ⚠️ 注意  
-> 预处理阶段**建议把时间列名清理成纯数字**（1, 2, 3, 4），而不是 `Y1–Y4`。否则画图时 x 轴会显示 `Y1, Y2, Y3, Y4`，可读性不如 `1–4`。如何清理时间列，可参考文档 [`Clean time columns`](/en/data-preprocessing/clean_time_columns)
+> 预处理阶段**建议把时间列名清理成纯数字**（1, 2, 3, 4），而不是 `Y1–Y4`。否则画图时 x 轴会显示 `Y1, Y2, Y3, Y4`，可读性不如 `1–4`。如何清理时间列，可参考文档 [`清理时间列`](/zh/data-preprocessing/clean_time_columns)
 
 2) 提供完整且有序的状态列表（states），并按你希望的顺序排列；这个顺序会影响可视化的图例（legend）展示，例如 “Low”、“Medium”、“High”，而不是乱序。
 
@@ -54,6 +54,7 @@ sequence = SequenceData(
 ````
 ## 参数说明（Entry Parameters）
 
+<<<<<<< HEAD
 | 参数（Parameter）     | 必填（Required） | 类型（Type） | 说明（Description） |
 | -------------------- | :--------------: | ----------- | ------------------- |
 | `data`               |        ✓         | DataFrame   | 输入数据集，**行 = 实体（entities）**，**列 = 时间点（time points）**。 |
@@ -65,6 +66,19 @@ sequence = SequenceData(
 | `weights`            |        ✗         | ndarray     | 行权重（row weights），默认全为 1。 |
 | `start`              |        ✗         | int         | 数据概览（summaries）中的起始索引，默认 1。 |
 | `custom_colors`      |        ✗         | list        | 用户自定颜色列表（custom color list），长度需与 `states` 一致。 |
+=======
+| 参数（Parameter）     | 必填（Required） | 类型（Type） | 说明（Description）                                                                                                                            |
+| -------------------- | :--------------: | ----------- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| `data`               |        ✓         | DataFrame   | 输入数据集，**行 = 实体（entities）**，**列 = 时间点（time points）**。                                                                                       |
+| `time_type`          |        ✓         | str         | `'year'` 或 `'age'`。                                                                                                                        |
+| `time`               |        ✓         | list        | 按时间顺序排列的时间列名列表。                                                                                                                            |
+| `states`             |        ✓         | list        | **有序**的状态空间（state space），决定编码（encoding）与颜色（colors）。                                                                                        |
+| `labels`             |        ✗         | list        | 人类可读名称（human-readable names），长度与 `states` 相同。                                                                                              |
+| `id_col`             |        ✓         | str         | 含非重复序列 ID（sequence IDs）的列名；如果没有该列，请在定义序列数据前用  [`assign_unique_ids`](https://github.com/Liang-Team/Sequenzo/search?q=assign_unique_ids) 创建。 |
+| `weights`            |        ✗         | ndarray     | 行权重（row weights），默认全为 1。                                                                                                                   |
+| `start`              |        ✗         | int         | 数据概览（summaries）中的起始索引，默认 1。                                                                                                                |
+| `custom_colors`      |        ✗         | list        | 用户自定颜色列表（custom color list），长度需与 `states` 一致。                                                                                              |
+>>>>>>> 498318b (1. 更新了两个中文文件超链接.)
 
 > **说明**
 
