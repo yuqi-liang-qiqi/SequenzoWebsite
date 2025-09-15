@@ -61,7 +61,7 @@ sequence = SequenceData(
 | `time`               |        ✓         | list        | 按时间顺序排列的时间列名列表。 |
 | `states`             |        ✓         | list        | **有序**的状态空间（state space），决定编码（encoding）与颜色（colors）。 |
 | `labels`             |        ✗         | list        | 人类可读名称（human-readable names），长度与 `states` 相同。 |
-| `id_col`             |        ✓         | str         | 含唯一序列 ID（sequence IDs）的列名；如果没有该列，请在定义序列数据前用  [`assign_unique_ids`](https://github.com/Liang-Team/Sequenzo/search?q=assign_unique_ids) 创建。 |
+| `id_col`             |        ✓         | str         | 含唯一序列 ID（sequence IDs）的列名；如果没有该列，请在定义序列数据前用  [`assign_unique_ids`](../data-preprocessing/assign_unique_ids.md) 创建。 |
 | `weights`            |        ✗         | ndarray     | 行权重（row weights），默认全为 1。 |
 | `start`              |        ✗         | int         | 数据概览（summaries）中的起始索引，默认 1。 |
 | `custom_colors`      |        ✗         | list        | 用户自定颜色列表（custom color list），长度需与 `states` 一致。 |

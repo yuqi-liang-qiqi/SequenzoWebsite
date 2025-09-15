@@ -60,7 +60,7 @@ sequence = SequenceData(
 | `time`                             | ✓        | list      | Ordered list of time column names.                      |
 | `states`                           | ✓        | list      | Ordered state space. Controls encoding & colors.        |
 | `labels`                           | ✗        | list      | Human-readable names, same length as `states`.          |
-`id_col` | ✓ | str | Column name containing unique sequence IDs. If your data lacks such a column, create one with  [`assign_unique_ids`](https://github.com/Liang-Team/Sequenzo/search?q=assign_unique_ids)  prior to defining the sequence data. |
+`id_col` | ✓ | str | Column name containing unique sequence IDs. If your data lacks such a column, create one with  [`assign_unique_ids`](../data-preprocessing/assign_unique_ids.md)  prior to defining the sequence data. |
 | `weights`                          | ✗        | ndarray   | Row weights. Default = all ones.                        |
 | `start`                            | ✗        | int       | Starting index in summaries. Default = 1.               |
 | `custom_colors`                    | ✗        | list      | User-specified color list. Must match `states`.         |
