@@ -10,29 +10,39 @@
 
 The `get_distance_matrix()` function is the **heart of sequence comparison** in Sequenzo. It takes a set of categorical sequences (careers, family trajectories, health states, etc.) and produces a matrix of numbers that say how different each sequence is from every other sequence. These numbers are called **dissimilarities**, and the algorithms used to compute them are known as **dissimilarity measures**. 
 
-It is important to remember that the output of `get_distance_matrix()` is aways a `n x n` matrix, in which n is the number of sequences that you have in the data. This distance matrix is the starting point for many other downstream analyses, including clustering, visualization, typologies, or regression models on sequence data.
+It is important to remember that the output of `get_distance_matrix()` is aways a `n x n` matrix, in which n is the number of sequences that you have in the data. This distance matrix is the starting point for many downstream analyses. For example, clustering (and in the literature the resulting clusters are often referred to as typologies), as well as visualization and regression on sequence data.
 
-If you are a beginner in sequence analysis or you would like to learn more about it, please refer to [the guide on dissimilarity measueres](../tutorials/dissimilarity-measures.md). We highly recommend you to read it carefully before you go through this function documentation. 
+If you are a beginner in sequence analysis or you would like to learn more about it, please refer to [the guide on dissimilarity measures](../tutorials/dissimilarity-measures.md). We highly recommend you to read it carefully before you go through this function documentation. 
 
 If you are already familiar with these concepts and measures, feel free to skip ahead to the documentation below.
+
+## Method cheatsheet (when to use what)
+
+* **OM (Optimal Matching):** General-purpose `edit-distance` family on states. Supports custom `sm` (substitution costs) and `indel` (insertion/deletion costs). It is called an “edit distance” because it compares sequences via substitution, insertion, and deletion operations.
+* **OMspell:** like OM but operates on spells/runs; good when durations matter.
+* **HAM (Hamming-like positional distance):** simple positionwise substitutions; equal lengths required.
+* **DHD (Dynamic Hamming with time-varying costs):** like HAM but costs can change over positions (via transition rates).
+* **LCP / RLCP:** common-prefix based distances; useful to emphasize early-path similarity (Longest Common Prefixes, LCP) or its reverse (RLCP).
 
 ## Function usage
 
 There are several algorithms available (see [this guide](../tutorials/dissimilarity-measures.md) for details). Because `get_distance_matrix()` is designed to support all of them, you may notice that the function has many parameters. Don’t worry — in practice, each dissimilarity measure only requires a few key arguments, and we explain them clearly in the guide.
 
-In short: once you know which measure you want to use, calling this function usually involves just setting method, choosing a few parameters that are related to it. For instance, one of the most common options would be the standard optimal matching (`OM`), so the parameters mainly include how to handle substitution/indel costs (`sm` and `indel`), and optionally picking a normalization scheme (`norm`). The rest of the parameters either have sensible defaults or are only needed for special cases.
+In short: once you know which measure you want to use, calling this function usually involves just setting method, choosing a few parameters that are related to it. For instance, one of the most common options would be the standard optimal matching (`OM`), so the parameters mainly include how to handle substitution/indel costs (`sm` and `indel`), and optionally picking a normalization scheme (`norm`).
+
+**Note:** The code block below enumerates all supported parameters and typical values for reference; in day-to-day use you won’t set them all. For which parameters to choose (and why) for each algorithm, please keep reading the guide.
 
 ```python
 om = get_distance_matrix(
     seqdata=sequence_data,   # SequenceData object
     method="OM",             # "OM", "OMspell", "HAM", "DHD", "LCP", or "RLCP"
     sm="TRATE",              # substitution-costs spec or matrix (see below)
-    indel="auto",            # number | vector | "auto" (OM/OMspell only)
+    indel="auto",            # OM/OMspell only: number | vector | "auto"
     norm="auto",             # "none" | "auto" | "maxlength" | "gmean" | "maxdist" | "YujianBo"
     full_matrix=True,        # return full n×n matrix
     refseq=None,             # or two index sets: [idx_list_A, idx_list_B]
-    tpow=1.0,                # spell-length exponent (OMspell only)
-    expcost=0.5,             # spell transform cost (OMspell)
+    tpow=1.0,                # OMspell only: spell-length exponent
+    expcost=0.5,             # OMspell only: spell transform cost
     weighted=True,           # use sequence weights when building sm where relevant
     check_max_size=True      # safety check against huge unique-sequence counts
 )
@@ -40,24 +50,24 @@ om = get_distance_matrix(
 
 ## Entry parameters (by method family)
 
-Here is a list of defaults by each method. You might want to adjust these values according to your research questions and theoretical considerations. If you don’t have a strong prior, a safe baseline is to use OM with sm="CONSTANT" (substitution cost = 2 for any state change) and indel = 1 (insert/delete cost). [This guide](../tutorials/dissimilarity-measures.md) explains more regarding how to understand it further.  
+First, let’s look at the default settings for each algorithm. Understanding these defaults helps you build deeper intuition about how each algorithm behaves. You might want to adjust these values according to your research questions and theoretical considerations. If you don’t have a strong prior, a safe baseline is to use `method= "OM"` with `sm="CONSTANT"` (substitution cost = 2 for any state change) and indel = 1 (insert/delete cost). [This guide](../tutorials/dissimilarity-measures.md) explains more regarding how to understand it further.  
 
-* **OM (general purpose):** sm is set by user, indel="auto", norm="auto".
-* **OMspell (durations matter):** sm is set by user, indel="auto", tpow=1.0, expcost=0.5, norm="auto".
-* **HAM (strict positionwise):** if sm is not defined, it defaults to a constant substitution matrix with all costs = 1 (sm="CONSTANT", cval=1). norm="auto". Equal lengths required. Ensure equal lengths.
-* **DHD (positionwise with time-varying costs):** sm="TRATE" if not defined, norm="auto". Equal lengths required.
-* **LCP / RLCP (prefix similarity):** norm="auto". No sm or indel needed.
+* **OM (general purpose):** `sm` is set by user, `indel="auto"`, `norm="auto"`.
+* **OMspell (durations matter):** `sm` is set by user, `indel="auto"`, `tpow=1.0`, `expcost=0.5`, `norm="auto"`.
+* **HAM (strict positionwise):** if `sm` is not defined, it defaults to a constant substitution matrix with all costs = 1 (`sm="CONSTANT"`, `cval=2`). `norm="auto"`. This algorithm requires equal-length sequences; e.g., each sequence spans exactly 10 time points/years.
+* **DHD (positionwise with time-varying costs):** `sm="TRATE"` if not defined, `norm="auto"`. Equal lengths required.
+* **LCP / RLCP (prefix similarity):** `norm="auto"`. No `sm` or `indel` needed.
 
 ### Common to all methods
 
-| Parameter        | Required | Type         | Description                                                                                                     |
-| ---------------- | -------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
+| Parameter        | Required | Data Type    | Description                                                                                                     |
+| ---------------- | -------- |--------------| --------------------------------------------------------------------------------------------------------------- |
 | `seqdata`          | ✓        | SequenceData | A Sequenzo state-sequence object.                                                                               |
-| `method`           | ✓        | str          | One of: "OM", "OMspell", "HAM", "DHD", "LCP", "RLCP".                                                           |
+| `method`           | ✓        | str          | One of: `"OM"`, `"OMspell"`, `"HAM"`, `"DHD"`, `"LCP"`, `"RLCP"`.                                                           |
 | `refseq`           | ✗        | list         | Two index lists \[A, B]. Returns an A×B distance table. If None, computes all pairwise distances.               |
-| `norm`             | ✗        | str          | "none", "auto", "maxlength", "gmean", "maxdist", "YujianBo". "auto" picks a sensible default per method.        |
-| `full_matrix`     | ✗        | bool         | If True (and `refseq=None`), return full n×n matrix. If False (and `refseq=None`), return a unique-sequence matrix. Ignored when `refseq` is provided. |
-| `weighted`         | ✗        | bool         | When building `sm` from data (e.g., "TRATE"), respect sequence weights if available.                              |
+| `norm`             | ✗        | str          | `"none"`, `"auto"`, `"maxlength"`, `"gmean"`, `"maxdist"`, `"YujianBo"`. `"auto"` picks a sensible default per method.        |
+| `full_matrix`     | ✗        | bool         | If True (and `"refseq=None"`), return full `n×n` matrix. If False (and `refseq=None`), return a unique-sequence matrix. Ignored when `refseq` is provided. |
+| `weighted`         | ✗        | bool         | When building `sm` from data (e.g., `"TRATE"`), respect sequence weights if available.                              |
 | `check_max_size` | ✗        | bool         | Stop early if the number of unique sequences would make computation too large.                                  |
 | `opts`             | ✗        | dict         | Alternative way to pass the same parameters as a bundle.                                                        |
 | `**kwargs`       | ✗        | —            | `with_missing` is ignored; missing is always included as an extra state internally.                              |
@@ -66,9 +76,9 @@ Here is a list of defaults by each method. You might want to adjust these values
 
 | Parameter | Required                | Type                       | Applies to  | Description                                                                                                                   |
 | --------- | ----------------------- | -------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `sm`        | ✓ for OM and OMspell | str or matrix              | OM, OMspell | Substitution costs. Use "TRATE" (from transitions), "CONSTANT" (single constant, i.e., `sm`=2), or provide a square matrix (states×states). |
-| `indel`     | ✗                       | number or vector or "auto" | OM, OMspell | Insertion/deletion cost(s). Number = constant; vector = per-state (length must equal number of states incl. missing); "auto" derives a coherent value from `sm`.     |
-| `norm`      | ✗                       | str                        | OM, OMspell | Recommended defaults: OM → "maxlength"; OMspell → "YujianBo".                                                                 |
+| `sm`        | ✓ for OM and OMspell | str or matrix              | OM, OMspell | Substitution costs. Use `"TRATE"` (from transitions), `"CONSTANT"` (single constant, i.e., `sm`=2), or provide a square matrix (states×states). |
+| `indel`     | ✗                       | number or vector or `"auto"` | OM, OMspell | Insertion/deletion cost(s). Number = constant; vector = per-state (length must equal number of states incl. missing); `"auto"` derives a coherent value from `sm`.     |
+| `norm`      | ✗                       | str                        | OM, OMspell | Recommended defaults: `OM → "maxlength"`; `OMspell → "YujianBo"`.                                                                 |
 | `tpow`      | ✗                       | float                      | OMspell     | Spell-length exponent. Controls how strongly long spells are emphasized.                                                      |
 | `expcost`   | ✗                       | float (positive)           | OMspell     | Spell transform cost. Higher values penalize breaking or stretching spells.                                                   |
 
@@ -81,7 +91,7 @@ OMspell is frequently used in existing literature. Thus, it is necessary to expl
 | `expcost` (δ) | 0, 0.1, 0.5, 1                 | Cost of expanding/compressing a spell by 1 time unit. Controls sensitivity to **spell duration**. | • `0`: ignore durations, focus only on order of distinct states. <br>• `0.1–0.5`: moderate sensitivity to duration (often recommended). <br>• `1`: strong sensitivity to spell lengths (use if long vs short episodes are central). |
 | `tpow`        | 0.5 – 2                        | Exponent for weighting spell durations.                                                           | • `1.0`: linear weight (default). <br>• `<1`: downweight long spells, emphasize shorter ones. <br>• `>1`: amplify the influence of long spells.                                                                                     |
 | `indel`       | 1 – 5       | Insertion/deletion cost relative to substitution.                                                 | • Higher values: emphasize exact timing (align less). <br>• Lower values: allow more shifting, focus on sequencing and duration patterns.                                                                                           |
-| `sm`          | `TRATE` or fixed (default 2) | Substitution cost strategy.                                                                       | • `"TRATE"`: data-driven, often combined with `indel="auto"`. <br>• Fixed = 2: standard baseline if you don’t want transition-based costs.                                                                                          |
+| `sm`          | `"TRATE"` or fixed (default 2) | Substitution cost strategy.                                                                       | • `"TRATE"`: data-driven, often combined with `indel="auto"`. <br>• Fixed = 2: standard baseline if you don’t want transition-based costs.                                                                                          |
 
 **Guideline for OMspell:**
 
@@ -98,8 +108,8 @@ Notes
 
 | Parameter       | Required             | Type                       | Applies to | Description                                                                                                                          |
 | --------------- | -------------------- | -------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `sm`              | ✗ for HAM, ✓ for DHD | str or matrix or 3-D array | HAM, DHD   | HAM: if None, a constant cost is created automatically. DHD: use "TRATE" or provide a 3-D array (time-varying costs over positions). |
-| `norm`            | ✗                    | str                        | HAM, DHD   | Recommended default with "auto": "maxlength".                                                                                        |
+| `sm`              | ✗ for `HAM`, ✓ for `DHD` | str or matrix or 3-D array | HAM, DHD   | HAM: If `sm` is not specified, a constant substitution-cost matrix will be created with constant 2 (i.e., every substitution costs 2, `"cval=2`"). DHD: use `"TRATE"` or provide a 3-D array (time-varying costs over positions). |
+| `norm`            | ✗                    | str                        | HAM, DHD   | Recommended default with `"auto"`: `"maxlength"`.                                                                                        |
 
 Notes
 
@@ -110,7 +120,7 @@ Notes
 
 | Parameter | Required | Type | Applies to | Description                                                                                                                                                         |
 | --------- | -------- | ---- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| norm      | ✗        | str  | LCP, RLCP  | Recommended default with "auto": "gmean".                                                                                                                           |
+| `norm`      | ✗        | str  | LCP, RLCP  | Recommended default with `"auto"`: `"gmean"`.                                                                                                                           |
 
 Notes
 
@@ -123,10 +133,6 @@ Notes
 1. Validates inputs and supported methods
    
    Supported here: OM, OMspell, HAM, DHD, LCP, RLCP.
-   
-   Notes:
-   * HAM and DHD require equal sequence length (they are positionwise comparisons).
-   * OMspell uses spells (runs) and spell durations; you can weight spell length via `tpow` and `expcost`.
 
 2. Builds substitution and indel costs
 
@@ -151,7 +157,7 @@ Notes
 5. Computes distances with a compiled backend
 
    * All heavy lifting is done in C++ for speed.
-   * For `refseq=None`: returns either a full `n×n` matrix (`full_matrix=True`) or a reduced square matrix over unique sequences (`full_matrix=False`).
+   * For `refseq=None`: returns either a full `n×n` matrix `full_matrix=True` or a reduced square matrix over unique sequences `full_matrix=False`.
    * For `refseq=[idxs_A, idxs_B]`: returns a `|A|×|B|` DataFrame whose row/column labels are your original IDs.
 
 6. Safety and edge behavior
@@ -159,22 +165,6 @@ Notes
    * If there are empty sequences, you get a warning (or an error for methods that cannot handle them).
    * If `full_matrix=False` and `refseq is not None`, a full matrix is returned (informational message printed).
    * If unique sequences exceed a safe bound, the function raises a clear error unless `check_max_size=False`.
-
-## Key features
-
-* Multiple classic measures in one place: OM, OMspell (spell-aware), HAM, DHD (time-varying costs), LCP, RLCP.
-* Cost convenience: `"TRATE"` and `"CONSTANT"` builders, plus automatic indel choices.
-* Smart normalization defaults per method.
-* Fast: unique-sequence compression plus C++ kernels.
-* Flexible output: full matrix, reduced unique-sequence matrix, or group-to-group distances via `refseq`.
-
-## Method cheatsheet (when to use what)
-
-* **OM (Optimal Matching):** general-purpose edit distance on states; supports custom `sm` and `indel`.
-* **OMspell:** like OM but operates on spells/runs; good when durations matter.
-* **HAM (Hamming-like positional distance):** simple positionwise substitutions; equal lengths required.
-* **DHD (Dynamic Hamming with time-varying costs):** like HAM but costs can change over positions (via transition rates).
-* **LCP / RLCP:** common-prefix based distances; useful to emphasize early-path similarity (Longest Common Prefixes, LCP) or its reverse (RLCP).
 
 ## Examples
 
@@ -279,11 +269,11 @@ Row/column labels are taken from `seqdata.ids`.
 
 ## Authors
 
-Code: Xinyi Li
+_Code: Xinyi Li_
 
-Documentation: Yuqi Liang
+_Documentation: Yuqi Liang_
 
-Edited by: Yuqi Liang
+_Edited by: Yuqi Liang_
 
 ## References
 
