@@ -1,4 +1,4 @@
-# KMedoids
+# `KMedoids()`
 
 用于中心聚类的函数（每个簇的中心点都是真实存在的），支持三种 KMedoids、PAM（Partitioning Around Medoids）、PAMonce（PAM with a only-once）三种算法，三者原理、区别详见文档 [KMedoids v.s. PAM (PAMonce)](https://sequenzo.yuqi-liang.tech/en/tutorials/short-tutorial)<mark>待补充</mark>。`KMedoids` 的所有参数均遵从 [WeightedCluster::KMedoids](https://cran.r-project.org/web/packages/WeightedCluster/WeightedCluster.pdf)。
 
@@ -108,14 +108,6 @@ clustering = KMedoids(
 
 3. `Loss ＜ 0`，损失为负，说明簇内平均距离与上次相比在变小；`Loss ＞ 0`，损失为正，说明簇内平均距离与上次相比在变大。直到损失代价大于 0，终止循环，停止寻找。
 
-## 作者
-
-代码：李欣怡，邓诚
-
-文档：李欣怡
-
-编辑：梁彧祺
-
 ## 样例
 
 下面是给出的使用示例。数据来源 Gapminder，是各个国家（共194个）从1800年到2022年的二氧排放的数据。此数据集已经内置在 Sequenzo 里，详情 [移步](https://sequenzo.yuqi-liang.tech/zh/datasets/co2-emissions)。
@@ -193,3 +185,10 @@ clustering = KMedoids(diss=om,
 [>] Computed successfully.
 ```
 
+## 作者
+
+代码：李欣怡，邓诚
+
+文档：李欣怡
+
+编辑：梁彧祺

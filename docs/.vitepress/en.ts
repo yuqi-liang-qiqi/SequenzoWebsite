@@ -11,7 +11,7 @@ export const en = defineConfig({
 
     sidebar: [
       {
-        text: 'Basics',
+        text: 'Getting Started',
         items: [
           {
             text: 'About Sequenzo',
@@ -21,10 +21,10 @@ export const en = defineConfig({
           text: 'Installing',
           link: '/en/basics/installing'
         },
-          {
-          text: 'Quickstart',
-          link: '/en/basics/quickstart'
-        },
+        //   {
+        //   text: 'Quickstart',
+        //   link: '/en/basics/quickstart'
+        // },
         {
           text: 'View Our Coding Tutorials Online',
           link: '/en/basics/view_tutorials_online'
@@ -33,18 +33,18 @@ export const en = defineConfig({
           text: 'Converting numeric data to categorical data',
           link: '/en/basics/if_you_have_numeric_data'
         },
-        {
-          text: 'Typical workflow',
-          link: '/en/basics/typical_workflow'
-        },
-        {
-          text: 'How to Handle Missing Values',
-          link: '/en/basics/handle_missing_values'
-        }
+        // {
+        //   text: 'Typical workflow',
+        //   link: '/en/basics/typical_workflow'
+        // },
+        // {
+        //   text: 'How to Handle Missing Values',
+        //   link: '/en/basics/handle_missing_values'
+        // }
           ]
       },
       {
-        text: 'Coding Tutorials',
+        text: 'Conceptual Tutorials',
         items: [
           {
             text: 'Basic concepts',
@@ -54,10 +54,10 @@ export const en = defineConfig({
             text: 'Timing, duration, and order',
             link: '/en/tutorials/timing-duration-order'
           },
-          {
-            text: 'Dissimilarity measures',
-            link: '/en/tutorials/dissimilarity-measures'
-          }
+          // {
+          //   text: 'Dissimilarity measures',
+          //   link: '/en/tutorials/dissimilarity-measures'
+          // }
         ]
       },
       {
@@ -188,24 +188,32 @@ export const en = defineConfig({
             text: 'CO₂ Emissions (1800-2022)',
             link: '/en/datasets/CO2-emissions'
           },
-          {
-            text: 'GDP per capita (1800-2022)',
-            link: '/en/datasets/gdp-per-capita'
-          },
+          // {
+          //   text: 'GDP per capita (1800-2022)',
+          //   link: '/en/datasets/gdp-per-capita'
+          // },
           {
             text: "Chinese Territories' Colonial History",
             link: '/en/datasets/chinese-territories-colonial-history'
           }
         ]
       },
-      {
-        text: 'Frequently Asked Questions',
-        link: '/en/faq'
-      },
+      // {
+      //   text: 'Frequently Asked Questions',
+      //   link: '/en/faq'
+      // },
       {
         text: 'Team and Acknowledgements',
         link: '/en/faq/team_and_acknolwedgements'
-      }
+      },
+      {
+        text: 'Bug Reports and Feature Requests',
+        link: '/en/faq/bug_reports_and_feature_requests'
+      },
+      {
+        text: 'Changelog',
+        link: '/en/changelog'
+      },
     ],
 
     socialLinks: [

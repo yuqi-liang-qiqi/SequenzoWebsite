@@ -11,7 +11,7 @@ export const zh = defineConfig({
 
     sidebar: [
       {
-        text: '开始',
+        text: '快速上手',
         items:[
           {
             text: '序列分析与 Sequenzo',
@@ -26,17 +26,17 @@ export const zh = defineConfig({
             link: '/zh/basics/view_tutorials_online'
           },
           {
-            text: 'Converting numeric data to categorical data',
+            text: '将数值型数据转换为类别型数据',
             link: '/zh/basics/if_you_have_numeric_data'
           },
-          {
-            text: '常见工作流',
-            link: '/zh/basics/typical_workflow'
-          },
-          {
-            text: '如何处理缺失值',
-            link: '/zh/basics/handle_missing_values'
-          }
+          // {
+          //   text: '常见工作流',
+          //   link: '/zh/basics/typical_workflow'
+          // },
+          // {
+          //   text: '如何处理缺失值',
+          //   link: '/zh/basics/handle_missing_values'
+          // }
         ]
       },
       {
@@ -50,17 +50,17 @@ export const zh = defineConfig({
             text: '时点、时长和顺序',
             link: '/zh/tutorials/timing-duration-order'
           },
-          {
-            text: '理解非相似度量',
-            link: '/zh/tutorials/dissimilarity-measures'
-          }
+          // {
+          //   text: '理解非相似度量',
+          //   link: '/zh/tutorials/dissimilarity-measures'
+          // }
         ]
       },
       {
         text: '数据预处理工具',
         items: [
           {
-            text: '缺失值',
+            text: '查看缺失值',
             link: '/zh/data-preprocessing/missing-values'
           },
           {
@@ -184,28 +184,32 @@ export const zh = defineConfig({
             text: 'CO₂ 排放 (1800-2022)',
             link: '/zh/datasets/CO2-emissions'
           },
-          {
-            text: '人均 GDP (1800-2022)',
-            link: '/zh/datasets/gdp-per-capita'
-          },
+          // {
+          //   text: '人均 GDP (1800-2022)',
+          //   link: '/zh/datasets/gdp-per-capita'
+          // },
           {
             text: "中国地区殖民史",
             link: '/zh/datasets/chinese-territories-colonial-history'
           }
         ]
       },
+      // {
+      //   text: '常见问题',
+      //   link: '/zh/faq'
+      // },
       {
-        text: '常见问题',
-        link: '/zh/faq'
+        text: '团队与致谢',
+        link: '/zh/faq/team_and_acknolwedgements'
+      },
+      {
+        text: '如何报告 bug 和提出新功能需求',
+        link: '/zh/faq/bug_reports_and_feature_requests'
       },
       {
         text: '更新日志',
         link: '/zh/changelog'
       },
-      {
-        text: '团队与致谢',
-        link: '/zh/faq/team_and_acknolwedgements'
-      }
     ],
 
     socialLinks: [
