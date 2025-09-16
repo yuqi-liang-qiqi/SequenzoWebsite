@@ -8,13 +8,13 @@
 -->
 # 通用参数及绘图工作原理
 
-所有 Sequenzo 可视化函数都共享一些核心理念。如果你理解了本页内容，你就可以自信地使用任何绘图功能。
+所有 Sequenzo 可视化函数都共享一些核心理念。如果你深入理解了本页内容，你就可以更好的掌握我们可视化的功能，在序列分析之外的 Python 绘图也能更有理解，也不再仅仅只是一个调包侠。
 
-## Where the plot appears图表显示位置
+## 图表显示位置
 
 * Jupyter Notebook → 图表会显示在单元格下方。
 * Python 脚本 → 会弹出一个窗口（具体取决于你的环境）。
-* 如果一个函数包含 `show` 参数，设置 `show=False` 将禁止在屏幕上显示图表；你仍然可以通过 `save_as` 来保存它。
+* 如果一个函数包含 ` show ` 参数，设置 ` show=False ` 将禁止在屏幕上显示图；你仍然可以通过 ` save_as ` 来保存它。
 
 ## 保存图表
 
@@ -41,7 +41,7 @@ dpi=200                # 如果用于出版，建议设置为 300+（如果你�
 
   ```python
   # 示例：更改 "Education" 状态的颜色
-  seqdata.color_map_by_label["Education"] = "#1f77b4"
+  seqdata.color_map_by_label["Education"] = "#1f77b4"     # "#1f77b4" 是一个十六进制颜色代码，代表一种特定的颜色。
   ```
 
 ## 时间轴和单位
@@ -52,18 +52,17 @@ dpi=200                # 如果用于出版，建议设置为 300+（如果你�
 
 ## 分组到面板
 
-* `id_group_df` must map each “Entity ID” to a group.
 * `id_group_df` 必须将每个“ 实体 ID ”映射到一个分组。
 * `categories` 是 `id_group_df` 中用于命名分组变量的列。
-* 
+
 * 布局：
 
     * `layout="column"` 将分组垂直堆叠。
-    * `layout="grid"` 将分组排列成网格；可以任选设置 `nrows`/`ncols`.
+    * `layout="grid"` 将分组排列成网格；可以任选设置 `nrows` / `ncols`。
 * 顺序：
 
     * `group_order` 固定面板的顺序。
-    * `sort_groups` 控制自动排序（“ auto ”自动，“ numeric ”数字，“ alpha ”字母，“ none ” 无）。
+    * `sort_groups` 控制自动排序（' auto '自动，' numeric '数字，' alpha '字母，' none '' 无）。
 
 ## 序列排序（如适用）
 
@@ -108,4 +107,5 @@ show=False; save_as="figure.png"
     * 检查 `save_as` 的路径和扩展名；如果没有扩展名，会自动添加 `.png`。
 
 *作者：梁彧祺*
+<br>
 *翻译：何梁星云*
