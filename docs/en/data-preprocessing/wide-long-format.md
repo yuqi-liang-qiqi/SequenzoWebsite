@@ -167,4 +167,6 @@ B           2000    Single
 | `var_name`    | Name for the time column (from old headers)  | `"time"`, `"year"`    |
 | `value_name`  | Name for the state column (from cell values) | `"state"`, `"status"` |
 
-These parameters just control the **column names** in the long-format DataFrame — you can customize them based on context.
+These parameters just control the **column names** in the long-format DataFrame, and you can customize them based on context.
+
+*Author: Yuqi Liang*

@@ -58,7 +58,7 @@ This would:
 * Save the figure as `missing_summary.png`
 * Avoid popping up the plot window (e.g., in automated scripts)
 
-## Arguments
+## Entry Parameters
 
 | Argument  | Type                  | Description                                                                                           |
 | --------- | --------------------- | ----------------------------------------------------------------------------------------------------- |
@@ -87,10 +87,6 @@ Optionally, users can limit the analysis to selected columns, save plots to disk
 ## Value
 
 This function prints summaries and optionally generates a visual plot. It does **not** return a value (i.e., it returns `None`).
-
-## Author(s)
-
-Yuqi Liang
 
 ## Examples
 
@@ -253,3 +249,10 @@ Missing Count
 ```
 ![output_col.png](image/output_col.png)
 
+## Author(s)
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang
+
+Edited by: Yuqi Liang
