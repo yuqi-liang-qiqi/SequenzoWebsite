@@ -22,8 +22,8 @@ export const zh = defineConfig({
             link: '/zh/basics/installing'
           },
           {
-            text: 'How to View Our Jupyter Notebook Tutorials Online',
-            link: '/zh/basics/if_you_cannot_render_ipynb_on_github'
+            text: '如何在线查看代码教程',
+            link: '/zh/basics/view_tutorials_online'
           },
           {
             text: 'Converting numeric data to categorical data',
@@ -40,7 +40,7 @@ export const zh = defineConfig({
         ]
       },
       {
-        text: '教程',
+        text: '概念/知识类教程',
         items: [
           {
             text: '基本概念',
@@ -57,7 +57,7 @@ export const zh = defineConfig({
         ]
       },
       {
-        text: '数据处理',
+        text: '数据预处理工具',
         items: [
           {
             text: '缺失值',
@@ -82,7 +82,7 @@ export const zh = defineConfig({
         ]
       },
       {
-        text: '函数库',
+        text: '核心的类和算法',
         items: [
           {
             text: '简介',
@@ -115,7 +115,7 @@ export const zh = defineConfig({
         ]
       },
       {
-        text: '可视化',
+        text: '可视化工具',
         items: [
           {
             text: '常见绘图参数和特征',
@@ -156,7 +156,7 @@ export const zh = defineConfig({
         ]
       },
       {
-        text: '大数据',
+        text: '大数据工具',
         items: [
           {
             text: 'Clara 算法',

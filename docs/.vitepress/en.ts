@@ -26,8 +26,8 @@ export const en = defineConfig({
           link: '/en/basics/quickstart'
         },
         {
-          text: 'How to View Our Jupyter Notebook Tutorials Online',
-          link: '/en/basics/if_you_cannot_render_ipynb_on_github'
+          text: 'View Our Coding Tutorials Online',
+          link: '/en/basics/view_tutorials_online'
         },
         {
           text: 'Converting numeric data to categorical data',
@@ -44,7 +44,7 @@ export const en = defineConfig({
           ]
       },
       {
-        text: 'Tutorials',
+        text: 'Coding Tutorials',
         items: [
           {
             text: 'Basic concepts',
@@ -61,7 +61,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Data Preprocessing',
+        text: 'Data Preprocessing Functions',
         items: [
           {
             text: 'Missing Values',
@@ -86,7 +86,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Function Library',
+        text: 'Core Functions',
         items: [
           {
             text: 'Introduction',
@@ -119,7 +119,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Visualization',
+        text: 'Visualization Tools',
         items: [
           {
             text: 'Common Parameters and Features in Visualization Functions',
@@ -160,7 +160,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Big Data',
+        text: 'Big Data Tools',
         items: [
           {
             text: 'Clara',
