@@ -8,9 +8,9 @@
 -->
 # `Cluster()` : First Step of Hierarchical Clustering
 
-Once you have built a precomputed distance matrix (`n×n`, square form) with `get_distance_matrix()`, you are ready to cluster if you follow one of the most common practices in sequence analysis. Hierarchical clustering is an unsupervised machine learning algorithm,and it is a straightforward way to uncover typical trajectory patterns 
+Once you have built a precomputed distance matrix (`n×n`, square form) with `get_distance_matrix()`, you are ready to cluster if you follow one of the most common practices in sequence analysis. Hierarchical clustering is an unsupervised machine learning algorithm, and it is a straightforward way to uncover typical trajectory patterns 
 
-## Typical workflow of Hierarchical Clustering
+## Typical workflow of hierarchical clustering
 
 1. Prepare a square distance matrix `D` (shape `n×n`) from `get_distance_matrix()` and a list/array of `entity_ids` (length n, all unique).
 2. Create a `Cluster()` and (optionally) plot a dendrogram.
@@ -128,7 +128,7 @@ Render or save a dendrogram of the fitted hierarchical clustering.
 ```python
 cluster.plot_dendrogram(
     save_as=None,         # e.g., "dendrogram.png" to save; None to just show the figure
-    style="whitegrid",    # seaborn style
+    style="whitegrid",    # Seaborn style
     title="Dendrogram",
     xlabel="Entities",    # You can rename this based on your data (e.g., Individuals, Countries).
     ylabel="Distance",

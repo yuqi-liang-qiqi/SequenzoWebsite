@@ -99,7 +99,7 @@ cluster = Cluster(
 
 * 把方阵转换成压缩形式（condensed），再用高效的层次聚类程序计算链接矩阵（linkage matrix）。
 
-* 保存链接矩阵，便于后续画树状图（dendrograms）或剪树（cut the tree）
+* 保存链接矩阵，便于后续画树状图（dendrograms）或剪树（cut the tree）。
 
 ## 返回对象（Returned Object）
 

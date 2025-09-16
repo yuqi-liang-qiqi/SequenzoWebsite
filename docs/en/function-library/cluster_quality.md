@@ -197,11 +197,11 @@ fig = cluster_quality.plot_cqi_scores(
 ### Entry parameters
 
 | Parameter      | Required | Type               | Description                                                                                                                       |
-| -------------- | -------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| -------------- | -------- | ------------------ |-----------------------------------------------------------------------------------------------------------------------------------|
 | `metrics_list` | ✗        | list\[str] or None | Which metrics to plot. Default = all metrics present in `scores` (e.g., `["ASW","PBC","CH","R2","ASWw","HG","HC"]`).              |
 | `norm`         | ✗        | str                | Normalization applied to plotted values: `"zscore"` or `"range"` rescales lines; `"none"` plots raw values. Default = `"zscore"`. |
 | `palette`      | ✗        | str                | Seaborn palette name used to color lines (e.g., `"husl"`, `"tab10"`, `"deep"`). Default = `"husl"`.                               |
-| `line_width`   | ✗        | int or float       | Line width for metric curves. Default = `2`.                                                                                      |
+| `line_width`   | ✗        | int or float       | Sets the stroke width of each metric line in the plot. Default = `2`.                                                             |
 | `style`        | ✗        | str                | Seaborn style theme (`"whitegrid"`, `"darkgrid"`, `"white"`, `"dark"`, `"ticks"`). Default = `"whitegrid"`.                       |
 | `title`        | ✗        | str or None        | Figure title. Default = `"Cluster Quality Metrics"`.                                                                              |
 | `xlabel`       | ✗        | str                | X-axis label. Default = `"Number of Clusters"`.                                                                                   |
@@ -221,7 +221,7 @@ Notes
 ### What it does
 
 * Computes raw per-metric mean/std from unnormalized scores and uses them in the legend (so readers retain scale intuition).
-* Optionally normalizes the time series before plotting for easy visual comparison.
+* Optionally standardizes each CQI’s values across different k before plotting to make visual comparison easier.
 * Produces a single figure and optionally writes it to disk.
 
 ### Returns
@@ -241,7 +241,7 @@ cluster_quality.compute_cluster_quality_scores()
 print(cluster_quality.get_cqi_table())
 
 cluster_quality.plot_cqi_scores(
-    metrics_list=["ASW", "PBC", "CH"], 
+    metrics_list=["ASW", "PBC", "CH"],    #we only selected three metrics here.
     norm="zscore", 
     save_as="cqi.png"
 )
