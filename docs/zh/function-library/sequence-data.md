@@ -51,10 +51,9 @@ sequence = SequenceData(
     start=1,                          # 数据概览里显示的起始序号
     custom_colors=None                # 可选的颜色列表（需与 states 对齐）
 )
-````
+```
 ## 参数说明（Entry Parameters）
 
-<<<<<<< HEAD
 | 参数（Parameter）     | 必填（Required） | 类型（Type） | 说明（Description） |
 | -------------------- | :--------------: | ----------- | ------------------- |
 | `data`               |        ✓         | DataFrame   | 输入数据集，**行 = 实体（entities）**，**列 = 时间点（time points）**。 |
@@ -66,19 +65,6 @@ sequence = SequenceData(
 | `weights`            |        ✗         | ndarray     | 行权重（row weights），默认全为 1。 |
 | `start`              |        ✗         | int         | 数据概览（summaries）中的起始索引，默认 1。 |
 | `custom_colors`      |        ✗         | list        | 用户自定颜色列表（custom color list），长度需与 `states` 一致。 |
-=======
-| 参数（Parameter）     | 必填（Required） | 类型（Type） | 说明（Description）                                                                                                                            |
-| -------------------- | :--------------: | ----------- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| `data`               |        ✓         | DataFrame   | 输入数据集，**行 = 实体（entities）**，**列 = 时间点（time points）**。                                                                                       |
-| `time_type`          |        ✓         | str         | `'year'` 或 `'age'`。                                                                                                                        |
-| `time`               |        ✓         | list        | 按时间顺序排列的时间列名列表。                                                                                                                            |
-| `states`             |        ✓         | list        | **有序**的状态空间（state space），决定编码（encoding）与颜色（colors）。                                                                                        |
-| `labels`             |        ✗         | list        | 人类可读名称（human-readable names），长度与 `states` 相同。                                                                                              |
-| `id_col`             |        ✓         | str         | 含非重复序列 ID（sequence IDs）的列名；如果没有该列，请在定义序列数据前用  [`assign_unique_ids`](https://github.com/Liang-Team/Sequenzo/search?q=assign_unique_ids) 创建。 |
-| `weights`            |        ✗         | ndarray     | 行权重（row weights），默认全为 1。                                                                                                                   |
-| `start`              |        ✗         | int         | 数据概览（summaries）中的起始索引，默认 1。                                                                                                                |
-| `custom_colors`      |        ✗         | list        | 用户自定颜色列表（custom color list），长度需与 `states` 一致。                                                                                              |
->>>>>>> 498318b (1. 更新了两个中文文件超链接.)
 
 > **说明**
 
@@ -121,6 +107,7 @@ sequence = SequenceData(
 - `seq.n_sequences` → 序列数量（number of sequences）。
 - `seq.n_steps` → 序列长度（sequence length）。
 - `seq.weights` → 行权重（row weights，NumPy array）。
+
 ## 关键方法（Key Methods）
 
 | 方法（Method）        | 返回值（Returns）   | 说明（Description）            |

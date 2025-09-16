@@ -199,7 +199,7 @@ labels = cluster.get_cluster_labels(num_clusters=6)
 ### 说明
 * **结果是确定性的（deterministic），只要给同一套距离矩阵和同一种算法，结果通常可以复现。**
 
-  层次聚类本身不引入随机性（不同于 [K-Medoids](../function-library/k-medoids.md)）。只有在出现完全相等的距离时，可能因为实现细节或行列顺序不同，合并顺序会不一样，树状图形状也会略有区别，但整体的聚类质量基本不受影响。
+  层次聚类本身不引入随机性（不同于 [K-Medoids](../function-library/KMedoids.md)）。只有在出现完全相等的距离时，可能因为实现细节或行列顺序不同，合并顺序会不一样，树状图形状也会略有区别，但整体的聚类质量基本不受影响。
 
 * **当 k 很大（≥ n）时，单例（singleton）会很多；当 k=1 时，所有观测都会被放进同一个簇。**
     
@@ -291,7 +291,7 @@ cluster = Cluster(D, ids, "average")
 
   如果数据非常大（比如超过 50,000 个实体），可以考虑：
 
-  * **推荐使用 CLARA 算法**：详见[《CLARA 函数文档》](../zh/big-data/clara.md) 。
+  * **推荐使用 CLARA 算法**：详见[《CLARA 函数文档》](../big-data/clara.md) 。
 
   * **去重（Deduplication）：** 如果在数据集中有大量相同序列，只保留一份并加权，缩小矩阵规模。
 

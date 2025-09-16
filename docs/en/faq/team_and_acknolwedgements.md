@@ -60,7 +60,7 @@ We thank the people below for building and supporting Sequenzo.
     </td>
     <td align="center">
       <img src="./img/ziting.jpeg" width="120" height="120" class="team-photo" alt="Ziting Yang" />
-      <div><a href="www.linkedin.com/in/ziting-yang-7b33832bb">Ziting Yang</a><br/>Master, Marketing Analytics<br/>Rochester University (US)</div>
+      <div><a href="https://www.linkedin.com/in/ziting-yang-7b33832bb">Ziting Yang</a><br/>Master, Marketing Analytics<br/>Rochester University (US)</div>
     </td>
   </tr>
 </table>

@@ -201,6 +201,10 @@ export const zh = defineConfig({
       {
         text: '更新日志',
         link: '/zh/changelog'
+      },
+      {
+        text: '团队与致谢',
+        link: '/zh/faq/team_and_acknolwedgements'
       }
     ],
 

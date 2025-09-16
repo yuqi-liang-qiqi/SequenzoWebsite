@@ -66,7 +66,7 @@ Sequenzo 旨在帮助研究人员、决策者和数据分析师高效地回答�
 **项目贡献者**
 * [何梁星云,斯德哥尔摩经济学院 (瑞典)](https://www.linkedin.com/in/liangxingyun-he-6aa128304/)
 * [明煜坤,马德里卡洛斯三世大学 (西班牙)](https://www.linkedin.com/in/yukun%EF%BC%88stephan%EF%BC%89-ming-a13878298/)
-* [杨子婷,罗切斯特大学 (美国)](www.linkedin.com/in/ziting-yang-7b33832bb)
+* [杨子婷,罗切斯特大学 (美国)](https://www.linkedin.com/in/ziting-yang-7b33832bb)
 * [曲思竹,东北大学 (美国)](https://www.linkedin.com/in/sizhuq)
 
 * 特别感谢早期测试用户（按姓名字母顺序排序）：[Joji Chia](https://sociology.illinois.edu/directory/profile/jbchia2)， [Kass Gonzalez](https://www.linkedin.com/in/kass-gonzalez-72a778276/)， [Sinyee Lu](https://sociology.illinois.edu/directory/profile/qianyil4)，[Sohee Shin](https://sociology.illinois.edu/directory/profile/sohees2)
