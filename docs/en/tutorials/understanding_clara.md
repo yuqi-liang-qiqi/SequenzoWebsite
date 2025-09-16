@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-16 11:44:52
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-16 11:45:10
+ * @LastEditTime: 2025-09-16 13:53:23
  * @FilePath: /SequenzoWebsite/docs/en/tutorials/understanding_clara.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -24,3 +24,7 @@ subsample → get_distance_matrix (n×n) → PAM → get_distance_matrix to K me
 ```
 
 Why this scales better: the full matrix needs about N(N−1)/2 distances and must live in memory. With CLARA you do roughly R × (n² + N×K). Example: N=100,000; n=2,000; K=6; R=200. Full matrix ≈ 5.0×10^9 pairwise distances and huge memory. CLARA computes about 200 × (4.0×10^6 + 6.0×10^5) ≈ 9.2×10^8 targeted distances, and only keeps small pieces in memory at a time. That’s the point: not “no distances,” but “only the distances you need, where you need them.”
+
+## Clara CQI indicators
+
+Why different from hierarchical clustering?

@@ -97,10 +97,6 @@ export const zh = defineConfig({
             link: '/zh/function-library/get-distance-matrix'
           },
           {
-            text: 'K Medoids',
-            link: '/zh/function-library/KMedoids'
-          },
-          {
             text: '层次聚类',
             link: '/zh/function-library/hierarchical_clustering'
           },
@@ -111,6 +107,10 @@ export const zh = defineConfig({
           {
             text: '聚类结果',
             link: '/zh/function-library/cluster_results'
+          },
+          {
+            text: 'K Medoids',
+            link: '/zh/function-library/KMedoids'
           }
         ]
       },
