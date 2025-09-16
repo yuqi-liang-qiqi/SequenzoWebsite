@@ -6,7 +6,7 @@ export const en = defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/en' },
+      { text: 'Home', link: '/en/' },
     ],
 
     sidebar: [

@@ -6,7 +6,7 @@ export const zh = defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '首页', link: '/zh' },
+      { text: '首页', link: '/zh/' },
     ],
 
     sidebar: [
@@ -89,7 +89,7 @@ export const zh = defineConfig({
             link: '/zh/function-library/introduction'
           },
           {
-            text: 'SequenceData',
+            text: '标准的序列数据结构',
             link: '/zh/function-library/sequence-data'
           },
           {

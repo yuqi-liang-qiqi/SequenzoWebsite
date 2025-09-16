@@ -9,13 +9,13 @@ export default defineConfig({
     root: {
       label: 'English',
       lang: 'en',
-      link: '/en',
+      link: '/en/',
       ...en
     },
     zh: {
       label: '简体中文',
       lang: 'zh',
-      link: '/zh',
+      link: '/zh/',
       ...zh
     }
   },
