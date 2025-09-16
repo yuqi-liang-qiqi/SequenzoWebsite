@@ -2,19 +2,19 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-11 17:41:19
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-15 23:45:07
+ * @LastEditTime: 2025-09-16 09:31:16
  * @FilePath: /SequenzoWebsite/docs/en/function-library/cluster_results.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 # `ClusterResults()`: Export, summarize, and visualize cluster memberships
 
-Once you have fitted a hierarchical clustering model with `Cluster()` and decided on the optimal number of clusters with `ClusterQuality()`, the next step is to interpret and present the results. `ClusterResults()` is a small companion class that makes it easy to:
+Once you have fitted a hierarchical clustering model with `Cluster()` and decided on the optimal number of clusters with `ClusterQuality()`, the next step is to interpret and present the results. `ClusterResults()` is a small companion class that makes it easy to produce:
 
-* Extract cluster memberships for any number of clusters `k`.
-* Summarize how entities are distributed across clusters.
-* Visualize these distributions with clear bar charts.
+* **Cluster membership table (important):** Extract entities' cluster memberships for any number of clusters `k`.
+* **Distribution table (nice to have):** Summarize how entities are distributed across clusters.
+* **Bar chart (nice to have):** Visualize these distributions.
 
-This ensures you can quickly link cluster labels back to your original data, evaluate balance, and prepare results for downstream models (e.g., regressions).
+These ensures you can quickly link cluster labels back to your original data, evaluate balance, and prepare results for downstream analysis (e.g., index plot and state distribution plot for each cluster, and regressions).
 
 ## Function usage
 

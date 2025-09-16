@@ -30,11 +30,11 @@ export const zh = defineConfig({
             link: '/zh/basics/if_you_have_numeric_data'
           },
           {
-            text: 'Typical workflow',
+            text: '常见工作流',
             link: '/zh/basics/typical_workflow'
           },
           {
-            text: 'How to Handle Missing Values',
+            text: '如何处理缺失值',
             link: '/zh/basics/handle_missing_values'
           }
         ]
@@ -47,11 +47,11 @@ export const zh = defineConfig({
             link: '/zh/tutorials/basic-concepts'
           },
           {
-            text: 'Timing, duration, 以及 order',
+            text: '时点、时长和顺序',
             link: '/zh/tutorials/timing-duration-order'
           },
           {
-            text: 'Dissimilarity measures',
+            text: '理解非相似度量',
             link: '/zh/tutorials/dissimilarity-measures'
           }
         ]
@@ -182,7 +182,7 @@ export const zh = defineConfig({
         items: [
           {
             text: 'CO₂ 排放 (1800-2022)',
-            link: '/zh/datasets/co2-emissions'
+            link: '/zh/datasets/CO2-emissions'
           },
           {
             text: '人均 GDP (1800-2022)',
