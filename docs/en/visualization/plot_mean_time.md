@@ -99,3 +99,5 @@ Code: Yuqi Liang
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
+
+Translation and testing by: Sizhu Qu
