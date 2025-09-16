@@ -78,9 +78,9 @@ Thanks to optimized algorithms and parallel computation, Sequenzo is at least 6 
 * [Liangxingyun He, Stockholm School of Economics, Sweden](https://www.linkedin.com/in/liangxingyun-he-6aa128304/): 
   - Sequence data sources compilation, analysis and tutorials for education
   - Translation of the documentation into Chinese
-* [Yukun Ming, Universidad Carlos III de Madrid (Spain)](www.linkedin.com/in/yukun)
+* [Yukun Ming, Universidad Carlos III de Madrid (Spain)](https://www.linkedin.com/in/yukun)
 * [Sizhu Qu, Northeastern University (US)](https://www.linkedin.com/in/sizhuq)
-* [Ziting Yang, Rochester Wniversity (US)](www.linkedin.com/in/ziting-yang-7b33832bb)
+* [Ziting Yang, Rochester Wniversity (US)](https://www.linkedin.com/in/ziting-yang-7b33832bb)
 * With special thanks to our initial testers (alphabetically ordered): [Joji Chia](https://sociology.illinois.edu/directory/profile/jbchia2), [Kass Gonzalez](https://www.linkedin.com/in/kass-gonzalez-72a778276/), [Sinyee Lu](https://sociology.illinois.edu/directory/profile/qianyil4), [Sohee Shin](https://sociology.illinois.edu/directory/profile/sohees2)
 * Website and related technical support: [Mactavish](https://github.com/mactavishz)
 * PAM clustering algorithm implementation: Cheng Deng
