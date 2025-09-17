@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Sequenzo"
   text: "Python Package for Social Sequence Analysis"
-  tagline: Fast, scalable, and intuitive - built for big data, designed for every discipline.
+  tagline: Fast, scalable, and intuitive. Built for big data, designed for every discipline in social sciences.
   actions:
     - theme: brand
       text: Documentations
@@ -14,15 +14,15 @@ hero:
 features:
   - title: High Performance
     icon: 🚀
-    details: "Leverages Python’s speed to deliver over 6× faster processing than R-based tools."
+    details: "Built on Python’s powerful computing capabilities, Sequenzo runs more than 8× faster than R-based tools and continues to handle larger datasets efficiently when R reaches its limits."
 
-  - title: Easy-to-use API
+  - title: Intuitive Functions, Elegant Visualizations, and Comprehensive Tutorials
     icon: 🎯
-    details: "Simple, intuitive functions that simplify complex sequence analysis."
+    details: "Sequenzo offers beginner-friendly function design that makes complex sequence analysis easy to start with; a wide range of visualization tools to clearly present patterns; and detailed tutorials that guide you step by step from basic concepts to advanced applications."
 
-  - title: Flexible for Any Scenario
+  - title: Flexible for a Wide Variety of Scenarios
     icon: 🌐
-    details: "Perfect for analyzing categorical data and capturing its evolution — across research, policy, or business."
+    details: "Perfect for analyzing categorical data and capturing its evolution across research, policy, or business."
 
 ---
 

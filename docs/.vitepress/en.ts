@@ -168,19 +168,19 @@ export const en = defineConfig({
           },
         ]
       },
-      {
-        text: 'Sequenzo and R',
-        items: [
-          {
-            text: 'Functions Comparison',
-            link: '/en/traminer-and-sequenzo/functions-comparison'
-          },
-          {
-            text: 'Performance Differences',
-            link: '/en/traminer-and-sequenzo/performance-diff'
-          }
-        ]
-      },
+      // {
+      //   text: 'Sequenzo and R',
+      //   items: [
+      //     {
+      //       text: 'Functions Comparison',
+      //       link: '/en/traminer-and-sequenzo/functions-comparison'
+      //     },
+      //     {
+      //       text: 'Performance Differences',
+      //       link: '/en/traminer-and-sequenzo/performance-diff'
+      //     }
+      //   ]
+      // },
       {
         text: 'Datasets',
         items: [

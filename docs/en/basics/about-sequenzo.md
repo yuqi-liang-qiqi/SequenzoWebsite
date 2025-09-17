@@ -47,7 +47,9 @@ Sequenzo aims to empower researchers, decision-makers, and data analysts in the 
 
 Sequence analysis has enormous potential for understanding complex trajectories and patterns across many fields, but it faces significant challenges, particularly when dealing with large-scale datasets common in today's digital era. Existing tools, including R tools such as `TraMineR` and `WightedCluster`, often struggle with computational speed and efficiency, becoming slow and resource-intensive as datasets grow. This inefficiency limits the practical use of sequence analysis in real-world research scenarios and commercial applications.
 
-To address these challenges, we've developed Sequenzo, a Python package specifically tailored for social sequence analysis in the age of big data. Compared to widely-used existing tools such as TraMineR in R (Gabadinho et al., 2011), Sequenzo offers remarkable improvements in speed, efficiency, and ease of use. For more information, please refer to [Performance Differences between TraMineR and Sequenzo](/en/traminer-and-sequenzo/performance-diff) and [Functions Comparison](/en/traminer-and-sequenzo/functions-comparison).
+To address these challenges, we've developed Sequenzo, a Python package specifically tailored for social sequence analysis in the age of big data. Compared to widely-used existing tools such as TraMineR in R (Gabadinho et al., 2011), Sequenzo offers remarkable improvements in speed, efficiency, and ease of use. 
+
+<!-- For more information, please refer to [Performance Differences between TraMineR and Sequenzo](/en/traminer-and-sequenzo/performance-diff) and [Functions Comparison](/en/traminer-and-sequenzo/functions-comparison). -->
 
 ### Key features of Sequenzo include:
 

@@ -46,7 +46,9 @@ Sequenzo 旨在帮助研究人员、决策者和数据分析师高效地回答�
 
 序列分析在理解各领域复杂轨迹和模式方面潜力巨大，但也面临着重大挑战，尤其是在处理当今数字时代常见的大规模数据集的时候。现有工具，包括R语言的 [TraMineR](https://traminer.unige.ch/index.shtml) 和 [WeightedCluster](https://mephisto.unige.ch/weightedcluster/) 等，在计算速度和效率方面存在不足，随着数据量的增长会变得缓慢且占用大量资源。这种效率问题限制了序列分析在实际研究和商业应用中的使用。
 
-为了解决这些问题，我们开发了 Sequenzo ，一个专门为大数据时代社会序列分析设计的 Python 包。与广泛使用的现有工具（如R语言的 TraMineR ）相比（Gabadinho et al., 2011），Sequenzo 在速度、效率和易用性方面都有显著提升。更多信息请参考[TraMineR 与 Sequenzo 性能对比](/en/traminer-and-sequenzo/performance-diff) 和 [功能对比](/en/traminer-and-sequenzo/functions-comparison)。
+为了解决这些问题，我们开发了 Sequenzo ，一个专门为大数据时代社会序列分析设计的 Python 包。与广泛使用的现有工具（如R语言的 TraMineR ）相比（Gabadinho et al., 2011），Sequenzo 在速度、效率和易用性方面都有显著提升。
+
+<!-- 更多信息请参考[TraMineR 与 Sequenzo 性能对比](/en/traminer-and-sequenzo/performance-diff) 和 [功能对比](/en/traminer-and-sequenzo/functions-comparison)。 -->
 
 ### Sequenzo 的核心功能：
 * **全面的序列数据处理：** 轻松管理和转换各种纵向数据格式，自动检测缺失值。
