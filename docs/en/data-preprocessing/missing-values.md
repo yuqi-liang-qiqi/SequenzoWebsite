@@ -249,10 +249,12 @@ Missing Count
 ```
 ![output_col.png](image/output_col.png)
 
-## Author(s)
+## Authors
 
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
+
+Translation and testing by: Sizhu Qu

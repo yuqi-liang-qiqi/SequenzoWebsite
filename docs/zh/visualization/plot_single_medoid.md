@@ -5,7 +5,7 @@
 ## 函数用法
 
 ```python
-# 假设你已经计算了一个名为“distance_matrix”的 NxN 距离矩阵
+# 假设已经计算了一个名为“distance_matrix”的 NxN 距离矩阵
 plot_single_medoid(
     seqdata,
     show_legend=True,     # 在右侧显示状态图例
@@ -16,12 +16,12 @@ plot_single_medoid(
 
 ## 入口参数
 
-| 参数          | 需要&nbsp;    | 类型         | 描述                                                                |
+| 参数          | 是否必需   | 类型         | 描述                                                                |
 |---------------|-------------| ------------ |-------------------------------------------------------------------|
 | `seqdata`     | ✓           | SequenceData | 使用 `SequenceData` 创建的序列数据集。提供时间标签、状态标签和颜色。                        |
 | `show_legend` | ✗           | bool         | 如果为 `True`，则显示状态图例。默认值 = `True`。                                  |
 | `title`       | ✗           | str          | 图形标题。如果为`None`, 则显示自动标题: `Medoid Sequence (ID: …, Coverage: …%)`. |
-| `save_as`     | ✗           | str          | 保存图形的文件路径（例如，‘medoid.png’）。如果省略，则仅显示图形。                           |
+| `save_as`     | ✗           | str          | 保存图形的文件路径（例如，`"medoid.png"`）。如果省略，则仅显示图形。                           |
 
 重要的外部输入（调用前必须存在）：
 
@@ -38,7 +38,7 @@ plot_single_medoid(
 ## 主要特点
 
 * 数据集中**最具代表性**序列的一次性视图。
-* **覆盖率**可让您立即了解有多少序列接近该中心点。
+* **覆盖率**可立即了解有多少序列接近该中心点。
 * 整个项目中的颜色和图例与 `SequenceData` 保持一致。
 * 可通过 `save_as` 导出（函数内部默认 DPI 为 200）。
 
@@ -69,7 +69,7 @@ plot_single_medoid(
 ## 小记
 
 * 覆盖阈值默认为 `0.10 × max(distance_matrix)`（参见 `_compute_individual_medoid_coverage`）。
-* 如果您需要不同的阈值，请修改辅助函数或在包装器中公开参数。
+* 如果需要不同的阈值，请修改辅助函数或在包装器中公开参数。
 * 确保 `distance_matrix` 的行/列与 `seqdata.values` 的顺序相同。
 
 ## 作者
