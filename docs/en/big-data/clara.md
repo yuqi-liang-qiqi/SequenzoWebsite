@@ -56,7 +56,7 @@ result = clara(
 2. Repeats `R` times:
 
    * Draws a weighted subsample of size `sample_size` (with replacement).
-   * Computes a pairwise dissimilarity matrix via `get_distance_matrix(**dist_args)`.
+   * Computes a pairwise dissimilarity matrix via `get_distance_matrix(dist_args)`.
    * Uses a fast hierarchical pass to seed medoids and runs weighted k-medoids.
    * Evaluates each `k` in `kvals` on the chosen `criteria`.
 
@@ -89,7 +89,7 @@ When `criteria` has a single item:
   * `Number of Clusters`: label like “Cluster 2”.
   * `Avg dist`: mean within-cluster dissimilarity of the best iteration.
   * `PBM`, `DB`, `XB`, `AMS`: criterion values for the best iteration at that k.
-  * `ARI>0.8`, `JC>0.8`: counts of iterations whose agreement with the best iteration is ≥ 0.8 (only if `stability=True`; otherwise NaN).
+  * `ARI>0.8`, `JC>0.8`: counts of iterations whose agreement with the best iteration is ≥ 0.8 (only if `stability=True`; otherwise `NaN`).
   * `Best iter`: the index of the winning iteration (0-based).
 
 * `clara`: a dict keyed by k-index (0 for `k=2`, 1 for `k=3`, …). Each entry includes:
