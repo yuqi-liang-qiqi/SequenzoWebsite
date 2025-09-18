@@ -50,7 +50,7 @@ import pandas as pd
 
 # 创建原始 DataFrame
 original_df = pd.DataFrame({
-    "Entity ID": [1, 2, 3],        # 每个个体的唯一标识（统一替换为“Entity ID”）
+    "Entity ID": [1, 2, 3],        # 每个个体的唯一标识（统一替换为 "Entity ID"）
     "Cluster": [1, 2, 3]           # 原始的数字型聚类 ID
 })
 
@@ -77,8 +77,8 @@ print(new_df)                      # 打印结果
 # 调用函数，同时给列改新名字
 new_df = replace_cluster_id_by_labels(original_df,
                                       mapping={1: "A", 2: "B", 3: "C"},   # 映射关系不变
-                                      new_cluster_column_name="Group",    # 聚类列改名叫“Group”
-                                      new_id_column_name="Person")        # 个体 ID 列改名叫“Person”
+                                      new_cluster_column_name="Group",    # 聚类列改名叫 "Group"
+                                      new_id_column_name="Person")        # 个体 ID 列改名叫 "Person"
 print(new_df)
 ```
 
