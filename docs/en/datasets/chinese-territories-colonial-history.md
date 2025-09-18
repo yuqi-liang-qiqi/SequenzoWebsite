@@ -1,4 +1,4 @@
-#  Chinese territories' Colonial History
+#  Chinese Territories' Colonial History
 
 This dataset records the sovereignty status of 11 Chinese territories (including cities and regions) at different points in time. It aims to reconstruct the historical “colonial sequence” of modern China. The data are organized as a time series: each row represents a territory, and the “status” is the polity or country controlling that territory in a given year.
 
