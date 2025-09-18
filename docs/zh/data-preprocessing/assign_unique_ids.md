@@ -1,4 +1,4 @@
-# `assign_unique_ids()`
+# `assign_unique_ids()`：分配唯一 ID
 
 `assign_unique_ids()` 是一个辅助函数。要是你的数据集里没有 ID，它能给你的每条数据分配一个唯一的 ID 值。  
 建议你在创建 `SequenceData` 对象之前使用它，因为你的数据表需要有 ID 这一列后才能创建这个对象，开始真正的序列分析。
