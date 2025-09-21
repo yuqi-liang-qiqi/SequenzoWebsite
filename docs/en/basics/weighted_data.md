@@ -2,38 +2,62 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-21 11:11:16
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-21 13:58:14
+ * @LastEditTime: 2025-09-21 16:43:16
  * @FilePath: /SequenzoWebsite/docs/en/basics/weighted_data.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 # Working with Weighted Data
 
-If your dataset does not have survey or design weights, you can safely ignore this feature. However, knowing how weights work can give you a deeper grasp of social sequence analysis.
+In some social science datasets, you will find a column called `weight`. This column provides survey or design weights, which adjust the contribution of each individual to the analysis. If your dataset does not include such a variable, you can safely ignore this feature. However, understanding how weights work will give you a deeper grasp of social sequence analysis.
 
 ## What are weights?
 
-In many sequence datasets, each row does not represent the same fraction of the population.
-For example:
+In many datasets in social sciences, each row does not represent the same fraction of the population. For example:
 
-* In a survey dataset, some respondents may carry higher sampling weights to correct for unequal probabilities of selection.
-* In an administrative dataset, some individuals may represent many others (e.g., when sequences are aggregated by groups).
-* In a simulated dataset, you may want to emphasize certain cases more than others.
+* In a **survey dataset**, some respondents may carry higher sampling weights to correct for unequal probabilities of selection.
 
-A weight is simply a non-negative number attached to each sequence that tells Sequenzo how much that sequence should count in descriptive statistics and cost estimation.
+**Example:** In the [pairfam-family dataset](../datasets/pairfam-family.md), the variable `weight40` is provided so that trajectories at age 40 are representative of the German population. If you ignore it, some social groups may be over- or under-represented.
 
-By default, Sequenzo assumes all sequences are equally weighted (weight = 1).
+For instance:
+
+```
+id = 111000
+weight40 = 0.343964278697968
+```
+
+This does not mean the person is “one-third of a person.” Instead, Pairfam used a complex sampling design (stratification, unequal selection probabilities), and over time there is also attrition (dropout).
+
+To make the sample representative of the German population at age 40, the survey team provides a calibration weight. The value tells us how much this person should count when computing population estimates.
+
+Thus, if `weight40 < 1` (like 0.34), this respondent comes from a group that is **overrepresented** in the raw sample, so their influence must be down-weighted.
+
+If `weight40 > 1` (like 1.7), this respondent comes from a group that is **underrepresented**, so their influence must be boosted.
+
+In practice, using weights means that descriptive statistics and sequence distributions reflect the **population structure**, not just the raw sample.
+
+* In an **administrative dataset**, some individuals may represent many others (e.g., when rows are aggregated by groups).
+
+  * Example: If each row corresponds to a municipality’s unemployment trajectory, and the dataset also contains the size of the municipality, using that size as a weight ensures large municipalities count more than small ones.
+
+* In a **simulated dataset**, you may want to emphasize certain cases more than others.
+
+  * Example: Suppose you simulate 10 “rare” career paths but want them to contribute as much as 100 “common” ones. You can give the rare paths weight = 10 each, so that they have equal influence when computing descriptive statistics or substitution costs.
+
+Overall, a weight is simply a non-negative number attached to each sequence that tells you how much that sequence should count in descriptive statistics and cost estimation.
+
+By default, `Sequenzo` assumes all sequences are equally weighted (`weight = 1` in `SequenceData()`).
 
 ## Why use weights?
 
 Weights allow your results to reflect the **true population structure**, not just the raw sample.
 For example:
 
-* **Without weights:** a small oversampled subgroup may dominate the transition rates used to compute substitution costs.
-* **With weights:** substitution costs reflect the intended population frequencies.
+* **Without weights:** A small oversampled subgroup may dominate the transition rates used to compute substitution costs.
+* **With weights:** Substitution costs reflect the intended population frequencies.
 
 This is especially important if you are analyzing survey data or data that have been stratified, clustered, or aggregated.
 
-## How to provide weights
+## How to provide weights with `Sequenzo`
 
 When you define your dataset, pass an array of weights:
 
@@ -52,7 +76,7 @@ seq = SequenceData(
 
 If no weights are given, Sequenzo automatically sets them to 1.
 
-## How weights change the workflow
+## How weights change the sequence analysis workflow
 
 Most of the workflow is unchanged: you still compute distances, cluster, and visualize as usual.
 But there are a few key places where weights matter:
@@ -104,7 +128,7 @@ Unlike K-Medoids, the sequence weights of hierarchical clustering are not applie
 
 ### Why weights are applied to cluster quality indicators (CQIs) but not to the linkage function
 
-In Sequenzo, weights are supported in **clustering quality indicators** (e.g., ASWw, R², HG) and in **K-Medoids / PAM variants**, but not in hierarchical linkage computation. This is intentional and follows both methodological and practical considerations.
+In Sequenzo, weights are supported in **clustering quality indicators** (e.g., ASWw, R², HG) and in **K-Medoids / PAM variants**, but not in hierarchical linkage computation (which is under the hood of the `method=ward` parameter for `Cluster()`). This is intentional and follows both methodological and practical considerations.
 
 **1. Quality metrics are naturally weightable.**
 
@@ -169,7 +193,7 @@ This makes weighted K-Medoids especially useful when working with survey data, s
 * For large datasets, try **PAMonce** first for speed, and switch to **PAM** if you need more precise partitions.
 * Use the `npass` parameter to control how many random restarts are attempted. More passes increase stability at the cost of runtime.
 
-### K-Medoids / PAM / PAMonce: weighted vs. unweighted (toy example)
+### K-Medoids / PAM / PAMonce: Weighted vs. unweighted (toy example)
 
 Below is a minimal, self-contained example that you can run without computing sequence distances first (we use a small hand-crafted dissimilarity matrix). It demonstrates three things:
 
@@ -322,11 +346,5 @@ print("[PAMonce | weighted | init=[1,6]] labels:", labels_from_init)
 
 When `initialclust` is provided as a **membership vector** (one label per object) or as a **hierarchical linkage** matrix, Sequenzo will convert it to starting medoids internally (see the docstring for details). This is handy when you want to “lift” a solution found on a subsample to the full dataset.
 
-## Summary
-
-* Weighted data tell Sequenzo how much each sequence should count.
-* They matter most when computing **distributions** and **transition-based substitution costs**.
-* Core algorithms (OM/HAM/DHD distances, clustering) run the same way, but their *inputs* (cost matrices, transition tables) can change if weights are used.
-* Use `weighted=True` in helper functions (`get_xtabs`, `get_substitution_cost_matrix`, `uniqueness_stats`) to make sure weights are applied.
-
+*Author: Yuqi Liang*
 
