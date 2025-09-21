@@ -1,5 +1,9 @@
 # 关于 Sequenzo
 
+<p align="center">
+  <img src="/fulllogo_transparent.png" alt="Sequenzo 全尺寸 Logo" width="380" />
+</p>
+
 `Sequenzo` 是一个数据处理和分析速度很快、大数据分析能力强且简单易懂的 Python 包，专为社会序列分析（Sequence Analysis）而设计。它能够高效处理大数据，适用于社会科学的各个领域，让研究人员和实践者能够更便捷、高效地进行序列分析。
 
 虽然社会序列分析正受到越来越多的关注，但它仍是一个新兴的研究方法。因此，在介绍我们的软件包之前，先让我们了解一下序列分析的基本概念和当前面临的主要挑战。

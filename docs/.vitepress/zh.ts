@@ -36,7 +36,11 @@ export const zh = defineConfig({
           // {
           //   text: '如何处理缺失值',
           //   link: '/zh/basics/handle_missing_values'
-          // }
+          // },
+          {
+            text: '如何处理加权数据',
+            link: '/zh/basics/weighted_data'
+          }
         ]
       },
       {
@@ -191,6 +195,10 @@ export const zh = defineConfig({
           {
             text: "中国地区殖民史",
             link: '/zh/datasets/chinese-territories-colonial-history'
+          },
+          {
+            text: "Pairfam 德国个体的家庭轨迹数据",
+            link: '/zh/datasets/pairfam-family'
           }
         ]
       },

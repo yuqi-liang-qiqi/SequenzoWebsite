@@ -40,7 +40,11 @@ export const en = defineConfig({
         // {
         //   text: 'How to Handle Missing Values',
         //   link: '/en/basics/handle_missing_values'
-        // }
+        // },
+        {
+          text: 'Working with weighted data',
+          link: '/en/basics/weighted_data'
+        }
           ]
       },
       {
@@ -195,6 +199,10 @@ export const en = defineConfig({
           {
             text: "Chinese Territories' Colonial History",
             link: '/en/datasets/chinese-territories-colonial-history'
+          },
+          {
+            text: "Pairfam Family Trajectories",
+            link: '/en/datasets/pairfam-family'
           }
         ]
       },
