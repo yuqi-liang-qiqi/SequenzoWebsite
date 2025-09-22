@@ -87,6 +87,12 @@ plot_mean_time(
 
 Saves `mean_time_by_state.png` in your current working directory (or the path you specify).
 
+## Outputs
+1. Example 1:
+```python
+
+```
+
 ## Notes
 
 * Units depend on your data. If your sequence time points are months, set `x_label="Mean Time (Months)"`.

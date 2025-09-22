@@ -74,10 +74,10 @@ plot_single_medoid(
 
 ## 作者
 
-代码: Yuqi Liang
+代码: 梁彧祺
 
-文档: Yuqi Liang
+文档: 梁彧祺
 
-编辑: Yuqi Liang
+编辑: 梁彧祺
 
-翻译、测试：Sizhu Qu
+翻译、测试：曲思竹
