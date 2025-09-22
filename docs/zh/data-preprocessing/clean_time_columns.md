@@ -138,7 +138,7 @@ def clean_time_columns_auto(
             f"Please adjust regex or time range."
         )
 
-    return df.rename(columns=rename_map).copy()
+    return df.rename(columns=rename_map).copy(),rename_map
 ````
 
 **示例数据**
@@ -154,7 +154,7 @@ df = pd.DataFrame({
 })
 
 # 调用清理函数
-df_clean = clean_time_columns_auto(df, protect=("Entity ID",))
+df_clean,rename_map = clean_time_columns_auto(df, protect=("Entity ID",))
 
 print(df_clean.head())
 ```
@@ -200,7 +200,6 @@ labels = ["Education", "Full-time", "Unemployed", "Missing"]
 
 seq = SequenceData(
     data=df_clean,
-    time_type="year",
     time=[str(i) for i in range(1, 5)],  # ['1','2','3','4']
     states=states,
     labels=labels,
