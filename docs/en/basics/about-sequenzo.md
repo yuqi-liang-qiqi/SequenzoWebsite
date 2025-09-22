@@ -1,8 +1,16 @@
 # About `Sequenzo`
 
 <p align="center">
-  <img src="/fulllogo_transparent.png" alt="Sequenzo full logo" width="380" />
+  <img src="./img/fulllogo_transparent.png" alt="Sequenzo full logo" class="logo-light" />
+  <img src="./img/squenzo_logo_dark_transparent_transition.png" alt="Sequenzo full logo dark" class="logo-dark" />
 </p>
+
+<style>
+  .logo-light, .logo-dark { width: 60%; max-width: 320px; height: auto; }
+  .logo-dark { display: none; }
+  html.dark .logo-light { display: none; }
+  html.dark .logo-dark { display: inline; }
+</style>
 
 `Sequenzo` is a fast, scalable, and intuitive Python package for social sequence analysis. It is designed specifically to handle big data and is applicable across all disciplines within the social sciences, making sequence analysis more accessible and efficient for both researchers and practitioners.
 

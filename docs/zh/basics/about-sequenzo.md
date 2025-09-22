@@ -1,8 +1,16 @@
 # 关于 Sequenzo
 
 <p align="center">
-  <img src="/fulllogo_transparent.png" alt="Sequenzo 全尺寸 Logo" width="380" />
+  <img src="./img/fulllogo_transparent.png" alt="Sequenzo full logo" class="logo-light" />
+  <img src="./img/squenzo_logo_dark_transparent_transition.png" alt="Sequenzo full logo dark" class="logo-dark" />
 </p>
+
+<style>
+  .logo-light, .logo-dark { width: 60%; max-width: 320px; height: auto; }
+  .logo-dark { display: none; }
+  html.dark .logo-light { display: none; }
+  html.dark .logo-dark { display: inline; }
+</style>
 
 `Sequenzo` 是一个数据处理和分析速度很快、大数据分析能力强且简单易懂的 Python 包，专为社会序列分析（Sequence Analysis）而设计。它能够高效处理大数据，适用于社会科学的各个领域，让研究人员和实践者能够更便捷、高效地进行序列分析。
 
