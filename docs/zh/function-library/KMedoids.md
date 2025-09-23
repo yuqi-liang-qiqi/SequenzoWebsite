@@ -192,3 +192,5 @@ clustering = KMedoids(diss=om,
 文档：李欣怡
 
 编辑：梁彧祺
+
+翻译、测试：曲思竹

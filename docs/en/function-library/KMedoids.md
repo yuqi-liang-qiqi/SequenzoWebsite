@@ -193,3 +193,5 @@ Code: Xinyi Li, Cheng Deng
 Documentation: Xinyi Li, Sizhu Qu (responsible for testing and writing the examples)
 
 Editd by: Yuqi Liang
+
+Translation and testing by: Sizhu Qu
