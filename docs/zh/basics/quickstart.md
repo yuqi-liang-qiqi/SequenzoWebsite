@@ -478,11 +478,10 @@ time_list = list(df.columns)[1:]
 states = ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9']
 
 # TODO: 编写异常处理逻辑：如果参数不存在，则提示传入正确的参数
-# sequence_data = SequenceData(df, time=time, time_type="year", id_col="country", ids=df['country'].values, states=states)
+# sequence_data = SequenceData(df, time=time, id_col="country", ids=df['country'].values, states=states)
 
 sequence_data = SequenceData(df,
                              time=time_list,
-                             time_type="year",
                              id_col="country",
                              states=states,
                              labels=states)

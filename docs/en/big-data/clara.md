@@ -135,7 +135,6 @@ states = ['data', 'data science', 'hardware', 'research',
 
 sequence_data = SequenceData(
     df[['worker_id'] + time],
-    time_type="age",
     time=time,
     id_col="worker_id",
     states=states

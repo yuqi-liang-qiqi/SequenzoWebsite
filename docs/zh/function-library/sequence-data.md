@@ -42,7 +42,6 @@
 ```python
 sequence = SequenceData(
     data=df,
-    time_type='year',                 # 年份用 'year'，年龄用 'age'
     time=['1','2','3', ...],          # 按时间顺序的列名
     states=['EDU','FT','UNEMP'],      # 完整、有序的状态空间（state space）
     labels=['Education','Full-time','Unemployed'],  # 可选的显示标签（display labels）；labels元素顺序需与 states一一对应；未设置 labels 时，图例将使用 states 的名称
@@ -54,17 +53,16 @@ sequence = SequenceData(
 ```
 ## 参数说明（Entry Parameters）
 
-| 参数（Parameter）     | 必填（Required） | 类型（Type） | 说明（Description） |
-| -------------------- | :--------------: | ----------- | ------------------- |
-| `data`               |        ✓         | DataFrame   | 输入数据集，**行 = 实体（entities）**，**列 = 时间点（time points）**。 |
-| `time_type`          |        ✓         | str         | `'year'` 或 `'age'`。 |
-| `time`               |        ✓         | list        | 按时间顺序排列的时间列名列表。 |
-| `states`             |        ✓         | list        | **有序**的状态空间（state space），决定编码（encoding）与颜色（colors）。 |
-| `labels`             |        ✗         | list        | 人类可读名称（human-readable names），长度与 `states` 相同。 |
-| `id_col`             |        ✓         | str         | 含唯一序列 ID（sequence IDs）的列名；如果没有该列，请在定义序列数据前用  [`assign_unique_ids`](../data-preprocessing/assign_unique_ids.md) 创建。 |
-| `weights`            |        ✗         | ndarray     | 行权重（row weights），默认全为 1。 |
-| `start`              |        ✗         | int         | 数据概览（summaries）中的起始索引，默认 1。 |
-| `custom_colors`      |        ✗         | list        | 用户自定颜色列表（custom color list），长度需与 `states` 一致。 |
+| 参数（Parameter）   | 必填（Required） | 类型（Type） | 说明（Description） |
+| ------------------ | :--------------: | ----------- | ------------------- |
+| `data`             |        ✓         | DataFrame   | 输入数据集，**行 = 实体（entities）**，**列 = 时间点（time points）**。 |
+| `time`             |        ✓         | list        | 按时间顺序排列的时间列名列表。 |
+| `states`           |        ✓         | list        | **有序**的状态空间（state space），决定编码（encoding）与颜色（colors）。 |
+| `labels`           |        ✗         | list        | 人类可读名称（human-readable names），长度与 `states` 相同。 |
+| `id_col`           |        ✓         | str         | 含唯一序列 ID（sequence IDs）的列名；如果没有该列，请在定义序列数据前用  [`assign_unique_ids`](../data-preprocessing/assign_unique_ids.md) 创建。 |
+| `weights`          |        ✗         | ndarray     | 行权重（row weights），默认全为 1。 |
+| `start`            |        ✗         | int         | 数据概览（summaries）中的起始索引，默认 1。 |
+| `custom_colors`    |        ✗         | list        | 用户自定颜色列表（custom color list），长度需与 `states` 一致。 |
 
 > **说明**
 
@@ -140,7 +138,6 @@ states = ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7'
 sequence_data = SequenceData(
     df,
     time=time_list,
-    time_type="year",   # 年份用 'year'；如果时间轴是年龄，用 'age' 
     id_col="country",
     states=states,
     labels=states       # labels 的元素顺序需与 states 一一对应；如未设置 labels，图例会显示 states 的名称
@@ -185,7 +182,6 @@ df = assign_unique_ids(df, id_col_name='Entity ID')
 
 seq = SequenceData(
     df,
-    time_type='year',
     time=year_cols,
     states=states,
     id_col='Entity ID'

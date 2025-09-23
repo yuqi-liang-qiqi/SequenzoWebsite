@@ -66,7 +66,6 @@ from sequenzo import SequenceData
 
 seq = SequenceData(
     data=df,
-    time_type="year",
     time=list(df.columns)[1:],   # Sequence columns
     states=["A", "B", "C"],
     id_col="ID",

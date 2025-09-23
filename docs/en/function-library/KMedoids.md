@@ -123,7 +123,7 @@ df = load_dataset('country_co2_emissions')
 
 time = list(df.columns)[1:]
 states = ['Very Low', 'Low', 'Middle', 'High', 'Very High']
-sequence_data = SequenceData(df, time_type="age", time=time, id_col="country", states=states)
+sequence_data = SequenceData(df,time=time, id_col="country", states=states)
 om = get_distance_matrix(sequence_data, method="OM", sm="TRATE", indel="auto")
 
 centroid_indices = [0, 50, 100, 150, 190]

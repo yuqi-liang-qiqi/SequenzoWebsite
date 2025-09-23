@@ -40,7 +40,6 @@ Each row represents an individual (a sequence), and each column represents a tim
 ```python
 sequence = SequenceData(
     data=df,
-    time_type='year',               # Use 'year' for calendar year; use 'age' when the time axis is age
     time=['1','2','3', ...],        # ordered time columns
     states=['EDU','FT','UNEMP'],    # full, ordered state space
     labels=['Education','Full-time','Unemployed'],  # optional display labels; the order must correspond one-to-one with states; if labels are not set, legends will fall back to the state names
@@ -56,7 +55,6 @@ sequence = SequenceData(
 | Parameter                          | Required | Type      | Description                                             |
 | ---------------------------------- | -------- | --------- | ------------------------------------------------------- |
 | `data`                             | ✓        | DataFrame | Input dataset with rows = entities, cols = time points. |
-| `time_type`                        | ✓        | str       | `'year'` or `'age'`.                                    |
 | `time`                             | ✓        | list      | Ordered list of time column names.                      |
 | `states`                           | ✓        | list      | Ordered state space. Controls encoding & colors.        |
 | `labels`                           | ✗        | list      | Human-readable names, same length as `states`.          |
@@ -139,8 +137,7 @@ time_list = list(df.columns)[1:]
 states = ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9']
 
 sequence_data = SequenceData(df, 
-                             time=time_list, 
-                             time_type="year", 
+                             time=time_list,  
                              id_col="country", 
                              states=states,
                              labels=states)
@@ -186,7 +183,6 @@ df = assign_unique_ids(df, id_col_name='Entity ID')
 
 sequence = SequenceData(
     df,
-    time_type='year',
     time=year_cols,
     states=states,
     id_col='Entity ID'

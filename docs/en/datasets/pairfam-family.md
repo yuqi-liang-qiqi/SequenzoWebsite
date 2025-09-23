@@ -102,12 +102,15 @@ df = pd.read_csv('D:\\sequenzo\\family.csv')
 
 df
 ```
+
 ```python
 # check all the columns name
 columns_name_list = df.columns.to_list()
 
 columns_name_list
 ```
+
+
 ```python
 def clean_time_columns_auto(
     df: pd.DataFrame,
