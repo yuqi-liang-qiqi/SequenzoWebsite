@@ -78,6 +78,16 @@ Here `state1`–`state5` show the first five months of the trajectory, coded as 
 ## Data preprocessing
 To make the data more convenient to use, we performed a minor preprocessing step, converting `state1 ... state264` to `1 ... 264` before adding it to our prepared dataset.
 
+The data preprocessing function we use is `clean_time_columns_auto()`. Simply put, it is a smart tool for cleaning column names.
+Its main purpose is to automatically scan a DataFrame, identify columns with names containing numbers (e.g., `state1`, `wave2`, `year2023`), and then simplify these names to just the numbers they contain (becoming `1`, `2`, `2023`).
+This feature is particularly useful when processing time-series or panel data, as it allows for the quick standardization of column names that represent different points in time.
+
+Related parameters:
+
+* `df`: The DataFrame you want to process.
+* `protect`: A list of protected column names. The names written here (for instance, 'id', 'sex', 'age', etc.) will not be automatically changed by the function and will be kept in their original form. 
+* `min_time` and `max_time` (Optional): A time range for filtering. You can use it to tell the function to only handle columns where the number in the name falls within a specific range.
+
 Here are the detailed steps. You can also refer to the tutorial of [clean_time_columns](https://sequenzo.yuqi-liang.tech/en/data-preprocessing/clean_time_columns).
 
 ```python
