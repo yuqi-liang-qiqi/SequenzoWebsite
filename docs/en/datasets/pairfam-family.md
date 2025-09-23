@@ -2,17 +2,17 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-21 14:41:01
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-21 14:57:27
+ * @LastEditTime: 2025-09-24 00:10:58
  * @FilePath: /SequenzoWebsite/docs/en/datasets/pairfam-family.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 # Pairfam Family Trajectories Dataset
 
-This dataset contains German 1,866 individuals of family formation, observed monthly from ages 18 to 40 (264 months). It is derived from the **German Family Panel (pairfam, Release 14.2)** and was pre-processed by the authors of Sequence Analysis (Raab & Struffolino, 2022). It is designed for teaching and learning sequence analysis by providing ready-to-use monthly trajectories of family formation.
+This dataset contains German 1,866 individuals of family formation, observed monthly from ages 18 to 40 (264 months). It is derived from the **German Family Panel (pairfam, Release 14.2)** and was pre-processed by the authors of [Sequence Analysis (Raab & Struffolino, 2022)](https://sa-book.github.io/). It is designed for teaching and learning sequence analysis by providing ready-to-use monthly trajectories of family formation.
 
 ## Data origin and processing
 
-* **Source**: pairfam ([www.pairfam.de](http://www.pairfam.de)), a large-scale longitudinal survey on partnership and family dynamics in Germany.
+* **Source**: [pairfam](http://www.pairfam.de), a large-scale longitudinal survey on partnership and family dynamics in Germany.
 
 * **Processing by book authors**:
 
@@ -22,7 +22,7 @@ This dataset contains German 1,866 individuals of family formation, observed mon
   4. Rare combinations (e.g., single with 2+ children) were collapsed into the broader “with children” category.
 
 
-* **Result**: A simplified **9-state alphabet**, recoded numerically (1–9) in `family.csv`.
+* **Result**: A simplified **9-state alphabet**, recoded numerically (1–9) in `pairfam_family.csv`.
 
 ## Family states (numeric coding)
 
