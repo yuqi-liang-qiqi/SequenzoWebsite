@@ -199,7 +199,6 @@ labels = ["Education", "Full-time", "Unemployed", "Missing"]
 
 seq = SequenceData(
     data=df_clean,
-    time_type="year",
     time=[str(i) for i in range(1, 5)],  # ['1','2','3','4']
     states=states,
     labels=labels,
@@ -214,3 +213,5 @@ seq = SequenceData(
 * Do not rename non-time columns like `Entity ID`.
 * Keep a rename map if you need auditability.
 * Define your state codes clearly at the start of the document.
+
+*Author: Yuqi Liang, Liangxingyun He*
