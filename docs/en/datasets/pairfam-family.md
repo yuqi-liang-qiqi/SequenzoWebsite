@@ -190,7 +190,7 @@ Below is a small extract of the dataset after preprocessing:
 | 2931000 | 1.767    | 0   | 1973      | 881 | 5     | 3         | 10.5  | 0          | 1      | 1      | 0    | 1      | 1      | 1      | 1      | 1      | … |
 | 3167000 | 0.885    | 1   | 1973      | 883 | 1     | 1         | 11.5  | 0          | 0      | 1      | 0    | 3      | 3      | 3      | 3      | 3      | … |
 
-## References
+## Reference
 
 Raab, M., & Struffolino, E. (2022). Sequence analysis (Vol. 190). Sage Publications.
 
