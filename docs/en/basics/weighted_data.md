@@ -346,4 +346,5 @@ print("[PAMonce | weighted | init=[1,6]] labels:", labels_from_init)
 When `initialclust` is provided as a **membership vector** (one label per object) or as a **hierarchical linkage** matrix, Sequenzo will convert it to starting medoids internally (see the docstring for details). This is handy when you want to “lift” a solution found on a subsample to the full dataset.
 
 *Author: Yuqi Liang*
+*Translate: Sizhu Qu*
 
