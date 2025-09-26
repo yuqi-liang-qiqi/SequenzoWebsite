@@ -26,7 +26,7 @@ This formal definition is what allows all subsequent steps, such as distance com
 
 Each row represents an individual (a sequence), and each column represents a time point.
 
-> ⚠️ **Note**:  
+>[!TIP] Note:  
 > It is recommended to clean column names during preprocessing so that time points are pure numbers (`1, 2, 3, 4`) instead of `Y1–Y4`.  
 > Otherwise, in visualizations where the x-axis represents time, labels like `Y1, Y2, Y3, Y4` will appear, which may look less clean and less intuitive than `1–4`.
 > For further instruction on how to clean your time columns in the dataframe, please refer to [`Clean time columns`](/en/data-preprocessing/clean_time_columns)
@@ -36,6 +36,20 @@ Each row represents an individual (a sequence), and each column represents a tim
 4. Initialize `SequenceData`, then use `values` / `to_numeric()` for downstream algorithms or `get_legend()` / `get_colormap()` for plotting.
 
 ## Function Usage
+
+A minimal example with only the required parameters (sufficient for most use cases):
+
+```python
+sequence = SequenceData(
+    data=df,
+    time=['1','2','3', ...],        # ordered time columns
+    states=['EDU','FT','UNEMP'],    # full, ordered state space
+    labels=['Education','Full-time','Unemployed'],  # optional display labels; the order must correspond one-to-one with states; if labels are not set, legends will fall back to the state names
+    id_col='Entity ID',             # ID column; if missing, create one with assign_unique_ids
+)
+````
+
+A complete example with all available parameters (for advanced customization):
 
 ```python
 sequence = SequenceData(
@@ -64,9 +78,10 @@ sequence = SequenceData(
 | `custom_colors`                    | ✗        | list      | User-specified color list. Must match `states`.         |
 
 > **Note**
-
-> Here, *summaries* (the same “summaries” mentioned in the `start` parameter description) refers to the dataset overview produced after initializing `SequenceData`, typically printed via `describe()` (and related methods). It includes state distributions, missing-value overview, sequence length, etc. See Examples below for concrete outputs. The `start` parameter sets the starting index shown in these summaries (e.g., start at 1 rather than 0).
-
+>
+> 1. Instead of slicing arrays to indirectly construct the time list (e.g., `time=list(df.columns)[1:]`), we recommend explicitly specifying it (e.g., `time=[str(y) for y in range(1800, 2023)]`). This makes the intended time span unambiguous and prevents indexing errors.
+>
+> 2. Here, *summaries* (the same “summaries” mentioned in the `start` parameter description) refers to the dataset overview produced after initializing `SequenceData`, typically printed via `describe()` (and related methods). It includes state distributions, missing-value overview, sequence length, etc. See Examples below for concrete outputs. The `start` parameter sets the starting index shown in these summaries (e.g., start at 1 rather than 0).
 
 ## Key Features
 
@@ -195,4 +210,4 @@ _Code: Yuqi Liang_
 
 _Documentation: Yuqi Liang_
 
-_Edited by: Yuqi Liang, Yukun Ming_
+_Edited by: Yuqi Liang, Yukun Ming, Liangxingyun He_
