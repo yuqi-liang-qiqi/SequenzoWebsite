@@ -1,9 +1,9 @@
 # `get_distance_matrix()`：计算距离矩阵
-`get_distance_matrix()` 是 Sequenzo 里做**序列比较的核心函数**。它把一组分类序列（比如职业路径、家庭轨迹、健康状态）两两对比，产出一个矩阵，告诉你每两条序列有多不一样。这个不一样的数叫**非相似度（dissimilarity）**，用来算它的算法叫**非相似度度量（dissimilarity measure）**。
+`get_distance_matrix()` 是 Sequenzo 里进行**序列对比的核心函数**。它把一组离散序列（比如职业路径、家庭轨迹、健康状态）两两对比，产出一个数值矩阵，告诉你每条序列与其他序列究竟有多不一样。这个不一样的数叫**不相似度或者距离（dissimilarity）**，用来计算这个距离值的算法叫**距离算法**。
 
-需要强调一下：`get_distance_matrix()` 的输出始终是一个` n × n `的矩阵，n 是你数据里的序列条数。这个距离矩阵常作为很多下游分析的起点，例如聚类（clustering）。在文献中，聚类得到的组别也常被称为类型（typologies）。此外，它也常用于可视化（visualization）以及在序列数据上做回归（regression）。
+需要强调一下：`get_distance_matrix()` 的输出始终是一个` n × n `的矩阵，n 是你数据里的序列条数。这个距离矩阵是很多下游分析任务的起点，例如聚类分析。在文献中，聚类得到的组别也常被称为类型（typologies）。此外，距离矩阵也常用于可视化（visualization）以及在序列数据上做回归（regression）。
 
-想系统了解各种算法怎么选、各参数什么意思，建议先看这份[《非相似度度量指南》](../tutorials/dissimilarity-measures.md)。如果你先认真读完，再来阅读这个函数文档的话，就会省时又省力。
+如果你是刚接触序列分析的小白，想系统了解究竟选择哪个算法、这些参数又是什么意思，建议先看这份[《非相似度度量指南》](../tutorials/dissimilarity-measures.md)。如果你能先认真读完这份指南，然后再来阅读本文档的话，就会省时又省力。
 
 已经熟悉了？那直接往下看用法就行。
 
@@ -21,11 +21,11 @@
 
 ## 函数用法
 
-可用的算法有多种（[详见指南](../tutorials/dissimilarity-measures.md)）。由于 `get_distance_matrix()` 需要同时支持所有这些算法，参数看起来会比较多。但在实际使用中，每一种相异度算法只需要少量的关键参数，刚刚我们括号里提到的指南对这些参数都有清晰的说明。
+可用的算法有多种（[详见指南](../tutorials/dissimilarity-measures.md)）。由于 `get_distance_matrix()` 需要同时支持所有这些算法，参数看起来会比较多。但在实际使用中，每一种距离算法只需要少量的关键参数，刚刚我们括号里提到的指南对这些参数都有清晰的说明。
 
-简单来说，要先定好要用哪种度量，然后设定 `method`，再配上与这个算法相关的少数几个参数就行。比如常见的最优匹配（Optimal Matching，`method="OM"`），主要就是决定替换与插入/删除成本（`sm` 与 `indel`），以及可选的归一化方案（`norm`）。
+简单来说，要先定好要用哪种算法，然后设定 `method`，再配上与这个算法相关的少数几个参数就行。比如常见的最优匹配算法（Optimal Matching，`method="OM"`），主要就是决定替换与插入/删除成本（`sm` 与 `indel`），以及可选的归一化方案（`norm`）。
 
-**提示**：下面的代码块再配上与这个算法相关的少数几个参数就行；在我们实际使用中通常不需要全部设置。另外，我们在这里先给大家展示所有参数，让大家有个印象，之后会对每种算法所需要的参数挨个讲解。
+**提示**：下面的代码块列举了所有支持的参数以及可供参考的典型值；在我们实际使用中通常不需要全部设置。我们在这里先给大家展示所有参数，让大家有个印象，之后会对每种算法所需要的参数挨个讲解。
 
 ```python
 om = get_distance_matrix(
@@ -43,7 +43,7 @@ om = get_distance_matrix(
 )
 ```
 ##  根据不同算法来展示各自的所属参数
-首先，我们来看各个算法的默认设置。把默认参数搞明白，后面就好理解，也好选择、调整相应的参数。一般来说，需要你按照自己的研究问题或理论假设去选择算法修改参数，但如果你暂时还没有明确的想法，一个稳妥的起点是 `method = "OM"`，`sm="CONSTANT"`（任意状态替换成本为 2），indel=1。更多解释见[指南](../tutorials/dissimilarity-measures.md)。
+首先，我们来看各个算法的默认设置。把默认参数搞明白，后面就可以更好地理解各个算法的原理,也好选择适合的算法和调整相应的参数。一般来说，需要你按照自己的研究问题或理论假设去选择算法修改参数，但如果你暂时还没有明确的想法，一个稳妥的起点是 `method = "OM"`，`sm="CONSTANT"`（任意状态的替换成本均为 2），indel=1。更多解释见[指南](../tutorials/dissimilarity-measures.md)。
 
 * **OM（Optimal Matching，通用）**：`sm` 由用户设定，`indel="auto"`，`norm="auto"`。
 
@@ -56,17 +56,17 @@ om = get_distance_matrix(
 * **LCP / RLCP（Longest Common Prefix / Reversed LCP，前缀相似）**：`norm="auto"`，不需要 `sm` 或 `indel`。
 
 ### 所有算法通用的参数
-| 参数               | 必填 | 数据类型         | 说明                                                                                                               |
-| ---------------- | -- |--------------|------------------------------------------------------------------------------------------------------------------|
-| `seqdata`        | ✓  | SequenceData | Sequenzo 的状态序列对象。                                                                                                |
-| `method`         | ✓  | str          | `"OM"`、`"OMspell"`、`"HAM"`、`"DHD"`、`"LCP"`、`"RLCP"` 之一。                                                          |
-| `refseq`         | ✗  | list         | 两个索引列表 \[A, B]。返回 `A × B` 的距离表。如果为 `None`，计算所有成对距离。                                                              |
-| `norm`           | ✗  | str          | `"none"`、`"auto"`、`"maxlength"`、`"gmean"`、`"maxdist"`、`"YujianBo"`。`"auto"` 会按方法选择合理默认值。                         |
-| `full_matrix`    | ✗  | bool         | 当 `"refseq=None"` 时，`"full_matrix=True"` 就给你完整的 `n×n`，`"full_matrix=False"` 就给非重复序列的方形矩阵。如果是 `"refseq，full_matrix"` 就可以忽略。 |
-| `weighted`       | ✗  | bool         | 当从数据构建 `sm`（例如 `"TRATE"`）时，如果有权重则予以考虑。                                                                           |
-| `check_max_size` | ✗  | bool         | 如果非重复序列数量可能导致计算过大，将提前停止。                                                                                         |
-| `opts`           | ✗  | dict         | 用字典方式成组传参。                                                                                                       |
-| `**kwargs`       | ✗  | —            | `with_missing` 被忽略；缺失值会始终作为额外状态在内部处理。                                                                            |
+| 参数               | 必填 | 数据类型         | 说明                                                                                                                                           |
+| ---------------- | -- |--------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| `seqdata`        | ✓  | SequenceData | Sequenzo 的状态序列对象。                                                                                                                            |
+| `method`         | ✓  | str          | `"OM"`、`"OMspell"`、`"HAM"`、`"DHD"`、`"LCP"`、`"RLCP"` 之一。                                                                                      |
+| `refseq`         | ✗  | list         | 两个索引列表 \[A, B]。返回 `A × B` 的距离表。如果为 `None`，计算所有成对距离。                                                                                          |
+| `norm`           | ✗  | str          | `"none"`、`"auto"`、`"maxlength"`、`"gmean"`、`"maxdist"`、`"YujianBo"`。`"auto"` 会按方法选择合理默认值。                                                     |
+| `full_matrix`    | ✗  | bool         | 当 `"refseq=None"` 时，`"full_matrix=True"` 就给你完整的 `n×n`，`"full_matrix=False"` 就给距离矩阵下的三角矩阵（用一维数组存储）。如果是 `"refseq = None"，"full_matrix"` 就可以忽略。 |
+| `weighted`       | ✗  | bool         | 当从数据构建 `sm`（例如 `"TRATE"`）时，如果有权重则予以考虑。                                                                                                       |
+| `check_max_size` | ✗  | bool         | 如果序列数量过大会导致计算过大，将提前停止。                                                                                                                       |
+| `opts`           | ✗  | dict         | 用字典方式成组传参。                                                                                                                                   |
+| `**kwargs`       | ✗  | —            | `with_missing` 被忽略；缺失值会始终作为额外状态在内部处理。                                                                                                        |
 
 ### 基于编辑的度量：OM、OMspell
 | 参数        | 必填                  | 类型             | 适用方法        | 说明                                                                     |
@@ -136,7 +136,7 @@ OMspell 常见于文献。它比较的是**片段（spells，指同一状态的�
 
    * 当传入 `sm="TRATE"` 时，成本来自你的数据中的转移率（在 DHD 中会随时间位置变化）。
 
-   * 当在 HAM 中传入 `sm="CONSTANT"` 时，使用简单的常也就是`sm=2`数替换成本。
+   * 当在 HAM 中传入 `sm="CONSTANT"` 时，使用简单的常数，也就是`sm=2`，作为替换成本。
 
    * 当 `indel="auto"` 且 `sm` 已知时，会推导出与 `sm` 一致的 `indel`。
 
