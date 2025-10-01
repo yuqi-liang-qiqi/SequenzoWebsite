@@ -54,7 +54,7 @@ First, let’s look at the default settings for each algorithm. Understanding th
 
 * **OM (general purpose):** `sm` is set by user, `indel="auto"`, `norm="auto"`.
 * **OMspell (durations matter):** `sm` is set by user, `indel="auto"`, `tpow=1.0`, `expcost=0.5`, `norm="auto"`.
-* **HAM (strict positionwise):** if `sm` is not defined, it defaults to a constant substitution matrix with all costs = 1 (`sm="CONSTANT"`, `cval=2`). `norm="auto"`. This algorithm requires equal-length sequences; e.g., each sequence spans exactly 10 time points/years.
+* **HAM (strict positionwise):** if `sm` is not defined, it defaults to a constant substitution matrix with all costs = 2 (`sm="CONSTANT"`, `cval=2`). `norm="auto"`. This algorithm requires equal-length sequences; e.g., each sequence spans exactly 10 time points/years.
 * **DHD (positionwise with time-varying costs):** `sm="TRATE"` if not defined, `norm="auto"`. Equal lengths required.
 * **LCP / RLCP (prefix similarity):** `norm="auto"`. No `sm` or `indel` needed.
 
@@ -157,14 +157,14 @@ Notes
 5. Computes distances with a compiled backend
 
    * All heavy lifting is done in C++ for speed.
-   * For `refseq=None`: returns either a full `n×n` matrix `full_matrix=True` or a reduced square matrix over unique sequences `full_matrix=False`.
+   * For `refseq=None`: returns either a full `n×n` matrix `full_matrix=True` or a Lower-triangular part of the distance matrix `full_matrix=False`.
    * For `refseq=[idxs_A, idxs_B]`: returns a `|A|×|B|` DataFrame whose row/column labels are your original IDs.
 
 6. Safety and edge behavior
 
    * If there are empty sequences, you get a warning (or an error for methods that cannot handle them).
    * If `full_matrix=False` and `refseq is not None`, a full matrix is returned (informational message printed).
-   * If unique sequences exceed a safe bound, the function raises a clear error unless `check_max_size=False`.
+   * If sequences exceed a safe bound, the function raises a clear error unless `check_max_size=False`.
 
 ## Examples
 
@@ -224,7 +224,7 @@ lcp = get_distance_matrix(seqdata=sequence_data, method="LCP", norm="gmean")
 rlcp = get_distance_matrix(seqdata=sequence_data, method="RLCP", norm="gmean")
 ```
 
-### 6) Distances between two groups (A vs B)
+### 6) Distances between two groups (A and B)
 
 ```python
 idxs_A = list(range(0, 100))     # first 100 entities
@@ -238,14 +238,14 @@ ab = get_distance_matrix(
 )
 ```
 
-### 7) Reduced unique-sequence matrix to save memory
+### 7) Reduced lower-triangular distance matrix to save memory
 
 ```python
 reduced = get_distance_matrix(
     seqdata=sequence_data,
     method="OM",
     sm="TRATE",
-    full_matrix=False            # returns a square matrix over unique sequences
+    full_matrix=False            # return a lower-triangular distance matrix stored as a 1D array
 )
 ```
 
@@ -253,7 +253,6 @@ reduced = get_distance_matrix(
 
 * Ensure sequence lengths match for HAM/DHD; otherwise you will get an explicit error.
 * If you provide a vector for `indel`, its length must match the number of states in `seqdata.states` (alphabet order).
-* For very large datasets, prefer `full_matrix=False` to inspect structure over unique sequences first.
 * `with_missing` is no longer a parameter; missing values are handled consistently by default.
 
 ## Return value
@@ -262,7 +261,7 @@ Pandas DataFrame of distances.
 Shape:
 
 * `n×n` if `refseq=None` and `full_matrix=True`
-* `u×u` if `refseq=None` and `full_matrix=False` (u = number of unique sequences)
+* `（u×u）/2` if `refseq=None` and `full_matrix=False` (u = number of unique sequences)
 * `|A|×|B|` if `refseq=[idxs_A, idxs_B]`
 
 Row/column labels are taken from `seqdata.ids`.
