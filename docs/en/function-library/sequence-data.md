@@ -83,6 +83,35 @@ sequence = SequenceData(
 >
 > 2. Here, *summaries* (the same “summaries” mentioned in the `start` parameter description) refers to the dataset overview produced after initializing `SequenceData`, typically printed via `describe()` (and related methods). It includes state distributions, missing-value overview, sequence length, etc. See Examples below for concrete outputs. The `start` parameter sets the starting index shown in these summaries (e.g., start at 1 rather than 0).
 
+## Key rules to remember
+
+### 1. Order is everything
+
+   Colors follow the order of states you pass in. If `states = [1, 2, 3]`, the first color maps to state 1, the second to 2, etc. Keep the same states order across your whole project to keep colors consistent.
+
+### 2. Labels must be strings
+
+   Labels are used in legends. If you pass non-string labels, Sequenzo will warn you.
+
+### 3. Missing values get a fixed light gray by default
+
+   If your data contain missing cells and you didn’t include a dedicated `“Missing”` state, `SequenceData` will auto-add `"Missing"` into the list of states, and color it light gray (with the color code `#cfcccc`). 
+   
+   If you provide `custom_colors` with one fewer entry than the final number of states (i.e., you only colored the non-missing states), the class will append the gray for you automatically.
+
+### 4. Length checks
+
+   If you provide the `custom_colors` parameter, its length must match either:
+
+   * the total number of states (including `"Missing"` if you included it yourself), or
+   * the number of non-missing states (SequenceData will then append gray for Missing).
+
+### 5. A long list of states
+
+   By default, ≤20 states use a Spectral palette (reversed for better readability), 21-40 states use viridis, and >40 states use a combined palette (viridis + Set3 + tab20). You can override any of these by supplying custom_colors. 
+
+   For further details about coloring, please refer to [this documentation](../visualization/how-to-customize-colors.md).
+
 ## Key Features
 
 ### Validation

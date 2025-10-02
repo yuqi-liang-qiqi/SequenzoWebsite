@@ -68,7 +68,7 @@ export const en = defineConfig({
         text: 'Data Preprocessing Functions',
         items: [
           {
-            text: 'Missing Values',
+            text: 'Check Missing Values',
             link: '/en/data-preprocessing/missing-values'
           },
           {
@@ -128,6 +128,10 @@ export const en = defineConfig({
           {
             text: 'Common Parameters and Features in Visualization Functions',
             link: '/en/visualization/introduction'
+          },
+          {
+            text: 'How to Customize Colors and Recommended Color Schemes',
+            link: '/en/visualization/how-to-customize-colors'
           },
           {
             text: 'Index Plot',
