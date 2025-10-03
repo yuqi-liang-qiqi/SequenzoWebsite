@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-10-02 13:39:00
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-10-03 17:35:23
+ * @LastEditTime: 2025-10-03 21:12:23
  * @FilePath: /SequenzoWebsite/docs/en/traminer-and-sequenzo/use_R_in_python_environment.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -45,7 +45,7 @@ R callback write-console:  response should be ordinal---see ordered()
 
 This is how `rpy2` handles communication with R:
 
-* **R callback write-console** is the normal way `rpy2` prints R’s output (from `cat()`, `print()`, `warning()`, etc.) into Python.
+* R callback write-console is the normal way `rpy2` prints R’s output (from `cat()`, `print()`, `warning()`, etc.) into Python.
 * These messages are not errors. They are simply R’s messages being “relayed” through the callback so you can see them in your Python environment.
 
 ### Troubleshooting R Package Installation for the Coding Tutorial
