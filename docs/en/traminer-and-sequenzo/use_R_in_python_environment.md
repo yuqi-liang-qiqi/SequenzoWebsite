@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-10-02 13:39:00
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-10-02 19:12:08
+ * @LastEditTime: 2025-10-03 10:04:11
  * @FilePath: /SequenzoWebsite/docs/en/traminer-and-sequenzo/use_R_in_python_environment.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -16,18 +16,69 @@ Before jumping into [our coding tutorial on Google Colab](https://colab.research
 
 ## What is `rpy2`?
 
-`rpy2` is a bridge between Python and R. Think of it as a “translator” sitting in your Jupyter notebook: you can pass a `pandas` DataFrame to R, run R code right there, and even pull the results back into Python. This is the package that we are using in the coding tutorial. 
+`rpy2` is a bridge between Python and R. You can think of it as a **translator** inside your Jupyter notebook: it allows you to pass a `pandas` DataFrame to R, run R code directly, and bring the results back into Python. This is the package we use in our coding tutorial.
 
-For further details of the documentation, you can visit the [rpy2 official site](https://rpy2.github.io/doc/latest/html/index.html)
+For further details, see the [official rpy2 documentation](https://rpy2.github.io/doc/latest/html/index.html).
 
-What do you need to be aware of during the process?
+### What should you keep in mind?
 
-* You must have both Python and R installed as `rpy2` connects them.
-* In Jupyter, load it once with `%load_ext rpy2.ipython`.
+* You must have both Python and R installed, since `rpy2` connects the two.
+* In Jupyter, load the extension once with `%load_ext rpy2.ipython`.
 * Use `%%R` at the top of a cell to run R code.
 * Use `%%R -i df` to send a Python object (`df`) into R.
-* Use `%%R -o results` to bring something back from R into Python.
-* It is important to remember which side of the bridge your object is on.
+* Use `%%R -o results` to bring results back into Python.
+* Always remember which side of the bridge your object is currently on.
+
+### What is an R Callback?
+
+Sometimes you may see output like this in your Python console:
+
+```python
+R callback write-console: In addition:   
+R callback write-console: Warning message:
+  
+R callback write-console: In eval(slot(family, "initialize")) :  
+R callback write-console: 
+   
+R callback write-console:  response should be ordinal---see ordered()
+```
+
+This is how `rpy2` handles communication with R:
+
+* **R callback write-console** is the normal way `rpy2` prints R’s output (from `cat()`, `print()`, `warning()`, etc.) into Python.
+* These messages are not errors. They are simply R’s messages being “relayed” through the callback so you can see them in your Python environment.
+
+### Troubleshooting R Package Installation for the Coding Tutorial
+
+If you encounter issues installing R packages, here are a few approaches:
+
+**Option 1: Install via conda (recommended if you use Anaconda/Miniconda)**
+
+```bash
+conda install -c conda-forge r-vgam r-nnet r-mass
+```
+
+**Option 2: Install directly in R**
+
+```r
+install.packages(c("VGAM", "nnet", "MASS"), repos = "https://cran.r-project.org/")
+```
+
+Change `"VGAM", "nnet", "MASS"` to other packages that you need if you are working with `rpy2` outside of this coding tutorial.
+
+**Option 3: Use Python alternatives**
+
+If integration with R remains problematic, you can use equivalent Python packages:
+
+* `statsmodels` for multinomial logistic regression
+* `scikit-learn` for general classification models
+* `patsy` for formula-style model specification
+
+Common Issues and Fixes
+
+1. **Working directory errors:** make sure R has access to the working directory.
+2. **Package installation fails:** try using conda instead of R for easier dependency management.
+3. **Memory issues:** test with a smaller dataset if you run into memory errors.
 
 ## The dataset we use
 
@@ -47,6 +98,13 @@ Why do we use it here for illustration?
 
 * Because some of these advanced categorical models (such as adjacent category models and continuation ratio models) are not available yet in Python.
 * After Sequenzo gives you a cluster membership table (who belongs to which trajectory type), you often want to run regressions to see what predicts cluster membership or vice versa. This is the most common practices in social sequence analysis. 
+
+> **Note:**  
+> In this tutorial, we demonstrate the model using multinomial regression in R for convenience, but actually you can already use Python to do it with ease (for instance with the `statsmodels` package). 
+>
+> R offers additional packages and model families that may be useful for more advanced analyses, but here we only showcase the R version for demonstration purposes.  
+> 
+> For a Python-based walkthrough of multinomial regression, see [Multinomial Logistic Regression in Python and Statsmodels](https://medium.com/@rajeshneupane7/multinomial-logistic-regression-in-python-and-statsmodels-a674c890fe1c).
 
 ## Final note
 
