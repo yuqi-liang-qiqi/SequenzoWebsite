@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-10-02 13:39:00
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-10-03 10:04:11
+ * @LastEditTime: 2025-10-03 17:35:23
  * @FilePath: /SequenzoWebsite/docs/en/traminer-and-sequenzo/use_R_in_python_environment.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,7 +10,7 @@
 
 Sometimes, even if you’ve done all the heavy lifting in Python, you might still want to use R for the last part of your analysis. Maybe it’s because your collaborators are R users, or maybe because some specialized models or plots are only available there. Instead of exporting CSVs back and forth between the R and Python working environments, we can make Python and R talk directly inside the same Jupyter Notebook.
 
-Special thanks to [Unchitta Kanjanasaratool](https://unchitta.com/), a PhD candidate in computational social science at George Mason University, who suggested using the Python package `rpy2` for this workflow.
+Special thanks to [Unchitta Kan](https://unchitta.com/), a PhD candidate in computational social science at George Mason University, who suggested using the Python package `rpy2` for this workflow.
 
 Before jumping into [our coding tutorial on Google Colab](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/use_R_in_python_environment/example_pairfam_family.ipynb), you may find it helpful to first read through the background sections below. We’ll cover the key packages you’ll need, the dataset we use, and why some advanced regression models are easier to run in R than in Python for now.
 
