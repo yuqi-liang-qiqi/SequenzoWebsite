@@ -227,7 +227,7 @@ export const en = defineConfig({
         link: '/en/faq/bug_reports_and_feature_requests'
       },
       {
-        text: 'Changelog',
+        text: 'What\'s New',
         link: '/en/changelog'
       },
     ],

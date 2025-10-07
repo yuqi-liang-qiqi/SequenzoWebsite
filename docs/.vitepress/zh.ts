@@ -215,7 +215,7 @@ export const zh = defineConfig({
         link: '/zh/faq/bug_reports_and_feature_requests'
       },
       {
-        text: '更新日志',
+        text: '最新动态',
         link: '/zh/changelog'
       },
     ],
