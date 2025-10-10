@@ -6,14 +6,25 @@ Sequenzo also implements hierarchical clustering. For related learning materials
 
 ## Function Usage
 
+A minimal example with only the required parameters (sufficient for most use cases):
+
 ```python
 clustering = KMedoids(
-    diss,
-    k,
-    method='PAMonce',
-    initialclust=None,
-    npass=1,
-    weights=None)
+   diss=om,      # dissimilarity matrix (DataFrame or ndarray)
+   k=5           # number of clusters
+)
+```
+A complete example with all available parameters (for advanced customization):
+
+```python
+clustering = KMedoids(
+    diss=om,                # dissimilarity matrix, from get_distance_matrix()
+    k=5,                    # number of clusters
+    method='PAMonce',       # clustering algorithm: 'KMedoids', 'PAM', or 'PAMonce'
+    initialclust=None,      # optional: medoid IDs / membership matrix / linkage matrix
+    npass=1,                # number of passes (repeat optimization loops)
+    weights=None            # optional: weight for each sequence (defaults to 1)
+)
 ```
 
 ## Entry parameters
