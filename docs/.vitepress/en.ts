@@ -58,6 +58,10 @@ export const en = defineConfig({
             text: 'Timing, duration, and order',
             link: '/en/tutorials/timing-duration-order'
           },
+          {
+            text: 'Sequence Analysis vs. Latent Class Analysis',
+            link: '/en/tutorials/sa_and_latent_class_analysis'
+          }
           // {
           //   text: 'Dissimilarity measures',
           //   link: '/en/tutorials/dissimilarity-measures'

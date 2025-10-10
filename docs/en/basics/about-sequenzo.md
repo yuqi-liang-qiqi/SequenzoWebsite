@@ -117,6 +117,10 @@ Others
 
 * Methodological advisor in sequence analysis: [Professor Tim Liao (University of Illinois Urbana-Champaign)](https://sociology.illinois.edu/directory/profile/tfliao)
 * Yuqi's PhD advisor [Professor Ridhi Kashyap (University of Oxford)](https://www.nuffield.ox.ac.uk/people/profiles/ridhi-kashyap/), and mentor [Charles Rahal (University of Oxford)](https://crahal.com/)
+* Helpful discussions and comments: 
+  * [Gilbert Ritschard](https://mephisto.unige.ch/Gilbert/)
+  * [Emanuela Struffolino](https://emastruffolino.github.io/)
+  * [Heyi Zhang](https://profiles.ucl.ac.uk/100967-heyi-zhang)
 * Yuqi's original programming mentor: [JiangHuShiNian](https://github.com/jianghushinian)
 
 *Yuqi Liang:* 
