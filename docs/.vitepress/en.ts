@@ -30,7 +30,7 @@ export const en = defineConfig({
           link: '/en/basics/view_tutorials_online'
         },
         {
-          text: 'Converting numeric data to categorical data',
+          text: 'Converting Numeric Data to Categorical Data',
           link: '/en/basics/if_you_have_numeric_data'
         },
         // {
@@ -42,7 +42,7 @@ export const en = defineConfig({
         //   link: '/en/basics/handle_missing_values'
         // },
         {
-          text: 'Working with weighted data',
+          text: 'Working with Weighted Data',
           link: '/en/basics/weighted_data'
         }
           ]
@@ -51,15 +51,15 @@ export const en = defineConfig({
         text: 'Conceptual Tutorials',
         items: [
           {
-            text: 'Basic concepts',
+            text: 'Basic Concepts',
             link: '/en/tutorials/basic-concepts'
           },
           {
-            text: 'Timing, duration, and order',
+            text: 'Timing, Duration, and Order',
             link: '/en/tutorials/timing-duration-order'
           },
           {
-            text: 'Sequence Analysis vs. Latent Class Analysis',
+            text: 'Sequence Analysis vs. Latent Class Analysis vs. Hidden Markov Models',
             link: '/en/tutorials/sa_and_latent_class_analysis'
           }
           // {
@@ -105,7 +105,7 @@ export const en = defineConfig({
             link: '/en/function-library/sequence-data'
           },
           {
-            text: 'Get distance matrix',
+            text: 'Get Distance Matrix',
             link: '/en/function-library/get-distance-matrix'
           },
           {
