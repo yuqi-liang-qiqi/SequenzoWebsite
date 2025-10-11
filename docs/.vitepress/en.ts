@@ -60,7 +60,7 @@ export const en = defineConfig({
           },
           {
             text: 'Sequence Analysis vs. Latent Class Analysis vs. Hidden Markov Models',
-            link: '/en/tutorials/sa_and_latent_class_analysis'
+            link: '/en/tutorials/sa_lca_and_hmm'
           }
           // {
           //   text: 'Dissimilarity measures',
