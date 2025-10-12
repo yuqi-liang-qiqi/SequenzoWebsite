@@ -126,6 +126,10 @@ export const zh = defineConfig({
             link: '/zh/visualization/introduction'
           },
           {
+            text: '如何自定义颜色，以及推荐的配色方案',
+            link: '/zh/visualization/how-to-customize-colors'
+          },
+          {
             text: '索引图',
             link: '/zh/visualization/index-plot'
           },
