@@ -16,12 +16,6 @@
 
 Despite gaining increasing attention, social sequence analysis is still an emerging method. Thus, before briefly introducing our package, here we will first walk you through some essential concepts of sequence analysis and highlight key challenges it currently faces.
 
-## ✨ Be part of the Sequenzo community
-
-Join our Discord channel to iscuss ideas, get help, and hear about upcoming Sequenzo versions, tutorials, and workshops first.
-
-➡️ https://discord.gg/3bMDKRHW
-
 ## What is social sequence analysis, and why does it matter?
 
 Sequence Analysis (SA) originated in biology for comparing DNA and protein sequences, but has since been adapted into the social sciences as a powerful method for analyzing sequences of events or states over time (Abbott, 1983; Liao et al., 2022). Because it is applied to life trajectories and social phenomena, it is often referred to as social sequence analysis. However, in the social sciences, it is also commonly called simply sequence analysis. 

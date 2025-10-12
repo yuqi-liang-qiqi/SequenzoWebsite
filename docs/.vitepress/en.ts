@@ -18,6 +18,10 @@ export const en = defineConfig({
             link: '/en/basics/about-sequenzo'
           },
           {
+            text: 'Join Our Communities',
+            link: '/en/basics/join-our-community'
+          },
+          {
           text: 'Installing',
           link: '/en/basics/installing'
         },
