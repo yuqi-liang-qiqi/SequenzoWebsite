@@ -6,14 +6,25 @@ Sequenzo 也实现了层次聚类，相关学习资料见视频 [层次聚类的
 
 ## 函数使用
 
+仅包含必需参数的最小示例（足以满足大多数用例）：
+
 ```python
 clustering = KMedoids(
-    diss,
-    k,
-    method='PAMonce',
-    initialclust=None,
-    npass=1,
-    weights=None)
+   diss=om,      # 相异矩阵（DataFrame 或 ndarray）
+   k=5           # 聚类数量
+)
+```
+具有所有可用参数的完整示例（用于高级定制）：
+
+```python
+clustering = KMedoids(
+   diss=om,                # 差异矩阵，来自 get_distance_matrix()
+   k=5,                    # 聚类数量
+   method='PAMonce',       # 聚类算法：'KMedoids'、'PAM' 或 'PAMonce'
+   initialclust=None,      # 可选：medoid ID / 成员矩阵 / 链接矩阵
+   npass=1,                # 遍历次数（重复优化循环）
+   weights=None            # 可选：每个序列的权重（默认为 1）
+)
 ```
 
 ## 入口参数
@@ -189,7 +200,7 @@ clustering = KMedoids(diss=om,
 
 代码：李欣怡，邓诚
 
-文档：李欣怡
+文档：李欣怡，曲思竹
 
 编辑：梁彧祺
 

@@ -18,25 +18,42 @@ With these tools, you can move beyond intuition or visual inspection of dendrogr
 
 ## Function usage
 
+A minimal example with only the required parameter (sufficient for most use cases):
+
+```python
+cluster_quality = ClusterQuality(cluster)
+cluster_quality.compute_cluster_quality_scores()
+cluster_quality.plot_cqi_scores()
+```
+
+A complete example with all available parameters (for advanced customization):
+
 ```python
 from sequenzo.clustering.hierarchical_clustering import Cluster, ClusterQuality
 
-cluster = Cluster(matrix=distance_matrix, 
-                  entity_ids=ids, 
-                  clustering_method="ward")
+# Step 1: Fit a hierarchical cluster model
+cluster = Cluster(
+  matrix=distance_matrix,
+  entity_ids=ids,
+  clustering_method="ward"
+)
 
-# Pass a fitted Cluster instance
-cluster_quality = ClusterQuality(cluster, max_clusters=20)
+# Step 2: Evaluate cluster quality
+cluster_quality = ClusterQuality(
+  matrix_or_cluster=cluster,   # or a square-form matrix directly
+  max_clusters=20,             # evaluate up to k=20
+  clustering_method="ward"     # only used if passing a matrix directly
+)
 
-# Computing the scores that each CQI provides across clusters 
-# (e.g., up to 20 as we have set max_cluster=20 in the previous line of code)
+# Step 3: Compute, inspect, and visualize CQIs
 cluster_quality.compute_cluster_quality_scores()
-
-# Organize the scores into a table (Pandas DataFrame)
 table = cluster_quality.get_cqi_table()
-
-# Visualize the scores
-fig = cluster_quality.plot_cqi_scores(save_as="quality.png")
+cluster_quality.plot_cqi_scores(
+  metrics_list=["ASW", "PBC", "CH"],   # optional: specify which metrics to plot
+  norm="zscore",                       # z-score, range, or none
+  save_as="quality.png",
+  style="whitegrid"
+)
 ```
 
 ## Entry parameters
@@ -286,4 +303,4 @@ Code: Yuqi Liang
 
 Documentation: Yuqi Liang
 
-Edited by: Yuqi Liang
+Edited by: Yuqi Liang, Sizhu Qu

@@ -12,28 +12,36 @@
 
 ## 使用方法
 
+仅具有必需参数的最小示例（足以满足大多数用例）：
+
 ```python
-from sequenzo.clustering.hierarchical_clustering import Cluster, ClusterResults
-
-# 拟合层次聚类模型
-cluster = Cluster(matrix=distance_matrix,
-entity_ids=ids,
-clustering_method="ward")
-
-# 这里省略调用 ClusterQuality() 的示例代码
-
-# 封装结果
 cluster_results = ClusterResults(cluster)
+```
 
-# 1. 导出成员表
+具有所有可用参数的完整示例（用于高级定制）：
+
+```python
+# 首先拟合一个层次聚类模型
+cluster = Cluster(
+  matrix=distance_matrix,      # 方阵距离矩阵 (n×n)
+  entity_ids=ids,              # 与矩阵行对齐的唯一 ID
+  clustering_method="ward"     # 链接方法
+)
+
+# 然后包装结果
+cluster_results = ClusterResults(
+  cluster=cluster              # 必需：一个适合的 Cluster 对象
+)
+
+# 示例用法
 memberships = cluster_results.get_cluster_memberships(num_clusters=4)
-
-# 2. 汇总分布
 distribution = cluster_results.get_cluster_distribution(num_clusters=4)
-
-# 3. 可视化簇规模
-cluster_results.plot_cluster_distribution(num_clusters=4,
-save_as="distribution.png")
+cluster_results.plot_cluster_distribution(
+  num_clusters=4,
+  save_as="distribution.png",
+  style="whitegrid",
+  figsize=(10, 6)
+)
 ```
 
 ## 入口参数
@@ -164,6 +172,6 @@ _代码：梁彧祺_
 
 _文档：梁彧祺_
 
-_编辑：梁彧祺_
+_编辑：梁彧祺，曲思竹_
 
-_翻译：明煜坤_
+_翻译：明煜坤，曲思竹_

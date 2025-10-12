@@ -39,18 +39,32 @@
 
 ## 用法（Function Usage）
 
+仅包含必需参数的最小示例（足以满足大多数用例）：
+
 ```python
 sequence = SequenceData(
     data=df,
-    time=['1','2','3', ...],          # 按时间顺序的列名
-    states=['EDU','FT','UNEMP'],      # 完整、有序的状态空间（state space）
-    labels=['Education','Full-time','Unemployed'],  # 可选的显示标签（display labels）；labels元素顺序需与 states一一对应；未设置 labels 时，图例将使用 states 的名称
-    id_col='Entity ID',               #  ID 列；若缺失可用 assign_unique_ids 创建
-    weights=None,                     # 可选（默认每行权重为 1）
-    start=1,                          # 数据概览里显示的起始序号
-    custom_colors=None                # 可选的颜色列表（需与 states 对齐）
+    time=['1','2','3', ...],        # 有序时间列
+    states=['EDU','FT','UNEMP'],    # 完整、有序的状态空间
+    labels=['Education','Full-time','Unemployed'], # 可选显示标签；顺序必须与州一一对应；如果未设置标签，图例将恢复为州名称
+    id_col='Entity ID',             # ID 列；如果缺失，请使用 assign_unique_ids 创建一个
 )
-```
+````
+
+具有所有可用参数的完整示例（用于高级定制）：
+
+```python
+sequence = SequenceData(
+    data=df,
+    time=['1','2','3', ...],        # 有序时间列
+    states=['EDU','FT','UNEMP'],    # 完整、有序的状态空间
+    labels=['Education','Full-time','Unemployed'],  # 可选显示标签；顺序必须与州一一对应；如果未设置标签，图例将恢复为州名称
+    id_col='Entity ID',             # ID 列；如果缺失，请使用 assign_unique_ids 创建一个
+    weights=None,                   # 可选（默认每行 1 个）
+    start=1,                        # 摘要中使用的起始索引
+    custom_colors=None              # 可选颜色列表
+)
+````
 ## 参数说明（Entry Parameters）
 
 | 参数（Parameter）   | 必填（Required） | 类型（Type） | 说明（Description） |
@@ -195,4 +209,4 @@ _文档：梁彧祺_
 
 _编辑：梁彧祺_
 
-_翻译：明煜坤_
+_翻译：明煜坤，曲思竹_

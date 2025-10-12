@@ -201,7 +201,7 @@ clustering = KMedoids(diss=om,
 
 Code: Xinyi Li, Cheng Deng
 
-Documentation: Xinyi Li, Sizhu Qu (responsible for testing and writing the examples)
+Documentation: Xinyi Li, Sizhu Qu
 
 Editd by: Yuqi Liang
 

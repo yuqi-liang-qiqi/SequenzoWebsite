@@ -18,35 +18,36 @@ These ensures you can quickly link cluster labels back to your original dataset 
 
 ## Function usage
 
+A minimal example with only the required parameter (sufficient for most use cases):
+
 ```python
-from sequenzo.clustering.hierarchical_clustering import Cluster, ClusterResults
-
-# Fit a hierarchical cluster model
-cluster = Cluster(matrix=distance_matrix,
-                  # You need to create this variable by youself, 
-                  # which is a list of ids
-                  entity_ids=ids, 
-                  clustering_method="ward")
-
-# Here the code of dealing with ClusterQuality() is omitted
-# as it is not our focus here
-
-# Wrap the results
 cluster_results = ClusterResults(cluster)
+```
 
-# 1. Export membership table
-# Let's say you choose 4 clusters
+A complete example with all available parameters (for advanced customization):
+
+```python
+# Fit a hierarchical cluster model first
+cluster = Cluster(
+  matrix=distance_matrix,      # square-form distance matrix (n×n)
+  entity_ids=ids,              # unique IDs aligned with matrix rows
+  clustering_method="ward"     # linkage method
+)
+
+# Then wrap results
+cluster_results = ClusterResults(
+  cluster=cluster              # required: a fitted Cluster object
+)
+
+# Example usage
 memberships = cluster_results.get_cluster_memberships(num_clusters=4)
-
-# 2. Summarize distribution
 distribution = cluster_results.get_cluster_distribution(num_clusters=4)
-
-# 3. Visualize cluster sizes
-# You may often find that the data are not very balanced,
-# e.g.,, many entities fall into one cluster, 
-# while only a few appear in others.
-cluster_results.plot_cluster_distribution(num_clusters=4,
-                                          save_as="distribution.png")
+cluster_results.plot_cluster_distribution(
+  num_clusters=4,
+  save_as="distribution.png",
+  style="whitegrid",
+  figsize=(10, 6)
+)
 ```
 
 ## Entry parameters
@@ -212,4 +213,4 @@ Code: Yuqi Liang
 
 Documentation: Yuqi Liang
 
-Edited by: Yuqi Liang
+Edited by: Yuqi Liang, Sizhu Qu

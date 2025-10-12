@@ -8,24 +8,42 @@
 
 ## 函数用法（Function usage）
 
+仅具有必需参数的最小示例（足以满足大多数用例）：
+
+```python
+cluster_quality = ClusterQuality(cluster)
+cluster_quality.compute_cluster_quality_scores()
+cluster_quality.plot_cqi_scores()
+```
+
+具有所有可用参数的完整示例（用于高级定制）：
+
 ```python
 from sequenzo.clustering.hierarchical_clustering import Cluster, ClusterQuality
 
-cluster = Cluster(matrix=distance_matrix, 
-                  entity_ids=ids, 
-                  clustering_method="ward")
+# 步骤 1：拟合层次聚类模型
+cluster = Cluster(
+  matrix=distance_matrix,
+  entity_ids=ids,
+  clustering_method="ward"
+)
 
-# 传入已拟合好的 Cluster 实例
-cluster_quality = ClusterQuality(cluster, max_clusters=20)
+# 步骤 2：评估集群质量
+cluster_quality = ClusterQuality(
+  matrix_or_cluster=cluster,   # 或直接使用方阵
+  max_clusters=20,             # 评估最多 k=20
+  clustering_method="ward"     # 仅在直接传递矩阵时使用
+)
 
-# 计算各个 CQI 在不同 k 下的得分（例如最多算到 20）
+# 步骤 3：计算、检查和可视化 CQI
 cluster_quality.compute_cluster_quality_scores()
-
-# 整理为一个表格（Pandas DataFrame）
 table = cluster_quality.get_cqi_table()
-
-# 可视化这些得分
-fig = cluster_quality.plot_cqi_scores(save_as="quality.png")
+cluster_quality.plot_cqi_scores(
+  metrics_list=["ASW", "PBC", "CH"],   # 可选：指定要绘制的指标
+  norm="zscore",                       # z 分数、范围或无
+  save_as="quality.png",
+  style="whitegrid"
+)
 ```
 
 ## 入口参数（Entry parameters）
@@ -272,6 +290,6 @@ _代码：梁彧祺_
 
 _文档：梁彧祺_
 
-_编辑：梁彧祺_
+_编辑：梁彧祺，曲思竹_
 
-_翻译：明煜坤_
+_翻译：明煜坤，曲思竹_
