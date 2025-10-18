@@ -1,30 +1,34 @@
 # `plot_sequence_index()`
+在序列索引图中，每行代表一个人/公司/地区/国家，每列代表一个时间点，颜色表示该人当时所处的状态。这可以让你看到各种模式，例如人们何时切换状态、稳定序列的外观以及不同组别（例如，男性 vs 女性、国家 A vs 国家 B）的序列差异。
 
-`plot_sequence_index()` 绘制“序列索引图”：每一行代表一个人（或案例），每一列是一个时间点，颜色显示该人在该时间点的状态。这可以让你看到一些模式，例如人们何时转换状态、序列的稳定性如何，以及不同群体（例如，男性与女性，国家 A 与国家 B ）之间的序列有何不同。
-
-如果你在 Jupyter Notebook 中运行它，图片会显示在单元格下方。如果作为 Python 脚本运行，则会弹出一个窗口。你也可以使用 `save_as` 将图片保存到文件中。
+如果你在 Jupyter Notebook 中运行它，该图会显示在单元格下方。如果你以 Python 脚本的形式运行它，则会弹出一个窗口。你也可以使用`save_as`将图保存到文件中。
 
 ## 函数用法
 
+仅包含必需参数的最小示例（足以满足大多数用例）：
+
 ```python
-plot_sequence_index(
-    seqdata,
-    id_group_df=None,     # 可选的分组信息
-    categories=None,      # 用于分组的列名
-    sort_by=None,         # 序列排序规则，见下文
-    figsize=(10, 6),      # 每个子图的大小
-    title=None,           # 总体标题
-    xlabel="Time",
-    ylabel="Sequences",
-    save_as=None,         # 保存输出文件（例如, "index.png"）
-    dpi=200,
-    layout="column",      # "column"（列） 或 "grid"（网格）
-    nrows=None,           # 手动设置布局的行数（可选）
-    ncols=None,           # 手动设置布局的列数（可选）
-    group_order=None,     # 自定义分组顺序
-    sort_groups="auto"    # "auto" (自动), "numeric" (数字), "alpha" (字母), "none" (无)
-)
+plot_sequence_index(sequence_data)
 ```
+`plot_sequence_index` 函数根据数据结构提供了两种分组方法：
+**1. 直接分组**（当分组信息已经在序列数据中时）：
+
+```python
+plot_sequence_index(sequence_data, 
+                    group_by_column="Cluster", 
+                    group_labels=cluster_labels)
+```
+
+**2. 外部分组**（当分组信息位于单独的数据框中时）：
+
+```python
+plot_sequence_index(sequence_data, 
+                    group_dataframe=membership_table, 
+                    group_column_name="Cluster", 
+                    group_labels=cluster_labels)
+```
+
+如果您想自定义可视化，请参阅下表中的附加参数。
 
 ## 输入参数
 
@@ -130,4 +134,4 @@ plot_sequence_index(
 
 编辑: 梁彧祺
 
-翻译：何梁星云
+翻译：何梁星云，曲思竹

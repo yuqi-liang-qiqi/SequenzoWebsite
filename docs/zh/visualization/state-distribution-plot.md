@@ -13,24 +13,30 @@ If you run it in a Jupyter Notebook, the figure appears under the cell. If you r
 
 ## 函数用法
 
+仅包含必需参数的最小示例（足以满足大多数用例）：
+
 ```python
-plot_state_distribution(
-    seqdata,
-    id_group_df=None,       # 可选的分组信息
-    categories=None,        # 用于分组的列
-    figsize=(12, 7),        # 每个子图的尺寸
-    title=None,             # 图表总标题
-    xlabel="Time",
-    ylabel="State Distribution (%)",
-    save_as=None,           # 保存输出，例如 "plot.png"
-    dpi=200,
-    layout="column",        # 布局方式："column" 或 "grid"
-    stacked=True,           # 堆叠面积图 vs 折线图
-    group_order=None,       # 自定义分组顺序
-    sort_groups="auto",     # "auto","numeric","alpha","none"，分组排序方式
-    show=True               # 显示图表
-)
+plot_state_distribution(sequence_data)
 ```
+`plot_state_distribution` 函数提供了两种基于数据结构的分组方法：
+
+**1. 直接分组**（当分组信息已经在序列数据中时）：
+
+```python
+plot_state_distribution(sequence_data, 
+                        group_by_column="Cluster", 
+                        group_labels=cluster_labels)
+```
+
+**2. 外部分组**（当分组信息位于单独的数据框中时）：
+
+```python
+plot_state_distribution(sequence_data, 
+                        group_dataframe=membership_table, 
+                        group_column_name="Cluster", 
+                        group_labels=cluster_labels)
+```
+如果您想自定义可视化，请参阅下表中的附加参数。
 
 ## 入口参数
 
@@ -117,4 +123,4 @@ plot_state_distribution(seqdata,
 
 编辑：梁彧祺
 
-翻译：何梁星云
+翻译：何梁星云，曲思竹
