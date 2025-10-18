@@ -14,7 +14,7 @@ To develop the website locally, you need to have the following installed on your
 
 ## Getting Started
 
-In side the project root directory, run the following commands:
+Inside the project root directory, run the following commands:
 
 ```bash
 # 1. install dependencies
