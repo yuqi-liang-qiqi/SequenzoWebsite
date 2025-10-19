@@ -172,19 +172,23 @@ export const zh = defineConfig({
           },
         ]
       },
-      // {
-      //   text: 'Sequenzo 和 R',
-      //   items: [
-      //     {
-      //       text: '函数对比',
-      //       link: '/zh/traminer-and-sequenzo/functions-comparison'
-      //     },
-      //     {
-      //       text: '性能差异',
-      //       link: '/zh/traminer-and-sequenzo/performance-diff'
-      //     }
-      //   ]
-      // },
+      {
+        text: 'Sequenzo 和 R',
+        items: [
+          {
+            text: '在 Python 环境中使用 R',
+            link: '/zh/traminer-and-sequenzo/use_R_in_python_environment'
+          },
+          // {
+          //   text: '函数对比',
+          //   link: '/zh/traminer-and-sequenzo/functions-comparison'
+          // },
+          // {
+          //   text: '性能差异',
+          //   link: '/zh/traminer-and-sequenzo/performance-diff'
+          // }
+        ]
+      },
       {
         text: '数据集',
         items: [
