@@ -6,13 +6,13 @@
  * @FilePath: /SequenzoWebsite/docs/en/traminer-and-sequenzo/use_R_in_python_environment.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
-# 在一个 Jupyter Notebook 中将 Sequenzo（Python）与基于 R 的分析相结合
+# 在 Jupyter Notebook 中将 Sequenzo（Python）与基于 R 的分析相结合
 
-有时，即使你已经用 Python 完成了所有繁重的工作，你可能仍然想在分析的最后阶段使用 R。这可能是因为你的合作者是 R 用户，或者是因为某些专用模型或图表只能在 R 中使用。我们无需在 R 和 Python 工作环境之间来回导出 CSV 文件，而是可以直接在同一个 Jupyter Notebook 中让 Python 和 R 进行交互。
+有时候，即使你前面的分析都已经在 Python 里完成了，你可能还是希望在最后一步用 R 来处理。也许是因为你的合作者更习惯用 R，也可能是因为有些 特殊的模型或可视化 只有 R 才能实现。与其在 Python 和 R 之间反复导出、导入 CSV 文件，我们可以让 Python 和 R 在同一个 Jupyter Notebook 里直接“对话”，来实现两种语言的无缝协作。
 
-特别感谢 [Unchitta Kan](https://unchitta.com/)，乔治梅森大学计算社会科学博士生，他建议使用 Python 包 `rpy2` 来实现这一工作流程。
+特别感谢 [Unchitta Kan](https://unchitta.com/)—— 乔治梅森大学计算社会科学博士生，是他建议用户去使用 Python 包中的 `rpy2` 来实现这一工作流程。
 
-在跳入 [我们在 Google Colab 上的编码教程](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/use_R_in_python_environment/example_pairfam_family.ipynb)之前，你可能会发现首先阅读下面的背景部分会有所帮助。我们将介绍需要的关键软件包、我们使用的数据集，以及为什么某些高级回归模型目前在 R 中比在 Python 中更容易运行。
+在跳入 [我们在 Google Colab 上的编码教程](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/use_R_in_python_environment/example_pairfam_family.ipynb)之前，你可能会发现，先阅读下面的背景部分会对接下来等待使用有所帮助。因为我们将介绍你可能需要的关键软件包、我们所使用的数据集，以及为什么某些高级回归模型，目前在 R 的使用中比在 Python 中更容易运行。
 
 ## `rpy2`是什么？
 
