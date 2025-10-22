@@ -19,7 +19,7 @@ Join our Discord channel to iscuss ideas, get help, and hear about upcoming Sequ
 Join our WeChat group here:
 
 <div align="center">
-  <img src="./img/wechat.png" alt="wechat-group" width="60%">
+   <img src="./img/wechat.jpg" alt="WeChat group QR" style="width:60%;max-width:420px;height:auto;" />
 </div>
 
-Thanks a lot for your support! 
+Thanks a lot for your support!
