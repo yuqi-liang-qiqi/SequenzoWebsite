@@ -12,7 +12,7 @@
 
 Join our Discord channel to iscuss ideas, get help, and hear about upcoming Sequenzo versions, tutorials, and workshops first.
 
-➡️ https://discord.gg/3bMDKRHW
+➡️ https://discord.gg/RHfDuu4ETz
 
 ## Chinese community
 
