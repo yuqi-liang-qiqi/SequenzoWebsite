@@ -21,6 +21,11 @@ export const zh = defineConfig({
             text: '下载安装',
             link: '/zh/basics/installing'
           },
+            // 这个逗号不能省略，因为每个 {} 之间都要用逗号做分割
+            {
+                text: '如何加入我们的交流社区',
+                link: '/zh/basics/join-our-community'
+            },
           {
             text: '如何在线查看代码教程',
             link: '/zh/basics/view_tutorials_online'
