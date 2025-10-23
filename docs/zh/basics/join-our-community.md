@@ -4,7 +4,7 @@
 
 欢迎加入我们的 Discord 频道，在这里我们可以一起讨论想法、获取帮助，并第一时间了解 Sequenzo 的最新版本、教程与工作坊。
 
-➡️ https://discord.gg/3bMDKRHW
+➡️ https://discord.gg/RHfDuu4ETz
 
 ## 中文社区
 
