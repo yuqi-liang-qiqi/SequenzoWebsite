@@ -11,7 +11,7 @@
 扫描下方二维码加入微信群：
 
 <div align="center">
-  <img src="./img/wechat%20QR%20code.jpg" alt="wechat%20QR%20code" style="width:60%;max-width:420px;height:auto;" />
+  <img src="./img/wechat2.jpg" alt="wechat%20QR%20code" style="width:60%;max-width:420px;height:auto;" />
 </div>
 
 非常感谢你的支持！
