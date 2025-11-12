@@ -15,11 +15,16 @@ Join our Discord channel to iscuss ideas, get help, and hear about upcoming Sequ
 ➡️ https://discord.gg/RHfDuu4ETz
 
 ## Chinese community
-
+D
 Join our WeChat group here:
 
 <div align="center">
-   <img src="./img/wechat3.jpg" alt="WeChat group QR" style="width:60%;max-width:420px;height:auto;" />
+   <div align="center">
+
+![Join our WeChat](./img/wechat4.jpg)
+
+</div>
+
 </div>
 
 Thanks a lot for your support!

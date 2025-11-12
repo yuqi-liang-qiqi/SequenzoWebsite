@@ -11,7 +11,11 @@
 扫描下方二维码加入微信群：
 
 <div align="center">
-  <img src="./img/wechat3.jpg" alt="wechat%20QR%20code" style="width:60%;max-width:420px;height:auto;" />
+<div align="center">
+
+![Join our WeChat](./img/wechat4.jpg)
+
 </div>
+
 
 非常感谢你的支持！
