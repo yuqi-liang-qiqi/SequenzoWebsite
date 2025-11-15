@@ -45,6 +45,10 @@ export const zh = defineConfig({
           {
             text: '如何处理加权数据',
             link: '/zh/basics/weighted_data'
+          },
+          {
+              text: '在 MacOS 上使用 Sequenzo',
+              link: '/zh/basics/using-sequenzo-on-MacOS'
           }
         ]
       },
@@ -59,10 +63,6 @@ export const zh = defineConfig({
             text: '时点、时长和顺序',
             link: '/zh/tutorials/timing-duration-order'
           },
-          // {
-          //   text: '理解非相似度量',
-          //   link: '/zh/tutorials/dissimilarity-measures'
-          // }
         ]
       },
       {
