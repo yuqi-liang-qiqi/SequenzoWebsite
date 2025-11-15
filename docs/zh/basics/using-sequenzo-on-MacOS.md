@@ -1,7 +1,7 @@
 # 如何在 MacOS 上使用 Sequenzo
 
 <div style="padding:8px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">
-<h3>前置条件：</h3>
+<h4>前置条件：</h4>
   <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     <li><input type="checkbox"> Python3.12 版本（3.9～3.12 均可）</li>
     <li><input type="checkbox"> IDE（VS Code 或 PyCharm）</li>
