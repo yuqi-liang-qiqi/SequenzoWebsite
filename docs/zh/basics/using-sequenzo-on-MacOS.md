@@ -1,7 +1,7 @@
 # 如何在 MacOS 上使用 Sequenzo
 
-<div style="padding:8px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">
-<h4>前置条件：</h4>
+<div style="margin-top:37px; padding:8px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">
+<p style="margin-top:8px;"><b>前置条件：</b></p>
   <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     <li><input type="checkbox"> Python3.12 版本（3.9～3.12 均可）</li>
     <li><input type="checkbox"> IDE（VS Code 或 PyCharm）</li>
@@ -10,28 +10,25 @@
   </ul>
 </div>
 
----
-# 食用指南
-| 如果你（是）  | 跳转                                          |
+## 食用指南
+| 如果你（是）  | 跳转到                                         |
 |---|---------------------------------------------|
 |  纯小白 | [这里](#如果你是纯小白)                              |
-|  已经有 Python，但是没有指定的 Python 版本 | [这里](#如果你已经有-Python，但没有指定版本的-Python)        |
-| 已经有了指定 Python，且用 VS Code  | [这里](#如果你已经有了指定-Python，且用-VS-Code)          |
-| 之前下载了 Sequenzo  | [这里](#如果你之前下载了-Sequenzo)                    |
-| 打算用 PyCharm  | [这里](#如果你打算用-PyCharm)                       |
-| 使用的是 conda/pyenv/virtualenv  | [这里](#如果你使用的是-conda/pyenv/virtualenv-Python) |
+| 之前下载了 Sequenzo  | [这里](#如果你之前下载了-sequenzo)                    |
+|  已经有 Python，但是没有指定的 Python 版本 | [这里](#如果你已经有-python-但没有指定版本的-python)        |
+| 已经有了指定 Python，且用 VS Code  | [这里](#如果你已经有了指定-python-且用-vs-code)          |
+| 打算用 PyCharm  | [这里](#如果你打算用-pycharm)                       |
+| 使用的是 conda/pyenv/virtualenv  | [这里](#如果你用的是-conda-pyenv-virtualenv-python) |
 
-我们建议先通读一遍教程，然后再开始实操。先通读教程，可以帮助你知道整个流程大概是怎么回事：知道大概的步骤都有哪些、配置的环境是什么样子、可能出现哪些问题以及常见的解决方案。遇到问题时，也能更快在教程的 [Q&As](#Q&As) 里找到答案。
+我们建议先通读一遍教程，然后再开始实操。先通读教程，可以帮助你知道整个流程大概是怎么回事：知道大概的步骤都有哪些、配置的环境是什么样子、可能出现哪些问题以及常见的解决方案。遇到问题时，也能更快在教程的 [Q&As](#q-as) 里找到答案。
 
-也同样建议学习 [多Python版本管理](#多-Python-管理)，这样你可以知道 Python 究竟安装到了哪里，虚拟环境在哪里，下载的包又去了哪里，以及如何管理多个不同版本的 Python 项目。
+也同样建议学习 [多 Python 版本管理](#_1-多-python-版本管理)，这样你可以知道 Python 究竟安装到了哪里，虚拟环境在哪里，下载的包又去了哪里，以及如何管理多个不同版本的 Python 项目。
 
----
+## 如果你是纯小白
 
-# 如果你是纯小白
+### Step 1：下载 Python 解释器
 
-## Step 1：下载 Python 解释器
-
-进入 Python 官网，滚轮滚到页面最下面，选择 MacOS 平台上的 Python 解释器：
+进入 [Python 官网](https://www.python.org/downloads/release/python-3124/)，滚轮滚到页面最下面，选择 MacOS 平台上的 Python 解释器：
 
 ![图1](./img/MacOS_tutorial_img/m1.png)
 
@@ -66,12 +63,14 @@ MacOS 会自动配置和管理 Python，所以一路默认即可。
 
 ![图11](./img/MacOS_tutorial_img/m11.png)
 
-## Step 2：下载 VS Code
+---
+
+### Step 2：下载 VS Code
 <div style="padding:8px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">
 如果你已经下载了 VS Code，跳过此步。
 </div>
 
-官方下载地址为：VS Code 官网。
+官方下载地址为：[VS Code 官网](https://code.visualstudio.com/)。
 
 ![图12](./img/MacOS_tutorial_img/m12.png)
 
@@ -82,7 +81,7 @@ MacOS 会自动配置和管理 Python，所以一路默认即可。
 ![图15](./img/MacOS_tutorial_img/m15.png)
 
 然后直接点击`.app`，你就可以使用 VS Code 了🎉<br>
-PS：你可以将 VS Code.app 移到 Application 喔～
+*PS：你可以将 VS Code.app 移到 Application 喔～*
 
 ---
 
@@ -92,25 +91,30 @@ PS：你可以将 VS Code.app 移到 Application 喔～
 
 因为是第一次下载 VS Code，所以 VS Code 也会提供熟悉其界面的新手教程，建议不要跳过。
 
-## Step 3：下载 Extension 拓展
+---
+
+### Step 3：下载 Extension 拓展
 为保证 VS Code 顺利运行 Sequenzo，我们需要在 VS Code 里下载：
 - Python
 - Jupyter
 
 由于 Python 和 Jupyter 扩展的文件体积较大，下载时间可能会久一点。如果微软 CDN 恰好不稳定，而且 VS Code 也没走代理的话，大概需要 5-10mins 左右。
 
-<div style="padding:8px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">即使你已经下载或使用过了 VS Code，也请检查是否已经下载了这两个扩展。
+<div style="padding:8px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">
+即使你已经下载或使用过了 VS Code，也请检查是否已经下载了这两个扩展。
 </div>
 
-![图17](./img/MacOS_tutorial_img/m10.png)
+![图17](./img/MacOS_tutorial_img/m17.png)
 
 ![图18](./img/MacOS_tutorial_img/m18.png)
 
-这步最容易遇到的错误，是由网络原因导致的下载慢或者下载失败。如果遇到了这种情况，移步 [Q&As](#Q&As)。
+这步最容易遇到的错误，是由网络原因导致的下载慢或者下载失败。如果遇到了这种情况，移步 [Q&As](#q-as)。
 
-## Step 4：配置项目环境
+---
 
-### 1. 创建项目并打开
+### Step 4：配置项目环境
+
+#### 1. 创建项目并打开
 
 由于 VS Code 是一款轻量级的 IDE，它本身并不提供直接创建新项目的功能，因此我们需要先在本地手动创建项目文件夹。
 
@@ -122,9 +126,11 @@ PS：你可以将 VS Code.app 移到 Application 喔～
 
 ![图21](./img/MacOS_tutorial_img/m21.png)
 
-### 2. 创建虚拟环境
+---
 
-我们这里使用 venv 创建虚拟环境，如果你想用 conda/pyenv/virtualenv，请移步 [这里](#如果你用的是-conda/pyenv/virtualenv)。
+#### 2. 创建虚拟环境
+
+我们这里使用 venv 创建虚拟环境，如果你想用 conda/pyenv/virtualenv，请移步 [这里](#如果你用的是-conda-pyenv-virtualenv-python)。
 
 打开终端，在项目根目录下，创建虚拟环境：
 
@@ -154,7 +160,9 @@ Python: Select Interpreter
 
 这样就可以确保 VS Code 解释器里的虚拟环境和终端里的虚拟环境是一致的，从而避免依赖混乱。
 
-### 3. 下载 Sequenzo
+---
+
+#### 3. 下载 Sequenzo
 
 ```powershell
 pip install sequenzo
@@ -168,7 +176,9 @@ pip install sequenzo
 
 因为 .venv 是我们刚刚创建的崭新的虚拟环境，里面什么都没有，因此才会看到这么多包都被下载了。
 
-## Step 5：运行quickstart.ipynb
+---
+
+### Step 5：运行quickstart.ipynb
 
 ![图27](./img/MacOS_tutorial_img/m27.png)
 
@@ -180,25 +190,21 @@ pip install sequenzo
 
 ![图30](./img/MacOS_tutorial_img/m30.png)
 
-⭕️ 下载完成后，运行文件：（R 接口待解决 ⬇️  ---> 已解决，待发包）
+下载完成后，运行代码：
 
 ![图31](./img/MacOS_tutorial_img/m31.png)
 
----
-
-# 如果你之前下载了 Sequenzo
+## 如果你之前下载了 Sequenzo
 
 因为我们又优化了一版 Sequenzo 包，包括简便了环境配置，加速了 CLARA 计算等等。
 
 所以请`pip uninstall sequenzo`卸载，然后`pip install sequenzo`重新下载。
 
----
-
-# 如果你已经有 Python，但没有指定版本的 Python
+## 如果你已经有 Python，但没有指定版本的 Python
 
 为了延续你现有的风格，我们考虑了所有可用于管理 Python 的工具（如果想了解这些工具，请移步这里）。按照自己当前的风格选择即可。
 
-1. 如果你现在的 Python 是从官网上下载的：请看 [这里](#Step-1：下载-Python-解释器)
+1. 如果你现在的 Python 是从 [官网](https://www.python.org/downloads/release/python-3124/) 上下载的：请看 [这里](#step-1-下载-python-解释器)。
 
 ---
 
@@ -225,7 +231,7 @@ Python: Select Interpreter
 
 ---
 
-3. 如果你现在的 Python 是在 pyvenv 里：pyvenv 在 Python 3.8+ 已弃用，推荐使用 venv（教程里使用的就是 venv），即 [这里](#Step-1：下载-Python-解释器) 。
+3. 如果你现在的 Python 是在 pyvenv 里：pyvenv 在 Python 3.8+ 已弃用，推荐使用 venv（教程里使用的就是 venv），即 [这里](#step-1-下载-python-解释器) 。
 
 在 VS Code 或 PyCharm 里配置虚拟环境，与本节 第2点 里的操作一致，只是在选择时有所不同。
 
@@ -239,9 +245,7 @@ virtualenv -p python3.10 venv
 
 在 VS Code 或 PyCharm 里配置虚拟环境，与本节 第2点 里的操作一致，只是在选择时有所不同。
 
----
-
-# 如果你已经有了指定 Python，且用 VS Code
+## 如果你已经有了指定 Python，且用 VS Code
 
 1. 如果你打算在已经打开的项目里使用 Sequenzo：
 
@@ -249,15 +253,13 @@ virtualenv -p python3.10 venv
 
 ---
 
-2. 如果你打算新建项目，然后使用 Sequenzo，请移步 [这里](#Step-4：配置项目环境)。
+2. 如果你打算新建项目，然后使用 Sequenzo，请移步 [这里](#step-4-配置项目环境)。
 
----
-
-# 如果你打算用 PyCharm
+## 如果你打算用 PyCharm
 
 我们不推荐小白使用 PyCharm，因为 PyCharm 很重，不容易上手。而且如果不是专业版（付费），是社区版（免费），功能也会被阉割的很严重。加之申请学生资质有点小麻烦，而且还要等审核。
 
-如果你是小白，而且仍然选择用 PyCharm，请确保：你已经有了相应版本的 Python。如果没有，请看 [这里](#Step-1：下载-Python-解释器)。
+如果你是小白，而且仍然选择用 PyCharm，请确保：你已经有了相应版本的 Python。如果没有，请看 [这里](#step-1-下载-python-解释器)。
 
 ---
 
@@ -281,13 +283,11 @@ virtualenv -p python3.10 venv
 
 ![图41](./img/MacOS_tutorial_img/m41.png)
 
-⭕️ 这里也要更新
-
 ![图42](./img/MacOS_tutorial_img/m42.png)
 
----
+![图55](./img/MacOS_tutorial_img/m55.png)
 
-# 如果你用的是 conda/pyenv/virtualenv Python
+## 如果你用的是 conda/pyenv/virtualenv Python
 
 我们以 conda 举例，因为其他均是一样的操作。
 
@@ -295,7 +295,7 @@ virtualenv -p python3.10 venv
 
 ![图43](./img/MacOS_tutorial_img/m43.png)
 
-然后接下来的流程继续看 [Step-4：配置项目环境](#Step-4：配置项目环境)。
+然后接下来的流程继续看 [Step-4：配置项目环境](#step-4-配置项目环境)。
 
 ---
 
@@ -313,11 +313,9 @@ virtualenv -p python3.10 venv
 
 ![图46](./img/MacOS_tutorial_img/m46.png)
 
----
+## Q&As
 
-# Q&As
-
-## 1. pip install 失败或太慢
+### 1. `pip install` 失败或太慢
 
 因为pip install需要联网，所以大概率是网络被卡掉了。因此用镜像下载即可：
 
@@ -325,7 +323,9 @@ virtualenv -p python3.10 venv
 pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
 ```
 
-## 2. Jupyter Extension下载失败
+---
+
+### 2. Jupyter Extension下载失败
 
 如果出现了 Jupyter 下载失败的情况：
 
@@ -413,11 +413,9 @@ at async qh.Bb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resourc
 - 部分代理由于保密技术或协议不同，不会向用户提供代理端口号。
 - 你的代理实际上可能只能代理浏览器流量，无法单独设置让特定软件或服务走代理。
 
----
+## 延伸学习
 
-# 延伸学习
-
-## 1. 多 Python 版本管理
+### 1. 多 Python 版本管理
 
 MacOS 不需要配置，原生就支持在系统里同时安装多个 Python 版本。
 
@@ -429,7 +427,7 @@ MacOS 多 Python 之间不会覆盖，因为存储 Python 的路径都是不同�
 | ----------- | ----------- |
 | `/usr/local/bin/python3.9`<br>`/usr/local/bin/python3.10`<br>`/Library/Frameworks/Python.framework/...`      | `/opt/homebrew/bin/python3.9`<br>`/opt/homebrew/bin/python3.10`       |
 
-## 2. 电脑终端、VS Code 里的终端、Jupyter Notebook 里的 Kernel
+### 2. 电脑终端、VS Code 里的终端、Jupyter Notebook 里的 Kernel
 
 电脑终端 = 原生系统命令行<br>
 VS Code 终端 = 路径更好的系统终端<br>
@@ -472,10 +470,14 @@ VS Code 只是把 电脑终端嵌进 IDE 里了，本质上仍然是系统终端
 
 ---
 
-暂时无法在飞书文档外展示此内容
-
-## 3. CMD vs PowerShell
+### 3. CMD vs PowerShell
 推荐：[windows为什么有两个命令行工具？命令提示符与PowerShell有什么区别？](https://www.bilibili.com/video/BV1Nx4y147n3/?share_source=copy_web&vd_source=f5a787d66053e1da88bd20e1453aff9f)。
 
-## 4. VS Code 的详细使用教程
+---
+
+### 4. VS Code 的详细使用教程
 详见：[VS Code 使用官方教程](https://code.visualstudio.com/docs/introvideos/basics)
+
+---
+
+*文档：李欣怡*，*编辑：梁彧祺*
