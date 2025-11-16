@@ -49,7 +49,11 @@ export const zh = defineConfig({
           {
               text: '在 MacOS 上使用 Sequenzo',
               link: '/zh/basics/using-sequenzo-on-MacOS'
-          }
+          },
+            {
+                text: '在 Windows 上使用 Sequenzo',
+                link: '/zh/basics/using-sequenzo-on-Windows'
+            }
         ]
       },
       {
