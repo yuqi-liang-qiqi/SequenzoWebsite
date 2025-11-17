@@ -7,14 +7,14 @@
 > ☐ 下载 `quickstart.ipynb`<br>
 
 ## 使用指南
-| 如果你                             | 跳转到                                                                                                                                 |
-|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| 是纯小白                            | [这里](#如果你是纯小白)                                                                                                                      |
-| 之前下载了 Sequenzo                  | [这里](#如果你之前下载了-sequenzo)                                                                                                            |
-| 已经有 Python，但是没有指定的 Python 版本    | [这里](#如果你已经有-python-但没有指定版本的-python)                                                                                                |
-| 已经有了指定 Python，且用 VS Code        | [这里](#如果你已经有了指定-python-且用-vs-code)                                                                                                  |
-| 打算用 PyCharm                     | [这里](#如果你打算用-pycharm)                                                                                                               |
-| 虚拟环境使用的是 conda/pyenv/virtualenv | [这里](#如果你用的是-conda-pyenv-virtualenv-python) <br> *如果你不知道虚拟环境是什么以及如何使用，[这里](https://www.yuqi-liang.tech/blog/virtual-environment/)。* |
+| 如果你                             | 跳转到                                                                                                                          |
+|---------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| 是纯小白                            | [这里](#如果你是纯小白)                                                                                                               |
+| 之前下载了 Sequenzo                  | [这里](#如果你之前下载了-sequenzo)                                                                                                     |
+| 已经有 Python，但是没有指定的 Python 版本    | [这里](#如果你已经有-python-但没有指定版本的-python)                                                                                         |
+| 已经有了指定 Python，且用 VS Code        | [这里](#如果你已经有了指定-python-且用-vs-code)                                                                                           |
+| 打算用 PyCharm                     | [这里](#如果你打算用-pycharm)                                                                                                        |
+| 虚拟环境使用的是 conda/pyenv/virtualenv | [这里](#如果你用的是-conda-pyenv-virtualenv) <br> *如果你不知道虚拟环境是什么以及如何使用，[这里](https://www.yuqi-liang.tech/blog/virtual-environment/)。* |
 
 我们建议先通读一遍教程，然后再开始实操。先通读教程，可以帮助你知道整个流程大概是怎么回事。
 比如，你会知道大概的步骤都有哪些、配置的环境是什么样子、可能出现哪些问题，以及常见的解决方案。
@@ -26,6 +26,9 @@
 ## 如果你是纯小白
 
 ### Step 1：下载 Python 解释器
+
+解释器是什么？为什么要配置解释器？移步 [这里](#python-interpreter)。<br>
+如果你印象中自己之前好像下载过 Python，检查 [之前有没有下载过 Python](#_5-查看自己之前有没有下载过-python)。
 
 进入 [Python 官网](https://www.python.org/downloads/release/python-3124/)，
 滚轮滚到页面最下面，选择 MacOS 平台上的 Python 解释器：
@@ -320,9 +323,7 @@ virtualenv -p python3.10 venv
 
 ### 1. 如果你在 VS Code 里：
 
-（这个要改 ⬇️）
-
-![图43](./img/MacOS_tutorial_img/m43.png)
+![图44](./img/MacOS_tutorial_img/m44.png)
 
 然后接下来的流程继续看 [Step-4：配置项目环境](#step-4-配置项目环境)。
 
@@ -332,15 +333,16 @@ virtualenv -p python3.10 venv
 
 **如果你是在已有项目里：**
 
-![图44](./img/MacOS_tutorial_img/m44.png)
-
 ![图45](./img/MacOS_tutorial_img/m45.png)
+
+![图46](./img/MacOS_tutorial_img/m46.png)
 
 ---
 
 **如果你是新建项目：**
 
-![图46](./img/MacOS_tutorial_img/m46.png)
+请移步 [如果你打算用 PyCharm](#如果你打算用-pycharm) 里的 *如果你是新建项目*。<br>
+按照你当前使用的虚拟环境管理工具，只是环境类型的选择不同而已，其他均一致。
 
 ## Q&As
 
@@ -605,7 +607,10 @@ Python 源代码是 `.py` 文件，是文本形式的指令。
 
 ---
 
-### 5. VS Code 的详细使用教程
+### 5. 查看自己之前有没有下载过 Python
+![img.png](img/MacOS_tutorial_img/img_9.png)
+
+### 6. VS Code 的详细使用教程
 详见 [VS Code 官方使用教程](https://code.visualstudio.com/docs/introvideos/basics)。
 
 ---

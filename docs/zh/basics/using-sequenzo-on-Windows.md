@@ -7,14 +7,14 @@
 > ☐ 下载 `quickstart.ipynb`<br>
 
 ## 使用指南
-| 如果你                          | 跳转到                                         |
-|------------------------------|---------------------------------------------|
-| 是纯小白                         | [这里](#如果你是纯小白)                              |
-| 之前下载了 Sequenzo               | [这里](#如果你之前下载了-sequenzo)                    |
-| 已经有 Python，但是没有指定的 Python 版本 | [这里](#如果你已经有-python-但没有指定版本的-python)        |
-| 已经有了指定 Python，且用 VS Code     | [这里](#如果你已经有了指定-python-且用-vs-code)          |
-| 打算用 PyCharm                  | [这里](#如果你打算用-pycharm)                       |
-| 虚拟环境使用的是 conda/pyenv/virtualenv  | [这里](#如果你用的是-conda-pyenv-virtualenv-python)*如果你不知道虚拟环境是什么以及如何使用，[这里](https://www.yuqi-liang.tech/blog/virtual-environment/)。* |
+| 如果你                          | 跳转到                                                                                                                        |
+|------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| 是纯小白                         | [这里](#如果你是纯小白)                                                                                                             |
+| 之前下载了 Sequenzo               | [这里](#如果你之前下载了-sequenzo)                                                                                                   |
+| 已经有 Python，但是没有指定的 Python 版本 | [这里](#如果你已经有-python-但没有指定版本的-python)                                                                                       |
+| 已经有了指定 Python，且用 VS Code     | [这里](#如果你已经有了指定-python-且用-vs-code)                                                                                         |
+| 打算用 PyCharm                  | [这里](#如果你打算用-pycharm)                                                                                                      |
+| 虚拟环境使用的是 conda/pyenv/virtualenv  | [这里](#如果你用的是-conda-pyenv-virtualenv)<br>*如果你不知道虚拟环境是什么以及如何使用，[这里](https://www.yuqi-liang.tech/blog/virtual-environment/)。* |
 
 我们建议先通读一遍教程，然后再开始实操。先通读教程，可以帮助你知道整个流程大概是怎么回事。
 比如，你会知道大概的步骤都有哪些、配置的环境是什么样子、可能出现哪些问题，以及常见的解决方案。
@@ -26,7 +26,7 @@
 ## 如果你是纯小白
 ### Step 1：下载 Python 解释器
 
-（解释解释器，英文也要写）
+解释器是什么？为什么要配置解释器？移步 [这里](#python-interpreter)。
 
 （有的人有 Python，但是不知道自己是什么版本）
 
@@ -47,7 +47,8 @@
 
 ![图5](./img/Windows_tutorial_img/w5.png)
 
-（安装在你清晰的位置，既能帮助你xxx，也能帮你在日后学习 Python xxx，事半功倍）
+建议将 Python 安装在你清晰的位置。<br>
+这样既能让你轻松找到，也能让你在日后学习 Python 时事半功倍。
 
 ![图6](./img/Windows_tutorial_img/w6.png)
 
@@ -60,8 +61,11 @@
 ---
 ### Step 2：设置 Python 环境变量
 
-（千万不要紧张）
-（系统变量是什么，有什么效果，作用是什么）
+请不要紧张，我会尽量展示每个步骤及其可能的结果，只要照着步骤操作一步一步来就可以。
+
+环境变量 = 系统的索引表，是告诉系统去哪里找程序的。<br>
+设置 Python 环境变量可以让你在终端随时运行 `python` 和 `pip`，而不用输入完整的路径。<br>
+
 ![图10](./img/Windows_tutorial_img/w10.png)
 
 ![图11](./img/Windows_tutorial_img/w11.png)
@@ -710,7 +714,7 @@ Python 源代码是 `.py` 文件，是文本形式的指令。
 
 ---
 ### 6. VS Code 的详细使用教程
-详见：[VS Code 官方使用教程](https://code.visualstudio.com/docs/introvideos/basics)
+详见 [VS Code 官方使用教程](https://code.visualstudio.com/docs/introvideos/basics)
 
 ---
 *文档：李欣怡、何梁星云*
