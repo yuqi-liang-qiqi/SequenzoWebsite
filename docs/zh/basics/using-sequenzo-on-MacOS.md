@@ -1,34 +1,34 @@
 # 如何在 MacOS 上使用 Sequenzo
 
-<div style="margin-top:37px; padding:8px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">
-<p style="margin-top:8px;"><b>前置条件：</b></p>
-  <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-    <li><input type="checkbox"> Python3.12 版本（3.9～3.12 均可）</li>
-    <li><input type="checkbox"> IDE（VS Code 或 PyCharm）</li>
-    <li><input type="checkbox"> 下载 Sequenzo</li>
-    <li><input type="checkbox"> 下载 quickstart.ipynb</li>
-  </ul>
-</div>
+> [!TIP] 前置条件：
+> ☐ Python 3.12 版本（3.9～3.12 均可）<br>
+> ☐ IDE（VS Code 或 PyCharm）<br>
+> ☐ 下载 Sequenzo<br>
+> ☐ 下载 `quickstart.ipynb`<br>
 
-## 食用指南
-| 如果你（是）  | 跳转到                                         |
-|---|---------------------------------------------|
-|  纯小白 | [这里](#如果你是纯小白)                              |
-| 之前下载了 Sequenzo  | [这里](#如果你之前下载了-sequenzo)                    |
-|  已经有 Python，但是没有指定的 Python 版本 | [这里](#如果你已经有-python-但没有指定版本的-python)        |
-| 已经有了指定 Python，且用 VS Code  | [这里](#如果你已经有了指定-python-且用-vs-code)          |
-| 打算用 PyCharm  | [这里](#如果你打算用-pycharm)                       |
-| 使用的是 conda/pyenv/virtualenv  | [这里](#如果你用的是-conda-pyenv-virtualenv-python) |
+## 使用指南
+| 如果你                             | 跳转到                                                                                                                                 |
+|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| 是纯小白                            | [这里](#如果你是纯小白)                                                                                                                      |
+| 之前下载了 Sequenzo                  | [这里](#如果你之前下载了-sequenzo)                                                                                                            |
+| 已经有 Python，但是没有指定的 Python 版本    | [这里](#如果你已经有-python-但没有指定版本的-python)                                                                                                |
+| 已经有了指定 Python，且用 VS Code        | [这里](#如果你已经有了指定-python-且用-vs-code)                                                                                                  |
+| 打算用 PyCharm                     | [这里](#如果你打算用-pycharm)                                                                                                               |
+| 虚拟环境使用的是 conda/pyenv/virtualenv | [这里](#如果你用的是-conda-pyenv-virtualenv-python) <br> *如果你不知道虚拟环境是什么以及如何使用，[这里](https://www.yuqi-liang.tech/blog/virtual-environment/)。* |
 
-我们建议先通读一遍教程，然后再开始实操。先通读教程，可以帮助你知道整个流程大概是怎么回事：知道大概的步骤都有哪些、配置的环境是什么样子、可能出现哪些问题以及常见的解决方案。遇到问题时，也能更快在教程的 [Q&As](#q-as) 里找到答案。
+我们建议先通读一遍教程，然后再开始实操。先通读教程，可以帮助你知道整个流程大概是怎么回事。
+比如，你会知道大概的步骤都有哪些、配置的环境是什么样子、可能出现哪些问题，以及常见的解决方案。
+遇到问题时，也能更快在教程的 [Q&As](#q-as) 里找到答案。
 
-也同样建议学习 [多 Python 版本管理](#_1-多-python-版本管理)，这样你可以知道 Python 究竟安装到了哪里，虚拟环境在哪里，下载的包又去了哪里，以及如何管理多个不同版本的 Python 项目。
+也同样建议学习 [多 Python 版本管理](#_1-多-python-版本管理)，
+这样你可以知道 Python 究竟安装到了哪里、虚拟环境在哪里、下载的包又去了哪里，以及如何管理多个不同版本的 Python 项目。
 
 ## 如果你是纯小白
 
 ### Step 1：下载 Python 解释器
 
-进入 [Python 官网](https://www.python.org/downloads/release/python-3124/)，滚轮滚到页面最下面，选择 MacOS 平台上的 Python 解释器：
+进入 [Python 官网](https://www.python.org/downloads/release/python-3124/)，
+滚轮滚到页面最下面，选择 MacOS 平台上的 Python 解释器：
 
 ![图1](./img/MacOS_tutorial_img/m1.png)
 
@@ -54,7 +54,6 @@ MacOS 会自动配置和管理 Python，所以一路默认即可。
 
 ![图9](./img/MacOS_tutorial_img/m9.png)
 
-
 安装完成后，关闭安装程序。
 
 ![图10](./img/MacOS_tutorial_img/m10.png)
@@ -67,9 +66,8 @@ MacOS 会自动配置和管理 Python，所以一路默认即可。
 
 ### Step 2：下载 VS Code
 
-<div style="padding:20px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">
-如果你已经下载了 VS Code，跳过此步。
-</div>
+> [!TIP] <span style="font-weight: normal;">如果你已经下载了 VS Code，跳过此步。</span>
+
 
 官方下载地址为：[VS Code 官网](https://code.visualstudio.com/)。
 
@@ -81,8 +79,13 @@ MacOS 会自动配置和管理 Python，所以一路默认即可。
 
 ![图15](./img/MacOS_tutorial_img/m15.png)
 
-然后直接点击 `.app`，你就可以使用 VS Code 了🎉<br>
-*PS：你可以将 VS Code.app 移到 Application 喔～*
+然后将 VS Code.app 移到 Application。
+
+![图56](./img/MacOS_tutorial_img/m56.png)
+
+最后直接点击 `.app`，你就可以使用 VS Code 了 🎉
+
+![图57](./img/MacOS_tutorial_img/m57.png)
 
 ---
 
@@ -94,24 +97,29 @@ MacOS 会自动配置和管理 Python，所以一路默认即可。
 
 ---
 
-### Step 3：下载 Extension 拓展
+### Step 3：下载 Extension 扩展
+
+由于 VS Code 是一款轻量级的 IDE（Integration Development Environment，集成开发环境），
+所以只有基础功能，额外的功能则需要通过插件实现，这些插件我们称之为扩展（Extension）。
+
 为保证 VS Code 顺利运行 Sequenzo，我们需要在 VS Code 里下载：
 - Python
 - Jupyter
 
-<div style="padding:8px; background-color:#fff9d6; border:1px solid #f5e200; border-radius:5px;">
-即使你已经下载或使用过了 VS Code，也请检查是否已经下载了这两个扩展。
-</div>
+> [!TIP] <span style="font-weight: normal;">即使你已经下载或使用过了 VS Code，也请检查是否已经下载了这两个扩展。</span>
+
+但由于 Python 和 Jupyter 扩展的文件体积较大，可能会遇到下载时间可能会久一点。
+如果微软 CDN（Content Delivery Network，内容分发网络。是微软提供的一种全球分布式网络服务，用于加速网站、应用或文件的访问速度） 恰好不稳定，
+而且 VS Code 也没走代理（即 VPN/梯子/魔法）的话，大概需要 5-10 分钟。
 
 一般情况下，下载很快就会完成。
-
-但由于 Python 和 Jupyter 扩展的文件体积较大，可能会遇到下载时间可能会久一点。如果微软 CDN 恰好不稳定，而且 VS Code 也没走代理的话，大概需要 5-10mins 左右。
 
 ![图17](./img/MacOS_tutorial_img/m17.png)
 
 ![图18](./img/MacOS_tutorial_img/m18.png)
 
-这步最容易遇到的错误，是由网络原因导致的下载慢或者下载失败。如果遇到了这种情况，移步 [Q&As](#q-as)。
+这步最容易遇到的错误，是由网络原因导致的下载慢或者下载失败。
+如果遇到了这种情况，移步 [Q&As](#q-as)。
 
 ---
 
@@ -119,7 +127,7 @@ MacOS 会自动配置和管理 Python，所以一路默认即可。
 
 #### 1. 创建项目并打开
 
-由于 VS Code 是一款轻量级的 IDE，它本身并不提供直接创建新项目的功能，因此我们需要先在本地手动创建项目文件夹。
+正因为 VS Code 是一款轻量级的 IDE，它本身并不提供直接创建新项目的功能，因此我们需要先在本地手动创建项目文件夹。
 
 ![图19](./img/MacOS_tutorial_img/m19.png)
 
@@ -133,25 +141,29 @@ MacOS 会自动配置和管理 Python，所以一路默认即可。
 
 #### 2. 创建虚拟环境
 
-我们这里使用 venv 创建虚拟环境，如果你想用 conda/pyenv/virtualenv，请移步 [这里](#如果你用的是-conda-pyenv-virtualenv-python)。
+虚拟环境是一个独立的 Python 运行空间，用来管理项目所需的 Python 版本和依赖库。
+Sequenzo 就是一个 Python 包，需要在虚拟环境里下载。
+
+我们这里使用 `venv` 创建虚拟环境，如果你想用 `conda/pyenv/virtualenv`，请移步 [这里](#如果你用的是-conda-pyenv-virtualenv-python)。
 
 打开终端，在项目根目录下，创建虚拟环境：
+```powershell
+python3.12 -m venv sequenzo_project
+```
+注意这里的命名，这是一个良好的编程习惯， 我们建议不同的项目用不同的虚拟环境。<br>
+比如，如果想用虚拟环境在其他的项目里，就换个名字，比如 `sequence_analysis`。
+
+![img_2.png](img/MacOS_tutorial_img/img_2.png)
+
+激活终端的虚拟环境（即项目根目录下的 `sequenzo_project`）：
 
 ```powershell
-python3.12 -m venv .venv
+source sequenzo_project/bin/activate
 ```
 
-![图22](./img/MacOS_tutorial_img/m22.png)
+![img_3.png](img/MacOS_tutorial_img/img_3.png)
 
-激活终端的虚拟环境（即项目根目录下的 .venv）：
-
-```powershell
-source .venv/bin/activate
-```
-
-![图23](./img/MacOS_tutorial_img/m23.png)
-
-配置 VS Code 的解释器：按 `⌘ + Shift + P`，然后输入并回车：
+配置 VS Code 的 [解释器](#python-interpreter)：按 `⌘ + Shift + P`，然后输入并回车：
 
 ```bash
 Python: Select Interpreter
@@ -159,7 +171,7 @@ Python: Select Interpreter
 
 同样选择项目根目录下的 .venv：
 
-![图24](./img/MacOS_tutorial_img/m24.png)
+![img_4.png](img/MacOS_tutorial_img/img_4.png)
 
 这样就可以确保 VS Code 解释器里的虚拟环境和终端里的虚拟环境是一致的，从而避免依赖混乱。
 
@@ -168,26 +180,31 @@ Python: Select Interpreter
 #### 3. 下载 Sequenzo
 
 ```powershell
-pip install sequenzo
+pip install sequenzo jupyter
 ```
 
-![图25](./img/MacOS_tutorial_img/m25.png)
+![img_5.png](img/MacOS_tutorial_img/img_5.png)
 
-![图26](./img/MacOS_tutorial_img/m26.png)
+![img_6.png](img/MacOS_tutorial_img/img_6.png)
 
 下载 Sequenzo 时，Sequenzo 也会检查当前环境里是否有它依赖的包，如果没有，则一并下载。
 
-因为 .venv 是我们刚刚创建的崭新的虚拟环境，里面什么都没有，因此才会看到这么多包都被下载了。
+因为 `sequenzo_project` 是我们刚刚创建的崭新的虚拟环境，里面什么都没有，因此才会看到这么多包都被下载了。
 
 ---
 
-### Step 5：运行quickstart.ipynb
+### Step 5：运行 `quickstart.ipynb`
+
+为什么要运行这个？
+
+因为这是我们上课要用的代码教程文件，如果这个文件运行没问题，那么你就可以继续用代码了，
+只不过将里面的数据集换成自己的。
 
 ![图27](./img/MacOS_tutorial_img/m27.png)
 
 ![图28](./img/MacOS_tutorial_img/m28.png)
 
-![图29](./img/MacOS_tutorial_img/m29.png)
+![img_7.png](img/MacOS_tutorial_img/img_7.png)
 
 如果此次是当前虚拟环境第一次运行 Jupyter，则 VS Code 会提醒你在当前虚拟环境里下载运行 Jupyter Notebook 文件，点击“Install”即可。
 
@@ -195,23 +212,27 @@ pip install sequenzo
 
 下载完成后，运行代码：
 
-![图31](./img/MacOS_tutorial_img/m31.png)
+![img_8.png](img/MacOS_tutorial_img/img_8.png)
 
 ## 如果你之前下载了 Sequenzo
 
 因为我们又优化了一版 Sequenzo 包，包括简便了环境配置，加速了 CLARA 计算等等。
 
-所以请 `pip uninstall sequenzo` 卸载，然后 `pip install sequenzo` 重新下载。
+所以请在终端（Terminal） ：
+- 方法 1：直接 `pip install --upgrade sequenzo`；
+- 方法 2：先 `pip uninstall sequenzo` 卸载，然后 `pip install sequenzo` 重新下载。
 
 ## 如果你已经有 Python，但没有指定版本的 Python
 
-为了延续你现有的风格，我们考虑了所有可用于管理 Python 的工具（如果想了解这些工具，请移步这里）。按照自己当前的风格选择即可。
+为了延续你现有的习惯，
+我们在这里列举了所有可用于管理 Python 的工具（如果想了解这些工具，请移步 [这里](https://www.yuqi-liang.tech/blog/virtual-environment/)）。
+按照自己的习惯选择即可。
 
 1. 如果你现在的 Python 是从 [官网](https://www.python.org/downloads/release/python-3124/) 上下载的：请看 [这里](#step-1-下载-python-解释器)。
 
 ---
 
-2. 如果你现在的 Python 是在 conda 里，则创建一个新的虚拟环境：
+2. 如果你现在的 Python 是在 `conda` 里，则创建一个新的虚拟环境：
 
 ```powershell
 conda activate    # 激活 conda 环境
@@ -234,13 +255,13 @@ Python: Select Interpreter
 
 ---
 
-3. 如果你现在的 Python 是在 pyvenv 里：pyvenv 在 Python 3.8+ 已弃用，推荐使用 venv（教程里使用的就是 venv），即 [这里](#step-1-下载-python-解释器) 。
+3. 如果你现在的 Python 是在 `pyvenv` 里：`pyvenv` 在 Python 3.8+ 已弃用，推荐使用 venv（教程里使用的就是 venv），即 [这里](#step-1-下载-python-解释器) 。
 
 在 VS Code 或 PyCharm 里配置虚拟环境，与本节 第2点 里的操作一致，只是在选择时有所不同。
 
 ---
 
-4. 如果你现在的 Python 是在 virtualenv 里：
+4. 如果你现在的 Python 是在 `virtualenv` 里：
 
 ```powershell
 virtualenv -p python3.10 venv
@@ -250,29 +271,32 @@ virtualenv -p python3.10 venv
 
 ## 如果你已经有了指定 Python，且用 VS Code
 
-1. 如果你打算在已经打开的项目里使用 Sequenzo：
+**1. 如果你打算在已经打开的项目里使用 Sequenzo：**
 
 ![图34](./img/MacOS_tutorial_img/m34.png)
 
 ---
 
-2. 如果你打算新建项目，然后使用 Sequenzo，请移步 [这里](#step-4-配置项目环境)。
+**2. 如果你打算新建项目，然后使用 Sequenzo**，请移步 [这里](#step-4-配置项目环境)。
 
 ## 如果你打算用 PyCharm
 
-我们不推荐小白使用 PyCharm，因为 PyCharm 很重，不容易上手。而且如果不是专业版（付费），是社区版（免费），功能也会被阉割的很严重。加之申请学生资质有点小麻烦，而且还要等审核。
+我们不推荐小白使用 PyCharm，因为 PyCharm 功能复杂，不容易上手。
+而且如果不是专业版（付费），是社区版（免费），功能也会被阉割的很严重。
+加之申请学生资质有点小麻烦，而且还要等审核。
 
-如果你是小白，而且仍然选择用 PyCharm，请确保：你已经有了相应版本的 Python。如果没有，请看 [这里](#step-1-下载-python-解释器)。
+如果你是小白，而且仍然选择用 PyCharm，*请确保你已经有了相应版本的 Python*。
+如果没有，请看 [这里](#step-1-下载-python-解释器)。
 
 ---
 
-1. 如果你打算在已经打开的项目里使用 Sequenzo：
+**1. 如果你打算在已经打开的项目里使用 Sequenzo：**
 
 ![图35](./img/MacOS_tutorial_img/m35.png)
 
 ---
 
-2. 如果你打算新建项目，然后使用 Sequenzo：
+**2. 如果你打算新建项目，然后使用 Sequenzo：**
 
 ![图36](./img/MacOS_tutorial_img/m36.png)
 
@@ -290,11 +314,13 @@ virtualenv -p python3.10 venv
 
 ![图55](./img/MacOS_tutorial_img/m55.png)
 
-## 如果你用的是 conda/pyenv/virtualenv Python
+## 如果你用的是 `conda/pyenv/virtualenv`
 
-我们以 conda 举例，因为其他均是一样的操作。
+我们以 `conda` 举例，因为其他均是一样的操作。
 
-1. 如果你在 VS Code 里：
+### 1. 如果你在 VS Code 里：
+
+（这个要改 ⬇️）
 
 ![图43](./img/MacOS_tutorial_img/m43.png)
 
@@ -302,9 +328,9 @@ virtualenv -p python3.10 venv
 
 ---
 
-2. 如果你在 PyCharm 里：
+### 2. 如果你在 PyCharm 里：
 
-如果你是在已有项目里：
+**如果你是在已有项目里：**
 
 ![图44](./img/MacOS_tutorial_img/m44.png)
 
@@ -312,7 +338,7 @@ virtualenv -p python3.10 venv
 
 ---
 
-如果你是新建项目：
+**如果你是新建项目：**
 
 ![图46](./img/MacOS_tutorial_img/m46.png)
 
@@ -320,7 +346,7 @@ virtualenv -p python3.10 venv
 
 ### 1. `pip install` 失败或太慢
 
-因为pip install需要联网，所以大概率是网络被卡掉了。因此用镜像下载即可：
+因为`pip install`需要联网，所以大概率是网络被卡掉了。因此用镜像下载即可：
 
 ```powershell
 pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
@@ -360,7 +386,7 @@ at async qh.Cb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resourc
 at async qh.Bb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:74:64518)
 ```
 
-可以发现，Jupyter 报了net::ERR_CONNECTION_CLOSED的错误，说明在网络层面被卡住了，大概率是因为微软扩展 CDN 被墙了，国内访问微软 CDN 确实不太稳定。
+可以发现，Jupyter 报了`net::ERR_CONNECTION_CLOSED的错误，说明在网络层面被卡住了，大概率是因为微软扩展 CDN 被墙了，国内访问微软 CDN 确实不太稳定。
 
 ---
 
@@ -422,13 +448,21 @@ at async qh.Bb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resourc
 
 MacOS 不需要配置，原生就支持在系统里同时安装多个 Python 版本。
 
-系统会自动帮你创建指令python3.9、python3.10、python3.11、pip3.10 等等，不需要再手动区分。
+系统会自动帮你创建指令 `python3.9`、`python3.10`、`python3.11`、`pip3.10` 等等，不需要再手动区分。
 
 MacOS 多 Python 之间不会覆盖，因为存储 Python 的路径都是不同的，如：
 
 | Intel      | Apple Silicon |
 | ----------- | ----------- |
 | `/usr/local/bin/python3.9`<br>`/usr/local/bin/python3.10`<br>`/Library/Frameworks/Python.framework/...`      | `/opt/homebrew/bin/python3.9`<br>`/opt/homebrew/bin/python3.10`       |
+
+MacOS 芯片分为 Intel 和 Apple Silicon（M1/M2/M3/M4）两种。如何查看你是什么芯片呢？
+
+![img.png](img/MacOS_tutorial_img/img.png)
+
+![img_1.png](img/MacOS_tutorial_img/img_1.png)
+
+---
 
 ### 2. 电脑终端、VS Code 里的终端、Jupyter Notebook 里的 Kernel
 
@@ -438,7 +472,7 @@ Jupyter Kernel = 一个持续运行的 Python 环境，不是终端
 
 ---
 
-**1. 电脑终端（System Terminal）**
+#### （1）电脑终端（System Terminal）
 
 比如 Windows Terminal / PowerShell / CMD / macOS Terminal / Linux shell。它直接与操作系统交互的命令行工具，运行的是系统级 Shell（bash、zsh、PowerShell …）。
 
@@ -448,7 +482,7 @@ Jupyter Kernel = 一个持续运行的 Python 环境，不是终端
 
 ---
 
-**2. VS Code 内置终端（VS Code Integrated Terminal）**
+#### （2）VS Code 内置终端（VS Code Integrated Terminal）
 
 VS Code 只是把 电脑终端嵌进 IDE 里了，本质上仍然是系统终端，使用系统的 Shell。
 
@@ -460,7 +494,7 @@ VS Code 只是把 电脑终端嵌进 IDE 里了，本质上仍然是系统终端
 
 ---
 
-**3. Jupyter Notebook 的 Kernel（内核）**
+#### （3）Jupyter Notebook 的 Kernel（内核）
 
 是运行 Python（或其他语言）解释器的独立进程，不是一个“终端”。每个 Notebook 的执行都依赖于一个特定的 kernel（例如 Python3 kernel）。
 
@@ -473,8 +507,106 @@ VS Code 只是把 电脑终端嵌进 IDE 里了，本质上仍然是系统终端
 
 ---
 
-### 3. VS Code 的详细使用教程
-详见：[VS Code 使用官方教程](https://code.visualstudio.com/docs/introvideos/basics)
+### 3. Jupyter 内核（Kernel）
+
+Jupyter Notebook 是进行交互式计算与数据分析的强大工具，
+而让 Jupyter 灵活多样的关键之一，就是它对不同内核（Kernel）的支持。
+
+---
+
+#### （1）什么是 Jupyter Kernel（核或者内核）？
+
+Jupyter Kernel 是一个执行 Jupyter Notebook 里代码的计算引擎。
+我们在 Notebook 中输入的所有代码，最终都会交给 Kernel 来执行。
+也就是说，想要使用 Jupyter Notebook，必须要为它选择 Kernel。
+
+Jupyter 的默认内核是 Python，但也支持 R、Julia、Ruby 等多种语言。
+
+但虚拟环境 ≠ Kernel。Jupyter 执行代码时，不是直接调用虚拟环境，而是调用 Kernel 对象，
+而 Kernel 对象引用的就是虚拟环境的 Python。接下来让我们解释一下这个。
+
+你可以基于某一个虚拟环境创建多个 Kernel。
+比如，你在 Python 3.10 的虚拟环境里创建了下面的这些 Kernel：
+* common_kernel ---- 用于日常运行
+* debug_kernel ---- 用于调试 
+* tutorial_kernel ---- 用于教学
+
+然后，当你为 Jupyter Notebook 选择 Kernel 时，就可以根据你的场景和需要，选择`common_kernel`
+、`debug_kernel` 或者 `tutorial_kernel` 了。
+
+实际开发中并不会用一个环境创建多个 Kernel，
+大多数人每个环境只创建一个 Kernel，因为足够用了。
+但在大型项目或者教学里，多 Kernel 可能会更清晰。
+
+---
+
+#### （2）创建 Jupyter 内核
+
+要安装额外的 Python 内核，需要使用 `ipykernel` 包。
+
+如果你没有，则激活虚拟环境，然后下载 `ipykernel` 包：
+
+```bash
+pip install ipykernel
+```
+
+为当前 Python 环境创建一个可供 Jupyter 使用的内核：
+
+```bash
+python -m ipykernel install --user --name mypython --display-name "Python (mypython)"
+```
+
+其中：
+
+* `mypython` 是 kernel 的内部名称
+* `"Python (mypython)"` 是显示在 Jupyter Notebook 列表中的名字
+
+---
+
+#### （3）管理 Kernels
+
+Jupyter 也提供了管理内核的命令。
+
+查看已安装的 Kernel：
+```bash
+jupyter kernelspec list
+```
+示例输出：
+```
+mypython      /Users/you/Library/Jupyter/kernels/mypython
+python3       /usr/local/share/jupyter/kernels/python3
+```
+
+---
+
+删除一个 Kernel：
+```bash
+jupyter kernelspec remove mypython
+```
+
+---
+
+### 4. Python 解释器（Interpreter） {#python-interpreter}
+
+解释器是一个程序，它负责逐行读取、解析并执行代码。 以 Python 为例：
+
+Python 源代码是 `.py` 文件，是文本形式的指令。
+那么 Python 解释器就会逐行读取这些指令，把它们翻译成计算机能执行的操作，然后立即运行。
+
+那么解释器和虚拟环境的关系和区别是什么？⬇️
+
+创建虚拟环境时需要选择一个具体的解释器（比如 Python 3.12），然后用这个解释器去创建虚拟环境。
+虚拟环境就是一个独立的空间，里面你会安装和配置很多依赖库。一个解释器可以创建很多个虚拟环境。
+
+虚拟环境会复制或引用该解释器，并在自己的独立空间中管理库。
+
+如果用比喻的话，代码就是食谱，解释器就是一个厨师，厨师读完就做菜。
+虚拟环境就是一个厨房，厨师在里面做菜时，添置的调料和工具不会污染其他厨房。
+
+---
+
+### 5. VS Code 的详细使用教程
+详见 [VS Code 官方使用教程](https://code.visualstudio.com/docs/introvideos/basics)。
 
 ---
 
