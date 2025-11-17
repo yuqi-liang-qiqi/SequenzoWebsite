@@ -26,9 +26,8 @@
 ## 如果你是纯小白
 ### Step 1：下载 Python 解释器
 
-解释器是什么？为什么要配置解释器？移步 [这里](#python-interpreter)。
-
-（有的人有 Python，但是不知道自己是什么版本）
+解释器是什么？为什么要配置解释器？移步 [这里](#python-interpreter)。<br>
+如果你印象中自己之前下载过 Python，请 [检查自己电脑上的 Python](#_5-查看自己电脑上的-python)。
 
 我们这里直接在官网下载，对应的虚拟环境工具是 venv。如果你想使用 conda/pyenv/virtualelv，请 [跳转](#如果你用的是-conda-pyenv-virtualenv-python)。
 
@@ -61,7 +60,8 @@
 ---
 ### Step 2：设置 Python 环境变量
 
-请不要紧张，我会尽量展示每个步骤及其可能的结果，只要照着步骤操作一步一步来就可以。
+请不要紧张，这步很简单的。<br>
+我会尽量展示每个步骤及其可能的结果，只要照着步骤操作一步一步来就可以。
 
 环境变量 = 系统的索引表，是告诉系统去哪里找程序的。<br>
 设置 Python 环境变量可以让你在终端随时运行 `python` 和 `pip`，而不用输入完整的路径。<br>
@@ -185,16 +185,26 @@ Sequenzo 就是一个 Python 包，需要在虚拟环境里下载。
 打开终端，在项目根目录下，创建虚拟环境：
 
 ```powershell
-python3.10 -m venv sequenzo_project
+python3.10 -m venv .venv
 ```
-注意这里的命名，这是一个良好的编程习惯， 我们建议不同的项目用不同的虚拟环境。<br>
-比如，如果想用虚拟环境在其他的项目里，就换个名字，比如 `sequence_analysis`。
+注意这里的命名。
+
+虽然我们建议不同的项目用不同的虚拟环境，
+但在 Windows 上，VS Code 上如果识别出了当前项目目录下的 Python 环境，这当然是最好的，
+但如果无法识别，则只能识别 `.venv`。
+
+*PS：MacOS 上不会有这样的烦恼。*
+
+即使你已经创建了名为 `sequenzo_project` 的虚拟环境，
+VS Code 仍会再创建一个 `.venv` 的虚拟环境，然后下载失败（因为会与 `sequenzo_project` 冲突）。
+
+因此，为了以防万一，我们建议 Windows 用户在项目根目录下创建虚拟环境时，环境名称为 `.venv`。
 
 ![图](./img/Windows_tutorial_img/w35.png)
 
 ![图](./img/Windows_tutorial_img/w36.png)
 
-激活终端的虚拟环境（即项目根目录下的 `sequenzo_project`）：
+激活终端的虚拟环境（即项目根目录下的 `.venv`）：
 
 ```powershell
 sequenzo_project\Scripts\Activate.ps1
@@ -206,7 +216,7 @@ sequenzo_project\Scripts\Activate.ps1
 
 ![图](./img/Windows_tutorial_img/w38.png)
 
-同样选择项目根目录下的 .venv：
+同样选择项目根目录下的 `.venv`：
 
 ![图](./img/Windows_tutorial_img/w39.png)
 
@@ -242,9 +252,11 @@ pip install sequenzo jupyter
 
 ![图](./img/Windows_tutorial_img/w45.png)
 
-⚠️ 此时，Windows 会有一个弹窗：问你是否允许 Windows 打开本地 WebView 组件（VS Code 用它来跑 Jupyter 内核）。**一定要同意！**
+⚠️⚠️⚠️ 此时，Windows 会有一个弹窗：问你是否允许 Windows 打开本地 WebView 组件（VS Code 用它来跑 Jupyter 内核）。**一定要同意！**
 
 如果你误操作，没有允许，那么请移步 [Q&As](#q-as)。
+
+然后我们就可以跑代码了：
 
 ![图](./img/Windows_tutorial_img/w46.png)
 
@@ -709,11 +721,31 @@ Python 源代码是 `.py` 文件，是文本形式的指令。
 如果用比喻的话，代码就是食谱，解释器就是一个厨师，厨师读完就做菜。
 虚拟环境就是一个厨房，厨师在里面做菜时，添置的调料和工具不会污染其他厨房。
 
-### 5. CMD vs PowerShell
+---
+
+### 5. 查看自己电脑上的 Python
+打开命令行（CMD）或者 PowerShell，输入：
+
+```powershell
+py -0
+```
+![img.png](img/Windows_tutorial_img/img.png)
+
+`*` 表示系统当前默认使用的 Python 版本。
+
+如果你安装了多个 Python，可以用 `py -3.9`、`py -3.10` 等来明确指定用哪个版本，如：
+```
+py -3.10 --version
+py -3.10 file.py
+```
+
+---
+
+### 6. CMD vs PowerShell
 推荐 [windows为什么有两个命令行工具？命令提示符与PowerShell有什么区别？](https://www.bilibili.com/video/BV1Nx4y147n3/?share_source=copy_web&vd_source=f5a787d66053e1da88bd20e1453aff9f)。
 
 ---
-### 6. VS Code 的详细使用教程
+### 7. VS Code 的详细使用教程
 详见 [VS Code 官方使用教程](https://code.visualstudio.com/docs/introvideos/basics)
 
 ---
