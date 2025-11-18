@@ -489,8 +489,9 @@ at async _h.w (file:///Applications/Visual%20Studio%20Code.app/Contents/Resource
 at async _h.download (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:74:50821)
 at async qh.Cb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:74:65275)
 at async qh.Bb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:74:64518)
-可以发现，Jupyter 报了net::ERR_CONNECTION_CLOSED的错误，说明在网络层面被卡住了，大概率是因为微软扩展 CDN 被墙了，国内访问微软 CDN 确实不太稳定。
 ```
+可以发现，Jupyter 报了 `net::ERR_CONNECTION_CLOSED` 的错误，说明在网络层面被卡住了，大概率是因为微软扩展 CDN 被墙了，国内访问微软 CDN 确实不太稳定。
+
 ---
 **【方案 1】直接多试几次**
 
@@ -546,7 +547,7 @@ at async qh.Bb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resourc
 ### 1. 多 Python 版本管理
 从 [Python 官网](https://www.python.org/downloads/release/python-31011/) 下载下来的 Python，其目录结构均遵循下面的规律：
 ```bash
-# 系统级 Python 环境
+# 系统级 Python 环境 （你也可以自定义到其他安装路径）
 C:\Python39
   - python3.9.exe
   - Scripts
@@ -558,7 +559,7 @@ C:\Python39
       - numpy
       ...
 
-# 系统级 Python 环境
+# 系统级 Python 环境（你也可以自定义到其他安装路径）
 D:\Python310
   - python3.10.exe
   - Scripts

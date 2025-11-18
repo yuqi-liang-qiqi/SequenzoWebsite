@@ -388,7 +388,7 @@ at async qh.Cb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resourc
 at async qh.Bb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:74:64518)
 ```
 
-可以发现，Jupyter 报了`net::ERR_CONNECTION_CLOSED的错误，说明在网络层面被卡住了，大概率是因为微软扩展 CDN 被墙了，国内访问微软 CDN 确实不太稳定。
+可以发现，Jupyter 报了 `net::ERR_CONNECTION_CLOSED` 的错误，说明在网络层面被卡住了，大概率是因为微软扩展 CDN 被墙了，国内访问微软 CDN 确实不太稳定。
 
 ---
 
