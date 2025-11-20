@@ -53,6 +53,10 @@ export const zh = defineConfig({
             {
                 text: '在 Windows 上使用 Sequenzo',
                 link: '/zh/basics/using-sequenzo-on-Windows'
+            },
+            {
+                text: '如何提问（小白版）',
+                link: '/zh/basics/how-to-ask'
             }
         ]
       },
