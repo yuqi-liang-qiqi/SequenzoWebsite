@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 14:40:49
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-13 17:33:02
+ * @LastEditTime: 2025-11-21 08:40:57
  * @FilePath: /SequenzoWebsite/docs/en/faq/team_and_acknolwedgements.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -34,7 +34,7 @@ We thank the people below for building and supporting Sequenzo.
     </td>
     <td align="center">
       <img src="./img/jan.jpg" width="120" height="120" class="team-photo" alt="Jan Meyerhoff-Liang" />
-      <div><a href="https://www.inet.ox.ac.uk/people/jan-meyerhoff-liang">Jan Meyerhoff-Liang</a><br/>Research Associate, Innovation Economics<br/>University of Oxford (UK)</div>
+      <div><a href="https://www.linkedin.com/in/jan-meyerhoff-liang-97999a170/">Jan Meyerhoff-Liang</a><br/>Research Associate, Innovation Economics<br/>University of Oxford (UK)</div>
     </td>
   </tr>
   

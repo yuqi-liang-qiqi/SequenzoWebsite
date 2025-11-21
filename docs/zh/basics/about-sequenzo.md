@@ -75,7 +75,7 @@ Sequenzo 旨在帮助研究人员、决策者和数据分析师高效地回答�
 **论文作者**
 * [梁彧祺 , 牛津大学](https://www.yuqi-liang.tech/)
 * [李欣怡, 东北大学（中国）](https://github.com/Fantasy201)
-* [Jan Heinrich Ernst Meyerhoff-Liang（马杨杨），牛津新经济思想研究所](https://www.inet.ox.ac.uk/people/jan-meyerhoff-liang)
+* [Jan Heinrich Ernst Meyerhoff-Liang（马杨杨），牛津新经济思想研究所](https://www.linkedin.com/in/jan-meyerhoff-liang-97999a170/)
 
 **项目贡献者**
 * [何梁星云,斯德哥尔摩经济学院 (瑞典)](https://www.linkedin.com/in/liangxingyun-he-6aa128304/)

@@ -86,7 +86,7 @@ Thanks to optimized algorithms and parallel computation, Sequenzo is at least 6 
 **Paper Authors**
 * [Yuqi Liang, University of Oxford](https://www.yuqi-liang.tech/)
 * [Xinyi Li, Northeastern University](https://github.com/Fantasy201)
-* [Jan Heinrich Ernst Meyerhoff-Liang, Institute for New Economic Thinking Oxford](https://www.inet.ox.ac.uk/people/jan-meyerhoff-liang)
+* [Jan Heinrich Ernst Meyerhoff-Liang, Institute for New Economic Thinking Oxford](https://www.linkedin.com/in/jan-meyerhoff-liang-97999a170/)
 
 **Package Contributors**
 
