@@ -8,6 +8,16 @@
 -->
 # 最新动态
 
+**2025年11月21日**
+
+Sequenzo 新版本 v0.1.24已经发布。
+
+此次更新修复并精进了 fastcluster、CLARA 等聚类方法及其环境依赖，让用户下载和使用 Sequenzo 更加方便。
+
+同时，本次更新也进一步优化了 index plot 和 state distribution plot，使其更加用户友好。
+
+---
+
 **2025年10月7日：**
 
 我们发布了 Sequenzo 的新版本 v0.1.19，修复了部分用户在 v0.1.18 中通过 pip install sequenzo 遇到的安装问题。

@@ -8,6 +8,18 @@
 -->
 # What's New
 
+**11 Nov 2025:**
+
+Sequenzo version v0.1.24 has been released.
+
+This update fixed and improved the fastcluster and CLARA clustering methods and their environment dependencies,
+making it easier for users to download and use Sequenzo.
+
+This update also further improved the index plot and state distribution plot,
+making them more user-friendly.
+
+---
+
 **7 Oct 2025:** 
 
 We have just released a new version of Sequenzo (v0.1.19), which fixes the installation issue that some users experienced with pip install sequenzo in v0.1.18.
