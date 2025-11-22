@@ -32,7 +32,8 @@
 我们这里直接在官网下载，对应的虚拟环境工具是 venv。如果你想使用 conda/pyenv/virtualelv，请 [跳转](#如果你用的是-conda-pyenv-virtualenv-python)。
 
 
-进入 [Python 官网](https://www.python.org/downloads/release/python-31011/)，滚轮滚到页面最下面，选择 Windows 平台上的 Python 解释器：
+进入 [Python 官网](https://www.python.org/downloads/release/python-31011/)，
+滚轮滚到页面最下面，选择 Windows 平台上的 Python 解释器：
 
 ![图1](./img/Windows_tutorial_img/w1.png)
 
@@ -42,9 +43,13 @@
 
 *PS：有时即使勾选了添加到 PATH，系统也不会真的将其加进去，因此基本都需要手动配置 PATH。*
 
+这里我们下载的是“安装 Python 的向导”。也就是说，我们要先把向导下载下来，然后再通过这个向导安装 Python 解释器。
+
 ![图4](./img/Windows_tutorial_img/w4.png)
 
 ![图5](./img/Windows_tutorial_img/w5.png)
+
+> [!TIP] <span style="font-weight: normal;">⚠️注意：路径必须是全英文，且没有空格！</span>
 
 建议将 Python 安装在你清晰的位置。<br>
 这样既能让你轻松找到，也能让你在日后学习 Python 时事半功倍。
