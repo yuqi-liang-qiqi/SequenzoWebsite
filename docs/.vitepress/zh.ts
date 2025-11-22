@@ -206,7 +206,7 @@ export const zh = defineConfig({
         text: '数据集',
         items: [
           {
-            text: 'CO₂ 排放 (1800-2022)',
+            text: '人均 CO₂ 排放 (1800-2022)',
             link: '/zh/datasets/CO2-emissions'
           },
           // {
