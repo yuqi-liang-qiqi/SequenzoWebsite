@@ -87,7 +87,7 @@ But there are a few key places where weights matter:
 
 2. **Uniqueness statistics in `SequenceData()`**
 
-   * `sequence_data.uniqueness_stats(weighted=True)` reports uniqueness rates after accounting for weights.
+   * `sequence_data.check_uniqueness_rate(weighted=True)` reports uniqueness rates after accounting for weights.
    * Example: if a rare sequence has a very large weight, it contributes proportionally.
 
 3. **Substitution cost matrices (`sm`)**

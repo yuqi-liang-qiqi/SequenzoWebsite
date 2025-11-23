@@ -83,7 +83,7 @@ seq = SequenceData(
 
 2. **`SequenceData()` 中的唯一性统计**
 
-* `sequence_data.uniqueness_stats(weighted=True)` 报告考虑权重后的唯一性率。
+* `sequence_data.check_uniqueness_rate(weighted=True)` 报告考虑权重后的唯一性率。
 * 例如：如果一个稀有序列的权重非常大，它会按比例贡献。
 
 3. **替换成本矩阵 (`sm`)**
