@@ -354,6 +354,11 @@ virtualenv -p python3.10 venv
 
 ```powershell
 pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
+
+# 如果阿里云镜像失效，则用下面的：
+#   清华镜像：https://pypi.tuna.tsinghua.edu.cn/simple
+#   中科院镜像：https://pypi.mirrors.ustc.edu.cn/simple
+#   豆瓣镜像：https://pypi.douban.com/simple
 ```
 
 ---
