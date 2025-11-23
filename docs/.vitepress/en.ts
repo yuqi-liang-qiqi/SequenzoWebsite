@@ -224,6 +224,10 @@ export const en = defineConfig({
         text: 'Big Data Tools',
         items: [
           {
+            text: 'Check Uniqueness Rate',
+            link: '/en/big-data/check-uniqueness-rate'
+          },
+          {
             text: 'Clara',
             link: '/en/big-data/clara'
           },
