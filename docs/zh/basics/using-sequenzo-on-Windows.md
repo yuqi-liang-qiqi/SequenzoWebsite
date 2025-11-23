@@ -49,7 +49,7 @@
 
 ![图5](./img/Windows_tutorial_img/w5.png)
 
-> [!TIP] <span style="font-weight: normal;">⚠️注意：路径必须是全英文，且没有空格！</span>
+> [!TIP] <span style="font-weight: normal;">⚠️注意：路径必须是全英文，且没有空格！推荐的格式是字母 + 下划线。</span>
 
 建议将 Python 安装在你清晰的位置。<br>
 这样既能让你轻松找到，也能让你在日后学习 Python 时事半功倍。
@@ -65,11 +65,15 @@
 ---
 ### Step 2：设置 Python 环境变量
 
-请不要紧张，这步很简单的。<br>
+请不要紧张，这步很简单。<br>
 我会尽量展示每个步骤及其可能的结果，只要照着步骤操作一步一步来就可以。
 
-环境变量 = 系统的索引表，是告诉系统去哪里找程序的。<br>
-设置 Python 环境变量可以让你在终端随时运行 `python` 和 `pip`，而不用输入完整的路径。<br>
+什么是环境变量？环境变量 = 系统的索引表，是告诉系统去哪里找程序的。<br>
+所以设置 Python 环境变量可以让你在终端随时运行 `python` 和 `pip`，而不用输入完整的路径。<br>
+
+但 Windows 系统不会自动帮我们配置 Python 环境变量，所以需要我们手动去配置，这样才能让 Windows 系统知道去哪才能找到 Python，进而使用 Python。
+
+下面让我们开始为 Python 配置环境变量吧！
 
 ![图10](./img/Windows_tutorial_img/w10.png)
 
@@ -192,11 +196,7 @@ Sequenzo 就是一个 Python 包，需要在虚拟环境里下载。
 ```powershell
 python3.10 -m venv .venv
 ```
-注意这里的命名。
-
-虽然我们建议不同的项目用不同的虚拟环境，
-但在 Windows 上，VS Code 上如果识别出了当前项目目录下的 Python 环境，这当然是最好的，
-但如果无法识别，则只能识别 `.venv`。
+注意这里的命名。虽然我们建议不同的项目用不同的虚拟环境，但在 Windows 上，VS Code 上如果识别出了当前项目目录下的 Python 环境，这当然是最好的，但如果无法识别，则只能识别 `.venv`。
 
 *PS：MacOS 上不会有这样的烦恼。*
 
@@ -212,10 +212,14 @@ VS Code 仍会再创建一个 `.venv` 的虚拟环境，然后下载失败（因
 激活终端的虚拟环境（即项目根目录下的 `.venv`）：
 
 ```powershell
-sequenzo_project\Scripts\Activate.ps1
+.venv\Scripts\Activate.ps1
 ```
 
 ![图](./img/Windows_tutorial_img/w37.png)
+
+如果激活虚拟环境这步出现了问题，移步 [Q&As](#q-as)。
+
+---
 
 配置 VS Code 的 [解释器](#python-interpreter)。按 `CTRL + Shift + P`：
 
@@ -249,6 +253,8 @@ pip install sequenzo jupyter
 
 ---
 ### Step 6：运行 `quickstart.ipynb`
+
+如何获取 `quickstart.ipynb`？[下载](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/01_quickstart.ipynb)。
 
 为什么要运行这个？
 
@@ -410,13 +416,35 @@ OSError: [Errno 2] No such file or directory
 **【解决方案】** 将项目移到更短的路径下。
 
 ---
-### 3. 汉化 VS Code
+
+### 3. 激活虚拟环境遇到权限不足的问题
+
+如果你在 `.venv\Scripts\Activate.ps1` 时遇到了下面的问题：
+
+![img.png](img/Windows_tutorial_img/img_8.png)
+
+可以清晰地看到：
+```
+无法加载文件 ...Activate.ps1，因为在此系统上禁止运行脚本。
+```
+这是由 Windows PowerShell 的执行策略阻止运行虚拟环境的激活脚本导致的，我们只要把权限放开即可。 对当前用户永久放宽权限：
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+然后重新激活：
+```
+.venv\Scripts\Activate.ps1
+```
+然后你就能看到虚拟环境被顺利激活了。
+
+---
+### 4. 汉化 VS Code
 打开 VS Code 后，点击界面左边 Extentions，在搜索框输入 Chinese，选择 “Chinese Simplified Language”，点击“install”。
 
 ![图](./img/Windows_tutorial_img/w64.png)
 
 ---
-### 4. 未允许 Windows 打开本地 WebView 组件
+### 5. 未允许 Windows 打开本地 WebView 组件
 ![图](./img/Windows_tutorial_img/w65.png)
 
 ---
@@ -466,7 +494,7 @@ Jupyter: Clear Jupyter Remote Server List
 ![图](./img/Windows_tutorial_img/w72.png)
 
 ---
-### 5. Extension下载失败
+### 6. Extension下载失败
 如果出现了 Jupyter 下载失败的情况：
 
 ![图](./img/Windows_tutorial_img/w73.png)

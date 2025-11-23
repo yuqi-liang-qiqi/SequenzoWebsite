@@ -198,6 +198,8 @@ pip install sequenzo jupyter
 
 ### Step 5：运行 `quickstart.ipynb`
 
+如何获取 `quickstart.ipynb`？[下载](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/01_quickstart.ipynb)。
+
 为什么要运行这个？
 
 因为这是我们上课要用的代码教程文件，如果这个文件运行没问题，那么你就可以继续用代码了，
