@@ -213,27 +213,6 @@ Uniqueness rate: 0.080
 - This means distance calculations will be approximately **150 times faster** than if all sequences were unique
 - The effective computational cost is closer to analyzing 4,000 sequences rather than 50,000
 
-### 4. High uniqueness rate example
-
-```python
-stats = sequence_data.check_uniqueness_rate()
-print(f"Uniqueness rate: {stats['uniqueness_rate']:.3f}")
-
-if stats['uniqueness_rate'] > 0.9:
-    print("⚠️ Warning: Very high uniqueness rate detected!")
-    print("   This dataset will require full distance matrix computation.")
-    print("   Consider using CLARA or other sampling-based methods.")
-```
-
-Output:
-
-```
-Uniqueness rate: 0.960
-⚠️ Warning: Very high uniqueness rate detected!
-   This dataset will require full distance matrix computation.
-   Consider using CLARA or other sampling-based methods.
-```
-
 ## Interpreting Results
 
 ### Low Uniqueness Rate (< 0.2)
@@ -244,12 +223,13 @@ Uniqueness rate: 0.960
 ### Medium Uniqueness Rate (0.2 - 0.7)
 - **Efficiency:** Moderate - Some duplicate sequences
 - **Computation:** Meaningful reduction (e.g., 2-10× fewer operations)
-- **Recommendation:** Standard methods work, but CLARA may help for very large datasets
 
 ### High Uniqueness Rate (> 0.7)
 - **Efficiency:** Low - Few duplicate sequences
 - **Computation:** Minimal reduction (close to full matrix)
 - **Recommendation:** Consider CLARA or other sampling-based methods for datasets with > 10,000 sequences
+
+**Note:** For data with medium and high uniqueness rates, specific recommendations depend on the combination of all four key elements (number of sequences, time points, states, and uniqueness rate). For example, a dataset with 10,000 sequences and a uniqueness rate of 0.8 may still be manageable, while a dataset with 100,000 sequences and the same uniqueness rate would likely require sampling-based methods such as CLARA or running the analysis on a server, such as Google Cloud Platform (GCP) or Amazon Web Services (AWS). 
 
 ## Best Practices
 
