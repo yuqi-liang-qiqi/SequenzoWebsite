@@ -221,6 +221,39 @@ export const en = defineConfig({
         ]
       },
       {
+        text: 'Multidomain or Polyadic Sequence Analysis',
+        items: [
+          {
+            text: 'Association Between Domains',
+            link: '/en/multidomain/association-between-domains'
+          },
+          {
+            text: 'CAT Distance Matrix',
+            link: '/en/multidomain/cat-distance-matrix'
+          },
+          {
+            text: 'DAT Distance Matrix',
+            link: '/en/multidomain/dat-distance-matrix'
+          },
+          {
+            text: 'IDCD Sequence',
+            link: '/en/multidomain/idcd-sequence'
+          },
+          {
+            text: 'Combined Typology',
+            link: '/en/multidomain/combined-typology'
+          },
+          {
+            text: 'Merge Sparse CombT Types',
+            link: '/en/multidomain/merge-sparse-combt-types'
+          },
+          {
+            text: 'Linked Polyadic Sequence Analysis',
+            link: '/en/multidomain/linked-polyadic-sequence-analysis'
+          }
+        ]
+      },
+      {
         text: 'Big Data Tools',
         items: [
           {
