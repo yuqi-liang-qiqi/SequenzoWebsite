@@ -124,3 +124,9 @@ Output:
 ...
 ```
 
+## Authors
+
+Code: Xinyi Li, Yuqi Liang
+
+Documentation: Yuqi Liang
+

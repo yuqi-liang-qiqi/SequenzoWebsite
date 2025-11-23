@@ -131,6 +131,51 @@ export const en = defineConfig({
         ]
       },
       {
+        text: 'Sequence Characteristics',
+        items: [
+          {
+            text: 'Number of Subsequences',
+            link: '/en/sequence-characteristics/number-of-subsequences'
+          },
+          {
+            text: 'Number of Transitions',
+            link: '/en/sequence-characteristics/number-of-transitions'
+          },
+          {
+            text: 'Spell Duration Variance',
+            link: '/en/sequence-characteristics/spell-duration-variance'
+          },
+          {
+            text: 'State Frequencies per Sequence',
+            link: '/en/sequence-characteristics/state-frequencies-per-sequence'
+          },
+          {
+            text: 'Within-Sequence Entropy',
+            link: '/en/sequence-characteristics/within-sequence-entropy'
+          },
+          {
+            text: 'Cross-Sectional Entropy',
+            link: '/en/sequence-characteristics/cross-sectional-entropy'
+          },
+          {
+            text: 'Sequence Complexity Index',
+            link: '/en/sequence-characteristics/complexity-index'
+          },
+          {
+            text: 'Turbulence',
+            link: '/en/sequence-characteristics/turbulence'
+          },
+          {
+            text: 'Longitudinal Characteristics Plot',
+            link: '/en/visualization/plot_longitudinal_characteristics'
+          },
+          {
+            text: 'Cross-Sectional Characteristics Plot',
+            link: '/en/visualization/plot_cross_sectional_characteristics'
+          },
+        ]
+      },
+      {
         text: 'Visualization Tools',
         items: [
           {
@@ -246,7 +291,7 @@ export const en = defineConfig({
 
     footer: {
       message: 'Released under the BSD-3-Clause License.',
-      copyright: 'Copyright © 2025 - present <a href="https://yuqi-liang.tech">Yuqi Liang</a>, developed by <a href="https://www.mactavish.tech/">Mactavish</a>'
+      copyright: 'Copyright © 2025 - present <a href="https://yuqi-liang.tech">Yuqi Liang</a>, developed by <a href="https://www.mactavish.tech/">Mactavish</a> and <a href="https://yuqi-liang.tech">Yuqi Liang</a>'
     }
   }
 })

@@ -98,3 +98,7 @@ Output:
 ...
 ```
 
+## Author
+Code: Xinyi Li
+
+Documentation: Yuqi Liang
