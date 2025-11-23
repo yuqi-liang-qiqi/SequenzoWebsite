@@ -86,15 +86,16 @@
 接下来让我们将刚刚下载的 Python 添加到系统变量里。
 
 ---
-我们要复制两个文件（夹）的路径。<br>
-这是第一个 ↓：
+我们要复制两个文件（夹）的路径。这两个路径非常重要！关系到 Windows 是否能成功找到 Python。
+
+这是第一个 ↓：（`python.exe` 所在文件夹的路径）
 
 ![图](./img/Windows_tutorial_img/w14.png)
 
 ![图](./img/Windows_tutorial_img/w15.png)
 
 ---
-这是第二个 ↓：
+这是第二个 ↓：（`Scripts` 文件夹的路径）
 
 ![图](./img/Windows_tutorial_img/w16.png)
 
@@ -254,7 +255,7 @@ pip install sequenzo jupyter
 ---
 ### Step 6：运行 `quickstart.ipynb`
 
-如何获取 `quickstart.ipynb`？[下载](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/01_quickstart.ipynb)。
+如何获取标准的 `quickstart.ipynb` ？[Q&As](#q-as)。
 
 为什么要运行这个？
 
@@ -449,7 +450,34 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ![图](./img/Windows_tutorial_img/w64.png)
 
 ---
-### 5. 未允许 Windows 打开本地 WebView 组件
+### 5. VS Code 无法打开 `quickstart.ipynb`（或者，如何获取 `quickstart.ipynb` 文件？）
+
+如果出现了下面的问题：
+
+![img_3.png](img/Windows_tutorial_img/img_12.png)
+
+这是因为 VS Code（和任何 Jupyter 编辑器）只能打开 JSON 格式的 `.ipynb`，但是这个文件是 `XML` 或 `HXML` 格式的。
+
+如何获取标准格式的 `quickstart.ipynb` 呢？⬇️
+
+**（1）方案 1：点击 Raw → 进入 Raw 的 JSON 界面 → 右键 → Save As。**
+
+![img.png](img/Windows_tutorial_img/img_9.png)
+
+![img_1.png](img/Windows_tutorial_img/img_10.png)
+
+![img_2.png](img/Windows_tutorial_img/img_11.png)
+
+---
+
+**方案 2：直接在这个界面内用快捷键 `CTRL + S` 或者 `Command + S`，保存为 `.ipynb`。**
+
+![img.png](img/Windows_tutorial_img/img_13.png)
+
+![img.png](img/Windows_tutorial_img/img_14.png)
+
+---
+### 6. 未允许 Windows 打开本地 WebView 组件
 ![图](./img/Windows_tutorial_img/w65.png)
 
 ---
@@ -499,7 +527,7 @@ Jupyter: Clear Jupyter Remote Server List
 ![图](./img/Windows_tutorial_img/w72.png)
 
 ---
-### 6. Extension下载失败
+### 7. Extension 下载失败
 如果出现了 Jupyter 下载失败的情况：
 
 ![图](./img/Windows_tutorial_img/w73.png)
@@ -579,7 +607,9 @@ at async qh.Bb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resourc
 
 ⚠️ 注意：
 1. 部分代理由于保密技术或协议不同，不会向用户提供代理端口号。
-2. 你的代理实际上可能只能代理浏览器流量，无法单独设置让特定软件或服务走代理。可以通过
+2. 你的代理实际上可能只能代理浏览器流量，无法单独设置让特定软件或服务走代理。
+
+---
 
 ## 延伸学习
 ### 1. 多 Python 版本管理

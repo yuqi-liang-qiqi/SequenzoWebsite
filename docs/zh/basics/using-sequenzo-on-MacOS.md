@@ -198,7 +198,7 @@ pip install sequenzo jupyter
 
 ### Step 5：运行 `quickstart.ipynb`
 
-如何获取 `quickstart.ipynb`？[下载](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/01_quickstart.ipynb)。
+如何获取标准的 `quickstart.ipynb` ？[Q&As](#q-as)。
 
 为什么要运行这个？
 
@@ -362,8 +362,35 @@ pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
 ```
 
 ---
+### 2. VS Code 无法打开 `quickstart.ipynb`（或者，如何获取 `quickstart.ipynb` 文件？）
 
-### 2. Jupyter Extension 下载失败
+如果出现了下面的问题：
+
+![img_3.png](img/Windows_tutorial_img/img_12.png)
+
+这是因为 VS Code（和任何 Jupyter 编辑器）只能打开 JSON 格式的 `.ipynb`，但是这个文件是 `XML` 或 `HXML` 格式的。
+
+如何获取标准格式的 `quickstart.ipynb` 呢？⬇️
+
+**（1）方案 1：点击 Raw → 进入 Raw 的 JSON 界面 → 右键 → Save As。**
+
+![img.png](img/Windows_tutorial_img/img_9.png)
+
+![img_1.png](img/Windows_tutorial_img/img_10.png)
+
+![img_2.png](img/Windows_tutorial_img/img_11.png)
+
+---
+
+**方案 2：直接在这个界面内用快捷键 `CTRL + S` 或者 `Command + S`，保存为 `.ipynb`。**
+
+![img.png](img/Windows_tutorial_img/img_13.png)
+
+![img.png](img/Windows_tutorial_img/img_14.png)
+
+---
+
+### 3. Jupyter Extension 下载失败
 
 如果出现了 Jupyter 下载失败的情况：
 
