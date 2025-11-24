@@ -48,6 +48,10 @@ export const en = defineConfig({
         {
           text: 'Working with Weighted Data',
           link: '/en/basics/weighted_data'
+        },
+        {
+          text: '📖 How to Cite',
+          link: '/en/basics/how-to-cite'
         }
           ]
       },

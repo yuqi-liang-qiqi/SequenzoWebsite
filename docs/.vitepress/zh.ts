@@ -57,6 +57,10 @@ export const zh = defineConfig({
             {
                 text: '如何提问（小白版）',
                 link: '/zh/basics/how-to-ask'
+            },
+            {
+                text: '📖 如何引用',
+                link: '/zh/basics/how-to-cite'
             }
         ]
       },
