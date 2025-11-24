@@ -262,11 +262,17 @@ pip install sequenzo jupyter
 因为这是我们上课要用的代码教程文件，如果这个文件运行没问题，那么你就可以继续用代码了，
 只不过将里面的数据集换成自己的。
 
-![图](./img/Windows_tutorial_img/w45.png)
+![img.png](img/Windows_tutorial_img/img_15.png)
 
-⚠️⚠️⚠️ 此时，Windows 会有一个弹窗：问你是否允许 Windows 打开本地 WebView 组件（VS Code 用它来跑 Jupyter 内核）。**一定要同意！**
+![img_1.png](img/Windows_tutorial_img/img_17.png)
 
-如果你误操作，没有允许，那么请移步 [Q&As](#q-as)。
+![img_2.png](img/Windows_tutorial_img/img_18.png)
+
+⚠️⚠️⚠️ 此时，有的同学的 Windows 上会有一个弹窗：问你是否允许 Windows 打开本地 WebView 组件（VS Code 用它来跑 Jupyter 内核）。**一定要同意！**
+
+如果你误操作，没有允许，那么请移步 [Q&As](#q-as)。<br>
+同样如果发现核不是版本，而是 `-1`，也请移步 [Q&As](#q-as)。<br>
+如果发现里面你想要的虚拟环境，也请移步 [Q&As](#q-as)。
 
 然后我们就可以跑代码了：
 
