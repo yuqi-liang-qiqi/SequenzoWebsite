@@ -18,6 +18,10 @@ export const en = defineConfig({
             link: '/en/basics/about-sequenzo'
           },
           {
+            text: '📖 Citation Guide',
+            link: '/en/basics/how-to-cite'
+          },
+          {
             text: 'Join Our Communities',
             link: '/en/basics/join-our-community'
           },
@@ -48,10 +52,6 @@ export const en = defineConfig({
         {
           text: 'Working with Weighted Data',
           link: '/en/basics/weighted_data'
-        },
-        {
-          text: '📖 How to Cite',
-          link: '/en/basics/how-to-cite'
         }
           ]
       },

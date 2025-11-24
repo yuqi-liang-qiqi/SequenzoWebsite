@@ -18,6 +18,10 @@ export const zh = defineConfig({
             link: '/zh/basics/about-sequenzo'
           },
           {
+            text: '📖 引用指南',
+            link: '/zh/basics/how-to-cite'
+        }, 
+          {
             text: '下载安装',
             link: '/zh/basics/installing'
           },
@@ -57,10 +61,6 @@ export const zh = defineConfig({
             {
                 text: '如何提问（小白版）',
                 link: '/zh/basics/how-to-ask'
-            },
-            {
-                text: '📖 如何引用',
-                link: '/zh/basics/how-to-cite'
             }
         ]
       },
