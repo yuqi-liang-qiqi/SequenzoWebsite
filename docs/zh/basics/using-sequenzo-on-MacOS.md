@@ -153,6 +153,8 @@ Sequenzo 就是一个 Python 包，需要在虚拟环境里下载。
 ```powershell
 python3.12 -m venv sequenzo_project
 ```
+> [!TIP] <span style="font-weight: normal;">如果你现在的终端处于 conda 的虚拟环境中，一定要先把 conda 虚拟环境关闭，以防路径解析混乱，这样也会方便你对包安装路径的管理。</span>
+
 注意这里的命名，这是一个良好的编程习惯， 我们建议不同的项目用不同的虚拟环境。<br>
 比如，如果想用虚拟环境在其他的项目里，就换个名字，比如 `sequence_analysis`。
 
@@ -198,12 +200,12 @@ pip install sequenzo jupyter
 
 ### Step 5：运行 `quickstart.ipynb`
 
-如何获取标准的 `quickstart.ipynb` ？[Q&As](#q-as)。
-
 为什么要运行这个？
 
 因为这是我们上课要用的代码教程文件，如果这个文件运行没问题，那么你就可以继续用代码了，
 只不过将里面的数据集换成自己的。
+
+如何获取标准的 `quickstart.ipynb` ？[Q&As](#q-as)。
 
 ![图27](./img/MacOS_tutorial_img/m27.png)
 
