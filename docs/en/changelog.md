@@ -2,11 +2,19 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 14:40:49
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-11-24 11:14:32
+ * @LastEditTime: 2025-11-25 23:43:46
  * @FilePath: /SequenzoWebsite/docs/en/changelog.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 # What's New
+
+**25 Nov 2025:**
+
+Sequenzo version v0.1.25 has been released.
+
+In this version, we have implemented the Python version of [seqHMM](https://github.com/helske/seqHMM). This is the first release of this feature, and we will continue to optimize it in future updates. Additionally, we have improved various visualization features.
+
+---
 
 **11 Nov 2025:**
 
