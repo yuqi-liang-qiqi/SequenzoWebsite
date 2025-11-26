@@ -280,6 +280,8 @@ pip install sequenzo jupyter
 
 ![图](./img/Windows_tutorial_img/w46.png)
 
+如果这步出现了问题，请移步 [Q&As](#q-as)。
+
 ## 如果你之前下载了 Sequenzo
 因为我们又优化了一版 Sequenzo 包，包括简便了环境配置，加速了 CLARA 计算等等。
 
@@ -498,7 +500,7 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ---
 **2. Step 2：重装 ipykernel**
 
-激活虚拟环境后：
+**激活虚拟环境**后：
 ```
 pip install ipykernel
 python3.10 -m ipykernel install --user --name=.venv
@@ -535,7 +537,23 @@ Jupyter: Clear Jupyter Remote Server List
 ![图](./img/Windows_tutorial_img/w72.png)
 
 ---
-### 7. Extension 下载失败
+
+### 7. Sequenzo 导包时，发现缺少 DLL（动态库）
+
+如果你运行代码后，发现提示输出下面的报错：
+
+![img.png](img/Windows_tutorial_img/img_21.png)
+
+那么请在 VS Code 终端执行：
+
+```
+pip install msvc-runtime
+```
+
+然后再重新运行代码代码即可。
+
+---
+### 8. Extension 下载失败
 如果出现了 Jupyter 下载失败的情况：
 
 ![图](./img/Windows_tutorial_img/w73.png)

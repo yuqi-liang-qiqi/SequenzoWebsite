@@ -402,9 +402,39 @@ pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
 
 请打开 MacOS 的系统终端，输入 `brew install libomp`：
 
-![img_1.png](img/Windows_tutorial_img/img_20.png)
+![img_2.png](img/Windows_tutorial_img/img_23.png)
+
+然后根据终端提示，配置环境变量：
+
+![img_1.png](img/Windows_tutorial_img/img_22.png)
+
+在终端执行 `nano ~/.zshrc`，把刚才那两个环境变量复制进去，然后：`Ctrl + O` 保存，`Enter` 确认，`Ctrl + X` 退出。
+
+---
 
 注意，如果你没有 `Homebrew`，需要先下载并配置 `Homebrew`。
+
+打开 MacOS 的系统终端，执行：
+
+```
+# step 1：设置镜像
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+# step 2：下载并安装 Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# step 3：配置环境变量
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+# 这里不同版本可能配置的环境变量，请按照终端给出的提示配置环境变量（终端会给出的）
+
+# step 4：激活环境变量
+source ~/.zprofile
+
+# step 5：验证 Homebrew 是否成功下载
+brew --version
+```
 
 ---
 
