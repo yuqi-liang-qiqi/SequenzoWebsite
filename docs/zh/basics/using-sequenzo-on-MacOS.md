@@ -221,6 +221,8 @@ pip install sequenzo jupyter
 
 ![img_8.png](img/MacOS_tutorial_img/img_8.png)
 
+如果在这步你出现了问题，移步 [Q&As](#q-as)。
+
 ## 如果你之前下载了 Sequenzo
 
 因为我们又优化了一版 Sequenzo 包，包括简便了环境配置，加速了 CLARA 计算等等。
@@ -392,7 +394,21 @@ pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
 
 ---
 
-### 3. Jupyter Extension 下载失败
+### 3. 找不到动态运行时文件
+
+如果你出现了下面的问题：
+
+![img.png](img/Windows_tutorial_img/img_19.png)
+
+请打开 MacOS 的系统终端，输入 `brew install libomp`：
+
+![img_1.png](img/Windows_tutorial_img/img_20.png)
+
+注意，如果你没有 `Homebrew`，需要先下载并配置 `Homebrew`。
+
+---
+
+### 4. Jupyter Extension 下载失败
 
 如果出现了 Jupyter 下载失败的情况：
 
