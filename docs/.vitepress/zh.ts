@@ -68,13 +68,17 @@ export const zh = defineConfig({
         text: '概念/知识类教程',
         items: [
           {
+            text: '社会序列分析方法入门·课程讲义(中文)',
+            link: '/zh/tutorials/preview_document/社会序列分析方法入门'
+          },
+          {
             text: '基本概念',
             link: '/zh/tutorials/basic-concepts'
           },
           {
             text: '时点、时长和顺序',
             link: '/zh/tutorials/timing-duration-order'
-          },
+          }
         ]
       },
       {
