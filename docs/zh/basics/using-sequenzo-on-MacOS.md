@@ -376,7 +376,11 @@ pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
 
 如何获取标准格式的 `quickstart.ipynb` 呢？⬇️
 
-**（1）方案 1：点击 Raw → 进入 Raw 的 JSON 界面 → 右键 → Save As。**
+**方案 1：直接从官网下载我们的在线教程。**
+
+![img_1.png](img/Windows_tutorial_img/img_25.png)
+
+**方案 2：点击 Raw → 进入 Raw 的 JSON 界面 → 右键 → Save As。**
 
 ![img.png](img/Windows_tutorial_img/img_9.png)
 
@@ -386,7 +390,7 @@ pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
 
 ---
 
-**方案 2：直接在这个界面内用快捷键 `CTRL + S` 或者 `Command + S`，保存为 `.ipynb`。**
+**方案 3：直接在这个界面内用快捷键 `CTRL + S` 或者 `Command + S`，保存为 `.ipynb`。**
 
 ![img.png](img/Windows_tutorial_img/img_13.png)
 

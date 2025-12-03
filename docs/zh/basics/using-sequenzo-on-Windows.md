@@ -23,6 +23,8 @@
 也同样建议学习 [多 Python 版本管理](#_1-多-python-版本管理)，
 这样你可以知道 Python 究竟安装到了哪里、虚拟环境在哪里、下载的包又去了哪里，以及如何管理多个不同版本的 Python 项目。
 
+在操作的过程中，如果有任何疑问，请先耐心看完，你需要的所有东西或者答案都会在这篇教程里提到。
+
 ## 如果你是纯小白
 ### Step 1：下载 Python 解释器
 
@@ -201,9 +203,7 @@ python3.10 -m venv .venv
 
 注意这里的命名。虽然我们建议不同的项目用不同的虚拟环境，但在 Windows 上，VS Code 上如果识别出了当前项目目录下的 Python 环境，这当然是最好的，但如果无法识别，则只能识别 `.venv`。
 
-*PS：MacOS 上不会有这样的烦恼。*
-
-即使你已经创建了名为 `sequenzo_project` 的虚拟环境，
+也就是说，即使你已经创建了名为 `sequenzo_project` 的虚拟环境，
 VS Code 仍会再创建一个 `.venv` 的虚拟环境，然后下载失败（因为会与 `sequenzo_project` 冲突）。
 
 因此，为了以防万一，我们建议 Windows 用户在项目根目录下创建虚拟环境时，环境名称为 `.venv`。
@@ -262,7 +262,7 @@ pip install sequenzo jupyter
 因为这是我们上课要用的代码教程文件，如果这个文件运行没问题，那么你就可以继续用代码了，
 只不过将里面的数据集换成自己的。
 
-如何获取标准的 `quickstart.ipynb` ？[Q&As](#q-as)。
+如何获取的 `quickstart.ipynb` ？请查看 [Q&As](#q-as) 中的 [第 5 个问题](#vs-code-quickstart)。
 
 ![img.png](img/Windows_tutorial_img/img_15.png)
 
@@ -270,11 +270,11 @@ pip install sequenzo jupyter
 
 ![img_2.png](img/Windows_tutorial_img/img_18.png)
 
-⚠️⚠️⚠️ 此时，有的同学的 Windows 上会有一个弹窗：问你是否允许 Windows 打开本地 WebView 组件（VS Code 用它来跑 Jupyter 内核）。**一定要同意！**
+⚠️⚠️⚠️ 此时，部分同学的 Windows 上可能会有一个弹窗：问你是否允许 Windows 打开本地 WebView 组件（VS Code 用它来跑 Jupyter 内核）。**一定要同意！**
 
-如果你误操作，没有允许，那么请移步 [Q&As](#q-as)。<br>
-同样，如果发现核不是版本，而是 `-1`，也请移步 [Q&As](#q-as)。<br>
-如果发现里面你想要的虚拟环境，也请移步 [Q&As](#q-as)。
+如果你误操作，没有允许，那么请移步 [Q&As](#解决Jupyter)。<br>
+同样，如果你发现核不是版本号，而是 `-1` 或者 `undefined`，也请移步 [Q&As](#解决Jupyter)。<br>
+如果发现里面没有你想要的虚拟环境，也请移步 [Q&As](#q-as)。
 
 然后我们就可以跑代码了：
 
@@ -443,7 +443,9 @@ OSError: [Errno 2] No such file or directory
 ```
 无法加载文件 ...Activate.ps1，因为在此系统上禁止运行脚本。
 ```
-这是由 Windows PowerShell 的执行策略阻止运行虚拟环境的激活脚本导致的，我们只要把权限放开即可。 对当前用户永久放宽权限：
+这是由 Windows PowerShell 的执行策略阻止运行虚拟环境的激活脚本导致的，我们只要把权限放开即可。
+
+打开 VS Code 终端，输入下面的命令对当前用户永久放宽权限：
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
@@ -460,7 +462,7 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ![图](./img/Windows_tutorial_img/w64.png)
 
 ---
-### 5. VS Code 无法打开 `quickstart.ipynb`（或者，如何获取 `quickstart.ipynb` 文件？）
+### 5. VS Code 无法打开 `quickstart.ipynb`（或者，如何获取 `quickstart.ipynb` 文件？） {#vs-code-quickstart}
 
 如果出现了下面的问题：
 
@@ -468,9 +470,17 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
 这是因为 VS Code（和任何 Jupyter 编辑器）只能打开 JSON 格式的 `.ipynb`，但是这个文件是 `XML` 或 `HXML` 格式的。
 
+---
+
 如何获取标准格式的 `quickstart.ipynb` 呢？⬇️
 
-**（1）方案 1：点击 Raw → 进入 Raw 的 JSON 界面 → 右键 → Save As。**
+**方案 1：直接从官网下载我们的在线教程。**
+
+![img_1.png](img/Windows_tutorial_img/img_25.png)
+
+---
+
+**方案 2：点击 Raw → 进入 Raw 的 JSON 界面 → 右键 → Save As。**
 
 ![img.png](img/Windows_tutorial_img/img_9.png)
 
@@ -480,20 +490,25 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
 ---
 
-**方案 2：直接在这个界面内用快捷键 `CTRL + S` 或者 `Command + S`，保存为 `.ipynb`。**
+**方案 3：直接在这个界面内用快捷键 `CTRL + S` 或者 `Command + S`，保存为 `.ipynb`。**
 
 ![img.png](img/Windows_tutorial_img/img_13.png)
 
 ![img.png](img/Windows_tutorial_img/img_14.png)
 
 ---
-### 6. 未允许 Windows 打开本地 WebView 组件
+### 6. Jupyter 选择核时只有 `-1` 或者 `undefined`（ = 未允许 Windows 打开本地 WebView 组件） {#解决Jupyter}
+
+只要出现了选择核时只有 `-1` 或者 `undefined`，都可以用下面的方案解决。
+
 ![图](./img/Windows_tutorial_img/w65.png)
 
 ---
 接下来是解决方案：
 
-**1. Step 1：打开 Jupyter 权限**
+**1. Step 1：打开设置，打开 Jupyter 权限**
+
+如何打开设置？[这里](#_9-打开-vs-code-的设置)。
 
 ![图](./img/Windows_tutorial_img/w66.png)
 
@@ -553,7 +568,72 @@ pip install msvc-runtime
 然后再重新运行代码代码即可。
 
 ---
-### 8. Extension 下载失败
+### 8. 运行代码后，有错误的提示输出
+
+如果当你成功运行第一个代码后，在后来运行关于 Clara 代码块时，出现了类似下面的错误，这是因为最新的版本已经优化了这个参数，因此只需把 `parallel` 这个参数删除即可。
+
+![img.png](img/Windows_tutorial_img/img_24.png)
+
+---
+### 9. 打开 VS Code 的设置
+
+![img_2.png](img/Windows_tutorial_img/img_26.png)
+
+---
+### 10. VS Code 找不到你创建的解释器 {#找不到解释器}
+
+可能是因为 VS Code 还没有刷新出来，`Ctrl + Shift + P` 打开控制面板，依次尝试输入：
+
+```
+Python: Clear Workspace Interpreter Settings
+
+Python: Clear Cache and Reload Window
+
+Python Debugger: Clear Cache and Reload Window
+
+或者重启 VS Code
+```
+
+然后重新选择解释器（`Python: Select Interpreter`）。
+
+---
+
+如果 VS Code 仍然无法识别出你创建的虚拟环境，请尝试手动选择 Python 解释器：
+
+![img_3.png](img/Windows_tutorial_img/img_27.png)
+
+![img_4.png](img/Windows_tutorial_img/img_28.png)
+
+![img_5.png](img/Windows_tutorial_img/img_29.png)
+
+然后等待 VS Code 配置即可。
+
+---
+
+如果上面的方法均没有效果，我们可以换用 `jupyter kernel`，具体操作方法见 [Q&As](#解决Jupyter)。
+
+---
+
+### 11. VS Code 提示找不到基 Python
+
+请先确保在 CMD（powershell）和 VS Code 的终端里可以正确输出 Python 版本号。
+
+然后尝试 [第 10 个问题](#找不到解释器) 里的解决方案刷新 VS Code。
+
+如果仍然提示 “找不到基 Python”，或者提示 “选择的 Python 解释器无效”，那么请先尝试卸载重装 Python 扩展。
+
+如果仍没有得到解决，则打开 `.vscode/settings.json`（如果没有，则创建；⚠️ 文件夹和文件名必须与给定的完全一致），在里面添加：
+```
+{
+    "python.defaultInterpreterPath": ".\\.venv\\Scripts\\python.exe"
+    # 这里的 python.exe 应该是你的 python3.12.exe 或者 python310.exe 等等
+}
+```
+
+然后重新选择解释器。
+
+---
+### 12. Extension 下载失败
 如果出现了 Jupyter 下载失败的情况：
 
 ![图](./img/Windows_tutorial_img/w73.png)
