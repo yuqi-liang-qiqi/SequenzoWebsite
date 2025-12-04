@@ -69,7 +69,7 @@ export const zh = defineConfig({
         items: [
           {
             text: '社会序列分析方法入门·课程讲义(中文)',
-            link: '/zh/tutorials/preview_document/社会序列分析方法入门'
+            link: '/zh/tutorials/intro-to-social-sequence-analysis'
           },
           {
             text: '基本概念',
