@@ -1,16 +1,17 @@
 # `plot_sequence_index()`
 在序列索引图中，每行代表一个人/公司/地区/国家，每列代表一个时间点，颜色表示该人当时所处的状态。这可以让你看到各种模式，例如人们何时切换状态、稳定序列的外观以及不同组别（例如，男性 vs 女性、国家 A vs 国家 B）的序列差异。
 
-如果你在 Jupyter Notebook 中运行它，该图会显示在单元格下方。如果你以 Python 脚本的形式运行它，则会弹出一个窗口。你也可以使用`save_as`将图保存到文件中。
+如果你在 Jupyter Notebook 中运行它，该图会显示在单元格下方。如果你以 Python 脚本的形式运行它，则会弹出一个窗口。你也可以使用 `save_as` 将图保存到文件中。
 
 ## 函数用法
 
-仅包含必需参数的最小示例（足以满足大多数用例）：
+仅包含必需参数的最小示例（足以满足大多数的使用场景）：
 
 ```python
 plot_sequence_index(sequence_data)
 ```
 `plot_sequence_index` 函数根据数据结构提供了两种分组方法：
+
 **1. 直接分组**（当分组信息已经在序列数据中时）：
 
 ```python
@@ -28,26 +29,38 @@ plot_sequence_index(sequence_data,
                     group_labels=cluster_labels)
 ```
 
-如果您想自定义可视化，请参阅下表中的附加参数。
+如果你想自定义可视化，请参阅下表里的附加参数。
 
 ## 输入参数
 
-| 参数       | 是否必需参数 | 类型         | 描述                                                                                                                                                                           |
-| --------------- |--------| ------------ |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `seqdata`       | ✓      | SequenceData | 你的序列数据集，使用 `SequenceData` 创建。行是不同的个体，列是时间点，值是`1`到`K`个状态。                                                                                                                     |
-| `id_group_df`   | ✗      | DataFrame    | 一个将 ID 链接到不同分组（如性别、国家）的 `DataFrame`。如果为 `None`，则只绘制一个总图。 如果此参数等于 `gender` ，包含男性和女性，就会有两张索引图，一张是女性的索引图，一张是男性的索引图。                                                             |
-| `categories`    | ✗      | str          | `id_group_df` 中指定分组变量的列名。                                                                                                                                                    |
-| `sort_by`       | ✗      | str          | 如何在每个子图中对序列进行排序。选项：`None`（按时间字典序排序），`"first_marriage"`（按首次达到目标状态的时间排序；当前默认目标是状态码 3），`"transition_count"`（从最少到最多的转换次数），`"final_state"`（按结束状态），`"happiness_slope"`（按随时间拟合的斜率）。 
-| `figsize`       | ✗      | tuple        | 每个子图的大小（宽, 高）。默认为 `(10, 6)`。                                                                                                                                                 |
-| `title`         | ✗      | str          | 整个图表的标题。                                                                                                                                                                     |
-| `xlabel`        | ✗      | str          | x 轴的标签。                                                                                                                                                                      |
-| `ylabel`        | ✗      | str          | y 轴的标签。                                                                                                                                                                      |
-| `save_as`       | ✗      | str          | 保存最终合并图片的文件路径（例如 `"index.png"`）。除非提供完整路径，否则图像将保存在当前工作目录中。                                                                                                                    |
-| `dpi`           | ✗      | int          | 保存图像时的分辨率。默认为`200`。                                                                                                                                                          |
-| `layout`        | ✗      | str          | 如何排列多个分组子图：`"column"`（垂直堆叠）或 `"grid"`（行 × 列）。                                                                                                                                |
-| `nrows`/`ncols` | ✗      | int          | 当 `layout="grid"` 时，手动设置网格大小。如果未设置，将自动确定。                                                                                                                                    |
-| `group_order`   | ✗      | list         | 自定义分组顺序。如果提供，将覆盖自动排序。                                                                                                                                                        |
-| `sort_groups`   | ✗      | str          | 分组面板的排序方式：`"auto"`（智能数字排序），`"numeric"`（数字排序），`"alpha"`（字母排序），或 `"none"`（原始顺序）。                                                                                               |
+| 参数       | 是否必传 | 类型         | 描述                                                                                                                                                                         |
+| --------------- |------| ------------ |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `seqdata`       | ✓    | SequenceData | 经过 `SequenceData` 创建出来的序列数据。行是不同的个体，列是时间点，值是 `1` 到 `K` 个状态。                                                                                                                |
+| `group_by_column` | ✗        | str          | **直接分组**：从 `seqdata.data` 中选择用于分组的列名。当分组信息已经在你的数据中时，使用此参数。比如你的数据中已经有列 “Cluster”、“sex” 或 “education”。                                                                       |
+| `group_dataframe` | ✗        | DataFrame    | **外部分组**：包含分组信息的独立的数据框。当分组信息位于单独的数据框中（例如，聚类结果）时使用此参数。该数据框必须包含 ID 列和分组列。                                                                                                    |
+| `group_column_name` | ✗        | str          | `group_dataframe` 中分组列的列名。在使用 `group_dataframe` 时必须传入此参数。                                                                                                                  |
+| `group_labels`  | ✗        | dict         | 为分组值自定义标签。例如：`{1: "Late Family Formation", 2: "Early Partnership"}`。用于将原始值映射为展示用的标签。                                                                                       |
+| `sort_by`       | ✗    | str          | 每个子图中的序列如何排序。选项：`"unsorted"` 或者 `"None"`（按序列原来的顺序），`"lexicographic"`（按字典序对序列进行排序），`"mds"`（按第一个 MDS 维度排序），`"distance_to_most_frequent"`（按最常见序列的距离排序）。默认值是 `"lexicographic"。 
+| `sort_by_weight` | ✗        | bool         | 如果是 `True`，则按权重（从高到低）对序列进行排序，并覆盖 `sort_by` 的设置。默认值是 `False`。                                                                                                               |
+| `weights`       | ✗        | array/str    | 序列的权重。如果是 `"auto"`，则在可用情况下使用 `seqdata.weights`。默认值是 `"auto"`。                                                                                                              |
+| `figsize`       | ✗    | tuple        | 每个子图的大小（宽，高）。只有当 `plot_style="custom"` 时使用此参数。默认值是 `(10, 6)`。                                                                                                              |
+| `plot_style`    | ✗        | str          | 绘图外观风格：`"standard"` （标准，平衡视图），`"compact"` （紧凑，视图更方形），`"wide"` （宽的，更强调时间轴）, `"narrow"` （窄的，适度的竖向）, `"custom"` （自定义，用 figsize）。默认值是 `"standard"`。                            |
+| `title`         | ✗    | str          | 整个图表的标题。                                                                                                                                                                   |
+| `xlabel`        | ✗    | str          | x 轴的标签。默认值是 `"Time"`。                                                                                                                                                      |
+| `ylabel`        | ✗    | str          | y 轴的标签。默认值是 `"Sequences"`。                                                                                                                                                 |
+| `save_as`       | ✗    | str          | 保存最终合并图片的文件路径（例如 `"index.png"`）。除非提供完整路径，否则图像将保存在当前工作目录中。                                                                                                                  |
+| `dpi`           | ✗    | int          | 保存图像时的分辨率。默认值是 `200`。                                                                                                                                                      |
+| `layout`        | ✗    | str          | 如何排列多个分组子图：`"column"`（垂直堆叠）或 `"grid"`（行 × 列）。默认值是 `"column"`。                                                                                                              |
+| `nrows`/`ncols` | ✗    | int          | 当 `layout="grid"` 时，手动设置网格大小。如果未设置，将自动确定。                                                                                                                                  |
+| `group_order`   | ✗    | list         | 自定义分组顺序。如果此参数被提供，将覆盖自动排序。                                                                                                                                                  |
+| `sort_groups`   | ✗    | str          | 分组面板的排序方式：`"auto"`（智能排序），`"numeric"`（按数字排序），`"alpha"`（按字典序排序），或 `"none"`（原始顺序）。默认值是 `"auto"`。                                                                              |
+| `fontsize`      | ✗        | int          | 文本的基础字体大小（标题大小是 `fontsize`+ 2，刻度大小是 `fontsize` - 2）。默认值是 `12`.                                                                                                             |
+| `show_group_titles` | ✗    | bool         | 是否展示各分组的标题。默认值是 `True`。                                                                                                                                                    |
+| `include_legend` | ✗       | bool         | 是否在图中包含图例。默认值是 `True`。                                                                                                                                                     |
+| `sequence_selection` | ✗   | str/list     | 选择显示哪些序列的方法：`"all"`（展示全部序列），`"first_n"` （显示前 `n` 个序列），`"last_n"` （显示最后 `n` 个序列），或者显示指定特定 ID 的序列 。默认值是 `"all"`。                                                             |
+| `n_sequences`   | ✗        | int          | 当使用参数 `"first_n"` 或者 `"last_n"` 时展示的序列数目。默认值是 `10`。                                                                                                                        |
+| `show_sequence_ids` | ✗    | bool         | 如果是 `True`，在 y 轴上展示实际的序列 ID，而不是序列编号。此参数在传入的 `sequence_selection` 是序列 ID 的列表时最有用。默认值是 `False`。                                                                              |
+
 
 ## 功能说明
 
