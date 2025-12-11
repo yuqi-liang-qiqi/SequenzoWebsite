@@ -328,3 +328,7 @@ The dictionary contains:
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## References
+
+Liao, T. F. (2021). Using sequence analysis to quantify how strongly life courses are linked. Sociological Science, 8, 48-72.

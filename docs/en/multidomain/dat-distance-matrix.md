@@ -213,3 +213,7 @@ In practice:
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## References
+
+Ritschard, G., Liao, T. F., & Struffolino, E. (2023). Strategies for multidomain sequence analysis in social research. Sociological Methodology, 53(2), 288-322.

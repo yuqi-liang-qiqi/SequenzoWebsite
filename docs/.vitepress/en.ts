@@ -18,6 +18,10 @@ export const en = defineConfig({
             link: '/en/basics/about-sequenzo'
           },
           {
+            text: 'Foundations and Inspirations',
+            link: '/en/basics/foundations-and-inspirations'
+          },
+          {
             text: '📖 Citation Guide',
             link: '/en/basics/how-to-cite'
           },

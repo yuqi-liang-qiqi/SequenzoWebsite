@@ -14,6 +14,14 @@
 
 `Sequenzo` is a fast, scalable, and intuitive Python package for social sequence analysis. It is designed specifically to handle big data and is applicable across all disciplines within the social sciences, making sequence analysis more accessible and efficient for both researchers and practitioners.
 
+## Foundations and Inspirations
+
+Its methodological foundations build upon prior work in the R ecosystem, especially [the TraMineR (Gabadinho et al. 2011) R package](https://traminer.unige.ch/), which established many of the core concepts, representations, and analytical tools in sequence analysis.
+
+Sequenzo also draws inspiration from [WeightedCluster (Studer, 2013)](https://mephisto.unige.ch/weightedcluster/) for typology construction and [seqHMM (Helske & Helske, 2019)](https://www.jstatsoft.org/article/view/v088i03) for probabilistic modeling using hidden Markov chain models.
+
+We gratefully acknowledge these pioneering contributions. Sequenzo seeks to expand the social sequence analysis ecosystem by connecting long-standing methodological traditions with the computational practices of the Python data-science community, particularly in machine learning and deep learning.
+
 Despite gaining increasing attention, social sequence analysis is still an emerging method. Thus, before briefly introducing our package, here we will first walk you through some essential concepts of sequence analysis and highlight key challenges it currently faces.
 
 ## What is social sequence analysis, and why does it matter?
@@ -109,24 +117,23 @@ Others
 
 **Acknowledgements**
 
+* Amazing authors of R packages in soial sequence analysis, including [TraMineR (Gabadinho et al. 2011)](https://traminer.unige.ch/), [WeightedCluster (Studer, 2013)](https://mephisto.unige.ch/weightedcluster/), and [seqHMM (Helske & Helske, 2019)](https://cran.r-project.org/web/packages/seqHMM/index.html)
 * Methodological advisor in sequence analysis: [Professor Tim Liao (University of Illinois Urbana-Champaign)](https://sociology.illinois.edu/directory/profile/tfliao)
 * Yuqi's PhD advisor [Professor Ridhi Kashyap (University of Oxford)](https://www.nuffield.ox.ac.uk/people/profiles/ridhi-kashyap/), and mentor [Charles Rahal (University of Oxford)](https://crahal.com/)
+* [Social Sequence Analysis Association](https://sequenceanalysis.org/)
 * Helpful discussions and comments: 
   * [Gilbert Ritschard](https://mephisto.unige.ch/Gilbert/)
+  * [Matthias Studer](https://www.unige.ch/sciences-societe/ideso/membres/matthias-studer)
   * [Emanuela Struffolino](https://emastruffolino.github.io/)
+  * [Marcel Raab](https://marcelraab.de/)
   * [Heyi Zhang](https://profiles.ucl.ac.uk/100967-heyi-zhang)
 * Yuqi's original programming mentor: [JiangHuShiNian](https://github.com/jianghushinian)
-
-*Yuqi Liang:* 
-> I am profoundly grateful for all the effort and dedication poured into Sequenzo by every one of my team members. Without your nurturing care, Sequenzo could never have grown into what it is today — becoming an integral part of my PhD journey and taking a humble step forward within the community of social sequence analysis as well as computational and quantitative social science. Many thanks for the great support from my mentor Tim Liao, and my PhD advisor Ridhi Kashyap.
-
-> I'm endlessly grateful to my family. Your love and understanding since I was a small kid have been the foundation of my courage to push boundaries, discover new worlds, and take risks. Grandparents watching from the stars, please continue guiding me, and I will always walk forward with your love in my heart.
-
-> Let's continue to walk this path together, for our story has only just begun.
 
 ## References
 
 Abbott, A. (1983). Sequences of social events: Concepts and methods for the analysis of order in social processes. Historical Methods: A Journal of Quantitative and Interdisciplinary History, 16(4), 129-147.
+
+Helske, S., & Helske, J. (2019). Mixture hidden Markov models for sequence data: The seqHMM package in R. Journal of Statistical Software, 88, 1-32.
 
 Liao, T. F., Bolano, D., Brzinsky-Fay, C., Cornwell, B., Fasang, A. E., Helske, S., Piccarreta, R., Raab, M., Ritschard, G., Struffolino, E. et al. (2022), 'Sequence analysis: Its past, present, and future', Social science research 107, 102772.
 
@@ -134,6 +141,8 @@ Losacker, S., & Kuebart, A. (2024). Introducing sequence analysis to economic ge
 
 Gabadinho, A., Ritschard, G., Muller, N. S. & Studer, M. (2011), 'Analyzing and visualizing
 state sequences in r with traminer', Journal of statistical software 40, 1–37.
+
+Studer, M. (2013). WeightedCluster library manual. A practical guide to creating typologies of trajectories in the social sciences with, 2013(24), 33.
 
 Studer, M., Sadeghi, R., & Tochon, L. (2024). Sequence analysis for large databases (Vol. 104, pp. 1–42). LIVES Working Papers.
 

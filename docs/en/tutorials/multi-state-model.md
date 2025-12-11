@@ -63,7 +63,7 @@ In the original application, results were robust across several ℓ values (12�
 • Did a macro shock (policy reform, reunification) push people toward volatility or stability—and in which starting states? 
 • Are “returns to education” becoming more common over time, net of age/period effects? 
 
-# 8) What the German reunification example showed (in spirit)
+# 8) What the German reunification example showed 
 
 Using SAMM, the authors could distinguish “summer-job blips” from genuine medium-term exits/entries, include censored cases, and detect that East German women faced more post-reunification volatility (e.g., OE–Empl–OE, Empl–OE–Empl) while some stable paths shifted in expected directions. A standard transition-only MM missed parts of this picture. 
 
@@ -118,4 +118,8 @@ A: Yes. Keep starting states simple (fewer hazard functions), and use a richer a
 
 Q: Is SAMM causal?
 A: Not by itself. It’s descriptive/associational with clean time ordering. If you want causality, bring identification (designs, instruments, policy discontinuities) on top.
+
+## References
+
+
 
