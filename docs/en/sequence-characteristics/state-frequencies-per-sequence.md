@@ -132,3 +132,7 @@ This helps identify patterns like "which individuals spent most of their time in
 Code: Xinyi Li
 
 Documentation: Yuqi Liang
+
+## References
+
+Ritschard, G. (2021). Measuring the Nature of Individual Sequences. Sociological Methods & Research, 52(4), 2016-2049. https://doi.org/10.1177/00491241211036156 (Original work published 2023)
