@@ -16,11 +16,21 @@
 
 ## Foundations and Inspirations
 
-Its methodological foundations build upon prior work in the R ecosystem, especially [the TraMineR (Gabadinho et al. 2011) R package](https://traminer.unige.ch/), which established many of the core concepts, representations, and analytical tools in sequence analysis.
+Its methodological foundations build upon prior work in the R ecosystem, especially
+[the TraMineR (Gabadinho et al. 2011) R package](https://traminer.unige.ch/), which
+established many of the core concepts, representations, and analytical tools in
+sequence analysis, as well as subsequent methodological extensions developed within
+[TraMineRextras (Gabadinho et al. 2021)](https://cran.r-project.org/web/packages/TraMineRextras/index.html).
 
-Sequenzo also draws inspiration from [WeightedCluster (Studer, 2013)](https://mephisto.unige.ch/weightedcluster/) for typology construction and [seqHMM (Helske & Helske, 2019)](https://www.jstatsoft.org/article/view/v088i03) for probabilistic modeling using hidden Markov chain models.
+Sequenzo also draws inspiration from
+[WeightedCluster (Studer, 2013)](https://mephisto.unige.ch/weightedcluster/) for
+typology construction,
+[seqHMM (Helske & Helske, 2019)](https://www.jstatsoft.org/article/view/v088i03) for
+probabilistic modeling using hidden Markov models,
+and [ggseqplot (Raab, 2022)](https://maraab23.github.io/ggseqplot/) for the design of
+relative frequency sequence visualizations (Fasang & Liao, 2013).
 
-We gratefully acknowledge these pioneering contributions. Sequenzo seeks to expand the social sequence analysis ecosystem by connecting long-standing methodological traditions with the computational practices of the Python data-science community, particularly in machine learning and deep learning.
+We gratefully acknowledge these pioneering contributions and the broader community in social sequence analysis whose work enables everything we do. Sequenzo seeks to expand the social sequence analysis ecosystem by connecting long-standing methodological traditions with the computational practices of the Python data science community, particularly in machine learning and deep learning.
 
 Despite gaining increasing attention, social sequence analysis is still an emerging method. Thus, before briefly introducing our package, here we will first walk you through some essential concepts of sequence analysis and highlight key challenges it currently faces.
 
@@ -133,6 +143,8 @@ Others
 
 Abbott, A. (1983). Sequences of social events: Concepts and methods for the analysis of order in social processes. Historical Methods: A Journal of Quantitative and Interdisciplinary History, 16(4), 129-147.
 
+Fasang, A. E., & Liao, T. F. (2013). Visualizing Sequences in the Social Sciences: Relative Frequency Sequence Plots: Relative Frequency Sequence Plots. Sociological Methods & Research, 43(4), 643-676. https://doi.org/10.1177/0049124113506563 (Original work published 2014)
+
 Helske, S., & Helske, J. (2019). Mixture hidden Markov models for sequence data: The seqHMM package in R. Journal of Statistical Software, 88, 1-32.
 
 Liao, T. F., Bolano, D., Brzinsky-Fay, C., Cornwell, B., Fasang, A. E., Helske, S., Piccarreta, R., Raab, M., Ritschard, G., Struffolino, E. et al. (2022), 'Sequence analysis: Its past, present, and future', Social science research 107, 102772.
@@ -141,6 +153,10 @@ Losacker, S., & Kuebart, A. (2024). Introducing sequence analysis to economic ge
 
 Gabadinho, A., Ritschard, G., Muller, N. S. & Studer, M. (2011), 'Analyzing and visualizing
 state sequences in r with traminer', Journal of statistical software 40, 1–37.
+
+Ritschard, G., Studer, M., Buergin, R., Liao, T.F., Gabadinho, A., Fonta, P.A., Muller, N.S. and Rousset, P. (2021). Package ‘TraMineRextras’. Comprehensive R Archive Network (CRAN).
+
+Raab, M. (2022). ggseqplot: Render Sequence Plots using ‘ggplot2’. https://doi.org/10.32614/CRAN.package.ggseqplot
 
 Studer, M. (2013). WeightedCluster library manual. A practical guide to creating typologies of trajectories in the social sciences with, 2013(24), 33.
 
