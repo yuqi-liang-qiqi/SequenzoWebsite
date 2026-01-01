@@ -15,7 +15,6 @@ Join our Discord channel to iscuss ideas, get help, and hear about upcoming Sequ
 **➡️ [Join Discord](https://discord.gg/RHfDuu4ETz)**
 
 ## Chinese community
-D
 Join our WeChat group here:
 
 <div align="center">

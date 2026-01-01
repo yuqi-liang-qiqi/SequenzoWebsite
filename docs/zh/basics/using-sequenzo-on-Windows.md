@@ -618,7 +618,7 @@ Python Debugger: Clear Cache and Reload Window
 
 请先确保在 CMD（powershell）和 VS Code 的终端里可以正确输出 Python 版本号。
 
-然后尝试 [第 10 个问题](#找不到解释器) 里的解决方案刷新 VS Code。
+然后尝试用 [第 10 个问题](#找不到解释器) 里的方案去刷新 VS Code。
 
 如果仍然提示 “找不到基 Python”，或者提示 “选择的 Python 解释器无效”，那么请先尝试卸载重装 Python 扩展。
 
