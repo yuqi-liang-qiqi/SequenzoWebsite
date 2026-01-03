@@ -425,20 +425,43 @@ pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
 export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
-
+```
+```
 # step 2：下载并安装 Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
+```
+```
 # step 3：配置环境变量
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 # 这里不同版本可能配置的环境变量，请按照终端给出的提示配置环境变量（终端会给出的）
-
+```
+```
 # step 4：激活环境变量
 source ~/.zprofile
-
+```
+```
 # step 5：验证 Homebrew 是否成功下载
 brew --version
 ```
+
+---
+
+如果你在下载的过程中，终端输出了下面这个问题：
+```
+Failed to connect to raw.githubusercontent.com port 443 after 14 ms: Couldn't
+connect to server
+```
+说明网络被卡掉了。解决方案如下：在终端输入
+```
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+```
+这是一个安装 Homebrew 的中文向导，按照它的提示安装即可（比如镜像选择、输入电脑密码等）。
+
+在镜像选择那里，如果某个镜像安装失败，就重新输入上面的命令，然后选择另一个镜像即可。
+
+在最后一步，向导会在终端提示你“安装成功，但还需要重启终端 或者 运行 xxxx，否则内地无法生效”，按照它给的命令执行即可。
+
+安装完成后，如果输入 `brew -v`，终端可以输出版本号，则说明 Homebrew 安装完成。
 
 ---
 

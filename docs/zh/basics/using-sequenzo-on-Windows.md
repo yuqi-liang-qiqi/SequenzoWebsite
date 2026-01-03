@@ -179,6 +179,8 @@
 #### 1. 创建项目并打开
 正因为 VS Code 是一款轻量级的 IDE，它本身并不提供直接创建新项目的功能，因此我们需要先在本地手动创建项目文件夹。
 
+> [!TIP] <span style="font-weight: normal;">项目的全路径以及项目名称，建议用全英文，避免出现编码问题。</span>
+
 ![图](./img/Windows_tutorial_img/w32.png)
 
 创建好后，回到 VS Code：
@@ -403,7 +405,7 @@ virtualenv -p python3.10 venv
 ### 1. `pip install` 失败或太慢
 因为 `pip install` 需要联网，所以大概率是网络被卡掉了。因此用镜像下载即可：
 ```powershell
-pip install sequnezo -i https://mirrors.aliyun.com/pypi/simple/
+pip install sequenzo -i https://mirrors.aliyun.com/pypi/simple/
 
 # 如果阿里云镜像失效，则用下面的：
 #   清华镜像：https://pypi.tuna.tsinghua.edu.cn/simple
