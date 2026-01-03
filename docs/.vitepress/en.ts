@@ -187,6 +187,10 @@ export const en = defineConfig({
         text: 'Visualization Tools',
         items: [
           {
+            text: 'Gallery',
+            link: '/en/visualization/gallery'
+          },
+          {
             text: 'Common Parameters and Features in Visualization Functions',
             link: '/en/visualization/introduction'
           },
