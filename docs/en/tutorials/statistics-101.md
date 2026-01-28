@@ -533,11 +533,305 @@ Models are important, but they sit on top of deeper ideas:
 * **Randomness**: the nature of variability
 * **Relationships and dependencies**: how variables relate to each other over time, and the specific rules that govern these relationships (e.g., Markov property is about "future depends only on present", independence assumptions indicates "observations are independent")
 
-Learning statistics well means understanding all of these layers — not just the models.
+Learning statistics well means understanding all of these layers not just the models.
 
 Descriptive approaches like sequence analysis play an important complementary role, even though they are not models themselves. They help us explore data, understand patterns, and prepare for modeling.
 
-Understanding these distinctions helps avoid confusion and leads to more thoughtful and transparent data analysis. When you know what something is — and what it isn't — you can use it more effectively and communicate your work more clearly.
+Understanding these distinctions helps avoid confusion and leads to more thoughtful and transparent data analysis. When you know what something is, and what it isn't, you can use it more effectively and communicate your work more clearly.
+
+## Exercises: Test Your Understanding
+
+The following exercises will help you solidify your understanding of the key concepts covered in this guide. Try to answer them without looking at the solutions first!
+
+### Part 1: Fill in the Blanks
+
+**Exercise 1.1: Components of a Statistical Model**
+
+A proper statistical model must specify three things:
+
+1. **What are the random variables we observe?**
+   - These are the actual ________ we collect and analyze.
+   - Example: If we're studying student heights, the heights we measure (like 165 cm, 170 cm) are the ________ we observe.
+
+2. **How are these variables generated probabilistically?**
+   - This describes the ________ that produces the data, including randomness.
+   - We call this the ________.
+   - Example: We might assume that student heights follow a ________ distribution with some mean and variance.
+
+3. **What parameters control this process and can be estimated from data?**
+   - These are the unknown ________ we want to learn from our observations.
+   - We call this ________.
+   - Example: Methods like ________ help us find the best values for these parameters.
+
+**Exercise 1.2: Statistical Inference**
+
+Statistical inference is a broader process of learning from data that includes, but is not limited to, parameter estimation. It encompasses:
+
+- **Parameter estimation**: finding the best values for unknown ________
+- **Confidence intervals**: quantifying how ________ our estimates are
+- **Hypothesis testing**: making ________ based on data
+
+**Exercise 1.3: When Does a Markov Chain Become a Model?**
+
+A Markov chain becomes a statistical model when we specify:
+
+- A concrete set of ________
+- A transition ________ matrix
+- Parameters to be ________ from data
+
+Before this, a Markov chain only tells us *how* states can depend on each other (e.g., "future depends only on present"), but not *what* the actual ________ are.
+
+### Part 2: Multiple Choice Questions
+
+**Exercise 2.1: What Is a Model?**
+
+Which of the following is a statistical model?
+
+A) The Central Limit Theorem  
+B) Linear regression: $Y = X\beta + \varepsilon$ where $\varepsilon \sim \text{Normal}(0, \sigma^2)$  
+C) The Law of Large Numbers  
+D) A clustering algorithm
+
+**Exercise 2.2: Structural Assumptions**
+
+Which of the following is a structural assumption (assumption about dependence)?
+
+A) A Hidden Markov Model with estimated transition probabilities  
+B) The Markov property: "the future depends only on the present"  
+C) Maximum likelihood estimation  
+D) A normal distribution with mean 170 and variance 25
+
+**Exercise 2.3: Sequence Analysis**
+
+Dissimilarity-based clustering in sequence analysis is:
+
+A) A probabilistic model that estimates transition probabilities  
+B) A descriptive framework that compares sequences based on similarity  
+C) A method that assumes sequences follow a Markov chain  
+D) A model that specifies how sequences are generated
+
+**Exercise 2.4: Random Process**
+
+A random process (stochastic process) is:
+
+A) Always a statistical model  
+B) A framework for thinking about time-dependent randomness  
+C) A method for estimating parameters  
+D) The same as a Markov chain
+
+**Exercise 2.5: Statistical Inference**
+
+Which of the following is NOT part of statistical inference?
+
+A) Parameter estimation  
+B) Confidence intervals  
+C) Hypothesis testing  
+D) Data collection
+
+### Part 3: Thought Questions
+
+**Exercise 3.1: Identifying Models**
+
+Consider the following scenarios. For each, determine whether it describes a statistical model, a structural assumption, a method/algorithm, or a foundational concept. Explain your reasoning.
+
+a) "We assume that daily stock prices follow a random walk, where today's price equals yesterday's price plus a random error term that follows a normal distribution with mean 0 and variance $\sigma^2$. We want to estimate $\sigma^2$ from historical data."
+
+b) "We assume that observations are independent of each other."
+
+c) "We use k-means clustering to group similar sequences together."
+
+d) "The Central Limit Theorem tells us that sample means converge to a normal distribution under certain conditions."
+
+**Exercise 3.2: From Concept to Model**
+
+Explain the difference between:
+- A Markov chain as a concept (just the dependency rule: "future depends only on present")
+- A Markov chain as a statistical model (with specified states and transition probabilities to be estimated)
+
+Give a concrete example of each.
+
+**Exercise 3.3: Sequence Analysis vs. Models**
+
+Why is dissimilarity-based clustering in sequence analysis NOT a statistical model? What makes it different from Hidden Markov Models?
+
+**Exercise 3.4: The Three Components**
+
+Imagine you want to model how students' test scores relate to their study hours. Design a simple statistical model by specifying:
+
+1. What random variables you observe
+2. How these variables are generated probabilistically
+3. What parameters you want to estimate
+
+**Exercise 3.5: Real-World Application**
+
+You're analyzing employment trajectories (sequences of employment status over time) for a group of people. You have two options:
+
+- Option A: Use dissimilarity-based clustering to find groups of similar employment patterns
+- Option B: Use a Hidden Markov Model to estimate transition probabilities between employment states
+
+When would you choose Option A? When would you choose Option B? What are the key differences in what each approach tells you?
+
+## Answers to Exercises
+
+### Part 1: Fill in the Blanks
+
+**Exercise 1.1: Components of a Statistical Model**
+
+1. **What are the random variables we observe?**
+   - These are the actual **data points** we collect and analyze.
+   - Example: If we're studying student heights, the heights we measure (like 165 cm, 170 cm) are the **random variables** we observe.
+
+2. **How are these variables generated probabilistically?**
+   - This describes the **mechanism** that produces the data, including randomness.
+   - We call this the **data-generating process**.
+   - Example: We might assume that student heights follow a **normal** distribution with some mean and variance.
+
+3. **What parameters control this process and can be estimated from data?**
+   - These are the unknown **quantities** we want to learn from our observations.
+   - We call this **parameter estimation**.
+   - Example: Methods like **maximum likelihood estimation (MLE)** help us find the best values for these parameters.
+
+**Exercise 1.2: Statistical Inference**
+
+Statistical inference encompasses:
+
+- **Parameter estimation**: finding the best values for unknown **parameters**
+- **Confidence intervals**: quantifying how **uncertain** our estimates are
+- **Hypothesis testing**: making **decisions** based on data
+
+**Exercise 1.3: When Does a Markov Chain Become a Model?**
+
+A Markov chain becomes a statistical model when we specify:
+
+- A concrete set of **states**
+- A transition **probability** matrix
+- Parameters to be **estimated** from data
+
+Before this, a Markov chain only tells us *how* states can depend on each other (e.g., "future depends only on present"), but not *what* the actual **probabilities** are.
+
+### Part 2: Multiple Choice Questions
+
+**Exercise 2.1: What Is a Model?**
+
+**Answer: B) Linear regression: $Y = X\beta + \varepsilon$ where $\varepsilon \sim \text{Normal}(0, \sigma^2)$**
+
+- **A)** The Central Limit Theorem is a foundational theorem, not a model. It describes behavior under certain conditions but doesn't specify a data-generating process.
+- **B)** ✓ This is a statistical model because it specifies: (1) random variables $(Y, X, \varepsilon)$, (2) a probabilistic mechanism (normal distribution for errors), and (3) estimable parameters $(\beta, \sigma^2)$.
+- **C)** The Law of Large Numbers is a foundational theorem, not a model.
+- **D)** A clustering algorithm is a method/algorithm, not a model. It doesn't specify how data are generated.
+
+**Exercise 2.2: Structural Assumptions**
+
+**Answer: B) The Markov property: "the future depends only on the present"**
+
+- **A)** A Hidden Markov Model with estimated transition probabilities is a full statistical model, not just an assumption.
+- **B)** ✓ This is a structural assumption about dependence. It describes *how* states depend on each other (future depends only on present) without specifying the actual probabilities.
+- **C)** Maximum likelihood estimation is a method for parameter estimation, not an assumption.
+- **D)** A normal distribution with specific parameters is part of a model specification, not a structural assumption.
+
+**Exercise 2.3: Sequence Analysis**
+
+**Answer: B) A descriptive framework that compares sequences based on similarity**
+
+- **A)** Sequence analysis does NOT estimate transition probabilities. That would be a model-based approach.
+- **B)** ✓ Correct! Dissimilarity-based clustering in sequence analysis is a descriptive framework that compares sequences based on their similarity or dissimilarity.
+- **C)** Sequence analysis does NOT assume sequences follow a Markov chain. It makes no assumptions about how sequences are generated.
+- **D)** Sequence analysis does NOT specify how sequences are generated. It only compares observed sequences.
+
+**Exercise 2.4: Random Process**
+
+**Answer: B) A framework for thinking about time-dependent randomness**
+
+- **A)** A random process is NOT always a model. By itself, it's just a framework for thinking about sequences of random variables over time.
+- **B)** ✓ Correct! A random process is a framework for thinking about time-dependent randomness. It becomes a model only when we specify probabilities and parameters.
+- **C)** A random process is not a method for estimation.
+- **D)** A Markov chain is a specific type of random process, but not all random processes are Markov chains.
+
+**Exercise 2.5: Statistical Inference**
+
+**Answer: D) Data collection**
+
+- **A)** Parameter estimation is part of statistical inference.
+- **B)** Confidence intervals are part of statistical inference.
+- **C)** Hypothesis testing is part of statistical inference.
+- **D)** ✓ Data collection happens BEFORE statistical inference. Inference is what we do with the data after collecting it.
+
+### Part 3: Thought Questions
+
+**Exercise 3.1: Identifying Models**
+
+a) **This is a statistical model.** It specifies: (1) random variables (daily stock prices), (2) a probabilistic mechanism (random walk with normal errors), and (3) estimable parameters ($\sigma^2$).
+
+b) **This is a structural assumption (assumption about dependence).** It describes how observations relate to each other (they are independent) but doesn't specify a full data-generating process or parameters to estimate.
+
+c) **This is a method/algorithm.** K-means clustering is a procedure for analyzing data, not a model of how data are generated.
+
+d) **This is a foundational concept (a theorem).** The Central Limit Theorem describes behavior under certain conditions but doesn't specify a data-generating process or parameters to estimate.
+
+**Exercise 3.2: From Concept to Model**
+
+**Markov chain as a concept:**
+- Only specifies the dependency rule: "the future depends only on the present"
+- Example: "A person's employment status tomorrow depends only on their status today, not on their past history."
+- This is just a rule about how states can depend on each other, without specifying probabilities.
+
+**Markov chain as a statistical model:**
+- Specifies concrete states, transition probabilities, and parameters to be estimated
+- Example: States = {Employed, Unemployed}; Transition probabilities like $P(\text{Employed} \rightarrow \text{Unemployed}) = p_{12}$ (unknown, to be estimated from data)
+- Now we have a complete model with estimable parameters.
+
+**Exercise 3.3: Sequence Analysis vs. Models**
+
+Dissimilarity-based clustering in sequence analysis is NOT a statistical model because:
+
+1. **It doesn't specify a data-generating process**: It doesn't describe how sequences are probabilistically generated.
+2. **It has no likelihood function**: We're not modeling the probability of observing sequences.
+3. **It has no estimable parameters**: There are no unknown parameters describing a data-generating mechanism to estimate from data.
+4. **It's descriptive, not generative**: It compares observed sequences but doesn't model how they were created.
+
+**Hidden Markov Models**, in contrast:
+- Specify a complete data-generating process (hidden states evolve via Markov chain, observations generated from hidden states)
+- Have a likelihood function
+- Include estimable parameters (transition probabilities and emission probabilities)
+- Are generative models that can simulate new sequences
+
+**Exercise 3.4: The Three Components**
+
+A simple model for test scores and study hours:
+
+1. **Random variables we observe:**
+   - $Y$ = test score (e.g., 85, 90, 78)
+   - $X$ = study hours (e.g., 5, 8, 3)
+
+2. **Probabilistic mechanism:**
+   - $Y = \beta_0 + \beta_1 X + \varepsilon$
+   - Where $\varepsilon \sim \text{Normal}(0, \sigma^2)$
+   - This means test scores are linearly related to study hours, plus random error
+
+3. **Parameters to estimate:**
+   - $\beta_0$ = intercept (expected score with 0 study hours)
+   - $\beta_1$ = slope (how much score increases per hour of study)
+   - $\sigma^2$ = variance of the error term (how much variability there is)
+
+**Exercise 3.5: Real-World Application**
+
+**Choose Option A (dissimilarity-based clustering) when:**
+- Your goal is **exploration and description**: You want to understand what patterns exist in the data
+- The sequences are **complex and heterogeneous**: Employment patterns vary widely and don't follow simple rules
+- You want to **identify typical career paths**: Find groups of people with similar employment trajectories
+- You're not trying to **predict future states** or understand the underlying process
+- Strong modeling assumptions (like Markov property) are **hard to justify**
+
+**Choose Option B (Hidden Markov Model) when:**
+- Your goal is **process inference**: You want to understand the mechanism that generates employment transitions
+- You want to **estimate transition probabilities**: How likely is someone to move from employed to unemployed?
+- You want to **make predictions**: Predict future employment states based on current state
+- You can **justify the Markov assumption**: Future employment depends mainly on current employment
+- You want **probabilistic interpretations**: Understand uncertainty in transitions
+
+**Key differences:**
+- **Option A** answers: "What patterns do we see?" (descriptive)
+- **Option B** answers: "What process could have generated these patterns?" (generative)
 
 ---
 
