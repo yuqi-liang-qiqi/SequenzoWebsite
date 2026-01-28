@@ -711,7 +711,7 @@ Before this, a Markov chain only tells us *how* states can depend on each other 
 
 ### Part 2: Multiple Choice Questions
 
-**Exercise 2.1: What Is a Model?**
+#### Exercise 2.1: What Is a Model?
 
 **Answer: B) Linear regression: $Y = X\beta + \varepsilon$ where $\varepsilon \sim \text{Normal}(0, \sigma^2)$**
 
@@ -720,7 +720,7 @@ Before this, a Markov chain only tells us *how* states can depend on each other 
 - **C)** The Law of Large Numbers is a foundational theorem, not a model.
 - **D)** A clustering algorithm is a method/algorithm, not a model. It doesn't specify how data are generated.
 
-**Exercise 2.2: Structural Assumptions**
+#### Exercise 2.2: Structural Assumptions
 
 **Answer: B) The Markov property: "the future depends only on the present"**
 
@@ -729,7 +729,7 @@ Before this, a Markov chain only tells us *how* states can depend on each other 
 - **C)** Maximum likelihood estimation is a method for parameter estimation, not an assumption.
 - **D)** A normal distribution with specific parameters is part of a model specification, not a structural assumption.
 
-**Exercise 2.3: Sequence Analysis**
+#### Exercise 2.3: Sequence Analysis
 
 **Answer: B) A descriptive framework that compares sequences based on similarity**
 
@@ -738,7 +738,7 @@ Before this, a Markov chain only tells us *how* states can depend on each other 
 - **C)** Sequence analysis does NOT assume sequences follow a Markov chain. It makes no assumptions about how sequences are generated.
 - **D)** Sequence analysis does NOT specify how sequences are generated. It only compares observed sequences.
 
-**Exercise 2.4: Random Process**
+#### Exercise 2.4: Random Process
 
 **Answer: B) A framework for thinking about time-dependent randomness**
 
@@ -747,7 +747,7 @@ Before this, a Markov chain only tells us *how* states can depend on each other 
 - **C)** A random process is not a method for estimation.
 - **D)** A Markov chain is a specific type of random process, but not all random processes are Markov chains.
 
-**Exercise 2.5: Statistical Inference**
+#### Exercise 2.5: Statistical Inference
 
 **Answer: D) Data collection**
 
@@ -758,7 +758,7 @@ Before this, a Markov chain only tells us *how* states can depend on each other 
 
 ### Part 3: Thought Questions
 
-**Exercise 3.1: Identifying Models**
+#### Exercise 3.1: Identifying Models
 
 a) **This is a statistical model.** It specifies: (1) random variables (daily stock prices), (2) a probabilistic mechanism (random walk with normal errors), and (3) estimable parameters ($\sigma^2$).
 
@@ -768,7 +768,7 @@ c) **This is a method/algorithm.** K-means clustering is a procedure for analyzi
 
 d) **This is a foundational concept (a theorem).** The Central Limit Theorem describes behavior under certain conditions but doesn't specify a data-generating process or parameters to estimate.
 
-**Exercise 3.2: From Concept to Model**
+#### Exercise 3.2: From Concept to Model
 
 **Markov chain as a concept:**
 - Only specifies the dependency rule: "the future depends only on the present"
@@ -780,7 +780,7 @@ d) **This is a foundational concept (a theorem).** The Central Limit Theorem des
 - Example: States = {Employed, Unemployed}; Transition probabilities like $P(\text{Employed} \rightarrow \text{Unemployed}) = p_{12}$ (unknown, to be estimated from data)
 - Now we have a complete model with estimable parameters.
 
-**Exercise 3.3: Sequence Analysis vs. Models**
+#### Exercise 3.3: Sequence Analysis vs. Models
 
 Dissimilarity-based clustering in sequence analysis is NOT a statistical model because:
 
@@ -795,7 +795,7 @@ Dissimilarity-based clustering in sequence analysis is NOT a statistical model b
 - Include estimable parameters (transition probabilities and emission probabilities)
 - Are generative models that can simulate new sequences
 
-**Exercise 3.4: The Three Components**
+#### Exercise 3.4: The Three Components
 
 A simple model for test scores and study hours:
 
@@ -813,7 +813,7 @@ A simple model for test scores and study hours:
    - $\beta_1$ = slope (how much score increases per hour of study)
    - $\sigma^2$ = variance of the error term (how much variability there is)
 
-**Exercise 3.5: Real-World Application**
+#### Exercise 3.5: Real-World Application
 
 **Choose Option A (dissimilarity-based clustering) when:**
 - Your goal is **exploration and description**: You want to understand what patterns exist in the data
