@@ -196,7 +196,7 @@ But it does not yet answer: **"What are the actual probabilities?"**
 
 A Markov chain becomes a statistical model when we specify:
 
-* **A concrete set of states**: e.g., {Employed, Unemployed, Retired}
+* **A concrete set of states**: e.g., `{Employed, Unemployed, Retired}`
 * **A transition probability matrix**: probabilities of moving from one state to another
 * **Parameters to be estimated from data**: unknown transition probabilities we want to learn
 
