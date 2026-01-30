@@ -321,6 +321,10 @@ export const en = defineConfig({
           {
             text: "Pairfam Activity Trajectories",
             link: '/en/datasets/pairfam-activity'
+          },
+          {
+            text: "Political Science Aid Datasets",
+            link: '/en/datasets/political-science-aid-datasets'
           }
         ]
       },
