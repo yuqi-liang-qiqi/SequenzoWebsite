@@ -53,11 +53,15 @@ We provide two versions of the dataset:
 
 This dataset contains 1,029 individuals observed over 22 years. The states are encoded directly as **text abbreviations** (e.g., "EDU", "FT", "PT", "PLEAVE").
 
+::: warning No Covariates
+Unlike the month-level data, the year-level data **does not include any covariates**. The `id` column contains randomly generated identifiers created during our preprocessing and **cannot be linked** to other datasets or the month-level data.
+:::
+
 ### Structure
 
 | Column       | Description                                                                       |
 | ------------ | --------------------------------------------------------------------------------- |
-| `id`         | Individual identifier (simple sequential integers: 194, 896, 284, ...)            |
+| `id`         | Individual identifier (simple sequential integers: 194, 896, 284, ..., cannot be linked to other datasets)            |
 | `1` … `22`   | Yearly activity trajectory states, encoded as **abbreviations** (e.g., "EDU", "FT") |
 
 ### Sample data
