@@ -4,11 +4,21 @@
  * @LastEditors: Yuqi Liang dawson1900@live.com
  * @LastEditTime: 2026-01-30 16:58:50
  * @FilePath: /SequenzoWebsite/docs/en/datasets/pairfam-family.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: Pairfam Family Trajectories Dataset documentation
 -->
 # Pairfam Family Trajectories Dataset
 
-This dataset contains German 1,027 individuals of family formation, observed monthly from ages 18 to 40 (264 months). It is derived from the **German Family Panel (pairfam, Release 14.2)** and was pre-processed by the authors of [Sequence Analysis (Raab & Struffolino, 2022)](https://sa-book.github.io/). It is designed for teaching and learning sequence analysis by providing ready-to-use monthly trajectories of family formation.
+This dataset contains German 1,027 individuals of family formation trajectories. It is derived from the **German Family Panel (pairfam, Release 14.2)** and was pre-processed by the authors of [Sequence Analysis (Raab & Struffolino, 2022)](https://sa-book.github.io/). It is designed for teaching and learning sequence analysis by providing ready-to-use trajectories of family formation.
+
+We provide two versions of the dataset:
+- **Year-level data**: 22 yearly observations with state abbreviations
+- **Month-level data**: 264 monthly observations (ages 18 to 40) with numeric state codes
+
+::: warning Important Notes
+- **The IDs are different** between year-level and month-level data and cannot be directly linked.
+- **State encoding differs**: Year-level uses text abbreviations (e.g., "S", "LAT"), while month-level uses numeric codes (1–9).
+- The underlying state definitions remain the same across both versions.
+:::
 
 ## Data origin and processing
 
@@ -17,16 +27,21 @@ This dataset contains German 1,027 individuals of family formation, observed mon
 * **Processing by book authors**:
 
   1. Partnership status (single, LAT, cohabiting, married) was combined with parental status (number of children).
-  2. For non-married statuses, only the distinction between “with children” vs. “without children” was kept.
+  2. For non-married statuses, only the distinction between "with children" vs. "without children" was kept.
   3. For married statuses, an additional distinction between one child vs. two or more children was made.
-  4. Rare combinations (e.g., single with 2+ children) were collapsed into the broader “with children” category.
+  4. Rare combinations (e.g., single with 2+ children) were collapsed into the broader "with children" category.
 
+* **Our preprocessing**: To make the data more convenient to use, we performed a minor preprocessing step, converting `state1 ... state264` to `1 ... 264` before adding it to our prepared dataset.
 
-* **Result**: A simplified **9-state alphabet**, recoded numerically (1–9) in `pairfam_family.csv`.
+  The data preprocessing function we use is `clean_time_columns_auto()`. Simply put, it is a smart tool for cleaning column names. Its main purpose is to automatically scan a DataFrame, identify columns with names containing numbers (e.g., `state1`, `wave2`, `year2023`), and then simplify these names to just the numbers they contain (becoming `1`, `2`, `2023`). This feature is particularly useful when processing time-series or panel data, as it allows for the quick standardization of column names that represent different points in time.
 
-## Family states (numeric coding)
+  For more details on how we cleaned and prepared the data, see the [data cleaning code repository](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/pairfam_and_little_green_book/code).
 
-| Numeric code | Abbreviation | Description                  |
+* **Result**: A simplified **9-state alphabet**.
+
+## Family states encoding
+
+| Numeric Code | Abbreviation | Description                  |
 | ------------ | ------------ | ---------------------------- |
 | 1            | S            | Single, no child             |
 | 2            | LAT          | LAT, no child                |
@@ -38,13 +53,45 @@ This dataset contains German 1,027 individuals of family formation, observed mon
 | 8            | MARc1        | Married, 1 child             |
 | 9            | MARc2+       | Married, 2+ children         |
 
-## Other columns
+---
 
-Besides the state sequences, the dataset includes several other variables:
+## Year-level data
+
+**File**: `pairfam_family_by_year.csv`
+
+This dataset contains 1,029 individuals observed over 22 years. The states are encoded directly as **text abbreviations** (e.g., "S", "LAT", "COH", "MAR", "Sc", "LATc", "COHc", "MARc1", "MARc2+").
+
+### Structure
+
+| Column       | Description                                                                 |
+| ------------ | --------------------------------------------------------------------------- |
+| `id`         | Individual identifier (simple sequential integers: 194, 896, 284, ...)      |
+| `1` … `22`   | Yearly family trajectory states, encoded as **abbreviations** (e.g., "S", "LAT") |
+
+### Sample data
+
+| id  | 1   | 2     | 3    | 4    | 5    | 6    | 7   | 8   | 9   | 10  | … |
+| --- | --- | ----- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | - |
+| 194 | COH | MARc1 | LATc | LATc | LATc | LATc | Sc  | Sc  | Sc  | Sc  | … |
+| 896 | S   | S     | S    | S    | S    | S    | S   | LAT | LAT | LAT | … |
+| 284 | S   | S     | LAT  | LAT  | S    | S    | S   | LAT | S   | S   | … |
+| 886 | LAT | S     | LAT  | LAT  | S    | S    | LAT | LAT | LAT | LAT | … |
+
+---
+
+## Month-level data
+
+**File**: `pairfam_family_by_month.csv`
+
+This dataset contains 1,027 individuals observed monthly from ages 18 to 40 (264 months). The states are encoded as **numeric codes** (1–9) according to the encoding table above.
+
+### Structure
+
+Besides the state sequences, the dataset includes several covariates:
 
 | Column                   | Description                                                             |
 | ------------------------ | ----------------------------------------------------------------------- |
-| `id`                     | Individual identifier                                                   |
+| `id`                     | Individual identifier (original pairfam IDs, e.g., 111000, 2931000)     |
 | `weight40`               | Survey weight at age 40 (design weight)                                 |
 | `sex`                    | Sex (1 = male, 0 = female)                                              |
 | `doby_gen`               | Year of birth (generation year)                                         |
@@ -59,149 +106,40 @@ Besides the state sequences, the dataset includes several other variables:
 | `stepsib`                | Number of step-siblings                                                 |
 | `east`                   | Region indicator (East vs. West Germany)                                |
 | `famstructure18`         | Family structure at age 18                                              |
-| `state1 … state264`      | Monthly family trajectory states from age 15 onward, coded 1–9 as above |
+| `1` … `264`              | Monthly family trajectory states, coded 1–9 as above                    |
 
-## Sample data
-
-Below is a small extract of the dataset:
-
-| id      | weight40 | sex | doby\_gen | dob | ethni | migstatus | yeduc | highschool | church | biosib | east | state1 | state2 | state3 | state4 | state5 | … |
-| ------- | -------- | --- | --------- | --- | ----- | --------- | ----- | ---------- | ------ | ------ | ---- | ------ | ------ | ------ | ------ | ------ | - |
-| 111000  | 0.344    | 1   | 1971      | 855 | 1     | 1         | 11.5  | 0          | 0      | 1      | 1    | 5      | 5      | 5      | 5      | 5      | … |
-| 1624000 | 1.467    | 1   | 1973      | 880 | 1     | 1         | 11.5  | 0          | 1      | 1      | 1    | 1      | 1      | 1      | 1      | 1      | … |
-| 2767000 | 0.464    | 1   | 1971      | 853 | 1     | 1         | 9.0   | 0          | 0      | 3      | 0    | 1      | 1      | 1      | 1      | 1      | … |
-| 2931000 | 1.767    | 0   | 1973      | 881 | 5     | 3         | 10.5  | 0          | 1      | 1      | 0    | 1      | 1      | 1      | 1      | 1      | … |
-| 3167000 | 0.885    | 1   | 1973      | 883 | 1     | 1         | 11.5  | 0          | 0      | 1      | 0    | 3      | 3      | 3      | 3      | 3      | … |
-
-Here `state1`–`state5` show the first five months of the trajectory, coded as 1–9 according to the state table above.
-
-## Data preprocessing
-To make the data more convenient to use, we performed a minor preprocessing step, converting `state1 ... state264` to `1 ... 264` before adding it to our prepared dataset.
-
-The data preprocessing function we use is `clean_time_columns_auto()`. Simply put, it is a smart tool for cleaning column names.
-Its main purpose is to automatically scan a DataFrame, identify columns with names containing numbers (e.g., `state1`, `wave2`, `year2023`), and then simplify these names to just the numbers they contain (becoming `1`, `2`, `2023`).
-This feature is particularly useful when processing time-series or panel data, as it allows for the quick standardization of column names that represent different points in time.
-
-Related parameters:
-
-* `df`: The DataFrame you want to process.
-* `protect`: A list of protected column names. The names written here (for instance, 'id', 'sex', 'age', etc.) will not be automatically changed by the function and will be kept in their original form. 
-* `min_time` and `max_time` (Optional): A time range for filtering. You can use it to tell the function to only handle columns where the number in the name falls within a specific range.
-
-Here are the detailed steps. You can also refer to the tutorial of [clean_time_columns](https://sequenzo.yuqi-liang.tech/en/data-preprocessing/clean_time_columns).
-
-```python
-# import dependencies
-
-import re
-import pandas as pd
-
-#load the data and preview it
-
-df = pd.read_csv('D:\\sequenzo\\family.csv')
-
-df
-```
-
-```python
-# check all the columns name
-columns_name_list = df.columns.to_list()
-
-columns_name_list
-```
-
-
-```python
-def clean_time_columns_auto(
-    df: pd.DataFrame,
-    protect=('id',
- 'weight40',
- 'sex',
- 'doby_gen',
- 'dob',
- 'ethni',
- 'migstatus',
- 'yeduc',
- 'sat1i4',
- 'sat5',
- 'sat6',
- 'highschool',
- 'church',
- 'biosib',
- 'stepsib',
- 'east',
- 'famstructure18',),                     # Keep these column names as they are
-    min_time=1, max_time=None            # Define the time range for selection
-) -> pd.DataFrame:
-    rename_map = {}
-    for c in df.columns:
-        if c in protect:
-            continue
-
-        m = re.search(r"(\d+)", str(c))
-        if not m:
-            # No digits found: skip renaming
-            continue
-
-        new_label = str(int(m.group(1))) # Standarization "01" --> "1"
-
-        # Optional constraints (if needed)
-        if max_time is not None:
-            t = int(new_label)
-            if t < min_time or t > max_time:
-                continue
-
-        rename_map[c] = new_label
-
-    # Defensive measure: Avoid duplicate column names
-    if len(set(rename_map.values())) != len(rename_map.values()):
-        raise ValueError(
-            f"Name collision detected: {rename_map}. "
-            f"Please adjust regex or time range."
-        )
-
-    return df.rename(columns=rename_map).copy(),rename_map
-```
-```python
-df_clean,rename_map = clean_time_columns_auto(df,protect=('id',
- 'weight40',
- 'sex',
- 'doby_gen',
- 'dob',
- 'ethni',
- 'migstatus',
- 'yeduc',
- 'sat1i4',
- 'sat5',
- 'sat6',
- 'highschool',
- 'church',
- 'biosib',
- 'stepsib',
- 'east',
- 'famstructure18',))
-
-print(df_clean.head())
-```
-If you need to log the "old column name -> new column name" mapping (for logging or to ensure future reproducibility), you can do it as follows:
-
-```python
-
-old_to_new = rename_map.copy()
-# Save to a local file
-pd.Series(old_to_new).to_csv("time_col_rename_map.csv", header=["new_name"])
-
-print("\nColumn name mapping has been successfully saved to 'time_col_rename_map.csv'!")
-```
-Below is a small extract of the dataset after preprocessing:
+### Sample data
 
 | id      | weight40 | sex | doby\_gen | dob | ethni | migstatus | yeduc | highschool | church | biosib | east | 1 | 2 | 3 | 4 | 5 | … |
-| ------- | -------- | --- | --------- | --- | ----- | --------- | ----- | ---------- | ------ | ------ | ---- | ------ | ------ | ------ | ------ | ------ | - |
-| 111000  | 0.344    | 1   | 1971      | 855 | 1     | 1         | 11.5  | 0          | 0      | 1      | 1    | 5      | 5      | 5      | 5      | 5      | … |
-| 1624000 | 1.467    | 1   | 1973      | 880 | 1     | 1         | 11.5  | 0          | 1      | 1      | 1    | 1      | 1      | 1      | 1      | 1      | … |
-| 2767000 | 0.464    | 1   | 1971      | 853 | 1     | 1         | 9.0   | 0          | 0      | 3      | 0    | 1      | 1      | 1      | 1      | 1      | … |
-| 2931000 | 1.767    | 0   | 1973      | 881 | 5     | 3         | 10.5  | 0          | 1      | 1      | 0    | 1      | 1      | 1      | 1      | 1      | … |
-| 3167000 | 0.885    | 1   | 1973      | 883 | 1     | 1         | 11.5  | 0          | 0      | 1      | 0    | 3      | 3      | 3      | 3      | 3      | … |
+| ------- | -------- | --- | --------- | --- | ----- | --------- | ----- | ---------- | ------ | ------ | ---- | - | - | - | - | - | - |
+| 111000  | 0.344    | 1   | 1971      | 855 | 1     | 1         | 11.5  | 0          | 0      | 1      | 1    | 5 | 5 | 5 | 5 | 5 | … |
+| 2931000 | 1.767    | 0   | 1973      | 881 | 5     | 3         | 10.5  | 0          | 1      | 1      | 0    | 1 | 1 | 1 | 1 | 1 | … |
+| 3491000 | 0.727    | 1   | 1971      | 857 | 1     | 1         | 18.0  | 1          | 1      | 3      | 0    | 1 | 1 | 1 | 1 | 1 | … |
+
+Here columns `1`–`5` show the first five months of the trajectory, coded as 1–9 according to the state table above.
+
+---
+
+## Multichannel data (reference only)
+
+**File**: `MultiChannel.csv`
+
+This file combines both family and activity trajectories in a single dataset, with columns prefixed by `family` and `activity` respectively. This is useful for multichannel sequence analysis.
+
+::: tip Note
+`MultiChannel.csv` is **not supported** by `load_dataset()` and is provided for reference only. You can download it manually from the [month-level data sources](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/pairfam_and_little_green_book/data_sources/month_level) repository.
+:::
+
+### Structure
+
+| Column                       | Description                                                    |
+| ---------------------------- | -------------------------------------------------------------- |
+| `id`                         | Individual identifier (original pairfam IDs)                   |
+| Covariates                   | Same as month-level data above                                 |
+| `family1` … `family264`      | Monthly family trajectory states (numeric codes 1–9)           |
+| `activity1` … `activity264`  | Monthly activity trajectory states (numeric codes 1–8)         |
+
+---
 
 ## Reference
 

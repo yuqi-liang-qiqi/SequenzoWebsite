@@ -317,6 +317,10 @@ export const en = defineConfig({
           {
             text: "Pairfam Family Trajectories",
             link: '/en/datasets/pairfam-family'
+          },
+          {
+            text: "Pairfam Activity Trajectories",
+            link: '/en/datasets/pairfam-activity'
           }
         ]
       },
