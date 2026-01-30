@@ -2,13 +2,13 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-21 14:41:01
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-10-02 13:53:49
+ * @LastEditTime: 2026-01-30 16:58:50
  * @FilePath: /SequenzoWebsite/docs/en/datasets/pairfam-family.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 # Pairfam Family Trajectories Dataset
 
-This dataset contains German 1,866 individuals of family formation, observed monthly from ages 18 to 40 (264 months). It is derived from the **German Family Panel (pairfam, Release 14.2)** and was pre-processed by the authors of [Sequence Analysis (Raab & Struffolino, 2022)](https://sa-book.github.io/). It is designed for teaching and learning sequence analysis by providing ready-to-use monthly trajectories of family formation.
+This dataset contains German 1,027 individuals of family formation, observed monthly from ages 18 to 40 (264 months). It is derived from the **German Family Panel (pairfam, Release 14.2)** and was pre-processed by the authors of [Sequence Analysis (Raab & Struffolino, 2022)](https://sa-book.github.io/). It is designed for teaching and learning sequence analysis by providing ready-to-use monthly trajectories of family formation.
 
 ## Data origin and processing
 
