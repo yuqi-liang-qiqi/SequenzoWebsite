@@ -117,7 +117,7 @@ So each of the two datasets is a **country × year** matrix of states, suitable 
 
 ## Summary table
 
-| Concept              | Measure in replication data | In our cleaned datasets                                      | File (after your rename)                    |
+| Concept              | Measure in replication data | In our cleaned datasets                                      | File                    |
 |----------------------|-----------------------------|--------------------------------------------------------------|---------------------------------------------|
 | Donor fragmentation  | HHI (continuous, 0–1)       | 3 states: 1 = fragmented, 2 = moderate, 3 = concentrated     | political_science_donor_fragmentation.csv   |
 | Aid shock            | AidgdpDrop5_15 (binary)     | 0 = no shock, 1 = shock (bottom 15% of *deviation from 5-yr avg* aid/GDP, lagged) | political_science_aid_shock.csv            |

@@ -85,6 +85,40 @@ export const en = defineConfig({
         ]
       },
       {
+        text: 'Datasets',
+        items: [
+          {
+            text: 'CO₂ Emissions (1800-2022)',
+            link: '/en/datasets/CO2-emissions'
+          },
+          // {
+          //   text: 'GDP per capita (1800-2022)',
+          //   link: '/en/datasets/gdp-per-capita'
+          // },
+          {
+            text: "Chinese Territories' Colonial History (1840-1949)",
+            link: '/en/datasets/chinese-territories-colonial-history'
+          },
+          {
+            text: "Pairfam Family Trajectories",
+            link: '/en/datasets/pairfam-family'
+          },
+          {
+            text: "Pairfam Activity Trajectories",
+            link: '/en/datasets/pairfam-activity'
+          },
+          {
+            text: "Political Science Aid Datasets",
+            link: '/en/datasets/political-science-aid-datasets'
+          },
+          {
+            // text: "Polyadic Sequence Data on Intergenerational Family Formation",
+            text: "Intergenerational Family Data for Polyadic Analysis",
+            link: '/en/datasets/dyadic-sequence-data-lsog'
+          }
+        ]
+      },
+      {
         text: 'Data Preprocessing Functions',
         items: [
           {
@@ -297,35 +331,6 @@ export const en = defineConfig({
           //   text: 'Performance Differences',
           //   link: '/en/traminer-and-sequenzo/performance-diff'
           // }
-        ]
-      },
-      {
-        text: 'Datasets',
-        items: [
-          {
-            text: 'CO₂ Emissions (1800-2022)',
-            link: '/en/datasets/CO2-emissions'
-          },
-          // {
-          //   text: 'GDP per capita (1800-2022)',
-          //   link: '/en/datasets/gdp-per-capita'
-          // },
-          {
-            text: "Chinese Territories' Colonial History",
-            link: '/en/datasets/chinese-territories-colonial-history'
-          },
-          {
-            text: "Pairfam Family Trajectories",
-            link: '/en/datasets/pairfam-family'
-          },
-          {
-            text: "Pairfam Activity Trajectories",
-            link: '/en/datasets/pairfam-activity'
-          },
-          {
-            text: "Political Science Aid Datasets",
-            link: '/en/datasets/political-science-aid-datasets'
-          }
         ]
       },
       // {
