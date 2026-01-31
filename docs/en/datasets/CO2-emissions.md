@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-02-28 22:12:43
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 09:14:16
+ * @LastEditTime: 2026-01-31 10:55:40
  * @FilePath: /SequenzoWebsite/docs/en/datasets/CO2-emissions.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -106,4 +106,10 @@ By switching to deciles (10 groups), we gain greater granularity: instead of a b
 
 This finer resolution helps us distinguish between countries that are all “Low” but not equally low, which is particularly important when analyzing patterns across many sequences.
 
-*Data compiler and writer of this document: Yuqi Liang*
+## References
+
+Gapminder. (2025). https://www.gapminder.org/data/documentation/.
+
+---
+
+*Author: Yuqi Liang*

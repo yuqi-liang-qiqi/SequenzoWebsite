@@ -1,13 +1,33 @@
 # `linked_polyadic_sequence_analysis()`
 
-`linked_polyadic_sequence_analysis()` performs linked polyadic sequence analysis to examine patterns and associations within groups of linked sequences. This is useful when you have multiple sequences that belong together as a unit (a "polyad"), such as sequences from different family members (father, mother, child), couples, or other linked entities measured over the same time periods.
+`linked_polyadic_sequence_analysis()` implements **linked polyadic sequence analysis**
+(Liao 2021), a randomization-based framework for assessing whether sequences that
+belong to the same social unit (a “polyad”) are more similar to each other than would
+be expected under random pairing.
 
-The function compares observed patterns within each polyad to what would be expected by chance, using randomization procedures. It computes two key statistics:
+The method is designed for settings where multiple sequences are structurally linked,
+such as family members (parents and children, siblings), couples, teams, organizations,
+or ego-centered networks, and where these sequences are observed over comparable
+time spans.
 
-1. **U statistic:** Measures how much lower the observed distances within polyads are compared to random expectations. Higher U values indicate stronger within-polyad similarity.
-2. **V statistic:** The proportion of randomizations in which the observed distance is smaller than the randomized distance. Values close to 1 indicate that the observed pattern is unlikely to occur by chance.
+The function compares observed within-polyad distances to a reference distribution
+constructed by repeatedly randomizing polyad membership. It reports two statistics
+proposed by Liao (2021):
 
-This analysis helps answer questions like: "Do family members follow similar life course trajectories?" or "Are couples synchronized in their transitions?"
+1. **U statistic:** The difference between the mean distance of randomized polyads
+   and the observed distance within each polyad. Larger values indicate stronger
+   within-polyad similarity relative to chance.
+
+2. **V statistic:** The proportion of randomizations in which the observed polyad
+   distance is smaller than the randomized distance. This statistic can be interpreted
+   as a randomization-based confidence measure of linkedness, with values close to 1
+   indicating strong evidence against random association.
+
+By benchmarking observed polyads against randomized counterparts, this analysis
+allows researchers to quantify the degree of linkage among sequences without relying
+on parametric assumptions. It is applicable not only to family and couple trajectories,
+but also to linked sequences in organizational careers, coordinated life events, and
+networked or group-based processes more broadly.
 
 ## Function Usage
 

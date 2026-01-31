@@ -6,3 +6,10 @@ Brief description of the dataset:
 
 Explain what it is and why it is important. 
 
+## References
+
+Gapminder. (2025). https://www.gapminder.org/data/documentation/.
+
+---
+
+*Author: Yuqi Liang*
