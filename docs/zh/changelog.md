@@ -8,6 +8,28 @@
 -->
 # 最新动态
 
+### 2026 年 2 月 1 日
+
+Sequenzo 版本 v0.1.31 已发布。
+
+**新功能与数据：**
+- 向包中新增了已清洗的 **biofam** 数据集，可直接通过 `sequenzo.datasets` 加载。
+- 新增 **多元（polyadic）** 示例数据集（Liao 和 Lin，预计于 2026 年发表），以及已清洗的多元儿童/父母 CSV 文件。
+- 新增辅助函数 **`clean_time_columns_auto()`**，用于自动清洗数据中的时间列。
+- **pairfam** 数据：更新了原始 pairfam 数据的清洗与预处理方式；在月度和年度两个层级新增 **pairfam-activity** 和 **pairfam-family** 数据集。
+- **前缀树与后缀树**：新增 spell 版本并提升了运行速度。
+- 更新了政治学领域的 **aid** 数据集。
+- 术语调整：在适用场景下，将用词从 “polyadic” 改为 “dyadic”，以提高准确性。
+
+**错误修复：**
+- 修复了在 Jupyter Notebook 中显示的 Sequenzo 版本号不正确的问题。
+- 更新了用于处理超大距离矩阵输出的 Notebook 示例（`get_distance_matrix_example_for_handling_outputs_too_large`）。
+- 对 `spell_individual_level_indicators.py` 以及与 LCP 相关的代码进行了小幅更新。
+
+**其他：**
+- 重新组织了 `original_datasets_and_cleaning` 目录下的文件，并移除了开发者文件夹中重复或无关的文件。
+- 改进了数据清洗脚本的 docstring 和相关文档。
+
 ### 2026 年 1 月 28 日
 
 Sequenzo v0.1.30 版本已发布。
