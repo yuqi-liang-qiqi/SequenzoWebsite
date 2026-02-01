@@ -1,5 +1,27 @@
 # What's New
 
+### 1 Feb 2026
+
+Sequenzo version v0.1.31 has been released.
+
+**New Features & Data:**
+- Added cleaned **biofam** datasets to the package so you can load them directly from `sequenzo.datasets`.
+- Added **polyadic** sample datasets (Liao and Lin, forthcoming in 2026) and cleaned polyadic children/parents CSV files.
+- New helper **`clean_time_columns_auto()`** for automatically cleaning time columns in your data.
+- **pairfam** data: updated how the original pairfam data are cleaned and pre-processed; added **pairfam-activity** and **pairfam-family** at both month and year levels.
+- **Prefix and suffix trees**: added spell version and improved speed.
+- Updated **aid** datasets from political science.
+- Terminology: wording changed from "polyadic" to "dyadic" where appropriate for accuracy.
+
+**Bug Fixes:**
+- Fixed the Sequenzo version shown incorrectly in a Jupyter notebook.
+- Updated the notebook example for handling very large distance matrix outputs (`get_distance_matrix_example_for_handling_outputs_too_large`).
+- Minor updates to `spell_individual_level_indicators.py` and LCP-related code.
+
+**Other:**
+- Reorganized files under `original_datasets_and_cleaning` and removed duplicate/unrelated files in the developer folder.
+- Improved docstrings and documentation for the data-cleaning scripts.
+
 ### 28 Jan 2026
 
 Sequenzo version v0.1.30 has been released.
