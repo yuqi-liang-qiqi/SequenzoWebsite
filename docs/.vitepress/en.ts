@@ -71,6 +71,10 @@ export const en = defineConfig({
             link: '/en/tutorials/timing-duration-order'
           },
           {
+            text: 'Dissimilarity measures',
+            link: '/en/tutorials/dissimilarity-measures'
+          },
+          {
             text: 'Statistics Is More Than Models',
             link: '/en/tutorials/statistics-101'
           },
@@ -78,10 +82,6 @@ export const en = defineConfig({
             text: 'Sequence Analysis vs. Latent Class Analysis vs. Hidden Markov Models',
             link: '/en/tutorials/sa_lca_and_hmm'
           }
-          // {
-          //   text: 'Dissimilarity measures',
-          //   link: '/en/tutorials/dissimilarity-measures'
-          // }
         ]
       },
       {

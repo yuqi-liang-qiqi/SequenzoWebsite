@@ -60,7 +60,10 @@ sequence = SequenceData(
     id_col='Entity ID',             # ID column; if missing, create one with assign_unique_ids
     weights=None,                   # optional (defaults to 1 per row)
     start=1,                        # start index used in summaries
-    custom_colors=None              # optional list of colors
+    custom_colors=None,             # optional list of colors
+    additional_colors=None,         # optional dict to assign custom colors to specific states, e.g. {"Other": "#BDBDBD"}
+    missing_values=None,            # optional custom missing indicators, e.g. [99, "N/A"]
+    alpha=1.0                       # opacity for colors (0–1)
 )
 ````
 
@@ -72,10 +75,13 @@ sequence = SequenceData(
 | `time`                             | ✓        | list      | Ordered list of time column names.                      |
 | `states`                           | ✓        | list      | Ordered state space. Controls encoding & colors.        |
 | `labels`                           | ✗        | list      | Human-readable names, same length as `states`.          |
-`id_col` | ✓ | str | Column name containing unique sequence IDs. If your data lacks such a column, create one with  [`assign_unique_ids`](../data-preprocessing/assign_unique_ids.md)  prior to defining the sequence data. |
+| `id_col`                           | ✗        | str       | Column name for unique sequence IDs. If omitted, `data.index` is used. If your data lacks an ID column, create one with [`assign_unique_ids`](../data-preprocessing/assign_unique_ids.md). Required for clustering. |
 | `weights`                          | ✗        | ndarray   | Row weights. Default = all ones.                        |
 | `start`                            | ✗        | int       | Starting index in summaries. Default = 1.               |
 | `custom_colors`                    | ✗        | list      | User-specified color list. Must match `states`.         |
+| `additional_colors`                | ✗        | dict      | Assign custom colors to specific states, e.g. `{"Other": "#BDBDBD"}`. Cannot be used with `custom_colors`. |
+| `missing_values`                   | ✗        | int/float/str/list | Custom missing value indicators. Default: auto-detect (NaN, "Missing", "NaN"). Examples: `99`, `[99, "N/A"]`. |
+| `alpha`                            | ✗        | float     | Opacity for all state colors (0–1). Default = 1.0.      |
 
 > **Note**
 >
@@ -91,7 +97,7 @@ sequence = SequenceData(
 
 ### 2. Labels must be strings
 
-   Labels are used in legends. If you pass non-string labels, Sequenzo will warn you.
+   Labels are used in legends. If you pass non-string labels, Sequenzo will raise a `TypeError`.
 
 ### 3. Missing values get a fixed light gray by default
 
@@ -123,7 +129,8 @@ sequence = SequenceData(
 
 ### Missing Values
 
-* Detects NA cells automatically.
+* Auto-detects pandas NaN and string `"Missing"` or `"NaN"` (case-insensitive).
+* Use `missing_values` to specify custom indicators (e.g., `99`, `[99, 9, "N/A"]`).
 * If your `states` list doesn’t include `"Missing"` but the data contains missing values, Sequenzo will auto-add `"Missing"` so those cells are clearly labeled as missing.
 * Maps missing cells to the last integer code.
 * Recommendation: explicitly include `"Missing"` in your `states` and `labels`.
@@ -139,9 +146,10 @@ sequence = SequenceData(
 
 ### Color Management
 
-* If `custom_colors` is given, its length must match `states`; `custom_colors` is a list whose elements can be hex color codes (e.g., `#BD462D`).
-* Otherwise, the default option is seaborn `"Spectral"` (≤20 states) or `"cubehelix"`.
-* Colors reversed by default for contrast.
+* If `custom_colors` is given, its length must match `states`; `custom_colors` is a list whose elements can be hex color codes (e.g., `#BD462D`) or RGB tuples.
+* Use `additional_colors` to assign custom colors to specific states while keeping the default palette for others (e.g., `additional_colors={"Other": "#BDBDBD"}`). Cannot be combined with `custom_colors`.
+* Otherwise, the default palette is: `"Spectral"` (≤20 states), `"viridis"` (21–40 states), or a combined palette (viridis + Set3 + tab20 for >40 states).
+* Colors are reversed by default for contrast.
 
 ## Core Attributes
 
@@ -153,12 +161,16 @@ sequence = SequenceData(
 
 ## Key Methods
 
-| Method              | Returns            | Description                                        |
-| ------------------- | ------------------ |----------------------------------------------------|
-| `get_colormap()`    | ListedColormap     | Colormap aligned to codes 1...N.                   |
-| `get_legend()`      | (handles, labels)  | Prebuilt legend for plotting.                      |
-| `describe()`        | print              | Dataset summary with missing overview.             |
-| `plot_legend()`     | figure             | Renders or saves the state legend.                 |
+| Method                     | Returns            | Description                                                        |
+| -------------------------- | ------------------ |--------------------------------------------------------------------|
+| `get_colormap()`           | ListedColormap     | Colormap aligned to codes 1...N.                                   |
+| `get_legend()`             | (handles, labels)  | Prebuilt legend for plotting.                                      |
+| `describe()`               | print              | Dataset summary with missing overview and weights.                 |
+| `plot_legend()`            | figure             | Renders or saves the state legend.                                 |
+| `to_numeric()`             | ndarray            | Integer-coded sequence data as NumPy array.                        |
+| `to_dataframe()`           | DataFrame          | Processed sequence dataset.                                        |
+| `show_color_palette()`     | dict               | Preview default colors for this instance's states.                 |
+| `show_default_color_palette(n_states, ...)` | dict | Static: preview colors for given number of states. |
 
 > **Note**  
 > We list key attributes and key methods here, but you’ll **rarely need to call them directly**. After you initialize `SequenceData()`, a **dataset summary is printed automatically**. These are mainly for:
