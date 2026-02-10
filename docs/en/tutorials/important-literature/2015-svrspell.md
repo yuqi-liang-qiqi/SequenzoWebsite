@@ -43,7 +43,7 @@ Sociological Methods & Research 44(1)
 
 sequence analysis has become one of the standard toolboxes for those who analyze sequence data, and sophisticated, user-friendly software for such methods is freely available (e.g., Brzinsky-Fay, Kohler, and Luniak 2006; Elzinga 2009; Gabadinho et al. 2011).
 
-To compare sequences, one needs a measure of distance or similarity between pairs of sequences and by far the most frequently used metric to generate such distances is the so-called optimal matching (OM) metric.<sup>2</sup> The OM metric expresses distances in terms of the minimum cost of a sequence of edit operations that turns one sequence into an exact copy of the other sequence. In the sequel, we will write $d_{\text{OM}}$ to denote this metric.
+To compare sequences, one needs a measure of distance or similarity between pairs of sequences and by far the most frequently used metric to generate such distances is the so-called optimal matching (OM) metric.&lt;sup&gt;2&lt;/sup&gt; The OM metric expresses distances in terms of the minimum cost of a sequence of edit operations that turns one sequence into an exact copy of the other sequence. In the sequel, we will write $d_{\text{OM}}$ to denote this metric.
 
 Ample descriptions of the metric and the associated algorithm can be found in numerous sources, for example, in Clote and Backofen (2000), in Martin and Wiggins (2009) and in Sankoff and Kruskal (1983). Largely motivated by the problems of determining the weight or cost of the edit operations involved, many variants of the metric have been proposed, some quite general (e.g., Gauthier et al. 2009; Halpin 2010; Moen 2000), others more application-specific like in, for example, Lesnard (2008). For a comprehensive overview of OM variants, the reader is referred to Studer (2012).
 
@@ -3207,7 +3207,7 @@ x'y = Σ<sub>u∈S(x,y)</sub> √L(ℓ(u)) √L(ℓ(u)) (11)
 
 = Σ<sub>u∈S(x,y)</sub> L(ℓ(u)). (12)
 
-For example, by setting L(a) = (a - 1)<sup>p</sup> for a ≥ 1 and p > 1, one would ignore common single states and assign progressively more weight to longer subsequences.
+For example, by setting L(a) = (a - 1)&lt;sup&gt;p&lt;/sup&gt; for a ≥ 1 and p > 1, one would ignore common single states and assign progressively more weight to longer subsequences.
 
 ## State Matching and Inner Product Spaces
 
@@ -3310,7 +3310,7 @@ $\langle x | y \rangle = x'M^*y = \sum_{j} \sum_{i} x_i m_{ij} y_j, \quad (16)$
 
 $= x'y + \sum_{i \neq j} x_i m_{ij} y_j. \quad (17)$
 
-In Figure 2, we demonstrate that using an inner-product $\langle x | y \rangle = x'My$ with some nontrivial M will “distort” Euclidean distance through stretching or compressing the vector space in particular directions. The plots show how equidistance contours in {0, 1} × {0, 1} change as a result of changing $m_{12} = m_{21}$ in $M = \begin{pmatrix} 1 & m_{12} \\ m_{21} & 1 \end{pmatrix}$, that is, in a vector space representing sequences defined over just two states.<sup>4</sup>
+In Figure 2, we demonstrate that using an inner-product $\langle x | y \rangle = x'My$ with some nontrivial M will “distort” Euclidean distance through stretching or compressing the vector space in particular directions. The plots show how equidistance contours in {0, 1} × {0, 1} change as a result of changing $m_{12} = m_{21}$ in $M = \begin{pmatrix} 1 & m_{12} \\ m_{21} & 1 \end{pmatrix}$, that is, in a vector space representing sequences defined over just two states.&lt;sup&gt;4&lt;/sup&gt;
 
 Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015
 
@@ -3630,7 +3630,7 @@ Sociological Methods & Research 44(1)
 
 Note. Total duration of all patterns is restricted to 20 units of time.
 
-this for different values of $m(a,b)$, and plot the values of $R^2$ against the values of $m(b,c)$. The results of these exercises are shown in Figure 3.<sup>9</sup>
+this for different values of $m(a,b)$, and plot the values of $R^2$ against the values of $m(b,c)$. The results of these exercises are shown in Figure 3.&lt;sup&gt;9&lt;/sup&gt;
 
 The results when $m(a,b)=0$ show the difference in sensitivity to ordering. SVR (spell) variants are the most sensitive to ordering. As expected, this sensitivity increases with subsequence length weighting ($a=1$), and it decreases when spell durations are squared ($b=2$), the latter having a stronger effect. OM is much less sensitive to ordering, and NMS (SVR with replicated states) fails to identify a difference in the orderings. Similar results pertaining to OM and NMS were already discussed in Studer (2012). Since we are measuring *relative* sensitivity, the distance measure could be more sensitive to other facets of sequence comparisons.
 
@@ -3755,7 +3755,7 @@ Note. Color version of the figure is available online at smr.sagepub.com.
 
 In this section, we apply the different configurations of the SVR metrics to well-known data and compare the results with those obtained when applying OM and NMS to the same data. The data were first presented in Müller et al. (2008).
 
-Briefly, these data represent family formation trajectories of Swiss individuals who were at least 30 years old at the time of the survey.<sup>10</sup> One of the goals of this study was to highlight the change of the social norms constraining these trajectories. The states in the sequences were built using a combination of four distinct events: Leaving home, Marriage, having a first Child, and Divorce. For the sake of simplicity, some very rare states were merged resulting in eight possible states. An individual is in the state “P” (living with Parent) if no event has occurred, in the state “L” if the event “Left parental home” occurred, in the state “LM” for “Left and Married,” and “LMC” for “Left, Married and with a first Child.” Similarly, state “M” is for an individual who just Married (without leaving parental home), and so on. Finally, state “D” is for all individuals who have married and divorced (without making difference for having left the parental home and/or having or not having children).
+Briefly, these data represent family formation trajectories of Swiss individuals who were at least 30 years old at the time of the survey.&lt;sup&gt;10&lt;/sup&gt; One of the goals of this study was to highlight the change of the social norms constraining these trajectories. The states in the sequences were built using a combination of four distinct events: Leaving home, Marriage, having a first Child, and Divorce. For the sake of simplicity, some very rare states were merged resulting in eight possible states. An individual is in the state “P” (living with Parent) if no event has occurred, in the state “L” if the event “Left parental home” occurred, in the state “LM” for “Left and Married,” and “LMC” for “Left, Married and with a first Child.” Similarly, state “M” is for an individual who just Married (without leaving parental home), and so on. Finally, state “D” is for all individuals who have married and divorced (without making difference for having left the parental home and/or having or not having children).
 
 To determine the substitution costs needed for the calculation of an OM distance matrix, we proceeded as follows. First, we created a four-dimensional
 
@@ -3868,7 +3868,7 @@ To investigate the differences between the various metrics, we started by lookin
 
 $$d'_a(x,y) = \frac{d_a(x,y)}{S_{d_a}},$$
 
-with the effect of creating dimensionless or unit-free distances $d'_a$ that can be compared across metrics.<sup>11</sup> Next, for two metrics, say *a* and *b*, we looked at the pair of sequences $(x,y)$ for which the difference $d'_a(x,y) - d'_b(x,y) = \Delta(a,b)$ is maximal. Since $\Delta(a,b)$ may be negative, we also looked for pairs of sequences $(x',y')$ for which $\Delta(b,a) = d'_b(x',y') - d'_a(x',y')$ is maximal. This procedure generates a matrix of pairs of sequences and values of $\Delta$ as shown in Table 6. The $\Delta$ is computed by subtracting the distance given in column to the one given in the row. Thus, in each cell, we find pairs of sequences for which the pertaining metrics generate extremely different distances.
+with the effect of creating dimensionless or unit-free distances $d'_a$ that can be compared across metrics.&lt;sup&gt;11&lt;/sup&gt; Next, for two metrics, say *a* and *b*, we looked at the pair of sequences $(x,y)$ for which the difference $d'_a(x,y) - d'_b(x,y) = \Delta(a,b)$ is maximal. Since $\Delta(a,b)$ may be negative, we also looked for pairs of sequences $(x',y')$ for which $\Delta(b,a) = d'_b(x',y') - d'_a(x',y')$ is maximal. This procedure generates a matrix of pairs of sequences and values of $\Delta$ as shown in Table 6. The $\Delta$ is computed by subtracting the distance given in column to the one given in the row. Thus, in each cell, we find pairs of sequences for which the pertaining metrics generate extremely different distances.
 
 Let us discuss an example by looking at the strongest disagreement between standardized OM and standardized SVR (*sp*, *b* = 1). In the first column fourth row, we have “OM – SVR (*sp*, *b* = 1) = 4.74” for the comparison of the sequences $P^{15} - LMC^1$ and $P^2 - LMC^{14}$. According to OM, these sequences are far away because OM is strongly related to the total time spent in each state, which are very different in this case. According to SVR (*sp*, *b* = 1), these sequences are close, because SVR (*sp*, *b* = 1) is more linked to the order of the states, which is the same in both sequences. We can also have a look at the reverse, that is when SVR (*sp*, *b* = 1) is greater than the OM distance. This is found when comparing the sequence $P^1 - L^5 - LM^1 - LMC^8 - D^1$ and $L^8 - LMC^8$. According to SVR (*sp*, *b* = 1), these sequences are far away, because the ordering of the states is different. According to OM, the sequences are close because the time spent in states *L* and *LMC* are more or less the same.
 
