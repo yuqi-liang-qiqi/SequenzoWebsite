@@ -2858,7 +2858,8 @@ However, not so well known or ignored is the fact (Elzinga 2003; Studer 2012) th
 <td></td>
 <td>m</td>
 <td>m</td>
-<td
+<td></td>
+</tr>
 
 ---
 
