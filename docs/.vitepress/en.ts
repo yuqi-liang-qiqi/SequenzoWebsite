@@ -75,6 +75,14 @@ export const en = defineConfig({
             link: '/en/tutorials/dissimilarity-measures'
           },
           {
+            text: 'Normalizing Sequences',
+            link: '/en/tutorials/normalizing-sequences'
+          },
+          {
+            text: 'Computational Complexity of Dissimilarity Measures',
+            link: '/en/tutorials/computational-complexity-of-dissimilarity-measures'
+          },
+          {
             text: 'Statistics Is More Than Models',
             link: '/en/tutorials/statistics-101'
           },
