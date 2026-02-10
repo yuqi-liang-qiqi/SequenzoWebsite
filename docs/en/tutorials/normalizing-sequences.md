@@ -2,9 +2,30 @@
 
 ## Introduction
 
-When comparing sequences, whether they represent career trajectories, family formation patterns, or health states, the raw distances you compute can be misleading. A distance of 10 between two short sequences might mean something very different than a distance of 10 between two long sequences. **Normalization** solves this problem by rescaling distances to a common, interpretable scale.
+When comparing sequences, whether they represent career trajectories, family formation patterns, or health states, the raw distances you compute can be misleading. A distance of 10 between two short sequences might mean something very different than a distance of 10 between two long sequences. But even when sequences have the same length, raw distances may not tell the full story.
+
+**Normalization** solves this problem by rescaling distances to a common, interpretable scale. The question is: when do you actually need it?
+
+The TraMineR paper (Gabadinho et al. 2011) emphasizes normalization primarily for sequences of different lengths, noting: "When dealing with sequences of different lengths, we may want to normalize the distances to account for these differences." This is indeed an important use case. However, as Elzinga & Studer (2019) demonstrate, normalization serves broader purposes. Their research shows that normalization is crucial even when sequences have the same length—for example, when comparing across different contexts (like birth cohorts) or when you need interpretable similarity scores. The 2019 paper reveals that normalization can uncover hidden patterns that raw distances obscure, regardless of whether sequences have equal lengths.
 
 This tutorial explains what normalization is, why it matters, when to use it, and how different normalization methods work. We'll draw on key literature in sequence analysis and show how Sequenzo implements these methods, including the Elzinga & Studer (2019) method that TraMineR doesn't yet offer.
+
+## When Do You Need Normalization? A Quick Reference
+
+The table below provides a clear guide to help you decide when normalization is necessary:
+
+| Situation | Need Normalization? | Why | Example |
+|-----------|-------------------|-----|---------|
+| **Sequences of different lengths** | ✅ **Yes** | Raw distances scale with length; normalization makes them comparable | DSS sequences: one sequence has 1 state (uninterrupted unemployment), another has 10 states |
+| **Comparing across cohorts/regions/epochs** | ✅ **Yes** | Different contexts may have different sequence complexity; normalization controls for this | Comparing life course diversity between birth cohorts (Elzinga & Studer 2019) |
+| **All sequences same length, same context** | ⚠️ **Maybe** | Depends on your goal. If you need interpretable similarity scores or are doing clustering, yes | Equal-length career sequences: normalization helps interpret distances as dissimilarity |
+| **Analyzing DSS sequences** | ✅ **Yes** | DSS sequences vary dramatically in length; normalization essential | Sequences ignoring durations: `[A]` vs `[A,B,C,D,E,F]` |
+| **Need similarity = 1 - distance** | ✅ **Yes** | Proper normalization enables direct interpretation | Visualization, clustering, communicating to non-technical audiences |
+| **Comparing to a template/reference** | ✅ **Yes** | Normalization emphasizes deviations from reference | Comparing all sequences to an "ideal" career path |
+| **Exploratory analysis, raw distances needed** | ❌ **No** | Raw distances may be informative for initial exploration | Understanding the scale of raw distances before normalization |
+| **Distance measure has built-in normalization** | ❌ **No** | Already normalized internally | CHI2, EUCLID use internal normalization |
+
+As you can see from the table, normalization is needed in many scenarios beyond just handling different sequence lengths. The key is understanding your specific research question and analysis goals.
 
 ## What is Normalization?
 
@@ -60,9 +81,11 @@ This happened because younger cohorts had longer, more complex sequences with mo
 
 ## When to Use Normalization
 
+The TraMineR 2011 paper (Gabadinho et al. 2011) emphasizes normalization primarily for sequences of different lengths, stating: "When dealing with sequences of different lengths, we may want to normalize the distances to account for these differences." However, normalization serves broader purposes beyond just handling length differences. Let's explore the main scenarios:
+
 ### 1. Sequences of Different Lengths
 
-When your sequences vary in length, normalization is essential. For example:
+When your sequences vary in length, normalization is essential. This is the primary use case highlighted in TraMineR (2011). For example:
 
 - **DSS sequences** (Distinct Subsequent Subsequences): When analyzing sequences while ignoring durations, sequences can have dramatically different lengths. A sequence representing uninterrupted unemployment has only one element, while a sequence alternating between employment and unemployment may have many elements.
 
@@ -90,6 +113,16 @@ If you want to interpret distances as dissimilarity (where similarity = 1 - dist
 - **Visualization**: Creating plots where proximity directly represents similarity
 - **Clustering**: Using normalized distances in clustering algorithms
 - **Interpretation**: Communicating results to non-technical audiences
+
+### Beyond Length Differences: The Broader Role of Normalization
+
+While TraMineR (2011) focuses on normalization for sequences of different lengths, the Elzinga & Studer (2019) paper demonstrates that normalization is crucial even when sequences have equal lengths. Their destandardization example shows that:
+
+- **Even with equal-length sequences**, normalization can reveal patterns obscured by raw distances
+- **Context matters**: Comparing across cohorts requires normalization even if sequences within each cohort have the same length
+- **Interpretability matters**: If you need similarity = 1 - distance to hold, normalization is essential regardless of length equality
+
+The key insight is that normalization isn't just about making distances comparable across different lengths—it's about making distances **interpretable** and **comparable across contexts**. As the 2019 paper shows, proper normalization can fundamentally change your interpretation of the data, revealing patterns that raw distances hide.
 
 ## Normalization Methods: A Historical Overview
 
@@ -170,7 +203,7 @@ where $c_I$ is the indel cost and $\max(S)$ is the maximum substitution cost.
 
 **Used for**: Various OM variants (OMloc, OMslen, OMspell, etc.) in Sequenzo
 
-### The Breakthrough: Elzinga & Studer (2019) Normalization
+### Elzinga & Studer (2019) Normalization
 
 **Proposed by**: Elzinga and Studer (2019) in "Normalization of Distance and Similarity in Sequence Analysis"
 
