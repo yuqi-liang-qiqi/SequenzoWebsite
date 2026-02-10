@@ -31,7 +31,7 @@ Sequence analysis is the generic name for a variety of methods that subserve the
 Cees H. Elzinga, VU University, De Boelelaan 1081, Amsterdam, 1081 HV, the Netherlands.
 Email: c.h.elzinga@vu.nl
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -53,7 +53,7 @@ $$d_{\text{OM}} = \ell(x) + \ell(y) - 2\ell(\text{lcs}(x,y)), \quad (1)$$
 
 wherein $\ell(x)$ denotes the length of sequence $x$. Hence, the OM distance equals the number of characters in both sequences that do *not* belong to an lcs of the pertaining sequences $x$ and $y$. If we interpret $\text{lcs}(x,y)$ as a “common backbone” or “common narrative,” then $d_{\text{OM}}$ decreases with the relative length of that common backbone. So, we don’t really need to interpret the edit operations that are often used to define the OM distance and that explain the logic of the OM algorithm. In case the edit costs have been set differently, the interpretation of OM distance is in terms of an lcs that does not equally weight all states.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -65,36 +65,36 @@ Elzinga and Studer
 
 The second major criticism of OM pertains to the fact that often there is no objective way of establishing the edit costs of the edit operations. Various, more or less sophisticated, ways of deriving edit cost from state-transition frequencies have been devised (see, e.g., Gauthier et al. 2009), but these methods do not resolve the basic issue: establishing the proximity or similarity of states and how this similarity can be derived and operationalized from social science theory. This matter has not been resolved and cannot be resolved within the framework of sequence analysis (Studer 2012). On the other hand, Hollister (2009) and Studer (2012) propose promising strategies to establish state proximities through scaling strategies that are independent of sequence analysis. Despite the trouble we have in finding acceptable ways of establishing state proximities or state similarities, we cannot do without them. To illustrate this point, we consider three toy sequences from the domain of family formation, using the states Single, Unmarried cohabitation, Married, and Married with Children:
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>x:</th>
-<th>y:</th>
-<th>z:</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>S</td>
-<td>S</td>
-<td>S</td>
-</tr>
-<tr>
-<td></td>
-<td>M</td>
-<td>U</td>
-<td>S</td>
-</tr>
-<tr>
-<td></td>
-<td>MC</td>
-<td>MC</td>
-<td>MC</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;x:&lt;/th&gt;
+&lt;th&gt;y:&lt;/th&gt;
+&lt;th&gt;z:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;S&lt;/td&gt;
+&lt;td&gt;S&lt;/td&gt;
+&lt;td&gt;S&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;M&lt;/td&gt;
+&lt;td&gt;U&lt;/td&gt;
+&lt;td&gt;S&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;MC&lt;/td&gt;
+&lt;td&gt;MC&lt;/td&gt;
+&lt;td&gt;MC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 Whatever metric we use, we should find that x is closer to y than it is to z, simply because the state U is more similar to the state M than to the state S. The second reason to consider state similarities is that it is a key feature to compute multichannel distances (Pollock 2007; Gauthier et al. 2010).
 
@@ -102,2764 +102,2764 @@ According to some authors, it is more convenient to invest in defining OM costs 
 
 However, not so well known or ignored is the fact (Elzinga 2003; Studer 2012) that OM is not very sensitive to differences in the order of the states of a pair of sequences. As an example, we consider the three toy sequences below representing careers, using state d for “director,” m for “manager,” and e for “employee”:
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>x:</th>
-<th>y:</th>
-<th>z:</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>e</td>
-<td>d</td>
-<td>e</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>e</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td>m</td>
-</tr>
-<tr>
-<td></td>
-<td>m</td>
-<td>m</td>
-<td></td>
-</tr>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;x:&lt;/th&gt;
+&lt;th&gt;y:&lt;/th&gt;
+&lt;th&gt;z:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;e&lt;/td&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;td&gt;e&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;e&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
 
 ---
 
@@ -2877,7 +2877,7 @@ However, Elzinga’s metric does not allow for different state proximities: All 
 
 As said before, one limitation of OM is the way it handles time. This limitation is caused by the fact that OM counts edits applied to symbols in a string and has no inherent mechanism to deal with quantities like duration. Therefore, the observation that someone was unemployed (U) for 10 months and then found herself a job for the next 30 months has to be translated into a sequence of the form
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -2905,7 +2905,7 @@ The purpose of this article is to discuss a family of distance measures that is 
 
 Thereunto, the next section introduces the representation of sequences through feature vectors, the features being subsequences. The third section then discusses soft-matching, the use of state proximities, and the required transform of the vector space. The fourth section discusses spell sequences: sequences where duration is treated as a property of the states. In the fifth section, we discuss the unifying framework of a feature vector representation and in the sixth section, we assess the sensitivity of the metrics to differences in sequencing, timing, and duration of the pertaining states. Finally, in the seventh section, we apply the newly introduced metrics to family formation data and compare the results with those obtained using OM. In the eighth section, we discuss our findings and the merits thereof.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -2932,7 +2932,7 @@ The triangle inequality is not only important because it formulates an intuitive
 
 Finally, the triangle inequality ensures that the space exhibits a certain regularity or smoothness in the sense that at least some of its properties are invariant in all directions. If this were not true, the space, the representation of the sequences in a distance matrix, would not be very meaningful. Let us illustrate this remark: Imagine that we have observed a set of sequences $\{x,y,z,...\}$, say $N = 1,000$ sequences, and that we have somehow established distances between the pairs of sequences. Now suppose that we add a new observation, a new sequence p, to our data set. We may not know yet how to localize this p in the spatial representation of the N sequences. However, if the space is metric in the sense that the distances satisfy the axioms D1 to D4, we know that we have
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -2956,7 +2956,7 @@ We know (see, e.g., Clote and Backofen 2000) that the OM distance $d_{OM}$ satis
 
 Once vectors are available, it is easy to calculate Euclidean distance $d_E$: for vectors x = (x₁, x₂, ...) and y = (y₁, y₂, ...), we have that
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -2968,84 +2968,84 @@ Sociological Methods & Research 44(1)
 
 **Table I. Illustration of the Metric Properties of the OM Standard Edit Cost Matrix.**
 
-<table>
-  <thead>
-    <tr>
-      <th>λ</th>
-      <th>w</th>
-      <th>x</th>
-      <th>y</th>
-      <th>z</th>
-      <th>λ</th>
-      <th>w</th>
-      <th>x</th>
-      <th>y</th>
-      <th>z</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>λ</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>λ</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>w</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2</td>
-      <td>2</td>
-      <td>w</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>x</td>
-      <td>1</td>
-      <td>2</td>
-      <td>0</td>
-      <td>2</td>
-      <td>x</td>
-      <td>1</td>
-      <td>2</td>
-      <td>0</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>Y</td>
-      <td>1</td>
-      <td>2</td>
-      <td>2</td>
-      <td>0</td>
-      <td>Y</td>
-      <td>1</td>
-      <td>2</td>
-      <td>1.5</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>z</td>
-      <td>1</td>
-      <td>2</td>
-      <td>2</td>
-      <td>2</td>
-      <td>z</td>
-      <td>1</td>
-      <td>2</td>
-      <td>4</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;λ&lt;/th&gt;
+      &lt;th&gt;w&lt;/th&gt;
+      &lt;th&gt;x&lt;/th&gt;
+      &lt;th&gt;y&lt;/th&gt;
+      &lt;th&gt;z&lt;/th&gt;
+      &lt;th&gt;λ&lt;/th&gt;
+      &lt;th&gt;w&lt;/th&gt;
+      &lt;th&gt;x&lt;/th&gt;
+      &lt;th&gt;y&lt;/th&gt;
+      &lt;th&gt;z&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;λ&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;λ&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;w&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;w&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Y&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;Y&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1.5&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;z&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;z&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 Note. OM = optimal matching. The reader verifies that, in the left hand matrix, c(·, ·) satisfies the axioms D1–D4. For example, we have that c(w, y) ≤ c(w, x) + c(x, y) for every x. However, perturbations of this matrix may easily lead to violations of the triangle inequality D4. This is shown in the right hand matrix, where we have c(x, z) > c(x, y) + c(y, z).
 
@@ -3059,7 +3059,7 @@ Finally, vector spaces are very attractive to work with because they have been a
 
 In the next two subsections, we will discuss how to construct vectors from sequences. Essentially, this is a new presentation of Elzinga’s proposals as discussed in Elzinga (2003, 2005). These new presentations allow us to discuss vector representations without referring to algorithms for the evaluation of vector products. In the sections Mapping Embedding Frequency, we discuss an easy extension and in the sections State Matching and Inner Product Spaces and Spell Sequences: Handling Durations, we exploit the representation to discuss more advanced issues like the handling of time and state matching.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3079,54 +3079,54 @@ We may take any nonnegative number of states from $x$ and we will then be left w
 
 We will now use the concept of subsequence to construct a vector representation $\mathbf{x}$ for the sequence $x$. We do this by first defining coordinates that correspond to all possible sequences that can be constructed from the alphabet $\Sigma$ and then construct binary vectors by setting those coordinates to 1 that correspond to sequences that occur as a subsequence in $x = abac$
 
-<table>
-<thead>
-<tr>
-<th>$u:$</th>
-<th>$a$</th>
-<th>$b$</th>
-<th>$c$</th>
-<th>$aa$</th>
-<th>$ab$</th>
-<th>$...$</th>
-<th>$cc$</th>
-<th>$aaa$</th>
-<th>$...$</th>
-<th>$aba$</th>
-<th>$...$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$r(u):$</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>$...$</td>
-<td>12</td>
-<td>13</td>
-<td>$...$</td>
-<td>16</td>
-<td>$...$</td>
-</tr>
-<tr>
-<td>$x_{r(u)}:$</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>$...$</td>
-<td>0</td>
-<td>0</td>
-<td>$...$</td>
-<td>1</td>
-<td>$...$</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;$u:$&lt;/th&gt;
+&lt;th&gt;$a$&lt;/th&gt;
+&lt;th&gt;$b$&lt;/th&gt;
+&lt;th&gt;$c$&lt;/th&gt;
+&lt;th&gt;$aa$&lt;/th&gt;
+&lt;th&gt;$ab$&lt;/th&gt;
+&lt;th&gt;$...$&lt;/th&gt;
+&lt;th&gt;$cc$&lt;/th&gt;
+&lt;th&gt;$aaa$&lt;/th&gt;
+&lt;th&gt;$...$&lt;/th&gt;
+&lt;th&gt;$aba$&lt;/th&gt;
+&lt;th&gt;$...$&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$r(u):$&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;$...$&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;$...$&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;$...$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$x_{r(u)}:$&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;$...$&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;$...$&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;$...$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 Formally, from $\Sigma$, we construct the set $\Sigma^*$ of all sequences that are constructible from $\Sigma$ and we fix the order of the elements of $\Sigma^*$, say in lexicographical order. Then we map the ordered sequences to the nonnegative integers $Z^+$, that is, each sequence $u \in \Sigma^*$ is mapped to a unique³ integer $r(u) \in Z^+$ and we use these integers to index the coordinates of the vectors. So, for each sequence $x$, we construct a binary vector $\mathbf{x} = (x_1, x_2, ...)$ such that
 
@@ -3135,7 +3135,7 @@ $x_{r(u)} = \begin{cases}
 0 & \text{otherwise}
 \end{cases}$ (6)
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3163,7 +3163,7 @@ Unfortunately, the sequence “Imprisoned, Probation, Convicted” is a subseque
 
 From the previous examples, we conclude that taking embedding frequency into account when comparing sequences may be a sensible thing to
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3191,7 +3191,7 @@ Most people share, in most kinds of careers, a lot of single states. For example
 
 $x_{r(u)} = \begin{cases} \sqrt{L(\ell(u))} & \text{if } u \sqsubseteq x \\ 0 & \text{otherwise} \end{cases}$ (10)
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3219,7 +3219,7 @@ We first have to define such matchings and this is the subject of the first subs
 
 We already argued that generating meaningful distances between sequences is not well possible without assessing the similarity or substitutability of the states or events involved. On the other hand, the actual assessment of such quantities is highly dependent upon the subject matter of the sequences so,
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3255,7 +3255,7 @@ For sequences $x$ and $y$ of unequal length, we set $m(x,y) = 0$. The reader not
 
 $$m(x = S \ U \ UC, y = S \ M \ MC) = 1 \cdot 0.8 \cdot 0.9 = 0.72.$$
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3265,12 +3265,12 @@ $$m(x = S \ U \ UC, y = S \ M \ MC) = 1 \cdot 0.8 \cdot 0.9 = 0.72.$$
 &lt;page_number&gt;16&lt;/page_number&gt;
 Sociological Methods & Research 44(1)
 
-<table>
-<tr>
-<td>$\mathbf{M} = \begin{pmatrix} 1 &amp; p &amp; q \\ p &amp; 1 &amp; r \\ q &amp; r &amp; 1 \end{pmatrix}$, $\mathbf{M}^* =$</td>
-<td>$\begin{pmatrix} \mathbf{M} &amp; \ldots &amp; \mathbf{0} &amp; \ldots &amp; \mathbf{0} &amp; \ldots \\ \vdots &amp; \mathbf{M} &amp; p\mathbf{M} &amp; q\mathbf{M} &amp; \vdots \\ \mathbf{0} &amp; p\mathbf{M} &amp; \mathbf{M} &amp; r\mathbf{M} &amp; \mathbf{0} &amp; \ldots \\ \vdots &amp; q\mathbf{M} &amp; r\mathbf{M} &amp; \mathbf{M} &amp; \vdots \\ \vdots &amp; \vdots &amp; \vdots &amp; \mathbf{M} &amp; \ldots \\ \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; q^2\mathbf{M} \end{pmatrix}$</td>
-</tr>
-</table>
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;$\mathbf{M} = \begin{pmatrix} 1 &amp; p &amp; q \\ p &amp; 1 &amp; r \\ q &amp; r &amp; 1 \end{pmatrix}$, $\mathbf{M}^* =$&lt;/td&gt;
+&lt;td&gt;$\begin{pmatrix} \mathbf{M} &amp; \ldots &amp; \mathbf{0} &amp; \ldots &amp; \mathbf{0} &amp; \ldots \\ \vdots &amp; \mathbf{M} &amp; p\mathbf{M} &amp; q\mathbf{M} &amp; \vdots \\ \mathbf{0} &amp; p\mathbf{M} &amp; \mathbf{M} &amp; r\mathbf{M} &amp; \mathbf{0} &amp; \ldots \\ \vdots &amp; q\mathbf{M} &amp; r\mathbf{M} &amp; \mathbf{M} &amp; \vdots \\ \vdots &amp; \vdots &amp; \vdots &amp; \mathbf{M} &amp; \ldots \\ \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; q^2\mathbf{M} \end{pmatrix}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
 
 **Figure 1. Structure of the matrix $\mathbf{M}^*$, given an alphabet $\Sigma = \{a, b, c\}$ and lexicographic ordering of $\Sigma^*$. $m(a,b) = p$, $m(a,c) = q$ and $m(b,c) = r$.**
 
@@ -3284,7 +3284,7 @@ So far, we have discussed a basic vector representation of sequences that utiliz
 
 $$d(x,y) = ||\mathbf{x}-\mathbf{y}|| = \sqrt{\sum_{i}(x_i-y_i)^2} = \sqrt{\mathbf{x}'\mathbf{x} + \mathbf{y}'\mathbf{y} - 2\mathbf{x}'\mathbf{y}}, \quad (14)$$
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3340,7 +3340,7 @@ T_x(u) = Σ_{j∈i(u)} t_j, (19)
 that is, as the sum of the lengths of the spells.
 When multiple embeddings do exist, we could set T_x(u) equal to the average of the durations of all embeddings:
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3366,7 +3366,7 @@ $$T_x(u) = \sum_{i(u)\in I_x(u)} \sum_{j\in i(u)} t_j,$$
 
 which can be interpreted as mapping embeddings, weighted for duration. The inner product resulting from this construction will then have the form
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3394,7 +3394,7 @@ All of the metrics discussed previously have been implemented in the freely⁶ a
 
 TraMineR imposes no practical limitations on the size of the alphabet or the number of sequences in the data set to analyze. However, with N sequences, the number of distinct pairs of sequences amounts to (N choose 2) = N(N - 1)/2. This implies that the computation time for the distance matrix is roughly quadratic in the number of sequences: Doubling the size of the data set will lead to an almost fourfold amount of computation time required. For this reason, Studer (2013) proposed a procedure to analyze the data relying only on unique sequences by weighting them accordingly.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3419,7 +3419,7 @@ f(u, x) & \text{if } u \sqsubseteq x \\
 0 & \text{otherwise}
 \end{cases}$, (25)
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3439,7 +3439,7 @@ What is not shown in Table 2 is that each of these weightings can be applied wit
 
 So, relying on a subsequence vector representation (SVR for short) allows for an enormous versatility in weighting features, warping time, applying soft-matching, and dealing with sequences of unequal lengths. Furthermore, the interpretation of the results of well-known methods in sequence analysis is made easier. For instance, using “Ward” clustering with such a metric is equivalent to finding clusters minimizing the residual variance of the features, that is, minimizing the variability of the subsequences. Using discrepancy analysis is equivalent to running a MANOVA in which the dependent variables are the features (i.e., the subsequences).
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3451,47 +3451,47 @@ Elzinga and Studer
 
 **Table 2. Weighted Functions for Feature Vectors.**
 
-<table>
-<thead>
-<tr>
-<th>Feature Weighted</th>
-<th>$f(u,x)$ if $u \sqsubseteq x$</th>
-<th>Section</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>None</td>
-<td>1</td>
-<td>2.2</td>
-</tr>
-<tr>
-<td>Length</td>
-<td>$\sqrt{L(\ell(u))}$</td>
-<td>2.4</td>
-</tr>
-<tr>
-<td>Embedding frequency</td>
-<td>$|x|_u^{-1}$</td>
-<td>2.3</td>
-</tr>
-<tr>
-<td>Duration</td>
-<td>$|x|_u^{-1} \overline{T}_x(u)$</td>
-<td>4.1</td>
-</tr>
-<tr>
-<td>Gap width</td>
-<td>(see Elzinga and Wang 2013)</td>
-<td>—</td>
-</tr>
-<tr>
-<td>State composition</td>
-<td>(see Elzinga and Wang 2013)</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Feature Weighted&lt;/th&gt;
+&lt;th&gt;$f(u,x)$ if $u \sqsubseteq x$&lt;/th&gt;
+&lt;th&gt;Section&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;None&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Length&lt;/td&gt;
+&lt;td&gt;$\sqrt{L(\ell(u))}$&lt;/td&gt;
+&lt;td&gt;2.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Embedding frequency&lt;/td&gt;
+&lt;td&gt;$|x|_u^{-1}$&lt;/td&gt;
+&lt;td&gt;2.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Duration&lt;/td&gt;
+&lt;td&gt;$|x|_u^{-1} \overline{T}_x(u)$&lt;/td&gt;
+&lt;td&gt;4.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Gap width&lt;/td&gt;
+&lt;td&gt;(see Elzinga and Wang 2013)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;State composition&lt;/td&gt;
+&lt;td&gt;(see Elzinga and Wang 2013)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 Note. The middle column shows the evaluation of $f(u,x)$ for the kind of weighting as indicated in the leftmost column. The rightmost column shows where this kind of weighting is discussed in the main text. The last two kinds of weighting are not discussed in this article.
 
@@ -3501,7 +3501,7 @@ In the next two sections, we will compare SVR metrics with OM. In particular, we
 
 Common *order* of states is the basic property that defines similarity between sequences as temporal successions of states or events (Elzinga 2003). However, common order is not the only angle from which to look at sequence similarity. Another important aspect is *duration*. For example, $a \ldots ab$ and $abbb \ldots b$ are quite different sequences, although the order in which $a$ and $b$ appear is the same. For instance, a difference in the duration of a poverty spell may have a huge impact on the rest of the life course, because poverty may act as a trap (Pollak 2010). Finally, *timing* of events can be the feature of interest as Lesnard (2010) and Rousset and Giret (2007) argued. For example, work during daytime is socially quite different from work during a night shift, and early unemployment may have quite a different effect than unemployment that occurs later in the career (Mooi-Reci 2012). Therefore, we will compare OM to different configurations of the newly introduced distance measures and evaluate how sensitive these measures are to differences in state order, in state duration and in state timing through using simulated, short sequences with controlled variations on these facets. A more detailed presentation of this simulation framework is available in Studer (2012).
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3513,36 +3513,36 @@ Sociological Methods & Research 44(1)
 
 **Table 3. Metrics Used in Assessing Sensitivity; All of Them Weighted for Embedding Frequency.**
 
-<table>
-<thead>
-<tr>
-<th>Acronym</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NMS</td>
-<td>NMS distance as defined in Elzinga (2003, 2005), that is, duration coded as replicated states and no subsequence length weighting. The present article extends this metric by allowing states proximities and durations</td>
-</tr>
-<tr>
-<td>SVR (emb, spell, $a = 0, b = 1$)</td>
-<td>Spell sequences, no subsequence length weighting, no time transform</td>
-</tr>
-<tr>
-<td>SVR (emb, spell, $a = 1, b = 1$)</td>
-<td>Spell sequences, subsequence length weighting using $L(\ell(u)) = \ell(u)$, no time transform</td>
-</tr>
-<tr>
-<td>SVR (emb, spell, $a = 0, b = 2$)</td>
-<td>Spell sequences, no subsequence length weighting, time transform using $f(t) = t^2$</td>
-</tr>
-<tr>
-<td>OM</td>
-<td>Standard OM algorithm, indel set as half the maximum substitution cost</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Acronym&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;NMS&lt;/td&gt;
+&lt;td&gt;NMS distance as defined in Elzinga (2003, 2005), that is, duration coded as replicated states and no subsequence length weighting. The present article extends this metric by allowing states proximities and durations&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR (emb, spell, $a = 0, b = 1$)&lt;/td&gt;
+&lt;td&gt;Spell sequences, no subsequence length weighting, no time transform&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR (emb, spell, $a = 1, b = 1$)&lt;/td&gt;
+&lt;td&gt;Spell sequences, subsequence length weighting using $L(\ell(u)) = \ell(u)$, no time transform&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR (emb, spell, $a = 0, b = 2$)&lt;/td&gt;
+&lt;td&gt;Spell sequences, no subsequence length weighting, time transform using $f(t) = t^2$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OM&lt;/td&gt;
+&lt;td&gt;Standard OM algorithm, indel set as half the maximum substitution cost&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 Note. Emb = embedding frequency; OM = optimal matching; SVR = subsequence vector representation.
 
@@ -3554,7 +3554,7 @@ wherein $SS_B$ and $SS_T$ are sums of distances (for details, see Studer et al. 
 
 In order to get stable results, one million sequences were generated in each group of sequences. Each simulation is repeated one thousand times and the results proposed here show the average pseudo-$R^2$ over all runs.8
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3585,7 +3585,7 @@ State proximities strongly affect the ordering. As a first example, consider aga
 
 Summarizing: we generate a set of sequences with two generators, calculate distances with one of the metrics from Table 3, calculate \(R^2\) and repeat
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3597,36 +3597,36 @@ Sociological Methods & Research 44(1)
 
 **Table 4.** Patterns, Onset, and Duration Variations Used in Assessing the Sensitivity to Perturbations of Ordering, Timing and Duration. Total Duration of all Patterns Is Restricted to 20 Units of Time.
 
-<table>
-<thead>
-<tr>
-<th>Simulation</th>
-<th>Description</th>
-<th>Group 1</th>
-<th>Group 2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ordering</td>
-<td>Time spent in each state is random</td>
-<td>$ca$<br/>$ac$<br/>$cac$<br/>$caca$</td>
-<td>$cb$<br/>$cb$<br/>$cbc$<br/>$cbcb$</td>
-</tr>
-<tr>
-<td>Timing</td>
-<td>Random patterns $abc$ or $cba$. $b$ starts at time $2+t$</td>
-<td>$t=0$</td>
-<td>$t\in 2\dots8$</td>
-</tr>
-<tr>
-<td>Duration</td>
-<td>Random patterns $abc$ or $cba$. Duration of $b$ equals $4+t$</td>
-<td>$t=0$</td>
-<td>$t\in 2\dots8$</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Simulation&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Group 1&lt;/th&gt;
+&lt;th&gt;Group 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Ordering&lt;/td&gt;
+&lt;td&gt;Time spent in each state is random&lt;/td&gt;
+&lt;td&gt;$ca$<br/>$ac$<br/>$cac$<br/>$caca$&lt;/td&gt;
+&lt;td&gt;$cb$<br/>$cb$<br/>$cbc$<br/>$cbcb$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Timing&lt;/td&gt;
+&lt;td&gt;Random patterns $abc$ or $cba$. $b$ starts at time $2+t$&lt;/td&gt;
+&lt;td&gt;$t=0$&lt;/td&gt;
+&lt;td&gt;$t\in 2\dots8$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Duration&lt;/td&gt;
+&lt;td&gt;Random patterns $abc$ or $cba$. Duration of $b$ equals $4+t$&lt;/td&gt;
+&lt;td&gt;$t=0$&lt;/td&gt;
+&lt;td&gt;$t\in 2\dots8$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 Note. Total duration of all patterns is restricted to 20 units of time.
 
@@ -3640,7 +3640,7 @@ The shapes of the curves convincingly show the effect of soft-matching. In a qua
 
 Timing simulations follow the same logic as the one for ordering. Patterns and durations are random in both groups, but the spell in the state $b$ always
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3668,7 +3668,7 @@ These simulations allowed us to measure the effects of the SVR (spell) parameter
 
 We now turn to an application of these SVR metrics to real data in order to highlight the contributions of the newly introduced distance measures.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3759,7 +3759,7 @@ Briefly, these data represent family formation trajectories of Swiss individuals
 
 To determine the substitution costs needed for the calculation of an OM distance matrix, we proceeded as follows. First, we created a four-dimensional
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3771,78 +3771,78 @@ Sociological Methods & Research 44(1)
 
 **Table 5. State Definitions of Family Formation Trajectories From the Swiss Household Panel.**
 
-<table>
-  <thead>
-    <tr>
-      <th rowspan="2">States</th>
-      <th colspan="4">Events</th>
-    </tr>
-    <tr>
-      <th>Leaving home</th>
-      <th>First marriage</th>
-      <th>First child</th>
-      <th>First divorce</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>P</td>
-      <td>No</td>
-      <td>No</td>
-      <td>No</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>L</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>No</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>M</td>
-      <td>No</td>
-      <td>Yes</td>
-      <td>Yes/No</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>LM</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>C</td>
-      <td>No</td>
-      <td>No</td>
-      <td>Yes</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>LC</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>Yes</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>LMC</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>D</td>
-      <td>Yes/No</td>
-      <td>Yes</td>
-      <td>Yes/No</td>
-      <td>Yes</td>
-    </tr>
-  </tbody>
-</table>
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      <th rowspan="2">States&lt;/th&gt;
+      <th colspan="4">Events&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Leaving home&lt;/th&gt;
+      &lt;th&gt;First marriage&lt;/th&gt;
+      &lt;th&gt;First child&lt;/th&gt;
+      &lt;th&gt;First divorce&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;P&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;L&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;M&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes/No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LM&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LC&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LMC&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;D&lt;/td&gt;
+      &lt;td&gt;Yes/No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes/No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 Note. C = child; D = individuals who have married and divorced; L = Left parental home; P = living with Parent; LM = left and married; LMC = left, married and with a first child; NMS = number of matching subsequences; sp = spell; SVR = subsequence vector representation.
 
@@ -3850,7 +3850,7 @@ vector for each state; the coordinates corresponding to the events shown in Tabl
 
 In order to compare the results obtained by using different metrics, we calculated the different distance matrices using the proximities (or costs) defined previously: SVR (sp, $b = 1$; SVR based on spells), SVR (sp, $b = 2$; SVR based on spells, squared durations), SVR (sp, $a = 1$; SVR based on spells with subsequence weighting), and the OM distance. In order to highlight the effect of proximities, we also added the distance SVR (sp, $b = 1$, $c$), the SVR (sp, $b = 1$) distance computed using constant differences (i.e., a similarity of zero between all states). Finally, we included the NMS distance as defined by Elzinga, that is, with constant cost, in order to highlight the distinctive features of the newly proposed metrics. These are the
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3872,7 +3872,7 @@ with the effect of creating dimensionless or unit-free distances $d'_a$ that can
 
 Let us discuss an example by looking at the strongest disagreement between standardized OM and standardized SVR (*sp*, *b* = 1). In the first column fourth row, we have “OM – SVR (*sp*, *b* = 1) = 4.74” for the comparison of the sequences $P^{15} - LMC^1$ and $P^2 - LMC^{14}$. According to OM, these sequences are far away because OM is strongly related to the total time spent in each state, which are very different in this case. According to SVR (*sp*, *b* = 1), these sequences are close, because SVR (*sp*, *b* = 1) is more linked to the order of the states, which is the same in both sequences. We can also have a look at the reverse, that is when SVR (*sp*, *b* = 1) is greater than the OM distance. This is found when comparing the sequence $P^1 - L^5 - LM^1 - LMC^8 - D^1$ and $L^8 - LMC^8$. According to SVR (*sp*, *b* = 1), these sequences are far away, because the ordering of the states is different. According to OM, the sequences are close because the time spent in states *L* and *LMC* are more or less the same.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3885,29 +3885,29 @@ Note. D = individuals who have married and divorced; L = living with Parent; LM 
 
 &lt;watermark&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/watermark&gt;
 
-<table>
-<thead>
-<tr>
-<th>SVR<br>(sp, b = 1)</th>
-<th>SVR<br>(sp, b = 2)</th>
-<th>SVR<br>(sp, a = 1)</th>
-<th>OM</th>
-<th>SVR<br>(sp, b = 1, c)</th>
-<th>NMS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SVR<br>(sp, b = 1)<br>SVR (sp, a = 1)<br>SVR (sp, b = 2)<br>SVR (sp, a = 1)<br>SVR (sp, a = 1)<br>SVR (sp, b = 1)<br>SVR (sp, b = 1)<br>NMS</td>
-<td>Δ = 2.21<br>Δ = 3.69<br>Δ = 0.21<br>Δ = 4.74<br>Δ = 2.27<br>Δ = 9.99<br>Δ = 8.05<br>Δ = 8.99</td>
-<td>Δ = 0.63<br>Δ = 3.98<br>Δ = 2.24<br>Δ = 5.31<br>Δ = 2.91<br>Δ = 8.05<br>Δ = 10.49<br>Δ = 8.67</td>
-<td>Δ = 4.67<br>Δ = 3.13<br>Δ = 4.68<br>Δ = 4.24<br>Δ = 4.61<br>Δ = 8.67<br>Δ = 8.49<br>Δ = 8.99</td>
-<td>Δ = 4.03<br>Δ = 4.29<br>Δ = 4.09<br>Δ = 2.4<br>Δ = 4.51<br>Δ = 8.99<br>Δ = 8.67<br>Δ = 8.99</td>
-<td>P_1-L_13-LM_1-LMC_1<br>P_2-L_4-LM_3-LMC_4-D_2<br>P_3-L_4-LM_3-LMC_4-D_2<br>P_4-L_4-LM_4-LMC_3-D_1<br>P_5-L_5-LM_1-LMC_1<br>P_6-L_6-LMC_6<br>P_7-L_7-LMC_6-D_1<br>P_8-M_2-LM_1-LMC_1-D_44</td>
-<td>P_1-L_13-LM_1-LMC_1<br>P_2-L_13-LM_1-LMC_1<br>P_3-L_13-LM_1-LMC_1<br>P_4-L_13-LM_1-LMC_1<br>P_5-L_2-LM_1-LMC_3-D_5<br>P_6-L_7-LMC_9<br>P_7-L_8-LM_1-LMC_8-D_1<br>P_8-M_2-LM_1-LMC_1-D_44</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SVR<br>(sp, b = 1)&lt;/th&gt;
+&lt;th&gt;SVR<br>(sp, b = 2)&lt;/th&gt;
+&lt;th&gt;SVR<br>(sp, a = 1)&lt;/th&gt;
+&lt;th&gt;OM&lt;/th&gt;
+&lt;th&gt;SVR<br>(sp, b = 1, c)&lt;/th&gt;
+&lt;th&gt;NMS&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR<br>(sp, b = 1)<br>SVR (sp, a = 1)<br>SVR (sp, b = 2)<br>SVR (sp, a = 1)<br>SVR (sp, a = 1)<br>SVR (sp, b = 1)<br>SVR (sp, b = 1)<br>NMS&lt;/td&gt;
+&lt;td&gt;Δ = 2.21<br>Δ = 3.69<br>Δ = 0.21<br>Δ = 4.74<br>Δ = 2.27<br>Δ = 9.99<br>Δ = 8.05<br>Δ = 8.99&lt;/td&gt;
+&lt;td&gt;Δ = 0.63<br>Δ = 3.98<br>Δ = 2.24<br>Δ = 5.31<br>Δ = 2.91<br>Δ = 8.05<br>Δ = 10.49<br>Δ = 8.67&lt;/td&gt;
+&lt;td&gt;Δ = 4.67<br>Δ = 3.13<br>Δ = 4.68<br>Δ = 4.24<br>Δ = 4.61<br>Δ = 8.67<br>Δ = 8.49<br>Δ = 8.99&lt;/td&gt;
+&lt;td&gt;Δ = 4.03<br>Δ = 4.29<br>Δ = 4.09<br>Δ = 2.4<br>Δ = 4.51<br>Δ = 8.99<br>Δ = 8.67<br>Δ = 8.99&lt;/td&gt;
+&lt;td&gt;P_1-L_13-LM_1-LMC_1<br>P_2-L_4-LM_3-LMC_4-D_2<br>P_3-L_4-LM_3-LMC_4-D_2<br>P_4-L_4-LM_4-LMC_3-D_1<br>P_5-L_5-LM_1-LMC_1<br>P_6-L_6-LMC_6<br>P_7-L_7-LMC_6-D_1<br>P_8-M_2-LM_1-LMC_1-D_44&lt;/td&gt;
+&lt;td&gt;P_1-L_13-LM_1-LMC_1<br>P_2-L_13-LM_1-LMC_1<br>P_3-L_13-LM_1-LMC_1<br>P_4-L_13-LM_1-LMC_1<br>P_5-L_2-LM_1-LMC_3-D_5<br>P_6-L_7-LMC_9<br>P_7-L_8-LM_1-LMC_8-D_1<br>P_8-M_2-LM_1-LMC_1-D_44&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;page_number&gt;32&lt;/page_number&gt;
 
@@ -3927,7 +3927,7 @@ Finally, let us look at the difference between SVR metric and NMS (Elzinga 2003)
 
 The analysis of distance disagreement confirms the results of the simulations. SVR (sp) variants are the most sensitive to ordering while OM distance is strongly linked with the time spent in a state. This analysis also highlights more precisely the effect of the SVR parameters. While b increases the sensitivity to duration and timing, a makes the distance measure more sensitive to the ordering of complex sequences. Finally, this analysis has confirmed that soft matching has the desired effect. It highlights the main judgment differences between distances measures. However, in practice, all differences, even the smallest ones, are taken into account. We slightly varied the state proximities as discussed in this article and found no results that were unexpected; we do not report on these results since they are too limited to warrant firm conclusions on the sensitivity of the methods to small perturbations of
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -3939,54 +3939,54 @@ Sociological Methods & Research 44(1)
 
 **Table 7. Clustering Quality Measured Through Average Silhouette Width (ASW, to be maximized, Kaufman and Rousseeuw [1990]) and the HC index (HC, to be minimized, Hubert and Levin (1976)) with Various Metrics as Indicated Subsequently.**
 
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>nc</th>
-<th>ASW</th>
-<th>HC</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SVR (sp, b = 1)</td>
-<td>11</td>
-<td>.55</td>
-<td>.05</td>
-</tr>
-<tr>
-<td>SVR (sp, b = 1, c)</td>
-<td>10</td>
-<td>.53</td>
-<td>.08</td>
-</tr>
-<tr>
-<td>SVR (sp, b = 2)</td>
-<td>10</td>
-<td>.42</td>
-<td>.09</td>
-</tr>
-<tr>
-<td>SVR (sp, a = 1)</td>
-<td>12</td>
-<td>.65</td>
-<td>.02</td>
-</tr>
-<tr>
-<td>OM</td>
-<td>6</td>
-<td>.37</td>
-<td>.07</td>
-</tr>
-<tr>
-<td>NMS</td>
-<td>17</td>
-<td>.35</td>
-<td>.07</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Metric&lt;/th&gt;
+&lt;th&gt;nc&lt;/th&gt;
+&lt;th&gt;ASW&lt;/th&gt;
+&lt;th&gt;HC&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR (sp, b = 1)&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;.55&lt;/td&gt;
+&lt;td&gt;.05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR (sp, b = 1, c)&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;.53&lt;/td&gt;
+&lt;td&gt;.08&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR (sp, b = 2)&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;.42&lt;/td&gt;
+&lt;td&gt;.09&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR (sp, a = 1)&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;.65&lt;/td&gt;
+&lt;td&gt;.02&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OM&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;.37&lt;/td&gt;
+&lt;td&gt;.07&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NMS&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;.35&lt;/td&gt;
+&lt;td&gt;.07&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 Note. ASW = Average Silhouette Width; HC = Hubert’s C; NMS; OM = ; SVR = subsequence vector representation; denote the optimal number of clusters for each of the metrics used.
 
@@ -3998,7 +3998,7 @@ We used the partitioning around medoids (PAM) algorithm (Kaufman and Rousseeuw 1
 
 Table 8 presents the medoids of the clusters obtained using this optimal number of groups. SVR-metrics provide very similar clustering (Cramer’s V ≥ 0.89 between these solutions). SVR (sp, b = 1) and SVR (sp, a = 1) identify two small groups of trajectories leading to divorce that are not identified with other distances. SVR (sp, a = 1) also finds a small group of non-married parents (ending in state LC). These are important features, since all of these patterns may have gained in importance during the 20th century. If divorce is negligible, it should not be used to build the sequences. Otherwise, it should be included in subsequent analyses. SVR (sp, b = 2) makes some
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4024,7 +4024,7 @@ Here, we use the PC plots to render the sequences by the order of the events, ig
 
 Figure 6 presents the PC plots of the sequences plotted according to the SVR (sp, *b* = 1) clustering. Let us discuss some examples in order to illustrate the interpretation of these plots. In the plot called “P-LM,” the brown line indicates one of the patterns of the four events. It starts at position 1 in state “P” (living with parents) before going to the events “left parental home” and “marriage” at position 2. Since “left parental home” and “marriage” happen simultaneously, the line is vertical. In the group called “P-L-LM,” the green line indicates that the pattern is “P,” leaving at position 2 and marrying later on position 3. In both plots, the size of the squares and the width of the lines are plotted according to the relative frequency of the pattern.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4037,168 +4037,168 @@ Note. D = individuals who have married and divorced; L = living with Parent; P =
 
 &lt;watermark&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/watermark&gt;
 
-<table>
-<thead>
-<tr>
-<td>SVR<br>(sp, b = 1)</td>
-<td>%</td>
-<td>SVR<br>(sp, a = 1)</td>
-<td>%</td>
-<td>OM</td>
-<td>%</td>
-<td>SVR<br>(sp, b = 1, c)</td>
-<td>%</td>
-<td>NMS</td>
-<td>%</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P<sub>16</sub><br>M<sub>7</sub></td>
-<td>9.4</td>
-<td>P<sub>16</sub><br>M<sub>7</sub></td>
-<td>8.9</td>
-<td>P<sub>16</sub><br>M<sub>8</sub></td>
-<td>9.4</td>
-<td>P<sub>16</sub><br>M<sub>7</sub></td>
-<td>9.7</td>
-<td>P<sub>16</sub><br>M<sub>3</sub></td>
-<td>9.0</td>
-</tr>
-<tr>
-<td>P<sub>9</sub><br>M<sub>7</sub></td>
-<td>9.7</td>
-<td>P<sub>9</sub><br>M<sub>7</sub></td>
-<td>10.3</td>
-<td>P<sub>8</sub><br>M<sub>7</sub></td>
-<td>9.7</td>
-<td>P<sub>9</sub><br>M<sub>7</sub></td>
-<td>10.0</td>
-<td>P<sub>13</sub><br>M<sub>7</sub></td>
-<td>2.5</td>
-</tr>
-<tr>
-<td>P<sub>7</sub><br>L<sub>9</sub></td>
-<td>8.8</td>
-<td>P<sub>10</sub><br>L<sub>6</sub></td>
-<td>8.3</td>
-<td>P<sub>7</sub><br>L<sub>9</sub></td>
-<td>18.7</td>
-<td>P<sub>5</sub><br>L<sub>11</sub></td>
-<td>21.9</td>
-<td>P<sub>10</sub><br>L<sub>6</sub></td>
-<td>8.5</td>
-</tr>
-<tr>
-<td>P<sub>7</sub><br>L<sub>9</sub></td>
-<td>8.8</td>
-<td>P<sub>5</sub><br>L<sub>11</sub></td>
-<td>11.5</td>
-<td>P<sub>7</sub><br>L<sub>9</sub></td>
-<td>11.9</td>
-<td>P<sub>5</sub><br>L<sub>11</sub></td>
-<td>11.9</td>
-<td>P<sub>10</sub><br>L<sub>6</sub></td>
-<td>4.2</td>
-</tr>
-<tr>
-<td>P<sub>10</sub><br>L<sub>M</sub><sub>6</sub></td>
-<td>7.1</td>
-<td>P<sub>10</sub><br>L<sub>M</sub><sub>6</sub></td>
-<td>7.8</td>
-<td>P<sub>10</sub><br>L<sub>M</sub><sub>6</sub></td>
-<td>7.2</td>
-<td>P<sub>10</sub><br>L<sub>M</sub><sub>2</sub></td>
-<td>7.8</td>
-<td>P<sub>14</sub><br>L<sub>M</sub><sub>2</sub></td>
-<td>1.9</td>
-</tr>
-<tr>
-<td>P<sub>8</sub><br>LMC<sub>8</sub></td>
-<td>7.9</td>
-<td>P<sub>8</sub><br>LMC<sub>8</sub></td>
-<td>7.9</td>
-<td>P<sub>8</sub><br>LMC<sub>8</sub></td>
-<td>8.0</td>
-<td>P<sub>11</sub><br>LMC<sub>5</sub></td>
-<td>8.5</td>
-<td>P<sub>7</sub><br>LMC<sub>9</sub></td>
-<td>4.3</td>
-</tr>
-<tr>
-<td>P<sub>7</sub><br>LM<sub>3</sub>-D<sub>6</sub></td>
-<td>1.9</td>
-<td>P<sub>7</sub><br>LM<sub>3</sub>-D<sub>6</sub></td>
-<td>2.0</td>
-<td>P<sub>7</sub><br>LM<sub>3</sub>-D<sub>6</sub></td>
-<td>2.0</td>
-<td>P<sub>7</sub><br>LM<sub>3</sub>-D<sub>6</sub></td>
-<td>2.0</td>
-<td>P<sub>7</sub><br>LMC<sub>9</sub></td>
-<td>4.3</td>
-</tr>
-<tr>
-<td>P<sub>6</sub><br>L<sub>6</sub>-LM<sub>4</sub></td>
-<td>10.2</td>
-<td>P<sub>7</sub><br>L<sub>7</sub>-LM<sub>2</sub></td>
-<td>10.8</td>
-<td>P<sub>6</sub><br>L<sub>6</sub>-LM<sub>4</sub></td>
-<td>1.1</td>
-<td>P<sub>6</sub><br>L<sub>6</sub>-LM<sub>4</sub></td>
-<td>11.0</td>
-<td>P<sub>6</sub><br>L<sub>4</sub>-LM<sub>4</sub></td>
-<td>11.0</td>
-</tr>
-<tr>
-<td>P<sub>6</sub><br>L<sub>5</sub>-LMC<sub>5</sub></td>
-<td>8.6</td>
-<td>P<sub>4</sub><br>L<sub>6</sub>-LMC<sub>6</sub></td>
-<td>8.3</td>
-<td>P<sub>5</sub><br>L<sub>5</sub>-LMC<sub>6</sub></td>
-<td>7.6</td>
-<td>P<sub>5</sub><br>L<sub>5</sub>-LMC<sub>6</sub></td>
-<td>7.3</td>
-<td>P<sub>9</sub><br>LM<sub>2</sub>-LMC<sub>5</sub></td>
-<td>4.9</td>
-</tr>
-<tr>
-<td>P<sub>9</sub><br>LM<sub>2</sub>-LMC<sub>5</sub></td>
-<td>11.6</td>
-<td>P<sub>9</sub><br>LM<sub>1</sub>-LMC<sub>6</sub></td>
-<td>12.2</td>
-<td>P<sub>9</sub><br>LM<sub>2</sub>-LMC<sub>5</sub></td>
-<td>11.5</td>
-<td>P<sub>9</sub><br>LM<sub>2</sub>-LMC<sub>5</sub></td>
-<td>11.6</td>
-<td>P<sub>11</sub><br>LM<sub>2</sub>-LMC<sub>3</sub></td>
-<td>4.9</td>
-</tr>
-<tr>
-<td>P<sub>6</sub><br>L<sub>4</sub>-LM<sub>2</sub>-LMC<sub>4</sub></td>
-<td>13.7</td>
-<td>P<sub>6</sub><br>L<sub>5</sub>-LM<sub>1</sub>-LMC<sub>4</sub></td>
-<td>14.0</td>
-<td>P<sub>10</sub><br>L<sub>1</sub>-LM<sub>2</sub>-LMC<sub>4</sub></td>
-<td>17.1</td>
-<td>P<sub>6</sub><br>L<sub>4</sub>-LM<sub>2</sub>-LMC<sub>4</sub></td>
-<td>13.7</td>
-<td>P<sub>5</sub><br>L<sub>2</sub>-LM<sub>1</sub>-LMC<sub>8</sub></td>
-<td>17.6</td>
-</tr>
-<tr>
-<td>P<sub>5</sub><br>L<sub>3</sub>-LM<sub>4</sub>-D<sub>4</sub></td>
-<td>1.1</td>
-<td>P<sub>5</sub><br>L<sub>3</sub>-LM<sub>4</sub>-D<sub>4</sub></td>
-<td>1.1</td>
-<td>P<sub>5</sub><br>L<sub>3</sub>-LM<sub>4</sub>-D<sub>4</sub></td>
-<td>1.1</td>
-<td>P<sub>5</sub><br>L<sub>3</sub>-LM<sub>4</sub>-D<sub>4</sub></td>
-<td>1.1</td>
-<td>P<sub>3</sub><br>L<sub>4</sub>-LM<sub>3</sub>-LMC<sub>4</sub>-D<sub>2</sub></td>
-<td>37.0</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;td&gt;SVR<br>(sp, b = 1)&lt;/td&gt;
+&lt;td&gt;%&lt;/td&gt;
+&lt;td&gt;SVR<br>(sp, a = 1)&lt;/td&gt;
+&lt;td&gt;%&lt;/td&gt;
+&lt;td&gt;OM&lt;/td&gt;
+&lt;td&gt;%&lt;/td&gt;
+&lt;td&gt;SVR<br>(sp, b = 1, c)&lt;/td&gt;
+&lt;td&gt;%&lt;/td&gt;
+&lt;td&gt;NMS&lt;/td&gt;
+&lt;td&gt;%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>16</sub><br>M<sub>7</sub>&lt;/td&gt;
+&lt;td&gt;9.4&lt;/td&gt;
+&lt;td&gt;P<sub>16</sub><br>M<sub>7</sub>&lt;/td&gt;
+&lt;td&gt;8.9&lt;/td&gt;
+&lt;td&gt;P<sub>16</sub><br>M<sub>8</sub>&lt;/td&gt;
+&lt;td&gt;9.4&lt;/td&gt;
+&lt;td&gt;P<sub>16</sub><br>M<sub>7</sub>&lt;/td&gt;
+&lt;td&gt;9.7&lt;/td&gt;
+&lt;td&gt;P<sub>16</sub><br>M<sub>3</sub>&lt;/td&gt;
+&lt;td&gt;9.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>9</sub><br>M<sub>7</sub>&lt;/td&gt;
+&lt;td&gt;9.7&lt;/td&gt;
+&lt;td&gt;P<sub>9</sub><br>M<sub>7</sub>&lt;/td&gt;
+&lt;td&gt;10.3&lt;/td&gt;
+&lt;td&gt;P<sub>8</sub><br>M<sub>7</sub>&lt;/td&gt;
+&lt;td&gt;9.7&lt;/td&gt;
+&lt;td&gt;P<sub>9</sub><br>M<sub>7</sub>&lt;/td&gt;
+&lt;td&gt;10.0&lt;/td&gt;
+&lt;td&gt;P<sub>13</sub><br>M<sub>7</sub>&lt;/td&gt;
+&lt;td&gt;2.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>7</sub><br>L<sub>9</sub>&lt;/td&gt;
+&lt;td&gt;8.8&lt;/td&gt;
+&lt;td&gt;P<sub>10</sub><br>L<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;8.3&lt;/td&gt;
+&lt;td&gt;P<sub>7</sub><br>L<sub>9</sub>&lt;/td&gt;
+&lt;td&gt;18.7&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>11</sub>&lt;/td&gt;
+&lt;td&gt;21.9&lt;/td&gt;
+&lt;td&gt;P<sub>10</sub><br>L<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;8.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>7</sub><br>L<sub>9</sub>&lt;/td&gt;
+&lt;td&gt;8.8&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>11</sub>&lt;/td&gt;
+&lt;td&gt;11.5&lt;/td&gt;
+&lt;td&gt;P<sub>7</sub><br>L<sub>9</sub>&lt;/td&gt;
+&lt;td&gt;11.9&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>11</sub>&lt;/td&gt;
+&lt;td&gt;11.9&lt;/td&gt;
+&lt;td&gt;P<sub>10</sub><br>L<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;4.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>10</sub><br>L<sub>M</sub><sub>6</sub>&lt;/td&gt;
+&lt;td&gt;7.1&lt;/td&gt;
+&lt;td&gt;P<sub>10</sub><br>L<sub>M</sub><sub>6</sub>&lt;/td&gt;
+&lt;td&gt;7.8&lt;/td&gt;
+&lt;td&gt;P<sub>10</sub><br>L<sub>M</sub><sub>6</sub>&lt;/td&gt;
+&lt;td&gt;7.2&lt;/td&gt;
+&lt;td&gt;P<sub>10</sub><br>L<sub>M</sub><sub>2</sub>&lt;/td&gt;
+&lt;td&gt;7.8&lt;/td&gt;
+&lt;td&gt;P<sub>14</sub><br>L<sub>M</sub><sub>2</sub>&lt;/td&gt;
+&lt;td&gt;1.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>8</sub><br>LMC<sub>8</sub>&lt;/td&gt;
+&lt;td&gt;7.9&lt;/td&gt;
+&lt;td&gt;P<sub>8</sub><br>LMC<sub>8</sub>&lt;/td&gt;
+&lt;td&gt;7.9&lt;/td&gt;
+&lt;td&gt;P<sub>8</sub><br>LMC<sub>8</sub>&lt;/td&gt;
+&lt;td&gt;8.0&lt;/td&gt;
+&lt;td&gt;P<sub>11</sub><br>LMC<sub>5</sub>&lt;/td&gt;
+&lt;td&gt;8.5&lt;/td&gt;
+&lt;td&gt;P<sub>7</sub><br>LMC<sub>9</sub>&lt;/td&gt;
+&lt;td&gt;4.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>7</sub><br>LM<sub>3</sub>-D<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;1.9&lt;/td&gt;
+&lt;td&gt;P<sub>7</sub><br>LM<sub>3</sub>-D<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;2.0&lt;/td&gt;
+&lt;td&gt;P<sub>7</sub><br>LM<sub>3</sub>-D<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;2.0&lt;/td&gt;
+&lt;td&gt;P<sub>7</sub><br>LM<sub>3</sub>-D<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;2.0&lt;/td&gt;
+&lt;td&gt;P<sub>7</sub><br>LMC<sub>9</sub>&lt;/td&gt;
+&lt;td&gt;4.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>6</sub><br>L<sub>6</sub>-LM<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;10.2&lt;/td&gt;
+&lt;td&gt;P<sub>7</sub><br>L<sub>7</sub>-LM<sub>2</sub>&lt;/td&gt;
+&lt;td&gt;10.8&lt;/td&gt;
+&lt;td&gt;P<sub>6</sub><br>L<sub>6</sub>-LM<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;1.1&lt;/td&gt;
+&lt;td&gt;P<sub>6</sub><br>L<sub>6</sub>-LM<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;11.0&lt;/td&gt;
+&lt;td&gt;P<sub>6</sub><br>L<sub>4</sub>-LM<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;11.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>6</sub><br>L<sub>5</sub>-LMC<sub>5</sub>&lt;/td&gt;
+&lt;td&gt;8.6&lt;/td&gt;
+&lt;td&gt;P<sub>4</sub><br>L<sub>6</sub>-LMC<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;8.3&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>5</sub>-LMC<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;7.6&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>5</sub>-LMC<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;7.3&lt;/td&gt;
+&lt;td&gt;P<sub>9</sub><br>LM<sub>2</sub>-LMC<sub>5</sub>&lt;/td&gt;
+&lt;td&gt;4.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>9</sub><br>LM<sub>2</sub>-LMC<sub>5</sub>&lt;/td&gt;
+&lt;td&gt;11.6&lt;/td&gt;
+&lt;td&gt;P<sub>9</sub><br>LM<sub>1</sub>-LMC<sub>6</sub>&lt;/td&gt;
+&lt;td&gt;12.2&lt;/td&gt;
+&lt;td&gt;P<sub>9</sub><br>LM<sub>2</sub>-LMC<sub>5</sub>&lt;/td&gt;
+&lt;td&gt;11.5&lt;/td&gt;
+&lt;td&gt;P<sub>9</sub><br>LM<sub>2</sub>-LMC<sub>5</sub>&lt;/td&gt;
+&lt;td&gt;11.6&lt;/td&gt;
+&lt;td&gt;P<sub>11</sub><br>LM<sub>2</sub>-LMC<sub>3</sub>&lt;/td&gt;
+&lt;td&gt;4.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>6</sub><br>L<sub>4</sub>-LM<sub>2</sub>-LMC<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;13.7&lt;/td&gt;
+&lt;td&gt;P<sub>6</sub><br>L<sub>5</sub>-LM<sub>1</sub>-LMC<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;14.0&lt;/td&gt;
+&lt;td&gt;P<sub>10</sub><br>L<sub>1</sub>-LM<sub>2</sub>-LMC<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;17.1&lt;/td&gt;
+&lt;td&gt;P<sub>6</sub><br>L<sub>4</sub>-LM<sub>2</sub>-LMC<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;13.7&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>2</sub>-LM<sub>1</sub>-LMC<sub>8</sub>&lt;/td&gt;
+&lt;td&gt;17.6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>3</sub>-LM<sub>4</sub>-D<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;1.1&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>3</sub>-LM<sub>4</sub>-D<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;1.1&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>3</sub>-LM<sub>4</sub>-D<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;1.1&lt;/td&gt;
+&lt;td&gt;P<sub>5</sub><br>L<sub>3</sub>-LM<sub>4</sub>-D<sub>4</sub>&lt;/td&gt;
+&lt;td&gt;1.1&lt;/td&gt;
+&lt;td&gt;P<sub>3</sub><br>L<sub>4</sub>-LM<sub>3</sub>-LMC<sub>4</sub>-D<sub>2</sub>&lt;/td&gt;
+&lt;td&gt;37.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;page_number&gt;36&lt;/page_number&gt;
 
@@ -4220,7 +4220,7 @@ Figure 7 presents the chronograms of the six clusters found from the OM distance
 
 The wide use of chronograms and index plots may be one of the reasons of the popularity of OM. As we have shown with our simulations and through
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4241,7 +4241,7 @@ Comparing both clustering solutions, using OM leads to some distinctions accordi
 
 If there would be an evolution of family trajectories, we would expect to see the size of clusters change over time in a systematic way (see, e.g., Elzinga
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4259,7 +4259,7 @@ Note. Color version of the figure is available online at smr.sagepub.com.
 
 and Liefbroer 2007). Here, we evaluate these changes as revealed by both clustering on the basis of OM distances as well as on the basis of SVR (sp, b = 1). In Tables 9 and 10, we present the relative distributions of cluster membership per cohort, for OM- and SVR distances respectively. The association is highly significant in both cases but stronger for SVR-based clustering (Cramer’s V = .193) than for OM-based clustering (Cramer’s V = .147).
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4271,68 +4271,68 @@ Sociological Methods & Research 44(1)
 
 Table 9. Distributions of Relative Cluster Frequencies (%’s) per Cohort for OM-Based Clusters.
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>&lt; 30</th>
-<th>30 – 39</th>
-<th>40 – 49</th>
-<th>50 – 59</th>
-<th>≥ 60</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P-M</td>
-<td>13.4</td>
-<td>12.8</td>
-<td>10.7</td>
-<td>5.4</td>
-<td>3.8</td>
-</tr>
-<tr>
-<td>P</td>
-<td>35.5</td>
-<td>21.1</td>
-<td>15.0</td>
-<td>13.8</td>
-<td>18.9</td>
-</tr>
-<tr>
-<td>Late LMC</td>
-<td>17.7</td>
-<td>23.0</td>
-<td>18.7</td>
-<td>16.0</td>
-<td>13.6</td>
-</tr>
-<tr>
-<td>P-L-LM</td>
-<td>13.6</td>
-<td>15.8</td>
-<td>19.5</td>
-<td>17.7</td>
-<td>14.5</td>
-</tr>
-<tr>
-<td>Early LMC</td>
-<td>9.1</td>
-<td>17.1</td>
-<td>23.6</td>
-<td>20.0</td>
-<td>15.1</td>
-</tr>
-<tr>
-<td>P-L</td>
-<td>10.7</td>
-<td>10.3</td>
-<td>12.5</td>
-<td>27.1</td>
-<td>34.2</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt; 30&lt;/th&gt;
+&lt;th&gt;30 – 39&lt;/th&gt;
+&lt;th&gt;40 – 49&lt;/th&gt;
+&lt;th&gt;50 – 59&lt;/th&gt;
+&lt;th&gt;≥ 60&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;P-M&lt;/td&gt;
+&lt;td&gt;13.4&lt;/td&gt;
+&lt;td&gt;12.8&lt;/td&gt;
+&lt;td&gt;10.7&lt;/td&gt;
+&lt;td&gt;5.4&lt;/td&gt;
+&lt;td&gt;3.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P&lt;/td&gt;
+&lt;td&gt;35.5&lt;/td&gt;
+&lt;td&gt;21.1&lt;/td&gt;
+&lt;td&gt;15.0&lt;/td&gt;
+&lt;td&gt;13.8&lt;/td&gt;
+&lt;td&gt;18.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Late LMC&lt;/td&gt;
+&lt;td&gt;17.7&lt;/td&gt;
+&lt;td&gt;23.0&lt;/td&gt;
+&lt;td&gt;18.7&lt;/td&gt;
+&lt;td&gt;16.0&lt;/td&gt;
+&lt;td&gt;13.6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-L-LM&lt;/td&gt;
+&lt;td&gt;13.6&lt;/td&gt;
+&lt;td&gt;15.8&lt;/td&gt;
+&lt;td&gt;19.5&lt;/td&gt;
+&lt;td&gt;17.7&lt;/td&gt;
+&lt;td&gt;14.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Early LMC&lt;/td&gt;
+&lt;td&gt;9.1&lt;/td&gt;
+&lt;td&gt;17.1&lt;/td&gt;
+&lt;td&gt;23.6&lt;/td&gt;
+&lt;td&gt;20.0&lt;/td&gt;
+&lt;td&gt;15.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-L&lt;/td&gt;
+&lt;td&gt;10.7&lt;/td&gt;
+&lt;td&gt;10.3&lt;/td&gt;
+&lt;td&gt;12.5&lt;/td&gt;
+&lt;td&gt;27.1&lt;/td&gt;
+&lt;td&gt;34.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 Note. Cells are colored in blue if the standardized Pearson residuals is higher than 1.96 and in red if lower than −1.96. Clusters are characterized by their medoids. Cramer’s V = 147. Color version of the table is available online at smr.sagepub.com.
 
@@ -4345,7 +4345,7 @@ Clearly, in this analysis of Swiss family formation sequences, the SVR (sp, b = 
 
 We motivated this article by pointing at the poor performance of the OM metric with respect to a basic property of sequences: the order of the states
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4357,108 +4357,108 @@ Elzinga and Studer
 
 **Table 10.** Distributions of Relative Cluster Frequencies (%’s) per Cohort for SVR (sp, b = 1)-Based Clusters.
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>&lt; 30</th>
-<th>30 – 39</th>
-<th>40 – 49</th>
-<th>50 – 59</th>
-<th>≥ 60</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P-M</td>
-<td>19.4</td>
-<td>15.9</td>
-<td>12.0</td>
-<td>5.6</td>
-<td>4.6</td>
-</tr>
-<tr>
-<td>P-LM</td>
-<td>11.7</td>
-<td>11.4</td>
-<td>10.8</td>
-<td>5.1</td>
-<td>2.5</td>
-</tr>
-<tr>
-<td>P-LM-LMC</td>
-<td>12.8</td>
-<td>17.2</td>
-<td>14.4</td>
-<td>11.9</td>
-<td>6.1</td>
-</tr>
-<tr>
-<td>P-LMC</td>
-<td>11.6</td>
-<td>10.8</td>
-<td>10.2</td>
-<td>7.8</td>
-<td>3.9</td>
-</tr>
-<tr>
-<td>P</td>
-<td>19.1</td>
-<td>10.1</td>
-<td>8.3</td>
-<td>7.1</td>
-<td>8.3</td>
-</tr>
-<tr>
-<td>P-LM-D</td>
-<td>2.2</td>
-<td>1.5</td>
-<td>2.9</td>
-<td>2.0</td>
-<td>1.5</td>
-</tr>
-<tr>
-<td>P-L-LM-D</td>
-<td>0.2</td>
-<td>0.4</td>
-<td>0.7</td>
-<td>1.2</td>
-<td>1.8</td>
-</tr>
-<tr>
-<td>P-L-LMC</td>
-<td>2.6</td>
-<td>6.4</td>
-<td>8.3</td>
-<td>9.7</td>
-<td>11.2</td>
-</tr>
-<tr>
-<td>P-L-LM-LMC</td>
-<td>4.4</td>
-<td>11.4</td>
-<td>13.2</td>
-<td>15.2</td>
-<td>17.0</td>
-</tr>
-<tr>
-<td>P-L-LM</td>
-<td>5.8</td>
-<td>6.6</td>
-<td>8.6</td>
-<td>12.8</td>
-<td>12.8</td>
-</tr>
-<tr>
-<td>P-L</td>
-<td>10.2</td>
-<td>8.3</td>
-<td>10.7</td>
-<td>21.5</td>
-<td>30.4</td>
-</tr>
-</tbody>
-</table>
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt; 30&lt;/th&gt;
+&lt;th&gt;30 – 39&lt;/th&gt;
+&lt;th&gt;40 – 49&lt;/th&gt;
+&lt;th&gt;50 – 59&lt;/th&gt;
+&lt;th&gt;≥ 60&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;P-M&lt;/td&gt;
+&lt;td&gt;19.4&lt;/td&gt;
+&lt;td&gt;15.9&lt;/td&gt;
+&lt;td&gt;12.0&lt;/td&gt;
+&lt;td&gt;5.6&lt;/td&gt;
+&lt;td&gt;4.6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-LM&lt;/td&gt;
+&lt;td&gt;11.7&lt;/td&gt;
+&lt;td&gt;11.4&lt;/td&gt;
+&lt;td&gt;10.8&lt;/td&gt;
+&lt;td&gt;5.1&lt;/td&gt;
+&lt;td&gt;2.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-LM-LMC&lt;/td&gt;
+&lt;td&gt;12.8&lt;/td&gt;
+&lt;td&gt;17.2&lt;/td&gt;
+&lt;td&gt;14.4&lt;/td&gt;
+&lt;td&gt;11.9&lt;/td&gt;
+&lt;td&gt;6.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-LMC&lt;/td&gt;
+&lt;td&gt;11.6&lt;/td&gt;
+&lt;td&gt;10.8&lt;/td&gt;
+&lt;td&gt;10.2&lt;/td&gt;
+&lt;td&gt;7.8&lt;/td&gt;
+&lt;td&gt;3.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P&lt;/td&gt;
+&lt;td&gt;19.1&lt;/td&gt;
+&lt;td&gt;10.1&lt;/td&gt;
+&lt;td&gt;8.3&lt;/td&gt;
+&lt;td&gt;7.1&lt;/td&gt;
+&lt;td&gt;8.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-LM-D&lt;/td&gt;
+&lt;td&gt;2.2&lt;/td&gt;
+&lt;td&gt;1.5&lt;/td&gt;
+&lt;td&gt;2.9&lt;/td&gt;
+&lt;td&gt;2.0&lt;/td&gt;
+&lt;td&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-L-LM-D&lt;/td&gt;
+&lt;td&gt;0.2&lt;/td&gt;
+&lt;td&gt;0.4&lt;/td&gt;
+&lt;td&gt;0.7&lt;/td&gt;
+&lt;td&gt;1.2&lt;/td&gt;
+&lt;td&gt;1.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-L-LMC&lt;/td&gt;
+&lt;td&gt;2.6&lt;/td&gt;
+&lt;td&gt;6.4&lt;/td&gt;
+&lt;td&gt;8.3&lt;/td&gt;
+&lt;td&gt;9.7&lt;/td&gt;
+&lt;td&gt;11.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-L-LM-LMC&lt;/td&gt;
+&lt;td&gt;4.4&lt;/td&gt;
+&lt;td&gt;11.4&lt;/td&gt;
+&lt;td&gt;13.2&lt;/td&gt;
+&lt;td&gt;15.2&lt;/td&gt;
+&lt;td&gt;17.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-L-LM&lt;/td&gt;
+&lt;td&gt;5.8&lt;/td&gt;
+&lt;td&gt;6.6&lt;/td&gt;
+&lt;td&gt;8.6&lt;/td&gt;
+&lt;td&gt;12.8&lt;/td&gt;
+&lt;td&gt;12.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P-L&lt;/td&gt;
+&lt;td&gt;10.2&lt;/td&gt;
+&lt;td&gt;8.3&lt;/td&gt;
+&lt;td&gt;10.7&lt;/td&gt;
+&lt;td&gt;21.5&lt;/td&gt;
+&lt;td&gt;30.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 Note. SVR = subsequence vector representation. Cells are colored in blue if the standardized pearson residuals is higher than 1.96 and in red if lower than −1.96. Clusters are characterized by their medoids. Cramer’s V = .193. Color version of the table is available online at smr.sagepub.com.
 
@@ -4470,7 +4470,7 @@ We presented a very flexible, versatile metric that does well when ordering of s
 
 Our simulations and application have highlighted the difference between OM and SVR metrics. This can be used to justify the use of one or the other
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4504,7 +4504,7 @@ The author(s) received no financial support for the research, authorship, and/or
 6. TraMineR is freely downloadable from http://mephisto.unige.ch/traminer/.
 7. Recently, Bonetti, Piccarreta, and Salford (2013) published a similar approach under the acronym Analysis of Dissimilarity (ANODI).
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4558,7 +4558,7 @@ Elzinga, Cees H. and Hui Wang. 2013. “Versatile String Kernels.” *Theoretica
 Elzinga, Cees H., Hui Wang, Zhiwei Lin, and Yash Kumar. 2011. “Concordance and Consensus.” *Information Sciences* 181:2529-49.
 Emms, Martin and Hector Franco-Penya. 2012. “On Order Equivalences between Distance and Similarity Measures on Sequences and Trees.” Pp. 15-24 in *Mathematical Methodologies in Pattern Recognition and Machine Learning, Springer Proceedings in Mathematics & Statistics*, vol. 30, edited by P. L. Carmona, J. S. Sanchez, and A. L. Fred. New York: Springer.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4602,7 +4602,7 @@ McVicar, Duncan and Michael Anyadike-Danes. 2002. “Predicting Successful and U
 
 Meyer, Carl Dean. 2000. *Matrix Analysis and Applied Linear Algebra*. Philadelphia, PA: Society for Industrial and Applied Mathematics (SIAM).
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4634,7 +4634,7 @@ Studer, Matthias. 2012. “Étude des inégalités de genre en début de carriè
 
 Studer, Matthias. “WeightedCluster Library Manual. A Practical Guide to Creating Typologies of Trajectories in the Social Sciences with R.” Technical Report, LIVES Working Papers, 24, Institute for Demographic and Life Course Studies, University of Geneva, Geneva, Switzerland. doi:http://dx.doi.org/10.12682/lives.2296-1658.2013.24.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
 
 ---
 
@@ -4660,4 +4660,4 @@ Cees H. Elzinga is a professor in pattern recognition and vice dean of the Facul
 
 Matthias Studer is a postdoc in the Institute of Demographic and Life Course Studies of the University of Geneva and a member of the Swiss NCCR program “LIVES” overcoming vulnerability: life course perspectives.” He worked on sequence analysis and gendered career inequalities and recently published on *Discrepancy Analysis in Sociological Methods & Research*.
 
-<footer>Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015</footer>
+&lt;footer&gt;Downloaded from smr.sagepub.com at Vrije Universiteit 34820 on February 19, 2015&lt;/footer&gt;
