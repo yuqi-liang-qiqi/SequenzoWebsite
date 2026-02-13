@@ -1,5 +1,33 @@
 # What's New
 
+### 13 Feb 2026
+
+Sequenzo version v0.1.33 has been released (includes changes from v0.1.32).
+
+**New Features & Data:**
+- **Event sequence analysis**: added `with_event_history_analysis` module with functions such as `create_event_sequences`, `find_frequent_subsequences`, `count_subsequence_occurrences`, `compare_groups`, and visualizations (`plot_event_sequences`, `plot_subsequence_frequencies`), plus tutorials and unit tests.
+- **Sequence characteristics**: added functions to capture sequence characteristics (e.g., subsequences, transitions, turbulence, complexity index, within-sequence entropy, spell duration variance, cross-sectional entropy) and corresponding tutorials and unit tests.
+- **Dissimilarity measures**: added new distance methods `OMloc`, `OMslen`, `OMstran`, `TWED`, `LCS`, `NMS`, `NMSMST`, `NMSSTSSoft`, and `SVRspell` to `get_distance_matrix()`.
+- **LCP-related**: added LCP-related functions; `matrix_display` option for LCP/LCPspell; improved documentation and notebook demos.
+- **Tree analysis** (v0.1.33): added `tree_analysis` module with regression tree analysis for sequence data (TraMineR-style `disstree` / `seqtree`), including `build_distance_tree`, `build_sequence_tree`, `compute_pseudo_variance`, `compute_distance_association`, and visualization helpers.
+- **Elzinga & Studer (2019) normalization**: added reference-based normalization method from Elzinga & Studer (2019).
+- **Visualization**: added color transparency support in `SequenceData()` and improved spacing in index plots.
+- **Data utilities**: standardized column cleaning and dataset listing; refactored data preprocessing helpers.
+- **Weighted statistics**: added `utils` module with `weighted_mean`, `weighted_variance`, and `weighted_five_number_summary` to align with TraMineR’s weighted behavior.
+
+**Bug Fixes:**
+- Fixed OM normalization alignment with TraMineR; corrected DP segment length (m/n = mSuf-prefix-1).
+- Fixed OMloc compilation and OMslen/OMstran execution issues.
+- Fixed numpy matrix in `get_distance_matrix()` not being writeable.
+- Fixed LCPspell `norm=auto` to use maxdist and avoid negative distances; fixed `norm=none` behavior.
+- Fixed pytest bugs in dissimilarity measures; all 29 tests now pass for various configurations.
+
+**Other:**
+- Updated seqhmm component.
+- Translated Chinese comments in dissimilarity measures module to English.
+- Improved xsimd submodule initialization to auto-fix commit mismatch.
+- Expanded docstrings and documentation for data-cleaning and tree analysis scripts.
+
 ### 1 Feb 2026
 
 Sequenzo version v0.1.31 has been released.
