@@ -8,6 +8,37 @@
 -->
 # 最新动态
 
+### 2026 年 2 月 13 日
+
+Sequenzo 版本 v0.1.33 已发布（包含 v0.1.32 的变更）。
+
+**新功能与数据：**
+
+- **事件序列分析**：新增 `with_event_history_analysis` 模块，提供 `create_event_sequences`、`find_frequent_subsequences`、`count_subsequence_occurrences`、`compare_groups` 等函数，以及可视化功能（`plot_event_sequences`、`plot_subsequence_frequencies`），并附带教程与单元测试。
+- **序列特征**：新增用于刻画序列特征的函数（如子序列、转移、turbulence、复杂度指数、序列内熵、片段持续时间方差、横截面熵），并提供相应教程与单元测试。
+- **相异度度量**：在 `get_distance_matrix()` 中新增距离方法 `OMloc`、`OMslen`、`OMstran`、`TWED`、`LCS`、`NMS`、`NMSMST`、`NMSSTSSoft` 和 `SVRspell`。
+- **LCP 相关**：新增 LCP 相关函数；为 LCP/LCPspell 添加 `matrix_display` 选项；改进文档与 Notebook 演示。
+- **树分析**（v0.1.33）：新增 `tree_analysis` 模块，用于序列数据的回归树分析（TraMineR 风格 `disstree` / `seqtree`），包括 `build_distance_tree`、`build_sequence_tree`、`compute_pseudo_variance`、`compute_distance_association` 以及可视化辅助函数。
+- **Elzinga & Studer (2019) 归一化**：新增基于 Elzinga & Studer (2019) 的参考归一化方法。
+- **可视化**：`SequenceData()` 新增颜色透明度支持，并改进索引图的间距。
+- **数据工具**：统一列清洗与数据集列举方式；重构数据预处理辅助函数。
+- **加权统计**：新增 `utils` 模块，提供 `weighted_mean`、`weighted_variance`、`weighted_five_number_summary`，以对齐 TraMineR 的加权行为。
+
+**错误修复：**
+
+- 修复 OM 归一化与 TraMineR 不一致的问题；修正动态规划片段长度（m/n = mSuf - prefix - 1）。
+- 修复 OMloc 编译问题以及 OMslen / OMstran 无法运行的问题。
+- 修复 `get_distance_matrix()` 返回的 numpy 矩阵不可写的问题。
+- 修复 LCPspell 在 `norm=auto` 时使用 maxdist 并避免负距离；修复 `norm=none` 的行为。
+- 修复相异度度量中的 pytest 问题；现在在多种配置下 29 个测试全部通过。
+
+**其他：**
+
+- 更新 seqhmm 组件。
+- 将相异度度量模块中的中文注释翻译为英文。
+- 改进 xsimd 子模块初始化，可自动修复提交不匹配问题。
+- 扩展数据清洗与树分析脚本的文档字符串与说明文档。
+
 ### 2026 年 2 月 1 日
 
 Sequenzo 版本 v0.1.31 已发布。
