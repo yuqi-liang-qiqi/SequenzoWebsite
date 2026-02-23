@@ -138,6 +138,7 @@ Others
   * [Marcel Raab](https://marcelraab.de/)
   * [Heyi Zhang](https://profiles.ucl.ac.uk/100967-heyi-zhang)
 * Yuqi's original programming mentor: [JiangHuShiNian](https://github.com/jianghushinian)
+* Assistance with early-stage performance testing of Sequenzo: Qian Wang, Ruxin Xue, Min Zhao, Tia (Qi Dai).
 
 ## References
 
