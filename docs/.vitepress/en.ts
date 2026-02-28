@@ -123,6 +123,10 @@ export const en = defineConfig({
             // text: "Polyadic Sequence Data on Intergenerational Family Formation",
             text: "Intergenerational Family Data for Polyadic Analysis",
             link: '/en/datasets/dyadic-sequence-data-lsog'
+          },
+          {
+            text: "College Students' Stress",
+            link: '/en/datasets/stress-data'
           }
         ]
       },
