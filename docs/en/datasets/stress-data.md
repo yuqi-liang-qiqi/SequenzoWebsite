@@ -120,7 +120,7 @@ For exact steps, code, and file descriptions, see:
 
 **[Original datasets and cleaning: stress](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/stress)**
 
-There you will find the pipeline scripts, config (e.g. PSS boundaries, minimum weeks, demographic filter), and the logic for building the 8-week sequences. On this site, the [stress analysis folder](./stress/) contains a typical workflow (e.g. loading `students_stress_states_by_week`, building sequence objects, clustering); for full analytical details and reproducibility, refer to the GitHub link above.
+There you will find the pipeline scripts, config (e.g. PSS boundaries, minimum weeks, demographic filter), and the logic for building the 8-week sequences. For a typical workflow (e.g. loading `students_stress_states_by_week`, building sequence objects, clustering), see the [analysis folder](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/stress) in the same repository.
 
 ---
 
