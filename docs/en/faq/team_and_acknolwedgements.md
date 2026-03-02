@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2025-09-12 14:40:49
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-11-21 08:40:57
+ * @LastEditTime: 2026-03-02 22:51:38
  * @FilePath: /SequenzoWebsite/docs/en/faq/team_and_acknolwedgements.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -23,6 +23,7 @@ We thank the people below for building and supporting Sequenzo.
 
 <div align="center">
 <table class="team-grid">
+  <tbody>
   <tr>
     <td align="center">
       <img src="./img/yuqi.jpg" width="120" height="120" class="team-photo" alt="Yuqi Liang" />
@@ -36,8 +37,12 @@ We thank the people below for building and supporting Sequenzo.
       <img src="./img/jan.jpg" width="120" height="120" class="team-photo" alt="Jan Meyerhoff-Liang" />
       <div><a href="https://www.linkedin.com/in/jan-meyerhoff-liang-97999a170/">Jan Meyerhoff-Liang</a><br/>Research Associate, Innovation Economics<br/>University of Oxford (UK)</div>
     </td>
+    <td align="center">
+      <img src="./img/yapeng.jpeg" width="120" height="120" class="team-photo" alt="Yapeng Wei" />
+      <div><a href="https://www.linkedin.com/in/jan-meyerhoff-liang-97999a170/">Yapeng Wei</a><br/>Master, Social Data Science<br/>University of Oxford (UK)</div>
+    </td>
   </tr>
-  
+  </tbody>
 </table>
 </div>
 
@@ -45,6 +50,7 @@ We thank the people below for building and supporting Sequenzo.
 
 <div align="center">
 <table class="team-grid">
+  <tbody>
   <tr>
     <td align="center">
       <img src="./img/xingyun.jpg" width="120" height="120" class="team-photo" alt="Liangxingyun He" />
@@ -52,7 +58,7 @@ We thank the people below for building and supporting Sequenzo.
     </td>
     <td align="center">
       <img src="./img/yukun_ming.png" width="120" height="120" class="team-photo" alt="Yukun Ming" />
-      <div><a href="www.linkedin.com/in/yukun（stephan）-ming-a13878298">Yukun Ming</a><br/>Master, Business & Finance<br/>Universidad Carlos III de Madrid (Spain)</div>
+      <div><a href="https://www.linkedin.com/in/yukun（stephan）-ming-a13878298">Yukun Ming</a><br/>Master, Business & Finance<br/>Universidad Carlos III de Madrid (Spain)</div>
     </td>
     <td align="center">
       <img src="./img/sizhu.jpeg" width="120" height="120" class="team-photo" alt="Sizhu Qu" />
@@ -63,5 +69,6 @@ We thank the people below for building and supporting Sequenzo.
       <div><a href="https://www.linkedin.com/in/ziting-yang-7b33832bb">Ziting Yang</a><br/>Master, Marketing Analytics<br/>Rochester University (US)</div>
     </td>
   </tr>
+  </tbody>
 </table>
 </div>
