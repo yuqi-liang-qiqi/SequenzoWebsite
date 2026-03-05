@@ -87,6 +87,24 @@ export const en = defineConfig({
             link: '/en/tutorials/statistics-101'
           },
           {
+            text: 'Markov Models',
+            collapsed: true,
+            items: [
+              {
+                text: 'Markov Chain',
+                link: '/en/tutorials/markov-chain'
+              },
+              {
+                text: 'Hidden Markov Model (HMM)',
+                link: '/en/tutorials/hmm'
+              },
+              {
+                text: 'Mixed Hidden Markov Model (MHMM)',
+                link: '/en/tutorials/mhmm'
+              }
+            ]
+          },
+          {
             text: 'Sequence Analysis vs. Latent Class Analysis vs. Hidden Markov Models',
             link: '/en/tutorials/sa_lca_and_hmm'
           }
