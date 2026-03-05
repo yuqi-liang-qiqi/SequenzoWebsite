@@ -243,3 +243,6 @@ Hayes, B. (2013). First links in the Markov chain. *American Scientist*, 101(2),
 Helske, S., & Helske, J. (2019). Mixture hidden Markov models for sequence data: The seqHMM package in R. *Journal of Statistical Software*, 88(3), 1–32. [https://doi.org/10.18637/jss.v088.i03](https://doi.org/10.18637/jss.v088.i03)
 
 Sheskin, T. J. (2011). *Markov chains and decision processes for engineers and managers* (1st ed.). CRC Press. [https://doi.org/10.1201/b15998](https://doi.org/10.1201/b15998)
+
+---
+*Author: Yapeng Wei, Yuqi Liang*

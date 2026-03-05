@@ -316,3 +316,6 @@ HMM solves the problem of states not being observable, but it still assumes all 
 ## 8. References
 
 Helske, S., & Helske, J. (2019). Mixture hidden Markov models for sequence data: The seqHMM package in R. *Journal of Statistical Software*, 88(3), 1–32. [https://doi.org/10.18637/jss.v088.i03](https://doi.org/10.18637/jss.v088.i03)
+
+---
+*Author: Yapeng Wei, Yuqi Liang*
