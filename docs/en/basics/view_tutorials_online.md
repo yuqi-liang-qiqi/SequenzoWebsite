@@ -16,25 +16,44 @@ You can also view our tutorials on GitHub, but its preview sometimes fails for l
 
 > [!TIP] Recommended: Open in Colab
 > Click the "Open" link in the "Open in Colab" column of the following tables to immediately run, edit, and save a copy to your Google Drive.
-
-## Notebooks (open in Colab)
+---
+# Notebooks (open in Colab)
+## Getting Started
 
 | Notebook | Description | Open in Colab | View on GitHub |
 | --- | --- | --- | --- |
 | Quickstart | Install, load data, and run your first analysis. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/01_quickstart.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/01_quickstart.ipynb) |
-| Dissimilarity Measures | Compute and compare sequence dissimilarity metrics. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/dissimilarity_measures/dissimilarity_measures.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/dissimilarity_measures/dissimilarity_measures.ipynb) |
-| Hierarchical Clustering | Cluster sequences hierarchically and visualize dendrograms. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/hierarchical_clustering.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/hierarchical_clustering.ipynb) |
 | Local vs. Global Quintiles | Compare local vs global binning for value-to-state mapping. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/local_global_quintiles/comparison_local_global_quintiles.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/local_global_quintiles/comparison_local_global_quintiles.ipynb) |
-| Multidomain Sequence Analysis: Main tutorial | End-to-end analysis across multiple domains per subject. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/main_tutorial.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/main_tutorial.ipynb) |
+
+## Dissimilarity & Clustering
+
+| Notebook | Description | Open in Colab | View on GitHub |
+| --- | --- | --- | --- |
+| Dissimilarity Measures | Compute and compare sequence dissimilarity metrics. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/dissimilarity_measures/dissimilarity_measures.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/dissimilarity_measures/dissimilarity_measures.ipynb) |
+| Clustering: Hierarchical vs. PAM | Compare Ward's method and PAM on the same data, evaluate agreement and cluster quality. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/cluster_analysis/pairfam_clustering_tutorial.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/cluster_analysis/pairfam_clustering_tutorial.ipynb) |
+
+## Multi-Domain Sequence Analysis
+
+| Notebook | Description | Open in Colab | View on GitHub |
+| --- | --- | --- | --- |
+| Multidomain Sequence Analysis | End-to-end analysis across multiple domains per subject. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/main_tutorial.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/main_tutorial.ipynb) |
 | Polyadic Sequence Analysis | Analyze polyadic sequences (multi-actor interactions). | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/polyadic_tutorial.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/polyadic_tutorial.ipynb) |
 
+## Hidden Markov Models
+
+| Notebook | Description | Open in Colab | View on GitHub |
+| --- | --- | --- | --- |
+| HMM & Mixture HMM (mvad) | Identify hidden life stages and cluster trajectory types in school-to-work transitions. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/seqhmm/mvad_hmm_tutorial.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/seqhmm/mvad_hmm_tutorial.ipynb) |
+| Multichannel HMM (biofam) | Model marriage, parenthood, and residence as parallel channels in a joint HMM. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/seqhmm/biofam_mhmm_tutorial.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/seqhmm/biofam_mhmm_tutorial.ipynb) |
+| Non-Homogeneous HMM (pairfam) | Incorporate covariates that affect transition probabilities with NHMM. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/seqhmm/pairfam_activity_nhmm_tutorial.ipynb) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/seqhmm/pairfam_activity_nhmm_tutorial.ipynb) |
+---
 ## Python scripts
 
 | Script | Description | Open in Colab | View on GitHub |
 | --- | --- | --- | --- |
 | Multidomain Sequence Analysis: CombT | CombT analysis workflow for multidomain sequences. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/CombT_analysis.py) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/CombT_analysis.py) |
 | Polyadic Sequence Analysis  | Script version of the polyadic analysis. | [Open](https://colab.research.google.com/github/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/polyadic.py) | [Source](https://github.com/Liang-Team/Sequenzo/blob/main/Tutorials/multidomain_sequence_analysis/polyadic.py) |
-
+---
 
 ## Why GitHub preview may fail
 
@@ -54,4 +73,4 @@ To download the tutorial, click here:
 
 ![click_for_download.png](./img/click_for_download.png)
 
-*Author: Yuqi Liang*
+*Author: Yuqi Liang; Yapeng Wei*
