@@ -1,5 +1,51 @@
 # What's New
 
+### 29 Mar 2026
+
+**Sequenzo v0.1.37** has been released on PyPI (includes changes since v0.1.36).
+
+**Highlights**
+- **Feature extraction & selection**: new pipeline (Boruta-style + clustassoc-like workflow) with tests.
+- **Distances & indicators**: faster OM/LCS/LCP/Euclidean distance matrices; **KOB decomposition** and distance-based indicators with TraMineR-alignment tests; optional condensed distance matrix output from `get_distance_matrix`, with plotting helpers updated for condensed inputs.
+- **Clustering**: further hierarchical-clustering performance (including full-matrix cases), ClusterQuality/ClusterResults in C++, benchmarking and consistency checks; OpenMP handling and macOS/Jupyter OpenMP conflicts addressed; MSVC/Windows compatibility fixes.
+- **TraMineR alignment**: broader consistency work for event, distance, and tree-related workflows.
+- **seqHMM**: new tutorials (mvad, biofam, pairfam scenarios).
+- **Data & docs**: `seqdss` read-only fix; SequenceData missing-value validation; hierarchical vs PAM clustering tutorial on pairfam activity; README/tutorial updates; academic-style plot labels (e.g. 1,000 instead of “k”).
+- **Packaging & CI**: sdist includes `.pyx` files for reliable Cython builds from source; workflow and PR checks refined.
+
+### 9 Mar 2026
+
+**Sequenzo v0.1.36** has been released on PyPI (includes changes since v0.1.35).
+
+**Highlights**
+- **Clustering**: more hierarchical clustering logic in C++; better numerical stability for Ward with large distances; preprocessing improvements.
+- **Plots & data**: safer relative-frequency plots when distance scales are extreme; `define_sequence_data` accepts state definitions that are a superset of observed states.
+- **seqHMM**: bug fixes and consistency tests.
+- **Tutorials & docs**: Pairfam materials, stress-data R tutorials, tutorial cleanup; README update.
+- **Build & CI**: wheel/Windows toolchain and cibuildwheel fixes; workflow robustness (e.g. rate limits, parallelism).
+
+**Bug fixes**
+- LCP distance edge case; assorted packaging and CI issues.
+
+### 2 Mar 2026
+
+**Sequenzo v0.1.35** has been released on PyPI (includes changes since v0.1.34).
+
+**Highlights**
+- **Sequences to variables**: added a new feature regarding the workflow to derive covariates from sequences, with tests.
+- **Plots**: improved layout for relative frequency plots.
+- **Stress workflow**: updated tutorials; stress module updates (e.g. lazy imports, extended modeling and inference).
+- **Packaging**: fixed import failure involving `importlib.util`.
+
+### 24 Feb 2026
+
+**Sequenzo v0.1.34** has been released on PyPI (includes changes since v0.1.33).
+
+**Highlights**
+- **Data & utilities**: `utils` helpers for weighted summaries; three built-in datasets (child mortality, life expectancy, GDP per capita); utilities for comparing sequences.
+- **Dissimilarity**: **OMloc** / **OMstran** fixes for TraMineR alignment, including missing values in `get_distance_matrix()`; additional TraMineR comparison tests.
+- **Clustering**: Ward correction in fast hierarchical clustering (consistent with standard `hclust`); streamlined preprocessing and tests.
+
 ### 13 Feb 2026
 
 Sequenzo version v0.1.33 has been released (includes changes from v0.1.32).
