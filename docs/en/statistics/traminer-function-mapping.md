@@ -1,6 +1,6 @@
 # Statistical Helpers: Sequenzo and TraMineR Mapping
 
-This page maps Sequenzo statistics functions to their closest TraMineR counterparts.
+This page maps Sequenzo statistics functions to their closest TraMineR counterparts for users migrating from R.
 
 ## What This Section Covers
 
@@ -19,16 +19,22 @@ In short:
 
 | Sequenzo function | TraMineR counterpart | Notes |
 | --- | --- | --- |
-| [`get_distinct_state_sequences`](./distinct-state-sequences) | `seqdss` | Distinct successive states representation. |
-| [`get_state_spell_durations`](./state-spell-durations) | `seqdur` | Spell durations by sequence. |
-| [`get_mean_time_by_state`](./mean-time-by-state) | `seqmeant` | Mean time in states. |
-| [`get_individual_state_distribution`](./individual-state-distribution) | `seqistatd` | Per-sequence state distribution. |
-| [`get_modal_state_sequence`](./modal-state-sequence) | `seqmodst` | Modal state sequence. |
-| [`get_sequence_length_summary`](./sequence-length-summary) | `seqlength` + summary | Sequenzo adds a summary wrapper. |
-| [`get_transition_count_summary`](./transition-count-summary) | `seqtransn` + summary | Sequenzo adds a summary wrapper. |
-| [`get_weighted_mean`](./weighted-mean) | No direct single TraMineR wrapper | Generic weighted utility. |
-| [`get_weighted_variance`](./weighted-variance) | No direct single TraMineR wrapper | Generic weighted utility. |
-| [`get_weighted_five_number_summary`](./weighted-five-number-summary) | No direct single TraMineR wrapper | Generic weighted utility. |
+| [`get_distinct_state_sequences`](./distinct-state-sequences) | `seqdss` | Direct conceptual match (distinct successive states). |
+| [`get_state_spell_durations`](./state-spell-durations) | `seqdur` | Direct conceptual match (spell durations). |
+| [`get_mean_time_by_state`](./mean-time-by-state) | `seqmeant` | Direct conceptual match (mean time in each state). |
+| [`get_individual_state_distribution`](./individual-state-distribution) | `seqistatd` | Direct conceptual match (state distribution per sequence). |
+| [`get_modal_state_sequence`](./modal-state-sequence) | `seqmodst` | Direct conceptual match (modal state at each time position). |
+| [`get_sequence_length_summary`](./sequence-length-summary) | `seqstatl` (or `seqlength` + summary) | Direct practical mapping for sequence-length summaries. |
+| [`get_transition_count_summary`](./transition-count-summary) | `seqtransn` + summary | Direct practical mapping for transition-count summaries. |
+| [`get_weighted_mean`](./weighted-mean) | `weighted.mean` (base R stats) | Utility helper; not TraMineR-specific. |
+| [`get_weighted_variance`](./weighted-variance) | `weighted.var` (helper ecosystem) | Utility helper; not TraMineR core. |
+| [`get_weighted_five_number_summary`](./weighted-five-number-summary) | `weighted.fivenum` (helper ecosystem) | Utility helper; not TraMineR core. |
+
+## Reading the Table (Beginner Guide)
+
+- **Direct conceptual match**: you can usually translate your workflow almost 1:1 from TraMineR.
+- **Direct practical mapping**: TraMineR often provides the core metric function, and Sequenzo provides an easier summary function based on the same idea.
+- **Utility helper**: this is a general weighted-statistics helper (useful in sequence workflows), but not a dedicated TraMineR function.
 
 ## Author
 

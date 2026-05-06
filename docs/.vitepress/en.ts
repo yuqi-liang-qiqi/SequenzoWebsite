@@ -263,6 +263,10 @@ export const en = defineConfig({
         collapsed: true,
         items: [
           {
+            text: 'Sequenzo-TraMineR Mapping',
+            link: '/en/visualization/traminer-function-mapping'
+          },
+          {
             text: 'Gallery',
             link: '/en/visualization/gallery'
           },
@@ -320,6 +324,10 @@ export const en = defineConfig({
         text: 'Multidomain or Polyadic Sequence Analysis',
         collapsed: true,
         items: [
+          {
+            text: 'Sequenzo-TraMineR Mapping',
+            link: '/en/multidomain/traminer-function-mapping'
+          },
           {
             text: 'Association Between Domains',
             link: '/en/multidomain/association-between-domains'
