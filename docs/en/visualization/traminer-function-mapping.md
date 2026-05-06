@@ -1,3 +1,11 @@
+<!--
+ * @Author: Yuqi Liang dawson1900@live.com
+ * @Date: 2026-05-06 11:19:27
+ * @LastEditors: Yuqi Liang dawson1900@live.com
+ * @LastEditTime: 2026-05-06 11:19:27
+ * @FilePath: /SequenzoWebsite/docs/en/visualization/traminer-function-mapping.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # Visualization Functions: Sequenzo and TraMineR Mapping
 
 This page maps Sequenzo visualization functions to their closest TraMineR (or TraMineRextras) counterparts for users migrating from R.
@@ -8,9 +16,7 @@ This section focuses on plotting sequence data: index plots, state distributions
 
 For TraMineR users, this is the "visual interpretation" layer after you define sequences and compute distances/indicators.
 
-## How to Read "No Direct Equivalent"
-
-If a row says **No direct one-function equivalent**, it means TraMineR can usually do something similar, but not with a single built-in function that matches Sequenzo's exact output and defaults.
+Some rows are marked **No direct one-function equivalent**. This simply means the same analytical goal is usually reached in TraMineR through multiple steps or a slightly different plotting path, reflecting a different design style rather than a limitation.
 
 ## Mapping Table
 
@@ -30,10 +36,10 @@ If a row says **No direct one-function equivalent**, it means TraMineR can usual
 ## Beginner Migration Tips
 
 - Start with the **direct matches** (`seqiplot`, `seqdplot`, `seqmtplot`, `seqmsplot`) when porting old scripts.
-- For rows marked **No direct one-function equivalent**, TraMineR usually needs multiple steps; Sequenzo gives you one clearer plotting function.
-- If you need strict TraMineR-style output, run the TraMineR function first, then tune Sequenzo plot parameters to get a similar look.
+- For rows marked **No direct one-function equivalent**, TraMineR usually reaches the same goal through multiple steps, while Sequenzo provides a dedicated plotting function for that goal.
+- If you want an output style close to TraMineR, run the TraMineR function first, then tune Sequenzo plot parameters to get a similar look.
 
 ## Author
 
-Code and documentation: Yuqi Liang
+Documentation: Yuqi Liang
 

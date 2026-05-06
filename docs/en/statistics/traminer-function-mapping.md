@@ -26,15 +26,15 @@ In short:
 | [`get_modal_state_sequence`](./modal-state-sequence) | `seqmodst` | Direct conceptual match (modal state at each time position). |
 | [`get_sequence_length_summary`](./sequence-length-summary) | `seqstatl` (or `seqlength` + summary) | Direct practical mapping for sequence-length summaries. |
 | [`get_transition_count_summary`](./transition-count-summary) | `seqtransn` + summary | Direct practical mapping for transition-count summaries. |
-| [`get_weighted_mean`](./weighted-mean) | `weighted.mean` (base R stats) | Utility helper; not TraMineR-specific. |
-| [`get_weighted_variance`](./weighted-variance) | `weighted.var` (helper ecosystem) | Utility helper; not TraMineR core. |
-| [`get_weighted_five_number_summary`](./weighted-five-number-summary) | `weighted.fivenum` (helper ecosystem) | Utility helper; not TraMineR core. |
+| [`get_weighted_mean`](./weighted-mean) | `weighted.mean` | Standard weighted statistics function in R (not specific to TraMineR). |
+| [`get_weighted_variance`](./weighted-variance) | `weighted.var` | Standard weighted statistics function in R-style workflows (not specific to TraMineR). |
+| [`get_weighted_five_number_summary`](./weighted-five-number-summary) | `weighted.fivenum` | Standard weighted descriptive summary function (not specific to TraMineR). |
 
 ## Reading the Table (Beginner Guide)
 
 - **Direct conceptual match**: you can usually translate your workflow almost 1:1 from TraMineR.
-- **Direct practical mapping**: TraMineR often provides the core metric function, and Sequenzo provides an easier summary function based on the same idea.
-- **Utility helper**: this is a general weighted-statistics helper (useful in sequence workflows), but not a dedicated TraMineR function.
+- **Direct practical mapping**: TraMineR often provides the core metric function, and Sequenzo provides a summary-oriented function based on the same idea.
+- **General statistics function**: this function is commonly used in weighted analyses in R and can also be used in sequence-analysis workflows.
 
 ## Author
 
