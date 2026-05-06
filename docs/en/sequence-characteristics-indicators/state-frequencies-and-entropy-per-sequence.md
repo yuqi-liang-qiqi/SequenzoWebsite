@@ -1,0 +1,27 @@
+# `get_state_freq_and_entropy_per_seq()`
+
+Computes per-sequence state frequencies and entropy.
+
+## Function
+
+```python
+from sequenzo import get_state_freq_and_entropy_per_seq
+result = get_state_freq_and_entropy_per_seq(seqdata, prop=False)
+```
+
+## Parameters
+
+- `seqdata`: `SequenceData` object.
+- `prop`: return state proportions instead of counts.
+
+## Returns
+
+`DataFrame` with state columns and sequence-level entropy.
+
+## TraMineR Mapping
+
+- Equivalent TraMineR function: `seqistatd`.
+
+## Author
+
+Code and documentation: Yuqi Liang

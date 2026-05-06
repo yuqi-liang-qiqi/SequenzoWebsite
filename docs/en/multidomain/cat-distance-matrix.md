@@ -1,6 +1,6 @@
 # `compute_cat_distance_matrix()`
 
-`compute_cat_distance_matrix()` combines multiple sequence domains into multidomain sequences and computes distances between them using the Combined Alphabet Technique (CAT). This technique allows you to analyze how sequences from different domains (like employment and family status) change together over time.
+`compute_cat_distance_matrix()` combines multiple sequence domains into multidomain sequences and computes distances between them using the Cost Additive Trick (CAT). This technique allows you to analyze how sequences from different domains (like employment and family status) change together over time.
 
 When you have multiple domains measured on the same individuals over the same time periods, this function:
 
@@ -9,6 +9,8 @@ When you have multiple domains measured on the same individuals over the same ti
 3. **Calculates distances:** Uses these costs to compute pairwise distances between multidomain sequences using optimal matching.
 
 The additive trick (CAT) means that the cost of substituting one multidomain state for another is simply the sum of substitution costs across all domains. Similarly, indel costs are the sum of indel costs from all domains.
+
+In the terminology used by Ritschard et al. (2023), CAT is specifically this additive construction of multidomain costs from domain-level costs. The "combined alphabet" itself belongs to the multidomain representation, not to CAT as an acronym.
 
 ## Function Usage
 
@@ -259,7 +261,7 @@ Returns a pandas DataFrame with pairwise distances between all sequences. The in
 
 3. **Missing values:** If your domains have missing values, specify `with_missing` appropriately. The function will automatically detect missing values, but you can override this behavior.
 
-4. **Cost interpretation:** CAT costs are additive by default. This means that changing states in multiple domains simultaneously is more expensive than changing states in a single domain. This reflects the idea that simultaneous changes across multiple life domains are rarer and should be penalized more in distance calculations.
+4. **Assumption behind CAT:** CAT imposes an additive cost structure across domains. As discussed by Ritschard et al. (2023), this implies an independence assumption for state occurrences across domains at a given time point. Use CAT when this modeling assumption is acceptable for your research question.
 
 5. **Performance:** Computing distances for multidomain sequences can be computationally intensive, especially with many domains and many sequences. The multidomain alphabet grows combinatorially with the number of domains and states per domain.
 
@@ -268,6 +270,10 @@ Returns a pandas DataFrame with pairwise distances between all sequences. The in
 Code: Xinyi Li
 
 Documentation: Yuqi Liang
+
+## Acknowledgements
+
+We gratefully acknowledge Professor Gilbert Ritschard for clarifications on multidomain strategy terminology and assumptions.
 
 ## References
 

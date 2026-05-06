@@ -1,8 +1,10 @@
 # `compute_dat_distance_matrix()`
 
-`compute_dat_distance_matrix()` computes a combined distance matrix for multidomain sequence analysis using the Distance Additive Trick (DAT). Unlike CAT (Combined Alphabet Technique), which builds composite states and computes costs on those composite states, DAT simply adds together the distance matrices computed separately for each domain.
+`compute_dat_distance_matrix()` computes a combined distance matrix for multidomain sequence analysis using the Distance Additive Trick (DAT). Unlike CAT (Cost Additive Trick), which derives multidomain substitution/indel costs by additively combining domain costs, DAT simply adds together the distance matrices computed separately for each domain.
 
 This approach is simpler and more computationally efficient than CAT, because it doesn't require building multidomain sequences or computing new substitution costs. It assumes that the total dissimilarity between two individuals across multiple domains is the sum of their dissimilarities in each domain separately.
+
+Central point (Ritschard et al., 2023): DAT assumes independence of domain-level dissimilarities across domains. CAT assumes independence in domain state occurrences through additive costs. IDCD differs because it does not derive multidomain dissimilarities from domain costs (CAT) or from domain distances (DAT), and therefore does not impose these additive independence assumptions.
 
 ## Function Usage
 
@@ -181,18 +183,19 @@ Both DAT and CAT (`compute_cat_distance_matrix()`) combine distances across mult
 - More computationally efficient
 - Doesn't consider interactions between domains
 - Faster to compute
-- Best when domains are relatively independent
+- Relies on an independence assumption between domain-level dissimilarities
 
-**CAT (Combined Alphabet Technique):**
-- Builds composite states (e.g., "Employed+Married")
-- Computes substitution costs for these composite states
-- Considers how states co-occur across domains
+**CAT (Cost Additive Trick):**
+- Usually applied after representing sequences with combined states (e.g., "Employed+Married")
+- Computes multidomain substitution/indel costs by summing domain-level costs
+- Imposes an additive structure equivalent to a state-independence assumption across domains
 - More computationally intensive
-- Better when you want to model cross-domain interactions explicitly
+- Useful when additive cost interpretation is theoretically justified
 
 In practice:
-- Use **DAT** when you want a quick, efficient way to combine domain distances and when domains are relatively independent
-- Use **CAT** when you want to explicitly model how state combinations across domains affect similarity, or when the co-occurrence of states across domains is theoretically important
+- Use **DAT** when a linear additive combination of domain dissimilarities is substantively justified
+- Use **CAT** when additive multidomain costs derived from domain costs match your intended cost interpretation
+- If you want to avoid additive-independence assumptions from both CAT and DAT, use the IDCD approach described by Ritschard et al. (2023)
 
 ## Important Notes
 
@@ -213,6 +216,10 @@ In practice:
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## Acknowledgements
+
+We gratefully acknowledge Professor Gilbert Ritschard for clarifications on multidomain strategy terminology and assumptions.
 
 ## References
 

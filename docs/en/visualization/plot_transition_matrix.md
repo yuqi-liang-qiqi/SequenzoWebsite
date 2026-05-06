@@ -107,7 +107,7 @@ print_transition_matrix(seqdata, tm)       # nicely formatted console output (4 
 
 ## Authors
 
-Code: Yuqi Liang, Sebastian Daza
+Code: Yuqi Liang
 
 Documentation: Yuqi Liang
 

@@ -9,6 +9,8 @@ The function computes two statistical measures:
 
 The function compares sequences position by position, meaning it looks at what state each sequence is in at each time point and measures how these states co-occur across domains.
 
+Why this matters for multidomain strategy choice: Ritschard et al. (2023) emphasize that CAT and DAT rely on additive independence assumptions. Measuring between-domain association first helps assess how plausible those assumptions are before choosing CAT, DAT, or IDCD.
+
 ## Function Usage
 
 A minimal example with only the required parameters (sufficient for most use cases):
@@ -207,6 +209,10 @@ It's important to note that a statistically significant association (low p-value
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## Acknowledgements
+
+We gratefully acknowledge Professor Gilbert Ritschard for clarifications on multidomain strategy terminology and assumptions.
 
 ## References
 

@@ -142,7 +142,9 @@ from sequenzo.multidomain.cat import compute_cat_distance_matrix
 # Compute multidomain distance matrix using CAT
 md_distance_matrix = compute_cat_distance_matrix(
     domains,
-    method_params=method_params,
+    method="OM",
+    sm=["TRATE", "TRATE"],
+    indel="auto",
     what="diss"
 )
 
@@ -259,6 +261,10 @@ However, be cautious about merging if:
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## Acknowledgements
+
+We gratefully acknowledge Professor Gilbert Ritschard for clarifications on multidomain strategy terminology and assumptions.
 
 ## References
 

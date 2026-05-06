@@ -12,6 +12,7 @@ export const en = defineConfig({
     sidebar: [
       {
         text: 'Getting Started',
+        collapsed: true,
         items: [
           {
             text: 'About Sequenzo',
@@ -61,6 +62,7 @@ export const en = defineConfig({
       },
       {
         text: 'Conceptual Tutorials',
+        collapsed: true,
         items: [
           {
             text: 'Basic Concepts',
@@ -112,6 +114,7 @@ export const en = defineConfig({
       },
       {
         text: 'Datasets',
+        collapsed: true,
         items: [
           {
             text: 'CO₂ Emissions (1800-2022)',
@@ -150,6 +153,7 @@ export const en = defineConfig({
       },
       {
         text: 'Data Preprocessing Functions',
+        collapsed: true,
         items: [
           {
             text: 'Check Missing Values',
@@ -175,6 +179,7 @@ export const en = defineConfig({
       },
       {
         text: 'Core Functions',
+        collapsed: true,
         items: [
           {
             text: 'Introduction',
@@ -207,52 +212,55 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Sequence Characteristics',
+        text: 'Sequence Characteristics Indicators',
+        collapsed: true,
         items: [
-          {
-            text: 'Number of Subsequences',
-            link: '/en/sequence-characteristics/number-of-subsequences'
-          },
-          {
-            text: 'Number of Transitions',
-            link: '/en/sequence-characteristics/number-of-transitions'
-          },
-          {
-            text: 'Spell Duration Variance',
-            link: '/en/sequence-characteristics/spell-duration-variance'
-          },
-          {
-            text: 'State Frequencies per Sequence',
-            link: '/en/sequence-characteristics/state-frequencies-per-sequence'
-          },
-          {
-            text: 'Within-Sequence Entropy',
-            link: '/en/sequence-characteristics/within-sequence-entropy'
-          },
-          {
-            text: 'Cross-Sectional Entropy',
-            link: '/en/sequence-characteristics/cross-sectional-entropy'
-          },
-          {
-            text: 'Sequence Complexity Index',
-            link: '/en/sequence-characteristics/complexity-index'
-          },
-          {
-            text: 'Turbulence',
-            link: '/en/sequence-characteristics/turbulence'
-          },
-          {
-            text: 'Longitudinal Characteristics Plot',
-            link: '/en/visualization/plot_longitudinal_characteristics'
-          },
-          {
-            text: 'Cross-Sectional Characteristics Plot',
-            link: '/en/visualization/plot_cross_sectional_characteristics'
-          },
+          { text: 'Sequenzo-TraMineR Mapping', link: '/en/sequence-characteristics-indicators/traminer-function-mapping' },
+          { text: 'Sequence Length', link: '/en/sequence-characteristics-indicators/sequence-length' },
+          { text: 'Spell Durations', link: '/en/sequence-characteristics-indicators/spell-durations' },
+          { text: 'Visited States', link: '/en/sequence-characteristics-indicators/visited-states' },
+          { text: 'Recurrence', link: '/en/sequence-characteristics-indicators/recurrence' },
+          { text: 'Mean Spell Duration', link: '/en/sequence-characteristics-indicators/mean-spell-duration' },
+          { text: 'Duration Standard Deviation', link: '/en/sequence-characteristics-indicators/duration-standard-deviation' },
+          { text: 'Number of Subsequences', link: '/en/sequence-characteristics-indicators/number-of-subsequences' },
+          { text: 'Number of Transitions', link: '/en/sequence-characteristics-indicators/number-of-transitions' },
+          { text: 'Spell Duration Variance', link: '/en/sequence-characteristics-indicators/spell-duration-variance' },
+          { text: 'State Frequencies per Sequence', link: '/en/sequence-characteristics-indicators/state-frequencies-per-sequence' },
+          { text: 'State Frequencies and Entropy per Sequence', link: '/en/sequence-characteristics-indicators/state-frequencies-and-entropy-per-sequence' },
+          { text: 'Within-Sequence Entropy', link: '/en/sequence-characteristics-indicators/within-sequence-entropy' },
+          { text: 'Entropy Difference', link: '/en/sequence-characteristics-indicators/entropy-difference' },
+          { text: 'Cross-Sectional Entropy', link: '/en/sequence-characteristics-indicators/cross-sectional-entropy' },
+          { text: 'Volatility', link: '/en/sequence-characteristics-indicators/volatility' },
+          { text: 'Sequence Complexity Index', link: '/en/sequence-characteristics-indicators/complexity-index' },
+          { text: 'Turbulence', link: '/en/sequence-characteristics-indicators/turbulence' },
+          { text: 'Positive-Negative Indicators', link: '/en/sequence-characteristics-indicators/positive-negative-indicators' },
+          { text: 'Integration Index', link: '/en/sequence-characteristics-indicators/integration-index' },
+          { text: 'Badness Index', link: '/en/sequence-characteristics-indicators/badness-index' },
+          { text: 'Degradation Index', link: '/en/sequence-characteristics-indicators/degradation-index' },
+          { text: 'Precarity Index', link: '/en/sequence-characteristics-indicators/precarity-index' },
+          { text: 'Insecurity Index', link: '/en/sequence-characteristics-indicators/insecurity-index' },
+        ]
+      },
+      {
+        text: 'Statistics',
+        collapsed: true,
+        items: [
+          { text: 'Sequenzo-TraMineR Mapping', link: '/en/statistics/traminer-function-mapping' },
+          { text: 'Distinct State Sequences', link: '/en/statistics/distinct-state-sequences' },
+          { text: 'State Spell Durations', link: '/en/statistics/state-spell-durations' },
+          { text: 'Mean Time by State', link: '/en/statistics/mean-time-by-state' },
+          { text: 'Individual State Distribution', link: '/en/statistics/individual-state-distribution' },
+          { text: 'Modal State Sequence', link: '/en/statistics/modal-state-sequence' },
+          { text: 'Sequence Length Summary', link: '/en/statistics/sequence-length-summary' },
+          { text: 'Transition Count Summary', link: '/en/statistics/transition-count-summary' },
+          { text: 'Weighted Mean', link: '/en/statistics/weighted-mean' },
+          { text: 'Weighted Variance', link: '/en/statistics/weighted-variance' },
+          { text: 'Weighted Five-Number Summary', link: '/en/statistics/weighted-five-number-summary' },
         ]
       },
       {
         text: 'Visualization Tools',
+        collapsed: true,
         items: [
           {
             text: 'Gallery',
@@ -297,11 +305,20 @@ export const en = defineConfig({
           {
             text: 'Single Medoid Plot',
             link: '/en/visualization/plot_single_medoid'
+          },
+          {
+            text: 'Longitudinal Characteristics Plot',
+            link: '/en/visualization/plot_longitudinal_characteristics'
+          },
+          {
+            text: 'Cross-Sectional Characteristics Plot',
+            link: '/en/visualization/plot_cross_sectional_characteristics'
           }
         ]
       },
       {
         text: 'Multidomain or Polyadic Sequence Analysis',
+        collapsed: true,
         items: [
           {
             text: 'Association Between Domains',
@@ -335,6 +352,7 @@ export const en = defineConfig({
       },
       {
         text: 'Big Data Tools',
+        collapsed: true,
         items: [
           {
             text: 'Check Uniqueness Rate',
@@ -348,6 +366,7 @@ export const en = defineConfig({
       },
       {
         text: 'Sequenzo and R',
+        collapsed: true,
         items: [
           {
             text: 'Use R in Python Environment',

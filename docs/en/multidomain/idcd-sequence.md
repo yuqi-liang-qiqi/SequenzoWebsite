@@ -1,8 +1,10 @@
 # `create_idcd_sequence_from_csvs()`
 
-`create_idcd_sequence_from_csvs()` creates a multidomain sequence dataset using the IDCD (Individual Domain Combined Data) strategy. This approach combines sequence data from multiple CSV files (each representing one domain) into a single multidomain sequence object by creating composite states from observed combinations.
+`create_idcd_sequence_from_csvs()` creates a multidomain sequence dataset using the IDCD perspective ("independence from domain costs and distances" in Ritschard et al., 2023). This function combines sequence data from multiple CSV files (each representing one domain) into a single multidomain sequence object by creating composite states from observed combinations.
 
 Unlike CAT or DAT which work with separate domain sequences and combine them during distance computation, IDCD creates the combined sequences upfront. Each time point in the resulting sequences represents a combination of states from all domains (e.g., "Employed+Married" if combining employment and family domains).
+
+Central point (Ritschard et al., 2023): IDCD means "independence from domain costs and distances." In practice, this means multidomain dissimilarities are computed at the multidomain level itself, rather than additively derived from domain costs (CAT) or domain distances (DAT).
 
 This is useful when you want to work with the combined sequences directly, or when your data comes from separate CSV files that you need to merge into a unified sequence format.
 
@@ -218,17 +220,17 @@ labels = cluster_result.get_cluster_labels(num_clusters=3)
 
 IDCD differs from CAT and DAT in important ways:
 
-**IDCD (Individual Domain Combined Data):**
+**IDCD (independence from domain costs and distances):**
 - Creates combined sequences upfront
 - Uses only observed state combinations
-- Simpler workflow: combine first, then analyze
+- Distances are computed directly at the multidomain level (without deriving MD costs from domain costs and without summing domain distances)
 - Good when you want to work directly with combined sequences
 - Alphabet size depends on what combinations actually occur in your data
 
-**CAT (Combined Alphabet Technique):**
+**CAT (Cost Additive Trick):**
 - Keeps domains separate until distance computation
 - Creates all possible state combinations for cost computation
-- More complex: computes costs on composite states
+- More complex: derives multidomain costs by summing domain-level costs
 - Better when you want explicit control over substitution costs
 - Alphabet size is the product of domain alphabet sizes
 
@@ -285,6 +287,10 @@ IDCD differs from CAT and DAT in important ways:
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## Acknowledgements
+
+We gratefully acknowledge Professor Gilbert Ritschard for clarifications on multidomain strategy terminology and assumptions.
 
 ## References
 
