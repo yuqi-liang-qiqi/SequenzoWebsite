@@ -2,7 +2,7 @@
  * @Author: Yuqi Liang dawson1900@live.com
  * @Date: 2026-05-06 11:02:38
  * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-05-06 11:02:38
+ * @LastEditTime: 2026-05-06 11:09:04
  * @FilePath: /SequenzoWebsite/docs/en/multidomain/traminer-function-mapping.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -17,12 +17,6 @@ This section follows the four multidomain strategies discussed by Ritschard et a
 - CAT (cost additive trick)
 - DAT (distance additive trick)
 - CombT (combined typology approach)
-
-## Why This Page Is Grouped by Strategy
-
-In TraMineR, one function (`seqMD`, old alias: `seqdistmc`) can cover several multidomain tasks.
-In Sequenzo, these tasks are separated into clearer functions.
-So for migration, strategy-level mapping is easier than one-row-per-function mapping.
 
 ## Mapping by Multidomain Strategy
 
@@ -43,7 +37,7 @@ So for migration, strategy-level mapping is easier than one-row-per-function map
 ## Beginner Migration Tips
 
 - First choose your strategy (IDCD, CAT, DAT, or CombT), then choose function(s).
-- If your old R script mainly used `seqMD(..., what="diss")`, you are usually closest to **CAT** in Sequenzo.
+- If your R script mainly used `seqMD(..., what="diss")`, you are usually closest to **CAT** in Sequenzo.
 - For **IDCD**, think in two steps: build MD sequences first, then compute MD distances.
 - In papers/reports, always name the strategy explicitly (IDCD/CAT/DAT/CombT), because assumptions differ.
 
