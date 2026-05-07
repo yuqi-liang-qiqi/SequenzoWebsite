@@ -1,28 +1,43 @@
 # `get_transition_count_summary()`
 
-Returns descriptive summary statistics for transition counts.
+`get_transition_count_summary()` returns descriptive summary statistics for transition counts.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_transition_count_summary
 result = get_transition_count_summary(seqdata, normalize=False, probability_weighted=False)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `seqdata`: `SequenceData` object.
-- `normalize`: summarize normalized transition values.
-- `probability_weighted`: summarize probability-weighted transitions.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | `SequenceData` | Input sequence dataset. |
+| `normalize` | ✗ | bool | Summarize normalized transition values. |
+| `probability_weighted` | ✗ | bool | Summarize probability-weighted transitions. |
 
-## Returns
+## What It Does
 
-One-row `DataFrame` with `count`, `mean`, `median`, `min`, `q1`, `q3`, `max`.
+- Computes transition counts according to the selected options.
+- Returns a one-row summary table with `count`, `mean`, `median`, `min`, `q1`, `q3`, `max`.
 
-## TraMineR Mapping
+## Examples
 
-- Base TraMineR function used: `seqtransn` (Sequenzo adds summary statistics wrapper).
+```python
+from sequenzo import get_transition_count_summary
 
-## Author
+summary = get_transition_count_summary(seqdata, normalize=False)
+print(summary)
+```
 
-Code and documentation: Yuqi Liang
+## R Counterpart
+
+- **Closest TraMineR function(s):** `seqtransn` (often summarized with `summary(...)` in R workflows)
+- **Mapping note:** Sequenzo first computes transition counts with `seqtransn`-style logic, then returns a one-row summary table (`count`, `mean`, `median`, `min`, `q1`, `q3`, `max`).
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

@@ -1,28 +1,44 @@
 # `get_modal_state_sequence()`
 
-Computes modal state at each time position.
+`get_modal_state_sequence()` computes the modal (most frequent) state at each time position.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_modal_state_sequence
 result = get_modal_state_sequence(seqdata, weighted=True, with_missing=False)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `seqdata`: `SequenceData` object.
-- `weighted`: use sequence weights.
-- `with_missing`: include missing state in modal computation.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | `SequenceData` | Input sequence dataset. |
+| `weighted` | ✗ | bool | Use sequence weights. |
+| `with_missing` | ✗ | bool | Include missing values in modal computation. |
 
-## Returns
+## What It Does
 
-`DataFrame` describing modal state sequence over time.
+- Finds the most frequent state at each time point.
+- Supports weighted modal computation.
+- Returns a `DataFrame` describing the modal sequence over time.
 
-## TraMineR Mapping
+## Examples
 
-- Equivalent TraMineR function: `seqmodst`.
+```python
+from sequenzo import get_modal_state_sequence
 
-## Author
+modal = get_modal_state_sequence(seqdata, weighted=True)
+print(modal)
+```
 
-Code and documentation: Yuqi Liang
+## R Counterpart
+
+- **Closest TraMineR function:** `seqmodst`
+- **Mapping note:** This is a direct conceptual match; Sequenzo wraps modal-state computation with optional weighting and missing-state handling.
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

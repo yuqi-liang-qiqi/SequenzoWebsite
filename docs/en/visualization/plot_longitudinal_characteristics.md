@@ -265,3 +265,9 @@ All values range from 0 to 1, making them easy to compare. A value close to 1 me
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## R Counterpart
+
+- **Closest R function:** No direct one-function equivalent
+- **Mapping note:** In TraMineR, similar views are usually built by combining outputs from functions such as `seqtransn`, `seqient`, `seqST`, and `seqici` and then plotting manually.
+

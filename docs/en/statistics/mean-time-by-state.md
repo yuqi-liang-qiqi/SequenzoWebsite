@@ -1,30 +1,46 @@
 # `get_mean_time_by_state()`
 
-Computes average time spent in each state across sequences.
+`get_mean_time_by_state()` computes average time spent in each state across sequences.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_mean_time_by_state
 result = get_mean_time_by_state(seqdata, weighted=True, as_proportion=False, show_standard_error=False)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `seqdata`: `SequenceData` object.
-- `weighted`: use sequence weights when available.
-- `as_proportion`: return proportion instead of absolute time.
-- `show_standard_error`: include standard errors.
-- `with_missing`: include missing as a state.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | `SequenceData` | Input sequence dataset. |
+| `weighted` | ✗ | bool | Use sequence weights when available. |
+| `as_proportion` | ✗ | bool | Return proportions instead of absolute time. |
+| `show_standard_error` | ✗ | bool | Include standard error columns. |
+| `with_missing` | ✗ | bool | Include missing as a valid state. |
 
-## Returns
+## What It Does
 
-`DataFrame` with mean time by state.
+- Computes average time spent in each state.
+- Supports weighted computation.
+- Optionally returns proportions and standard errors.
 
-## TraMineR Mapping
+## Examples
 
-- Equivalent TraMineR function: `seqmeant`.
+```python
+from sequenzo import get_mean_time_by_state
 
-## Author
+mt = get_mean_time_by_state(seqdata, weighted=True, as_proportion=False)
+print(mt)
+```
 
-Code and documentation: Yuqi Liang
+## R Counterpart
+
+- **Closest TraMineR function:** `seqmeant`
+- **Mapping note:** This is a direct conceptual match; Sequenzo forwards to `get_mean_time_in_states(...)` with equivalent options.
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

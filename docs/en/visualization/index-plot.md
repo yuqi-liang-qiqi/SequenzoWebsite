@@ -251,3 +251,9 @@ Code: Yuqi Liang
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
+
+## R Counterpart
+
+- **Closest R function:** `seqiplot` / `seqIplot`
+- **Mapping note:** Direct conceptual match: index plots that show each sequence as a colored line over time.
+

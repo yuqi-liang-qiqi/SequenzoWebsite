@@ -1,41 +1,34 @@
+<!--
+ * @Author: Yuqi Liang dawson1900@live.com
+ * @Date: 2026-05-06 16:17:07
+ * @LastEditors: Yuqi Liang dawson1900@live.com
+ * @LastEditTime: 2026-05-06 16:17:07
+ * @FilePath: /SequenzoWebsite/docs/en/statistics/traminer-function-mapping.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # Statistical Helpers: Sequenzo and TraMineR Mapping
 
 This page maps Sequenzo statistics functions to their closest TraMineR counterparts for users migrating from R.
 
 ## What This Section Covers
 
-This section contains statistical helpers for aggregation, reporting, and compact description of sequence outputs (for example, summaries, mean-time tables, modal-state summaries, and weighted descriptive helpers).
+The `statistics` section focuses on aggregation and reporting helpers after core sequence indicators are computed.
 
-For TraMineR users, this is typically the step after computing indicators: organize results, summarize patterns, and prepare comparison-ready tables.
+- `sequence-characteristics-indicators` asks: **"Which value does each sequence get?"**
+- `statistics` asks: **"How do we summarize those values and distributions?"**
 
-## How It Relates to `sequence-characteristics-indicators`
-
-`sequence-characteristics-indicators` is where you compute sequence measures themselves; `statistics` is where you summarize and inspect those measures (or related distributions) in a cleaner analytical form.
-
-In short:
-
-- `sequence-characteristics-indicators` answers: **"Which indicator value does each sequence get?"**
-- `statistics` answers: **"What is the overall picture of these values/distributions?"**
+## Mapping Table
 
 | Sequenzo function | TraMineR counterpart | Notes |
 | --- | --- | --- |
-| [`get_distinct_state_sequences`](./distinct-state-sequences) | `seqdss` | Direct conceptual match (distinct successive states). |
-| [`get_state_spell_durations`](./state-spell-durations) | `seqdur` | Direct conceptual match (spell durations). |
-| [`get_mean_time_by_state`](./mean-time-by-state) | `seqmeant` | Direct conceptual match (mean time in each state). |
-| [`get_individual_state_distribution`](./individual-state-distribution) | `seqistatd` | Direct conceptual match (state distribution per sequence). |
-| [`get_modal_state_sequence`](./modal-state-sequence) | `seqmodst` | Direct conceptual match (modal state at each time position). |
-| [`get_sequence_length_summary`](./sequence-length-summary) | `seqstatl` (or `seqlength` + summary) | Direct practical mapping for sequence-length summaries. |
-| [`get_transition_count_summary`](./transition-count-summary) | `seqtransn` + summary | Direct practical mapping for transition-count summaries. |
-| [`get_weighted_mean`](./weighted-mean) | `weighted.mean` | Standard weighted statistics function in R (not specific to TraMineR). |
-| [`get_weighted_variance`](./weighted-variance) | `weighted.var` | Standard weighted statistics function in R-style workflows (not specific to TraMineR). |
-| [`get_weighted_five_number_summary`](./weighted-five-number-summary) | `weighted.fivenum` | Standard weighted descriptive summary function (not specific to TraMineR). |
+| [`get_distinct_state_sequences`](./distinct-state-sequences) | `seqdss` | In code, implemented via `seqdss` (`sequence_statistics.py`). |
+| [`get_state_spell_durations`](./state-spell-durations) | `seqdur` | In code, implemented via `seqdur` (`sequence_statistics.py`). |
+| [`get_mean_time_by_state`](./mean-time-by-state) | `seqmeant` | In code/docstring marked equivalent to `seqmeant`. |
+| [`get_individual_state_distribution`](./individual-state-distribution) | `seqistatd` | In code/docstring marked equivalent to `seqistatd`. |
+| [`get_modal_state_sequence`](./modal-state-sequence) | `seqmodst` | In code/docstring marked equivalent to `seqmodst`. |
+| [`get_sequence_length_summary`](./sequence-length-summary) | `seqlength` (summary table added in Sequenzo) | Sequenzo computes `seqlength`-style values, then returns summary stats (`count`, `mean`, `median`, `q1`, `q3`, etc.). |
+| [`get_transition_count_summary`](./transition-count-summary) | `seqtransn` (summary table added in Sequenzo) | Sequenzo computes `seqtransn`-style values, then returns summary stats (`count`, `mean`, `median`, `q1`, `q3`, etc.). |
+| [`get_weighted_mean`](./weighted-mean) | `weighted.mean` | In code/docstring marked equivalent to `weighted.mean` helper behavior. |
+| [`get_weighted_variance`](./weighted-variance) | `weighted.var` | In code/docstring marked equivalent to `weighted.var` helper behavior. |
+| [`get_weighted_five_number_summary`](./weighted-five-number-summary) | `weighted.fivenum` | In code/docstring marked equivalent to `weighted.fivenum` helper behavior. |
 
-## Reading the Table (Beginner Guide)
-
-- **Direct conceptual match**: you can usually translate your workflow almost 1:1 from TraMineR.
-- **Direct practical mapping**: TraMineR often provides the core metric function, and Sequenzo provides a summary-oriented function based on the same idea.
-- **General statistics function**: this function is commonly used in weighted analyses in R and can also be used in sequence-analysis workflows.
-
-## Author
-
-Code and documentation: Yuqi Liang

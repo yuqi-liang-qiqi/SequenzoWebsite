@@ -99,6 +99,11 @@ tm = compute_transition_matrix(seqdata)   # returns a NumPy array of row-normali
 print_transition_matrix(seqdata, tm)       # nicely formatted console output (4 decimal places)
 ```
 
+## R Counterpart
+
+- **Closest R function:** `seqtrate` (matrix computation)
+- **Mapping note:** TraMineR focuses on transition-rate computation, while Sequenzo also provides a ready heatmap plot.
+
 ## Notes
 
 * Rows sum to 1.0 (within rounding). If a row has no observed outgoing transitions, it is safely handled to avoid division by zero.

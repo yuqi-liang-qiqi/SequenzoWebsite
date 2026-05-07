@@ -1,29 +1,53 @@
 # `get_weighted_variance()`
 
-Computes weighted variance for numeric arrays.
+`get_weighted_variance()` computes the weighted variance of a numeric vector.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_weighted_variance
-value = get_weighted_variance(values, weights=None, remove_missing=True, ddof=0)
+value = get_weighted_variance(values, weights=None, remove_missing=True, method="unbiased")
 ```
 
-## Parameters
+## Entry Parameters
 
-- `values`: numeric array.
-- `weights`: optional numeric weights.
-- `remove_missing`: drop missing values before computing.
-- `ddof`: delta degrees of freedom.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `values` | ✓ | array-like | Numeric values to summarize. |
+| `weights` | ✗ | array-like or `None` | Optional weights. If `None`, all values are equally weighted. |
+| `remove_missing` | ✗ | bool | If `True`, remove missing values before computing. |
+| `method` | ✗ | str | Variance estimation method, default `unbiased`. |
 
-## Returns
+## What It Does
 
-A scalar weighted variance.
+- Validates inputs and aligns `values` and `weights`.
+- Optionally removes missing values.
+- Computes weighted variance using the selected `method`.
 
-## TraMineR Mapping
+## Examples
 
-- No direct single TraMineR counterpart (generic weighted utility in Sequenzo statistics).
+```python
+from sequenzo import get_weighted_variance
 
-## Author
+values = [2, 4, 8]
+weights = [1, 1, 2]
 
-Code and documentation: Yuqi Liang
+result = get_weighted_variance(values, weights=weights, method="unbiased")
+print(result)
+```
+
+## R Counterpart
+
+- **Closest R function:** `weighted.var`
+- **Mapping note:** Sequenzo marks this as equivalent helper behavior in code and exposes weighted variance with method-based estimation.
+
+## Notes
+
+- This is a general weighted statistics function commonly used in R-style workflows.
+- It is not specific to TraMineR, but is useful in sequence-analysis summaries.
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

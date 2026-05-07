@@ -231,3 +231,9 @@ C  0.000000  0.333333  0.333333
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## R Counterpart
+
+- **Closest R function:** `seqHtplot` (and `seqstatd` for underlying distribution statistics)
+- **Mapping note:** Conceptually aligned for cross-sectional entropy/distribution-over-time interpretation.
+

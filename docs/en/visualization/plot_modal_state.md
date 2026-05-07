@@ -100,3 +100,9 @@ Code: Yuqi Liang
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
+
+## R Counterpart
+
+- **Closest R function:** `seqmsplot`
+- **Mapping note:** Direct conceptual match: modal (most common) state profile over time.
+

@@ -321,6 +321,60 @@ export const en = defineConfig({
         ]
       },
       {
+        text: 'Event Sequences',
+        collapsed: true,
+        items: [
+          {
+            text: 'Introduction',
+            link: '/en/event-sequences/introduction'
+          },
+          {
+            text: 'Sequenzo-TraMineR Mapping',
+            link: '/en/event-sequences/traminer-function-mapping'
+          },
+          {
+            text: 'Create Event Sequences',
+            link: '/en/event-sequences/create_event_sequences'
+          },
+          {
+            text: 'Find Frequent Subsequences',
+            link: '/en/event-sequences/find_frequent_subsequences'
+          },
+          {
+            text: 'Count Subsequence Occurrences',
+            link: '/en/event-sequences/count_subsequence_occurrences'
+          },
+          {
+            text: 'Compare Groups',
+            link: '/en/event-sequences/compare_groups'
+          },
+          {
+            text: 'Convert Event Sequences to TSE',
+            link: '/en/event-sequences/convert_event_sequences_to_tse'
+          },
+          {
+            text: 'Compute Event Transition Matrix',
+            link: '/en/event-sequences/compute_event_transition_matrix'
+          },
+          {
+            text: 'Check Event Subsequence Containment',
+            link: '/en/event-sequences/check_event_subsequence_containment'
+          },
+          {
+            text: 'Plot Event Sequences',
+            link: '/en/event-sequences/plot_event_sequences'
+          },
+          {
+            text: 'Plot Subsequence Frequencies',
+            link: '/en/event-sequences/plot_subsequence_frequencies'
+          },
+          {
+            text: 'Helper Functions',
+            link: '/en/event-sequences/event_sequence_helpers'
+          }
+        ]
+      },
+      {
         text: 'Multidomain or Polyadic Sequence Analysis',
         collapsed: true,
         items: [

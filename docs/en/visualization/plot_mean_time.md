@@ -93,6 +93,11 @@ Saves `mean_time_by_state.png` in your current working directory (or the path yo
 
 ```
 
+## R Counterpart
+
+- **Closest R function:** `seqmtplot`
+- **Mapping note:** Direct conceptual match: mean time spent in each state.
+
 ## Notes
 
 * Units depend on your data. If your sequence time points are months, set `x_label="Mean Time (Months)"`.

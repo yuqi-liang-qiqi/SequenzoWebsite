@@ -1,28 +1,52 @@
 # `get_weighted_five_number_summary()`
 
-Computes weighted five-number summary (min, Q1, median, Q3, max).
+`get_weighted_five_number_summary()` computes a weighted five-number summary: min, Q1, median, Q3, and max.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_weighted_five_number_summary
 summary = get_weighted_five_number_summary(values, weights=None, remove_missing=True)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `values`: numeric array.
-- `weights`: optional numeric weights.
-- `remove_missing`: drop missing values before computation.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `values` | ✓ | array-like | Numeric values to summarize. |
+| `weights` | ✗ | array-like or `None` | Optional weights. If `None`, all values are equally weighted. |
+| `remove_missing` | ✗ | bool | If `True`, remove missing values before computing. |
 
-## Returns
+## What It Does
 
-A dictionary with weighted `min`, `q1`, `median`, `q3`, `max`.
+- Validates inputs and aligns `values` and `weights`.
+- Optionally removes missing values.
+- Computes weighted quantiles and returns a five-number summary array in the order: min, Q1, median, Q3, max.
 
-## TraMineR Mapping
+## Examples
 
-- No direct single TraMineR counterpart (generic weighted utility in Sequenzo statistics).
+```python
+from sequenzo import get_weighted_five_number_summary
 
-## Author
+values = [2, 4, 8, 10]
+weights = [1, 1, 2, 1]
 
-Code and documentation: Yuqi Liang
+summary = get_weighted_five_number_summary(values, weights=weights)
+print(summary)
+```
+
+## R Counterpart
+
+- **Closest R function:** `weighted.fivenum`
+- **Mapping note:** Sequenzo marks this as equivalent helper behavior in code and returns weighted five-number statistics.
+
+## Notes
+
+- This is a general weighted descriptive statistics function.
+- It is not specific to TraMineR, but is useful in sequence-analysis summaries.
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

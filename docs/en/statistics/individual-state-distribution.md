@@ -1,27 +1,42 @@
 # `get_individual_state_distribution()`
 
-Returns per-sequence state distribution table.
+`get_individual_state_distribution()` returns the per-sequence state distribution table.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_individual_state_distribution
 result = get_individual_state_distribution(seqdata, as_proportion=False)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `seqdata`: `SequenceData` object.
-- `as_proportion`: return proportions instead of counts.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | `SequenceData` | Input sequence dataset. |
+| `as_proportion` | ✗ | bool | Return proportions instead of counts. |
 
-## Returns
+## What It Does
 
-`DataFrame` with sequence-wise state distributions.
+- Computes state frequencies for each sequence.
+- Returns either counts or proportions, depending on `as_proportion`.
 
-## TraMineR Mapping
+## Examples
 
-- Equivalent TraMineR function: `seqistatd`.
+```python
+from sequenzo import get_individual_state_distribution
 
-## Author
+dist = get_individual_state_distribution(seqdata, as_proportion=True)
+print(dist.head())
+```
 
-Code and documentation: Yuqi Liang
+## R Counterpart
+
+- **Closest TraMineR function:** `seqistatd`
+- **Mapping note:** This is a direct conceptual match; Sequenzo computes per-sequence state frequency/distribution output with optional proportions.
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

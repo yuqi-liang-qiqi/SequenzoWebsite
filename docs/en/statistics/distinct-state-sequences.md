@@ -1,27 +1,46 @@
 # `get_distinct_state_sequences()`
 
-Returns DSS (distinct successive states) representation for each sequence.
+`get_distinct_state_sequences()` returns the DSS (distinct successive states) representation for each sequence.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_distinct_state_sequences
 result = get_distinct_state_sequences(seqdata, fill_value=-999)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `seqdata`: `SequenceData` object.
-- `fill_value`: value used for empty trailing spell slots.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | `SequenceData` | Input sequence dataset. |
+| `fill_value` | ✗ | numeric | Value used for trailing empty DSS slots. |
 
-## Returns
+## What It Does
 
-`DataFrame` with DSS spells by sequence.
+- Converts each sequence into distinct successive states (collapsing repeated consecutive states).
+- Returns a tabular DSS output for all sequences.
 
-## TraMineR Mapping
+## Examples
 
-- Equivalent TraMineR function: `seqdss`.
+```python
+from sequenzo import get_distinct_state_sequences
 
-## Author
+dss = get_distinct_state_sequences(seqdata, fill_value=-999)
+print(dss.head())
+```
 
-Code and documentation: Yuqi Liang
+## R Counterpart
+
+- **Closest TraMineR function:** `seqdss`
+- **Mapping note:** This is a direct conceptual and implementation match in Sequenzo (`sequence_statistics.py` calls `seqdss`).
+
+## Notes
+
+- Useful when you want spell order without repeated consecutive states.
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

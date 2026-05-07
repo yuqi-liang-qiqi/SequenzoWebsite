@@ -75,6 +75,11 @@ plot_single_medoid(
 )
 ```
 
+## R Counterpart
+
+- **Closest R function:** No direct one-function equivalent
+- **Mapping note:** Closest TraMineR workflow is `seqrep` + `seqrplot`, then selecting one representative sequence manually.
+
 ## Notes
 
 * The coverage threshold is `0.10 × max(distance_matrix)` by default (see `_compute_individual_medoid_coverage`).

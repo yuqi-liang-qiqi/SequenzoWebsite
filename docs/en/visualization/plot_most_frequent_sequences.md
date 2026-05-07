@@ -79,6 +79,11 @@ plot_most_frequent_sequences(
 
 This saves `top15_sequences.png` in your current working directory (or the folder you specify).
 
+## R Counterpart
+
+- **Closest R function:** `seqfplot`
+- **Mapping note:** Closest match: display top frequent sequences and their frequencies.
+
 ## Notes
 
 * Bars are stacked along time so you can read the sequence pattern left → right.

@@ -75,6 +75,11 @@ plot_relative_frequency(
 )
 ```
 
+## R Counterpart
+
+- **Closest R function:** `seqplot(type="rf")` (TraMineR) / related RF tooling in TraMineRextras
+- **Mapping note:** Conceptually aligned with relative-frequency-style sequence visualization.
+
 ## Notes
 
 * `distance_matrix` must match the sequence order in `seqdata.values` (`N×N`, symmetric, non-negative).

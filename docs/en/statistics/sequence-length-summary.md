@@ -1,27 +1,42 @@
 # `get_sequence_length_summary()`
 
-Returns descriptive summary statistics for sequence lengths.
+`get_sequence_length_summary()` returns descriptive summary statistics for sequence lengths.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_sequence_length_summary
 result = get_sequence_length_summary(seqdata, with_missing=True)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `seqdata`: `SequenceData` object.
-- `with_missing`: include missing positions when computing lengths.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | `SequenceData` | Input sequence dataset. |
+| `with_missing` | ✗ | bool | Include missing positions when computing lengths. |
 
-## Returns
+## What It Does
 
-One-row `DataFrame` with `count`, `mean`, `median`, `min`, `q1`, `q3`, `max`.
+- Computes sequence lengths.
+- Builds a one-row summary table with `count`, `mean`, `median`, `min`, `q1`, `q3`, `max`.
 
-## TraMineR Mapping
+## Examples
 
-- Base TraMineR function used: `seqlength` (Sequenzo adds summary statistics wrapper).
+```python
+from sequenzo import get_sequence_length_summary
 
-## Author
+summary = get_sequence_length_summary(seqdata, with_missing=True)
+print(summary)
+```
 
-Code and documentation: Yuqi Liang
+## R Counterpart
+
+- **Closest TraMineR function(s):** `seqlength` (often summarized with `summary(...)` in R workflows)
+- **Mapping note:** Sequenzo first computes sequence lengths with `seqlength`-style logic, then returns a one-row summary table (`count`, `mean`, `median`, `min`, `q1`, `q3`, `max`).
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

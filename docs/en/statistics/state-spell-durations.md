@@ -1,27 +1,43 @@
 # `get_state_spell_durations()`
 
-Returns spell durations per sequence in tabular form.
+`get_state_spell_durations()` returns spell durations for each sequence in tabular form.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_state_spell_durations
 result = get_state_spell_durations(seqdata, fill_value=0)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `seqdata`: `SequenceData` object.
-- `fill_value`: value for missing trailing duration slots.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | `SequenceData` | Input sequence dataset. |
+| `fill_value` | ✗ | numeric | Value used for trailing empty duration slots. |
 
-## Returns
+## What It Does
 
-`DataFrame` with duration columns (`Duration1`, `Duration2`, ...).
+- Splits each sequence into spells.
+- Computes each spell duration.
+- Returns a `DataFrame` with duration columns (`Duration1`, `Duration2`, ...).
 
-## TraMineR Mapping
+## Examples
 
-- Equivalent TraMineR function: `seqdur`.
+```python
+from sequenzo import get_state_spell_durations
 
-## Author
+dur = get_state_spell_durations(seqdata, fill_value=0)
+print(dur.head())
+```
 
-Code and documentation: Yuqi Liang
+## R Counterpart
+
+- **Closest TraMineR function:** `seqdur`
+- **Mapping note:** This is a direct conceptual and implementation match in Sequenzo (`sequence_statistics.py` calls `seqdur`).
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

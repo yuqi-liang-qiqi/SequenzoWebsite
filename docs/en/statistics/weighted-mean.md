@@ -1,28 +1,52 @@
 # `get_weighted_mean()`
 
-Computes weighted mean for numeric arrays.
+`get_weighted_mean()` computes the weighted mean of a numeric vector.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_weighted_mean
 value = get_weighted_mean(values, weights=None, remove_missing=True)
 ```
 
-## Parameters
+## Entry Parameters
 
-- `values`: numeric array.
-- `weights`: optional numeric weights.
-- `remove_missing`: drop missing values before computing.
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `values` | ✓ | array-like | Numeric values to summarize. |
+| `weights` | ✗ | array-like or `None` | Optional weights. If `None`, all values are equally weighted. |
+| `remove_missing` | ✗ | bool | If `True`, remove missing values before computing. |
 
-## Returns
+## What It Does
 
-A scalar weighted mean.
+- Validates inputs and aligns `values` and `weights`.
+- Optionally removes missing values.
+- Computes the weighted mean as a single scalar output.
 
-## TraMineR Mapping
+## Examples
 
-- No direct single TraMineR counterpart (generic weighted utility in Sequenzo statistics).
+```python
+from sequenzo import get_weighted_mean
 
-## Author
+values = [2, 4, 8]
+weights = [1, 1, 2]
 
-Code and documentation: Yuqi Liang
+result = get_weighted_mean(values, weights=weights)
+print(result)
+```
+
+## R Counterpart
+
+- **Closest R function:** `weighted.mean`
+- **Mapping note:** Sequenzo marks this as equivalent helper behavior in code and exposes the same core weighted-mean intent.
+
+## Notes
+
+- This is a general weighted statistics function commonly used in R workflows.
+- It is not specific to TraMineR, but is useful in sequence-analysis summaries.
+
+## Authors
+
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang

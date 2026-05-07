@@ -157,3 +157,9 @@ Code: Yuqi Liang
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
+
+## R Counterpart
+
+- **Closest R function:** `seqdplot`
+- **Mapping note:** Direct conceptual match: state distributions across time positions.
+
