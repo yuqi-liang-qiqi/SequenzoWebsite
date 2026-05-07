@@ -120,6 +120,41 @@
       #f0b8ad 50%);
 }
 
+/* Dark mode: improve code/table contrast without harsh glare */
+.dark .vp-doc div[class*='language-'],
+.dark .vp-doc pre {
+  background-color: #141a24;
+  border: 1px solid #2a3446;
+}
+
+.dark .vp-doc div[class*='language-'] code,
+.dark .vp-doc pre code {
+  color: #dbe7ff;
+}
+
+.dark .vp-doc table {
+  border-collapse: collapse;
+  border: 1px solid #374055;
+  background-color: #151b26;
+}
+
+.dark .vp-doc tr {
+  border-top: 1px solid #343d52;
+}
+
+.dark .vp-doc th {
+  background-color: #1f2737;
+  color: #f2f6ff;
+}
+
+.dark .vp-doc td {
+  color: #d7deee;
+}
+
+.dark .vp-doc tr:nth-child(2n) td {
+  background-color: #181f2d;
+}
+
 @media (min-width: 640px) {
   :root {
     --vp-home-hero-image-filter: blur(56px);

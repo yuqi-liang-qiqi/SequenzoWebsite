@@ -1,10 +1,10 @@
 # `create_idcd_sequence_from_csvs()`
 
-`create_idcd_sequence_from_csvs()` creates a multidomain sequence dataset using the IDCD perspective ("independence from domain costs and distances" in Ritschard et al., 2023). This function combines sequence data from multiple CSV files (each representing one domain) into a single multidomain sequence object by creating composite states from observed combinations.
+`create_idcd_sequence_from_csvs()` prepares multidomain sequence data for an IDCD-style analysis ("independence from domain costs and distances" in Ritschard et al., 2023). It combines sequence data from multiple CSV files (each representing one domain) into a single multidomain sequence object by creating composite states from observed combinations.
 
-Unlike CAT or DAT which work with separate domain sequences and combine them during distance computation, IDCD creates the combined sequences upfront. Each time point in the resulting sequences represents a combination of states from all domains (e.g., "Employed+Married" if combining employment and family domains).
+Unlike CAT or DAT, which combine domain information during distance construction, this function creates combined multidomain sequences upfront. Each time point in the resulting sequences represents a combination of states from all domains (e.g., "Employed+Married" if combining employment and family domains).
 
-Central point (Ritschard et al., 2023): IDCD means "independence from domain costs and distances." In practice, this means multidomain dissimilarities are computed at the multidomain level itself, rather than additively derived from domain costs (CAT) or domain distances (DAT).
+Central point (Ritschard et al., 2023): IDCD means "independence from domain costs and distances." This function does not itself compute IDCD distances. Instead, it creates a `SequenceData` object whose states are observed multidomain combinations, and users then compute distances directly at the multidomain level (for example, with OM and data-driven substitution costs).
 
 This is useful when you want to work with the combined sequences directly, or when your data comes from separate CSV files that you need to merge into a unified sequence format.
 
@@ -31,7 +31,7 @@ sequence_data = create_idcd_sequence_from_csvs(
 
 | Parameter | Required | Type | Description |
 | --------- | -------- | ---- | ----------- |
-| `csv_paths` | ✓ | `list[str]` | A list of file paths to CSV files, one for each domain. Each CSV should contain the same ID column and the same time columns. The number of rows (individuals) must be the same across all CSVs, and IDs must match across files. |
+| `csv_paths` | ✓ | `list[str]` | A list of file paths to CSV files, one for each domain. Each CSV should contain the same ID column and the same time columns. All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. |
 | `time_cols` | ✓ | `list[str]` | A list of column names representing time points. These columns must exist in all CSV files specified in `csv_paths`. The order in this list determines the order of time points in the resulting sequences. |
 | `id_col` | ✗ | `str` | The name of the ID column used to align individuals across CSV files. Must exist in all CSV files. Default = `"id"`. |
 | `domain_state_labels` | ✗ | `list[dict]` or `None` | A list of dictionaries, one for each domain, that maps raw state values to human-readable labels. Each dictionary maps the state values found in that domain's CSV to their labels. If `None`, raw state values are used as labels. Default = `None`. |
@@ -48,7 +48,7 @@ The function performs the following steps:
    - If domain 1 has state "A" and domain 2 has state "B" at time T1, the composite state becomes "A+B"
    - If using numeric codes like 0 and 1, the composite might be "0+1"
 
-4. **Identifies observed states:** Only keeps composite states that actually appear in your data. Unlike CAT which creates all possible combinations, IDCD only uses combinations that are observed.
+4. **Identifies observed states:** In practice, the expanded alphabet is usually built from composite states that are actually observed in your data. This can make the multidomain alphabet smaller than the full Cartesian product of domain alphabets.
 
 5. **Builds labels (optional):** If `domain_state_labels` is provided, creates human-readable labels for each composite state. For example, "0+1" might become "Employed + Married".
 
@@ -222,30 +222,29 @@ IDCD differs from CAT and DAT in important ways:
 
 **IDCD (independence from domain costs and distances):**
 - Creates combined sequences upfront
-- Uses only observed state combinations
+- In practice, usually works with observed combined states in the expanded alphabet
 - Distances are computed directly at the multidomain level (without deriving MD costs from domain costs and without summing domain distances)
 - Good when you want to work directly with combined sequences
 - Alphabet size depends on what combinations actually occur in your data
 
 **CAT (Cost Additive Trick):**
 - Keeps domains separate until distance computation
-- Creates all possible state combinations for cost computation
 - More complex: derives multidomain costs by summing domain-level costs
 - Better when you want explicit control over substitution costs
-- Alphabet size is the product of domain alphabet sizes
+- Uses additive multidomain cost construction from domain-level costs
 
 **DAT (Distance Additive Trick):**
 - Keeps domains separate throughout
 - Adds domain-specific distance matrices
 - Simplest: no composite states needed
-- Most efficient computationally
+- Often convenient computationally, especially because no multidomain cost matrix is required
 - Doesn't consider cross-domain state combinations explicitly
 
 **When to use IDCD:**
 - Your data comes from separate CSV files that need to be combined
 - You want to work with combined sequences directly
-- You prefer a simpler workflow without complex cost calculations
-- You only care about observed combinations, not all possible ones
+- You prefer computing costs and distances directly at the multidomain level, rather than deriving them additively from domain-level information
+- You want to compute distances directly at the multidomain level instead of additively combining domain costs or domain distances
 
 ## Important Notes
 
@@ -257,7 +256,7 @@ IDCD differs from CAT and DAT in important ways:
 
 2. **State separator:** The function uses "+" to join states from different domains. Make sure this character doesn't appear in your actual state values, or the parsing might fail.
 
-3. **Observed states only:** Unlike other approaches that might consider all possible combinations, IDCD only uses combinations that actually appear in your data. This means:
+3. **Observed states in practice:** In many practical IDCD workflows, the expanded alphabet is built from combinations that actually appear in your data. This means:
    - If no individual has state combination "A+B+C", it won't be in the alphabet
    - Your alphabet size may be smaller than the product of domain alphabet sizes
    - This can be more efficient but might miss theoretically possible transitions

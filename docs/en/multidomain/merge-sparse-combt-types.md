@@ -10,6 +10,8 @@ The merging process follows an iterative algorithm that:
 
 This helps you avoid having too many rare types that might not be meaningful for further analysis, while ensuring that merged types still represent coherent groups.
 
+This implementation follows the same general idea as the merge-combined-types strategy discussed by Ritschard et al. (2023), but operationalizes it with ASW-based greedy merging and user-defined thresholds.
+
 ## Function Usage
 
 A minimal example with only the required parameters:
@@ -89,10 +91,9 @@ diss_matrices, membership_df = get_interactive_combined_typology(
 # Get the combined typology labels
 labels = membership_df["CombT"].values
 
-# You need a distance matrix for merging
-# Use one of the domain distance matrices, or compute a multidomain distance matrix
-# For this example, we'll use the first domain's distance matrix
-distance_matrix = diss_matrices[0]
+# You need a multidomain distance matrix for merging decisions
+from sequenzo.multidomain.dat import compute_dat_distance_matrix
+distance_matrix = compute_dat_distance_matrix(domains, method_params)
 
 # Merge sparse types
 merged_labels, merge_info = merge_sparse_combt_types(
@@ -134,7 +135,7 @@ merged_labels, merge_info = merge_sparse_combt_types(
 
 ### 3. Using multidomain distance matrix
 
-For better merging decisions, use a distance matrix computed from multidomain sequences rather than a single domain:
+For merging combined types, a multidomain distance matrix is recommended:
 
 ```python
 from sequenzo.multidomain.cat import compute_cat_distance_matrix
@@ -157,7 +158,7 @@ merged_labels, merge_info = merge_sparse_combt_types(
 )
 ```
 
-This is often preferred because the multidomain distance matrix better captures similarities across all domains simultaneously.
+This is preferred because the multidomain distance matrix better captures similarities across all domains simultaneously.
 
 ### 4. Examining merge information
 
@@ -224,7 +225,7 @@ Reference lines show the initial and final values for both metrics.
 
 ## Important Notes
 
-1. **Distance matrix choice:** The quality of merging depends on using an appropriate distance matrix. Using a multidomain distance matrix (computed with `compute_cat_distance_matrix()`) generally gives better results than using a distance matrix from a single domain, because it reflects similarities across all domains simultaneously.
+1. **Distance matrix choice:** The quality of merging depends on using an appropriate distance matrix. Use a multidomain distance matrix (for example from DAT, CAT, or IDCD-level distances) so merges reflect multidomain similarity. If you instead use a single-domain matrix, merging decisions reflect only that domain and are not truly multidomain.
 
 2. **Minimum size selection:** The `min_size` parameter should be chosen based on your sample size and research goals. For a sample of ~2,000, `min_size=30` is often reasonable (about 1.5% of the sample). For larger samples, you might use a higher threshold; for smaller samples, a lower one.
 
@@ -236,6 +237,8 @@ Reference lines show the initial and final values for both metrics.
 Setting `asw_threshold=0.5` means the function will only merge if it can maintain "good" cluster quality.
 
 4. **Merge order:** The algorithm processes sparse types one at a time and may not find the globally optimal solution. It's a greedy algorithm that makes locally optimal choices.
+
+This is a practical greedy procedure rather than a guarantee of a globally optimal merged typology.
 
 5. **No guarantees:** Not all sparse types will necessarily be merged. If merging a sparse type would cause the silhouette score to drop below the threshold, it will remain unmerged. This means you might still have some small types in your final result.
 

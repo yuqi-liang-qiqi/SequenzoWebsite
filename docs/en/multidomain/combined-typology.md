@@ -4,7 +4,7 @@
 
 For example, if you cluster employment sequences into 3 groups (A, B, C) and family sequences into 2 groups (1, 2), the combined typology might include types like "A+1", "B+2", "C+1", etc. Each individual gets assigned to one of these combined types based on their cluster membership in each domain.
 
-This approach is useful when you want to understand how patterns across different life domains relate to each other, and it can reveal cross-domain associations that might not be visible when analyzing domains separately.
+This approach is useful when you want to describe how domain-specific sequence types combine across individuals. These combinations can suggest cross-domain patterns, although formal association should be assessed separately.
 
 ## Function Usage
 
@@ -31,7 +31,7 @@ diss_matrices, membership_df = get_interactive_combined_typology(
 
 | Parameter | Required | Type | Description |
 | --------- | -------- | ---- | ----------- |
-| `domains` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain you want to combine. Must contain at least two domains. All domains must have the same number of sequences and the same IDs. |
+| `domains` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain you want to combine. Must contain at least two domains. All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. |
 | `method_params` | ✓ | `list[dict]` | A list of parameter dictionaries, one for each domain. Each dictionary must contain at least a `"method"` key specifying the distance measure (e.g., `"OM"`). Other keys can include `"sm"`, `"indel"`, `"norm"`, etc., as used in `get_distance_matrix()`. |
 | `domain_names` | ✗ | `list[str]` or `None` | Custom names for each domain. If `None`, domains are automatically named as `Domain_1`, `Domain_2`, etc. Default = `None`. |
 | `norm` | ✗ | `str` | Normalization method for cluster quality plots shown during interactive mode. Options: `"zscore"`, `"minmax"`, `"none"`. Default = `"zscore"`. |
@@ -162,6 +162,7 @@ diss_matrices, membership_df = get_interactive_combined_typology(
     domains,
     method_params,
     domain_names=["Employment", "Family", "Education"],
+    interactive=False,
     predefined_clusters=[3, 2, 2]  # When interactive=False
 )
 ```
@@ -207,13 +208,13 @@ Combined typologies allow you to:
 
 3. **Enable further analysis:** You can use combined types as grouping variables for other analyses, such as examining differences in outcomes across combined types.
 
-4. **Reveal associations:** Rare combined types might indicate that certain cross-domain transitions are uncommon (e.g., transitioning from employed+married to unemployed+single might be rare).
+4. **Suggest cross-domain structure:** Rare or frequent combined types can indicate how domain-specific typologies combine, but they are descriptive patterns rather than a formal test of domain association.
 
 ## Important Notes
 
 1. **Domain order matters:** The order of domains in your `domains` list determines how combined types are labeled. Make sure `domain_names` (if provided) matches this order.
 
-2. **Same individuals required:** All domains must have the same individuals (same IDs in the same order). The function will check this and raise an error if they don't match.
+2. **Data alignment is required:** All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. The function will check ID alignment and raise an error if domains do not match.
 
 3. **Interactive mode requirements:** When using interactive mode, make sure you're in an environment where plots can be saved. The function saves plots but doesn't display them interactively to avoid display issues on servers.
 

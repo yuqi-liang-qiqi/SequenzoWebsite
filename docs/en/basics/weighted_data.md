@@ -282,7 +282,7 @@ dist = get_distance_matrix(
    * Accepts weights as parameter
    * Uses weights in pseudo-variance calculations and permutation tests
 
-3. **Distance association** (`compute_distance_association()`):
+3. **Distance association** (`get_group_distance_association()`):
    * Computes weighted inertia (sum of weighted squared distances)
    * Formula: `SCtot = sum(w_i * w_j * d_ij)` for all pairs (i,j)
 

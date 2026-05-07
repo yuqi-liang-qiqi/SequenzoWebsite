@@ -1,100 +1,224 @@
-# Event Sequences
+# Event Sequence Analysis
 
-Event sequence analysis studies **what happens, in what order, and when**.
+Event sequence analysis studies trajectories as ordered changes.
 
-If you are new, think of it this way:
+Instead of asking what state is a person in at each time point?, it asks:
 
-- A **state sequence** tells you "what state someone is in" at each time point.
-- An **event sequence** tells you "what changed" (the event), and optionally the event time.
+- What events happened?
+- In what order did they happen?
+- Did some events happen at the same time?
+- Are some event patterns more common in one group than another?
 
-Both describe trajectories, but they answer different questions.
+This makes event sequence analysis especially useful when the main object of interest is the ordering of life events, career events, educational transitions, medical episodes, customer actions, or other discrete changes.
 
-## Why This Matters
+## A First Intuition
 
-In many real studies, the key question is not only duration, but **ordering of changes**:
+Suppose we observe a person from age 18 to 30.
 
-- Do people usually graduate before first full-time job?
-- Which events tend to appear together?
-- Which event patterns are more common in one group than another?
+A state sequence may look like this:
 
-This is exactly the problem setting discussed in:
+| Age | 18 | 19 | 20 | 21 | 22 | 23 |
+| --- | --- | --- | --- | --- | --- | --- |
+| State | Education | Education | Education | Full-time work | Full-time work | Married |
 
-- Ritschard, G., Burgin, R., & Studer, M. (2013). *Exploratory Mining of Life Event Histories*
+This tells us what state the person occupies at each age.
 
-That chapter is one of the core foundations for event-sequence mining workflows used in TraMineR and now mirrored in Sequenzo.
+The corresponding event sequence may look like this:
 
-## Event Sequences vs State Sequences
+```text
+(Start education) -> (Start full-time work) -> (Marry)
+````
 
-| Topic | State Sequences | Event Sequences |
-| --- | --- | --- |
-| Basic unit | Ongoing state (has duration) | Discrete event (a change point) |
-| Typical question | "How long in each state?" | "Which events happen, in what order?" |
-| Position meaning | Time position itself | Event order (time can be added via timestamps) |
-| Simultaneous changes | Not natural (one state at a time) | Natural (multiple events can happen at same time) |
-| Typical outputs | Duration, distribution, turbulence, etc. | Frequent subsequences, discriminant patterns, event transitions |
+This tells us what changed, and in what order.
 
-## How This Section Relates to the 2013 Chapter
+Both representations describe the same trajectory, but they highlight different aspects of it. A state sequence is often better for studying duration, such as how long someone stays in education or employment. An event sequence is often better for studying ordering, such as whether people usually leave education before entering work, or whether marriage tends to occur before or after childbirth.
 
-This section follows the same practical logic as the chapter:
+## State Sequences and Event Sequences
 
-1. Build event-sequence data
-2. Discover frequent subsequences
-3. Compare groups with discriminant patterns
-4. Summarize and visualize results
+The key difference is the meaning of a position.
 
-### Function-level Relation to the Chapter
+In a state sequence, position usually means time. For example, position 5 may mean the fifth month, fifth year, or fifth observation wave.
 
-| Sequenzo function | Relation to the 2013 chapter |
-| --- | --- |
-| [`EventSequenceData.from_tse()` / `EventSequenceData.from_state_sequences()`](./create_event_sequences.md) | Build event-sequence objects from TSE input or from state sequences. |
-| [`find_frequent_subsequences()`](./find_frequent_subsequences.md) | Core method in the chapter: mine frequent event subsequences. |
-| [`count_subsequence_occurrences()`](./count_subsequence_occurrences.md) | Operational step after mining: quantify how often each subsequence occurs. |
-| [`compare_groups()`](./compare_groups.md) | Core chapter goal: find subsequences that discriminate groups. |
-| [`check_event_subsequence_containment()`](./check_event_subsequence_containment.md) | Conceptually aligned helper: test whether a target pattern appears in each sequence. |
-| [`plot_subsequence_frequencies()`](./plot_subsequence_frequencies.md) | Result-communication layer aligned with chapter outputs on frequent patterns. |
-| [`plot_event_parallel_coordinates()`](./plot_event_parallel_coordinates.md) | Parallel-coordinate visualization of event-order structures. |
-| [`plot_subsequence_group_contrasts()`](./plot_subsequence_group_contrasts.md) | Group contrast view for discriminating subsequences. |
-| [`plot_event_dynamics()`](./plot_event_dynamics.md) | Survival/hazard-style event dynamics visualization. |
-| [`convert_event_sequences_to_tse()`](./convert_event_sequences_to_tse.md) | Workflow helper for tidy tabular export/import. |
-| [`compute_event_transition_matrix()`](./compute_event_transition_matrix.md) | Additional summary view of event-to-event movement patterns. |
-| [`is_event_sequence()`, `is_event_sequence_collection()`, `get_event_sequence_lengths()`, `get_event_sequence_weights()`](./event_sequence_helpers.md) | API helper utilities for object checks and metadata access. |
+In an event sequence, position means event order. Position 5 means the fifth event, not necessarily the fifth year. If the timing of events matters, timestamps need to be stored explicitly.
 
-## Quick Start
+This distinction is central to event sequence analysis. Events do not last; they occur at particular points and may cause changes in states. Several events can also occur at the same time. For example, a person may leave the parental home and move in with a partner in the same year:
+
+```text
+(Leaving home, Union)
+```
+
+Here, the comma means that the two events are simultaneous. The arrow means that one transition comes after another:
+
+```text
+(Leaving home, Union) -> (Marriage) -> (Childbirth)
+```
+
+This notation makes event sequence analysis well suited for studying ordered and possibly simultaneous changes.
+
+## What Can We Learn from Event Sequences?
+
+Event sequence analysis is useful when the research question is about patterns of change rather than only time spent in states.
+
+Typical questions include:
+
+* What are the most common event patterns?
+* Which events tend to occur together?
+* Which event usually follows a given event or subsequence?
+* Which subsequences distinguish one group from another?
+* Do different cohorts, genders, countries, or organizations follow different event patterns?
+* Does a theoretically important pattern appear in each sequence?
+
+For example, in life course research, we may ask whether people tend to leave home before entering a union, whether childbirth follows marriage, or whether part-time work tends to appear after childbirth. In career research, we may ask whether education is followed by full-time employment, whether unemployment interrupts work trajectories, or whether promotion tends to occur after job changes.
+
+## The Basic Workflow
+
+A typical event-sequence workflow in Sequenzo has four steps.
+
+### 1. Build event sequences
+
+You can create event sequences from time-stamped event data:
 
 ```python
-from sequenzo.event_sequences import (
-    EventSequenceData,
-    find_frequent_subsequences,
-    compare_groups,
-    plot_subsequence_frequencies,
-)
+from sequenzo.event_sequences import EventSequenceData
 
-# 1) Build event sequences (recommended)
 eseq = EventSequenceData.from_tse(data=tse_df)
+```
 
-# 2) Mine frequent patterns
-fsubseq = find_frequent_subsequences(event_sequences, min_support_ratio=0.05)
+The input data should usually contain one row per event, with at least three columns:
 
-# 3) Compare groups (example)
-discr = compare_groups(fsubseq, group=df["group"], pvalue_threshold=0.05)
+| id | timestamp | event             |
+| -- | --------- | ----------------- |
+| 1  | 18        | EnterEducation    |
+| 1  | 22        | StartFullTimeWork |
+| 1  | 27        | Marry             |
+| 2  | 19        | EnterEducation    |
+| 2  | 21        | StartFullTimeWork |
 
-# 4) Plot frequent-pattern summary
+You can also create event sequences from existing state sequences:
+
+```python
+eseq = EventSequenceData.from_state_sequences(seqdata)
+```
+
+This is useful when your data are originally stored as state sequences, but you want to analyze the changes behind those states.
+
+### 2. Find frequent subsequences
+
+Once the event sequences are created, you can search for common event patterns:
+
+```python
+from sequenzo.event_sequences import find_frequent_subsequences
+
+fsubseq = find_frequent_subsequences(
+    eseq,
+    min_support_ratio=0.05
+)
+```
+
+A frequent subsequence is an ordered event pattern that appears in many sequences. For example:
+
+```text
+(Education) -> (Full-time work)
+(Leaving home, Union) -> (Childbirth)
+```
+
+The first pattern says that education is followed by full-time work. The second says that leaving home and entering a union happen together, followed later by childbirth.
+
+### 3. Compare groups
+
+You can then ask which subsequences distinguish groups:
+
+```python
+from sequenzo.event_sequences import compare_groups
+
+discr = compare_groups(
+    fsubseq,
+    group_labels=df["group"],
+    pvalue_threshold=0.05
+)
+```
+
+This helps answer questions such as:
+
+```text
+Which event patterns are more common among women than men?
+Which patterns are more common in younger cohorts than older cohorts?
+Which career sequences distinguish two occupational groups?
+```
+
+### 4. Visualize the results
+
+Sequenzo provides several plotting functions for communicating event-sequence results:
+
+```python
+from sequenzo.event_sequences import plot_subsequence_frequencies
+
 plot_subsequence_frequencies(fsubseq)
 ```
 
-## Learning Path for Beginners
+You can also visualize group contrasts, event-order structures, and event dynamics.
 
-- [`EventSequenceData.from_tse()` / `EventSequenceData.from_state_sequences()`](./create_event_sequences.md) is conceptually similar to [`SequenceData()`](../function-library/sequence-data.md) in terms of workflow usage.
-- Use [`find_frequent_subsequences()`](./find_frequent_subsequences.md) to see common event patterns.
-- Use [`compare_groups()`](./compare_groups.md) when your question is "which patterns differ by group?".
-- Use [`plot_subsequence_frequencies()`](./plot_subsequence_frequencies.md) to communicate top findings clearly.
+## Main Functions
 
-## Authors
+| Task                                                | Sequenzo function                          |
+| --------------------------------------------------- | ------------------------------------------ |
+| Create event sequences from time-stamped event data | `EventSequenceData.from_tse()`             |
+| Create event sequences from state sequences         | `EventSequenceData.from_state_sequences()` |
+| Find frequent subsequences                          | `find_frequent_subsequences()`             |
+| Count subsequence occurrences                       | `count_subsequence_occurrences()`          |
+| Compare groups                                      | `compare_groups()`                         |
+| Check whether a target pattern appears              | `check_event_subsequence_containment()`    |
+| Convert event sequences back to TSE format          | `convert_event_sequences_to_tse()`         |
+| Compute event transition matrix                     | `compute_event_transition_matrix()`        |
+| Plot frequent subsequences                          | `plot_subsequence_frequencies()`           |
+| Plot group contrasts                                | `plot_subsequence_group_contrasts()`       |
+| Plot event parallel coordinates                     | `plot_event_parallel_coordinates()`        |
+| Plot event dynamics                                 | `plot_event_dynamics()`                    |
 
-Code: Yuqi Liang
+## For TraMineR Users
 
-Documentation: Yuqi Liang
+This module mirrors the practical logic of TraMineR’s event-sequence tools, while using Python-style names.
 
-## References
+| TraMineR         | Sequenzo                                                                    |
+| ---------------- | --------------------------------------------------------------------------- |
+| `seqecreate()`   | `EventSequenceData.from_tse()` / `EventSequenceData.from_state_sequences()` |
+| `seqefsub()`     | `find_frequent_subsequences()`                                              |
+| `seqeapplysub()` | `count_subsequence_occurrences()`                                           |
+| `seqecmpgroup()` | `compare_groups()`                                                          |
+| `seqecontain()`  | `check_event_subsequence_containment()`                                     |
+| `seqe2tse()`     | `convert_event_sequences_to_tse()`                                          |
+| `seqetm()`       | `compute_event_transition_matrix()`                                         |
+| `seqelist`       | `EventSequenceList`                                                         |
+| `eseq`           | `EventSequence`                                                             |
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+## Relationship with Other Sequenzo Modules
+
+Use `sequenzo.event_sequences` when your question is about patterns of events:
+
+```text
+Which events happen, in what order, and for whom?
+```
+
+Use `sequenzo.with_event_history_analysis` when your question is about event-history or sequence-history modeling:
+
+```text
+What is the risk or hazard of a transition, given previous history?
+```
+
+In short:
+
+```text
+Patterns of events -> event_sequences
+Modeling transitions or hazards -> with_event_history_analysis
+```
+
+## Reference
+
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences (pp. 221–253). Routledge.
+
+
+
+
+最后还有一个小提醒：你代码 docstring 里写 “full version would use prefix tree algorithm / simplified implementation”，如果当前公开代码确实只支持比较简化的 frequent subsequence search，那官网文档最好不要写得像完整复刻 TraMineR 的 `seqefsub()`。可以说 “TraMineR-inspired” 或 “mirrors the main workflow”，避免用户用大规模复杂模式时预期过高。
+
+#

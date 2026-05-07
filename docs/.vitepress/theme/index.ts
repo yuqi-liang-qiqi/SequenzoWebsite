@@ -166,15 +166,70 @@ export default {
       })
     }
 
+    function findScrollableParent(el: HTMLElement): HTMLElement | null {
+      let current: HTMLElement | null = el.parentElement
+      while (current) {
+        const style = window.getComputedStyle(current)
+        const canScroll = /(auto|scroll)/.test(style.overflowY)
+        if (canScroll && current.scrollHeight > current.clientHeight) {
+          return current
+        }
+        current = current.parentElement
+      }
+      return null
+    }
+
+    function syncSidebarToActivePage() {
+      const activeLink = document.querySelector(
+        '.VPSidebar a[aria-current="page"], .VPSidebar .VPLink.active'
+      ) as HTMLElement | null
+      if (!activeLink) return false
+
+      // VitePress groups are not <details>; open collapsed ancestors by toggling their buttons.
+      const collapsedParents = Array.from(
+        activeLink.closest('.VPSidebar')?.querySelectorAll('.VPSidebarItem.collapsible.collapsed') || []
+      ) as HTMLElement[]
+      collapsedParents.forEach((group) => {
+        if (!group.contains(activeLink)) return
+        const toggle = group.querySelector('.item .button') as HTMLButtonElement | null
+        if (toggle) toggle.click()
+      })
+
+      const scroller = findScrollableParent(activeLink)
+      if (!scroller) {
+        activeLink.scrollIntoView({ block: 'center' })
+        return true
+      }
+
+      const scrollerTop = scroller.getBoundingClientRect().top
+      const linkTop = activeLink.getBoundingClientRect().top
+      const delta = linkTop - scrollerTop - scroller.clientHeight / 2 + activeLink.clientHeight / 2
+      scroller.scrollTo({ top: scroller.scrollTop + delta, behavior: 'auto' })
+      return true
+    }
+
     // Run on initial load and every route change
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupPageImages, { once: true })
+      document.addEventListener('DOMContentLoaded', () => {
+        setupPageImages()
+        setTimeout(() => syncSidebarToActivePage(), 0)
+      }, { once: true })
     } else {
       setupPageImages()
+      setTimeout(() => syncSidebarToActivePage(), 0)
     }
     router.onAfterRouteChanged = () => {
-      // slight delay to ensure content is rendered
-      setTimeout(setupPageImages, 0)
+      // retry a few times to wait for sidebar render and collapsed-state hydration.
+      let attempts = 0
+      const maxAttempts = 8
+      const timer = window.setInterval(() => {
+        attempts += 1
+        setupPageImages()
+        const ok = syncSidebarToActivePage()
+        if (ok || attempts >= maxAttempts) {
+          window.clearInterval(timer)
+        }
+      }, 50)
     }
   }
 } satisfies Theme

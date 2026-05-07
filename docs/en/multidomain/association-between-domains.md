@@ -1,6 +1,6 @@
 # `get_association_between_domains()`
 
-`get_association_between_domains()` measures how strongly different domains of sequence data are related to each other. When you have multiple sequence domains (for example, employment status and family status measured over the same time periods), this function helps you understand whether changes in one domain tend to occur together with changes in another.
+`get_association_between_domains()` measures between-domain state association in multidomain sequence data. When you have multiple sequence domains (for example, employment status and family status measured over the same time periods), this function helps you understand whether states in one domain tend to co-occur with states in another domain at the same time points.
 
 The function computes two statistical measures:
 
@@ -9,7 +9,7 @@ The function computes two statistical measures:
 
 The function compares sequences position by position, meaning it looks at what state each sequence is in at each time point and measures how these states co-occur across domains.
 
-Why this matters for multidomain strategy choice: Ritschard et al. (2023) emphasize that CAT and DAT rely on additive independence assumptions. Measuring between-domain association first helps assess how plausible those assumptions are before choosing CAT, DAT, or IDCD.
+Why this matters for multidomain strategy choice: this function measures state association between domains, that is, whether states in one domain tend to co-occur with states in another domain at the same time positions. This is especially relevant for assessing the plausibility of the state-independence assumption behind CAT. It does not directly measure trajectory association, which is more relevant for DAT and is usually assessed by correlating domain-specific distance matrices.
 
 ## Function Usage
 
@@ -40,7 +40,7 @@ result = get_association_between_domains(
 
 | Parameter | Required | Type | Description |
 | --------- | -------- | ---- | ----------- |
-| `seqdata_dom` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain you want to compare. Must contain at least two domains. |
+| `seqdata_dom` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain you want to compare. Must contain at least two domains. All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. |
 | `assoc` | ✗ | `tuple` | Which association measures to compute. Options: `"LRT"`, `"V"`, or both `("LRT", "V")`. Default = `("LRT", "V")`. |
 | `rep_method` | ✗ | `str` | Method for determining which sequences to compare. Currently only `"overall"` is supported (position-by-position comparison). Default = `"overall"`. |
 | `wrange` | ✗ | `tuple` or `None` | Not yet implemented. Intended for time window comparisons. Default = `None`. |
@@ -119,7 +119,7 @@ Output:
 ```
 📜 Full results table:
                     df        LRT    p(LRT)        v    p(v)   strength
-Dom1 vs Dom2       1.0  2.345678  0.125 *  0.342105  0.089 *    Weak
+Dom1 vs Dom2       1.0  2.345678    0.125  0.342105   0.089  Moderate
 
 📘 Column explanations:
   - df       : Degrees of freedom for the test (typically 1 for binary state sequences).
@@ -201,6 +201,8 @@ The output DataFrame contains several columns that help you interpret the relati
 - **p(v):** The p-value for Cramer's V, based on the chi-square test. Like p(LRT), smaller values indicate stronger evidence for an association.
 
 - **strength:** A qualitative label that helps you quickly understand the practical importance of the association, regardless of statistical significance.
+
+`strength` describes the magnitude of association based on Cramer's V; it is not the same as statistical significance.
 
 It's important to note that a statistically significant association (low p-value) doesn't always mean a practically important association. A large sample size can make even very weak associations statistically significant. That's why Cramer's V and the strength label are useful: they tell you about the magnitude of the association, not just whether it exists.
 

@@ -5,6 +5,7 @@ export const en = defineConfig({
   description: 'Sequenzo, a powerful and flexible tool for analyzing and visualizing sequencing data.',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    outlineTitle: 'Table of Contents',
     nav: [
       { text: 'Home', link: '/en/' },
     ],
@@ -328,6 +329,7 @@ export const en = defineConfig({
             text: 'Introduction',
             link: '/en/event-sequences/introduction'
           },
+          { text: 'Quickstart example', link: '/en/event-sequences/example' },
           {
             text: 'Sequenzo-TraMineR Mapping',
             link: '/en/event-sequences/traminer-function-mapping'
@@ -410,6 +412,47 @@ export const en = defineConfig({
             text: 'Linked Polyadic Sequence Analysis',
             link: '/en/multidomain/linked-polyadic-sequence-analysis'
           }
+        ]
+      },
+      {
+        text: 'Group Comparison',
+        collapsed: true,
+        items: [
+          { text: 'Introduction', link: '/en/group-comparison/introduction' },
+          {
+            text: 'Core Concept (Discrepancy-Based)',
+            collapsed: true,
+            items: [
+              { text: 'get_group_distance_association()', link: '/en/group-comparison/get_group_distance_association' },
+              { text: 'get_group_differences_by_position()', link: '/en/group-comparison/get_group_differences_by_position' },
+              { text: 'Permutation Tests', link: '/en/group-comparison/permutation-tests' },
+            ],
+          },
+          {
+            text: 'Tree Extension',
+            collapsed: true,
+            items: [
+              { text: 'Distance Tree (build_distance_tree)', link: '/en/group-comparison/build_distance_tree' },
+              { text: 'Sequence Tree (build_sequence_tree)', link: '/en/group-comparison/build_sequence_tree' },
+            ],
+          },
+          {
+            text: 'BIC / LRT',
+            collapsed: true,
+            items: [
+              { text: 'get_group_differences_overall()', link: '/en/group-comparison/get_group_differences_overall' },
+              { text: 'get_lrt_test()', link: '/en/group-comparison/get_lrt_test' },
+              { text: 'get_bic_test()', link: '/en/group-comparison/get_bic_test' },
+            ],
+          },
+          {
+            text: 'KOB Decomposition',
+            collapsed: true,
+            items: [
+              { text: 'get_kob_decomposition()', link: '/en/group-comparison/get_kob_decomposition' },
+              { text: 'get_oaxaca_blinder_decomposition()', link: '/en/group-comparison/get_oaxaca_blinder_decomposition' },
+            ],
+          },
         ]
       },
       {

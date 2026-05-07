@@ -8,7 +8,7 @@ When you have multiple domains measured on the same individuals over the same ti
 2. **Computes CAT costs:** Derives substitution and indel costs for these composite states by adding up the costs from individual domains.
 3. **Calculates distances:** Uses these costs to compute pairwise distances between multidomain sequences using optimal matching.
 
-The additive trick (CAT) means that the cost of substituting one multidomain state for another is simply the sum of substitution costs across all domains. Similarly, indel costs are the sum of indel costs from all domains.
+The additive trick (CAT) means that the cost of substituting one multidomain state for another is a weighted sum of substitution costs across domains. Similarly, indel costs are built additively from domain-level indel costs.
 
 In the terminology used by Ritschard et al. (2023), CAT is specifically this additive construction of multidomain costs from domain-level costs. The "combined alphabet" itself belongs to the multidomain representation, not to CAT as an acronym.
 
@@ -44,7 +44,7 @@ result = compute_cat_distance_matrix(
 
 | Parameter | Required | Type | Description |
 | --------- | -------- | ---- | ----------- |
-| `channels` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain. Must contain at least two domains. All domains must have the same number of sequences. |
+| `channels` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain. Must contain at least two domains. All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. |
 | `method` | ✗ | `str` | Dissimilarity measure to use when `what="diss"`. Options: `"OM"` (optimal matching), `"LCS"` (longest common subsequence), `"DHD"` (dynamic Hamming distance), `"HAM"` (Hamming distance). Required when `what="diss"`. |
 | `norm` | ✗ | `str` | Normalization method for distances. Options: `"none"`, `"maxlength"`, `"gmean"`, `"maxdist"`. Only used when `what="diss"`. Default = `"none"`. |
 | `indel` | ✗ | `float`, `np.ndarray`, or `list` | Insertion/deletion costs. Can be a single value (applied to all domains and states), a list of values (one per domain), or a list of lists (state-dependent costs per domain). Use `"auto"` to compute automatically. Default = `"auto"`. |
@@ -62,7 +62,7 @@ result = compute_cat_distance_matrix(
 
 The function performs the following steps:
 
-1. **Validation:** Checks that all domains have the same number of sequences and that the separator doesn't appear in any domain's alphabet.
+1. **Validation:** Checks multidomain alignment assumptions (same individuals in the same order across domains, observed over comparable time points) and ensures the separator doesn't appear in any domain's alphabet.
 
 2. **Building multidomain sequences:** For each time point, combines states from all domains into composite states. For example, if at time T1 domain 1 has state "A" and domain 2 has state "B", the multidomain state becomes "A+B" (using the default separator).
 
@@ -72,8 +72,9 @@ The function performs the following steps:
    - Applies domain weights if specified.
 
 4. **Computing CAT costs:**
-   - **Substitution costs:** For any two multidomain states, computes the cost as the sum (or mean, if `link="mean"`) of substitution costs across all domains.
-   - **Indel costs:** Computes as the sum (or mean) of indel costs from all domains for the states being inserted or deleted.
+   - **Substitution costs:** In the original CAT formulation, multidomain substitution costs are computed as a weighted sum of domain-level substitution costs.
+   - **Indel costs:** Multidomain indel costs are also obtained through the same additive weighted construction from domain-level indel costs.
+   - **`link="mean"` option in Sequenzo:** `link="mean"` provides a rescaled additive variant that averages additive costs across domains, which can help keep the cost scale comparable as the number of domains changes.
 
 5. **Returning results:** Depending on the `what` parameter:
    - `"MDseq"`: Returns the multidomain sequences as a NumPy array.
@@ -126,8 +127,8 @@ print(md_sequences)
 Output:
 
 ```
-[['Employed' 'Employed' 'Unemployed']
- ['Employed+Single' 'Unemployed+Married' 'Unemployed+Married']
+[['Employed+Single' 'Employed+Single' 'Unemployed+Married']
+ ['Employed+Married' 'Unemployed+Married' 'Unemployed+Married']
  ['Unemployed+Single' 'Employed+Married' 'Employed+Married']]
 ```
 
@@ -219,21 +220,21 @@ distance_matrix = compute_cat_distance_matrix(
 
 With these weights, changes in employment status will contribute twice as much to the total substitution cost as changes in family status.
 
-### 6. Using mean instead of sum
+### 6. Using the rescaled `link="mean"` variant
 
-To average costs across domains instead of summing them:
+To use the rescaled additive variant in Sequenzo:
 
 ```python
 distance_matrix = compute_cat_distance_matrix(
     [seqdata_employment, seqdata_family],
     method="OM",
     sm=["TRATE", "TRATE"],
-    link="mean",  # Average costs instead of summing
+    link="mean",  # Rescale additive costs by averaging across domains
     what="diss"
 )
 ```
 
-This can be useful when you want costs to be on a similar scale regardless of how many domains you're combining.
+This can be useful when you want costs to remain on a comparable scale as the number of domains changes.
 
 ## Understanding the Output
 
@@ -263,7 +264,7 @@ Returns a pandas DataFrame with pairwise distances between all sequences. The in
 
 4. **Assumption behind CAT:** CAT imposes an additive cost structure across domains. As discussed by Ritschard et al. (2023), this implies an independence assumption for state occurrences across domains at a given time point. Use CAT when this modeling assumption is acceptable for your research question.
 
-5. **Performance:** Computing distances for multidomain sequences can be computationally intensive, especially with many domains and many sequences. The multidomain alphabet grows combinatorially with the number of domains and states per domain.
+5. **Performance:** Computing distances for multidomain sequences can be computationally intensive, especially with many domains and many sequences. The expanded multidomain alphabet can grow quickly as the number of domains and states increases, especially when many state combinations are observed.
 
 ## Author
 

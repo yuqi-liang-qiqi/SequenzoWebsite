@@ -2,9 +2,9 @@
 
 `compute_dat_distance_matrix()` computes a combined distance matrix for multidomain sequence analysis using the Distance Additive Trick (DAT). Unlike CAT (Cost Additive Trick), which derives multidomain substitution/indel costs by additively combining domain costs, DAT simply adds together the distance matrices computed separately for each domain.
 
-This approach is simpler and more computationally efficient than CAT, because it doesn't require building multidomain sequences or computing new substitution costs. It assumes that the total dissimilarity between two individuals across multiple domains is the sum of their dissimilarities in each domain separately.
+This approach is conceptually simpler than CAT because it does not require building multidomain substitution and indel costs. It assumes that the total dissimilarity between two individuals across multiple domains is a linear combination (typically a sum) of their dissimilarities in each domain separately.
 
-Central point (Ritschard et al., 2023): DAT assumes independence of domain-level dissimilarities across domains. CAT assumes independence in domain state occurrences through additive costs. IDCD differs because it does not derive multidomain dissimilarities from domain costs (CAT) or from domain distances (DAT), and therefore does not impose these additive independence assumptions.
+Central point (Ritschard et al., 2023): DAT assumes that between-individual dissimilarities in one domain can be added independently of between-individual dissimilarities in other domains. CAT assumes independence in domain state occurrences through additive costs. IDCD differs because it does not derive multidomain dissimilarities from domain costs (CAT) or from domain distances (DAT), and therefore does not impose these additive independence assumptions.
 
 ## Function Usage
 
@@ -27,7 +27,7 @@ distance_matrix = compute_dat_distance_matrix(
 
 | Parameter | Required | Type | Description |
 | --------- | -------- | ---- | ----------- |
-| `sequence_objects` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain you want to combine. Must contain at least two domains. All domains must have the same number of sequences and the same IDs in the same order. |
+| `sequence_objects` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain you want to combine. Must contain at least two domains. All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. |
 | `method_params` | ✓ | `list[dict]` | A list of parameter dictionaries, one for each domain. Each dictionary contains parameters that will be passed directly to `get_distance_matrix()` for that domain. Must have the same length as `sequence_objects`. |
 
 ## What It Does
@@ -180,9 +180,9 @@ Both DAT and CAT (`compute_cat_distance_matrix()`) combine distances across mult
 
 **DAT (Distance Additive Trick):**
 - Simply adds domain-specific distance matrices
-- More computationally efficient
+- Conceptually simpler
 - Doesn't consider interactions between domains
-- Faster to compute
+- Avoids constructing multidomain substitution and indel costs
 - Relies on an independence assumption between domain-level dissimilarities
 
 **CAT (Cost Additive Trick):**
@@ -199,7 +199,7 @@ In practice:
 
 ## Important Notes
 
-1. **Same individuals required:** All domains must have the same individuals (same IDs in the same order). The function assumes this and doesn't explicitly check, so make sure your data is aligned.
+1. **Data alignment is critical:** All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. The function assumes this alignment, so verify it before computing DAT distances.
 
 2. **Parameter matching:** The number of dictionaries in `method_params` must exactly match the number of domains in `sequence_objects`. Each dictionary should contain valid parameters for `get_distance_matrix()`.
 
@@ -209,7 +209,7 @@ In practice:
 
 5. **Method flexibility:** Each domain can use a completely different distance computation method. This flexibility allows you to choose the most appropriate method for each domain's characteristics.
 
-6. **Computational efficiency:** DAT is more efficient than CAT because it doesn't need to build composite states or compute new substitution cost matrices. However, it also provides less modeling flexibility.
+6. **Computational efficiency:** DAT avoids constructing multidomain substitution and indel costs, which is often convenient. However, it still requires computing and storing one distance matrix per domain, so it is not always cheaper in large samples or with many domains.
 
 ## Author
 
