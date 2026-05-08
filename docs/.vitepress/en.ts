@@ -414,47 +414,110 @@ export const en = defineConfig({
           }
         ]
       },
+      // {
+      //   text: 'Discrepancy Analysis',
+      //   collapsed: true,
+      //   items: [
+      //     {
+      //       text: 'Introduction',
+      //       link: '/en/discrepancy-analysis/introduction'
+      //     },
+      //     {
+      //       text: 'Conceptual Guide',
+      //       link: '/en/discrepancy-analysis/conceptual-guide'
+      //     },
+      //     {
+      //       text: 'Distance-Based Association',
+      //       link: '/en/discrepancy-analysis/get_group_distance_association'
+      //     },
+      //     {
+      //       text: 'Differences by Position',
+      //       link: '/en/discrepancy-analysis/get_group_differences_by_position'
+      //     },
+      //     {
+      //       text: 'Permutation Tests',
+      //       link: '/en/discrepancy-analysis/permutation-tests'
+      //     },
+      //     {
+      //       text: 'Distance Tree',
+      //       link: '/en/discrepancy-analysis/build_distance_tree'
+      //     },
+      //     {
+      //       text: 'Sequence Tree',
+      //       link: '/en/discrepancy-analysis/build_sequence_tree'
+      //     }
+      //   ]
+      // },
       {
         text: 'Group Comparison',
         collapsed: true,
         items: [
-          { text: 'Introduction', link: '/en/group-comparison/introduction' },
           {
-            text: 'Core Concept (Discrepancy-Based)',
-            collapsed: true,
-            items: [
-              { text: 'get_group_distance_association()', link: '/en/group-comparison/get_group_distance_association' },
-              { text: 'get_group_differences_by_position()', link: '/en/group-comparison/get_group_differences_by_position' },
-              { text: 'Permutation Tests', link: '/en/group-comparison/permutation-tests' },
-            ],
+            text: 'Conceptual Guide: BIC and LRT',
+            link: '/en/group-comparison/bic-lrt-conceptual-guide'
           },
           {
-            text: 'Tree Extension',
-            collapsed: true,
-            items: [
-              { text: 'Distance Tree (build_distance_tree)', link: '/en/group-comparison/build_distance_tree' },
-              { text: 'Sequence Tree (build_sequence_tree)', link: '/en/group-comparison/build_sequence_tree' },
-            ],
+            text: 'Overall Group Differences',
+            link: '/en/group-comparison/get_group_differences_overall'
           },
           {
-            text: 'BIC / LRT',
-            collapsed: true,
-            items: [
-              { text: 'get_group_differences_overall()', link: '/en/group-comparison/get_group_differences_overall' },
-              { text: 'get_lrt_test()', link: '/en/group-comparison/get_lrt_test' },
-              { text: 'get_bic_test()', link: '/en/group-comparison/get_bic_test' },
-            ],
+            text: 'Likelihood-Ratio Test',
+            link: '/en/group-comparison/get_lrt_test'
           },
           {
-            text: 'KOB Decomposition',
-            collapsed: true,
-            items: [
-              { text: 'get_kob_decomposition()', link: '/en/group-comparison/get_kob_decomposition' },
-              { text: 'get_oaxaca_blinder_decomposition()', link: '/en/group-comparison/get_oaxaca_blinder_decomposition' },
-            ],
-          },
+            text: 'Bayesian Information Criterion',
+            link: '/en/group-comparison/get_bic_test'
+          }
         ]
       },
+      {
+        text: 'Sequence Feature Selection',
+        collapsed: true,
+        items: [
+          {
+            text: 'Introduction',
+            link: '/en/sequence-feature-selection/introduction'
+          },
+          {
+            text: 'Conceptual Guide',
+            link: '/en/sequence-feature-selection/conceptual-guide'
+          },
+          {
+            text: 'Extract Sequence Features',
+            link: '/en/sequence-feature-selection/extract-sequence-features'
+          },
+          {
+            text: 'Select Relevant Features',
+            link: '/en/sequence-feature-selection/select-relevant-features'
+          },
+          {
+            text: 'Interpret Selected Features',
+            link: '/en/sequence-feature-selection/interpret-selected-features'
+          }
+        ]
+      },
+      // {
+      //   text: 'Inequality Decomposition',
+      //   collapsed: true,
+      //   items: [
+      //     {
+      //       text: 'Introduction',
+      //       link: '/en/inequality-decomposition/introduction'
+      //     },
+      //     {
+      //       text: 'Conceptual Guide: SA–KOB Decomposition',
+      //       link: '/en/inequality-decomposition/sa-kob-conceptual-guide'
+      //     },
+      //     {
+      //       text: 'KOB Decomposition',
+      //       link: '/en/inequality-decomposition/get_kob_decomposition'
+      //     },
+      //     {
+      //       text: 'Oaxaca–Blinder Decomposition',
+      //       link: '/en/inequality-decomposition/get_oaxaca_blinder_decomposition'
+      //     }
+      //   ]
+      // },
       {
         text: 'Big Data Tools',
         collapsed: true,
