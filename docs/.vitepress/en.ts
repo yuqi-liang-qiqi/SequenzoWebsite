@@ -470,32 +470,32 @@ export const en = defineConfig({
           }
         ]
       },
-      {
-        text: 'Sequence Feature Selection',
-        collapsed: true,
-        items: [
-          {
-            text: 'Introduction',
-            link: '/en/sequence-feature-selection/introduction'
-          },
-          {
-            text: 'Conceptual Guide',
-            link: '/en/sequence-feature-selection/conceptual-guide'
-          },
-          {
-            text: 'Extract Sequence Features',
-            link: '/en/sequence-feature-selection/extract-sequence-features'
-          },
-          {
-            text: 'Select Relevant Features',
-            link: '/en/sequence-feature-selection/select-relevant-features'
-          },
-          {
-            text: 'Interpret Selected Features',
-            link: '/en/sequence-feature-selection/interpret-selected-features'
-          }
-        ]
-      },
+      // {
+      //   text: 'Sequence Feature Selection',
+      //   collapsed: true,
+      //   items: [
+      //     {
+      //       text: 'Introduction',
+      //       link: '/en/sequence-feature-selection/introduction'
+      //     },
+      //     {
+      //       text: 'Conceptual Guide',
+      //       link: '/en/sequence-feature-selection/conceptual-guide'
+      //     },
+      //     {
+      //       text: 'Extract Sequence Features',
+      //       link: '/en/sequence-feature-selection/extract-sequence-features'
+      //     },
+      //     {
+      //       text: 'Select Relevant Features',
+      //       link: '/en/sequence-feature-selection/select-relevant-features'
+      //     },
+      //     {
+      //       text: 'Interpret Selected Features',
+      //       link: '/en/sequence-feature-selection/interpret-selected-features'
+      //     }
+      //   ]
+      // },
       // {
       //   text: 'Inequality Decomposition',
       //   collapsed: true,
