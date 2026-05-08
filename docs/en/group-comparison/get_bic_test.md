@@ -1,99 +1,87 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2026-05-07 20:53:18
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-05-07 20:53:18
- * @FilePath: /SequenzoWebsite/docs/en/group-comparison/get_bic_test.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `get_bic_test()`
 
-Convenience function for users who only need BIC/Bayes-factor outputs.
+`get_bic_test()` is the BIC-only wrapper for two-group sequence comparison.
 
 ## Function Usage
 
 ```python
-get_bic_test(seqdata=seqdata, group=group)
+get_bic_test(
+    seqdata,
+    seqdata2=None,
+    group=None,
+    set_var=None,
+    s=100,
+    seed=36963,
+    squared="LRTonly",
+    weighted=True,
+    opt=None,
+    BFopt=None,
+    method="OM",
+    **kwargs
+)
 ```
+
+## TraMineR Parameter Mapping
+
+- `seqdata`, `seqdata2`, `group`, `set_var` -> TraMineRextras `seqBIC` data/group inputs
+- `s`, `seed`, `squared`, `weighted`, `opt`, `BFopt` -> `seqBIC` control arguments
 
 ## Entry Parameters
 
-| Parameter | Required | Type | Default | Typical Range / Options | Description |
-| --- | --- | --- | --- | --- | --- |
-| `seqdata` | ✓ | SequenceData/DataFrame | - | one dataset/list | First dataset or full dataset. |
-| `seqdata2` | ✗ | SequenceData/DataFrame | `None` | second dataset | Optional second dataset. |
-| `group` | ✗ | array-like | `None` | exactly two groups | Group labels for one-dataset mode. |
-| `set_var` | ✗ | array-like | `None` | cohort/strata labels | Optional stratification variable. |
-| `s` | ✗ | int | `100` | `0` or positive int | Bootstrap sample size. |
-| `seed` | ✗ | int | `36963` | integer | Random seed. |
-| `method` | ✗ | str | `"OM"` | `"OM"`, `"LCS"`, `"HAM"`, ... | Distance method. |
-| Other kwargs | ✗ | mixed | - | distance options | Extra parameters forwarded to comparison engine. |
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | SequenceData / DataFrame / list | Main input sequences. |
+| `seqdata2` | ✗ | SequenceData / DataFrame / list / None | Optional second sequence input. |
+| `group` | ✗ | array-like / None | Two-group labels used when splitting one dataset. |
+| `set_var` | ✗ | array-like / None | Optional stratification variable. |
+| `s` | ✗ | int | Resampling size (`0` means full comparison). |
+| `seed` | ✗ | int | Random seed. |
+| `squared` | ✗ | bool / str | If string, only `"LRTonly"` is valid. |
+| `weighted` | ✗ | bool / str | Use weights (`True`/`False`) or `"by.group"`. |
+| `opt` | ✗ | int / None | Internal sampling option. |
+| `BFopt` | ✗ | int / None | Bayes-factor output option in multi-sample settings. |
+| `method` | ✗ | str | Distance method (for example `"OM"`). |
+| `**kwargs` | ✗ | any | Extra distance-method arguments. |
 
-## What It Does
+## What It Returns
 
-- Delegates to `get_group_differences_overall(stat="BIC")`.
-- Returns delta BIC and Bayes-factor style evidence summaries.
-- Supports the same one-dataset or two-dataset workflows.
+A NumPy array with BIC-side outputs:
 
-## Notes and Tips
+- `Delta BIC`
+- Bayes-factor column(s), depending on sampling mode and `BFopt`
 
-- Use BIC when you want model-selection style evidence strength.
-- BIC and LRT are often reported together in methodological papers.
+If `set_var` is provided, each row corresponds to one stratum.
 
-## Examples
-
-### 1) Minimal
+## Example
 
 ```python
 from sequenzo.group_comparison import get_bic_test
-bic = get_bic_test(seqdata=seqdata, group=group)
-```
 
-### 2) Standard
-
-```python
 bic = get_bic_test(
     seqdata=seqdata,
-    group=group,
-    method="LCS",
-    s=100,
+    group=df["group"],
+    method="OM",
+    indel=1,
+    sm="CONSTANT"
 )
+
 print(bic)
 ```
 
-### 3) Advanced (stratified BIC)
+## R Counterpart
 
-```python
-bic = get_bic_test(
-    seqdata=seqdata,
-    group=group,
-    set_var=cohort,
-)
-```
+- **Closest R function:** TraMineRextras `seqBIC`
+- **Mapping note:** BIC-only wrapper of the same two-group comparison engine.
 
-### 4) Common pitfall
+## Notes
 
-```python
-# Wrong: more than two groups in group labels
-# get_bic_test(seqdata=seqdata, group=three_groups)
-```
-
-## TraMineR Mapping
-
-- **Closest R function:** TraMineRextras `seqBIC()`
-
-## Key Features
-
-- Direct BIC/Bayes-factor interface.
-- Works for one-dataset or two-dataset comparisons.
-- Useful for evidence-strength reporting.
+- Internally this function calls `get_group_differences_overall(..., stat="BIC")`.
+- In multi-sample mode (`s > 0`), returned Bayes-factor columns depend on `BFopt`.
+- The same input constraints apply: exactly two groups among valid cases.
 
 ## Authors
 
-- Code: Yuqi Liang
-- Documentation: Yuqi Liang
+Code: Yuqi Liang
 
-## References
-
-Liao, T. F., & Fasang, A. E. (2021). Comparing groups of life-course sequences using the Bayesian information criterion and the likelihood-ratio test. Sociological Methodology, 51(1), 44-85.
+Documentation: Yuqi Liang
 

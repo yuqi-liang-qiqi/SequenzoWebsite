@@ -453,8 +453,12 @@ export const en = defineConfig({
         collapsed: true,
         items: [
           {
-            text: 'Conceptual Guide: BIC and LRT',
+            text: 'Conceptual Guide',
             link: '/en/group-comparison/bic-lrt-conceptual-guide'
+          },
+          {
+            text: 'Sequenzo and TraMineR Mapping',
+            link: '/en/group-comparison/traminer-function-mapping'
           },
           {
             text: 'Overall Group Differences',
@@ -471,7 +475,7 @@ export const en = defineConfig({
         ]
       },
       // {
-      //   text: 'Sequence Feature Selection',
+      //   text: 'Sequence Feature Extration and Selection',
       //   collapsed: true,
       //   items: [
       //     {

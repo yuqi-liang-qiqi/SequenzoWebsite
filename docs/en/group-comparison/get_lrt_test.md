@@ -1,94 +1,86 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2026-05-07 20:51:57
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-05-07 20:55:06
- * @FilePath: /SequenzoWebsite/docs/en/group-comparison/get_lrt_test.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `get_lrt_test()`
 
-Convenience function for users who only need LRT results.
+`get_lrt_test()` is the LRT-only wrapper for two-group sequence comparison.
 
 ## Function Usage
 
 ```python
-get_lrt_test(seqdata=seqdata, group=group)
+get_lrt_test(
+    seqdata,
+    seqdata2=None,
+    group=None,
+    set_var=None,
+    s=100,
+    seed=36963,
+    squared="LRTonly",
+    weighted=True,
+    opt=None,
+    BFopt=None,
+    method="OM",
+    **kwargs
+)
 ```
+
+## TraMineR Parameter Mapping
+
+- `seqdata`, `seqdata2`, `group`, `set_var` -> TraMineRextras `seqLRT` data/group inputs
+- `s`, `seed`, `squared`, `weighted`, `opt` -> `seqLRT` control arguments
 
 ## Entry Parameters
 
-| Parameter | Required | Type | Default | Typical Range / Options | Description |
-| --- | --- | --- | --- | --- | --- |
-| `seqdata` | ✓ | SequenceData/DataFrame | - | one dataset/list | First dataset or full dataset. |
-| `seqdata2` | ✗ | SequenceData/DataFrame | `None` | second dataset | Optional second dataset. |
-| `group` | ✗ | array-like | `None` | exactly two groups | Group labels for one-dataset mode. |
-| `set_var` | ✗ | array-like | `None` | cohort/strata labels | Optional stratification variable. |
-| `s` | ✗ | int | `100` | `0` or positive int | Bootstrap sample size. |
-| `seed` | ✗ | int | `36963` | integer | Random seed. |
-| `method` | ✗ | str | `"OM"` | `"OM"`, `"LCS"`, `"HAM"`, ... | Distance method. |
-| Other kwargs | ✗ | mixed | - | distance options | Extra parameters forwarded to comparison engine. |
+| Parameter | Required | Type | Description |
+| --- | --- | --- | --- |
+| `seqdata` | ✓ | SequenceData / DataFrame / list | Main input sequences. |
+| `seqdata2` | ✗ | SequenceData / DataFrame / list / None | Optional second sequence input. |
+| `group` | ✗ | array-like / None | Two-group labels used when splitting one dataset. |
+| `set_var` | ✗ | array-like / None | Optional stratification variable. |
+| `s` | ✗ | int | Resampling size (`0` means full comparison). |
+| `seed` | ✗ | int | Random seed. |
+| `squared` | ✗ | bool / str | If string, only `"LRTonly"` is valid. |
+| `weighted` | ✗ | bool / str | Use weights (`True`/`False`) or `"by.group"`. |
+| `opt` | ✗ | int / None | Internal sampling option. |
+| `BFopt` | ✗ | int / None | Reserved Bayes-factor option passed through the engine. |
+| `method` | ✗ | str | Distance method (for example `"OM"`). |
+| `**kwargs` | ✗ | any | Extra distance-method arguments. |
 
-## What It Does
+## What It Returns
 
-- Delegates to `get_group_differences_overall(stat="LRT")`.
-- Returns only LRT and p-value columns.
-- Keeps the same input flexibility as overall comparison.
+A NumPy array with two columns:
 
-## Notes and Tips
+- `LRT`
+- `p-value`
 
-- Use this when BIC is not part of your reporting plan.
-- Keep `method` consistent across analyses for comparability.
+If `set_var` is provided, each row corresponds to one stratum.
 
-## Examples
-
-### 1) Minimal
+## Example
 
 ```python
 from sequenzo.group_comparison import get_lrt_test
-lrt = get_lrt_test(seqdata=seqdata, group=group)
-```
 
-### 2) Standard
-
-```python
 lrt = get_lrt_test(
     seqdata=seqdata,
-    group=group,
-    method="LCS",
-    s=100,
+    group=df["group"],
+    method="OM",
+    indel=1,
+    sm="CONSTANT"
 )
+
 print(lrt)
 ```
 
-### 3) Advanced (two explicit datasets)
+## R Counterpart
 
-```python
-lrt = get_lrt_test(seqdata=seqdata_A, seqdata2=seqdata_B, method="OM")
-```
+- **Closest R function:** TraMineRextras `seqLRT`
+- **Mapping note:** LRT-only wrapper of the same two-group comparison engine.
 
-### 4) Common pitfall
+## Notes
 
-```python
-# Wrong: both seqdata2 and group are missing
-# get_lrt_test(seqdata=seqdata)
-```
-
-## TraMineR Mapping
-
-- **Closest R function:** TraMineRextras `seqLRT()`
-
-## References
-
-Liao, T. F., & Fasang, A. E. (2021). Comparing groups of life-course sequences using the Bayesian information criterion and the likelihood-ratio test. Sociological Methodology, 51(1), 44-85.
-
-## Key Features
-
-- Direct LRT-only interface.
-- Same flexibility as `get_group_differences_overall`.
-- Suitable for hypothesis-focused reports.
+- Internally this function calls `get_group_differences_overall(..., stat="LRT")`.
+- The same input constraints apply: exactly two groups among valid cases.
+- `group` and `seqdata2` cannot both be missing.
 
 ## Authors
 
-- Code: Yuqi Liang
-- Documentation: Yuqi Liang
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang
