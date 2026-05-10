@@ -1,6 +1,6 @@
 # `get_bic_test()`
 
-`get_bic_test()` is the BIC-only wrapper for two-group sequence comparison.
+`get_bic_test()` compares two predefined sequence groups and returns only BIC-related results, not the LRT.
 
 ## Function Usage
 
@@ -75,7 +75,7 @@ print(bic)
 
 ## Notes
 
-- Internally this function calls `get_group_differences_overall(..., stat="BIC")`.
+- Internally this function calls `get_group_differences(..., stat="BIC")`.
 - In multi-sample mode (`s > 0`), returned Bayes-factor columns depend on `BFopt`.
 - The same input constraints apply: exactly two groups among valid cases.
 
@@ -85,3 +85,6 @@ Code: Yuqi Liang
 
 Documentation: Yuqi Liang
 
+## References
+
+Liao, T. F., & Fasang, A. E. (2021). Comparing groups of life-course sequences using the Bayesian information criterion and the likelihood-ratio test. Sociological Methodology, 51(1), 44-85.

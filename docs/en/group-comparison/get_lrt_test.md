@@ -1,6 +1,6 @@
 # `get_lrt_test()`
 
-`get_lrt_test()` is the LRT-only wrapper for two-group sequence comparison.
+`get_lrt_test()` compares two predefined sequence groups and returns only the likelihood ratio test (LRT), not BIC.
 
 ## Function Usage
 
@@ -75,7 +75,7 @@ print(lrt)
 
 ## Notes
 
-- Internally this function calls `get_group_differences_overall(..., stat="LRT")`.
+- Internally this function calls `get_group_differences(..., stat="LRT")`.
 - The same input constraints apply: exactly two groups among valid cases.
 - `group` and `seqdata2` cannot both be missing.
 
@@ -84,3 +84,7 @@ print(lrt)
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## References
+
+Liao, T. F., & Fasang, A. E. (2021). Comparing groups of life-course sequences using the Bayesian information criterion and the likelihood-ratio test. Sociological Methodology, 51(1), 44-85.

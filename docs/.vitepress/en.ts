@@ -454,15 +454,15 @@ export const en = defineConfig({
         items: [
           {
             text: 'Conceptual Guide',
-            link: '/en/group-comparison/bic-lrt-conceptual-guide'
+            link: '/en/group-comparison/conceptual-guide'
           },
           {
-            text: 'Sequenzo and TraMineR Mapping',
+            text: 'Sequenzo and TraMineR Extra Mapping',
             link: '/en/group-comparison/traminer-function-mapping'
           },
           {
-            text: 'Overall Group Differences',
-            link: '/en/group-comparison/get_group_differences_overall'
+            text: 'Group Differences',
+            link: '/en/group-comparison/get_group_differences'
           },
           {
             text: 'Likelihood-Ratio Test',

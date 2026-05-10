@@ -27,3 +27,7 @@ result = get_precarity_index(seqdata, otto=0.2, a=1.0, b=1.2, method="TRATEDSS")
 ## Author
 
 Code and documentation: Yuqi Liang
+
+## References
+
+Ritschard, G. (2023), "Measuring the nature of individual sequences", Sociological Methods and Research, 52(4), 2016-2049. doi:10.1177/00491241211036156.

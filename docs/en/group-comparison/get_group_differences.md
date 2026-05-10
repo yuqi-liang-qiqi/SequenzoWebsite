@@ -1,11 +1,11 @@
-# `get_group_differences_overall()`
+# `get_group_differences()`
 
-`get_group_differences_overall()` compares two predefined sequence groups at the whole-sequence level.
+`get_group_differences()` compares two predefined sequence groups at the whole-sequence level using LRT and/or BIC.
 
 ## Function Usage
 
 ```python
-get_group_differences_overall(
+get_group_differences(
     seqdata,
     seqdata2=None,
     group=None,
@@ -47,20 +47,20 @@ get_group_differences_overall(
 
 ## What It Returns
 
-A NumPy array of test results:
+A NumPy array of numeric results (column layout follows the internal table built before return):
 
 - If `stat="LRT"`: `LRT`, `p-value`
-- If `stat="BIC"`: `Delta BIC`, Bayes-factor output(s)
-- If `stat="all"`: both LRT and BIC parts
+- If `stat="BIC"`: `Delta BIC`, Bayes-factor column(s)
+- If `stat="all"`: LRT columns plus BIC columns
 
-When `set_var` is used, rows correspond to strata.
+When resampling produces multiple subsamples (`multsple`), extra Bayes-factor columns may appear depending on `BFopt` (see source). When `set_var` is used, rows correspond to strata.
 
 ## Example
 
 ```python
-from sequenzo.group_comparison import get_group_differences_overall
+from sequenzo.group_comparison import get_group_differences
 
-result = get_group_differences_overall(
+result = get_group_differences(
     seqdata=seqdata,
     group=df["group"],
     stat="all",
@@ -80,7 +80,7 @@ print(result)
 ## Notes
 
 - `group` and `seqdata2` cannot both be `None`.
-- The function currently supports only two groups.
+- Only two groups are supported among valid cases.
 - Missing values in `group` (or in `set_var` when used) are removed before testing.
 
 ## Authors
@@ -89,3 +89,6 @@ Code: Yuqi Liang
 
 Documentation: Yuqi Liang
 
+## References
+
+Liao, T. F., & Fasang, A. E. (2021). Comparing groups of life-course sequences using the Bayesian information criterion and the likelihood-ratio test. Sociological Methodology, 51(1), 44-85.
