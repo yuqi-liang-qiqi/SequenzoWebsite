@@ -12,7 +12,7 @@ For TraMineR users, this matches the TraMineRextras `seqCompare` workflow (overa
 
 | Sequenzo function | TraMineR counterpart | Notes |
 | --- | --- | --- |
-| [`bic-lrt-conceptual-guide`](./bic-lrt-conceptual-guide) | `seqCompare` methodological framework | Conceptual explanation of one-group vs two-group comparison and interpretation of LRT/BIC evidence. |
+| [`conceptual-guide`](./conceptual-guide) | `seqCompare` methodological framework | Conceptual explanation of one-group vs two-group comparison and interpretation of LRT/BIC evidence. |
 | [`get_group_differences`](./get_group_differences) | `seqCompare` | Main overall two-group comparison interface; returns LRT/BIC outputs depending on `stat`. |
 | [`get_lrt_test`](./get_lrt_test) | `seqLRT` | LRT-focused wrapper built on the same overall comparison engine. |
 | [`get_bic_test`](./get_bic_test) | `seqBIC` | BIC-focused wrapper built on the same overall comparison engine. |
