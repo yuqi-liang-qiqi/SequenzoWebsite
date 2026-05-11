@@ -80,7 +80,7 @@ get_distance_matrix(
 |-----------|----------|------|--------------|
 | `seqdata` | ✓ | SequenceData | Your state-sequence object. |
 | `method` | ✓ | str | One of: `OM`, `OMspell`, `OMloc`, `OMslen`, `OMspellNew`, `OMtspell`, `OMstran`, `TWED`, `HAM`, `DHD`, `LCS`, `LCP`, `RLCP`, `LCPspell`, `RLCPspell`, `LCPmst`, `RLCPmst`, `LCPprod`, `RLCPprod`, `NMS`, `NMSMST`, `SVRspell`, `CHI2`, `EUCLID`. |
-| `refseq` | ✗ | int or list | **int:** index of a reference sequence; distances from all sequences to this one. **list `[A, B]`:** two index lists; returns `|A|×|B|` distance table (e.g., group A vs. group B). If `None`, computes all pairwise distances. |
+| `refseq` | ✗ | int or list | **int:** index of a reference sequence; distances from all sequences to this one. **list `[A, B]`:** two index lists; returns `|A|×|B|` distance table (e.g., group A vs. group B). Same two-list form as TraMineR `seqdist` since v2.2-2 (June 2021). If `None`, computes all pairwise distances. |
 | `norm` | ✗ | str | `"auto"`, `"none"`, `"maxlength"`, `"gmean"`, `"maxdist"`, `"YujianBo"`. `"auto"` picks a sensible default per method. CHI2/EUCLID only accept `"auto"` or `"none"`. |
 | `full_matrix` | ✗ | bool | If `True` (and `refseq=None`): return full `n×n` DataFrame. If `False`: return condensed 1D array (for clustering). Ignored when `refseq` is provided. |
 | `weighted` | ✗ | bool | When building `sm` from data (e.g., `"TRATE"`), respect sequence weights. |

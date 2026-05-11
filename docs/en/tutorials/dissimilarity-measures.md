@@ -183,19 +183,19 @@ But sometimes you only want to compare two groups (e.g., men vs. women, treated 
 
 > ⚡ **About the `refseq` parameter**
 >
-> The parameter `refseq` already exists in TraMineR (the R library for sequence analysis). Its original meaning is reference sequence (as the name indicates):
+> The parameter `refseq` comes from TraMineR (the R library for sequence analysis). It means reference sequence (as the name indicates):
 >
-> * If `refseq` is a single sequence (or its index), distances are computed **from all sequences to this reference.
->
-> In Sequenzo, we extend this idea:
->
-> * If `refseq` is a list of two sets of indices `[A, B]`, the function computes all pairwise distances between the two groups.
+> * If `refseq` is a single sequence (or its index), distances are computed from all sequences to this reference.
+> * Since TraMineR v2.2-2 (June 2021), `refseq` can also be a list of two sets of indices `[A, B]`. The function then computes all pairwise distances between the two groups.
 >
 >   * The output is a rectangular `|A| × |B|` distance table.
 >   * This is especially useful when directly comparing two populations (e.g., treated vs. control, men vs. women).
+>
+> Sequenzo follows the same `refseq` behavior as TraMineR.
 
 ## References
 
 Studer, Matthias, and Gilbert Ritschard. "What matters in differences between life trajectories: A comparative review of sequence dissimilarity measures." Journal of the Royal Statistical Society Series A: Statistics in Society 179, no. 2 (2016): 481-511.
 
 *Author: Yuqi Liang*
+*Acknowledgements: We gratefully acknowledge Professor Gilbert Ritschard for his helpful comments and review suggestions.*
