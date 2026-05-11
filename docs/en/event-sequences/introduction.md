@@ -216,9 +216,3 @@ Modeling transitions or hazards -> with_event_history_analysis
 
 Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences (pp. 221–253). Routledge.
 
-
-
-
-最后还有一个小提醒：你代码 docstring 里写 “full version would use prefix tree algorithm / simplified implementation”，如果当前公开代码确实只支持比较简化的 frequent subsequence search，那官网文档最好不要写得像完整复刻 TraMineR 的 `seqefsub()`。可以说 “TraMineR-inspired” 或 “mirrors the main workflow”，避免用户用大规模复杂模式时预期过高。
-
-#

@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2026-05-06 11:19:27
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-05-06 11:19:27
- * @FilePath: /SequenzoWebsite/docs/en/visualization/traminer-function-mapping.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Visualization Functions: Sequenzo and TraMineR Mapping
 
 This page maps Sequenzo visualization functions to their closest TraMineR (or TraMineRextras) counterparts for users migrating from R.
@@ -24,14 +16,14 @@ Some rows are marked **No direct one-function equivalent**. This simply means th
 | --- | --- | --- |
 | [`plot_sequence_index`](./index-plot) | `seqiplot` / `seqIplot` | Direct conceptual match (index plot of sequences). |
 | [`plot_state_distribution`](./state-distribution-plot) | `seqdplot` | Direct conceptual match (state distribution over time). |
-| [`plot_mean_time`](./plot_mean_time) | `seqmtplot` | Direct conceptual match (mean time in states). |
-| [`plot_modal_state`](./plot_modal_state) | `seqmsplot` | Direct conceptual match (modal state sequence plot). |
-| [`plot_most_frequent_sequences`](./plot_most_frequent_sequences) | `seqfplot` | Closest match (top frequent sequences with frequencies). |
-| [`plot_relative_frequency`](./plot_relative_frequency) | `seqplot(type="rf")` (TraMineR) / related RF tooling in TraMineRextras | Conceptually aligned with relative-frequency style visualization. |
-| [`plot_single_medoid`](./plot_single_medoid) | No direct one-function equivalent | Closest TraMineR workflow is `seqrep` + `seqrplot`, then choose one medoid manually. |
-| [`plot_transition_matrix`](./plot_transition_matrix) | `seqtrate` (matrix computation) | TraMineR computes transition rates; Sequenzo also provides a ready heatmap plot. |
-| [`plot_cross_sectional_characteristics`](./plot_cross_sectional_characteristics) | `seqHtplot` (and `seqstatd` for underlying distribution stats) | Cross-sectional entropy-over-time view is conceptually aligned. |
-| [`plot_longitudinal_characteristics`](./plot_longitudinal_characteristics) | No direct one-function equivalent | Usually combined from `seqtransn`, `seqient`, `seqST`, `seqici` plus custom plotting. |
+| [`plot_mean_time`](./plot-mean-time) | `seqmtplot` | Direct conceptual match (mean time in states). |
+| [`plot_modal_state`](./plot-modal-state) | `seqmsplot` | Direct conceptual match (modal state sequence plot). |
+| [`plot_most_frequent_sequences`](./plot-most-frequent-sequences) | `seqfplot` | Closest match (top frequent sequences with frequencies). |
+| [`plot_relative_frequency`](./plot-relative-frequency) | `seqplot(type="rf")` (TraMineR) / related RF tooling in TraMineRextras | Conceptually aligned with relative-frequency style visualization. |
+| [`plot_single_medoid`](./plot-single-medoid) | No direct one-function equivalent | Closest TraMineR workflow is `seqrep` + `seqrplot`, then choose one medoid manually. |
+| [`plot_transition_matrix`](./plot-transition-matrix) | `seqtrate` (matrix computation) | TraMineR computes transition rates; Sequenzo also provides a ready heatmap plot. |
+| [`plot_cross_sectional_characteristics`](./plot-cross-sectional-characteristics) | `seqHtplot` (and `seqstatd` for underlying distribution stats) | Cross-sectional entropy-over-time view is conceptually aligned. |
+| [`plot_longitudinal_characteristics`](./plot-longitudinal-characteristics) | No direct one-function equivalent | Usually combined from `seqtransn`, `seqient`, `seqST`, `seqici` plus custom plotting. |
 
 ## Beginner Migration Tips
 

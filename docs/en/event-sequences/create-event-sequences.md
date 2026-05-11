@@ -1,6 +1,6 @@
-# `EventSequenceData` Constructors
+# `EventSequenceData()`
 
-Use `EventSequenceData` constructors to build event-sequence objects.
+Use `EventSequenceData()` constructors to build event-sequence objects, similar to [`SequenceData()`](../function-library/sequence-data.md) for state sequences. 
 
 ## Constructor Usage
 

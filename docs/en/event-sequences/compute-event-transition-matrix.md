@@ -56,3 +56,6 @@ Code: Yuqi Liang
 
 Documentation: Yuqi Liang
 
+## References
+
+Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.

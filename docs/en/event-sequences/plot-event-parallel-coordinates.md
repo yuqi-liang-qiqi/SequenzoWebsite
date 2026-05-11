@@ -93,3 +93,7 @@ plot_event_parallel_coordinates(
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang
+
+## Reference
+
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences (pp. 221–253). Routledge.

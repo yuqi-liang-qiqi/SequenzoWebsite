@@ -29,7 +29,7 @@ Each row represents an individual (a sequence), and each column represents a tim
 >[!TIP] Note:  
 > It is recommended to clean column names during preprocessing so that time points are pure numbers (`1, 2, 3, 4`) instead of `Y1–Y4`.  
 > Otherwise, in visualizations where the x-axis represents time, labels like `Y1, Y2, Y3, Y4` will appear, which may look less clean and less intuitive than `1–4`.
-> For further instruction on how to clean your time columns in the dataframe, please refer to [`Clean time columns`](/en/data-preprocessing/clean_time_columns)
+> For further instruction on how to clean your time columns in the dataframe, please refer to [`Clean time columns`](/en/data-preprocessing/clean-time-columns)
 
 2. Provide the full, ordered list of states in the exact order you want them to appear in encodings and legends (e.g., 'Low', 'Medium', 'High' — not shuffled).
 3. Optionally provide an ID column for stable indexing and clustering.  
@@ -75,7 +75,7 @@ sequence = SequenceData(
 | `time`                             | ✓        | list      | Ordered list of time column names.                      |
 | `states`                           | ✓        | list      | Ordered state space. Controls encoding & colors.        |
 | `labels`                           | ✗        | list      | Human-readable names, same length as `states`.          |
-| `id_col`                           | ✗        | str       | Column name for unique sequence IDs. If omitted, `data.index` is used. If your data lacks an ID column, create one with [`assign_unique_ids`](../data-preprocessing/assign_unique_ids.md). Required for clustering. |
+| `id_col`                           | ✗        | str       | Column name for unique sequence IDs. If omitted, `data.index` is used. If your data lacks an ID column, create one with [`assign_unique_ids`](../data-preprocessing/assign-unique-ids.md). Required for clustering. |
 | `weights`                          | ✗        | ndarray   | Row weights. Default = all ones.                        |
 | `start`                            | ✗        | int       | Starting index in summaries. Default = 1.               |
 | `custom_colors`                    | ✗        | list      | User-specified color list. Must match `states`.         |

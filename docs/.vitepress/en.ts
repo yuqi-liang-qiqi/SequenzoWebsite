@@ -41,23 +41,23 @@ export const en = defineConfig({
         // },
         {
           text: 'View Our Coding Tutorials Online',
-          link: '/en/basics/view_tutorials_online'
+          link: '/en/basics/view-tutorials-online'
         },
         {
           text: 'Converting Numeric Data to Categorical Data',
-          link: '/en/basics/if_you_have_numeric_data'
+          link: '/en/basics/if-you-have-numeric-data'
         },
         // {
         //   text: 'Typical workflow',
-        //   link: '/en/basics/typical_workflow'
+        //   link: '/en/basics/typical-workflow'
         // },
         // {
         //   text: 'How to Handle Missing Values',
-        //   link: '/en/basics/handle_missing_values'
+        //   link: '/en/basics/handle-missing-values'
         // },
         {
           text: 'Working with Weighted Data',
-          link: '/en/basics/weighted_data'
+          link: '/en/basics/weighted-data'
         }
           ]
       },
@@ -109,7 +109,7 @@ export const en = defineConfig({
           },
           {
             text: 'Sequence Analysis vs. Latent Class Analysis vs. Hidden Markov Models',
-            link: '/en/tutorials/sa_lca_and_hmm'
+            link: '/en/tutorials/sa-lca-and-hmm'
           }
         ]
       },
@@ -166,15 +166,15 @@ export const en = defineConfig({
           },
           {
             text: 'Assign Unique IDs',
-            link: '/en/data-preprocessing/assign_unique_ids'
+            link: '/en/data-preprocessing/assign-unique-ids'
           }, 
           {
             text: 'Clean Time Columns',
-            link: '/en/data-preprocessing/clean_time_columns'
+            link: '/en/data-preprocessing/clean-time-columns'
           },
           {
             text: 'Replace Cluster ID by Labels',
-            link: '/en/data-preprocessing/replace_cluster_id_by_labels'
+            link: '/en/data-preprocessing/replace-cluster-id-by-labels'
           }
         ]
       },
@@ -196,15 +196,15 @@ export const en = defineConfig({
           },
           {
             text: 'Hierarchical Clustering',
-            link: '/en/function-library/hierarchical_clustering'
+            link: '/en/function-library/hierarchical-clustering'
           },
           {
             text: 'Cluster Quality',
-            link: '/en/function-library/cluster_quality'
+            link: '/en/function-library/cluster-quality'
           },
           {
             text: 'Cluster Results',
-            link: '/en/function-library/cluster_results'
+            link: '/en/function-library/cluster-results'
           },
           {
             text: 'K Medoids',
@@ -289,35 +289,35 @@ export const en = defineConfig({
           },
           {
             text: 'Modal State Plot',
-            link: '/en/visualization/plot_modal_state'
+            link: '/en/visualization/plot-modal-state'
           },
           {
             text: 'Most Frequent Sequences Plot',
-            link: '/en/visualization/plot_most_frequent_sequences'
+            link: '/en/visualization/plot-most-frequent-sequences'
           },
           {
             text: 'Mean Time Plot',
-            link: '/en/visualization/plot_mean_time'
+            link: '/en/visualization/plot-mean-time'
           },
           {
             text: 'Transition Matrix Plot',
-            link: '/en/visualization/plot_transition_matrix'
+            link: '/en/visualization/plot-transition-matrix'
           },
           {
             text: 'Relative Frequency Plot',
-            link: '/en/visualization/plot_relative_frequency'
+            link: '/en/visualization/plot-relative-frequency'
           },
           {
             text: 'Single Medoid Plot',
-            link: '/en/visualization/plot_single_medoid'
+            link: '/en/visualization/plot-single-medoid'
           },
           {
             text: 'Longitudinal Characteristics Plot',
-            link: '/en/visualization/plot_longitudinal_characteristics'
+            link: '/en/visualization/plot-longitudinal-characteristics'
           },
           {
             text: 'Cross-Sectional Characteristics Plot',
-            link: '/en/visualization/plot_cross_sectional_characteristics'
+            link: '/en/visualization/plot-cross-sectional-characteristics'
           }
         ]
       },
@@ -336,43 +336,43 @@ export const en = defineConfig({
           },
           {
             text: 'Create Event Sequences',
-            link: '/en/event-sequences/create_event_sequences'
+            link: '/en/event-sequences/create-event-sequences'
           },
           {
             text: 'Find Frequent Subsequences',
-            link: '/en/event-sequences/find_frequent_subsequences'
+            link: '/en/event-sequences/find-frequent-subsequences'
           },
           {
             text: 'Count Subsequence Occurrences',
-            link: '/en/event-sequences/count_subsequence_occurrences'
+            link: '/en/event-sequences/count-subsequence-occurrences'
           },
           {
             text: 'Compare Groups',
-            link: '/en/event-sequences/compare_groups'
+            link: '/en/event-sequences/compare-groups'
           },
           {
             text: 'Convert Event Sequences to TSE',
-            link: '/en/event-sequences/convert_event_sequences_to_tse'
+            link: '/en/event-sequences/convert-event-sequences-to-tse'
           },
           {
             text: 'Compute Event Transition Matrix',
-            link: '/en/event-sequences/compute_event_transition_matrix'
+            link: '/en/event-sequences/compute-event-transition-matrix'
           },
           {
             text: 'Check Event Subsequence Containment',
-            link: '/en/event-sequences/check_event_subsequence_containment'
+            link: '/en/event-sequences/check-event-subsequence-containment'
           },
           {
             text: 'Plot Event Sequences',
-            link: '/en/event-sequences/plot_event_sequences'
+            link: '/en/event-sequences/plot-event-sequences'
           },
           {
             text: 'Plot Subsequence Frequencies',
-            link: '/en/event-sequences/plot_subsequence_frequencies'
+            link: '/en/event-sequences/plot-subsequence-frequencies'
           },
           {
             text: 'Helper Functions',
-            link: '/en/event-sequences/event_sequence_helpers'
+            link: '/en/event-sequences/event-sequence-helpers'
           }
         ]
       },
@@ -428,11 +428,11 @@ export const en = defineConfig({
       //     },
       //     {
       //       text: 'Distance-Based Association',
-      //       link: '/en/discrepancy-analysis/get_group_distance_association'
+      //       link: '/en/discrepancy-analysis/get-group-distance-association'
       //     },
       //     {
       //       text: 'Differences by Position',
-      //       link: '/en/discrepancy-analysis/get_group_differences_by_position'
+      //       link: '/en/discrepancy-analysis/get-group-differences-by-position'
       //     },
       //     {
       //       text: 'Permutation Tests',
@@ -440,11 +440,11 @@ export const en = defineConfig({
       //     },
       //     {
       //       text: 'Distance Tree',
-      //       link: '/en/discrepancy-analysis/build_distance_tree'
+      //       link: '/en/discrepancy-analysis/build-distance-tree'
       //     },
       //     {
       //       text: 'Sequence Tree',
-      //       link: '/en/discrepancy-analysis/build_sequence_tree'
+      //       link: '/en/discrepancy-analysis/build-sequence-tree'
       //     }
       //   ]
       // },
@@ -462,15 +462,15 @@ export const en = defineConfig({
           },
           {
             text: 'Group Differences',
-            link: '/en/group-comparison/get_group_differences'
+            link: '/en/group-comparison/get-group-differences'
           },
           {
             text: 'Likelihood-Ratio Test',
-            link: '/en/group-comparison/get_lrt_test'
+            link: '/en/group-comparison/get-lrt-test'
           },
           {
             text: 'Bayesian Information Criterion',
-            link: '/en/group-comparison/get_bic_test'
+            link: '/en/group-comparison/get-bic-test'
           }
         ]
       },
@@ -514,11 +514,11 @@ export const en = defineConfig({
       //     },
       //     {
       //       text: 'KOB Decomposition',
-      //       link: '/en/inequality-decomposition/get_kob_decomposition'
+      //       link: '/en/inequality-decomposition/get-kob-decomposition'
       //     },
       //     {
       //       text: 'Oaxaca–Blinder Decomposition',
-      //       link: '/en/inequality-decomposition/get_oaxaca_blinder_decomposition'
+      //       link: '/en/inequality-decomposition/get-oaxaca-blinder-decomposition'
       //     }
       //   ]
       // },
@@ -542,7 +542,7 @@ export const en = defineConfig({
         items: [
           {
             text: 'Use R in Python Environment',
-            link: '/en/traminer-and-sequenzo/use_R_in_python_environment'
+            link: '/en/traminer-and-sequenzo/use-R-in-python-environment'
           },
           // {
           //   text: 'Functions Comparison',

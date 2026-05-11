@@ -6,19 +6,19 @@ Sequenzo provides three dedicated plotting functions for event-sequence analysis
 
 - **What it does:** Parallel-coordinate visualization of event ordering patterns.
 - **TraMineR counterpart:** `seqpcplot` / `plot.seqelist(curve_type="pc")`
-- **Docs:** [`plot_event_parallel_coordinates`](./plot_event_parallel_coordinates)
+- **Docs:** [`plot_event_parallel_coordinates`](./plot-event-parallel-coordinates)
 
 ## 2) `plot_subsequence_group_contrasts()`
 
 - **What it does:** Group contrast visualization for discriminating subsequences.
 - **TraMineR counterpart:** `plot.subseqelistchisq`
-- **Docs:** [`plot_subsequence_group_contrasts`](./plot_subsequence_group_contrasts)
+- **Docs:** [`plot_subsequence_group_contrasts`](./plot-subsequence-group-contrasts)
 
 ## 3) `plot_event_dynamics()`
 
 - **What it does:** Survival/hazard-style event dynamics visualization.
 - **TraMineR counterpart:** `seqedplot`
-- **Docs:** [`plot_event_dynamics`](./plot_event_dynamics)
+- **Docs:** [`plot_event_dynamics`](./plot-event-dynamics)
 
 ## Authors
 
@@ -26,3 +26,7 @@ Code: Yuqi Liang
 
 Documentation: Yuqi Liang
 
+
+## Reference
+
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences (pp. 221–253). Routledge.
