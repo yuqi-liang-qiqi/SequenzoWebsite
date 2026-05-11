@@ -198,4 +198,5 @@ But sometimes you only want to compare two groups (e.g., men vs. women, treated 
 Studer, Matthias, and Gilbert Ritschard. "What matters in differences between life trajectories: A comparative review of sequence dissimilarity measures." Journal of the Royal Statistical Society Series A: Statistics in Society 179, no. 2 (2016): 481-511.
 
 *Author: Yuqi Liang*
+
 *Acknowledgements: We gratefully acknowledge Professor Gilbert Ritschard for his helpful comments and review suggestions.*

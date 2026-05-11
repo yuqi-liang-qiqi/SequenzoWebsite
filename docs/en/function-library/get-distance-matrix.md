@@ -291,11 +291,13 @@ Row and column labels come from `seqdata.ids`.
 
 ## Authors
 
-_Code: Xinyi Li, Yuqi Liang_
+Code: Xinyi Li, Yuqi Liang
 
-_Documentation: Yuqi Liang_
+Documentation: Yuqi Liang
 
-_Edited by: Yuqi Liang, Yukun Ming_
+Edited by: Yuqi Liang, Yukun Ming
+
+*Acknowledgements: We gratefully acknowledge Professor Gilbert Ritschard for his helpful comments and review suggestions.*
 
 ## References
 
