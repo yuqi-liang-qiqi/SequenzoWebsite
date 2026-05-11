@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-21 14:41:01
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-01-30 17:15:48
- * @FilePath: /SequenzoWebsite/docs/en/datasets/pairfam-activity.md
- * @Description: Pairfam Activity Trajectories Dataset documentation
--->
 # Pairfam Activity Trajectories Dataset
 
 This dataset contains German 1,027 individuals of employment/activity trajectories. It is derived from the **German Family Panel (pairfam, Release 14.2)** and was pre-processed by the authors of [Sequence Analysis (Raab & Struffolino, 2022)](https://sa-book.github.io/). It is designed for teaching and learning sequence analysis by providing ready-to-use trajectories of employment status.

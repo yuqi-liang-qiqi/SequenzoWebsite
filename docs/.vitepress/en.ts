@@ -138,6 +138,18 @@ export const en = defineConfig({
             link: '/en/datasets/pairfam-activity'
           },
           {
+            text: 'Biofam Family Life Trajectories',
+            link: '/en/datasets/biofam'
+          },
+          {
+            text: 'Biofam Three-Domain Family Life',
+            link: '/en/datasets/biofam-three-domains'
+          },
+          {
+            text: 'MVAD School-to-Work Transitions',
+            link: '/en/datasets/mvad'
+          },
+          {
             text: "Political Science Aid Datasets",
             link: '/en/datasets/political-science-aid-datasets'
           },
