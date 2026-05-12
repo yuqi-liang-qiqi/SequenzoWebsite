@@ -6,9 +6,10 @@
 
 ```python
 compare_groups(
-    subseq,
+    subsequence_results,
     group_labels,
     test_method="chisq",
+    p_adjust_method=None,
     pvalue_threshold=None,
     weighted=True
 )
@@ -18,7 +19,7 @@ compare_groups(
 
 - `subsequence_results` -> TraMineR `fsub`
 - `group_labels` -> TraMineR `group`
-- `test_method` -> TraMineR `method`
+- `test_method` -> Conceptually corresponds to the chi-square association test used by `seqecmpgroup()`
 - `pvalue_threshold` -> TraMineR `pvalue.limit`
 - `weighted` -> TraMineR weighted behavior
 
@@ -26,24 +27,23 @@ compare_groups(
 
 | Parameter | Required | Type | Description |
 | --- | --- | --- | --- |
-| `subseq` (`subsequence_results`) | ✓ | SubsequenceList | The mined subsequences to test across groups. |
+| `subsequence_results` | ✓ | SubsequenceList | The mined subsequences to test across groups. |
 | `group_labels` | ✓ | array-like | Group label for each sequence (same length as input sequences). |
-| `test_method` | ✗ | str | `"chisq"` or `"bonferroni"`. |
+| `test_method` | ✗ | str | Statistical association test used to compare subsequence presence across groups. Currently `"chisq"` is supported. |
+| `p_adjust_method` | ✗ | str / None | Optional multiple-testing correction method, such as `"bonferroni"`. |
 | `pvalue_threshold` | ✗ | float | Keep results with p-value at or below this threshold. |
 | `weighted` | ✗ | bool | Use sequence weights if available. |
 
 ## What It Does
 
-- Tests each subsequence across groups.
-- Keeps subsequences that pass the p-value filter.
-- Sorts results by test strength.
+For each subsequence, `compare_groups()` creates a presence/absence indicator showing whether the subsequence occurs in each sequence. It then cross-tabulates this indicator with the group labels and computes a chi-square association statistic. Subsequence patterns are then filtered by the p-value threshold, if provided, and sorted by their strength of association with the grouping variable.
 
 ## Example
 
 ```python
 discriminating = compare_groups(
-    fsubseq,
-    group=df["gender"],
+    subsequence_results=fsubseq,
+    group_labels=df["gender"],
     pvalue_threshold=0.05
 )
 ```
@@ -66,4 +66,4 @@ Documentation: Yuqi Liang
 
 ## References
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.

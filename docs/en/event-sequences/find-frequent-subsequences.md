@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2026-05-06 16:34:11
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-05-06 16:34:11
- * @FilePath: /SequenzoWebsite/docs/en/event-sequences/find_frequent_subsequences.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `find_frequent_subsequences()`
 
 `find_frequent_subsequences()` finds event patterns that appear often enough in your event sequences.
@@ -74,6 +66,9 @@ fsubseq = find_frequent_subsequences(
 ## Notes
 
 - You must provide `min_support` or `min_support_ratio` when `target_subsequences` is not given.
+- A subsequence match preserves event order, but the events do not have to be adjacent unless this is imposed through `search_constraint`.
+- If timestamps are available, `search_constraint` can restrict matches by time span or time gap.
+- Support depends on the counting rule. For example, a presence-based rule counts whether a sequence contains the subsequence, while an occurrence-based rule may count repeated occurrences.
 - Weighted support uses sequence weights from `event_sequences`.
 
 ## Authors
@@ -84,4 +79,4 @@ Documentation: Yuqi Liang
 
 ## References
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.

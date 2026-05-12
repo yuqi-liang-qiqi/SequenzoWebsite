@@ -1,6 +1,6 @@
 # `compute_event_transition_matrix()`
 
-`compute_event_transition_matrix()` summarizes how often one event is followed by another.
+`compute_event_transition_matrix()` summarizes how often one event is immediately followed by another in event order.
 
 ## Function Usage
 
@@ -30,8 +30,8 @@ compute_event_transition_matrix(
 A square DataFrame where:
 
 - Rows = source event
-- Columns = next event
-- Values = transition count or transition probability
+- Columns = next event in order
+- Values = adjacent event-order count or row-wise probability
 
 ## Example
 
@@ -43,7 +43,7 @@ print(tm)
 ## R Counterpart
 
 - **Closest R function:** `seqetm`
-- **Mapping note:** Both are transition-focused helpers in event-sequence workflows. Sequenzo returns event-to-event count/probability matrices for analysis and reporting.
+- **Mapping note:** This is a practical Sequenzo helper for summarizing adjacent event-to-event movements. It is related to transition-focused event-sequence workflows, but it should not be confused with the formal event-sequence definition of a transition, where a transition may contain several simultaneous events.
 
 ## Notes
 
@@ -58,4 +58,4 @@ Documentation: Yuqi Liang
 
 ## References
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.

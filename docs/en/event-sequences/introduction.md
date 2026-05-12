@@ -115,6 +115,8 @@ fsubseq = find_frequent_subsequences(
 )
 ```
 
+If timestamps are available, `search_constraint` can restrict which subsequences count as matches, for example by requiring events to occur within a maximum time span.
+
 A frequent subsequence is an ordered event pattern that appears in many sequences. For example:
 
 ```text
@@ -169,7 +171,7 @@ You can also visualize group contrasts, event-order structures, and event dynami
 | Compare groups                                      | `compare_groups()`                         |
 | Check whether a target pattern appears              | `check_event_subsequence_containment()`    |
 | Convert event sequences back to TSE format          | `convert_event_sequences_to_tse()`         |
-| Compute event transition matrix                     | `compute_event_transition_matrix()`        |
+| Summarize adjacent event-order movements            | `compute_event_transition_matrix()`        |
 | Plot frequent subsequences                          | `plot_subsequence_frequencies()`           |
 | Plot group contrasts                                | `plot_subsequence_group_contrasts()`       |
 | Plot event parallel coordinates                     | `plot_event_parallel_coordinates()`        |

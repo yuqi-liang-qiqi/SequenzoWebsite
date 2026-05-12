@@ -2,7 +2,7 @@
 
 `plot_event_parallel_coordinates()` draws event sequences as parallel-coordinate-style trajectories.
 
-This function corresponds to TraMineR `seqpcplot`-style visualization.
+This function is Sequenzo's closest counterpart to TraMineR `seqpcplot`-style visualization.
 
 ## Function Usage
 
@@ -35,6 +35,7 @@ plot_event_parallel_coordinates(
 | `event_sequences` | ✓ | EventSequenceData / EventSequenceList | The full event-sequence dataset to plot. |
 | `group_labels` | ✗ | array-like | Optional grouping variable for faceted panels. |
 | `event_labels_order` | ✗ | Sequence[str] | Optional custom display order for event labels. |
+| `order_align` | ✗ | str | Horizontal axis mode: event order position (`"first"`, `"last"`) or timestamps (`"time"`). |
 | `x_label`, `y_label` | ✗ | str | Axis label overrides. |
 | `save_as` | ✗ | str | Save path; `.png` is auto-appended if missing. |
 | `dpi` | ✗ | int | Save resolution (default `200`). |
@@ -42,7 +43,7 @@ plot_event_parallel_coordinates(
 
 ## TraMineR Parameter Mapping
 
-- `event_sequences` -> TraMineR `seqdata`
+- `event_sequences` -> TraMineR event-sequence object / `seqelist`
 - `group_labels` -> TraMineR `group`
 - `color_palette` -> TraMineR `cpal`
 - `event_labels_order` -> TraMineR `alphabet`
@@ -51,7 +52,7 @@ plot_event_parallel_coordinates(
 
 ## What It Does
 
-- Displays event order/time on the x-axis and event categories on the y-axis.
+- Displays event order position on the x-axis and event categories on the y-axis.
 - Aggregates identical trajectories and renders weighted visual emphasis.
 - Supports grouped panels for side-by-side comparison.
 
@@ -87,6 +88,7 @@ plot_event_parallel_coordinates(
 ## R Counterpart
 
 - **Closest R function:** `seqpcplot` / `plot.seqelist(type="pc")`
+- **Mapping note:** Visual intent is similar, but panel layout and styling are not one-to-one.
 
 ## Authors
 

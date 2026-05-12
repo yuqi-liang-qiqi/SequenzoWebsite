@@ -6,7 +6,7 @@
 
 ```python
 plot_subsequence_frequencies(
-    subsequence_results,  # subsequence_results
+    subsequence_results,
     frequency_values=None,
     text_scale=1.0,
     color="steelblue",
@@ -73,4 +73,4 @@ Documentation: Yuqi Liang
 
 ## References
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.

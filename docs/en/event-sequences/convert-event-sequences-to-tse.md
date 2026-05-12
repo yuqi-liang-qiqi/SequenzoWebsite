@@ -35,8 +35,8 @@ print(tse_df.head())
 
 ## R Counterpart
 
-- **Closest R function:** No direct one-function equivalent found in TraMineR core docs.
-- **Mapping note:** This Sequenzo helper is a practical export step to a tidy TSE table (`id`, `timestamp`, `event`). In TraMineR workflows, related format conversion is typically handled through `seqformat` and object constructors rather than a dedicated `seqe2tse` user-facing function.
+- **Closest R function:** `seqe2tse`
+- **Mapping note:** Both functions convert event-sequence objects back to a time-stamped event table.
 
 ## Notes
 
@@ -51,4 +51,4 @@ Documentation: Yuqi Liang
 
 ## References
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.

@@ -74,7 +74,7 @@ export const en = defineConfig({
             link: '/en/tutorials/timing-duration-order'
           },
           {
-            text: 'Dissimilarity measures',
+            text: 'Dissimilarity Measures',
             link: '/en/tutorials/dissimilarity-measures'
           },
           {
@@ -191,7 +191,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Core Functions',
+        text: 'Core Functions of Typical Workflow',
         collapsed: true,
         items: [
           {
@@ -426,40 +426,44 @@ export const en = defineConfig({
           }
         ]
       },
-      // {
-      //   text: 'Discrepancy Analysis',
-      //   collapsed: true,
-      //   items: [
-      //     {
-      //       text: 'Introduction',
-      //       link: '/en/discrepancy-analysis/introduction'
-      //     },
-      //     {
-      //       text: 'Conceptual Guide',
-      //       link: '/en/discrepancy-analysis/conceptual-guide'
-      //     },
-      //     {
-      //       text: 'Distance-Based Association',
-      //       link: '/en/discrepancy-analysis/get-group-distance-association'
-      //     },
-      //     {
-      //       text: 'Differences by Position',
-      //       link: '/en/discrepancy-analysis/get-group-differences-by-position'
-      //     },
-      //     {
-      //       text: 'Permutation Tests',
-      //       link: '/en/discrepancy-analysis/permutation-tests'
-      //     },
-      //     {
-      //       text: 'Distance Tree',
-      //       link: '/en/discrepancy-analysis/build-distance-tree'
-      //     },
-      //     {
-      //       text: 'Sequence Tree',
-      //       link: '/en/discrepancy-analysis/build-sequence-tree'
-      //     }
-      //   ]
-      // },
+      {
+        text: 'Discrepancy Analysis',
+        collapsed: true,
+        items: [
+          {
+            text: 'Introduction',
+            link: '/en/discrepancy-analysis/introduction'
+          },
+          {
+            text: 'Sequenzo-TraMineR Mapping',
+            link: '/en/discrepancy-analysis/traminer-function-mapping'
+          },
+          {
+            text: 'Conceptual Guide',
+            link: '/en/discrepancy-analysis/conceptual-guide'
+          },
+          {
+            text: 'Distance-Based Association',
+            link: '/en/discrepancy-analysis/get-group-distance-association'
+          },
+          {
+            text: 'Differences by Position',
+            link: '/en/discrepancy-analysis/get-group-differences-by-position'
+          },
+          {
+            text: 'Permutation Tests',
+            link: '/en/discrepancy-analysis/permutation-tests'
+          },
+          {
+            text: 'Distance Tree',
+            link: '/en/discrepancy-analysis/build-distance-tree'
+          },
+          {
+            text: 'Sequence Tree',
+            link: '/en/discrepancy-analysis/build-sequence-tree'
+          }
+        ]
+      },
       {
         text: 'Group Comparison',
         collapsed: true,

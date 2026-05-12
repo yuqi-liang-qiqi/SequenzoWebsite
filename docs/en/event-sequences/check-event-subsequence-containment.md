@@ -8,7 +8,7 @@
 check_event_subsequence_containment(
     event_sequences,
     target_subsequence,
-    search_search_constraint=None
+    search_constraint=None
 )
 ```
 
@@ -38,14 +38,14 @@ A boolean pandas Series:
 ```python
 contains = check_event_subsequence_containment(
     event_sequences,
-    subseq="(Graduate)-(FindJob)"
+    target_subsequence="(Graduate)-(FindJob)"
 )
 ```
 
 ## R Counterpart
 
 - **Closest R function:** `seqecontain`
-- **Mapping note:** Both functions check containment. Sequenzo uses a subsequence target (string or object), while TraMineR `seqecontain` focuses on event-list containment semantics.
+- **Mapping note:** Both functions check whether event sequences contain specified subsequence patterns. In Sequenzo, the target pattern can be provided as a string or an event-sequence object.
 
 ## Authors
 
@@ -55,4 +55,4 @@ Documentation: Yuqi Liang
 
 ## References
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.

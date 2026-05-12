@@ -16,9 +16,9 @@ count_subsequence_occurrences(
 ## TraMineR Parameter Mapping
 
 - `subsequence_results` -> TraMineR `fsub`
-- `counting_method` -> TraMineR `method`
+- `counting_method` -> TraMineR `countMethod` in `seqeconstraint()`
 - `search_constraint` -> TraMineR `constraint`
-- `include_rules` -> TraMineR rule-mining behavior in `seqeapplysub()`
+- `include_rules` -> optional rule-mining behavior when counting within subsequences
 
 ## Entry Parameters
 
@@ -67,4 +67,4 @@ Documentation: Yuqi Liang
 
 ## References
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.

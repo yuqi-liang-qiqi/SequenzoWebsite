@@ -127,7 +127,7 @@ Here, `min_support_ratio=0.5` means that a pattern must appear in at least 50% o
 
 Since we have three people, a subsequence must appear in at least two people to be considered frequent.
 
-In this toy example, likely frequent patterns include:
+In this toy example, frequent patterns include:
 
 | Subsequence                       | Interpretation                                                     |
 | --------------------------------- | ------------------------------------------------------------------ |

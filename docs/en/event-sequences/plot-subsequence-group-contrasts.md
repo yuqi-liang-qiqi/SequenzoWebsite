@@ -2,19 +2,19 @@
 
 `plot_subsequence_group_contrasts()` visualizes discriminating subsequences across groups.
 
-It is the recommended counterpart to TraMineR `plot.subseqelistchisq`.
+It is Sequenzo's closest counterpart to TraMineR `plot.subseqelistchisq`.
 
 ## Function Usage
 
 ```python
 plot_subsequence_group_contrasts(
-    group_contrast_results,  # subgroup_contrast_results
+    group_contrast_results,
     y_limit_mode="uniform",
     rows=None,
     cols=None,
     resid_levels=(0.05, 0.01),
     color_palette=None,
-    pcurve_type="freq",
+    plot_type="freq",
     legend_title=None,
     show_legend=True,
     legend_text_scale=1.0,
@@ -41,7 +41,7 @@ plot_subsequence_group_contrasts(
 
 | Parameter | Required | Type | Description |
 | --- | --- | --- | --- |
-| `x` (`subgroup_contrast_results`) | ✓ | SubsequenceList | Group-comparison subsequence results (usually from `compare_groups()`). |
+| `group_contrast_results` | ✓ | SubsequenceList | Group-comparison subsequence results, usually from `compare_groups()`. |
 | `plot_type` | ✗ | str | `"freq"` for frequency view, `"resid"` for Pearson residual view. |
 | `x_label`, `y_label` | ✗ | str | Axis label overrides. |
 | `save_as` | ✗ | str | Save path; `.png` is auto-appended if missing. |
@@ -51,7 +51,7 @@ plot_subsequence_group_contrasts(
 ## What It Does
 
 - Produces group-wise panels for discriminating subsequences.
-- Encodes direction/significance through residual-based color bins.
+- Encodes over- or under-representation in each group using Pearson-residual-based color bins.
 - Supports both frequency and residual-centric interpretation.
 
 ## Example (Step by Step)
@@ -62,7 +62,7 @@ from sequenzo.event_sequences import plot_subsequence_group_contrasts
 # Step 1: Frequency-style view
 plot_subsequence_group_contrasts(
     discr[:10],
-    pcurve_type="freq",
+    plot_type="freq",
     x_label="Frequency",
     y_label="Subsequence",
     save_as="outputs/subsequence_group_contrasts_freq",
@@ -73,7 +73,7 @@ plot_subsequence_group_contrasts(
 # Step 2: Residual-style view
 plot_subsequence_group_contrasts(
     discr[:10],
-    pcurve_type="resid",
+    plot_type="resid",
     x_label="Pearson residual",
     y_label="Subsequence",
     save_as="outputs/subsequence_group_contrasts_resid",
@@ -85,6 +85,7 @@ plot_subsequence_group_contrasts(
 ## R Counterpart
 
 - **Closest R function:** `plot.subseqelistchisq`
+- **Mapping note:** Residual-based color encoding follows the same visual logic as Figures 3 and 4 in Ritschard et al. (2013).
 
 ## Authors
 

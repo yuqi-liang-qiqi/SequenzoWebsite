@@ -1,14 +1,14 @@
 # `plot_event_dynamics()`
 
-`plot_event_dynamics()` visualizes event dynamics as survival-style or hazard-style curves.
+`plot_event_dynamics()` visualizes event timing patterns as survival-style or binned event-rate curves.
 
-It is the recommended counterpart to TraMineRextras `seqedplot`.
+It is Sequenzo's closest counterpart to TraMineRextras `seqedplot`.
 
 ## Function Usage
 
 ```python
 plot_event_dynamics(
-    event_sequences
+    event_sequences,
     group_labels=None,
     num_bins=20,
     time_range=None,
@@ -54,9 +54,11 @@ plot_event_dynamics(
 
 ## What It Does
 
-- **Survival mode:** plots probability that first occurrence time is after `t`.
-- **Hazard mode:** plots mean event count per time bin.
+- **Survival mode:** plots the probability that the first occurrence of an event happens after time `t`.
+- **Hazard-style mode:** summarizes event occurrence by time bins, for example as a binned event rate or mean event count per bin.
 - Supports grouped panels and event-level legends.
+
+The hazard-style view is descriptive. It should not be interpreted as a full event-history hazard model.
 
 ## Example (Step by Step)
 
@@ -91,7 +93,8 @@ plot_event_dynamics(
 
 ## R Counterpart
 
-- **Closest R function:** `seqedplot`
+- **Closest R function:** TraMineRextras `seqedplot`
+- **Mapping note:** Conceptually follows the same idea of showing event timing and dynamics, but it is not a one-to-one replacement for every `seqedplot` workflow.
 
 ## Authors
 

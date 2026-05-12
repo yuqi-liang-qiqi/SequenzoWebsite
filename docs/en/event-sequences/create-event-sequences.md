@@ -28,7 +28,7 @@ EventSequenceData.from_state_sequences(
 
 - `data` / `id` / `timestamp` / `event` -> TraMineR `data` / `id` / `timestamp` / `event`
 - `seqdata` -> TraMineR `seqdata`
-- `event_representation` -> TraMineR `tevent`
+- `event_representation` -> TraMineR `tevent`-like conversion rule
 - `use_labels` -> TraMineR `use.labels`
 - `weighted` -> TraMineR `weighted`
 - `event_labels_order` -> TraMineR `alphabet`
@@ -42,7 +42,7 @@ EventSequenceData.from_state_sequences(
 | `timestamp` | ✓* | array-like | Event time for each row. |
 | `event` | ✓* | array-like | Event label for each row. |
 | `end_event` | ✗ | str | Optional event label used as end marker. |
-| `event_representation` | ✗ | str / np.ndarray | Conversion method from state to event sequence (`"transition"`, `"state"`, `"period"`). |
+| `event_representation` | ✗ | str / np.ndarray | Conversion rule from state to event sequence. Use a string such as `"transition"`, `"state"`, or `"period"`, or pass an array-like transition-definition matrix. |
 | `use_labels` | ✗ | bool | Use state labels when converting from state sequences. |
 | `weighted` | ✗ | bool | Keep sequence weights when available. |
 | `event_labels_order` | ✗ | list[str] | Optional custom order of event labels. |
@@ -93,6 +93,7 @@ eseq = EventSequenceData.from_state_sequences(
 ## Notes
 
 - Input order does not need to be pre-sorted; the function sorts it for you.
+- When `event_representation` is an array-like transition definition, it plays a role similar to TraMineR's `tevent` transition matrix; when it is a string such as `"state"`, it uses a built-in conversion rule.
 - Event names with `(`, `)` or `,` may make subsequence string matching harder.
 
 ## Authors
@@ -103,4 +104,4 @@ Documentation: Yuqi Liang
 
 ## References
 
-Ritschard, G., Burgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
+Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), *Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences* (pp. 221-253). Routledge.
