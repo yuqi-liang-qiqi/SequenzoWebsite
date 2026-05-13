@@ -614,28 +614,40 @@ export const en = defineConfig({
           }
         ]
       },
-      // {
-      //   text: 'Inequality Decomposition',
-      //   collapsed: true,
-      //   items: [
-      //     {
-      //       text: 'Introduction',
-      //       link: '/en/inequality-decomposition/introduction'
-      //     },
-      //     {
-      //       text: 'Conceptual Guide: SA–KOB Decomposition',
-      //       link: '/en/inequality-decomposition/sa-kob-conceptual-guide'
-      //     },
-      //     {
-      //       text: 'KOB Decomposition',
-      //       link: '/en/inequality-decomposition/get-kob-decomposition'
-      //     },
-      //     {
-      //       text: 'Oaxaca–Blinder Decomposition',
-      //       link: '/en/inequality-decomposition/get-oaxaca-blinder-decomposition'
-      //     }
-      //   ]
-      // },
+      {
+        text: 'Decomposition',
+        collapsed: true,
+        items: [
+          {
+            text: 'Introduction',
+            link: '/en/decomposition/introduction'
+          },
+          {
+            text: 'Conceptual Guide: SA–KOB Decomposition',
+            link: '/en/decomposition/sa-kob-conceptual-guide'
+          },
+          {
+            text: 'SA–KOB Decomposition',
+            link: '/en/decomposition/get-sa-kob-decomposition'
+          },
+          {
+            text: 'SA–KOB Bootstrap',
+            link: '/en/decomposition/get-sa-kob-decomposition-bootstrap'
+          },
+          {
+            text: 'KOB Decomposition',
+            link: '/en/decomposition/get-kob-decomposition'
+          },
+          {
+            text: 'KOB Bootstrap',
+            link: '/en/decomposition/get-kob-decomposition-bootstrap'
+          },
+          {
+            text: 'Oaxaca–Blinder Decomposition',
+            link: '/en/decomposition/get-oaxaca-blinder-decomposition'
+          }
+        ]
+      },
       {
         text: 'Big Data Tools',
         collapsed: true,
