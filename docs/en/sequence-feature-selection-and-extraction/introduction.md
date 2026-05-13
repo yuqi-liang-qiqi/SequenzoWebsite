@@ -76,7 +76,7 @@ Most pages assume that you already have:
 2. An outcome vector, and optionally control covariates, aligned with the sequence rows.
 3. A clear sense of your time grid. `timing_bin_width` is always in the same unit as `seqdata.time` labels, such as months, years, or position indices. It is not automatically interpreted as calendar months.
 
-New to this module? Start with the [step-by-step tutorial](./unterlerchner-2023-walkthrough.md).
+New to this module? Start with the [step-by-step tutorial](./tutorial.md).
 
 ## Entry Points
 
@@ -191,7 +191,7 @@ TraMineR provides many of the underlying sequence-analysis concepts, such as sta
 
 ## Included Pages
 
-* [Step-by-step tutorial](./unterlerchner-2023-walkthrough.md) — link trajectories to an outcome using the Unterlerchner (2023) settings bundle.
+* [Step-by-step tutorial](./tutorial.md) — link trajectories to an outcome using the Unterlerchner (2023) settings bundle.
 * [Conceptual Guide](./conceptual-guide.md) — duration, timing, sequencing, Boruta, residualization, and common mistakes.
 * [`extract_sequence_features()`](./extract-sequence-features.md)
 * [`run_feature_extraction_and_selection_pipeline()`](./run-feature-extraction-and-selection-pipeline.md)
