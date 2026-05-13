@@ -90,24 +90,6 @@ export const en = defineConfig({
             link: '/en/tutorials/statistics-101'
           },
           {
-            text: 'Markov Models',
-            collapsed: true,
-            items: [
-              {
-                text: 'Markov Chain',
-                link: '/en/tutorials/markov-chain'
-              },
-              {
-                text: 'Hidden Markov Model (HMM)',
-                link: '/en/tutorials/hmm'
-              },
-              {
-                text: 'Mixed Hidden Markov Model (MHMM)',
-                link: '/en/tutorials/mhmm'
-              }
-            ]
-          },
-          {
             text: 'Sequence Analysis vs. Latent Class Analysis vs. Hidden Markov Models',
             link: '/en/tutorials/sa-lca-and-hmm'
           }
@@ -497,6 +479,24 @@ export const en = defineConfig({
           {
             text: 'Introduction',
             link: '/en/markov-chain-models/introduction'
+          },
+          {
+            text: 'Conceptual Guides',
+            collapsed: true,
+            items: [
+              {
+                text: 'Markov Chain',
+                link: '/en/markov-chain-models/markov-chain'
+              },
+              {
+                text: 'Hidden Markov Model (HMM)',
+                link: '/en/markov-chain-models/hmm'
+              },
+              {
+                text: 'Mixed Hidden Markov Model (MHMM)',
+                link: '/en/markov-chain-models/mhmm'
+              }
+            ]
           },
           {
             text: 'Sequenzo and seqHMM Mapping',

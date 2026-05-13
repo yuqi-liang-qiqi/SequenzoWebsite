@@ -12,11 +12,11 @@ Most pages assume that you already have:
 
 2. A clear research question about **latent dynamics**: recurring hidden regimes, mixture clusters with different dynamics, or covariate-dependent transition/emission probabilities.
 
-If you are new to HMMs, read the tutorial series first:
+If you are new to HMMs, start with the [Conceptual Guides](./markov-chain.md):
 
-- [Markov Chain](../tutorials/markov-chain.md)
-- [Hidden Markov Model (HMM)](../tutorials/markov-chain-models-01.md)
-- [Mixed Hidden Markov Model (MHMM)](../tutorials/markov-chain-models-02.md)
+- [Markov Chain](./markov-chain.md)
+- [Hidden Markov Model (HMM)](./hmm.md)
+- [Mixed Hidden Markov Model (MHMM)](./mhmm.md)
 
 ## Model Types in This Module
 
@@ -51,6 +51,7 @@ Use HMMs when you want interpretable latent dynamics or mixture clusters defined
 
 ## Included Pages
 
+- [Conceptual Guides](./markov-chain.md) — Markov chain, HMM, and MHMM in plain language
 - [Sequenzo–seqHMM Mapping](./seqhmm-function-mapping.md) — correspondence with the R seqHMM package
 - **Basic HMM:** [`build_hmm()`](./build-hmm.md), [`fit_model()`](./fit-model.md), [`predict()`](./predict.md), [`posterior_probs()`](./posterior-probs.md), [`plot_hmm()`](./plot-hmm.md)
 - **Mixture HMM:** [`build_mhmm()`](./build-mhmm.md), [`fit_mhmm()`](./fit-mhmm.md), [`predict_mhmm()`](./predict-mhmm.md), [`posterior_probs_mhmm()`](./posterior-probs-mhmm.md), [`plot_mhmm()`](./plot-mhmm.md)
