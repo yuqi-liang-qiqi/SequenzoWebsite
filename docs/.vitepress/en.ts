@@ -576,32 +576,44 @@ export const en = defineConfig({
           }
         ]
       },
-      // {
-      //   text: 'Sequence Feature Extration and Selection',
-      //   collapsed: true,
-      //   items: [
-      //     {
-      //       text: 'Introduction',
-      //       link: '/en/sequence-feature-selection/introduction'
-      //     },
-      //     {
-      //       text: 'Conceptual Guide',
-      //       link: '/en/sequence-feature-selection/conceptual-guide'
-      //     },
-      //     {
-      //       text: 'Extract Sequence Features',
-      //       link: '/en/sequence-feature-selection/extract-sequence-features'
-      //     },
-      //     {
-      //       text: 'Select Relevant Features',
-      //       link: '/en/sequence-feature-selection/select-relevant-features'
-      //     },
-      //     {
-      //       text: 'Interpret Selected Features',
-      //       link: '/en/sequence-feature-selection/interpret-selected-features'
-      //     }
-      //   ]
-      // },
+      {
+        text: 'Feature Extraction and Selection',
+        collapsed: true,
+        items: [
+          {
+            text: 'Introduction',
+            link: '/en/sequence-feature-selection-and-extraction/introduction'
+          },
+          {
+            text: 'Step-by-Step Tutorial',
+            link: '/en/sequence-feature-selection-and-extraction/unterlerchner-2023-walkthrough'
+          },
+          {
+            text: 'Conceptual Guide',
+            link: '/en/sequence-feature-selection-and-extraction/conceptual-guide'
+          },
+          {
+            text: 'Extract Sequence Features',
+            link: '/en/sequence-feature-selection-and-extraction/extract-sequence-features'
+          },
+          {
+            text: 'Run FES Pipeline',
+            link: '/en/sequence-feature-selection-and-extraction/run-feature-extraction-and-selection-pipeline'
+          },
+          {
+            text: 'Select Relevant Features',
+            link: '/en/sequence-feature-selection-and-extraction/select-relevant-features'
+          },
+          {
+            text: 'Interpret Selected Features',
+            link: '/en/sequence-feature-selection-and-extraction/interpret-selected-features'
+          },
+          {
+            text: 'Clustassoc Validation',
+            link: '/en/sequence-feature-selection-and-extraction/clustassoc-like-typology-validation'
+          }
+        ]
+      },
       // {
       //   text: 'Inequality Decomposition',
       //   collapsed: true,
