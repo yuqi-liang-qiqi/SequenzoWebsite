@@ -8,10 +8,10 @@ This tutorial shows how to go from life-course sequences to a smaller set of int
 4. Run the full pipeline (extract → residualize → Boruta).
 5. Summarize and cluster selected features for interpretation.
 
-The example uses a built-in Sequenzo dataset so it runs without external files. The original paper uses Swiss TREE educational data (access required). Swap in your own `seqdata`, `outcome`, and `controls` when you have them.
+The example uses the built-in [Pairfam activity trajectories (month-level)](../datasets/pairfam-activity.md) dataset: 264 monthly observations per person (ages 18 to 40). The original Unterlerchner et al. (2023) paper uses Swiss TREE educational data (access required). Swap in TREE or your own `seqdata`, `outcome`, and `controls` when you have them.
 
-::: warning Mechanics demo vs full replication
-This page walks through how to call each function in order. The built-in `dyadic_children` sample may not use a monthly time grid. The settings bundle below still runs, but 12-unit timing bins are not automatically “twelve calendar months” unless `seqdata.time` is monthly (e.g. month indices `1 … T`). For a true Unterlerchner-style analysis, use monthly TREE-style data or set `timing_bin_width` to match your time labels.
+::: warning Demo vs full replication
+This page walks through how to call each function in order on monthly pairfam activity sequences. That matches the monthly time grid assumed by `preset="unterlerchner2023"` (`timing_bin_width=12.0` = twelve months per bin). It is still not a replication of Unterlerchner (2023): the paper uses TREE educational pathways and income, not pairfam employment states and years of education.
 :::
 
 ## What Is a “Named Settings Bundle”?
@@ -60,45 +60,46 @@ from sequenzo import (
 
 ## Step 2: Load and Inspect Data
 
-List built-in datasets, then load one with a numeric time grid:
+Load the month-level pairfam dataset. Time columns are month indices `1` through `264`; states are numeric codes `1` to `8` (see [Pairfam activity dataset](../datasets/pairfam-activity.md#activity-states-encoding)).
 
 ```python
 print(list_datasets())
 
-df = load_dataset("dyadic_children")
+df = load_dataset("pairfam_activity_by_month")
 time_cols = sorted([c for c in df.columns if str(c).isdigit()], key=int)
+states = list(range(1, 9))
 ```
 
-For a quick run, use a subset. With TREE or another full sample, skip the `head()` line.
+For a quicker first run, use a subset. For publication-style analysis, use the full sample.
 
 ```python
 df_small = df.head(300).copy()
-states = sorted(pd.unique(df_small[time_cols].values.ravel()))
-states = [s for s in states if pd.notna(s)]
-
-seqdata = SequenceData(df_small, time=time_cols, states=states)
-print(seqdata)
+print(df_small[time_cols[:5]].head())
 ```
 
-Your own data: one row per person, one column per time point, plus a defined state alphabet. With monthly grids (month indices `1 … T`), `timing_bin_width=12.0` means twelve months per bin. With yearly age labels, use `timing_bin_width=1.0` instead.
-
-The example below is meant to show you how to run the pipeline on sample data, not to replicate Unterlerchner (2023) on `dyadic_children`. If that dataset is not on a monthly grid, the preset will still run; just do not read twelve-unit timing bins as calendar years.
+Your own data: one row per person, one column per time point, plus a defined state alphabet. Here the monthly grid (`1 … 264`) aligns with `timing_bin_width=12.0` as twelve months per bin under `preset="unterlerchner2023"`.
 
 ## Step 3: Define Outcome and Controls
 
-The paper regresses income on trajectory features after residualizing on controls. Here we use a synthetic continuous outcome so the code runs out of the box. Replace with your real variables.
+The paper regresses income on trajectory features after residualizing on controls. Here we use `yeduc` (years of education) from pairfam as a continuous outcome and a few demographic controls. This is a teaching stand-in, not the paper’s income measure.
 
 ```python
-rng = np.random.default_rng(42)
-outcome = rng.normal(loc=5000, scale=1200, size=seqdata.n_sequences)
+outcome = df_small["yeduc"].to_numpy()
+controls = df_small[["sex", "east", "highschool"]].astype(float)
 
-controls = pd.DataFrame({
-    "sex": rng.integers(0, 2, size=seqdata.n_sequences),
-    "track": rng.integers(0, 3, size=seqdata.n_sequences),
-})
+valid = outcome == outcome  # drop missing outcome
+for col in controls.columns:
+    valid &= controls[col].notna().to_numpy()
+
+df_analysis = df_small.loc[valid].reset_index(drop=True)
+outcome = df_analysis["yeduc"].to_numpy()
+controls = df_analysis[["sex", "east", "highschool"]].astype(float)
+
+seqdata = SequenceData(df_analysis, time=time_cols, states=states)
+print(seqdata.n_sequences, "sequences after dropping missing values")
 ```
 
-With TREE-style data, `outcome` might be log income and `controls` might include sex, parental education, etc. Row order must match `seqdata` rows.
+With TREE-style data, `outcome` might be log income and `controls` might include sex, parental education, etc. Row order must match `seqdata` rows. Optional survey weights (`weight40` in pairfam) can be passed as `sample_weights` in the pipeline.
 
 ## Step 4: Inspect the Settings Bundle (Optional)
 
@@ -237,22 +238,23 @@ print(validation)
 
 | Step | Unterlerchner (2023) | This walkthrough |
 | --- | --- | --- |
-| Data | TREE educational sequences | Built-in `dyadic_children` (replace with your data) |
-| Time grid | Monthly month indices | Numeric columns from `dyadic_children` (may not be monthly) |
+| Data | TREE educational sequences | `pairfam_activity_by_month` (employment activity, ages 18–40) |
+| Time grid | Monthly month indices | Monthly columns `1 … 264` |
 | Settings bundle | Custom R parameterization | `preset="unterlerchner2023"` |
-| Outcome | Income (often log) | Synthetic Gaussian demo |
+| Outcome | Income (often log) | `yeduc` (years of education) |
+| Controls | Paper covariates | `sex`, `east`, `highschool` |
 | Selection | Boruta on residualized outcome | Same workflow via BorutaPy |
 | Interpretation | Correlation clustering | `cluster_correlated_features()` |
 | Final regression | Manual on representatives | Off by default (`fit_final_model=False`) |
 
 ## Practical Notes
 
-- This tutorial uses built-in demo data so that the code can run without external files. The original Unterlerchner et al. (2023) study used Swiss TREE educational trajectory data, which is not bundled with Sequenzo because access to TREE data is managed separately by the TREE team.
-- The built-in demo data may not use a monthly time grid. The tutorial is therefore meant to demonstrate the API workflow, not to reproduce the empirical results of the paper.
+- This tutorial uses built-in pairfam month-level data so the code runs without external files. Unterlerchner et al. (2023) used Swiss TREE data, which is not bundled with Sequenzo.
+- The monthly pairfam grid matches the timing assumptions of `preset="unterlerchner2023"`; substantive results still differ from the paper because the domain and outcome are not the same.
 - Boruta confirmed features may differ from R `Boruta()` with default settings because Sequenzo uses the Python BorutaPy backend. See [Conceptual Guide: Boruta Python vs R](./conceptual-guide.md#boruta-python-vs-r).
-- `time_unit_hint="month"` is metadata only. The `unterlerchner2023` settings bundle also sets `timing_bin_width=12.0`, which is appropriate only when the time labels are monthly units.
+- `time_unit_hint="month"` is metadata only. The `unterlerchner2023` settings bundle also sets `timing_bin_width=12.0`, which is appropriate for this monthly grid.
 - For binary outcomes with binomial residualization, pass `problem_type="classification"`.
-- See [Things to keep in mind](./conceptual-guide.md#things-to-keep-in-mind-things-to-keep-in-mind) for additional usage tips.
+- See [Common mistakes](./conceptual-guide.md#common-mistakes) for additional usage tips.
 
 ## Next Steps
 

@@ -586,7 +586,7 @@ export const en = defineConfig({
           },
           {
             text: 'Step-by-Step Tutorial',
-            link: '/en/sequence-feature-selection-and-extraction/unterlerchner-2023-walkthrough'
+            link: '/en/sequence-feature-selection-and-extraction/tutorial'
           },
           {
             text: 'Conceptual Guide',
