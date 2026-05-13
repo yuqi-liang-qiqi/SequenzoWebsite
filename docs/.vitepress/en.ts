@@ -490,6 +490,92 @@ export const en = defineConfig({
           }
         ]
       },
+      {
+        text: 'Markov Chain Models',
+        collapsed: true,
+        items: [
+          {
+            text: 'Introduction',
+            link: '/en/markov-chain-models/introduction'
+          },
+          {
+            text: 'Sequenzo and seqHMM Mapping',
+            link: '/en/markov-chain-models/seqhmm-function-mapping'
+          },
+          {
+            text: 'Build HMM',
+            link: '/en/markov-chain-models/build-hmm'
+          },
+          {
+            text: 'Fit Model',
+            link: '/en/markov-chain-models/fit-model'
+          },
+          {
+            text: 'Predict Hidden States',
+            link: '/en/markov-chain-models/predict'
+          },
+          {
+            text: 'Posterior Probabilities',
+            link: '/en/markov-chain-models/posterior-probs'
+          },
+          {
+            text: 'Plot HMM',
+            link: '/en/markov-chain-models/plot-hmm'
+          },
+          {
+            text: 'Build MHMM',
+            link: '/en/markov-chain-models/build-mhmm'
+          },
+          {
+            text: 'Fit MHMM',
+            link: '/en/markov-chain-models/fit-mhmm'
+          },
+          {
+            text: 'Predict MHMM Clusters',
+            link: '/en/markov-chain-models/predict-mhmm'
+          },
+          {
+            text: 'MHMM Posterior Probabilities',
+            link: '/en/markov-chain-models/posterior-probs-mhmm'
+          },
+          {
+            text: 'Plot MHMM',
+            link: '/en/markov-chain-models/plot-mhmm'
+          },
+          {
+            text: 'Build NHMM',
+            link: '/en/markov-chain-models/build-nhmm'
+          },
+          {
+            text: 'Fit NHMM',
+            link: '/en/markov-chain-models/fit-nhmm'
+          },
+          {
+            text: 'Model Comparison',
+            link: '/en/markov-chain-models/model-comparison'
+          },
+          {
+            text: 'Simulate HMM',
+            link: '/en/markov-chain-models/simulate-hmm'
+          },
+          {
+            text: 'Simulate MHMM',
+            link: '/en/markov-chain-models/simulate-mhmm'
+          },
+          {
+            text: 'Simulate NHMM',
+            link: '/en/markov-chain-models/simulate-nhmm'
+          },
+          {
+            text: 'Bootstrap Model',
+            link: '/en/markov-chain-models/bootstrap-model'
+          },
+          {
+            text: 'Advanced Model Fitting',
+            link: '/en/markov-chain-models/fit-model-advanced'
+          }
+        ]
+      },
       // {
       //   text: 'Sequence Feature Extration and Selection',
       //   collapsed: true,
