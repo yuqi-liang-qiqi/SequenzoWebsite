@@ -4,7 +4,7 @@
 
 Python 安装后，我们强烈推荐使用 [PyCharm](https://www.jetbrains.com/pycharm/download/) 作为您的 IDE（集成开发环境，您在这里打开文件夹和文件以使用 Python），而非 Visual Studio 。PyCharm 内置了卓越的虚拟环境管理支持，能让您的工作流程更加轻松可靠。
 
-在 PyCharm 中，请确保选择使用 Python 3.9、3.10 或 3.11 的虚拟环境，因为 `sequenzo` 完全支持这些版本。
+在 PyCharm 中，请确保选择使用 Python 3.9、3.10、3.11、3.12 或 3.13 的虚拟环境，因为 `sequenzo` 完全支持这些版本。
 
 随后，您可以通过点击左侧边栏（通常在底部附近）的终端图标
 <img src="https://github.com/user-attachments/assets/1e9e3af0-4286-47ba-aa88-29c3288cb7cb" alt="terminal icon" width="30" style="display:inline; vertical-align:middle;">

@@ -99,6 +99,17 @@ To address these challenges, we've developed Sequenzo, a Python package specific
 
 Thanks to optimized algorithms and parallel computation, Sequenzo is at least 6 times faster than traditional tools in R, significantly reducing computational burden and enabling sequence analysis to be practically applied at scale. Whether for academic research, business analytics, or policy insights, Sequenzo makes sequence analysis accessible, efficient, and insightful in an increasingly data-driven world.
 
+Now Sequenzo is available on all major operating systems — macOS, Windows, and Linux — and supports
+Python 3.9 through 3.14. It can be installed directly via `pip install sequenzo` with no compiler
+or build tools required, as pre-built packages are provided for all supported platforms.
+
+| Platform         |Python Versions                   | 
+|------------------|-----------------------------------|
+| **macOS**        | 3.9, 3.10, 3.11, 3.12, 3.13, 3.14 |
+| **Windows**      | 3.9, 3.10, 3.11, 3.12, 3.13       |
+| **Linux (glibc)**| 3.9, 3.10, 3.11, 3.12, 3.13, 3.14 |
+| **Linux (musl)** | 3.9, 3.10, 3.11, 3.12, 3.13, 3.14 |
+
 ## Team
 
 **Paper Authors**
