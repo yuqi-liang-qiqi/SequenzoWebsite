@@ -409,6 +409,58 @@ export const en = defineConfig({
         ]
       },
       {
+        text: 'Beyond Basic Clustering',
+        collapsed: true,
+        items: [
+          {
+            text: 'From Sequences to Variables',
+            collapsed: true,
+            items: [
+              {
+                text: 'Introduction',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/introduction'
+              },
+              {
+                text: 'Conceptual Guide',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/conceptual-guide'
+              },
+              {
+                text: 'Representativeness Matrix',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/representativeness-matrix'
+              },
+              {
+                text: 'Hard Classification Variables',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/hard-classification-variables'
+              },
+              {
+                text: 'FANNY Membership',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/fanny-membership'
+              },
+              {
+                text: 'Soft Classification Variables',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/soft-classification-variables'
+              },
+              {
+                text: 'Pseudoclass Regression',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/pseudoclass-regression'
+              },
+              {
+                text: 'KMedoids Result Helpers',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/medoid-indices-from-kmedoids-result'
+              },
+              {
+                text: 'Max Distance',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/max-distance'
+              },
+              {
+                text: 'Cluster Labels to Dummies',
+                link: '/en/beyond-basic-clustering/from-sequences-to-variables/cluster-labels-to-dummies'
+              }
+            ]
+          }
+        ]
+      },
+      {
         text: 'Discrepancy Analysis',
         collapsed: true,
         items: [
