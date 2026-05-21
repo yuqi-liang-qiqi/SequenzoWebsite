@@ -19,7 +19,7 @@ Supported methods fall into several families. Each family answers a slightly dif
 
 | Family | Methods | Focus |
 |--------|---------|--------|
-| **Edit-based (OM family)** | `OM`, `OMspell`, `OMloc`, `OMslen`, `OMspellNew`, `OMtspell`, `OMstran`, `TWED` | Insert/delete/substitute operations; sequencing and timing |
+| **Edit-based (OM family)** | `OM`, `OMspell`, `OMspellRS`, `OMloc`, `OMslen`, `OMtspell`, `OMstran`, `TWED` | Insert/delete/substitute operations; sequencing and timing |
 | **Positionwise** | `HAM`, `DHD` | Position-by-position comparison; equal length required |
 | **Subsequence matching** | `LCS`, `NMS`, `NMSMST`, `SVRspell` | Longest common subsequence; ordered matching |
 | **Prefix-based** | `LCP`, `RLCP`, `LCPspell`, `RLCPspell`, `LCPmst`, `RLCPmst`, `LCPprod`, `RLCPprod` | Common prefix (or suffix); early vs. late path similarity |
@@ -32,7 +32,8 @@ Supported methods fall into several families. Each family answers a slightly dif
 | Method | When to use | Notes |
 |--------|-------------|-------|
 | **OM** | General-purpose; you want a balance of sequencing and timing | Needs `sm` and optionally `indel`. Safe default: `sm="CONSTANT"`, `indel=1`. |
-| **OMspell** | Durations matter (e.g., long vs. short unemployment spells) | Operates on spells (runs); use `expcost` to control duration sensitivity. |
+| **OMspell** | Durations matter; TraMineR-style spell OM | Operates on spells (runs); use `expcost` (≥ 0; `0` ignores duration). |
+| **OMspellRS** | Spell OM with reference-scaled durations | Like `OMspell`, but duration terms are divided by `duration_ref` (τ) before `expcost` is applied; default τ = observation window *T*. |
 | **OMloc** | Local context matters (neighboring states affect cost) | Uses `context` and `expcost`. |
 | **OMslen** | Spell length affects substitution cost | Uses `link` and `h`. |
 | **OMstran** | You care about *transitions* (state changes) rather than raw states | Compares sequences of transitions. |
@@ -40,7 +41,7 @@ Supported methods fall into several families. Each family answers a slightly dif
 | **HAM** | Strict positionwise; equal-length sequences | If `sm` not given, uses constant cost 1. |
 | **DHD** | Like HAM but costs vary by position (early vs. late) | `sm="TRATE"` by default; builds time-varying costs. |
 | **LCP / RLCP** | Emphasize early-path (LCP) or late-path (RLCP) similarity | No `sm` or `indel` needed. |
-| **LCPspell / RLCPspell** | Same as LCP/RLCP but spell-aware | Use `expcost` for duration sensitivity. |
+| **LCPspell / RLCPspell** | Same as LCP/RLCP but spell-aware | Use `expcost` (≥ 0) and optional `duration_ref` (default *T*). |
 | **LCS** | Longest common subsequence; order matters, timing relaxed | No substitution costs. |
 | **NMS / NMSMST / SVRspell** | Count matching subsequences; SVRspell adds spell weighting | More exhaustive than LCS. |
 | **CHI2 / EUCLID** | Compare "time budgets" in each state; ignore order | Distribution-based; `norm` can only be `"auto"` or `"none"`. |
@@ -54,17 +55,18 @@ get_distance_matrix(
     seqdata,              # required: SequenceData object
     method,               # required: one of the methods above
     refseq=None,          # optional: int (index) or [idx_list_A, idx_list_B]
-    norm="none",          # optional: "auto", "none", "maxlength", "gmean", "maxdist", "YujianBo"
+    norm="none",          # optional: "auto", "none", "maxlength", "gmean", "maxdist", "YujianBo", "ElzingaStuder"
     indel="auto",         # for OM family: number | vector | "auto"
     sm=None,              # substitution costs: str or matrix (see below)
     full_matrix=True,     # True: n×n; False: condensed 1D for clustering
-    tpow=1.0,             # OMspell, etc.: spell-length exponent
-    expcost=0.5,          # OMspell, LCPspell, etc.: spell transform cost
+    tpow=1.0,             # OMspell, OMspellRS, NMSMST, SVRspell: spell-length exponent
+    expcost=0.5,          # OMloc, OMspell, OMspellRS, LCPspell, RLCPspell: duration weight (≥ 0)
+    duration_ref=None,    # OMspellRS, LCPspell, RLCPspell: reference scale τ (default: observation window T)
     weighted=True,        # use sequence weights when building sm
     check_max_size=True,  # safety check for large datasets
     matrix_display="full",# "full" | "upper" | "lower" (display only)
     opts=None,            # pass parameters as a dict
-    **kwargs              # method-specific (context, nu, link, h, etc.)
+    **kwargs              # method-specific (context, nu, link, h, euclid_backend, normalization_reference_index, ...)
 )
 ```
 
@@ -79,30 +81,33 @@ get_distance_matrix(
 | Parameter | Required | Type | Description |
 |-----------|----------|------|--------------|
 | `seqdata` | ✓ | SequenceData | Your state-sequence object. |
-| `method` | ✓ | str | One of: `OM`, `OMspell`, `OMloc`, `OMslen`, `OMspellNew`, `OMtspell`, `OMstran`, `TWED`, `HAM`, `DHD`, `LCS`, `LCP`, `RLCP`, `LCPspell`, `RLCPspell`, `LCPmst`, `RLCPmst`, `LCPprod`, `RLCPprod`, `NMS`, `NMSMST`, `SVRspell`, `CHI2`, `EUCLID`. |
+| `method` | ✓ | str | One of: `OM`, `OMspell`, `OMspellRS`, `OMloc`, `OMslen`, `OMtspell`, `OMstran`, `TWED`, `HAM`, `DHD`, `LCS`, `LCP`, `RLCP`, `LCPspell`, `RLCPspell`, `LCPmst`, `RLCPmst`, `LCPprod`, `RLCPprod`, `NMS`, `NMSMST`, `SVRspell`, `CHI2`, `EUCLID`. |
 | `refseq` | ✗ | int or list | **int:** index of a reference sequence; distances from all sequences to this one. **list `[A, B]`:** two index lists; returns `|A|×|B|` distance table (e.g., group A vs. group B). Same two-list form as TraMineR `seqdist` since v2.2-2 (June 2021). If `None`, computes all pairwise distances. |
-| `norm` | ✗ | str | `"auto"`, `"none"`, `"maxlength"`, `"gmean"`, `"maxdist"`, `"YujianBo"`. `"auto"` picks a sensible default per method. CHI2/EUCLID only accept `"auto"` or `"none"`. |
+| `norm` | ✗ | str | `"auto"`, `"none"`, `"maxlength"`, `"gmean"`, `"maxdist"`, `"YujianBo"`, `"ElzingaStuder"`. `"auto"` picks a sensible default per method. CHI2/EUCLID only accept `"auto"` or `"none"`. `"ElzingaStuder"` applies post-hoc theoretical normalization (Elzinga & Studer, 2019); see [normalizing sequences](../tutorials/normalizing-sequences.md). Not compatible with `refseq=[A, B]`. |
 | `full_matrix` | ✗ | bool | If `True` (and `refseq=None`): return full `n×n` DataFrame. If `False`: return condensed 1D array (for clustering). Ignored when `refseq` is provided. |
 | `weighted` | ✗ | bool | When building `sm` from data (e.g., `"TRATE"`), respect sequence weights. |
 | `check_max_size` | ✗ | bool | Safety check against too many unique sequences. |
 | `matrix_display` | ✗ | str | When result is full matrix: `"full"` (default), `"upper"`, or `"lower"`. Affects display only; underlying distances unchanged. |
 | `opts` | ✗ | dict | Pass parameters as a bundle. |
-| `**kwargs` | ✗ | — | `with_missing` is ignored (missing values are always included). |
+| `**kwargs` | ✗ | — | `with_missing` is ignored (missing values are always included). `normalization_reference_index` (int): reference object for `norm="ElzingaStuder"` (default: `refseq` if single index, else `0`). `euclid_backend` (`"auto"`, `"categorical"`, `"dense"`): EUCLID implementation. `tokdep_coeff`: switches `OMspell` → `OMtspell`. OMstran: `transindel`, `otto`, `previous`, `add_column`. |
 
-### Edit-based Measures: OM, OMspell, OMloc, OMslen, OMstran, TWED
+### Edit-based Measures: OM, OMspell, OMspellRS, OMloc, OMslen, OMstran, TWED
 
 | Parameter | Required | Type | Description |
 |-----------|----------|------|--------------|
-| `sm` | ✓ for OM, OMspell, OMloc, OMslen, OMstran, TWED | str or matrix | Substitution costs. **str:** `"TRATE"`, `"CONSTANT"`, `"INDELS"`, `"INDELSLOG"`, `"FUTURE"`, `"FEATURES"`. **matrix:** custom square matrix (states×states). For DHD: 3D array (time-varying). |
-| `indel` | ✗ | number \| vector \| `"auto"` | Insertion/deletion cost(s). **Default `"auto"`** — the function derives indel from `sm` automatically (e.g., half of max substitution cost when using `"TRATE"`). You can omit it; you do not need to specify both `sm` and `indel` manually. Vector length must match number of states (incl. missing) when passed explicitly. |
-| `tpow` | ✗ | float | OMspell, etc.: spell-length exponent (default 1.0). |
-| `expcost` | ✗ | float | OMspell, LCPspell, RLCPspell: spell transform cost (default 0.5). Higher = more duration-sensitive. |
+| `sm` | ✓ for OM, OMspell, OMspellRS, OMloc, OMslen, OMstran, TWED | str or matrix | Substitution costs. **str:** `"TRATE"`, `"CONSTANT"`, `"INDELS"`, `"INDELSLOG"`, `"FUTURE"`, `"FEATURES"`. **matrix:** custom square matrix (states×states). For DHD: 3D array (time-varying). |
+| `indel` | ✗ | number \| vector \| `"auto"` | Insertion/deletion cost(s). **Default `"auto"`** — the function derives indel from `sm` automatically (e.g., half of max substitution cost when using `"TRATE"`). You can omit it; you do not need to specify both `sm` and `indel` manually. Vector length must match number of states (incl. missing) when passed explicitly. TWED with matrix `sm`: `indel="auto"` uses `2*max(sm)+nu+h`. |
+| `tpow` | ✗ | float | `OMspell`, `OMspellRS`, `NMSMST`, `SVRspell`: spell-length exponent (default 1.0). |
+| `expcost` | ✗ | float | Duration weight λ (default 0.5, **≥ 0**). For `OMspell`, `OMspellRS`, `LCPspell`, `RLCPspell`: `expcost=0` removes duration-related terms. `OMloc` also uses `expcost` (with additional constraints on `context`). Higher λ = stronger duration sensitivity. |
+| `duration_ref` | ✗ | float | Reference scale τ for `OMspellRS`, `LCPspell`, `RLCPspell`. **Default:** observation window *T* (number of time positions in `seqdata`). Must be positive and fixed before computation. Scales duration differences as proportions of the study window (e.g. `|d_i-d_j|/τ`). **Do not** set τ to the empirical maximum spell duration in the dataset. Smaller τ increases relative duration weight; larger τ reduces it. τ is a design-based scale; `expcost` controls how strongly scaled differences enter the distance. |
 | `context` | ✗ | float | OMloc only: local context (default `1 - 2*expcost`). |
 | `link`, `h` | ✗ | str, float | OMslen only: `link` in `["mean","gmean"]`, `h` ≥ 0. |
 | `nu`, `h` | ✗ | float | TWED only: `nu` (stiffness) required, `h` (gap penalty) default 0.5. |
 | `tokdep_coeff` | ✗ | array | OMtspell: token-dependent coefficients (switches from OMspell when provided). |
 
-**OMspell practical tips:**
+**OMspell vs. OMspellRS:** `OMspell` uses TraMineR-style spell costs. `OMspellRS` divides duration terms by τ (`duration_ref`) before applying λ (`expcost`), e.g. indel/del `(d-1)/τ`, same-state sub `|d_i-d_j|/τ`, different-state sub `σ(i,j) + (d_i+d_j-2)/τ`. Prefer `OMspellRS` when you want duration penalties expressed relative to a fixed observation window.
+
+**OMspell / OMspellRS practical tips:**
 
 | Parameter | Typical range | Advice |
 |-----------|---------------|--------|
@@ -123,8 +128,9 @@ get_distance_matrix(
 
 | Parameter | Required | Type | Description |
 |-----------|----------|------|--------------|
-| `norm` | ✗ | str | `"auto"` → `"gmean"` for LCP/RLCP; `"maxdist"` for LCPspell/RLCPspell. |
-| `expcost` | ✗ | float | LCPspell/RLCPspell only: duration sensitivity (≥ 0). |
+| `norm` | ✗ | str | `"auto"` → `"gmean"` for LCP/RLCP; `"maxdist"` for LCPspell/RLCPspell, LCPmst/RLCPmst; `"none"` for LCPprod/RLCPprod. |
+| `expcost` | ✗ | float | LCPspell/RLCPspell only: duration weight (≥ 0; `0` ignores duration). |
+| `duration_ref` | ✗ | float | LCPspell/RLCPspell only: τ (default *T*). Same interpretation as for `OMspellRS`. |
 | `durations` | ✗ | array | LCPmst, RLCPmst, LCPprod, RLCPprod: position-wise durations (default 1.0). |
 
 **Note:** No `sm` or `indel` needed for prefix-based measures.
@@ -134,7 +140,8 @@ get_distance_matrix(
 | Parameter | Required | Type | Description |
 |-----------|----------|------|--------------|
 | `norm` | ✗ | str | Only `"auto"` or `"none"`. |
-| `step`, `breaks`, `overlap` | ✗ | int, array, bool | Optional; see `**kwargs` in source. |
+| `step`, `breaks`, `overlap` | ✗ | int, array, bool | Optional time-window controls. |
+| `euclid_backend` | ✗ | str | EUCLID only: `"auto"` (default), `"categorical"` (fast C++ path when data are complete equal-length sequences with `step=1`, no custom `breaks`, no overlap, no missing values), or `"dense"` (portable CHI2-style backend). |
 
 ---
 
@@ -143,9 +150,10 @@ get_distance_matrix(
 | Method | Default norm |
 |--------|--------------|
 | OM, HAM, DHD | `"maxlength"` |
-| LCS, LCP, RLCP, LCPmst, RLCPmst, LCPprod, RLCPprod | `"gmean"` |
-| LCPspell, RLCPspell | `"maxdist"` |
-| OMloc, OMslen, OMspell, OMspellNew, OMtspell, OMstran, TWED, NMS, NMSMST, SVRspell | `"YujianBo"` |
+| LCS, LCP, RLCP | `"gmean"` |
+| LCPspell, RLCPspell, LCPmst, RLCPmst | `"maxdist"` |
+| LCPprod, RLCPprod | `"none"` (raw distance; normalized values may be unstable) |
+| OMloc, OMslen, OMspell, OMspellRS, OMtspell, OMstran, TWED, NMS, NMSMST, SVRspell | `"YujianBo"` |
 | CHI2, EUCLID | Uses internal normalization (sqrt of n_breaks) |
 
 ---
@@ -154,10 +162,10 @@ get_distance_matrix(
 
 1. **Validates inputs** — Checks `seqdata`, `method`, and method-specific arguments.
 2. **Builds substitution and indel costs** — From `sm` (e.g., `"TRATE"`, `"CONSTANT"`) or your custom matrix. If `indel="auto"`, derives indel from `sm`.
-3. **Normalizes** — Applies chosen normalization (or `"auto"` default).
+3. **Normalizes** — Applies per-method normalization during C++ computation (or `"auto"` default). `norm="ElzingaStuder"` is applied afterward on the full matrix (or condensed vector).
 4. **Deduplicates** — Compresses to unique sequences for faster C++ computation, then expands to requested output shape.
-5. **Computes distances** — Uses compiled C++ backend.
-6. **Handles edge cases** — Empty sequences → warning; `refseq` provided with `full_matrix=False` → returns full table (info printed).
+5. **Computes distances** — Uses compiled C++ backend (Python fallback for some CHI2/EUCLID cases).
+6. **Handles edge cases** — Empty sequences → warning (error for `OMloc`); `refseq` provided with `full_matrix=False` → returns full table (info printed).
 
 ---
 
@@ -198,6 +206,20 @@ omspell = get_distance_matrix(
     indel="auto",
     tpow=1.0,
     expcost=0.5,
+    norm="auto"
+)
+```
+
+### 3b) OMspellRS (reference-scaled spell durations)
+
+```python
+omspell_rs = get_distance_matrix(
+    seqdata=sequence_data,
+    method="OMspellRS",
+    sm="TRATE",
+    indel="auto",
+    expcost=0.5,
+    duration_ref=None,   # default: observation window T (e.g. 20 years)
     norm="auto"
 )
 ```
@@ -271,8 +293,12 @@ om = get_distance_matrix(
 
 * **HAM/DHD:** All sequences must have the same length; otherwise you get an explicit error.
 * **indel vector:** If you pass a vector, its length must match the number of states (including missing).
+* **OMspellRS / LCPspell / RLCPspell:** Set `duration_ref` to the study-design observation window *T*, not the maximum spell duration in the data. If τ is smaller than an observed spell length, normalized distances may exceed their usual bound.
 * **LCPspell/RLCPspell:** Prefer `norm="maxdist"` or `norm="none"`; `norm="gmean"` can yield distances outside [0, 1].
+* **LCPmst/RLCPmst:** Prefer `norm="maxdist"` (auto default) or `norm="none"`; `norm="gmean"` can yield distances outside [0, 1] when sequence lengths differ.
+* **LCPprod/RLCPprod:** Auto default is `norm="none"`; other normalizations are clamped and may hide instability.
 * **CHI2/EUCLID:** `norm` can only be `"auto"` or `"none"`.
+* **ElzingaStuder:** Requires a full pairwise matrix (`refseq=None`); choose `normalization_reference_index` deliberately (empty sequence, medoid, or index 0). See [normalizing sequences](../tutorials/normalizing-sequences.md).
 * **with_missing:** This parameter no longer exists; missing values are always included by default.
 
 ---
@@ -284,6 +310,7 @@ om = get_distance_matrix(
 | `refseq=None`, `full_matrix=True` | `n×n` | pandas DataFrame |
 | `refseq=None`, `full_matrix=False` | Condensed 1D (length `u×(u-1)/2`, u = unique sequences) | numpy array (scipy squareform format) |
 | `refseq=[A, B]` | `|A|×|B|` | pandas DataFrame |
+| `refseq=int` | `n` distances | pandas Series |
 
 Row and column labels come from `seqdata.ids`.
 
@@ -320,3 +347,5 @@ Hamming, R. W. (1950). Error detecting and error correcting codes. The Bell syst
 Hollister, M. (2009). Is optimal matching suboptimal?. Sociological methods & research, 38(2), 235-264.
 
 Lesnard, L. (2010). Setting cost in optimal matching to uncover contemporaneous socio-temporal patterns. Sociological methods & research, 38(3), 389-419.
+
+Liang, Y. and J. Meyerhoff-Liang. 2026. Measuring Divergence and Convergence in Sequence Analysis: A Spell-based Extension of Longest Common Prefixes. Retrieved (osf.io/preprints/socarxiv/3pyhr_v1).
