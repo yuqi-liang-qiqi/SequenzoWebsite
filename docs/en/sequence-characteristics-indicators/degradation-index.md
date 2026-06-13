@@ -2,14 +2,14 @@
 
 Computes transition penalty based on state order and transition direction.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_degradation_index
+from sequenzo.sequence_characteristics_indicators import get_degradation_index
 result = get_degradation_index(seqdata, method="RANK", penalized="BOTH")
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `method`: transition-weight method (`FREQ`, `TRATE`, `TRATEDSS`, `RANK`, ...).
@@ -24,9 +24,14 @@ result = get_degradation_index(seqdata, method="RANK", penalized="BOTH")
 
 - Equivalent TraMineR function: `seqidegrad`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

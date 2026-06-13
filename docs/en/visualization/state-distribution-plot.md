@@ -72,6 +72,10 @@ If you would like to customize the visualization, please see the following table
 * Ensures each time point sums to exactly 100% to avoid gaps.
 * Displays the figure in your current environment and can also save it to a file if `save_as` is set.
 
+## Returns
+
+`None`. The function draws the figure on screen, and writes it to disk when `save_as` is provided.
+
 ## Key Features
 
 * **Clear percentage visualization**: shows how state prevalence changes over time.
@@ -150,6 +154,18 @@ This saves a high-resolution figure with custom dimensions and larger font size 
 * Weighted percentages are calculated at each time point, ensuring that each time point sums to exactly 100%.
 * Stacked area plots are ideal for showing overall composition, while line plots are better for comparing individual state trends across groups.
 
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
+
+## R Counterpart
+
+- **Closest R function:** `seqdplot`
+- **Mapping note:** Direct conceptual match: state distributions across time positions.
+
+
 ## Authors
 
 Code: Yuqi Liang
@@ -157,9 +173,3 @@ Code: Yuqi Liang
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
-
-## R Counterpart
-
-- **Closest R function:** `seqdplot`
-- **Mapping note:** Direct conceptual match: state distributions across time positions.
-

@@ -2,14 +2,14 @@
 
 Computes complexity from transition intensity and within-sequence entropy.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_complexity_index
 result = get_complexity_index(seqdata, silent=True)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `silent`: suppress progress messages.
@@ -22,9 +22,14 @@ result = get_complexity_index(seqdata, silent=True)
 
 - Equivalent TraMineR function: `seqici`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

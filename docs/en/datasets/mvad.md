@@ -138,4 +138,20 @@ McVicar, D., & Anyadike-Danes, M. (2002). Predicting successful and unsuccessful
 
 TraMineR documentation: `mvad`, Example data set: Transition from school to work.
 
+## Loading the Data in Sequenzo
+
+```python
+from sequenzo import load_dataset
+
+df = load_dataset('mvad')
+```
+
+The returned DataFrame has one row per person, 14 covariate columns, and 72 monthly state columns from `Jul.93` to `Jun.99`.
+
+## See Also
+
+- [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
+- [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
+- [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.
+
 *Author: Yuqi Liang*

@@ -2,14 +2,14 @@
 
 Returns spell durations for each sequence (TraMineR-like `seqdur` behavior).
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_spell_durations
+from sequenzo.sequence_characteristics_indicators import get_spell_durations
 result = get_spell_durations(seqdata, with_missing=False)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `with_missing`: treat missing as a state or ignore.
@@ -22,9 +22,14 @@ result = get_spell_durations(seqdata, with_missing=False)
 
 - Equivalent TraMineR function: `seqdur`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

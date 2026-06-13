@@ -2,14 +2,14 @@
 
 Computes precarity from start-state cost, complexity, and degradation correction.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_precarity_index
+from sequenzo.sequence_characteristics_indicators import get_precarity_index
 result = get_precarity_index(seqdata, otto=0.2, a=1.0, b=1.2, method="TRATEDSS")
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `otto`, `a`, `b`: combination and power parameters.
@@ -24,9 +24,14 @@ result = get_precarity_index(seqdata, otto=0.2, a=1.0, b=1.2, method="TRATEDSS")
 
 - Equivalent TraMineR function: `seqprecarity`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

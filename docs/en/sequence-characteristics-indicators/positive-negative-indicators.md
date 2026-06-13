@@ -2,14 +2,14 @@
 
 Computes binary-state indicators from positive vs. negative state definitions.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_positive_negative_indicators
+from sequenzo.sequence_characteristics_indicators import get_positive_negative_indicators
 result = get_positive_negative_indicators(seqdata, pos_states=[1, 2], neg_states=[3, 4])
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `pos_states`: states treated as positive.
@@ -24,9 +24,14 @@ result = get_positive_negative_indicators(seqdata, pos_states=[1, 2], neg_states
 
 - Equivalent TraMineR functions: `seqipos` and `seqindic` binary indicators.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

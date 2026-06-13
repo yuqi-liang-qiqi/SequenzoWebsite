@@ -21,6 +21,10 @@ result = get_distinct_state_sequences(seqdata, fill_value=-999)
 - Converts each sequence into distinct successive states (collapsing repeated consecutive states).
 - Returns a tabular DSS output for all sequences.
 
+## Returns
+
+`pd.DataFrame`.
+
 ## Examples
 
 ```python
@@ -38,6 +42,11 @@ print(dss.head())
 ## Notes
 
 - Useful when you want spell order without repeated consecutive states.
+
+## See Also
+
+- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

@@ -2,50 +2,50 @@
 
 <div class="gallery-intro">
 
-Welcome to the Sequenzo visualization gallery. This page showcases the various types of plots and visualizations available in Sequenzo, providing a comprehensive overview of the visualization capabilities.
-
-The gallery below displays examples of different visualization types, each designed to reveal different aspects of sequence data. **Click on any image to view it in full size** and explore the details.
+Browse the main Sequenzo plots and the question each plot helps answer. Click any image to view it in full size.
 
 </div>
 
 <style>
 .gallery-intro {
-  padding: 2rem 0;
-  margin-bottom: 3rem;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  padding: 1.5rem 0 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--vp-c-text-2);
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .visualization-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
   margin: 2rem 0;
 }
 
 .visualization-card {
-  background: #ffffff;
-  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  border: 1px solid var(--vp-c-divider);
   pointer-events: auto;
 }
 
 .visualization-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
 .visualization-card-image {
   width: 100%;
-  height: 280px;
+  height: 220px;
   object-fit: cover;
   display: block;
-  background: #f9fafb;
+  background: var(--vp-c-bg);
   cursor: zoom-in !important;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   pointer-events: auto !important;
   user-select: none;
   -webkit-user-select: none;
@@ -53,30 +53,30 @@ The gallery below displays examples of different visualization types, each desig
 }
 
 .visualization-card:hover .visualization-card-image {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .visualization-card-content {
-  padding: 1.5rem;
+  padding: 1rem 1.1rem 1.15rem;
 }
 
 .visualization-card-title {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: #1f2937;
-  margin: 0 0 0.75rem 0;
-  line-height: 1.4;
+  color: var(--vp-c-text-1);
+  margin: 0 0 0.45rem 0;
+  line-height: 1.35;
 }
 
 .visualization-card-description {
-  color: #6b7280;
+  color: var(--vp-c-text-2);
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.55;
   margin: 0;
 }
 
 .visualization-card-description a {
-  color: #3b82f6;
+  color: var(--vp-c-brand-1);
   text-decoration: none;
   font-weight: 500;
   border-bottom: 1px solid transparent;
@@ -84,17 +84,16 @@ The gallery below displays examples of different visualization types, each desig
 }
 
 .visualization-card-description a:hover {
-  border-bottom-color: #3b82f6;
-  color: #2563eb;
+  border-bottom-color: var(--vp-c-brand-1);
 }
 
 .section-header {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #111827;
-  margin: 3rem 0 1.5rem 0;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid #3b82f6;
+  color: var(--vp-c-text-1);
+  margin: 2.5rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 
@@ -102,10 +101,10 @@ The gallery below displays examples of different visualization types, each desig
   width: 100%;
   border-collapse: collapse;
   margin-top: 1.5rem;
-  background: white;
+  background: var(--vp-c-bg-soft);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--vp-c-divider);
 }
 
 .tips-table thead {
@@ -122,12 +121,12 @@ The gallery below displays examples of different visualization types, each desig
 }
 
 .tips-table tbody tr {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--vp-c-divider);
   transition: background-color 0.2s ease;
 }
 
 .tips-table tbody tr:hover {
-  background-color: #f9fafb;
+  background-color: var(--vp-c-bg);
 }
 
 .tips-table tbody tr:last-child {
@@ -147,7 +146,7 @@ The gallery below displays examples of different visualization types, each desig
 }
 
 .tips-table td:last-child {
-  color: #4b5563;
+  color: var(--vp-c-text-2);
   font-size: 0.95rem;
 }
 
@@ -172,10 +171,10 @@ The gallery below displays examples of different visualization types, each desig
   
   .tips-table tr {
     margin-bottom: 1rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 8px;
     padding: 0.75rem;
-    background: white;
+    background: var(--vp-c-bg-soft);
   }
   
   .tips-table td {
@@ -187,7 +186,7 @@ The gallery below displays examples of different visualization types, each desig
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e5e7eb;
+    border-bottom: 1px solid var(--vp-c-divider);
   }
 }
 
@@ -206,14 +205,16 @@ The gallery below displays examples of different visualization types, each desig
 
 ## Core Visualizations
 
+In the sidebar these plots are grouped into longitudinal views (one element per trajectory) and cross-sectional views (summaries per time point); [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to choose between them.
+
 <div class="visualization-grid">
 
 <div class="visualization-card">
-  <img src="./img/index_plot.png" alt="Index Plot - Comprehensive view of all sequences over time" class="visualization-card-image" width="800" height="600" loading="eager" />
+  <img src="./img/index_plot.png" alt="Index Plot showing all sequences over time" class="visualization-card-image" width="800" height="600" loading="eager" />
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">Index Plot</h3>
     <p class="visualization-card-description">
-      A "barcode-like" visualization where each row is one sequence and each column is a time point. Reveals when sequences switch states, how stable they are, and how they differ across groups. Supports multiple sorting methods (lexicographic, MDS, distance-based) and flexible grouping options. <a href="./index-plot">Learn more →</a>
+      Shows one sequence per row across time. Best for inspecting individual trajectories, state changes, and group differences. <a href="./index-plot">Learn more →</a>
     </p>
   </div>
 </div>
@@ -223,7 +224,7 @@ The gallery below displays examples of different visualization types, each desig
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">State Distribution Plot</h3>
     <p class="visualization-card-description">
-      Shows how the share of entities in each state changes over time. Each time point displays the percentage of sequences in each state. Supports both stacked area plots and line plots, with flexible grouping for cross-group comparisons. <a href="./state-distribution-plot">Learn more →</a>
+      Shows how state shares change over time. Use it to compare overall composition or group-level trends. <a href="./state-distribution-plot">Learn more →</a>
     </p>
   </div>
 </div>
@@ -233,7 +234,7 @@ The gallery below displays examples of different visualization types, each desig
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">Mean Time Plot</h3>
     <p class="visualization-card-description">
-      A horizontal bar chart showing the average amount of time spent in each state across all sequences. Optionally includes standard error bars to assess uncertainty. States are automatically sorted by mean time for easy interpretation. <a href="./plot_mean_time">Learn more →</a>
+      Summarizes average time spent in each state. Optional error bars help show uncertainty. <a href="./plot-mean-time">Learn more →</a>
     </p>
   </div>
 </div>
@@ -243,7 +244,7 @@ The gallery below displays examples of different visualization types, each desig
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">Modal State Plot</h3>
     <p class="visualization-card-description">
-      Shows the most common state (modal state) at each time point, along with its relative frequency (percentage). Highlights dominant patterns across sequences and supports grouping to compare modal trends across different categories. <a href="./plot_modal_state">Learn more →</a>
+      Shows the most common state at each time point and how dominant it is. Useful for reading the main trajectory pattern. <a href="./plot-modal-state">Learn more →</a>
     </p>
   </div>
 </div>
@@ -253,7 +254,7 @@ The gallery below displays examples of different visualization types, each desig
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">Most Frequent Sequences</h3>
     <p class="visualization-card-description">
-      Displays the Top-N most common full sequences in your data. Each horizontal bar represents one sequence pattern across time, with height showing that sequence's percentage in the dataset. Colors automatically match your SequenceData state color map. <a href="./plot_most_frequent_sequences">Learn more →</a>
+      Displays the most common full trajectories. Use it to see which exact paths appear most often. <a href="./plot-most-frequent-sequences">Learn more →</a>
     </p>
   </div>
 </div>
@@ -263,7 +264,7 @@ The gallery below displays examples of different visualization types, each desig
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">Relative Frequency Plot</h3>
     <p class="visualization-card-description">
-      A two-panel figure summarizing sequence "typicality" by frequency groups. Left panel shows the medoid (most central) sequence for each group; right panel shows box plots of dissimilarities to the medoid. Reports pseudo R², F-statistic, and p-value for group separation quality. <a href="./plot_relative_frequency">Learn more →</a>
+      Groups sequences by typicality and shows central patterns plus distance spread. Requires a distance matrix. <a href="./plot-relative-frequency">Learn more →</a>
     </p>
   </div>
 </div>
@@ -273,7 +274,7 @@ The gallery below displays examples of different visualization types, each desig
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">Transition Matrix</h3>
     <p class="visualization-card-description">
-      A heatmap showing state-to-state transition rates. Rows represent the state at time t, columns represent the state at time t+1, and cell values show transition probabilities (0-1). The diagonal shows stay-in-the-same-state probabilities. Row-normalized so each row sums to 1.0. <a href="./plot_transition_matrix">Learn more →</a>
+      Shows state-to-state transition probabilities. Darker cells mark more common moves, including staying in the same state. <a href="./plot-transition-matrix">Learn more →</a>
     </p>
   </div>
 </div>
@@ -289,7 +290,7 @@ The gallery below displays examples of different visualization types, each desig
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">Customized Index Plot</h3>
     <p class="visualization-card-description">
-      Sequenzo allows you to customize colors to match your preferences or publication requirements. This example shows an index plot with a custom color palette.
+      Example of an index plot using a custom state palette.
     </p>
   </div>
 </div>
@@ -299,7 +300,7 @@ The gallery below displays examples of different visualization types, each desig
   <div class="visualization-card-content">
     <h3 class="visualization-card-title">Customized Legend</h3>
     <p class="visualization-card-description">
-      Customize legend appearance and colors to create publication-ready visualizations that match your style guide or branding requirements.
+      Example of a customized legend for publication-ready plots.
     </p>
   </div>
 </div>
@@ -312,39 +313,39 @@ The gallery below displays examples of different visualization types, each desig
 <thead>
 <tr>
 <th style="width: 20%;">Visualization</th>
-<th style="width: 80%;">Best Use Cases & Key Features</th>
+<th style="width: 80%;">Best use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Index Plot</strong></td>
-<td>Best for exploring individual sequence patterns, identifying when sequences switch states, assessing sequence stability, and comparing sequences across groups. Supports multiple sorting methods (lexicographic, MDS, distance-based) to reveal structure. Use sequence selection for large datasets.</td>
+<td>Inspect individual trajectories, switches, and within-group variation. Sort rows when you need structure to emerge.</td>
 </tr>
 <tr>
 <td><strong>Mean Time Plot</strong></td>
-<td>Provides an intuitive "how long in each state?" summary. Shows the average time spent in each state across all sequences with optional standard error bars for uncertainty assessment. Automatically sorts states by mean time for easy interpretation.</td>
+<td>Answer "how long in each state?" at a glance. Add error bars when uncertainty matters.</td>
 </tr>
 <tr>
 <td><strong>Modal State Plot</strong></td>
-<td>Highlights the dominant state at each time point along with its relative frequency. Ideal for identifying prevalent patterns over time. Supports grouping to compare modal trends across different categories (e.g., by gender, region, country type).</td>
+<td>Find the dominant state at each time point. Group it to compare modal patterns across categories.</td>
 </tr>
 <tr>
 <td><strong>Most Frequent Sequences</strong></td>
-<td>Displays the Top-N most common full sequences, showing each as a stacked horizontal bar with percentage labels. Great for discovering typical trajectories and understanding what sequence patterns are most prevalent in your dataset. Similar to TraMineR's seqfplot.</td>
+<td>Identify exact trajectories that appear most often. Helpful before choosing a clustering strategy.</td>
 </tr>
 <tr>
 <td><strong>Relative Frequency Plot</strong></td>
-<td>Summarizes sequence "typicality" by frequency groups using a two-panel layout: medoid sequences (left) and dissimilarity distributions (right). Reports statistical measures (pseudo R², F-statistic, p-value) for group separation quality. Requires a distance matrix.</td>
+<td>Compare central patterns and distance spread across typicality groups. Requires a distance matrix.</td>
 </tr>
 <tr>
 <td><strong>State Distribution Plot</strong></td>
-<td>Shows how the percentage of sequences in each state changes over time. Supports both stacked area plots (showing composition) and line plots (comparing individual state trends). Excellent for understanding overall state composition and comparing distributions across groups.</td>
+<td>Read state composition over time. Use grouped versions to compare population-level trends.</td>
 </tr>
 <tr>
 <td><strong>Transition Matrix</strong></td>
-<td>A heatmap of state-to-state transition probabilities from time t to t+1. Dark cells indicate common transitions; light cells indicate rare transitions. The diagonal shows stay probabilities. Essential for understanding sequence evolution dynamics and transition patterns.</td>
+<td>Read transition dynamics. The diagonal shows persistence; off-diagonal cells show movement between states.</td>
 </tr>
 </tbody>
 </table>
 
-For detailed information about each visualization type and how to use them, please refer to the individual documentation pages for each plot function.
+See each plot page for parameters and examples.

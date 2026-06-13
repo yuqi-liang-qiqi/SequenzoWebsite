@@ -2,14 +2,14 @@
 
 Computes per-sequence state frequencies and entropy.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_state_freq_and_entropy_per_seq
 result = get_state_freq_and_entropy_per_seq(seqdata, prop=False)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `prop`: return state proportions instead of counts.
@@ -22,9 +22,14 @@ result = get_state_freq_and_entropy_per_seq(seqdata, prop=False)
 
 - Equivalent TraMineR function: `seqistatd`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

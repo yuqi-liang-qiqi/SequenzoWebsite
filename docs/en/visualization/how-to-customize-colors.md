@@ -1,8 +1,8 @@
 # Recommended color schemes and how to customize them
 
-When working with sequence data, clear and consistent colors are essential: they help readers quickly distinguish states and make comparisons across figures. In Sequenzo, this logic is built directly into the `SequenceData` class. Instead of scattering color choices across different visualization functions, we centralize the control at the very beginning of your workflow.
+When working with sequence data, clear and consistent colors matter because they help readers quickly distinguish states and compare figures. In Sequenzo, this logic is built directly into the `SequenceData` class. Instead of scattering color choices across different visualization functions, color control starts at the beginning of the workflow.
 
-Concretely, each state is assigned a unique color the moment you create a `SequenceData` object. This means you don’t need to adjust individual plotting functions; once the mapping is set, every figure will automatically inherit it. To customize the scheme, simply define your `states`, their human-readable `labels`, and, if you prefer, a list of `custom_colors`. In this way, `SequenceData` acts as the single source for color handling, ensuring consistency across all analyses.
+Each state is assigned a unique color when you create a `SequenceData` object. Once that mapping is set, downstream plots reuse it automatically. To customize the scheme, define your `states`, their human-readable `labels`, and, when needed, a list of `custom_colors`. `SequenceData` then acts as the single source for color handling across the analysis.
 
 This design has two advantages:
 
@@ -21,9 +21,9 @@ When you don't specify `custom_colors`, Sequenzo automatically assigns colors ba
 
 The palette is applied to **all states at once**, not in segments. For example, if you have 30 states, all 30 will use the viridis palette, not the first 20 with Spectral and the remaining 10 with viridis.
 
-**⚠️ Practical recommendation**: We strongly advise against using more than 15 states, as 10 states already make visualizations quite crowded and a little bit difficult to interpret. With too many states, even the best color palettes cannot ensure clear visual distinction between different sequence patterns.
+**Practical recommendation**: Keep the number of displayed states modest when possible. Around 10 states can already make sequence plots crowded, and more than 15 states usually requires careful grouping or a strong substantive reason.
 
-Here's what the default palettes look like, and they (Spectral, viridis, combined) are color-blind friendly:
+The default palettes below show the available Spectral, viridis, and combined options, which are color-blind friendly:
 
 ### Spectral palette (≤20 states, reversed)
 
@@ -99,7 +99,7 @@ Missing values always get a fixed light gray color automatically:
 
 Generally speaking, you can define states without explicitly considering "Missing" when creating the `SequenceData()` object. 
 
-This is because if missing cells are detected, Sequenzo's `SequenceData()` will append a Missing state and add gray. For instance, your default colors or `custom_colors` have length 9 for non-missing states, then `SequenceData()` will append gray for Missing automatically.
+If missing cells are detected, `SequenceData()` appends a Missing state and assigns it gray. For instance, if your default colors or `custom_colors` cover 9 non-missing states, `SequenceData()` will add the Missing color automatically.
 
 If you would like to customize the color for the state "Missing", please refer to [this section of the tutorial](#how-to-include-a-custom-missing-color).
 
@@ -112,7 +112,7 @@ We use the built-in [pairfam-family dataset](../datasets/pairfam-family.md) with
 # Import necessary libraries
 # Your calling code (e.g., in a script or notebook)
 
-from sequenzo import * # Import the package, give it a short alias
+from sequenzo import * # Import Sequenzo helpers used below
 import pandas as pd # Data manipulation
 
 df = load_dataset("pairfam_family")
@@ -160,11 +160,14 @@ sequence_data = SequenceData(
 
 # Optional: preview the legend that uses these colors
 sequence_data.plot_legend()
+
+# Use the horizontal style when you want a compact legend for a plot layout
+sequence_data.plot_legend(style="horizontal")
 ```
 
 Output:
 
-```python
+```text
 [>] SequenceData initialized successfully! Here's a summary:
 [>] Number of sequences: 1866
 [>] Number of time points: 264
@@ -175,6 +178,8 @@ Output:
 ```
 
 ![show the legend](./img/customize_colors_legend.png)
+
+`plot_legend()` uses a vertical layout by default. For publication-style plot panels or grouped index plots, `style="horizontal"` creates a multi-column legend and automatically chooses a cleaner column count. You can override it with `ncol=...`, adjust `fontsize=...`, and set `show_border=True` if you want a framed legend.
 
 With the colors defined in `SequenceData`, you can go ahead and generate your visualizations and your plots will now appear with the customized palette you chose:
 
@@ -187,7 +192,7 @@ plot_sequence_index(sequence_data,
 
 ## Ready-to-use palettes
 
-Below are curated palettes you can copy directly into `custom_colors`. The little squares show the actual colors. The custom palettes below are designed to be soft and visually appealing for general use.
+Below are palettes you can copy directly into `custom_colors`. The squares show the actual colors. Use them as starting points, then check whether the contrast works for your states and figures.
 
 In the examples we provide nine colors, because our demo dataset has nine states, which is already quite a lot. Your own dataset may have fewer or more states, and that’s perfectly fine. If you have fewer states, simply pick a subset of the palette and test how it looks in your visualizations (e.g., by calling `plot_sequence_index(sequence_data)`). 
 
@@ -195,7 +200,7 @@ If you have more states, you can extend the palette in two ways:
 
 1. Use a color picker tool (e.g., [htmlcolorcodes.com](https://htmlcolorcodes.com/)) to select additional shades from an image you like.
 
-2. Ask an AI to generate complementary colors that harmonize with the ones you already chose.
+2. Extend the palette with a color tool that checks contrast and color-blind accessibility.
 
 In practice, defining the palette that you like is often an iterative process: try a set of colors, visualize your sequences, and adjust until the result feels both clear and aesthetically consistent.
 

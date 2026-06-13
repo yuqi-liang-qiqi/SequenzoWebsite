@@ -2,14 +2,14 @@
 
 Counts transitions (state changes) for each sequence.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_number_of_transitions
 result = get_number_of_transitions(seqdata, norm=False, pwight=False)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `norm`: normalize by sequence length minus one.
@@ -23,9 +23,14 @@ result = get_number_of_transitions(seqdata, norm=False, pwight=False)
 
 - Equivalent TraMineR function: `seqtransn`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

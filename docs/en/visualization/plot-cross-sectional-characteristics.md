@@ -71,6 +71,10 @@ result = plot_cross_sectional_characteristics(
 
 * Optionally saves the plot to a file if `save_as` is specified
 
+## Returns
+
+`None`. The function draws the figure on screen, and writes it to disk when `save_as` is provided.
+
 ## Examples
 
 ### 1. Basic example (displays plot only)
@@ -227,13 +231,19 @@ C  0.000000  0.333333  0.333333
 
 * Default line color is a soft green (`#74C9B4`), which is publication-friendly. You can customize it for presentations or to match your organization's color scheme.
 
-## Author
-Code: Yuqi Liang
-
-Documentation: Yuqi Liang
-
 ## R Counterpart
 
 - **Closest R function:** `seqHtplot` (and `seqstatd` for underlying distribution statistics)
 - **Mapping note:** Conceptually aligned for cross-sectional entropy/distribution-over-time interpretation.
+
+## Authors
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang
+
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
 

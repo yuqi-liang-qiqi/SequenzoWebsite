@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 13:59:06
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-02-08 18:07:03
- * @FilePath: /SequenzoWebsite/docs/en/visualization/plot_transition_matrix.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `plot_transition_matrix()`
 
 `plot_transition_matrix()` draws a heatmap of state-to-state transition rates: for each “from” state (rows), it shows the probability of moving to each “to” state at the next time step (columns). The diagonal cells are stay-in-the-same-state probabilities.
@@ -46,6 +38,10 @@ plot_transition_matrix(
   * columns = state at time `t+1`
   * cell value = transition probability (0–1), formatted with the `format` parameter (default two decimal places).
 * Shows the full matrix (all cells); the diagonal is the probability of staying in the same state.
+
+## Returns
+
+`None`. The function draws the figure on screen, and writes it to disk when `save_as` is provided.
 
 ## Key Features
 
@@ -109,6 +105,12 @@ print_transition_matrix(seqdata, tm)       # nicely formatted console output (4 
 * Rows sum to 1.0 (within rounding). If a row has no observed outgoing transitions, it is safely handled to avoid division by zero.
 * The diagonal is p(stay in the same state); off-diagonal cells are p(move to another state).
 * Transition counts are weighted when `weights` is provided; the matrix is then row-normalized to rates.
+
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
 
 ## Authors
 

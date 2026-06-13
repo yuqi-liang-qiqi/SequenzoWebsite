@@ -1,13 +1,4 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-02-28 22:12:43
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-01-31 10:55:40
- * @FilePath: /SequenzoWebsite/docs/en/datasets/CO2-emissions.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-
-# CO₂ Emissions Dataset (1800–2022) 🌍
+# CO₂ Emissions Dataset (1800–2022)
 
 In most existing studies, sequence analysis is used based on individual-level sequence data such as education, employment, or family histories. But sequence analysis is not limited to social or demographic trajectories. It can also be applied to **countries, organizations, technologies, or even ecological processes**.
 
@@ -17,7 +8,7 @@ This is why we use the CO₂ emissions dataset as a quickstart example: it demon
 
 The dataset records country-level CO₂ emissions per capita across multiple years.
 It originates from the public Gapminder data, which compiles CO₂ data for countries worldwide.
-(See raw data sources that we have saved in our Sequenzo GitHub repository: [Gapminder data](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/data_sources/gapminder))
+(See raw data sources that we have saved in our Sequenzo GitHub repository: [Gapminder CO₂ data sources](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/gapminder/co2_per_capita/data_sources))
 
 The dataset contains:
 
@@ -62,7 +53,7 @@ When we say “deciles”, there are actually two different ways to compute them
 
 We choose global deciles because:
 
-* They make comparisons across time possible — you can track whether a country is moving up or down in the **same global ranking system**.
+* They make comparisons across time possible. You can track whether a country is moving up or down in the **same global ranking system**.
 * Local deciles would always “reshuffle” categories year by year, so even if a country’s absolute emissions never changed, its classification could jump around depending on how other countries changed.
 
 ### Step-by-Step Process
@@ -79,8 +70,8 @@ This approach evaluates each country’s emissions **relative to the global dist
 > After testing, we chose deciles for the final analysis because they provide finer granularity and highlight more subtle differences between countries.
 > You are encouraged to compare the two versions in the notebook to see how the level of grouping changes your interpretation.
 
-👉 See full preprocessing steps and code here:
-[Gapminder CO₂ + GDP notebook](https://github.com/Liang-Team/Sequenzo/blob/main/original_datasets_and_cleaning/country_co2_gdp_gapminder_data.ipynb)
+See the full preprocessing steps and code:
+[Gapminder CO₂ + GDP notebook](https://github.com/Liang-Team/Sequenzo/blob/main/original_datasets_and_cleaning/gapminder/co2_per_capita/code/country_co2_gdp_gapminder_data.ipynb)
 
 ## Example: Pakistan's CO₂ Emissions Classification
 
@@ -105,6 +96,26 @@ If we had used quintiles (5 groups) instead, Pakistan’s emissions during these
 By switching to deciles (10 groups), we gain greater granularity: instead of a broad “Low” label, we see that Pakistan is specifically in the 2nd decile, not the 1st or 3rd.
 
 This finer resolution helps us distinguish between countries that are all “Low” but not equally low, which is particularly important when analyzing patterns across many sequences.
+
+## Loading the Data in Sequenzo
+
+```python
+from sequenzo import load_dataset
+
+# Categorical global deciles, ready for sequence analysis (used by the Quickstart):
+df = load_dataset('country_co2_emissions_global_deciles')
+
+# Raw numeric emissions, if you want to build your own states:
+raw = load_dataset('country_co2_emissions')
+```
+
+Related bundled variants include `country_co2_emissions_global_quintiles`, `country_co2_emissions_local_deciles`, and `country_co2_emissions_local_quintiles`.
+
+## See Also
+
+- [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
+- [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
+- [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.
 
 ## References
 

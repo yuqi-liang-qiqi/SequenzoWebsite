@@ -2,14 +2,14 @@
 
 Computes entropy difference indicator for each sequence.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_entropy_difference
+from sequenzo.sequence_characteristics_indicators import get_entropy_difference
 result = get_entropy_difference(seqdata, norm=True)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `norm`: return normalized entropy-difference values.
@@ -22,9 +22,14 @@ result = get_entropy_difference(seqdata, norm=True)
 
 - Equivalent TraMineR function: `seqientdiff`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

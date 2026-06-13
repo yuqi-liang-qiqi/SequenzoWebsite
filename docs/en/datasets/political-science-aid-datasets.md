@@ -122,6 +122,21 @@ So each of the two datasets is a **country × year** matrix of states, suitable 
 | Donor fragmentation  | HHI (continuous, 0–1)       | 3 states: 1 = fragmented, 2 = moderate, 3 = concentrated     | political_science_donor_fragmentation.csv   |
 | Aid shock            | AidgdpDrop5_15 (binary)     | 0 = no shock, 1 = shock (bottom 15% of *deviation from 5-yr avg* aid/GDP, lagged) | political_science_aid_shock.csv            |
 
+## Loading the Data in Sequenzo
+
+```python
+from sequenzo import load_dataset
+
+aid_shock = load_dataset('political_science_aid_shock')
+donor_frag = load_dataset('political_science_donor_fragmentation')
+```
+
+## See Also
+
+- [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
+- [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
+- [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.
+
 ## References
 
 Gutting, R., & Steinwand, M. C. (2017). Donor fragmentation, aid shocks, and violent political conflict. Journal of Conflict Resolution, 61(3), 643-670.

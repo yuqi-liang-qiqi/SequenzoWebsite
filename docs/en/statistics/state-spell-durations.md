@@ -22,6 +22,10 @@ result = get_state_spell_durations(seqdata, fill_value=0)
 - Computes each spell duration.
 - Returns a `DataFrame` with duration columns (`Duration1`, `Duration2`, ...).
 
+## Returns
+
+`pd.DataFrame`.
+
 ## Examples
 
 ```python
@@ -35,6 +39,11 @@ print(dur.head())
 
 - **Closest TraMineR function:** `seqdur`
 - **Mapping note:** This is a direct conceptual and implementation match in Sequenzo (`sequence_statistics.py` calls `seqdur`).
+
+## See Also
+
+- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

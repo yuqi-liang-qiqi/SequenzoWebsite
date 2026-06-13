@@ -2,14 +2,14 @@
 
 Computes objective volatility using visited-state proportion and transition proportion.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_volatility
+from sequenzo.sequence_characteristics_indicators import get_volatility
 result = get_volatility(seqdata, w=0.5, with_missing=False, adjust=True)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `w`: weight between visited-state and transition components.
@@ -24,9 +24,14 @@ result = get_volatility(seqdata, w=0.5, with_missing=False, adjust=True)
 
 - Equivalent TraMineR function: `seqivolatility`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

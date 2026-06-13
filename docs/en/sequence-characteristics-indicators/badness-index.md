@@ -2,14 +2,14 @@
 
 Computes badness as a precarity-weighted integration across states.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_badness_index
+from sequenzo.sequence_characteristics_indicators import get_badness_index
 result = get_badness_index(seqdata, pow=1.0, with_missing=False)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `pow`: integration weighting exponent.
@@ -24,9 +24,14 @@ result = get_badness_index(seqdata, pow=1.0, with_missing=False)
 
 - Equivalent TraMineR function: `seqibad`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

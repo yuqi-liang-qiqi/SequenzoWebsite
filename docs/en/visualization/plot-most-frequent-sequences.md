@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 13:49:18
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 13:49:50
- * @FilePath: /SequenzoWebsite/docs/en/visualization/plot_most_frequent_sequences.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `plot_most_frequent_sequences()`
 
 `plot_most_frequent_sequences()` draws the Top-N most common full sequences in your data (e.g., the 10 most frequently observed state paths). Each horizontal bar represents one sequence pattern across time; the bar’s height equals that sequence’s percentage in the whole dataset. Colors follow your `SequenceData` state color map so segments match your legend.
@@ -41,6 +33,10 @@ plot_most_frequent_sequences(
 
   * the top sequence’s percentage,
   * the cumulative share covered by the Top-N sequences.
+
+## Returns
+
+`None`. The function draws the figure on screen, and writes it to disk when `save_as` is provided.
 
 ## Key Features
 
@@ -89,6 +85,12 @@ This saves `top15_sequences.png` in your current working directory (or the folde
 * Bars are stacked along time so you can read the sequence pattern left → right.
 * The y-axis shows percentages. The top tick equals the cumulative share of the Top-N sequences (so the bars fill up to that value, not necessarily to 100%).
 * The legend is pulled from `SequenceData` to ensure state-color consistency across plots.
+
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
 
 ## Authors
 

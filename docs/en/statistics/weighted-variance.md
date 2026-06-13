@@ -24,6 +24,10 @@ value = get_weighted_variance(values, weights=None, remove_missing=True, method=
 - Optionally removes missing values.
 - Computes weighted variance using the selected `method`.
 
+## Returns
+
+`float`.
+
 ## Examples
 
 ```python
@@ -45,6 +49,11 @@ print(result)
 
 - This is a general weighted statistics function commonly used in R-style workflows.
 - It is not specific to TraMineR, but is useful in sequence-analysis summaries.
+
+## See Also
+
+- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

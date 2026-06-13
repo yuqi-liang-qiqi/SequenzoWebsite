@@ -124,4 +124,10 @@ There you will find the pipeline scripts, config (e.g. PSS boundaries, minimum w
 
 ---
 
+## See Also
+
+- [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
+- [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
+- [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.
+
 *Author: Yuqi Liang*

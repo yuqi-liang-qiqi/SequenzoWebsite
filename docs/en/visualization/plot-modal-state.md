@@ -45,6 +45,10 @@ plot_modal_state(
 * Adds sample size `(n=…)` to group titles if `show_counts=True`.
 * Can display directly in your environment or save to a file.
 
+## Returns
+
+`None`. The function draws the figure on screen, and writes it to disk when `save_as` is provided.
+
 ## Key Features
 
 * **Simple summary**: highlights the dominant state at each time point.
@@ -93,6 +97,18 @@ plot_modal_state(
 
 This saves a high-resolution figure in your working directory.
 
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
+
+## R Counterpart
+
+- **Closest R function:** `seqmsplot`
+- **Mapping note:** Direct conceptual match: modal (most common) state profile over time.
+
+
 ## Authors
 
 Code: Yuqi Liang
@@ -100,9 +116,3 @@ Code: Yuqi Liang
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
-
-## R Counterpart
-
-- **Closest R function:** `seqmsplot`
-- **Mapping note:** Direct conceptual match: modal (most common) state profile over time.
-

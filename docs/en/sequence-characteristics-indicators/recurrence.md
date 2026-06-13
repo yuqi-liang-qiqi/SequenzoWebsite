@@ -2,14 +2,14 @@
 
 Computes recurrence as DSS length divided by number of visited states.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_recurrence
+from sequenzo.sequence_characteristics_indicators import get_recurrence
 result = get_recurrence(seqdata, with_missing=False)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `with_missing`: include missing in DSS/visited calculations.
@@ -22,9 +22,14 @@ result = get_recurrence(seqdata, with_missing=False)
 
 - Equivalent TraMineR indicator: `seqindic(indic="recu")`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

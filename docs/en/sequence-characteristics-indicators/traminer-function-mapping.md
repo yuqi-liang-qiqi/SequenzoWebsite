@@ -42,7 +42,7 @@ In short:
 | [`get_precarity_index`](./precarity-index) | `seqprecarity` | Ranked indicator. |
 | [`get_insecurity_index`](./insecurity-index) | `seqinsecurity` | Ranked indicator. |
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
 

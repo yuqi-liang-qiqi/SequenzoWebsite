@@ -23,6 +23,10 @@ result = get_modal_state_sequence(seqdata, weighted=True, with_missing=False)
 - Supports weighted modal computation.
 - Returns a `DataFrame` describing the modal sequence over time.
 
+## Returns
+
+`pd.DataFrame`.
+
 ## Examples
 
 ```python
@@ -36,6 +40,11 @@ print(modal)
 
 - **Closest TraMineR function:** `seqmodst`
 - **Mapping note:** This is a direct conceptual match; Sequenzo wraps modal-state computation with optional weighting and missing-state handling.
+
+## See Also
+
+- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

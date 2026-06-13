@@ -23,6 +23,10 @@ value = get_weighted_mean(values, weights=None, remove_missing=True)
 - Optionally removes missing values.
 - Computes the weighted mean as a single scalar output.
 
+## Returns
+
+`float`.
+
 ## Examples
 
 ```python
@@ -44,6 +48,11 @@ print(result)
 
 - This is a general weighted statistics function commonly used in R workflows.
 - It is not specific to TraMineR, but is useful in sequence-analysis summaries.
+
+## See Also
+
+- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

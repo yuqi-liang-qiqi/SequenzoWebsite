@@ -2,14 +2,14 @@
 
 Computes turbulence for each sequence from subsequence diversity and spell-duration variance.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_turbulence
 result = get_turbulence(seqdata, norm=False, silent=True, type=1, id_as_column=True)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `norm`: normalize turbulence value.
@@ -25,9 +25,14 @@ result = get_turbulence(seqdata, norm=False, silent=True, type=1, id_as_column=T
 
 - Equivalent TraMineR function: `seqST`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

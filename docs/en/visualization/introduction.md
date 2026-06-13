@@ -1,14 +1,15 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 13:21:00
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 14:21:44
- * @FilePath: /SequenzoWebsite/docs/en/visualization/introduction.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-# Common Parameters and How Plots Work
+# Visualization Tools
 
-All Sequenzo visualization functions share a few core ideas. If you understand this page, you can use any plot with confidence.
+Sequenzo's plots fall into two families, and the sidebar groups them this way:
+
+- **Longitudinal views** keep individual trajectories intact, with one visual element per sequence: [index plot](/en/visualization/index-plot), [most frequent sequences](/en/visualization/plot-most-frequent-sequences), [relative frequency](/en/visualization/plot-relative-frequency), [single medoid](/en/visualization/plot-single-medoid), and [longitudinal characteristics](/en/visualization/plot-longitudinal-characteristics).
+- **Cross-sectional views** summarize the sample at each time point: [state distribution](/en/visualization/state-distribution-plot), [modal state](/en/visualization/plot-modal-state), [mean time](/en/visualization/plot-mean-time), [transition matrix](/en/visualization/plot-transition-matrix), and [cross-sectional characteristics](/en/visualization/plot-cross-sectional-characteristics).
+
+[How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret each plot type and choose between them. The [Gallery](/en/visualization/gallery) shows every plot with code.
+
+## Common Parameters and How Plots Work
+
+The rest of this page covers the mechanics shared by all plot functions. If you understand these, you can use any plot with confidence.
 
 ## Where the plot appears
 

@@ -2,14 +2,14 @@
 
 Computes state distribution and entropy across time positions.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_cross_sectional_entropy
 result = get_cross_sectional_entropy(seqdata, weighted=True, norm=True, return_format="tidy")
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `weighted`: use sequence weights in frequency calculation.
@@ -24,9 +24,14 @@ Time-wise cross-sectional distribution and entropy outputs.
 
 - Equivalent TraMineR function: `seqstatd`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

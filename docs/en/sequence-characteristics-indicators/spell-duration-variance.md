@@ -2,14 +2,14 @@
 
 Computes variance of spell durations for each sequence.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_spell_duration_variance
 result = get_spell_duration_variance(seqdata, type=1)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `type`: `1` standard spell-variance, `2` variant including nonvisited states.
@@ -22,9 +22,14 @@ A dictionary with DataFrames: mean duration, variance, and maximum variance.
 
 - Equivalent TraMineR function: `seqivardur`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

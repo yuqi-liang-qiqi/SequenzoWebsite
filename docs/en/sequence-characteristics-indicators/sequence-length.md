@@ -2,14 +2,14 @@
 
 Computes sequence length for each case.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_sequence_length
+from sequenzo.sequence_characteristics_indicators import get_sequence_length
 result = get_sequence_length(seqdata, with_missing=True)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `with_missing`: include missing positions in length.
@@ -22,9 +22,14 @@ result = get_sequence_length(seqdata, with_missing=True)
 
 - Equivalent TraMineR function: `seqlength`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

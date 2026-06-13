@@ -22,6 +22,10 @@ result = get_transition_count_summary(seqdata, normalize=False, probability_weig
 - Computes transition counts according to the selected options.
 - Returns a one-row summary table with `count`, `mean`, `median`, `min`, `q1`, `q3`, `max`.
 
+## Returns
+
+`pd.DataFrame`.
+
 ## Examples
 
 ```python
@@ -35,6 +39,11 @@ print(summary)
 
 - **Closest TraMineR function(s):** `seqtransn` (often summarized with `summary(...)` in R workflows)
 - **Mapping note:** Sequenzo first computes transition counts with `seqtransn`-style logic, then returns a one-row summary table (`count`, `mean`, `median`, `min`, `q1`, `q3`, `max`).
+
+## See Also
+
+- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

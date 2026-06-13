@@ -20,7 +20,7 @@ We provide two versions of the dataset:
 
 * **Our preprocessing**: To make the data more convenient to use, we performed a minor preprocessing step, converting `state1 ... state264` to `1 ... 264` before adding it to our prepared dataset.
 
-  The data preprocessing function we use is `clean_time_columns_auto()`. Simply put, it is a smart tool for cleaning column names. Its main purpose is to automatically scan a DataFrame, identify columns with names containing numbers (e.g., `state1`, `wave2`, `year2023`), and then simplify these names to just the numbers they contain (becoming `1`, `2`, `2023`). This feature is particularly useful when processing time-series or panel data, as it allows for the quick standardization of column names that represent different points in time.
+  We used `clean_time_columns_auto()` to rename time columns such as `state1` ... `state264` to `1` ... `264` before packaging the prepared dataset.
 
   For more details on how we cleaned and prepared the data, see the [data cleaning code repository](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/pairfam_and_little_green_book/code).
 
@@ -106,12 +106,18 @@ Here columns `1`â€“`5` show the first five months of the trajectory, coded as 1â
 
 ## Multichannel data (reference only)
 
-For multichannel sequence analysis combining both family and activity trajectories, see the `MultiChannel.csv` file documented in the [Pairfam Family Trajectories](./pairfam-family.md#multichannel-data) page. 
+For multichannel sequence analysis combining both family and activity trajectories, see the `MultiChannel.csv` file documented in the [Pairfam Family Trajectories](./pairfam-family.md#multichannel-data-reference-only) page.
 
 Note that `MultiChannel.csv` is **not supported** by `load_dataset()` and is provided for reference only. You can download it manually from the [month-level data sources](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/pairfam_and_little_green_book/data_sources/month_level) repository.
 
 ## Reference
 
 Raab, M., & Struffolino, E. (2022). Sequence analysis (Vol. 190). Sage Publications.
+
+## See Also
+
+- [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
+- [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
+- [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.
 
 *Author: Yuqi Liang*

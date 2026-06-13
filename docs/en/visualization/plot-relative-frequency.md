@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 14:02:27
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-12-11 21:27:55
- * @FilePath: /SequenzoWebsite/docs/en/visualization/plot_relative_frequency.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `plot_relative_frequency()`
 
 `plot_relative_frequency()` draws a two-panel figure to summarize sequence “typicality” by frequency groups:
@@ -33,6 +25,10 @@ plot_relative_frequency(
 | `seqdata`         | ✓        | SequenceData           | Your sequence dataset created with `SequenceData`. Provides time axis, state labels, and colors.                                                            |
 | `distance_matrix` | ✓        | np.ndarray / DataFrame | An `N×N` symmetric pairwise distance matrix between sequences (order must match `seqdata.values`). A pandas DataFrame is accepted and converted internally. |
 | `num_groups`      | ✗        | int                    | Number of frequency groups to form along the 1D MDS axis (equal-size bins). Default = `12`.                                                                 |
+| `weights`         | ✗        | np.ndarray / `"auto"` | Weights for sequences. With `"auto"` (default), uses `seqdata.weights` when available.                                                                      |
+| `grouping_method` | ✗        | str                    | Grouping method: `"first"` (equal-size groups, default) or `"prop"` (weighted grouping).                                                                    |
+| `fontsize`        | ✗        | int                    | Base font size for labels. Default = `12`.                                                                                                                   |
+| `show_title`      | ✗        | bool                   | Whether to draw the figure title. Default = `True`.                                                                                                          |
 | `save_as`         | ✗        | str                    | File path to save the figure (e.g., `"seqrf.png"`). If omitted, the plot is only displayed.                                                                 |
 | `dpi`             | ✗        | int                    | Output resolution when saving. Default = `200`. Use `300+` for publications if your machine can handle it.                                                  |
 
@@ -87,6 +83,12 @@ plot_relative_frequency(
 * The medoid is computed by minimizing the (weighted) sum of distances within each group.
 * The y-axis on the left counts groups (1 = bottom group). The right panel uses your distance units.
 * If your time labels are dense, only a subset of x-ticks is shown for readability.
+
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
 
 ## Authors
 

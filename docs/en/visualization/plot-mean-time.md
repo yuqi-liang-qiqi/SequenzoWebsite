@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 13:58:00
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 14:00:01
- * @FilePath: /SequenzoWebsite/docs/en/visualization/plot_mean_time.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `plot_mean_time()`
 
 `plot_mean_time()` draws a horizontal bar chart showing, for each state, the **average amount of time** spent in that state across all sequences. Optionally, it adds **standard error** bars so you can judge uncertainty.
@@ -45,6 +37,10 @@ plot_mean_time(
 * Sorts states by mean time (small → large) to make the chart easy to read.
 * Uses your `SequenceData` color map so state colors match your legend elsewhere.
 * Displays the plot in your environment (Notebook cell output or a window in scripts) and can save it via `save_as`.
+
+## Returns
+
+`None`. The function draws the figure on screen, and writes it to disk when `save_as` is provided.
 
 ## Key Features
 
@@ -87,12 +83,6 @@ plot_mean_time(
 
 Saves `mean_time_by_state.png` in your current working directory (or the path you specify).
 
-## Outputs
-1. Example 1:
-```python
-
-```
-
 ## R Counterpart
 
 - **Closest R function:** `seqmtplot`
@@ -102,6 +92,12 @@ Saves `mean_time_by_state.png` in your current working directory (or the path yo
 
 * Units depend on your data. If your sequence time points are months, set `x_label="Mean Time (Months)"`.
 * “Standard error” here reflects variability of mean time across sequences; wider bars mean more uncertainty.
+
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
 
 ## Authors
 

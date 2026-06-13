@@ -2,14 +2,14 @@
 
 Computes insecurity index (type-2 precarity formulation).
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_insecurity_index
+from sequenzo.sequence_characteristics_indicators import get_insecurity_index
 result = get_insecurity_index(seqdata, method="RANK", pow=1.0, bound=False)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `method`: correction method (default `RANK`).
@@ -26,9 +26,14 @@ result = get_insecurity_index(seqdata, method="RANK", pow=1.0, bound=False)
 
 - Equivalent TraMineR function: `seqinsecurity`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

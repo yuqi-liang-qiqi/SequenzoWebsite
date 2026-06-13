@@ -2,14 +2,16 @@
 
 Counts the number of distinct subsequences for each sequence.
 
-## Function
+## Function Usage
 
 ```python
-from sequenzo import get_subsequences_all_sequences
+from sequenzo import get_subsequences_all_sequences, get_subsequences_in_single_sequence
 result = get_subsequences_all_sequences(seqdata, dss=True, with_missing=False)
 ```
 
-## Parameters
+For one already encoded sequence row, `get_subsequences_in_single_sequence()` is the lower-level helper used by the all-sequences function.
+
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `dss`: remove consecutive duplicates before counting.
@@ -23,9 +25,14 @@ result = get_subsequences_all_sequences(seqdata, dss=True, with_missing=False)
 
 - Equivalent TraMineR function: `seqsubsn`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

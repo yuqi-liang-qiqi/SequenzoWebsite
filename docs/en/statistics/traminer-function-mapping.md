@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2026-05-06 16:17:07
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-05-06 16:17:07
- * @FilePath: /SequenzoWebsite/docs/en/statistics/traminer-function-mapping.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Statistical Helpers: Sequenzo and TraMineR Mapping
 
 This page maps Sequenzo statistics functions to their closest TraMineR counterparts for users migrating from R.
@@ -31,4 +23,6 @@ The `statistics` section focuses on aggregation and reporting helpers after core
 | [`get_weighted_mean`](./weighted-mean) | `weighted.mean` | In code/docstring marked equivalent to `weighted.mean` helper behavior. |
 | [`get_weighted_variance`](./weighted-variance) | `weighted.var` | In code/docstring marked equivalent to `weighted.var` helper behavior. |
 | [`get_weighted_five_number_summary`](./weighted-five-number-summary) | `weighted.fivenum` | In code/docstring marked equivalent to `weighted.fivenum` helper behavior. |
+
+## Authors
 

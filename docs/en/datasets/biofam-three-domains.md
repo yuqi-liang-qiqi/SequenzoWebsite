@@ -333,4 +333,22 @@ Helske, S., & Helske, J. (2019). Mixture Hidden Markov Models for Sequence Data:
 
 TraMineR documentation: `biofam`, Example data set: Family life states from the Swiss Household Panel biographical survey.
 
+## Loading the Data in Sequenzo
+
+```python
+from sequenzo import load_dataset
+
+child = load_dataset('biofam_child_domain')
+left = load_dataset('biofam_left_domain')
+married = load_dataset('biofam_married_domain')
+```
+
+Each DataFrame covers one domain; the rows align across the three, so they can enter multidomain workflows together.
+
+## See Also
+
+- [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
+- [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
+- [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.
+
 *Author: Yuqi Liang*

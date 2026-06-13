@@ -23,6 +23,10 @@ summary = get_weighted_five_number_summary(values, weights=None, remove_missing=
 - Optionally removes missing values.
 - Computes weighted quantiles and returns a five-number summary array in the order: min, Q1, median, Q3, max.
 
+## Returns
+
+`np.ndarray`.
+
 ## Examples
 
 ```python
@@ -44,6 +48,11 @@ print(summary)
 
 - This is a general weighted descriptive statistics function.
 - It is not specific to TraMineR, but is useful in sequence-analysis summaries.
+
+## See Also
+
+- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

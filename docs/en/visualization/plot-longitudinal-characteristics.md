@@ -85,6 +85,10 @@ metrics = plot_longitudinal_characteristics(
 
 * Optionally saves the plot to a file if `save_as` is specified
 
+## Returns
+
+`None`. The function draws the figure on screen, and writes it to disk when `save_as` is provided.
+
 ## Examples
 
 ### 1. Basic example (plot 9 most complex sequences)
@@ -261,13 +265,19 @@ All values range from 0 to 1, making them easy to compare. A value close to 1 me
 
 * Default colors are soft and publication-friendly. You can customize them for presentations or to match your organization's color scheme.
 
-## Author
-Code: Yuqi Liang
-
-Documentation: Yuqi Liang
-
 ## R Counterpart
 
 - **Closest R function:** No direct one-function equivalent
 - **Mapping note:** In TraMineR, similar views are usually built by combining outputs from functions such as `seqtransn`, `seqient`, `seqST`, and `seqici` and then plotting manually.
+
+## Authors
+Code: Yuqi Liang
+
+Documentation: Yuqi Liang
+
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
 

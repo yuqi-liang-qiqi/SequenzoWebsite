@@ -211,7 +211,7 @@ data(bfspell)
 
 The standard `biofam` data are in wide format: each row is one individual, and each age from 15 to 30 is represented by a separate column.
 
-The `bfspell` version represents the same type of information in spell format, where each row corresponds to a spell or episode rather than a full individual sequence. For most introductory sequence-analysis tasks, the wide-format `biofam` dataset is easier to use. In Sequenzo, we currently only have wide-format version for simplicity; please do not hesitate to contact us if you would like us to incoporate more datasets in different formats on our [GitHub Issue](https://github.com/Liang-Team/Sequenzo/issues). 
+The `bfspell` version represents the same type of information in spell format, where each row corresponds to a spell or episode rather than a full individual sequence. For most introductory sequence-analysis tasks, the wide-format `biofam` dataset is easier to use. In Sequenzo, we currently only have the wide-format version for simplicity; please do not hesitate to contact us if you would like us to incorporate more datasets in different formats on our [GitHub Issue](https://github.com/Liang-Team/Sequenzo/issues).
 
 ## Reference
 
@@ -220,5 +220,19 @@ Müller, N. S., Studer, M., & Ritschard, G. (2007). Classification de parcours d
 Swiss Household Panel: [https://forscenter.ch/projects/swiss-household-panel/](https://forscenter.ch/projects/swiss-household-panel/)
 
 TraMineR documentation: `biofam`, Example data set: Family life states from the Swiss Household Panel biographical survey.
+
+## Loading the Data in Sequenzo
+
+```python
+from sequenzo import load_dataset
+
+df = load_dataset('biofam')
+```
+
+## See Also
+
+- [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
+- [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
+- [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.
 
 *Author: Yuqi Liang*

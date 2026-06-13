@@ -2,14 +2,14 @@
 
 Computes entropy for each individual sequence.
 
-## Function
+## Function Usage
 
 ```python
 from sequenzo import get_within_sequence_entropy
 result = get_within_sequence_entropy(seqdata, norm=True, base=np.e, silent=True)
 ```
 
-## Parameters
+## Entry Parameters
 
 - `seqdata`: `SequenceData` object.
 - `norm`: normalize entropy by maximum entropy.
@@ -24,9 +24,14 @@ result = get_within_sequence_entropy(seqdata, norm=True, base=np.e, silent=True)
 
 - Equivalent TraMineR function: `seqient`.
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
+
+## See Also
+
+- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

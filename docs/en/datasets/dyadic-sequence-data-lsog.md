@@ -8,7 +8,7 @@ We provide **dyadic** sequence data for studying such linked lives and intergene
 
 The data come from the **Longitudinal Study of Generations (LSOG)** (Bengtson et al. 2002), a long-running study of American families in California. Sequenzo’s built-in version is prepared from LSOG following the coding and dyadic setup in **Liao and Lin (Forthcoming in 2026)**.
 
-We are very grateful to Prof. Tim Liao for allowing us to include these data in Sequenzo 🫰.
+We are very grateful to Prof. Tim Liao for allowing us to include these data in Sequenzo.
 
 The built-in files look like the following (first two rows of each file). **Parents** first, then **children**; the same `dyadID` (e.g. 16, 19) links a parent row to a child row. Columns are ages **15, 16, …, 39**; only the first and last few are shown below (codes 1–6; see “Numeric codes and their labels”).
 
@@ -30,8 +30,8 @@ In short, those two tables are our two wide-format sequence files; the table bel
 
 | File | Description |
 |------|-------------|
-| `dyadic_parents.csv`  | One row per parent–child dyad. Columns: `dyadID`, `sex`, then **15, 16, …, 39** — the **parent’s** family formation state at each age, numeric codes 1–6. |
-| `dyadic_children.csv` | One row per parent–child dyad. Columns: `dyadID`, `sex` (of child), then **15, 16, …, 39** — the **child’s** family formation state at each age, same numeric codes 1–6. |
+| `dyadic_parents.csv`  | One row per parent–child dyad. Columns: `dyadID`, `sex`, then **15, 16, …, 39**, the **parent’s** family formation state at each age, numeric codes 1–6. |
+| `dyadic_children.csv` | One row per parent–child dyad. Columns: `dyadID`, `sex` (of child), then **15, 16, …, 39**, the **child’s** family formation state at each age, same numeric codes 1–6. |
 
 Each row is one **dyad**; each column (after `dyadID` and `sex`) is an **age** (15–39). So each file gives one sequence per dyad (child in one file, parent in the other). The same `dyadID` links the two files, so you can analyze parent and child trajectories together. Both files store **numeric state codes** only; the table in the next section gives the **labels** (single, married by parity, divorced) for each code.
 
@@ -44,7 +44,7 @@ The data are **dyadic life-course sequences**: for each parent–child dyad, you
 Typical uses in the literature include:
 
 - **Linked lives**: Quantifying how much parent and child trajectories resemble each other *within* dyads compared with *randomly* paired parent–child sequences (e.g., Liao 2021). This addresses the life-course principle that “lives are lived interdependently” (Elder et al. 2003).
-- **Intergenerational patterns beyond transmission**: Identifying holistic patterns—strong transmission, moderated transmission, or intergenerational contrast—in how parents’ and children’s family formation are linked, rather than focusing on single events (Fasang & Raab 2014).
+- **Intergenerational patterns beyond transmission**: Identifying holistic patterns (strong transmission, moderated transmission, or intergenerational contrast) in how parents’ and children’s family formation are linked, rather than focusing on single events (Fasang & Raab 2014).
 
 The state space is the same for both generations: **single**, **married by parity** (0, 1, 2, or 3+ children), and **divorced**. So the same code–label mapping applies to both `dyadic_children.csv` and `dyadic_parents.csv`.
 
@@ -62,6 +62,23 @@ The time columns **15, 16, …, 39** in both files contain **numeric codes** 1�
 | 6 | **D**  | Divorced (union dissolved, e.g. separation/divorce) |
 
 Note that, in the LSOG data, **cohabitation** (unmarried coresidential partnership) and **living-apart-together (LAT)** (romantic relationship without shared residence) cannot be reliably identified; both are subsumed under **single** rather than under a union/married state (Fasang & Raab 2014).
+
+## Loading the Data in Sequenzo
+
+```python
+from sequenzo import load_dataset
+
+parents = load_dataset('dyadic_parents')
+children = load_dataset('dyadic_children')
+```
+
+The shared `dyadID` column links each parent row to its child row.
+
+## See Also
+
+- [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
+- [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
+- [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.
 
 ## References
 

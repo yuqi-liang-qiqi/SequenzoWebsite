@@ -31,7 +31,7 @@ Some rows are marked **No direct one-function equivalent**. This simply means th
 - For rows marked **No direct one-function equivalent**, TraMineR usually reaches the same goal through multiple steps, while Sequenzo provides a dedicated plotting function for that goal.
 - If you want an output style close to TraMineR, run the TraMineR function first, then tune Sequenzo plot parameters to get a similar look.
 
-## Author
+## Authors
 
 Documentation: Yuqi Liang
 

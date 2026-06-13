@@ -78,6 +78,10 @@ If you would like to customize the visualization, please see the following table
 * Adds a legend using `seqdata`'s color map so colors match your state labels.
 * Displays the figure in your current environment and can also save it to a file if `save_as` is set.
 
+## Returns
+
+`None`. The function draws the figure on screen, and writes it to disk when `save_as` is provided.
+
 ## Notes and Tips
 
 * State values must be integer-coded starting at 1. The colormap is aligned to `1..K` where `K` is the number of states.
@@ -244,6 +248,18 @@ plot_sequence_index(
 
 This draws each sequence as a thicker band (2 rows) with a small gap between bands for readability.
 
+## See Also
+
+- [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
+- [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
+- [Visualization Tools](/en/visualization/introduction) documents shared parameters.
+
+## R Counterpart
+
+- **Closest R function:** `seqiplot` / `seqIplot`
+- **Mapping note:** Direct conceptual match: index plots that show each sequence as a colored line over time.
+
+
 ## Authors
 
 Code: Yuqi Liang
@@ -251,9 +267,3 @@ Code: Yuqi Liang
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
-
-## R Counterpart
-
-- **Closest R function:** `seqiplot` / `seqIplot`
-- **Mapping note:** Direct conceptual match: index plots that show each sequence as a colored line over time.
-
