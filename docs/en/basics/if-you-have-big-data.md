@@ -1,6 +1,27 @@
+# If You Have Big Data
 
-真正决定的不是数据量，而是你重复率，长度，状态个数。
-实际数据重复率比较高
+In sequence analysis, computational difficulty is not determined only by the number of rows. Four features matter together:
 
-所以建议先做 index plot，还有 most frequent plot，relative frequency plot
+- The number of sequences.
+- The number of unique sequences.
+- The sequence length.
+- The number of states.
+
+Datasets with many repeated sequences can be much easier than datasets with the same number of rows but many unique trajectories. Long sequences and large state alphabets also make distance computation more expensive.
+
+## First Checks
+
+Before choosing a large-scale workflow, inspect the data:
+
+- Use an [index plot](/en/visualization/index-plot) to see whether trajectories are highly varied.
+- Use a [most frequent sequences plot](/en/visualization/plot-most-frequent-sequences) to check repetition.
+- Use a [relative frequency plot](/en/visualization/plot-relative-frequency) to inspect common trajectory patterns.
+
+## Recommended Path
+
+Before choosing CLARA, continue to [Large Data and Robustness](/en/big-data/introduction). That page puts the checks in order: inspect uniqueness first, then decide whether ordinary distance-based analysis is still feasible, and only then move to CLARA or multidomain CLARA.
+
+If the full distance matrix is too large or too slow, use [`clara()`](/en/big-data/clara). CLARA repeatedly samples the data, finds medoids in each sample, and assigns the full dataset to the best medoid set. This keeps the analysis close to PAM while avoiding the memory cost of full medoid clustering on the entire distance matrix.
+
+For the standard sequence-analysis pipeline, see [Typical Workflow](/en/basics/typical-workflow).
 

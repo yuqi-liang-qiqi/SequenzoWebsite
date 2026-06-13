@@ -34,7 +34,7 @@ simulate_nhmm(
 | Parameter | Required | Type | Description |
 | --- | --- | --- | --- |
 | `n_states` | ✓ | `int` | Hidden states (`> 1`). |
-| `emission_formula` | ✓ | `str` | Formula for emissions, e.g. `"~ x1 + x2"`. |
+| `emission_formula` | ✓ | `str` | Formula for emissions, preferably with a response column on the left-hand side, e.g. `"y ~ x1 + x2"`. |
 | `data` | ✓ | `DataFrame` | Must include response columns (values replaced during simulation), IDs, and covariates. |
 | `id_var` | ✓ | `str` | Sequence ID column. |
 | `time_var` | ✓ | `str` | Time index column. |
@@ -44,9 +44,17 @@ simulate_nhmm(
 | `init_sd` | ✗ | `float` / `None` | SD for random `coefs`. Default `2.0` when `coefs` is `None`. |
 | `random_state` | ✗ | `int` / `None` | RNG seed. |
 
-## What It Returns
+## Returns
 
-A `dict` with simulated `observations`, `states`, and a long-format `data` frame.
+A `dict`:
+
+| Key | Description |
+| --- | --- |
+| `observations` | List of simulated observed sequences |
+| `states` | List of hidden-state sequences |
+| `data` | Long-format data frame with simulated response values |
+| `states_df` | Long-format data frame of hidden states |
+| `model` | Simulation metadata, including alphabet, state names, and coefficient blocks |
 
 ## Example
 
@@ -64,7 +72,7 @@ data = pd.DataFrame(rows)
 
 sim = simulate_nhmm(
     n_states=3,
-    emission_formula="~ x1 + x2",
+    emission_formula="y ~ x1 + x2",
     data=data,
     id_var="id",
     time_var="time",
@@ -81,7 +89,15 @@ print(sim["observations"][:2])
 ## Notes
 
 - `data` defines sequence structure (IDs, times, alphabet from response columns); observed values in response columns are overwritten.
+- A left-hand side in `emission_formula`, such as `"y ~ x1 + x2"`, is the clearest way to identify the response/alphabet column. If omitted, Sequenzo tries to infer a categorical response column from `data`.
+- Use plain column names in `simulate_nhmm()` formulas. Formula transforms such as `np.log(...)` are supported in NHMM builder design matrices, but the simulation helper uses a simpler formula parser.
 - Pair with [`build_nhmm()`](./build-nhmm.md) + [`fit_nhmm()`](./fit-nhmm.md) to test recovery of known parameters.
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

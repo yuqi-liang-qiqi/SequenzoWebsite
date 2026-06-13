@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-11-24 11:15:06
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-04-27 13:08:17
- * @FilePath: /SequenzoWebsite/docs/en/basics/how-to-cite.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # How to Cite Sequenzo and the Documentation Website
 
 The Sequenzo ecosystem currently consists of two components that, while related, should be cited separately depending on their use.
@@ -26,7 +18,7 @@ Because these two components differ in content, purpose, and publication format,
 
 **If you use the Sequenzo Python package in your research**
 
-Please cite the Sequenzo package paper (coming soon).
+Please cite the Sequenzo package paper (in preparation).
 
 **If you reference or quote content from the documentation website, including tutorials, conceptual discussions, or methodological notes**
 
@@ -36,5 +28,5 @@ Please cite the documentation website’s Zenodo record:
 > *Documentation Website for Sequenzo and Social Sequence Analysis.* Zenodo.
 > [https://doi.org/10.5281/zenodo.17698151](https://doi.org/10.5281/zenodo.17698151)
 
-Thank you 🌟
+Thank you.
 

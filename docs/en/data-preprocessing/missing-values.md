@@ -1,14 +1,4 @@
----
-title: Missing Values
-description: 
-pubDate: 2025-06-12
-lastModDate: 2025-06-12
-toc: true
-share: true
-ogImage: true
----
-
-# `summarize_missing_values()`: Summarize and visualize missing values in a DataFrame
+# `summarize_missing_values()`: Summarize and Visualize Missing Values
 
 ## Description
 
@@ -38,7 +28,7 @@ summarize_missing_values(
 > * To save the plot as a PNG image: set `save_as='my_plot.png'`
 > * To suppress the plot display (e.g., in a script): set `show=False`
 
-Here's a quick example with customization:
+Example with customization:
 
 ```python
 summarize_missing_values(
@@ -128,8 +118,8 @@ summarize_missing_values(df, columns=['A'], show=False)
 ### Output
 
 1. `summarize_missing_values(df)`:
-```python
-🔍 Missing Value Summary
+```text
+Missing Value Summary
 ----------------------------------------
 [Columns with Missing Values]
    Missing Count  Missing (%)
@@ -147,8 +137,8 @@ B              2         50.0
 ![df_output.png](image/df_output.png)
 
 2. `summarize_missing_values(df, columns=['A', 'B'])`:
-```python
-🔍 Missing Value Summary
+```text
+Missing Value Summary
 ----------------------------------------
 [Columns with Missing Values]
 Missing Count  Missing (%)
@@ -167,8 +157,8 @@ Missing Count
 ![columns_output.png](image/columns_output.png)
 
 3. `summarize_missing_values(df, mode='bar', save_as='missing_bar.png', show=False)`:
-```python
-🔍 Missing Value Summary
+```text
+Missing Value Summary
 ----------------------------------------
 [Columns with Missing Values]
 Missing Count  Missing (%)
@@ -191,8 +181,8 @@ The plot image is saved in the file as follow:
 
 4. `summarize_missing_values(df, plot=False)`
 
-```python
-🔍 Missing Value Summary
+```text
+Missing Value Summary
 ----------------------------------------
 [Columns with Missing Values]
    Missing Count  Missing (%)
@@ -211,8 +201,8 @@ Also since `show=False`, the plot is not displayed.
 
 5. `summarize_missing_values(df, figsize=(12, 6))`
 
-```python
-🔍 Missing Value Summary
+```text
+Missing Value Summary
 ----------------------------------------
 [Columns with Missing Values]
    Missing Count  Missing (%)
@@ -231,8 +221,8 @@ B              2         50.0
 ![output_size.png](image/output_size.png)
 
 6. `summarize_missing_values(df, columns=['A'])`
-```python
-🔍 Missing Value Summary
+```text
+Missing Value Summary
 ----------------------------------------
 [Columns with Missing Values]
 Missing Count  Missing (%)
@@ -248,6 +238,11 @@ Missing Count
 <Figure size 1000x500 with 0 Axes>
 ```
 ![output_col.png](image/output_col.png)
+
+## See Also
+
+- [Data Preprocessing Overview](/en/data-preprocessing/introduction) maps the preparation pipeline.
+- [`SequenceData`](/en/function-library/sequence-data) is the next step after preprocessing.
 
 ## Authors
 

@@ -52,9 +52,19 @@ simulate_mhmm(
 
 \*Provide **either** `cluster_probs` **or** (`formula` + `data` + `coefficients`).
 
-## What It Returns
+## Returns
 
-A `dict` with `observations`, `states`, `clusters` (cluster index per sequence), and `observations_df`.
+A `dict`:
+
+| Key | Description |
+| --- | --- |
+| `observations` | List of observed state sequences |
+| `states` | List of hidden-state sequences |
+| `clusters` | Cluster label or name for each sequence |
+| `observations_df` | Wide DataFrame with one row per sequence and a `cluster` column |
+| `alphabet` | Observed symbols used in the simulation |
+| `state_names` | Hidden-state labels per cluster |
+| `cluster_names` | Cluster labels used in the simulation |
 
 ## Example
 
@@ -64,18 +74,22 @@ A `dict` with `observations`, `states`, `clusters` (cluster index per sequence),
 import numpy as np
 from sequenzo.seqhmm import simulate_mhmm
 
+initial_probs = [np.array([0.5, 0.5]), np.array([0.3, 0.7])]
+transition_probs = [
+    np.array([[0.7, 0.3], [0.3, 0.7]]),
+    np.array([[0.8, 0.2], [0.2, 0.8]]),
+]
+emission_probs = [
+    np.array([[0.9, 0.1], [0.1, 0.9]]),
+    np.array([[0.7, 0.3], [0.3, 0.7]]),
+]
+
 sim = simulate_mhmm(
     n_sequences=20,
     n_clusters=2,
-    initial_probs=[np.array([0.5, 0.5]), np.array([0.3, 0.7])],
-    transition_probs=[
-        np.array([[0.7, 0.3], [0.3, 0.7]]),
-        np.array([[0.8, 0.2], [0.2, 0.8]]),
-    ],
-    emission_probs=[
-        np.array([[0.9, 0.1], [0.1, 0.9]]),
-        np.array([[0.7, 0.3], [0.3, 0.7]]),
-    ],
+    initial_probs=initial_probs,
+    transition_probs=transition_probs,
+    emission_probs=emission_probs,
     cluster_probs=np.array([0.6, 0.4]),
     sequence_length=20,
     alphabet=["A", "B"],
@@ -86,6 +100,7 @@ sim = simulate_mhmm(
 ### Covariate-dependent clusters
 
 ```python
+import numpy as np
 import pandas as pd
 
 data = pd.DataFrame({
@@ -102,9 +117,9 @@ coefs = np.array([
 sim = simulate_mhmm(
     n_sequences=30,
     n_clusters=2,
-    initial_probs=[...],
-    transition_probs=[...],
-    emission_probs=[...],
+    initial_probs=initial_probs,
+    transition_probs=transition_probs,
+    emission_probs=emission_probs,
     sequence_length=20,
     formula="~ covariate_1 + covariate_2",
     data=data,
@@ -120,8 +135,14 @@ sim = simulate_mhmm(
 
 ## Notes
 
-- Covariate-based mixture simulation is available here even though [`build_mhmm()`](./build-mhmm.md) does not yet estimate covariate-dependent weights.
+- Covariate-based mixture simulation is available here even though [`build_mhmm()`](./build-mhmm.md) estimates mixture weights from sequence likelihoods rather than from covariates.
 - First cluster is the reference level in the coefficient matrix (first column typically zero).
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

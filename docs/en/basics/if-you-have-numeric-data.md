@@ -1,15 +1,7 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 09:38:53
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 11:42:19
- * @FilePath: /SequenzoWebsite/docs/en/basics/if_you_have_numeric_data.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Converting Numeric Data to Categorical Data
 
 In sequence analysis, we usually work with **categorical states** (e.g., "Education", "Employment", "Unemployed").
-But many datasets contain **numeric values** (e.g., income, CO₂ emissions, examnination scores).
+But many datasets contain **numeric values** (e.g., income, CO₂ emissions, examination scores).
 
 To use such data in sequence analysis, we need to convert numeric values into categories (states).
 
@@ -112,7 +104,7 @@ Now we can represent each country’s emission history as a **sequence of catego
   * Country C moved from “middle” to “high” after 1990.
 * Without categories, comparing 0.71 vs 0.72 would not give meaningful patterns.
 
-If you would like to learn further how it is computed in Python, we have a complete guide with code in [`CO₂ Emissions Dataset (1800–2022) 🌍`](/en/datasets/CO2-emissions). 
+If you would like to learn further how it is computed in Python, see [`CO₂ Emissions Dataset (1800–2022)`](/en/datasets/CO2-emissions).
 
 ## Key Takeaways
 
@@ -212,5 +204,11 @@ Using bins: Low (0–2), Medium (2–5), High (>5).
 Interpretation:  
 - Region A shows a shift from Low to Medium pollution.  
 - Region B remains consistently High.  
+
+## See Also
+
+- [`SequenceData`](/en/function-library/sequence-data) defines the sequence object once your states exist.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this step fits in the full analysis.
+- [CO₂ Emissions](/en/datasets/CO2-emissions) is a worked example of numeric-to-categorical conversion.
 
 *Author: Yuqi Liang*

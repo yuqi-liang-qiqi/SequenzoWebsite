@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-10-02 13:39:00
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-10-03 21:12:23
- * @FilePath: /SequenzoWebsite/docs/en/traminer-and-sequenzo/use_R_in_python_environment.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Combining Sequenzo (Python) with R-based Analyses inside One Jupyter Notebook
 
 Sometimes, even if you’ve done all the heavy lifting in Python, you might still want to use R for the last part of your analysis. Maybe it’s because your collaborators are R users, or maybe because some specialized models or plots are only available there. Instead of exporting CSVs back and forth between the R and Python working environments, we can make Python and R talk directly inside the same Jupyter Notebook.
@@ -97,7 +89,7 @@ Thus, it’s a good representative of the kind of social science data people act
 Why do we use it here for illustration?
 
 * Because some of these advanced categorical models (such as adjacent category models and continuation ratio models) are not available yet in Python.
-* After Sequenzo gives you a cluster membership table (who belongs to which trajectory type), you often want to run regressions to see what predicts cluster membership or vice versa. This is the most common practices in social sequence analysis. 
+* After Sequenzo gives you a cluster membership table, you often want to run regressions to study what predicts cluster membership or what the clusters predict. This is a common practice in social sequence analysis.
 
 > **Note:**  
 > In this tutorial, we demonstrate the model using multinomial regression in R for convenience, but actually you can already use Python to do it with ease (for instance with the `statsmodels` package). 
@@ -108,9 +100,9 @@ Why do we use it here for illustration?
 
 ## Final note
 
-Sequenzo now makes sequence analysis much smoother in Python. With `rpy2`, you don’t have to choose between working environments of Python or R as you can use both inside one notebook.
+Sequenzo now supports most core sequence-analysis workflows directly in Python. With `rpy2`, you can still call R packages from the same notebook when a specific R workflow is needed.
 
-And if you have other favorite R packages or workflows that you think are useful for sequence scholars, please feel free to let us know. We will be very happy to add more tutorials showing how to integrate them.
+If another R package or workflow would be useful for sequence scholars, please open an issue and describe the use case. Good candidates can be added to future integration tutorials.
 
 ## References
 

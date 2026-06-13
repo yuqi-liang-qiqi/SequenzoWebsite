@@ -35,7 +35,7 @@ bootstrap_model(
 | `verbose` | ✗ | `bool` | Show progress bar when `tqdm` is available. Default `True`. |
 | `n_jobs` | ✗ | `int` | Parallel jobs (not yet implemented; always 1). |
 
-## What It Returns
+## Returns
 
 A `dict`:
 
@@ -44,9 +44,12 @@ A `dict`:
 | `bootstrap_samples` | List of parameter dicts per replicate |
 | `original_model` | Input fitted model |
 | `n_sim`, `method` | Settings used |
+| `n_successful` | Number of bootstrap refits that completed successfully |
 | `summary` | Means, standard deviations, and percentile CIs (e.g. `ci_95`) |
 
 ## Example
+
+Assume `seq` is a prepared [`SequenceData`](../function-library/sequence-data.md) object with the observed sequences you want to model.
 
 ```python
 from sequenzo.seqhmm import build_hmm, fit_model, bootstrap_model
@@ -69,6 +72,12 @@ print(ci)
 - Computationally expensive: each replicate refits the full model.
 - Failed refits on a replicate are skipped silently in the bootstrap loop.
 - Use moderate `n_sim` (50–200) for exploratory intervals; increase for publication-grade precision.
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

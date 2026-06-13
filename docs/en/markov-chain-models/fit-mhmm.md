@@ -9,7 +9,8 @@ fit_mhmm(
     model,
     n_iter=100,
     tol=1e-2,
-    verbose=False
+    verbose=False,
+    compress=None
 )
 ```
 
@@ -28,8 +29,9 @@ fit_mhmm(
 | `n_iter` | ✗ | `int` | Maximum EM iterations. Default `100`. |
 | `tol` | ✗ | `float` | Log-likelihood convergence tolerance. Default `1e-2`. |
 | `verbose` | ✗ | `bool` | Print progress. Default `False`. |
+| `compress` | ✗ | `bool` / `None` | Optional repeated-pattern compression control passed to the model's fitting method. `None` uses the model default. |
 
-## What It Returns
+## Returns
 
 The same `MHMM` object, modified in place:
 
@@ -43,7 +45,13 @@ The same `MHMM` object, modified in place:
 ## Example
 
 ```python
+from sequenzo import SequenceData, load_dataset
 from sequenzo.seqhmm import build_mhmm, fit_mhmm, predict_mhmm
+
+df = load_dataset("mvad")
+time_cols = list(df.columns[14:])
+states = ["employment", "FE", "HE", "joblessness", "school", "training"]
+seq = SequenceData(df, time=time_cols, states=states)
 
 mhmm = build_mhmm(seq, n_clusters=3, n_states=4, random_state=42)
 mhmm = fit_mhmm(mhmm, n_iter=100, tol=1e-2, verbose=True)
@@ -60,7 +68,13 @@ clusters = predict_mhmm(mhmm)
 ## Notes
 
 - Cluster labels from EM can be **label-switching** sensitive across runs; compare solutions with BIC and interpret cluster-specific parameters, not just index order.
-- Use [`compare_models()`](./model-comparison.md#compare_models) to choose `n_clusters` and `n_states`.
+- Use [`compare_models()`](./model-comparison.md#compare-models) to choose `n_clusters` and `n_states`.
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

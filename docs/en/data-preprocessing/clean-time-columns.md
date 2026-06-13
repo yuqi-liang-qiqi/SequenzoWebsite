@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-11-23 20:06:58
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-02-08 18:03:34
- * @FilePath: /SequenzoWebsite/docs/en/data-preprocessing/clean_time_columns.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Cleaning time columns to pure numeric labels
 
 Time columns like `Y1`, `status1`, `pstatus15` are easier to use in Sequenzo when renamed to plain numbers: `1`, `2`, `15`. This guide shows the simplest way first, then an optional manual method.
@@ -14,7 +6,7 @@ Time columns like `Y1`, `status1`, `pstatus15` are easier to use in Sequenzo whe
 
 Sequenzo provides **`clean_time_columns_auto`**: it renames time columns to the number inside the name (e.g. `status15` → `15`). Other columns (e.g. `id`, `sex`) are left unchanged.
 
-**One-line idea:**  
+**One-line idea:**
 Import the function, call it on your DataFrame, optionally tell it which column names to treat as time columns (by prefix).
 
 ### Basic usage
@@ -28,8 +20,8 @@ df_clean = clean_time_columns_auto(df, prefix_patterns=["status"])
 ```
 
 - **`df`**: your DataFrame.
-- **`prefix_patterns`**: list of prefixes. Only columns whose name **starts with** one of these are renamed.  
-  Example: `["status"]` renames `status1`, `status2`, … to `1`, `2`, …  
+- **`prefix_patterns`**: list of prefixes. Only columns whose name **starts with** one of these are renamed.
+  Example: `["status"]` renames `status1`, `status2`, … to `1`, `2`, …
   Example: `["status", "pstatus"]` also renames `pstatus15` → `15`, etc.
 
 If you don’t pass `prefix_patterns` (or pass `None`), the function will process any column whose name contains both letters and digits. Use `prefix_patterns` when you have other columns that contain numbers (e.g. `id`, `year_birth`) and you only want to rename time columns like `status1`, `status2`.
@@ -96,3 +88,12 @@ This turns `Y1` → `1`, `Y2` → `2`, etc. Do not include non-time columns (e.g
 *Code Author: Yuqi Liang*
 
 *Document Author: Yuqi Liang, Liangxingyun He*
+
+## Returns
+
+pd.DataFrame DataFrame with cleaned column names (same data).
+
+## See Also
+
+- [Data Preprocessing Overview](/en/data-preprocessing/introduction) maps the preparation pipeline.
+- [`SequenceData`](/en/function-library/sequence-data) is the next step after preprocessing.

@@ -2,20 +2,20 @@
 
 After you have prepared your sequence dataset through preprocessing functions (or if your data are already clean, you may skip this step), the next stage is to **formally define the sequence data structure**. In other words, `SequenceData` is the **canonical entry point** for representing sequences in Sequenzo.
 
-You might ask: why is this step necessary? Think of it as similar to how pandas (a Python package for data analysis) uses a `DataFrame`: before you can analyze tabular data efficiently, you first need a consistent container that standardizes how rows, columns, and metadata are stored.  
+You might ask: why is this step necessary? Think of it as similar to how pandas (a Python package for data analysis) uses a `DataFrame`: before you can analyze tabular data efficiently, you first need a consistent container that standardizes how rows, columns, and metadata are stored.
 
-In the same way, `SequenceData()` creates a `SequenceData`, a dedicated data structure presenting sequences for social sequence analysis.  
+In the same way, `SequenceData()` creates a dedicated data structure for representing sequences in social sequence analysis.
 
-By doing so, it ensures that your sequences are stored in a unified format with:  
-- consistent **state definitions and ordering**,  
-- reproducible **numeric encoding and color mapping**,  
-- built-in methods to **summarize, validate, and visualize** the dataset.  
+By doing so, it ensures that your sequences are stored in a unified format with:
+- consistent **state definitions and ordering**,
+- reproducible **numeric encoding and color mapping**,
+- built-in methods to **summarize, validate, and visualize** the dataset.
 
 This formal definition is what allows all subsequent steps, such as distance computation, clustering, and visualization, to work reliably across different datasets and projects.
 
 ## Typical Workflow
 
-1. Ensure your table has **one row per entity** (e.g., individual / firm / region / organization) and **one column per time point**.  
+1. Ensure your table has **one row per entity** (e.g., individual / firm / region / organization) and **one column per time point**.
    Example input DataFrame:
 
 | Entity ID | Y1  | Y2   | Y3   | Y4 |
@@ -26,13 +26,13 @@ This formal definition is what allows all subsequent steps, such as distance com
 
 Each row represents an individual (a sequence), and each column represents a time point.
 
->[!TIP] Note:  
-> It is recommended to clean column names during preprocessing so that time points are pure numbers (`1, 2, 3, 4`) instead of `Y1–Y4`.  
+>[!TIP] Note:
+> It is recommended to clean column names during preprocessing so that time points are pure numbers (`1, 2, 3, 4`) instead of `Y1–Y4`.
 > Otherwise, in visualizations where the x-axis represents time, labels like `Y1, Y2, Y3, Y4` will appear, which may look less clean and less intuitive than `1–4`.
 > For further instruction on how to clean your time columns in the dataframe, please refer to [`Clean time columns`](/en/data-preprocessing/clean-time-columns)
 
-2. Provide the full, ordered list of states in the exact order you want them to appear in encodings and legends (e.g., 'Low', 'Medium', 'High' — not shuffled).
-3. Optionally provide an ID column for stable indexing and clustering.  
+2. Provide the full, ordered list of states in the exact order you want them to appear in encodings and legends (e.g., 'Low', 'Medium', 'High', not shuffled).
+3. Optionally provide an ID column for stable indexing and clustering.
 4. Initialize `SequenceData`, then use `values` / `to_numeric()` for downstream algorithms or `get_legend()` / `get_colormap()` for plotting.
 
 ## Function Usage
@@ -47,7 +47,7 @@ sequence = SequenceData(
     labels=['Education','Full-time','Unemployed'],  # optional display labels; the order must correspond one-to-one with states; if labels are not set, legends will fall back to the state names
     id_col='Entity ID',             # ID column; if missing, create one with assign_unique_ids
 )
-````
+```
 
 A complete example with all available parameters (for advanced customization):
 
@@ -63,9 +63,10 @@ sequence = SequenceData(
     custom_colors=None,             # optional list of colors
     additional_colors=None,         # optional dict to assign custom colors to specific states, e.g. {"Other": "#BDBDBD"}
     missing_values=None,            # optional custom missing indicators, e.g. [99, "N/A"]
+    void="%",                       # symbol for positions outside the observation window
     alpha=1.0                       # opacity for colors (0–1)
 )
-````
+```
 
 ## Entry Parameters
 
@@ -75,19 +76,24 @@ sequence = SequenceData(
 | `time`                             | ✓        | list      | Ordered list of time column names.                      |
 | `states`                           | ✓        | list      | Ordered state space. Controls encoding & colors.        |
 | `labels`                           | ✗        | list      | Human-readable names, same length as `states`.          |
-| `id_col`                           | ✗        | str       | Column name for unique sequence IDs. If omitted, `data.index` is used. If your data lacks an ID column, create one with [`assign_unique_ids`](../data-preprocessing/assign-unique-ids.md). Required for clustering. |
+| `id_col`                           | ✗        | str       | Column name for unique sequence IDs. If omitted, `data.index` is used. If your data lacks an ID column, create one with [`assign_unique_ids`](../data-preprocessing/assign-unique-ids.md). Recommended for stable IDs in clustering output. |
 | `weights`                          | ✗        | ndarray   | Row weights. Default = all ones.                        |
 | `start`                            | ✗        | int       | Starting index in summaries. Default = 1.               |
-| `custom_colors`                    | ✗        | list      | User-specified color list. Must match `states`.         |
+| `custom_colors`                    | ✗        | list      | User-specified color list. Must match the final state count, or the non-missing state count when Sequenzo auto-adds `Missing`. |
 | `additional_colors`                | ✗        | dict      | Assign custom colors to specific states, e.g. `{"Other": "#BDBDBD"}`. Cannot be used with `custom_colors`. |
 | `missing_values`                   | ✗        | int/float/str/list | Custom missing value indicators. Default: auto-detect (NaN, "Missing", "NaN"). Examples: `99`, `[99, "N/A"]`. |
+| `void`                             | ✗        | str or None | Symbol for positions outside the observation window, following TraMineR's `seqdef` convention. Default = `"%"`. Void marks time points before entry or after exit; it is a different concept from missing values, which are unknown states inside the window. |
 | `alpha`                            | ✗        | float     | Opacity for all state colors (0–1). Default = 1.0.      |
 
 > **Note**
 >
 > 1. Instead of slicing arrays to indirectly construct the time list (e.g., `time=list(df.columns)[1:]`), we recommend explicitly specifying it (e.g., `time=[str(y) for y in range(1800, 2023)]`). This makes the intended time span unambiguous and prevents indexing errors.
 >
-> 2. Here, *summaries* (the same “summaries” mentioned in the `start` parameter description) refers to the dataset overview produced after initializing `SequenceData`, typically printed via `describe()` (and related methods). It includes state distributions, missing-value overview, sequence length, etc. See Examples below for concrete outputs. The `start` parameter sets the starting index shown in these summaries (e.g., start at 1 rather than 0).
+> 2. *Summaries* refers to the dataset overview produced after initializing `SequenceData`, typically through `describe()` and related methods. These summaries include state distributions, missing-value information, and sequence length. The `start` parameter controls the first time index shown there, for example starting at 1 rather than 0.
+
+## Returns
+
+A `SequenceData` instance: the standardized sequence object that downstream functions consume. Its most-used attributes are `values` (encoded sequence array), `ids` (entity identifiers), `states` and `labels` (the alphabet and display names), and `weights`. Methods such as `describe()`, `to_numeric()`, `get_legend()`, and `get_colormap()` are documented below.
 
 ## Key rules to remember
 
@@ -101,8 +107,8 @@ sequence = SequenceData(
 
 ### 3. Missing values get a fixed light gray by default
 
-   If your data contain missing cells and you didn’t include a dedicated `“Missing”` state, `SequenceData` will auto-add `"Missing"` into the list of states, and color it light gray (with the color code `#cfcccc`). 
-   
+   If your data contain missing cells and you didn’t include a dedicated `“Missing”` state, `SequenceData` will auto-add `"Missing"` into the list of states, and color it light gray (with the color code `#cfcccc`).
+
    If you provide `custom_colors` with one fewer entry than the final number of states (i.e., you only colored the non-missing states), the class will append the gray for you automatically.
 
 ### 4. Length checks
@@ -114,7 +120,7 @@ sequence = SequenceData(
 
 ### 5. A long list of states
 
-   By default, ≤20 states use a Spectral palette (reversed for better readability), 21-40 states use viridis, and >40 states use a combined palette (viridis + Set3 + tab20). You can override any of these by supplying custom_colors. 
+   By default, ≤20 states use a Spectral palette (reversed for better readability), 21-40 states use viridis, and >40 states use a combined palette (viridis + Set3 + tab20). You can override any of these by supplying custom_colors.
 
    For further details about coloring, please refer to [this documentation](../visualization/how-to-customize-colors.md).
 
@@ -122,7 +128,7 @@ sequence = SequenceData(
 
 ### Validation
 
-* Ensures all `states` exist in the data.
+* Ensures all non-missing data values are included in `states`; extra states are allowed for stable ordering across subsets.
 * Confirms `id_col` uniqueness (if provided).
 * Checks `labels` length and type.
 * Validates `weights` length; defaults to 1 if omitted.
@@ -146,7 +152,7 @@ sequence = SequenceData(
 
 ### Color Management
 
-* If `custom_colors` is given, its length must match `states`; `custom_colors` is a list whose elements can be hex color codes (e.g., `#BD462D`) or RGB tuples.
+* If `custom_colors` is given, its length must match the final state count, or the non-missing state count when Sequenzo auto-adds `"Missing"`. Entries can be hex color codes (e.g., `#BD462D`) or RGB tuples.
 * Use `additional_colors` to assign custom colors to specific states while keeping the default palette for others (e.g., `additional_colors={"Other": "#BDBDBD"}`). Cannot be combined with `custom_colors`.
 * Otherwise, the default palette is: `"Spectral"` (≤20 states), `"viridis"` (21–40 states), or a combined palette (viridis + Set3 + tab20 for >40 states).
 * Colors are reversed by default for contrast.
@@ -166,17 +172,39 @@ sequence = SequenceData(
 | `get_colormap()`           | ListedColormap     | Colormap aligned to codes 1...N.                                   |
 | `get_legend()`             | (handles, labels)  | Prebuilt legend for plotting.                                      |
 | `describe()`               | print              | Dataset summary with missing overview and weights.                 |
-| `plot_legend()`            | figure             | Renders or saves the state legend.                                 |
+| `plot_legend()`            | None               | Displays or saves the state legend, with vertical or horizontal layout. |
 | `to_numeric()`             | ndarray            | Integer-coded sequence data as NumPy array.                        |
 | `to_dataframe()`           | DataFrame          | Processed sequence dataset.                                        |
 | `show_color_palette()`     | dict               | Preview default colors for this instance's states.                 |
 | `show_default_color_palette(n_states, ...)` | dict | Static: preview colors for given number of states. |
 
-> **Note**  
+> **Note**
 > We list key attributes and key methods here, but you’ll **rarely need to call them directly**. After you initialize `SequenceData()`, a **dataset summary is printed automatically**. These are mainly for:
 > 1) **inspecting details** (e.g., missingness, encodings, weights);
 > 2) **plotting utilities** (e.g., `get_legend()` / `get_colormap()`);
 > 3) **exporting data** for downstream algorithms via `to_numeric()` / `to_dataframe()`.
+
+## Standalone Legend
+
+`plot_legend()` now supports two layouts:
+
+```python
+# Compact vertical legend with the title "States"
+sequence_data.plot_legend()
+
+# Horizontal legend matching grouped index plots
+sequence_data.plot_legend(style="horizontal")
+```
+
+Available options:
+
+| Parameter | Description |
+| --- | --- |
+| `style` | `"vertical"` (default) or `"horizontal"`. |
+| `ncol` | Number of columns for the horizontal legend. If omitted, Sequenzo chooses a readable layout and avoids an awkward final row with only one or two labels. |
+| `fontsize` | Legend font size. Default is `10`. |
+| `show_border` | Whether to draw a legend frame. Defaults to `True` for vertical legends and `False` for horizontal legends. |
+| `save_as`, `dpi` | Optional output path and resolution. |
 
 ## Examples
 
@@ -188,13 +216,13 @@ sequence = SequenceData(
 # Define the time-span variable
 time_list = list(df.columns)[1:]
 
-# We choose to use 'D1 (Very Low)', 'D10 (Very High)' as the states for readability and interpretation. 
+# We choose to use 'D1 (Very Low)', 'D10 (Very High)' as the states for readability and interpretation.
 # states = ['Very Low', 'Low', 'Middle', 'High', 'Very High']
 states = ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9']
 
-sequence_data = SequenceData(df, 
-                             time=time_list,  
-                             id_col="country", 
+sequence_data = SequenceData(df,
+                             time=time_list,
+                             id_col="country",
                              states=states,
                              labels=states)
 
@@ -203,7 +231,7 @@ sequence_data
 
 Output:
 
-```python
+```text
 [!] Detected missing values (empty cells) in the sequence data.
     → Automatically added 'Missing' to `states` and `labels` for compatibility.
     However, it's strongly recommended to manually include it when defining `states` and `labels`.
@@ -224,7 +252,7 @@ Output:
     (Each row shows a sequence ID and its number of missing values)
 
              Missing Count
-Sequence ID               
+Sequence ID
 Panama                   7
 [>] States: ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'Missing']
 [>] Labels: ['D1 (Very Low)', 'D10 (Very High)', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'Missing']
@@ -234,7 +262,7 @@ SequenceData(194 sequences, States: ['D1 (Very Low)', 'D10 (Very High)', 'D2', '
 ### 2. Add IDs If Missing
 
 ```python
-from sequenzo.utils import assign_unique_ids
+from sequenzo import assign_unique_ids
 df = assign_unique_ids(df, id_col_name='Entity ID')
 
 sequence = SequenceData(
@@ -245,10 +273,16 @@ sequence = SequenceData(
 )
 ```
 
-## Author(s)
+## Authors
 
 _Code: Yuqi Liang_
 
 _Documentation: Yuqi Liang_
 
 _Edited by: Yuqi Liang, Yukun Ming, Liangxingyun He_
+
+## See Also
+
+- [`get_distance_matrix()`](/en/function-library/get-distance-matrix) is the usual next step.
+- [Check Missing Values](/en/data-preprocessing/missing-values) helps diagnose gaps before defining sequences.
+- [Basic Concepts](/en/tutorials/basic-concepts) explains states, spells, and sequences.

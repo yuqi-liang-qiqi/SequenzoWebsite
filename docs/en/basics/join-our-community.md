@@ -1,18 +1,10 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-10-12 09:48:46
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-10-12 09:51:00
- * @FilePath: /SequenzoWebsite/docs/en/basics/join-our-community.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-# ✨ Be part of the Sequenzo community
+# Be Part of the Sequenzo Community
 
 ## English community
 
-Join our Discord channel to iscuss ideas, get help, and hear about upcoming Sequenzo versions, tutorials, and workshops first.
+Join our Discord channel to discuss ideas, get help, and hear about upcoming Sequenzo versions, tutorials, and workshops.
 
-**➡️ [Join Discord](https://discord.gg/RHfDuu4ETz)**
+**[Join Discord](https://discord.gg/RHfDuu4ETz)**
 
 ## Chinese community
 Join our WeChat group here:
@@ -27,3 +19,5 @@ Join our WeChat group here:
 </div>
 
 Thanks a lot for your support!
+
+*Author: Yuqi Liang*

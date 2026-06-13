@@ -2,6 +2,8 @@
 
 In the previous tutorial, we learned about Markov Chains. A Markov chain assumes the next state depends only on the current state. It fits settings where the state is directly recorded in the data, such as a logged employment status or a survey-reported marital status. When the state cannot be measured and must be inferred from observable indicators, we need to introduce a hidden state layer.
 
+If you prefer a shorter first pass with less notation, start with the beginner tutorial [Hidden Markov Models](/en/tutorials/markov-chain-models-02) and return here for the fuller treatment.
+
 ## 1. Introduction
 
 Imagine you are a manager who permits working from home, and your employee Xiao Ming works from home every day. You cannot see Xiao Ming's actual work state (e.g., we have two states, **focused work** vs. **slacking off**), but you can observe the amount of code he submits each day. In this way, according to sequence analysis, the state space that we can observe in the data consists of three states: **high**, **medium**, or **low**.
@@ -37,7 +39,7 @@ The figure below illustrates an HMM, linking observed code volume to an unobserv
 
 **Why is it called "emit"?**
 
-Emission is a vivid term for the movement from hidden to observed. In an HMM, think of the hidden state as a source behind the scenes. You cannot observe the source itself, but it produces the signals you do observe.
+Emission is a vivid term for the movement from hidden to observed. In an HMM, think of the hidden state as a source behind the scenes. You cannot observe the source itself, but it produces the signals you do observe. The production is probabilistic, not deterministic: each hidden state generates observations according to an emission probability distribution, which says how likely each observation is given that state.
 
 The numbers on the arrows are transition probabilities. For example, the value 0.7 on the arrow from "Focused" to "Focused" means that when someone is currently in the "Focused" state, there is a 70% probability they will remain focused in the next step.
 
@@ -53,7 +55,7 @@ We have just covered the definition and basic structure of HMMs. Now let's expla
 | **Emission Probability Matrix** | $B$ | Probability of each observation given each hidden state | $P(Obs{=}High \mid Focused) = 0.6$ |
 | **Initial State Distribution** | $\pi$ | Probability of being in each hidden state at the start | $P(Initial{=}Focused) = 0.8$ |
 
-Next, we will explain each component:
+The next subsections define each component:
 
 ### 3.1 Hidden State Set $S$
 
@@ -140,7 +142,9 @@ Baum-Welch is not a different idea from EM. It is EM applied to HMMs, with HMM-s
 
 EM is a general method for models with hidden variables. It alternates between estimating what the hidden states likely were under the current parameters and updating the parameters to better fit the data.
 
-In an HMM, the hidden variables are the hidden state sequence. Baum-Welch uses the forward-backward algorithm to compute the needed posterior probabilities and expected transition and emission counts in the E-step. It then updates the initial distribution $\pi$, transition matrix $A$, and emission matrix $B$ by normalizing these expected counts in the M-step.
+In an HMM, the hidden variables are the hidden state sequence. The number of possible hidden paths grows exponentially with sequence length, so these expectations cannot be computed by listing all paths. Baum-Welch uses the forward-backward algorithm, a dynamic-programming method, to compute the needed posterior probabilities and expected transition and emission counts efficiently in the E-step. It then updates the initial distribution $\pi$, transition matrix $A$, and emission matrix $B$ by normalizing these expected counts in the M-step.
+
+One property to keep in mind: hidden state labels are arbitrary. Permuting the states (for example swapping "State 1" and "State 2" everywhere) leaves the likelihood unchanged, so two estimation runs can return the same model with the labels switched. Interpret states by their emission and transition patterns, not by their numbers.
 
 We first give the model parameters an initial value, then repeatedly perform two steps:
 
@@ -148,11 +152,11 @@ We first give the model parameters an initial value, then repeatedly perform two
 
 Using the current parameters, compute the posterior probabilities of the hidden states given the observed sequence (e.g., the probability of being in each hidden state at each time point, and the expected number of transitions from state $i$ to state $j$).
 
-Posterior probabilities are the model's best guess of the hidden state at each time point after it has seen the observed data. Using the current transition and emission probabilities, the model considers all hidden state paths that could explain the observations and assigns each path a probability. The best guess is the path or state assignment with the highest probability under the model, meaning it makes the observed sequence most likely given the current parameters.
+Posterior probabilities are the model's best guess of the hidden state at each time point after it has seen the observed data. Using the current transition and emission probabilities, the model considers all hidden state paths that could explain the observations and assigns each path a probability. These posterior probabilities describe how likely each hidden state is at each time point, averaged over all possible paths, together with the expected transitions between states, meaning it makes the observed sequence most likely given the current parameters.
 
 **(2) M-step (Maximization):**
 
-Treating these expected counts as data and update the parameters — updating the initial distribution $\pi$, the transition matrix $A$, and the emission matrix $B$ — to increase the likelihood of the observed data.
+Treating these expected counts as data and update the parameters (the initial distribution $\pi$, the transition matrix $A$, and the emission matrix $B$) to increase the likelihood of the observed data.
 
 Repeat this cycle until parameters barely change or likelihood improvement becomes very small.
 
@@ -211,7 +215,7 @@ Suppose we have 10-year employment records for 1,000 individuals, with one state
 
 HMM still assumes all individuals share the same model: everyone uses the same transition matrix and emission matrix, ignoring individual differences.
 
-Therefore, in the next section we will introduce the **Mixture Hidden Markov Model (MHMM)**, which assumes the existence of multiple "subpopulations," each with its own HMM parameters (initial probability $\pi$, transition probability $A$, emission matrix $B$), to solve this problem.
+The next section introduces the **Mixture Hidden Markov Model (MHMM)**, which assumes multiple latent subpopulations, each with its own HMM parameters (initial probability $\pi$, transition probability $A$, emission matrix $B$).
 
 ## 6. HMM Practice Exercises
 
@@ -311,7 +315,7 @@ In this tutorial, we learned:
 - **Differences between HMM and classical sequence analysis:** Core questions, main outputs, and interpretation of observed states
 - **Advantages and limitations of HMM:** An HMM can extract latent patterns from complex observation sequences, but it assumes all individuals share the same parameters and cannot capture population heterogeneity
 
-HMM solves the problem of states not being observable, but it still assumes all individuals share the same set of parameters. In the next tutorial, we will learn about the **Mixture Hidden Markov Model (MHMM)**, which allows different individuals to belong to different subgroups, each with its own behavioral patterns.
+HMM solves the problem of states not being observable, but it still assumes all individuals share the same set of parameters. The next tutorial covers the **Mixture Hidden Markov Model (MHMM)**, which allows different individuals to belong to different subgroups, each with its own behavioral patterns.
 
 ## 8. References
 

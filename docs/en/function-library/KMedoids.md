@@ -1,6 +1,6 @@
 # `KMedoids()`
 
-Function for center clustering (the center point of each cluster is real), supports: `KMedoids`, `PAM` (Partitioning Around Medoids), `PAMonce` (PAM with a only-once). The three algorithms, their principles and differences are detailed in the document: [KMedoids v.s. PAM (PAMonce)](https://sequenzo.yuqi-liang.tech/en/tutorials/short-tutorial)<mark>待补充</mark>。All parameters of `KMedoids` follow [WeightedCluster::KMedoids](https://cran.r-project.org/web/packages/WeightedCluster/WeightedCluster.pdf)。
+Center-based clustering where each cluster center is a real data point. It supports three algorithms: `KMedoids`, `PAM` (Partitioning Around Medoids), and `PAMonce` (a PAM variant that uses a single, once-only swap pass). All parameters follow [WeightedCluster::wcKMedoids](https://cran.r-project.org/web/packages/WeightedCluster/WeightedCluster.pdf).
 
 Sequenzo also implements hierarchical clustering. For related learning materials, see the video [How to interpret a hierarchical clustering dendrogram? How to combine sequence analysis with regression analysis?](https://www.bilibili.com/video/BV1qyUwYhEc3/?spm_id_from=333.1387.collection.video_card.click&vd_source=11ad9be9a8cb39e0dcc112066c8cae70).
 
@@ -14,7 +14,7 @@ clustering = KMedoids(
    k=5           # number of clusters
 )
 ```
-A complete example with all available parameters (for advanced customization):
+A fuller example showing the most commonly used parameters (for more control):
 
 ```python
 clustering = KMedoids(
@@ -27,65 +27,77 @@ clustering = KMedoids(
 )
 ```
 
-## Entry parameters
+## Entry Parameters
 
 ### diss
 
-That is, “dissimilarity matrix”, required, allowed data types are`DataFrame`, distance matrix（calculated by [get_distance_matrix](https://sequenzo.yuqi-liang.tech/en/function-library/get-distance-matrix) ).
+The dissimilarity matrix. Required. It accepts a `DataFrame` or NumPy array, for example the distance matrix returned by [get_distance_matrix](/en/function-library/get-distance-matrix). Either a square `(n, n)` matrix or a 1D condensed vector of length `n(n-1)/2` is accepted.
 
 ### k
 
-Required. The allowed data type is `int`, the number of clusters you want to cluster.
+Required. An `int` giving the number of clusters to form.
 
-### Method
+### method
 
-Can be passed in. The allowed data type is`String`, the default value is `'PAMonce'`, Select the clustering method to use.
+Optional. A `str` with default `'PAMonce'`. It selects the clustering algorithm.
 
-Three methods are supported: `KMedoids`, `PAM`(Partitioning Around Medoids), and `PAMonce`(PAM with a only-once). The cluster centers obtained by the three methods are all real data points. PAM and PAMonce are variants of KMedoids. The differences between them are shown in the document <mark>[待补充]</mark>。
+Three methods are supported: `KMedoids`, `PAM` (Partitioning Around Medoids), and `PAMonce` (PAM with a single, once-only swap pass). All three return real data points as cluster centers. PAM and PAMonce are variants of KMedoids.
 
-### Initialclust
+### initialclust
 
-That is, “initial_cluster_assignment”(which means "initialized cluster structure" or "initial cluster allocation scheme"), which can be passed in. The allowed data types are `list`, `numpy.ndarray`, and `linkage matrix`. The default value is `None`.
+Optional. Controls how the initial medoids are chosen before the algorithm starts refining them. It accepts a `list`, a `numpy.ndarray`, or a SciPy linkage matrix. The default is `None`.
 
-* Initialized cluster structure: that is, specify the cluster center. Since the cluster center is generally ≥ 2, a `list` or `numpy.ndarray` is passed in. It indicates how many clusters are divided and what the initial center points of these clusters are.
+The value can describe the starting point in two different ways:
 
-* Initial cluster allocation scheme: that is, membership matrix. It indicates which clusters all data points are assigned to, so the passed in is `list/numpy.ndarray` or `linkage matrix`.
+* As an initial cluster structure: a `list` or `numpy.ndarray` of length `k` whose elements are the indices of the sequences to use as initial medoids.
+* As an initial cluster assignment: a membership vector with one entry per sequence (or a linkage matrix from hierarchical clustering), from which the function derives one initial medoid per cluster.
 
-Before each clustering algorithm starts, it is necessary to determine the initial center point through some strategy. If the `initialclust` parameter is provided, the data in it will be used directly/indirectly to get the initial center.
+How each input is handled:
 
-* If set to `None`, the program randomly selects `k` initial medoid points from the range [1, number_of_elements].
+* `None`: initialization depends on `npass`. When `npass > 0`, the implementation starts from the first `k` sequence indices before running the requested refinement passes. When `npass=0`, it randomly selects `k` initial medoid points from the available sequence indices.
 
-* If set to `list/numpy.ndarray`, it can be either: (1) A user-defined list of initial cluster centers (each element must be a valid data point `id`), The specified points will be used as the initial medoids. In this case, the number of elements in the `list/numpy.ndarray` must be equal to `k`. or (2) A membership matrix (the number of elements must match the number of data points). The program will use the weights to select one initial center from each given cluster. For how to choose, see *Supplementary Details*.
+* `list` or `numpy.ndarray` of length `k`: the listed sequence indices are used directly as initial medoids.
 
-* If set to `linkage matrix`, the program first uses hierarchical clustering via `cut_tree()` to obtain a membership matrix, and then selects initial medoids from the resulting clusters based on weights. See Supplementary Details for more information.
+* `list` or `numpy.ndarray` with one entry per sequence: treated as a membership vector. The function selects one initial medoid from each cluster using the weights; see *Supplementary Details*.
 
-The selection scenarios for the three parameter types are as follows:
+* Linkage matrix: the function first cuts the tree with `cut_tree()` to obtain a membership vector, then selects initial medoids from the resulting clusters based on weights, as above.
 
-| parameter                  | scenario                                                                                                                                                                                                                                                                                                                                                                                      |
-| -------------------- |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `None`               | If the user wants to leave initialization entirely to the program (the program by default randomly selects `k` data points as medoids, with no default membership matrix).                                                                                                                                                                                                                    |
-| `list/numpy.ndarray` | [Scenario 1: Initial cluster structure, i.e., specifying medoids] The user wants to manually specify the medoids as the initial centers, instead of letting the program select them randomly.<br/>[Scenario 2: Initial cluster assignment, i.e., with membership matrix] The user already has a good membership matrix and wants the program to use it to find suitable initial medoids.      |
-| `linkage matrix`     | The user has a linkage matrix representing the merging process of hierarchical clustering and wants the program to use it to find suitable initial medoids.                                                                                                                                                                                                                                   |
+When to use which input:
 
-We found that specified medoids are most often represented using `list`, while membership matrices are more commonly represented using `numpy.ndarray`.
+| Input | Use it when |
+| --- | --- |
+| `None` | You want to leave initialization entirely to the function. |
+| Length-`k` vector of indices | You want to specify the initial medoids yourself instead of letting the function choose. |
+| Membership vector | You already have a reasonable partition and want the function to derive initial medoids from it. |
+| Linkage matrix | You have a hierarchical clustering result and want to use it as a warm start. |
 
 ### npass
 
-This refers to “number of passes”, which can be passed as a parameter. The accepted data type is `int`, with a default value of `1`. It determines how many times the data point assignment process will be repeated.
+Optional. An `int` with default `1`. It sets how many times the medoid refinement loop runs.
 
-One data assignment process (taking PAM as an example)refers to: iterating through each cluster and attempting to find a better medoid (see *Details* for the evaluation criterion of “better”). A full traversal of all clusters constitutes one round of data point reassignment.
+One pass iterates through each cluster and tries to find a better medoid (see *Supplementary Details* for what counts as better). A full traversal of all clusters is one pass; `npass` repeats it.
 
-`npass` specifies how many times this process will be repeated.
+### weights
 
-### Weights
+Optional. A `list` or `numpy.ndarray` giving one weight per sequence. The default is `None`, which assigns every sequence a weight of 1.
 
-This parameter is optional and accepts input of type `list/numpy.ndarray`, the default is`None`, representing the weight of each data point.
+### cluster_only
 
-If set to`None`, all sequences are assigned a default weight of 1.
+Optional. A `bool` with default `False`. Accepted for API compatibility; in the current implementation the return value is the same either way.
 
-## Return Value
+### verbose
 
-`pandas.Series`, a membership matrix indicating which cluster each ID belongs to.
+Optional. A `bool` with default `True`. When `True`, the function prints progress messages such as the selected algorithm and completion notices.
+
+### random_state
+
+Optional. An `int` or `None` (default). Seeds the random selection of initial medoids in the `npass=0` case, making that initialization reproducible. It has no effect when `initialclust` is given or `npass > 0`.
+
+## Returns
+
+A length-`n` NumPy array of 1-based medoid row indices, following the same convention as WeightedCluster's `wcKMedoids`. Each element is the 1-based row index of the medoid that the corresponding sequence is assigned to, so sequences sharing the same value belong to the same cluster.
+
+To convert this result into other forms, use `medoid_indices_from_kmedoids_result()` for 0-based medoid indices, or `cluster_labels_from_kmedoids_result()` for 0..K-1 cluster labels.
 
 ## Supplementary Details
 
@@ -115,20 +127,18 @@ In the actual execution of the algorithm, “better” refers to the following:
    Loss=\sum_{x\in{all}}^{N}\sum_{i\in{C_{j}}}^{N}w_{x}*(diss(i,x)-diss(i,M_{j}))
    $$
 
-         Here, `x` denotes the new candidate medoid.
+   Here, `x` denotes the new candidate medoid.
 
-3. If `Loss ＜ 0`, the cost is negative, indicating that the average intra-cluster distance has decreased compared to the previous iteration. If `Loss ＞ 0`, the cost is positive, indicating that the average intra-cluster distance has increased. The search stops when the loss becomes greater than 0, and the loop terminates.
+3. If `Loss < 0`, the cost is negative, indicating that the average intra-cluster distance has decreased compared to the previous iteration. If `Loss > 0`, the cost is positive, indicating that the average intra-cluster distance has increased. The search stops when the loss becomes greater than 0, and the loop terminates.
 
 ## Examples
 
-The following is a usage example. The dataset comes from Gapminder and contains CO₂ emissions data for 194 countries from 1800 to 2022. This dataset is built into Sequenzo. For more details, [click here](https://sequenzo.yuqi-liang.tech/zh/datasets/co2-emissions)。
+The following is a usage example. The dataset comes from Gapminder and contains CO₂ emissions data for 194 countries from 1800 to 2022. This dataset is built into Sequenzo. For more details, see [CO₂ Emissions (1800-2022)](/en/datasets/CO2-emissions).
 
-We perform clustering on the dataset and visualize the output using t-SNE to provide a more intuitive view of the clustering results.
+We define the sequences, compute OM distances, and run each of the three algorithms on the resulting distance matrix.
 
-```Python
+```python
 from sequenzo import *
-from sequenzo.dissimilarity_measures import get_distance_matrix
-from sequenzo.clustering.KMedoids import KMedoids
 
 df = load_dataset('country_co2_emissions')
 
@@ -142,30 +152,30 @@ n_pass = 10
 
 # Example 1: KMedoids algorithm without specifying the center point
 clustering = KMedoids(diss=om,
-                      k=5,
-                      method='KMedoids',
+                      k=5,
+                      method='KMedoids',
                       npass=n_pass,
                       weights=None)
 
 # Example 2: PAM algorithm with a specified center point
 clustering = KMedoids(diss=om,
-                      k=5,
-                      method='PAM',
+                      k=5,
+                      method='PAM',
                       initialclust=centroid_indices,
                       npass=n_pass,
                       weights=None)
 
 # Example 3: PAMonce algorithm with default parameters
 clustering = KMedoids(diss=om,
-                      k=5,
-                      method='PAMonce',
+                      k=5,
+                      method='PAMonce',
                       npass=n_pass,
                       weights=None)
 ```
 
 ## Output
 1. Example 1:
-```python
+```text
 [>] SequenceData initialized successfully! Here's a summary:
 [>] Number of sequences: 193
 [>] Number of time points: 223
@@ -185,17 +195,23 @@ clustering = KMedoids(diss=om,
 [>] Computed successfully.
 ```
 2. Example 2:
-```python
+```text
 [>] Starting Partitioning Around Medoids (PAM)...
   - PAM loop over pass number  1
 [>] Computed successfully.
 ```
 
 3. Example 3:
-```python
+```text
 [>] Starting Partitioning Around Medoids with a Once-Only Swap Pass (PAMonce)...
 [>] Computed successfully.
 ```
+
+## See Also
+
+- [`Cluster()`](/en/function-library/hierarchical-clustering) is the hierarchical alternative.
+- [KMedoids Result Helpers](/en/beyond-basic-clustering/from-sequences-to-variables/medoid-indices-from-kmedoids-result) convert the returned medoid indices.
+- [CLARA](/en/big-data/clara) scales medoid clustering to large datasets.
 
 ## Authors
 
@@ -203,6 +219,6 @@ Code: Xinyi Li, Cheng Deng
 
 Documentation: Xinyi Li, Sizhu Qu
 
-Editd by: Yuqi Liang
+Edited by: Yuqi Liang
 
 Translation and testing by: Sizhu Qu

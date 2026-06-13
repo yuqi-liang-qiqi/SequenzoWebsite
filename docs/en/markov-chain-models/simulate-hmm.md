@@ -43,7 +43,7 @@ simulate_hmm(
 | `state_names` | ✗ | `List[str]` / `None` | Hidden state names. |
 | `random_state` | ✗ | `int` / `None` | Reproducibility seed. |
 
-## What It Returns
+## Returns
 
 A `dict`:
 
@@ -52,6 +52,8 @@ A `dict`:
 | `observations` | List of observed state sequences |
 | `states` | List of hidden state sequences |
 | `observations_df` | DataFrame suitable for building `SequenceData` |
+| `alphabet` | Observed symbols used in the simulation |
+| `state_names` | Hidden-state labels used in the simulation |
 
 ## Example
 
@@ -84,6 +86,12 @@ print(sim["observations"][0])
 
 - Validate matrix shapes before calling; mismatched dimensions raise explicit errors.
 - To recover parameters with estimation, wrap `observations` in `SequenceData` and run [`build_hmm()`](./build-hmm.md) + [`fit_model()`](./fit-model.md).
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

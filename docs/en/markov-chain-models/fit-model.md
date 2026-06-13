@@ -33,7 +33,7 @@ For global/local optimization steps available in R's `fit_model()`, use [`fit_mo
 | `tol` | ✗ | `float` | Stop when the gain in log-likelihood falls below this value. Default `1e-2`. |
 | `verbose` | ✗ | `bool` | Print iteration log. Default `False`. |
 
-## What It Returns
+## Returns
 
 The same `HMM` object, modified in place. After fitting, inspect:
 
@@ -51,7 +51,9 @@ from sequenzo import SequenceData, load_dataset
 from sequenzo.seqhmm import build_hmm, fit_model
 
 df = load_dataset("mvad")
-seq = SequenceData(df, time=range(15, 86), states=["EM", "FE", "HE", "JL", "SC", "TR"])
+time_cols = list(df.columns[14:])
+states = ["employment", "FE", "HE", "joblessness", "school", "training"]
+seq = SequenceData(df, time=time_cols, states=states)
 
 hmm = build_hmm(seq, n_states=4, random_state=42)
 hmm = fit_model(hmm, n_iter=100, tol=1e-2, verbose=True)
@@ -69,6 +71,12 @@ print(hmm.log_likelihood, hmm.converged, hmm.n_iter)
 - The model must be built with [`build_hmm()`](./build-hmm.md) before fitting.
 - If EM stalls below tolerance, increase `n_iter` or try [`fit_model_advanced()`](./fit-model-advanced.md) with random restarts.
 - Multichannel fitting uses a pure-Python EM implementation and may be slower on large samples.
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

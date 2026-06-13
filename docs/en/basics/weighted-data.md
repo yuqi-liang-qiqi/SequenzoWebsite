@@ -274,7 +274,7 @@ dist = get_distance_matrix(
 
 **How weights are used in tree analysis:**
 
-1. **Sequence trees** (`build_sequence_tree()`):
+1. **Sequence trees** (`sequence_tree()`):
    * Extracts weights from `seqdata.weights` when `weighted=True`
    * Uses weights in distance association tests and tree splitting
 
@@ -288,10 +288,10 @@ dist = get_distance_matrix(
 
 **Example:**
 ```python
-from sequenzo.tree_analysis import build_sequence_tree
+from sequenzo import sequence_tree
 
 # Build tree with weighted analysis
-tree_result = build_sequence_tree(
+tree_result = sequence_tree(
     seqdata=seqdata,
     predictors=predictors_df,
     weighted=True  # Uses seqdata.weights automatically
@@ -487,7 +487,7 @@ mtime = np.sum(values * weights[:, np.newaxis], axis=0) / wtot
 
 **After (using utility function):**
 ```python
-from sequenzo.utils import weighted_mean
+from sequenzo import weighted_mean
 mtime = weighted_mean(values, weights=weights)
 ```
 
@@ -645,7 +645,7 @@ The five-number summary uses weighted quantile interpolation for unequal weights
 
 ### Why weights are applied to cluster quality indicators (CQIs) but not to the linkage function
 
-In Sequenzo, weights are supported in **clustering quality indicators** (e.g., ASWw, R², HG) and in **K-Medoids / PAM variants**, but not in hierarchical linkage computation (which is under the hood of the `method=ward` parameter for `Cluster()`). This is intentional and follows both methodological and practical considerations.
+In Sequenzo, weights are supported in **clustering quality indicators** (e.g., ASWw, R², HG) and in **K-Medoids / PAM variants**, but not in the hierarchical linkage step controlled by `clustering_method` in `Cluster()`. This is intentional and follows both methodological and practical considerations.
 
 **1. Quality metrics are naturally weightable.**
 
@@ -722,7 +722,7 @@ Below is a minimal, self-contained example that you can run without computing se
 
 ```python
 import numpy as np
-from sequenzo.clustering.KMedoids import KMedoids
+from sequenzo import KMedoids
 
 # For reproducible random initializations
 np.random.seed(42)
@@ -863,6 +863,6 @@ print("[PAMonce | weighted | init=[1,6]] labels:", labels_from_init)
 
 When `initialclust` is provided as a **membership vector** (one label per object) or as a **hierarchical linkage** matrix, Sequenzo will convert it to starting medoids internally (see the docstring for details). This is handy when you want to “lift” a solution found on a subsample to the full dataset.
 
-*Author: Yuqi Liang*,
-*Translate: Sizhu Qu*
+*Author: Yuqi Liang*
 
+*Translated by: Sizhu Qu*

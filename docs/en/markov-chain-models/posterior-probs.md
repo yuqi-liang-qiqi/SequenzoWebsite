@@ -26,7 +26,7 @@ posterior_probs(
 | `model` | ✓ | `HMM` | Fitted model from [`build_hmm()`](./build-hmm.md) + [`fit_model()`](./fit-model.md). |
 | `newdata` | ✗ | `SequenceData` / `None` | Sequences to score. If `None`, uses training data on the model. |
 
-## What It Returns
+## Returns
 
 A pandas `DataFrame` in long format with columns:
 
@@ -40,6 +40,8 @@ A pandas `DataFrame` in long format with columns:
 For each `(id, time)` pair, probabilities over `state` sum to 1.
 
 ## Example
+
+Assume `seq` is a prepared [`SequenceData`](../function-library/sequence-data.md) object with the observed sequences you want to model.
 
 ```python
 from sequenzo.seqhmm import build_hmm, fit_model, posterior_probs
@@ -65,6 +67,12 @@ most_probable = probs.loc[idx]
 - Requires a fitted model.
 - Compare with [`predict()`](./predict.md): Viterbi gives one best path; posterior probabilities can split mass across states when the model is uncertain.
 - For mixture models, use [`posterior_probs_mhmm()`](./posterior-probs-mhmm.md) for cluster membership.
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

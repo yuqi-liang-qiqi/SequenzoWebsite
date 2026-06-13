@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 13:29:59
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-12 13:35:07
- * @FilePath: /SequenzoWebsite/docs/en/data-preprocessing/replace_cluster_id_by_labels.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `replace_cluster_id_by_labels()`
 
 `replace_cluster_id_by_labels()` is a helper function that lets you replace numeric cluster IDs in a DataFrame with custom labels and optionally rename the identifier and cluster columns.
@@ -41,6 +33,10 @@ new_df = replace_cluster_id_by_labels(
   * Unmapped clusters remain as their original numeric values.
 * Renames the identifier and cluster columns if you provide new names.
 * Returns the updated DataFrame.
+
+## Returns
+
+pd.DataFrame: A new DataFrame with cluster IDs replaced by labels and updated column names.
 
 ## Key Features
 
@@ -94,6 +90,11 @@ Output:
 1       2     B
 2       3     C
 ```
+
+## See Also
+
+- [Data Preprocessing Overview](/en/data-preprocessing/introduction) maps the preparation pipeline.
+- [`SequenceData`](/en/function-library/sequence-data) is the next step after preprocessing.
 
 ## Authors
 

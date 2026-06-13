@@ -2,7 +2,9 @@
 
 Before learning about Hidden Markov Models (HMM) and Mixture Hidden Markov Models (MHMM), we need to first understand their foundation: the **Markov Chain**. A Markov Chain is a mathematical tool that describes how states evolve over time, assuming that the future depends only on the present, not on the past. This seemingly simple assumption can help us understand many complex real-world problems.
 
-Before you start wrestling with any complex formulas, you might be wondering: "Why is it called a Markov Chain? Is it referring to an actual metal chain?" We will address these specific questions one by one in the subsequent guide.
+Before the formal definition, it helps to ask why the model is called a Markov chain and what the chain metaphor contributes.
+
+If you prefer a shorter first pass with less notation, start with the beginner tutorial [Markov Chains](/en/tutorials/markov-chain-models-01) and return here for the fuller treatment.
 
 ## 1. Introduction
 
@@ -10,9 +12,9 @@ Before you start wrestling with any complex formulas, you might be wondering: "W
 
 Let's travel back to the Russian Empire in 1906. At that time, there was an influential figure in the mathematics community named **Pavel Nekrasov**. Nekrasov was a scholar who attempted to merge mathematics with theology. He believed in a specific viewpoint:
 
-> For the Law of Large Numbers (the cornerstone of statistics) to hold true, events must be independent of each other. This proves that God has granted humans free will; our choices are independent and unshackled by the past.
+> For the Law of Large Numbers (a cornerstone of statistics) to hold true, events must be independent of each other.
 
-Markov heard this and was thoroughly unimpressed. As a staunch rationalist, he felt that forcing a connection between mathematics and free will was nonsense. He was determined to prove Nekrasov wrong. He wanted to demonstrate:
+Markov disagreed with the claim that statistical regularities require complete independence. He wanted to demonstrate:
 
 > Even if events are dependent (meaning the future relies on the present), the laws of statistics still apply.
 
@@ -28,7 +30,7 @@ This is a perfect metaphor for the mathematical process: States evolve link by l
 
 ## 2. What is a Markov Chain?
 
-We have just used examples to show where Markov chains come from, and why they have a chain-like structure. Now we will give a formal definition of a Markov chain.
+The historical example explains where Markov chains come from and why the chain metaphor fits. The formal definition is:
 
 ### 2.1 Formal Definition
 
@@ -50,11 +52,11 @@ Every transition is a "random sample". This is exactly the meaning of a "Stochas
 
 ### 2.2 Why do we need Markov chains?
 
-A Markov chain describes common sequential processes. In particular, what happens next depends only on the current state. It does not need the full earlier history. We will explain its usefulness in the following two parts:
+A Markov chain describes common sequential processes. In particular, what happens next depends only on the current state. It does not need the full earlier history. Its usefulness is easiest to see in two settings:
 
 - **Artificial Intelligence & Reinforcement Learning:** If you learn the transition probability from each state to the next, you can predict what is more likely to happen in the future. Then you can evaluate how much long-run reward a policy will produce. Finally, you can improve the policy by repeatedly updating these evaluations. Without this assumption, the system would need to store and process too much history. Learning and planning would become computationally hard.
 
-- **Social Sciences:** Many of the questions we care about are, at their core, sequence questions: How does a person's career trajectory develop? How does family status change with age? How does a disease progress? The common thread among these questions is that the current state influences the future state. The Markov Chain provides a concise and powerful framework: it uses a **Transition Probability Matrix** to quantify the likelihood of moving from one state to another.
+- **Social Sciences:** Many of the questions we care about are, at their core, sequence questions: How does a person's career trajectory develop? How does family status change with age? How does a disease progress? The common thread among these questions is that the current state influences the future state. A Markov chain makes this idea explicit with a **Transition Probability Matrix** that quantifies the likelihood of moving from one state to another.
 
 **Example:** Imagine you are observing the weather on a given day:
 
@@ -73,7 +75,7 @@ A Markov Chain consists of three components:
 | **Transition Probability** | The probability of moving from one state to another | $P(Cloudy \rightarrow Sunny) = 0.4$ |
 | **Initial Probability** | The probability of being in each state at the starting point | $P(Sunny \text{ at } t=0) = 0.5$ |
 
-We will explain each of these in turn:
+Each component has a specific role:
 
 **1. State Space**
 
@@ -131,7 +133,7 @@ We can ask:
 
 The future depends only on the present. This means it is reasonable when historical information is already "encoded" in the current state. For example, if you are currently a "Senior Engineer," this state itself contains information about your past career development.
 
-However, when history truly affects the future — for example, a person who just became unemployed and a person who has been unemployed for two years may have different probabilities of finding work — the Markov Chain has limitations.
+However, when history truly affects the future, the Markov chain has limitations. For example, a person who just became unemployed and a person who has been unemployed for two years may have different probabilities of finding work.
 
 To address this potential limitation, we may need **higher-order Markov Chains**. Compared to first-order Markov Chains that depend only on the previous state, higher-order Markov Chains also consider earlier states. For example, in a second-order Markov Chain, today's state depends not only on yesterday's state but also on the state from the day before. (Due to weak relevance to seqHMM, this guide will not expand further on this topic here.)
 
@@ -141,7 +143,7 @@ Transition probabilities do not change over time. Whether it is day 1 or day 100
 
 However, a key assumption of standard Markov Chains is that transition probabilities remain constant over time. In life course research, this assumption is often violated. For example, the probability of transitioning from "Single" to "Married" at age 20 is likely very different from that at age 40.
 
-To address this limitation, Helske & Helske (2019) developed the **Mixture Hidden Markov Model (MHMM)** framework. Instead of forcing all individuals to follow the same transition dynamics, MHMM uses covariates (such as gender or birth cohort) to identify distinct subgroups, each with its own transition matrix. This allows researchers to capture heterogeneity in life course patterns across different populations.
+To address time-varying or covariate-dependent transition probabilities, use a **Non-homogeneous Hidden Markov Model (NHMM)**. If you also need latent mixture clusters with covariate-dependent probabilities, use **MNHMM**. MHMM is for latent subgroups with class-specific HMM parameters; in current Sequenzo, covariate-dependent mixture weights belong to MNHMM rather than `build_mhmm()` or `fit_mhmm()`.
 
 **3. States are Observable**
 
@@ -149,7 +151,7 @@ In a standard Markov chain, we can directly observe the state of an individual, 
 
 However, sometimes we can only observe indirect manifestations of the state, not the state itself. For example, we cannot see a person's "true health status," only their symptoms.
 
-To address this potential issue, we will later introduce the **Hidden Markov Model (HMM)** to solve it, using a hidden Markov Chain to describe the transitions of true states.
+Hidden Markov Models (HMMs) address this problem by using a hidden Markov chain to describe transitions among latent states.
 
 ## 4. Practice Exercises for Markov Chains
 
@@ -204,7 +206,7 @@ The researcher finds that the chance of finding a new job differs between someon
 
 ::: details Answer
 - **Violated assumption:** Memorylessness
-- **Solution:** Higher-order Markov chain — let the next state depend on earlier states, not only the current one.
+- **Solution:** Higher-order Markov chain. Let the next state depend on earlier states, not only the current one.
   :::
 
 **(2) Scenario B**
@@ -213,7 +215,7 @@ The researcher wants to study mental health states, such as health, mild anxiety
 
 ::: details Answer
 - **Violated assumption:** States are observable
-- **Solution:** Hidden Markov Model (HMM) — add latent states and infer them from observed indicators.
+- **Solution:** Hidden Markov Model (HMM). Add latent states and infer them from observed indicators.
   :::
 
 **(3) Scenario C**
@@ -222,7 +224,7 @@ The researcher studies a person's marriage trajectory from age 20 to 50. They fi
 
 ::: details Answer
 - **Violated assumption:** Time homogeneity
-- **Solution:** Mixture Hidden Markov Model (MHMM) with covariates — let transition probabilities vary with age or time.
+- **Solution:** Non-homogeneous HMM (NHMM), or MNHMM when latent clusters are also needed, lets transition probabilities vary with age, time, or other covariates.
   :::
 
 ## 5. Summary

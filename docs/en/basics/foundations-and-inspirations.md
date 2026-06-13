@@ -1,26 +1,18 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-12-11 20:27:23
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-12-25 10:43:47
- * @FilePath: /SequenzoWebsite/docs/en/basics/foundations-and-inspirations.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Foundations and Inspirations
 
-Social sequence analysis has a rich methodological tradition. Sequenzo builds on this foundation and aims to extend it into the Python ecosystem with a focus on performance, scalability, and accessibility.
+Social sequence analysis has a rich methodological tradition. Sequenzo builds on this foundation and brings it into the scientific Python stack with a focus on performance, scale, and accessible workflows.
 
-The core conceptual framework of Sequenzo draws upon the following a set of major R packages:
+The core conceptual framework of Sequenzo draws on several major R packages:
 
 **1. The methodological foundations established by `TraMineR`**
 
-[The TraMineR package (Gabadinho et al., 2011)](https://traminer.unige.ch/) provided the first unified and comprehensive software framework for social sequence analysis.
+[The TraMineR package (Gabadinho et al., 2011)](https://traminer.unige.ch/) provided the first unified software framework for social sequence analysis.
 
-Many fundamental ideas widely used today, e.g., state encoding, optimal matching variants, visualization grammar, multichannel representation etc., were systematized through TraMineR.
+Many fundamental ideas widely used today, including state encoding, optimal matching variants, visualization grammar, and multichannel representation, were systematized through TraMineR.
 
 Sequenzo would not exist without this intellectual lineage, and we gratefully acknowledge the foundational contribution of TraMineR to the entire field.
 
-In addition, the TraMineR ecosystem has been extended through [`TraMineRextras` (Ritschard et al., 2021)](https://cran.r-project.org/web/packages/TraMineRextras/index.html), which provides a collection of advanced methodological tools for sequence analysis, including but not limited to sequence history analysis (Rossignon et al., 2018), sequence analysis multistate models (Studer et al., 2018), and polyadic sequence analysis (Liao, 2021).
+In addition, the TraMineR family of tools has been extended through [`TraMineRextras` (Ritschard et al., 2021)](https://cran.r-project.org/web/packages/TraMineRextras/index.html), which provides advanced methodological tools for sequence analysis, including sequence history analysis (Rossignon et al., 2018), sequence analysis multistate models (Studer et al., 2018), and polyadic sequence analysis (Liao, 2021).
 
 These extensions represent important methodological developments that further 
 broaden the scope of social sequence analysis and serve as key references for 
@@ -28,13 +20,13 @@ ongoing and future methodological work within Sequenzo.
 
 **2. Advances in clustering and typology from `WeightedCluster`**
 
-[WeightedCluster (Studer, 2013)](https://mephisto.unige.ch/weightedcluster/) has been instrumental in bringing robust clustering, cluster quality metrics to sequence analysis. Sequenzo incorporates these methodological insights while focusing on high-performance implementations for large datasets.
+[WeightedCluster (Studer, 2013)](https://mephisto.unige.ch/weightedcluster/) has been instrumental in bringing medoid-based clustering and cluster quality metrics to sequence analysis. Sequenzo incorporates these methodological insights while focusing on high-performance implementations for large datasets.
 
 **3. Extensions to probabilistic modeling through `seqHMM`**
 
 [seqHMM (Helske & Helske, 2019)](https://www.jstatsoft.org/article/view/v088i03) demonstrated the value of hidden Markov models for sequence data.
 
-While Sequenzo currently focuses on discrete sequence analysis, we view seqHMM as an inspiration for expanding probabilistic models within the Python environment.
+Sequenzo now implements this family of models natively in Python. The `seqhmm` module covers HMM, MHMM, NHMM, and MNHMM models, along with model comparison, simulation, bootstrap tools, hidden-path decoding, and plotting utilities. The implementation follows the methodology of seqHMM while using Python conventions and `SequenceData` inputs.
 
 **4. Visualization of relative frequency plots from `ggseqplot`**
 
@@ -43,14 +35,14 @@ While Sequenzo currently focuses on discrete sequence analysis, we view seqHMM a
 
 Beyond these foundations, Sequenzo contributes:
 
-* A new high-performance engine for large-scale sequence data
-* An easy-to-use Pythonic API
+* A high-performance engine for large-scale sequence data
+* A Pythonic API that fits scientific Python workflows
 * Publication-oriented visualizations
-* Seamless integration into scientific Python workflows
+* Interoperability with pandas, NumPy, matplotlib, and scikit-learn-oriented workflows
 
-Sequenzo seeks to expand the social sequence analysis ecosystem by connecting long-standing methodological traditions with the computational practices of the Python data-science community, particularly in machine learning and deep learning.
+Sequenzo broadens social sequence analysis by connecting long-standing methodological traditions with the computational practices of the Python data-science community, particularly machine learning and large-scale data workflows.
 
-We gratefully acknowledge the authors of TraMineR, WeightedCluster, seqHMM, and the broader community in social sequence analysis whose work enables everything we do.
+We gratefully acknowledge the authors of TraMineR, WeightedCluster, seqHMM, and the broader community in social sequence analysis whose work made this project possible.
 
 ## References
 
@@ -72,3 +64,5 @@ Helske, S., & Helske, J. (2019). Mixture hidden Markov models for sequence data:
 Raab, M. (2022). ggseqplot: Render Sequence Plots using ‘ggplot2’. https://doi.org/10.32614/CRAN.package.ggseqplot
 
 Fasang, A. E., & Liao, T. F. (2013). Visualizing Sequences in the Social Sciences: Relative Frequency Sequence Plots: Relative Frequency Sequence Plots. Sociological Methods & Research, 43(4), 643-676. https://doi.org/10.1177/0049124113506563 (Original work published 2014)
+
+*Author: Yuqi Liang*

@@ -67,8 +67,8 @@ df = pd.DataFrame({
 
 By default (when `missing_values=None`), Sequenzo automatically detects:
 
-- ✅ Pandas NaN values
-- ✅ String "Missing" (case-insensitive: "missing", "Missing", "MISSING")
+- Pandas NaN values
+- String "Missing" (case-insensitive: "missing", "Missing", "MISSING")
 
 **Example: Auto-detection with NaN**
 
@@ -402,6 +402,8 @@ seqdata = SequenceData(
 ### Example 3: Complex Dataset with Multiple Missing Types
 
 ```python
+import numpy as np
+
 # Data with pandas NaN, string "Missing", and hard-coded 999
 df = pd.DataFrame({
     'id': [1, 2, 3, 4],
@@ -430,4 +432,10 @@ seqdata = SequenceData(
 - **Best practice**: Always explicitly include missing in `states` and `labels`
 - **Warnings**: Sequenzo warns if additional missing types are detected beyond what you specified
 - **Visualization**: Missing values are automatically assigned gray color (#cfcccc) in visualizations
+
+## See Also
+
+- [Check Missing Values](/en/data-preprocessing/missing-values) documents the diagnostic function.
+- [`SequenceData`](/en/function-library/sequence-data) explains how missing states enter the sequence object.
+- [Typical Workflow](/en/basics/typical-workflow) shows where missing-value handling fits.
 

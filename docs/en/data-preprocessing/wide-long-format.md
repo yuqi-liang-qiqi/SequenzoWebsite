@@ -1,14 +1,4 @@
----
-title: Sequence Data Reshaping - Wide vs Long Format
-description: 
-pubDate: 2025-05-01
-lastModDate: 2025-05-01
-toc: true
-share: true
-ogImage: true
----
-
-# Sequence Data Reshaping - Wide vs Long Format
+# Sequence Data Reshaping: Wide and Long Formats
 
 Many social sequence analysis tools work with data in **wide format**, where each time step is a separate column. However, for plotting, merging, or statistical modeling, **long format** is often more convenient.
 
@@ -44,7 +34,7 @@ df = pd.DataFrame({
 Use `wide_to_long_format_data()`:
 
 ```python
-from sequenzo.utils import wide_to_long_format_data
+from sequenzo import wide_to_long_format_data
 
 df_long = wide_to_long_format_data(
     df,
@@ -76,27 +66,21 @@ df_long = wide_to_long_format_data(
 Use `long_to_wide_format_data()` if you need to go back:
 
 ```python
-from sequenzo.utils import long_to_wide_format_data
+from sequenzo import long_to_wide_format_data
 
 df_wide = long_to_wide_format_data(
     df_long,
     id_col="Entity ID",
     time_col="year",
-    state_col="state"
+    value_col="state"
 )
 ```
 
 This returns the original wide format DataFrame.
 
-Sure! Here's the **English explanation** for the two parameters `var_name` and `value_name` in the context of wide-to-long format conversion:
-
----
-
 ## Understanding `var_name` and `value_name` in Wide-to-Long Conversion
 
 When reshaping sequence data from **wide format** to **long format** using `pandas.melt()` or `wide_to_long_format_data()`, the parameters `var_name` and `value_name` control the names of the new columns in the long-format output.
-
----
 
 ### `var_name="time"`
 
@@ -129,7 +113,7 @@ In this example, `"time"` is the new column name, and it holds the former column
 
 ### `value_name="state"`
 
-This sets the name of the **new column** that holds the **actual cell values** from the original wide-format table — in other words, the states observed at each time point.
+This sets the name of the **new column** that holds the **actual cell values** from the original wide-format table. In other words, it names the states observed at each time point.
 
 You can rename it to suit your research topic.
 
@@ -168,5 +152,10 @@ B           2000    Single
 | `value_name`  | Name for the state column (from cell values) | `"state"`, `"status"` |
 
 These parameters just control the **column names** in the long-format DataFrame, and you can customize them based on context.
+
+## See Also
+
+- [Data Preprocessing Overview](/en/data-preprocessing/introduction) maps the preparation pipeline.
+- [`SequenceData`](/en/function-library/sequence-data) is the next step after preprocessing.
 
 *Author: Yuqi Liang*

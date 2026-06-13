@@ -1,13 +1,15 @@
-# Mixed Hidden Markov Model (MHMM)
+# Mixture Hidden Markov Model (MHMM)
 
 In the previous two tutorials, we studied Markov chains and Hidden Markov Models (HMMs). HMMs resolve the issue that Markov chains cannot handle states that are not directly observable.
 
-However, they rely on the critical assumption that all individuals share the same set of model parameters (initial probability $\pi$, transition probability $A$, emission probability $B$). In real-world scenarios, you may encounter issues that violate the above assumptions. For instance:
+If HMMs are new to you, read the beginner tutorial [Hidden Markov Models](/en/tutorials/markov-chain-models-02) first. For choosing between clustering, LCA, and HMM-family models, see [Sequence Analysis vs. LCA vs. HMM](/en/tutorials/sa-lca-and-hmm).
+
+However, they rely on the standard assumption that all individuals share the same set of model parameters (initial probability $\pi$, transition probability $A$, emission probability $B$). In real-world scenarios, you may encounter issues that violate the above assumptions. For instance:
 
 - Would a recent graduate and a middle-aged professional have exactly the same career transition patterns?
 - Would a conservative investor and an aggressive investor follow the same trading behavior rules?
 
-Therefore, this assumption is often oversimplified in reality. The **Mixture Hidden Markov Model (MHMM)** was created to solve this problem. Specifically, it allows different individuals to belong to different types, with each type having its own unique behavioral pattern. Like the dissimilarity-based clustering workflow, MHMM identifies distinct trajectory types and links type membership to covariates.
+Therefore, this assumption is often oversimplified in reality. The **Mixture Hidden Markov Model (MHMM)** was created to solve this problem. Specifically, it allows different individuals to belong probabilistically to different latent types, with each type having its own behavioral pattern. In current Sequenzo, `build_mhmm()` and `fit_mhmm()` estimate these latent classes from sequence likelihoods and mixture probabilities. To model class probabilities as functions of covariates, use MNHMM with `cluster_formula` or `X_cluster`.
 
 ## 1. Introduction
 
@@ -37,8 +39,10 @@ More formally, MHMM assumes:
 
 1. The population consists of $K$ latent classes
 2. Each latent class has its own independent HMM parameters (initial distribution $\pi$, transition matrix $A$, emission matrix $B$)
-3. Each individual belongs to one latent class (the probability of belonging to a certain cluster is determined through covariates)
+3. Each individual belongs probabilistically to one latent class
 4. Given the class an individual belongs to, their behavior follows that class's HMM
+
+In current Sequenzo, MHMM class membership probabilities are not modeled as functions of covariates. Covariate-dependent mixture weights are handled by MNHMM.
 
 **Class in MHMM versus States/Stages in HMM**
 
@@ -48,7 +52,7 @@ HMM states are **within-person time-varying stages**. A person moves between hid
 
 ### 1.3 Diagram of MHMM Structure
 
-In the diagram below, the top layer shows latent classes representing different types of individuals, where each class corresponds to an independent HMM. Individual class membership is unknown and needs to be inferred from covariates, and each individual belongs to only one class.
+In the diagram below, the top layer shows latent classes representing different types of individuals, where each class corresponds to an independent HMM. Individual class membership is unknown and is inferred from the observed sequence under each class-specific HMM.
 
 ![MHMM_Structure](./img/MHMM_Structure.png)
 
@@ -102,16 +106,18 @@ After obtaining the specific cluster membership, MHMM then infers:
 
 ### 3.1 How Cluster Membership is Calculated
 
-Like HMM, MHMM also infers the most likely hidden state at each time point. The difference is that MHMM first uses covariates to calculate the probability of each individual belonging to different clusters. Specifically, if the model includes covariates, it uses **multinomial logistic regression** to calculate each individual's prior probability of belonging to each class. Then, the model calculates the likelihood of the individual's actual observation sequence under each class's HMM, and updates the membership probability using **Bayes' formula**.
+Like HMM, MHMM also infers the most likely hidden state at each time point. The difference is that MHMM also estimates which latent class is most likely for each individual. In current Sequenzo, the model combines the prior mixture probabilities with the likelihood of the individual's observed sequence under each class-specific HMM, then updates membership probabilities using **Bayes' formula**.
+
+If your research question requires class membership probabilities to depend directly on covariates such as gender, education, or cohort, use MNHMM with `cluster_formula` or `X_cluster`.
 
 ### 3.2 MHMM Clustering vs Classical Sequence Analysis Clustering
 
-What is the difference between "latent classes" in MHMM and "clusters" in traditional sequence analysis (such as Optimal Matching + hierarchical clustering)? Although both divide individuals into different groups, their basic principles, classification methods, and the role of covariates are fundamentally different.
+What is the difference between "latent classes" in MHMM and "clusters" in traditional sequence analysis (such as Optimal Matching + hierarchical clustering)? Although both divide individuals into different groups, their basic principles, classification methods, and relationship to covariates are different.
 
 | Dimension | MHMM Latent Classes | Dissimilarity-based Clustering |
 |---|---|---|
 | **Classification Basis** | Probabilistic model: individuals are assigned to the class whose HMM best explains their observed sequence | Distance-based: individuals are grouped by pairwise sequence dissimilarity |
-| **Role of Covariates** | Covariates directly influence class membership probabilities via multinomial logistic regression | Covariates are typically used after clustering (e.g., as predictors of cluster membership in a separate regression) |
+| **Role of Covariates** | In current Sequenzo MHMM, covariates are not part of the class-membership model. Use MNHMM for covariate-dependent mixture weights. | Covariates are typically used after clustering (e.g., as predictors of cluster membership in a separate regression) |
 | **Latent States** | Each class has its own hidden states and transition dynamics | No hidden state layer; clustering operates on observed sequences directly |
 | **Output** | Class-specific HMM parameters ($\pi_k$, $A_k$, $B_k$) and individual membership probabilities | Cluster labels and sequence-level summary measures |
 
@@ -149,7 +155,7 @@ For each application, MHMM can answer:
 - How many typical transition patterns exist?
 - What are the characteristics of each pattern (initial distribution $\pi$, transition probability $A$, emission probability $B$)?
 - Which pattern does a specific young person belong to?
-- What factors (covariates) predict which pattern a person belongs to?
+- Which external factors are associated with the inferred pattern? If those factors should directly shape class probabilities, use MNHMM.
 
 ## 5. Practice Exercises
 
@@ -162,7 +168,7 @@ A key limitation of an HMM is that it assumes all individuals share **①**. But
 - The population consists of **③** latent classes.
 - Each latent class has its own HMM parameters: **④**, **⑤**, **⑥**.
 
-The probability that an individual belongs to each class is determined by **⑦**. Compared with an HMM, an MHMM has a two-level latent variable structure:
+The posterior probability that an individual belongs to each class is updated using **⑦**. Compared with an HMM, an MHMM has a two-level latent variable structure:
 
 - Level 1, individual level: infer which **⑧** the individual belongs to.
 - Level 2, time step level: infer the **⑨** at each time point, as in standard HMM.
@@ -180,7 +186,7 @@ The probability that an individual belongs to each class is determined by **⑦*
 
 ⑥ emission matrix $B$
 
-⑦ covariates
+⑦ Bayes' formula, combining mixture probabilities and sequence likelihoods
 
 ⑧ cluster membership
 
@@ -193,15 +199,16 @@ Which research question below is more suitable for an MHMM? Choose one and expla
 
 **Scenario A:** The researcher wants to compare the concrete shapes of career trajectories between frequent job hoppers and stable workers, such as the average number of transitions and the duration spent in specific states.
 
-**Scenario B:** The researcher wants to explore whether there are different career development mechanisms. For example, some people may follow a rapid rise pattern, while others follow a slow exploration pattern. The researcher also wants to know how gender and education affect the probability that an individual belongs to each pattern.
+**Scenario B:** The researcher wants to explore whether there are different career development mechanisms. For example, some people may follow a rapid rise pattern, while others follow a slow exploration pattern. The researcher also wants to examine whether gender and education are associated with the inferred patterns.
 
 ::: details Answer
 **Scenario B** is more suitable for an MHMM.
 
 Reasons:
 - Scenario B focuses on **latent mechanisms**, not just surface observations.
-- Scenario B explicitly needs **covariates**, such as gender and education, to predict cluster membership.
 - Scenario B aims to identify **distinct transition dynamics**, such as rapid rise versus slow exploration, which is exactly what an MHMM captures through class-specific transition matrices.
+
+If the researcher wants gender and education to directly determine class membership probabilities during model fitting, MNHMM is the better Sequenzo model.
 
 Scenario A is better suited to the **dissimilarity-based clustering approach**, because it focuses on trajectory shape features, such as the number of transitions and state durations, which can be computed directly from the observed sequences.
 :::
@@ -215,7 +222,7 @@ In this tutorial, we learned:
 - **Comparison with related methods:** HMM, two-step clustering
 - **Practical applications:** Life course research, health trajectories
 
-MHMM is a powerful tool for handling population heterogeneity in longitudinal sequence data. It combines HMM's ability to capture dynamic processes with mixture models' ability to identify latent types, making it suitable for "trajectory typology" research questions in social sciences.
+MHMM is useful for handling population heterogeneity in longitudinal sequence data. It combines HMM's ability to capture dynamic processes with mixture models' ability to identify latent types, making it suitable for "trajectory typology" research questions in social sciences.
 
 ## 7. References
 

@@ -45,7 +45,7 @@ build_hmm(
 
 \*Provide `n_states` or at least one of `initial_probs`, `transition_probs`, `emission_probs` so the model dimension is identifiable.
 
-## What It Returns
+## Returns
 
 An `HMM` object (not yet fitted). Key attributes after building:
 
@@ -61,10 +61,13 @@ from sequenzo import SequenceData, load_dataset
 from sequenzo.seqhmm import build_hmm
 
 df = load_dataset("mvad")
+time_cols = list(df.columns[14:])
+states = ["employment", "FE", "HE", "joblessness", "school", "training"]
+
 seq = SequenceData(
     df,
-    time=range(15, 86),
-    states=["EM", "FE", "HE", "JL", "SC", "TR"],
+    time=time_cols,
+    states=states,
 )
 
 # Step 1: build with 4 hidden states
@@ -96,6 +99,12 @@ hmm_mc = build_hmm(
 - Building does not estimate parameters; always follow with [`fit_model()`](./fit-model.md).
 - For multichannel models, each channel can have its own alphabet size; emission_probs is a list of matrices.
 - If initialization is unstable, try different `random_state` values or supply custom starting probabilities.
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

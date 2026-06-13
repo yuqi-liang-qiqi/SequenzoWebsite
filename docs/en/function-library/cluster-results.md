@@ -1,12 +1,4 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-11 17:41:19
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-16 11:17:43
- * @FilePath: /SequenzoWebsite/docs/en/function-library/cluster_results.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-# `ClusterResults()`: Export, summarize, and visualize cluster memberships
+# `ClusterResults()`: Export, Summarize, and Visualize Cluster Memberships
 
 Once you have fitted a hierarchical clustering model with `Cluster()` and decided on the optimal number of clusters with `ClusterQuality()`, the next step is to interpret and present the results. `ClusterResults()` is a small companion class that makes it easy to produce:
 
@@ -14,9 +6,9 @@ Once you have fitted a hierarchical clustering model with `Cluster()` and decide
 * **Distribution table (nice to have):** Summarize how entities are distributed across clusters.
 * **Bar chart (nice to have):** Visualize these distributions.
 
-These ensures you can quickly link cluster labels back to your original dataset (e.g., if you have important variables such as gender and income), evaluate the balance of the cluster membership data, and prepare results for downstream analysis (e.g., index plot and state distribution plot for each cluster, and regressions).
+This ensures you can quickly link cluster labels back to your original dataset (e.g., if you have important variables such as gender and income), evaluate the balance of the cluster membership data, and prepare results for downstream analysis (e.g., index plot and state distribution plot for each cluster, and regressions).
 
-## Function usage
+## Function Usage
 
 A minimal example with only the required parameter (sufficient for most use cases):
 
@@ -31,7 +23,7 @@ A complete example with all available parameters (for advanced customization):
 cluster = Cluster(
   matrix=distance_matrix,      # square-form distance matrix (n×n)
   entity_ids=ids,              # unique IDs aligned with matrix rows
-  clustering_method="ward"     # linkage method
+  clustering_method="average"  # linkage method
 )
 
 # Then wrap results
@@ -50,13 +42,13 @@ cluster_results.plot_cluster_distribution(
 )
 ```
 
-## Entry parameters
+## Entry Parameters
 
 | Parameter | Required | Type    | Description                                                             |
 | --------- | -------- | ------- | ----------------------------------------------------------------------- |
 | `cluster` | ✓        | Cluster | A fitted `Cluster` object containing `linkage_matrix` and `entity_ids`. |
 
-## What it does
+## What It Does
 
 * Validates that input is a `Cluster` object.
 * Stores:
@@ -124,7 +116,7 @@ cluster_results.plot_cluster_distribution(
 )
 ```
 
-### Entry parameters
+### Entry Parameters
 
 | Parameter      | Required | Type               | Description                                                                 |
 | -------------- | -------- | ------------------ | --------------------------------------------------------------------------- |
@@ -135,7 +127,7 @@ cluster_results.plot_cluster_distribution(
 | `dpi`          | ✗        | int                | Resolution when saving. Default = `200`.                                    |
 | `figsize`      | ✗        | tuple(float,float) | Figure size in inches. Default = `(10, 6)`.                                 |
 
-### What it does
+### What It Does
 
 * Creates a bar plot with cluster IDs on the x-axis and entity counts on the y-axis.
 * Adds percentage labels above bars for easy interpretation.
@@ -150,10 +142,12 @@ None. The figure is shown or saved to disk.
 
 ```python
 # Fit model
-cluster = Cluster(distance_matrix, ids, "ward")
+cluster = Cluster(distance_matrix, ids, "average")
 
-# Code for ClusterQuality() is ommited here, 
+# Code for ClusterQuality() is omitted here,
 # but it is important to include it in your analysis. 
+
+cluster_results = ClusterResults(cluster)
 
 # Export memberships
 membership_table = cluster_results.get_cluster_memberships(num_clusters=5)
@@ -169,7 +163,7 @@ cluster_results.plot_cluster_distribution(num_clusters=5, save_as="distribution.
 
 Output:
 
-```python
+```text
 
        Entity ID  Cluster
 0    Afghanistan        1
@@ -191,21 +185,22 @@ Output:
 2        3     49       25.26
 3        4     18        9.28
 4        5     42       21.65
-/Users/lei/Documents/Sequenzo_all_folders/Sequenzo-main/sequenzo/clustering/hierarchical_clustering.py:598: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.barplot(x='Cluster', y='Count', data=distribution, palette='pastel')
 ```
 
 ![cluster_membership_distribution](./img/cluster_membership_distribution.png)
 
-## Notes and warnings
+## Notes and Warnings
 
 * `num_clusters` in this class corresponds to SciPy’s `t` parameter in `fcluster()`.
   Don’t confuse this with `k` in k-means as here it simply means “number of clusters.”
 * Always confirm that `linkage_matrix` is present in your `Cluster` object. Without it, membership extraction cannot proceed.
 * Distribution plots are best used to check balance (e.g., if one cluster dominates). For deeper evaluation, pair this with `ClusterQuality()`.
+
+## See Also
+
+- [`Cluster()`](/en/function-library/hierarchical-clustering) and [`ClusterQuality()`](/en/function-library/cluster-quality) are the upstream steps.
+- [Replace Cluster ID by Labels](/en/data-preprocessing/replace-cluster-id-by-labels) converts numeric IDs into readable labels.
+- [Index Plot](/en/visualization/index-plot) and [State Distribution Plot](/en/visualization/state-distribution-plot) visualize each cluster.
 
 ## Authors
 

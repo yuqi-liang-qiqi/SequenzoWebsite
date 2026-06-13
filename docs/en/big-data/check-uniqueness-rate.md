@@ -9,7 +9,7 @@ In our framework of big sequence data analysis, we highlight **four key elements
 
 The first three elements are straightforward: each contributes directly to the combinatorial growth of pairwise comparisons and the dynamic programming steps involved in computing dissimilarities.
 
-The fourth element, **uniqueness rate**, is less widely recognized but proves **crucial in practice**. Understanding uniqueness rate helps you estimate the computational cost of analyzing your dataset and optimize your analysis workflow.
+The fourth element, **uniqueness rate**, is less widely recognized but often decisive in practice. Understanding uniqueness rate helps you estimate the computational cost of analyzing your dataset and optimize your analysis workflow.
 
 ## Why Uniqueness Rate Matters
 
@@ -117,7 +117,7 @@ stats = sequence_data.check_uniqueness_rate(
 
 ```python
 import pandas as pd
-from sequenzo.define_sequence_data import SequenceData
+from sequenzo import SequenceData
 
 # Example dataset
 df = pd.DataFrame({
@@ -142,21 +142,23 @@ Output:
 ```
 {
     'n_sequences': 5,
-    'n_unique': 4,
-    'uniqueness_rate': 0.8
+    'n_unique': 3,
+    'uniqueness_rate': 0.6
 }
 ```
 
 **Explanation:**
 - 5 total sequences: `AAB`, `AAB`, `ABB`, `BBC`, `BBC`
-- 4 unique sequences: `AAB`, `ABB`, `BBC` (and duplicates)
-- Uniqueness rate = 4/5 = 0.8
+- 3 unique sequences: `AAB`, `ABB`, `BBC`
+- Uniqueness rate = 3/5 = 0.6
 
-This means only 4 unique sequences need distance calculations, not all 5.
+This means only 3 unique sequences need distance calculations, not all 5.
 
 ### 2. With weighted data (`weighted=True`)
 
 ```python
+import numpy as np
+
 # Define weights for sequences
 weights = np.array([1.0, 1.0, 2.0, 1.5, 1.5])
 
@@ -178,16 +180,16 @@ Output:
 ```
 {
     'n_sequences': 5,
-    'n_unique': 4,
-    'uniqueness_rate': 0.8,
+    'n_unique': 3,
+    'uniqueness_rate': 0.6,
     'weighted_total': 7.0,
-    'weighted_uniqueness_rate': 0.5714
+    'weighted_uniqueness_rate': 0.4286
 }
 ```
 
 **Explanation:**
 - Total weighted count: 1.0 + 1.0 + 2.0 + 1.5 + 1.5 = 7.0
-- Weighted uniqueness rate: 4 / 7.0 = 0.5714
+- Weighted uniqueness rate: 3 / 7.0 = 0.4286
 - This accounts for the fact that some sequences (with higher weights) are more important
 
 ### 3. Real dataset example (employment sequences)
@@ -247,7 +249,12 @@ Uniqueness rate: 0.080
 
 * The function returns both weighted and unweighted statistics when `weighted=True`, allowing you to compare both perspectives.
 
-## Author
+## See Also
+
+- [Section overview](/en/big-data/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
+
+## Authors
 Code: Yuqi Liang
 
 Documentation: Yuqi Liang

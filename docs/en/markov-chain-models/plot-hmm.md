@@ -53,11 +53,13 @@ plot_hmm(
 | `layout` | ✗ | `str` | `"horizontal"` or `"vertical"` network layout. |
 | `**kwargs` | ✗ | any | Extra arguments passed to the network plot. |
 
-## What It Returns
+## Returns
 
 A matplotlib `Figure` object. Call `plt.show()` in scripts, or display in a notebook.
 
 ## Example
+
+Assume `seq` is a prepared [`SequenceData`](../function-library/sequence-data.md) object with the observed sequences you want to model.
 
 ```python
 from sequenzo.seqhmm import build_hmm, fit_model, plot_hmm
@@ -85,6 +87,12 @@ plt.show()
 - Best used after fitting so plotted values reflect estimated parameters.
 - Network plots require optional `networkx` for layout; matrix plots work without it.
 - For mixture models, use [`plot_mhmm()`](./plot-mhmm.md).
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

@@ -9,6 +9,9 @@ build_nhmm(
     observations,
     n_states,
     X=None,
+    X_pi=None,
+    X_A=None,
+    X_B=None,
     emission_formula=None,
     initial_formula=None,
     transition_formula=None,
@@ -29,7 +32,8 @@ build_nhmm(
 | --- | --- |
 | `observations` | `stslist` |
 | `n_states` | Number of hidden states |
-| `X` | Covariate array (manual specification) |
+| `X` | Shared covariate array (manual specification) |
+| `X_pi`, `X_A`, `X_B` | Separate covariate arrays for initial, transition, and emission probabilities |
 | `emission_formula`, `initial_formula`, `transition_formula` | Formula terms for each parameter block |
 | `data`, `id_var`, `time_var` | Covariate data frame and index columns |
 | `eta_pi`, `eta_A`, `eta_B` | Coefficient matrices for initial, transition, emission |
@@ -40,7 +44,10 @@ build_nhmm(
 | --- | --- | --- | --- |
 | `observations` | ✓ | `SequenceData` | Observed sequences. |
 | `n_states` | ✓ | `int` | Number of hidden states (`> 1`). |
-| `X` | ✗* | `ndarray` / `None` | Covariate tensor `(n_sequences, n_timepoints, n_covariates)`. |
+| `X` | ✗* | `ndarray` / `None` | Shared covariate tensor `(n_sequences, n_timepoints, n_covariates)` used when separate matrices are not supplied. |
+| `X_pi` | ✗* | `ndarray` / `None` | Covariate tensor for initial state probabilities. If using separate manual matrices, provide all of `X_pi`, `X_A`, and `X_B` together. |
+| `X_A` | ✗* | `ndarray` / `None` | Covariate tensor for transition probabilities. |
+| `X_B` | ✗* | `ndarray` / `None` | Covariate tensor for emission probabilities. |
 | `emission_formula` | ✗* | `str` / `Formula` / `None` | Formula for emission probabilities, e.g. `"~ age + education"`. |
 | `initial_formula` | ✗ | `str` / `Formula` / `None` | Formula for initial state probabilities. |
 | `transition_formula` | ✗ | `str` / `Formula` / `None` | Formula for transition probabilities. |
@@ -51,9 +58,9 @@ build_nhmm(
 | `state_names` | ✗ | `List[str]` / `None` | Hidden state labels. |
 | `random_state` | ✗ | `int` / `None` | Seed for random coefficient initialization. |
 
-\*Provide either `X` **or** (`data` + `id_var` + `time_var` + at least one formula).
+\*Provide either a shared `X`, all three separate matrices (`X_pi`, `X_A`, `X_B`), or (`data` + `id_var` + `time_var` + at least one formula).
 
-## What It Returns
+## Returns
 
 An `NHMM` object with covariate matrix `X`, coefficient slots `eta_pi`, `eta_A`, `eta_B`, and `log_likelihood=None` until fitting.
 
@@ -63,7 +70,13 @@ An `NHMM` object with covariate matrix `X`, coefficient slots `eta_pi`, `eta_A`,
 
 ```python
 import numpy as np
+from sequenzo import SequenceData, load_dataset
 from sequenzo.seqhmm import build_nhmm, fit_nhmm
+
+df = load_dataset("mvad")
+time_cols = list(df.columns[14:])
+states = ["employment", "FE", "HE", "joblessness", "school", "training"]
+seq = SequenceData(df, time=time_cols, states=states)
 
 n_sequences = len(seq.sequences)
 n_timepoints = max(len(s) for s in seq.sequences)
@@ -82,17 +95,23 @@ nhmm = fit_nhmm(nhmm, verbose=True)
 ```python
 import pandas as pd
 
-covariate_df = pd.DataFrame({
-    "id": range(len(seq.sequences)),
-    "time": [...],  # long-format rows per id × time
-    "age": [...],
-    "education": [...],
-})
+rows = []
+for row_index, sequence_id in enumerate(seq.ids):
+    for time_index, time_label in enumerate(seq.time):
+        rows.append({
+            "id": sequence_id,
+            "time": time_label,
+            "time_index": time_index,
+            "cohort_proxy": row_index % 2,
+        })
+
+covariate_df = pd.DataFrame(rows)
 
 nhmm = build_nhmm(
     seq,
     n_states=4,
-    emission_formula="~ age + education",
+    transition_formula="~ time_index + cohort_proxy",
+    emission_formula="~ time_index",
     data=covariate_df,
     id_var="id",
     time_var="time",
@@ -103,13 +122,20 @@ nhmm = build_nhmm(
 ## R Counterpart
 
 - **Closest R function:** seqHMM `build_nhmm()`
-- **Mapping note:** Formula syntax follows R-style additive terms; interactions and lags are not yet supported in Sequenzo.
+- **Mapping note:** Formula strings are passed through `patsy`. Interactions and inline transforms such as `np.log(...)` are supported. `lag()` is available for time-varying formula matrices, but should not be used in `initial_formula`.
 
 ## Notes
 
 - Follow with [`fit_nhmm()`](./fit-nhmm.md).
-- Multichannel NHMM is not yet supported.
-- Supported formulas are additive (e.g. `"~ x1 + x2"`); no `*`, `lag()`, or transforms yet.
+- Use NHMM with one `SequenceData` object. For multichannel latent-dynamics workflows, see the HMM, MHMM, and MNHMM pages.
+- Use `X` when the same covariates should drive initial, transition, and emission probabilities. Use `X_pi`, `X_A`, and `X_B` when each probability block needs its own covariate design.
+- Builder formulas use `patsy`, so additive terms, interactions, and inline transforms accepted by `patsy` are supported. Use `lag()` only in time-varying formula contexts. Simulation formulas are more limited; see [`simulate_nhmm()`](./simulate-nhmm.md).
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

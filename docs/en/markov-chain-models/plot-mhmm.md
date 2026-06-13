@@ -30,11 +30,13 @@ plot_mhmm(
 | `figsize` | ✗ | `tuple` / `None` | Figure size. |
 | `ax` | ✗ | `Axes` / `None` | Existing matplotlib axes. |
 
-## What It Returns
+## Returns
 
 A matplotlib `Figure`.
 
 ## Example
+
+Assume `seq` is a prepared [`SequenceData`](../function-library/sequence-data.md) object with the observed sequences you want to model.
 
 ```python
 from sequenzo.seqhmm import build_mhmm, fit_mhmm, plot_mhmm
@@ -56,6 +58,12 @@ plt.show()
 
 - Model must be fitted before plotting.
 - For single HMM graphs, use [`plot_hmm()`](./plot-hmm.md).
+
+## See Also
+
+- [Markov Chain Models Introduction](/en/markov-chain-models/introduction) maps the full HMM-family workflow.
+- [Model Comparison](/en/markov-chain-models/model-comparison) helps choose between fitted models.
+- [Sequenzo and seqHMM Mapping](/en/markov-chain-models/seqhmm-function-mapping) gives the R correspondence.
 
 ## Authors
 

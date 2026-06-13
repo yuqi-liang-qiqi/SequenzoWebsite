@@ -12,11 +12,20 @@
   html.dark .logo-dark { display: inline; }
 </style>
 
-`Sequenzo` is a fast, scalable, and intuitive Python package for social sequence analysis. It is designed specifically to handle big data and is applicable across all disciplines within the social sciences, making sequence analysis more accessible and efficient for both researchers and practitioners.
+`Sequenzo` is a Python package for social sequence analysis. It is designed for categorical trajectories, large datasets, and the everyday workflow of researchers who prepare data, compare sequences, build typologies, visualize patterns, and fit probabilistic sequence models in Python.
+
+Use Sequenzo when you need to:
+
+- turn longitudinal categorical data into a validated `SequenceData` object;
+- compare trajectories with one of 24 distance methods;
+- build and evaluate sequence typologies;
+- visualize sequence patterns for papers, slides, or reports;
+- scale clustering with CLARA when full distance matrices become too large;
+- move into group comparison, multidomain analysis, event histories, or HMM-style models.
 
 ## Foundations and Inspirations
 
-Its methodological foundations build upon prior work in the R ecosystem, especially
+Its methodological foundations build upon prior work in the R software tradition, especially
 [the TraMineR (Gabadinho et al. 2011) R package](https://traminer.unige.ch/), which
 established many of the core concepts, representations, and analytical tools in
 sequence analysis, as well as subsequent methodological extensions developed within
@@ -30,27 +39,25 @@ probabilistic modeling using hidden Markov models,
 and [ggseqplot (Raab, 2022)](https://maraab23.github.io/ggseqplot/) for the design of
 relative frequency sequence visualizations (Fasang & Liao, 2013).
 
-We gratefully acknowledge these pioneering contributions and the broader community in social sequence analysis whose work enables everything we do. Sequenzo seeks to expand the social sequence analysis ecosystem by connecting long-standing methodological traditions with the computational practices of the Python data science community, particularly in machine learning and deep learning.
+We gratefully acknowledge these pioneering contributions and the broader community in social sequence analysis. Sequenzo connects long-standing methodological traditions with the computational practices of the Python data science community, including machine learning and large-scale data workflows.
 
-Despite gaining increasing attention, social sequence analysis is still an emerging method. Thus, before briefly introducing our package, here we will first walk you through some essential concepts of sequence analysis and highlight key challenges it currently faces.
+Many users first meet sequence analysis through concrete data problems. This page gives the context: what sequence data look like, which questions the method answers, and where Sequenzo fits.
 
 ## What is social sequence analysis, and why does it matter?
 
-Sequence Analysis (SA) originated in biology for comparing DNA and protein sequences, but has since been adapted into the social sciences as a powerful method for analyzing sequences of events or states over time (Abbott, 1983; Liao et al., 2022). Because it is applied to life trajectories and social phenomena, it is often referred to as social sequence analysis. However, in the social sciences, it is also commonly called simply sequence analysis. 
+Sequence Analysis (SA) compares ordered categorical states or events. It began in biology, then moved into the social sciences for studying life courses and other trajectories (Abbott, 1983; Liao et al., 2022). On this website, sequence analysis and social sequence analysis refer to that social-science use.
 
 It is especially useful for understanding how people's lives unfold, capturing transitions such as:
 
 * Family transitions (single → married → having children)
 * Career paths (graduation → first job → career changes)
-* Migration journeys (moving from City A → City B → City A)
+* Migration trajectories (moving from City A → City B → City A)
 
-Unlike numeric time series such as stock prices or temperatures, the data used in social sequence analysis are typically categorical. This means that they represent distinct life events or stages, such as being single, married, or unemployed, rather than continuous numerical values. 
+Unlike numeric time series such as stock prices or temperatures, social sequence data are usually categorical. They represent stages such as being single, married, unemployed, studying, or working.
 
-Moreover, these sequences often unfold at irregular time intervals, with the timing of transitions varying greatly from person to person. The categories themselves are also often unordered (such as being a software engineer or a user interface designer in different years), meaning there is no natural way to say one state is "greater" or "less than" another. 
+These states are often unordered, and transitions can happen at different moments for different people. Standard numeric time-series tools are therefore a poor fit. Sequence analysis uses distances, alignments, state summaries, and models built for categorical trajectories.
 
-Because of these characteristics, traditional statistical methods, which rely on regularly spaced numeric data and assume meaningful order or distance between values, are not suitable. Instead, SA requires specialized tools that can handle the unique structure of life course data for analyzing complex, non-numeric sequences.
-
-As of 2025, sequence analysis is predominantly used in sociology and demography to study individual life trajectories. However, its potential application in broader fields, including economics, management, marketing, human resources, healthcare, education, and customer behavior, remains largely untapped.
+Sequence analysis is predominantly used in sociology and demography to study individual life trajectories. However, its potential application in broader fields, including economics, management, marketing, human resources, healthcare, education, and customer behavior, remains largely untapped.
 
 ## What kinds of questions can sequence analysis answer?
 
@@ -58,11 +65,11 @@ At the individual (micro) level:
 
 * Career Patterns: How do career paths differ between men and women across different cultures?
 * Family Formation: How have marriage and family formation patterns changed across generations?
-* Migration Patterns: What typical migration journeys do people follow when moving to new countries?
+* Migration Patterns: What typical migration trajectories do people follow when moving to new countries?
 * Health Research: How do patients move between different health conditions or symptoms over time?
 * Customer Insights: What typical pathways do customers take before becoming loyal or disengaged?
 
-Beyond individuals, sequence analysis can also be applied to analyze larger-scale entities, which has been understudied with few exceptions in economic geography which examines the trajectories and interactions of regions and cities as they evolve over time, revealing patterns of convergence, divergence, and agglomeration (Losacker & Kuebart, 2024). 
+Beyond individuals, sequence analysis can also study larger entities. Economic geography, for example, uses trajectories of regions and cities to examine convergence, divergence, and agglomeration (Losacker & Kuebart, 2024).
 
 In general, in meso and macro-level analyses, entities can be cities, regions, companies, or countries. For instance:
 
@@ -71,50 +78,57 @@ In general, in meso and macro-level analyses, entities can be cities, regions, c
 * Corporate Life-Cycles: What typical growth, stagnation, or innovation trajectories do companies experience throughout their existence?
 * Country-Level Transitions: How do countries transition between political regimes, economic systems, or developmental stages over historical periods?
 
-Sequenzo aims to empower researchers, decision-makers, and data analysts in the industry to answer these diverse questions efficiently and effectively.
+Sequenzo helps researchers, policy analysts, and industry data teams answer these questions with reproducible Python workflows.
 
-## Introducing Sequenzo: A Fast, Intuitive, and Scalable Python Package for Sequence Analysis
+## Introducing Sequenzo: A Fast Python Package for Sequence Analysis
 
-Sequence analysis has enormous potential for understanding complex trajectories and patterns across many fields, but it faces significant challenges, particularly when dealing with large-scale datasets common in today's digital era. Existing tools, including R tools such as `TraMineR` and `WightedCluster`, often struggle with computational speed and efficiency, becoming slow and resource-intensive as datasets grow. This inefficiency limits the practical use of sequence analysis in real-world research scenarios and commercial applications.
+Sequence analysis has enormous potential for understanding complex trajectories and patterns across many fields, but it faces significant scaling challenges. Large samples, long observation windows, and multidomain designs can make full pairwise distance matrices expensive in time and memory.
 
-To address these challenges, we've developed Sequenzo, a Python package specifically tailored for social sequence analysis in the age of big data. Compared to widely-used existing tools such as TraMineR in R (Gabadinho et al., 2011), Sequenzo offers remarkable improvements in speed, efficiency, and ease of use. 
+Sequenzo brings this methodological tradition into the scientific Python stack, with an emphasis on pandas-friendly data handling, scalable computation, and workflows that fit naturally with NumPy, scikit-learn, matplotlib, and modern research pipelines.
 
-<!-- For more information, please refer to [Performance Differences between TraMineR and Sequenzo](/en/traminer-and-sequenzo/performance-diff) and [Functions Comparison](/en/traminer-and-sequenzo/functions-comparison). -->
+For R users, see [Functions Comparison](/en/traminer-and-sequenzo/functions-comparison) and [Performance Differences](/en/traminer-and-sequenzo/performance-diff).
 
-### Key features of Sequenzo include:
+### Key features
 
-* **Comprehensive Sequence Data Handling:** Easily manage and convert various longitudinal data formats, and detect missing values.
+* **Sequence Data Handling:** Manage and convert longitudinal data formats, define categorical state spaces, and detect missing values.
 
 * **Visualization Tools:** Create clear visualizations such as the state distribution plot and index plot to effectively illustrate sequence data.
 
-* **Detailed Complexity Indicators (micro- and macro-level):** Compute extensive sequence metrics including sequence length, state durations, entropy, complexity, turbulence, and more.
+* **Sequence Characteristics Indicators:** Compute sequence length, state durations, entropy, complexity, turbulence, and related measures.
 
-* **Dissimilarity Measures:** Offers a variety of distance measures (Optimal Matching, Hamming, Longest Common Subsequence, Chi-squared, Euclidean, etc.) for robust sequence comparisons.
+* **Dissimilarity Measures:** Compute Optimal Matching, Hamming, Longest Common Subsequence, prefix-based, Chi-squared, Euclidean, and related sequence distances.
 
 * **Clustering Analysis:** Efficiently groups similar trajectories into meaningful clusters to identify representative patterns by hierarchical clustering, k-medoids, and partitioning around medoids (PAM).
 
-* **Representative Sequence Identification:** Determines medoid/referencing sequences.
+* **Representative Sequence Identification:** Identify medoids and representative observed trajectories.
 
-* **Big Data:** Drawing upon the CLARA algorithm (Studer et al., 2024), Sequenzo can handle large datasets efficiently.
+* **Probabilistic Modeling with Hidden Markov Models:** Fit HMM, MHMM, NHMM, and MNHMM models to recover latent dynamics behind observed sequences.
 
-Thanks to optimized algorithms and parallel computation, Sequenzo is at least 6 times faster than traditional tools in R, significantly reducing computational burden and enabling sequence analysis to be practically applied at scale. Whether for academic research, business analytics, or policy insights, Sequenzo makes sequence analysis accessible, efficient, and insightful in an increasingly data-driven world.
+* **Big Data:** Use CLARA-style workflows (Studer et al., 2024) when full pairwise distance matrices become too expensive.
 
-Now Sequenzo is available on all major operating systems — macOS, Windows, and Linux — and supports
-Python 3.9 through 3.14. It can be installed directly via `pip install sequenzo` with no compiler
-or build tools required, as pre-built packages are provided for all supported platforms.
+With optimized algorithms and parallel computation, Sequenzo reduces computational burden and makes sequence analysis practical at larger scales. Whether for academic research, business analytics, or policy work, Sequenzo brings sequence analysis into the Python data-science stack.
 
-| Platform         |Python Versions                   | 
+Now Sequenzo is available on macOS, Windows, and Linux. It can be installed directly via `pip install sequenzo` with no compiler or build tools required for the platform/Python combinations listed below.
+
+| Platform         |Python Versions                   |
 |------------------|-----------------------------------|
 | **macOS**        | 3.9, 3.10, 3.11, 3.12, 3.13, 3.14 |
 | **Windows**      | 3.9, 3.10, 3.11, 3.12, 3.13       |
 | **Linux (glibc)**| 3.9, 3.10, 3.11, 3.12, 3.13, 3.14 |
 | **Linux (musl)** | 3.9, 3.10, 3.11, 3.12, 3.13, 3.14 |
 
+### Coming from R?
+
+Many Sequenzo users have worked with R packages such as TraMineR, WeightedCluster, and seqHMM. Sequenzo does not replace those packages. It extends the same methodological tradition into Python, with a focus on performance, scale, and integration with pandas, NumPy, scikit-learn, and matplotlib.
+
+If you are moving from R, start with [Installing](/en/basics/installing), run the [Quickstart](/en/basics/quickstart), and use the [Typical Workflow](/en/basics/typical-workflow) to see how sequence definition, distance computation, clustering, visualization, and model-based analysis connect.
+
 ## Team
 
 **Paper Authors**
 * [Yuqi Liang, University of Oxford](https://www.yuqi-liang.tech/)
 * [Xinyi Li, Northeastern University](https://github.com/Fantasy201)
+* [Yapeng Wei, University of Oxford](https://github.com/YapengWei)
 * [Jan Heinrich Ernst Meyerhoff-Liang, Institute for New Economic Thinking Oxford](https://www.linkedin.com/in/jan-meyerhoff-liang-97999a170/)
 
 **Package Contributors**
@@ -128,7 +142,7 @@ Documentation contributors:
 * [Liangxingyun He, Stockholm School of Economics, Sweden](https://www.linkedin.com/in/liangxingyun-he-6aa128304/)
 * [Yukun Ming, Universidad Carlos III de Madrid (Spain)](https://www.linkedin.com/in/yukun)
 * [Sizhu Qu, Northeastern University (US)](https://www.linkedin.com/in/sizhuq)
-* [Ziting Yang, Rochester Wniversity (US)](https://www.linkedin.com/in/ziting-yang-7b33832bb)
+* [Ziting Yang, Rochester University (US)](https://www.linkedin.com/in/ziting-yang-7b33832bb)
 
 Others
 * With special thanks to our initial testers (alphabetically ordered): [Joji Chia](https://sociology.illinois.edu/directory/profile/jbchia2), [Kass Gonzalez](https://www.linkedin.com/in/kass-gonzalez-72a778276/), [Sinyee Lu](https://sociology.illinois.edu/directory/profile/qianyil4), [Sohee Shin](https://sociology.illinois.edu/directory/profile/sohees2)
@@ -139,11 +153,11 @@ Others
 
 **Acknowledgements**
 
-* Amazing authors of R packages in soial sequence analysis, including [TraMineR (Gabadinho et al. 2011)](https://traminer.unige.ch/), [WeightedCluster (Studer, 2013)](https://mephisto.unige.ch/weightedcluster/), and [seqHMM (Helske & Helske, 2019)](https://cran.r-project.org/web/packages/seqHMM/index.html)
+* Amazing authors of R packages in social sequence analysis, including [TraMineR (Gabadinho et al. 2011)](https://traminer.unige.ch/), [WeightedCluster (Studer, 2013)](https://mephisto.unige.ch/weightedcluster/), and [seqHMM (Helske & Helske, 2019)](https://cran.r-project.org/web/packages/seqHMM/index.html)
 * Methodological advisor in sequence analysis: [Professor Tim Liao (University of Illinois Urbana-Champaign)](https://sociology.illinois.edu/directory/profile/tfliao)
 * Yuqi's PhD advisor [Professor Ridhi Kashyap (University of Oxford)](https://www.nuffield.ox.ac.uk/people/profiles/ridhi-kashyap/), and mentor [Charles Rahal (University of Oxford)](https://crahal.com/)
 * [Social Sequence Analysis Association](https://sequenceanalysis.org/)
-* Helpful discussions and comments: 
+* Helpful discussions and comments:
   * [Gilbert Ritschard](https://mephisto.unige.ch/Gilbert/)
   * [Matthias Studer](https://www.unige.ch/sciences-societe/ideso/membres/matthias-studer)
   * [Emanuela Struffolino](https://emastruffolino.github.io/)

@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 14:40:49
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-16 11:38:48
- * @FilePath: /SequenzoWebsite/docs/en/big-data/clara.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # `clara()`: Fast k-medoids clustering for large sequence datasets
 
 CLARA is short for **Clustering LARge Applications** (Kaufman & Rousseeuw, 1990). It was originally proposed as a way to apply Partitioning Around Medoids (PAM, k-medoids) efficiently on large datasets by:
@@ -15,9 +7,9 @@ CLARA is short for **Clustering LARge Applications** (Kaufman & Rousseeuw, 1990)
 3. Extending the medoids to classify the whole dataset,
 4. Repeating this process several times and keeping the best solution.
 
-`clara()` implements a generalized CLARA procedure (sampling-based PAM/k-medoids) tailored for social sequence data. It repeatedly samples weighted subsets, runs a fast medoid search, evaluates several quality criteria, and returns the best partition for each cluster `k`.
+`clara()` implements a generalized CLARA procedure (sampling-based PAM/k-medoids) tailored for social sequence data. It repeatedly samples weighted subsets, runs a fast medoid search, evaluates several quality criteria, and returns the best solution for each cluster `k`.
 
-## Function usage
+## Function Usage
 
 ```python
 result = clara(
@@ -25,31 +17,35 @@ result = clara(
     R=100,                      # Number of subsampling iterations
     kvals=range(2, 11),         # Candidate numbers of clusters
     sample_size=None,           # Size of each subsample
-    method="crisp",             # Clustering mode (currently: "crisp")
+    method="crisp",             # "crisp", "fuzzy", "representativeness", or "noise"
     dist_args=None,             # Arguments for get_distance_matrix()
     criteria=["distance"],      # Objective(s): "distance","db","xb","pbm","ams"
     stability=False,            # Compute ARI/Jaccard stability if True
-    parallel=False,             # Run inner loops in parallel if True
-    max_dist=None               # Reserved (not used by "crisp")
+    max_dist=None,              # Required for method="representativeness"
+    m=1.5,                      # Fuzziness exponent for fuzzy/noise clustering
+    dnoise=None                 # Noise distance for method="noise"
 )
 ```
 
-## Entry parameters
+## Entry Parameters
 
 | Parameter     | Required | Type           | Description                                                                                                                                                                                                          |
 | ------------- | -------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `seqdata`     | ✓        | SequenceData   | Input sequences as a `SequenceData` object.                                                                                                                                                                          |
-| `R`           | ✗        | int            | Number of subsampling iterations, and "R" is the short for "Round". Larger R improves robustness. Default = `100`.                                                                                                                                       |
+| `R`           | ✗        | int            | Number of subsampling iterations. Larger values explore more subsamples and can improve solution stability. Default = `100`.                                                                                                                             |
 | `kvals`       | ✗        | iterable\[int] | Candidate cluster counts to evaluate. Default = `range(2, 11)`.                                                                                                                                                      |
 | `sample_size` | ✗        | int or None    | Size of each subsample (with replacement). If None, uses `40 + 2*max(kvals)`.                                                                                                                                        |
-| `method`      | ✗        | str            | Clustering mode. Currently supports `"crisp"`.                                                                                                                                                                       |
+| `method`      | ✗        | str            | Clustering mode. Choose `"crisp"` (hard k-medoids), `"fuzzy"` (fuzzy membership), `"representativeness"` (representativeness scores), or `"noise"` (noise-cluster fuzzy clustering). Default = `"crisp"`.                 |
 | `dist_args`   | ✓        | dict           | Arguments passed to `get_distance_matrix()`. Example: `{"method":"OM","sm":"CONSTANT","indel":1}`.                                                                                                                   |
 | `criteria`    | ✗        | list\[str]     | Optimization target(s). Choose from: `"distance"` (mean within-cluster dissimilarity), `"db"` (Davies–Bouldin), `"xb"` (Xie–Beni), `"pbm"` (PBM), `"ams"` (average silhouette-like score). Default = `["distance"]`. |
 | `stability`   | ✗        | bool           | If True, computes ARI and Jaccard against the best iteration to summarize stability. Default = `False`.                                                                                                                |
-| `parallel`    | ✗        | bool           | If True, uses joblib to parallelize iterations. Default = `False`.                                                                                                                                                     |
-| `max_dist`    | ✗        | float or None  | Reserved for other methods; not used by `"crisp"`.                                                                                                                                                                   |
+| `max_dist`    | ✗*       | float or None  | Maximum possible distance used to convert dissimilarities into representativeness scores. Required when `method="representativeness"`.                                                                                |
+| `m`           | ✗        | float          | Fuzziness exponent for `method="fuzzy"` and `method="noise"`. Larger values soften membership assignments. Default = `1.5`.                                                                                          |
+| `dnoise`      | ✗        | float or None  | Noise-cluster distance for `method="noise"`. If `None`, the underlying weighted fuzzy clustering routine uses its adaptive/default behavior.                                                                          |
 
-## What it does
+\*`max_dist` is required only for `method="representativeness"`.
+
+## What It Does
 
 1. Aggregates duplicate sequences and assigns weights so repeated trajectories are not over-counted.
 
@@ -57,24 +53,17 @@ result = clara(
 
    * Draws a weighted subsample of size `sample_size` (with replacement).
    * Computes a pairwise dissimilarity matrix via `get_distance_matrix(dist_args)`.
-   * Uses a fast hierarchical pass to seed medoids and runs weighted k-medoids.
+   * Uses a fast hierarchical pass to seed medoids.
+   * Runs hard k-medoids, fuzzy medoid clustering, representativeness scoring, or noise-cluster fuzzy clustering depending on `method`.
    * Evaluates each `k` in `kvals` on the chosen `criteria`.
 
 3. For each `k`, selects the best iteration according to the objective (min for distance/DB/XB, max for PBM/AMS).
 
 4. If `stability=True`, compares all iterations to the best one using ARI and Jaccard on the aggregated contingency table.
 
-5. Expands the best aggregated partition back to the original individuals and returns results.
+5. Expands the best aggregated solution back to the original individuals and returns results.
 
 No data are modified in place. The function prints concise progress messages so that you can keep track of it clearly.
-
-## Key features
-
-* Scales to large datasets by subsampling (CLARA principle) while keeping duplicates properly weighted.
-* Works directly with sequence dissimilarities from Sequenzo (e.g., optimal matching).
-* Multiple quality criteria supported; you can inspect and compare them.
-* Optional stability diagnostics (ARI, Jaccard) for the selected solution.
-* Parallelizable with the Python package `joblib`, which is highly recommended to save time for compuatation. 
 
 ## Returns
 
@@ -83,7 +72,7 @@ The function returns a dictionary. Its shape depends on how many criteria you as
 When `criteria` has a single item:
 
 * `kvals`: the evaluated k values.
-* `clustering`: DataFrame of shape `(n_entities, len(kvals))`. Each column is the 1-based cluster label for that k.
+* `clustering`: DataFrame of shape `(n_entities, len(kvals))`. For `method="crisp"`, each column is the 1-based cluster label for that k. For `"fuzzy"`, `"noise"`, and `"representativeness"`, cells contain the membership or score vectors returned for each entity.
 * `stats`: DataFrame with one row per k and the following columns:
 
   * `Number of Clusters`: label like “Cluster 2”.
@@ -95,7 +84,7 @@ When `criteria` has a single item:
 * `clara`: a dict keyed by k-index (0 for `k=2`, 1 for `k=3`, …). Each entry includes:
 
   * `medoids`: indices (in the original data) of selected medoids.
-  * `clustering`: 1-based labels for all original entities.
+  * `clustering`: 1-based labels for all original entities in crisp mode, or membership/score vectors for fuzzy, noise, and representativeness modes.
   * `iter_objective`: the criterion value across iterations.
   * `evol_diss`: the running best objective over iterations (min or max as appropriate).
   * `objective`: the winning objective value.
@@ -109,19 +98,29 @@ When `criteria` has multiple items:
 * `allstats`: concatenated summary table across criteria.
 * `param`: a small record of your input choices.
 
+## Key features
+
+* Scales to large datasets by subsampling (CLARA principle) while keeping duplicates properly weighted.
+* Works directly with sequence dissimilarities from Sequenzo (e.g., optimal matching).
+* Supports hard partitions, fuzzy memberships, representativeness scores, and noise-aware memberships.
+* Multiple quality criteria supported; you can inspect and compare them.
+* Optional stability diagnostics (ARI, Jaccard) for the selected solution.
+
 ## Practical notes
 
 * `dist_args` is required. A safe starting point is `{"method":"OM","sm":"CONSTANT","indel":1}`.
+* Start with `method="crisp"` when you need an interpretable hard typology.
+* Use `method="fuzzy"` when sequences may belong partly to several clusters, and tune `m` if assignments are too sharp or too diffuse.
+* Use `method="representativeness"` when you need representativeness scores rather than a single hard label; set `max_dist` to a positive maximum distance for the chosen metric.
+* Use `method="noise"` when some sequences should be allowed to sit near a noise cluster instead of being forced into a substantive group; tune `dnoise` when the default is not appropriate for your distance scale.
 * If you are unsure about `sample_size`, the default works for a first pass. For better stability, increase it (and/or increase `R`).
-* Larger `R` improves reliability but costs more time. Use `parallel=True` to speed up on multi-core machines.
+* Larger `R` improves reliability but costs more time, so start with a smaller `R` while tuning the distance specification.
 * `kvals` should include the range you are genuinely considering (for example `range(2, 8)`).
 
 ## Example
 
 ```python
-from sequenzo.define_sequence_data import SequenceData
-from sequenzo.dissimilarity_measures.get_distance_matrix import get_distance_matrix
-from sequenzo.big_data.clara.clara import clara   # Path depends on your package layout
+from sequenzo import SequenceData, clara
 import pandas as pd
 
 # 1) Prepare SequenceData
@@ -149,9 +148,6 @@ result = clara(
     criteria=["distance"],
     # Use the most frequently used setting for measuring dissimilarities of sequences
     dist_args={"method":"OM", "sm":"CONSTANT", "indel":1},
-    # Turn on parallelism in your computer, 
-    # i.e., run computations using multiple CPU cores instead of just one.
-    parallel=True,
     stability=True
 )
 
@@ -189,10 +185,13 @@ Kaufman, L., & Rousseeuw, P. J. (2009). Finding groups in data: an introduction 
 
 Studer, M., Sadeghi, R., & Tochon, L. (2024). Sequence Analysis for large databases (Vol. 104, pp. 1-42). LIVES Working papers.
 
+## See Also
+
+- [Section overview](/en/big-data/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
+
 ## Authors
 
 Code: Xinyi Li
 
 Documentation: Yuqi Liang
-
-Edited by: Yuqi Liang
