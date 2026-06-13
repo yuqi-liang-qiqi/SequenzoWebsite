@@ -1,493 +1,151 @@
-# Normalization in Sequence Analysis: A Comprehensive Guide
+# Normalization in Sequence Analysis
 
-## Introduction
+Raw sequence distances are measured on the scale created by your distance method, sequence length, alphabet, and cost settings. A distance of `10` can mean a large difference for short sequences and a modest difference for long sequences. Normalization rescales distances so that comparisons are easier to read across sequences, groups, or study contexts.
 
-When comparing sequences, whether they represent career trajectories, family formation patterns, or health states, the raw distances you compute can be misleading. A distance of 10 between two short sequences might mean something very different than a distance of 10 between two long sequences. But even when sequences have the same length, raw distances may not tell the full story.
+Normalization is not only a repair for unequal sequence lengths. Elzinga and Studer (2019) show that normalization also matters when the goal is to interpret distance as dissimilarity, compare cohorts or regions, or study sequences whose complexity differs across contexts. The practical question is therefore not whether normalization is good in general. The question is what comparison you want the distance to support.
 
-**Normalization** solves this problem by rescaling distances to a common, interpretable scale. The question is: when do you actually need it?
+## When to Normalize
 
-The TraMineR paper (Gabadinho et al. 2011) emphasizes normalization primarily for sequences of different lengths, noting: "When dealing with sequences of different lengths, we may want to normalize the distances to account for these differences." This is indeed an important use case. However, as Elzinga & Studer (2019) demonstrate, normalization serves broader purposes. Their research shows that normalization is crucial even when sequences have the same length—for example, when comparing across different contexts (like birth cohorts) or when you need interpretable similarity scores. The 2019 paper reveals that normalization can uncover hidden patterns that raw distances obscure, regardless of whether sequences have equal lengths.
+Use normalization when raw distances would be hard to compare directly.
 
-This tutorial explains what normalization is, why it matters, when to use it, and how different normalization methods work. We'll draw on key literature in sequence analysis and show how Sequenzo implements these methods, including the Elzinga & Studer (2019) method that TraMineR doesn't yet offer.
+| Situation | Why normalization helps | Typical choice |
+| --- | --- | --- |
+| Sequences have different lengths | Longer sequences can accumulate larger edit costs | `norm="auto"` or a method-specific choice |
+| You compare cohorts, regions, or periods | Sequence complexity can differ across contexts | `norm="auto"`; consider `norm="ElzingaStuder"` for reference-based comparisons |
+| You need distance to behave like dissimilarity | A bounded scale supports statements such as similarity = 1 - distance | `norm="ElzingaStuder"` when its assumptions fit |
+| You work with DSS-style sequences | Removing repeated adjacent states changes sequence length and complexity | A reference-based normalization can be useful |
+| The distance method already normalizes internally | Extra normalization may not add useful information | Check the function reference before overriding |
 
-## When Do You Need Normalization? A Quick Reference
+You might keep raw distances when all sequences have the same length, come from the same context, and the analysis is exploratory. In that case, report that distances are unnormalized and explain what the raw scale means.
 
-The table below provides a clear guide to help you decide when normalization is necessary:
+## What Normalization Changes
 
-| Situation | Need Normalization? | Why | Example |
-|-----------|-------------------|-----|---------|
-| **Sequences of different lengths** | ✅ **Yes** | Raw distances scale with length; normalization makes them comparable | DSS sequences: one sequence has 1 state (uninterrupted unemployment), another has 10 states |
-| **Comparing across cohorts/regions/epochs** | ✅ **Yes** | Different contexts may have different sequence complexity; normalization controls for this | Comparing life course diversity between birth cohorts (Elzinga & Studer 2019) |
-| **All sequences same length, same context** | ⚠️ **Maybe** | Depends on your goal. If you need interpretable similarity scores or are doing clustering, yes | Equal-length career sequences: normalization helps interpret distances as dissimilarity |
-| **Analyzing DSS sequences** | ✅ **Yes** | DSS sequences vary dramatically in length; normalization essential | Sequences ignoring durations: `[A]` vs `[A,B,C,D,E,F]` |
-| **Need similarity = 1 - distance** | ✅ **Yes** | Proper normalization enables direct interpretation | Visualization, clustering, communicating to non-technical audiences |
-| **Comparing to a template/reference** | ✅ **Yes** | Normalization emphasizes deviations from reference | Comparing all sequences to an "ideal" career path |
-| **Exploratory analysis, raw distances needed** | ❌ **No** | Raw distances may be informative for initial exploration | Understanding the scale of raw distances before normalization |
-| **Distance measure has built-in normalization** | ❌ **No** | Already normalized internally | CHI2, EUCLID use internal normalization |
+A raw distance depends on at least three design choices.
 
-As you can see from the table, normalization is needed in many scenarios beyond just handling different sequence lengths. The key is understanding your specific research question and analysis goals.
+1. **Length.** More positions can create more opportunities for mismatches, insertions, or deletions.
+2. **Alphabet.** A sequence with three states has a different range of possible substitutions than a sequence with ten states.
+3. **Cost structure.** Optimal Matching distances depend on substitution costs (`sm`) and insertion or deletion costs (`indel`).
 
-## What is Normalization?
+Normalization does not remove these design choices. It rescales the resulting distances after those choices have been made. You still need to justify the distance measure and cost settings before interpreting a normalized matrix.
 
-**Normalization** is the process of rescaling distance values so they lie on a common, bounded scale (typically between 0 and 1). This makes distances comparable across sequences of different lengths and contexts.
+## Common Normalization Methods
 
-### The Core Problem
+Sequenzo follows the normalization options exposed by `get_distance_matrix()`. The table below gives the practical reading of each option.
 
-Raw distances are **scale-dependent**. Consider these examples:
+| Option | Main idea | Typical use |
+| --- | --- | --- |
+| `norm="none"` | Return raw distances | Diagnostics, exploratory checks, or when another method handles scaling |
+| `norm="maxlength"` | Divide by the longer sequence length | OM, HAM, and DHD style comparisons |
+| `norm="gmean"` | Normalize similarity by the geometric mean of self-similarities | LCS, LCP, and RLCP style measures |
+| `norm="maxdist"` | Divide by a theoretical pairwise maximum | Spell and prefix variants where `gmean` can be unstable |
+| `norm="YujianBo"` | Apply an edit-distance correction | OM variants where metric behavior matters |
+| `norm="ElzingaStuder"` | Use the reference-based transformation from Elzinga and Studer (2019) | Comparisons where similarity = 1 - distance is part of the interpretation |
+| `norm="auto"` | Let Sequenzo choose a method-specific option | Default recommendation when you do not need a specific normalization |
 
-- **Sequence length**: A distance of 5 between sequences of length 10 is very different from a distance of 5 between sequences of length 100.
-- **Alphabet size**: Sequences with 3 possible states have different maximum possible distances than sequences with 10 states.
-- **Context**: Distances computed for one cohort or region may not be directly comparable to distances from another.
+`norm="auto"` is explicit. The function signature defaults to `norm="none"`, so pass `norm="auto"` when you want Sequenzo to select a method-specific normalization.
 
-Without normalization, you can't meaningfully interpret whether two sequences are "very different" or "somewhat similar" just by looking at the raw distance number.
+## LCP-Family Rules
 
-### The Goal of Normalization
+The LCP family has method-specific normalization rules. These are enforced by the public API, so unsupported combinations now raise clear errors instead of silently producing questionable values.
 
-Normalization transforms distances so that:
+| Method family | `norm="auto"` selects | Supported choices |
+| --- | --- | --- |
+| `LCP`, `RLCP` | `gmean` | `none`, `maxlength`, `gmean`, `maxdist`, `YujianBo`, `auto`, `ElzingaStuder` |
+| `LCPspell`, `RLCPspell` | `maxdist` | `none`, `maxdist`, `auto`, `ElzingaStuder` |
+| `LCPmst`, `RLCPmst` | `maxdist` | `none`, `gmean`, `maxdist`, `YujianBo`, `auto`, `ElzingaStuder` |
+| `LCPprod`, `RLCPprod` | `none` | `none`, `auto` |
 
-1. **They are bounded** (typically to [0, 1])
-2. **They are comparable** across different sequence lengths and contexts
-3. **They preserve the metric properties** (like the triangle inequality) when possible
-4. **They can be directly interpreted as dissimilarity**, with similarity = 1 - normalized distance
+For `LCPspell` and `RLCPspell`, `duration_ref` is a design-level reference scale. Use the observation window or another pre-specified upper bound. If `norm="maxdist"` and `expcost>0`, Sequenzo checks that `duration_ref` is at least the largest observed active spell duration.
 
-## Why Normalize? The Theoretical Foundation
+`LCPprod` and `RLCPprod` return raw squared-duration dissimilarities. They are useful for the product-duration definition, but they are not normalized to a bounded scale.
 
-### Distance vs. Similarity: A Fundamental Relationship
+## Using Normalization in Sequenzo
 
-In their 2019 paper, Elzinga and Studer explore a crucial insight: **distance and similarity are not simply opposites**. Raw distances don't automatically translate to meaningful similarity judgments.
-
-They demonstrate this with a striking example (Figure 1 in their paper): when plotting raw distances against similarities for the same sequence pairs, the correlation is only -0.29. However, after proper normalization, the correlation jumps to 0.75. This shows that **normalization is essential for making distance interpretable as dissimilarity**.
-
-### The Axiomatic Approach
-
-Elzinga and Studer (2019) establish that proper normalization should satisfy the **metric axioms**:
-
-- **D1**: $d(x,x) = 0$ (one location per object)
-- **D2**: $d(x,y) > 0$ if $x \neq y$ (one object per location)
-- **D3**: $d(x,y) = d(y,x)$ (symmetry)
-- **D4**: $d(x,y) \leq d(x,z) + d(z,y)$ (triangle inequality)
-
-The triangle inequality (D4) is particularly important: it ensures that the distance space is "smooth" and that new data points are constrained by existing observations. This makes the metric **generalizable** beyond the specific dataset.
-
-### When Normalization Reveals Hidden Patterns
-
-The 2019 paper provides a compelling real-world example. When studying destandardization of life courses across birth cohorts, the researchers found that:
-
-- **Raw distances** decreased with cohort age (contradicting expectations)
-- **Raw similarities** also decreased (also contradicting expectations)
-- **Normalized distances** correctly increased with cohort age, revealing that younger cohorts were indeed more diverse
-
-This happened because younger cohorts had longer, more complex sequences with more features overall. Normalization accounted for this complexity, revealing the true pattern of destandardization.
-
-## When to Use Normalization
-
-The TraMineR 2011 paper (Gabadinho et al. 2011) emphasizes normalization primarily for sequences of different lengths, stating: "When dealing with sequences of different lengths, we may want to normalize the distances to account for these differences." However, normalization serves broader purposes beyond just handling length differences. Let's explore the main scenarios:
-
-### 1. Sequences of Different Lengths
-
-When your sequences vary in length, normalization is essential. This is the primary use case highlighted in TraMineR (2011). For example:
-
-- **DSS sequences** (Distinct Subsequent Subsequences): When analyzing sequences while ignoring durations, sequences can have dramatically different lengths. A sequence representing uninterrupted unemployment has only one element, while a sequence alternating between employment and unemployment may have many elements.
-
-- **Censored data**: If sequences are censored at different time points, normalization helps account for these differences (though missing data should ideally be handled through imputation, not normalization).
-
-### 2. Comparing Across Contexts
-
-Normalization enables meaningful comparisons when:
-
-- **Comparing cohorts**: As in the Elzinga & Studer (2019) example, you want to compare average distances between sequences from different birth cohorts.
-- **Comparing regions**: Analyzing sequences from different countries or regions where sequence lengths or complexity might differ.
-- **Comparing epochs**: Studying how sequence patterns change over time periods.
-
-### 3. Focusing on Deviations from a Template
-
-You can use normalization to emphasize how sequences deviate from a particular reference:
-
-- **Template sequences**: For example, comparing all sequences to an "ideal" career path (e.g., uninterrupted employment) or a normative life course pattern.
-- **Medoid sequences**: Using a medoid (the sequence with minimum average distance to all others) as a reference point.
-
-### 4. Making Distances Interpretable as Similarity
-
-If you want to interpret distances as dissimilarity (where similarity = 1 - distance), proper normalization is required. This is particularly useful for:
-
-- **Visualization**: Creating plots where proximity directly represents similarity
-- **Clustering**: Using normalized distances in clustering algorithms
-- **Interpretation**: Communicating results to non-technical audiences
-
-### Beyond Length Differences: The Broader Role of Normalization
-
-While TraMineR (2011) focuses on normalization for sequences of different lengths, the Elzinga & Studer (2019) paper demonstrates that normalization is crucial even when sequences have equal lengths. Their destandardization example shows that:
-
-- **Even with equal-length sequences**, normalization can reveal patterns obscured by raw distances
-- **Context matters**: Comparing across cohorts requires normalization even if sequences within each cohort have the same length
-- **Interpretability matters**: If you need similarity = 1 - distance to hold, normalization is essential regardless of length equality
-
-The key insight is that normalization isn't just about making distances comparable across different lengths—it's about making distances **interpretable** and **comparable across contexts**. As the 2019 paper shows, proper normalization can fundamentally change your interpretation of the data, revealing patterns that raw distances hide.
-
-## Normalization Methods: A Historical Overview
-
-Different normalization methods have been proposed over the years, each with different properties and use cases. Let's explore the main approaches.
-
-### Early Approaches: Simple but Problematic
-
-#### Abbott's Normalization (maxlength)
-
-**Proposed by**: Abbott and Forrest (1986), popularized in TraMineR (Gabadinho et al. 2011)
-
-**Formula**: 
-$$D(x,y) = \frac{d(x,y)}{\max\{|x|, |y|\}}$$
-
-**How it works**: Divides the distance by the length of the longest sequence.
-
-**Properties**:
-- Simple and intuitive
-- **Problem**: Does not map to [0, 1] in general
-- **Problem**: May violate the triangle inequality (TI)
-- **Problem**: Maximum normalized distance can exceed 1 (e.g., for OM with indel=1 and substitution=2, max distance = 2)
-
-**Used for**: OM, HAM, DHD in TraMineR
-
-**Example**: If sequence x has length 10 and sequence y has length 20, and their distance is 15, the normalized distance is 15/20 = 0.75.
-
-#### Elzinga's Geometric Mean Normalization (gmean)
-
-**Proposed by**: Elzinga (2007b), implemented in TraMineR
-
-**Formula**: For similarity-based measures, first normalize similarity:
-$$s_A(x,y) = \frac{A(x,y)}{\sqrt{A(x,x) \cdot A(y,y)}}$$
-
-Then convert to normalized distance:
-$$D_A(x,y) = 1 - s_A(x,y)$$
-
-**How it works**: Uses the geometric mean of self-similarities to normalize.
-
-**Properties**:
-- Maps to [0, 1]
-- Works well for common-prefix measures (LCP, RLCP, LCS)
-- **Problem**: May violate triangle inequality in some cases
-
-**Used for**: LCS, LCP, RLCP and their variants in TraMineR
-
-#### Maximum Distance Normalization (maxdist)
-
-**Proposed by**: Various authors, implemented in TraMineR
-
-**Formula**: 
-$$D(x,y) = \frac{d(x,y)}{d_{max}(x,y)}$$
-
-where $d_{max}(x,y)$ is the theoretical maximum distance between sequences x and y.
-
-**How it works**: Divides by the theoretical maximum possible distance for that pair.
-
-**Properties**:
-- Maps to [0, 1] in theory
-- **Problem**: May violate triangle inequality
-- Requires computing theoretical maximum, which can be complex
-
-**Used for**: LCPspell, RLCPspell (where gmean can yield negative distances)
-
-**Example**: For OM, the theoretical maximum is:
-$$d_{max} = \min(\ell_x, \ell_y) \cdot \min(2c_I, \max(S)) + c_I |\ell_x - \ell_y|$$
-
-where $c_I$ is the indel cost and $\max(S)$ is the maximum substitution cost.
-
-### The Yujian-Bo Correction
-
-**Proposed by**: Yujian and Bo (2007)
-
-**How it works**: A mathematical correction specifically designed for edit distances to preserve metric properties better than simple division.
-
-**Properties**:
-- Better preserves metric properties than maxlength
-- Designed specifically for edit-based distances
-
-**Used for**: Various OM variants (OMloc, OMslen, OMspell, etc.) in Sequenzo
-
-### Elzinga & Studer (2019) Normalization
-
-**Proposed by**: Elzinga and Studer (2019) in "Normalization of Distance and Similarity in Sequence Analysis"
-
-**Formula**:
-$$D_r(x,y) = \frac{d(x,y)}{(d(x,y) + d(x,r) + d(y,r))/2}$$
-
-where $r$ is a reference object (often the empty sequence $\lambda$).
-
-**How it works**: 
-- Projects all objects onto an $r$-centered unit sphere
-- Controls for variation in distances to the reference object
-- For all $x \neq r$, we have $D_r(x,r) = 1$
-
-**Key Properties**:
-- **Maps to [0, 1]** for all pairs
-- **Preserves all metric axioms** (D1-D4), including triangle inequality
-- **Direct interpretability**: Similarity = 1 - normalized distance
-- **Theoretical foundation**: Based on axiomatic similarity theory
-
-**Geometric Interpretation**: Normalization projects all objects onto a unit sphere centered at the reference object $r$. This geometric transformation ensures that distances are measured in a normalized space where they can be directly interpreted as dissimilarity.
-
-**When to use**:
-- When you need proper metric properties preserved
-- When comparing across cohorts/contexts (as in the destandardization example)
-- When analyzing DSS sequences (use empty sequence as reference)
-- When you want similarity = 1 - distance to hold exactly
-
-**Important Note**: This method requires choosing a reference object. Common choices:
-- **Empty sequence** ($\lambda$): Useful for DSS analysis, accounts for sequence complexity
-- **Medoid sequence**: The sequence with minimum average distance to all others
-- **Template sequence**: A specific sequence representing an ideal or normative pattern
-
-## Normalization in Sequenzo
-
-Sequenzo implements all the normalization methods discussed above, plus the Elzinga & Studer (2019) method that TraMineR doesn't yet offer.
-
-### Available Normalization Methods
-
-| Method | Code | When Used (auto) | Properties |
-|--------|------|------------------|------------|
-| None | `"none"` | Never (manual only) | Raw distances, no normalization |
-| Max Length | `"maxlength"` | OM, HAM, DHD | Simple, may violate TI |
-| Geometric Mean | `"gmean"` | LCS, LCP, RLCP variants | Good for prefix measures |
-| Max Distance | `"maxdist"` | LCPspell, RLCPspell | Theoretical maximum |
-| Yujian-Bo | `"YujianBo"` | OM variants (OMspell, etc.) | Edit distance correction |
-| **Elzinga-Studer** | `"ElzingaStuder"` | Manual only | **Preserves all metric axioms** ✅ |
-| Auto | `"auto"` | Default | Selects best method per distance measure |
-
-### Using Normalization in Sequenzo
-
-#### Basic Usage
+The example below uses `SequenceData(...)`, which is the constructor exposed by the current package source.
 
 ```python
 from sequenzo import SequenceData, get_distance_matrix
 
-# Load your sequences
-seqdata = SequenceData.from_dataframe(df, id_col='id', state_cols=['t1', 't2', ...])
+time_cols = ["T1", "T2", "T3", "T4"]
+states = ["Education", "Employment", "Unemployment"]
 
-# Automatic normalization (recommended for most users)
-dist_matrix = get_distance_matrix(
+seqdata = SequenceData(
+    data=df,
+    time=time_cols,
+    id_col="id",
+    states=states,
+)
+
+dist_auto = get_distance_matrix(
     seqdata=seqdata,
     method="OM",
-    norm="auto"  # Sequenzo selects the best normalization method
+    sm="CONSTANT",
+    indel=1,
+    norm="auto",
 )
 ```
 
-#### Using Elzinga-Studer Normalization
+For a reference-based normalization, pass `norm="ElzingaStuder"` and specify the reference sequence by index. The reference should match the question. A medoid, a template sequence, or a deliberately chosen baseline can all be defensible choices, but they answer different questions.
 
 ```python
-# Use the 2019 Elzinga & Studer method (not available in TraMineR)
-dist_matrix = get_distance_matrix(
+dist_ref = get_distance_matrix(
     seqdata=seqdata,
     method="OM",
+    sm="CONSTANT",
+    indel=1,
     norm="ElzingaStuder",
-    normalization_reference_index=0  # Use first sequence as reference
-    # Or use empty sequence: normalization_reference_index=None (defaults to 0 if empty exists)
-)
-
-# For DSS analysis, use empty sequence as reference
-dss_sequences = seqdata.to_dss()  # Convert to distinct subsequent subsequences
-dist_matrix_dss = get_distance_matrix(
-    seqdata=dss_sequences,
-    method="OM",
-    norm="ElzingaStuder",
-    normalization_reference_index=0  # Assuming first sequence is empty
+    normalization_reference_index=0,
 )
 ```
 
-#### Manual Method Selection
+With `norm="ElzingaStuder"`, the normalized distance from the reference object to any non-reference object is scaled through the reference-based formula. This can be useful when the analysis asks how far sequences depart from a selected baseline.
 
-```python
-# Use maxlength normalization (like TraMineR's default for OM)
-dist_matrix = get_distance_matrix(
-    seqdata=seqdata,
-    method="OM",
-    norm="maxlength"
-)
+When using `norm="ElzingaStuder"`, prefer computing the full pairwise matrix and setting `normalization_reference_index`. A single `refseq` is allowed, but all non-zero distances to that same reference collapse to 1 after the reference-based post-processing, so it is usually less informative.
 
-# Use geometric mean (like TraMineR's default for LCS)
-dist_matrix = get_distance_matrix(
-    seqdata=seqdata,
-    method="LCS",
-    norm="gmean"
-)
-```
+## How to Choose
 
-### Default Normalization per Method
+Start with the research question, then choose the distance, costs, and normalization in that order.
 
-When using `norm="auto"`, Sequenzo selects normalization methods based on the distance measure:
+| Research need | Practical choice |
+| --- | --- |
+| Standard OM workflow with no special normalization argument | Use `method="OM"`, specify `sm` and `indel`, and set `norm="auto"` |
+| Direct comparison with TraMineR-style OM defaults | Consider `norm="maxlength"` and report the cost settings |
+| LCS or common-prefix comparisons | Use `norm="auto"` or inspect the `gmean` choice explicitly |
+| Spell-based variants | Check the method family: OM-style spell measures often use `YujianBo`; LCPspell and LCPmst use `maxdist`; LCPprod remains raw |
+| A baseline or template is substantively meaningful | Consider `norm="ElzingaStuder"` with a named reference |
 
-| Method Family | Default Normalization | Rationale |
-|---------------|----------------------|-----------|
-| OM, HAM, DHD | `maxlength` | Simple division by max length |
-| LCS, LCP, RLCP variants | `gmean` | Geometric mean works well for prefix measures |
-| LCPspell, RLCPspell | `maxdist` | gmean can yield negative distances; maxdist is safer |
-| OM variants (OMspell, etc.) | `YujianBo` | Edit distance correction preserves metric properties |
-| CHI2, EUCLID | Internal normalization | Uses $\sqrt{n_{breaks}}$ internally |
+Avoid using normalization to hide missing-data problems. If sequences are censored or contain structural gaps, address that in preprocessing or sensitivity analysis first. Normalization can make distances comparable, but it does not decide whether the observed data are comparable.
 
-### Why Sequenzo Implements Elzinga-Studer (2019)
+## Reporting Normalized Distances
 
-The Elzinga & Studer (2019) normalization method represents a significant theoretical advance:
+A short report should state:
 
-1. **Preserves Metric Properties**: Unlike earlier methods, it maintains the triangle inequality, ensuring the distance space is well-behaved.
+1. the distance method;
+2. substitution and indel costs, when relevant;
+3. the normalization method;
+4. the reference sequence, if `norm="ElzingaStuder"` is used;
+5. whether sensitivity checks with another normalization changed the substantive conclusion.
 
-2. **Direct Interpretability**: After normalization, similarity = 1 - distance holds exactly, making results intuitive.
+For example:
 
-3. **Proven in Practice**: The method successfully revealed hidden patterns (like destandardization) that were obscured by raw distances.
+> We computed Optimal Matching distances with constant substitution cost `2`, indel cost `1`, and `norm="auto"`. As a sensitivity check, we repeated the analysis with raw distances and with `norm="ElzingaStuder"` using the sample medoid as reference. The main cluster interpretation was unchanged.
 
-4. **Not Yet in TraMineR**: As of 2019, this method was published but not yet implemented in TraMineR. Sequenzo provides this cutting-edge capability.
+## See Also
 
-## Common Pitfalls and Best Practices
+- [Dissimilarity Measures](./dissimilarity-measures.md) explains the distances being normalized.
+- [Matrices in Dissimilarity Measures](./matrix-in-dissimilarity-measures.md) separates the matrices involved.
+- [`get_distance_matrix()`](/en/function-library/get-distance-matrix) documents the `norm` parameter.
 
-### Pitfall 1: Using Normalization to Mask Missing Data
+## References
 
-**Don't**: Use normalization to compensate for unequal censoring or missing data.
+Abbott, A., & Forrest, J. (1986). Optimal matching methods for historical sequences. *Journal of Interdisciplinary History*, 16(3), 471-494. https://doi.org/10.2307/204500
 
-**Do**: Handle missing data through proper imputation methods (see Halpin 2012). Normalization should account for sequence complexity, not missingness.
+Elzinga, C. H., & Studer, M. (2015). Spell sequences, state proximities, and distance metrics. *Sociological Methods & Research*, 44(1), 3-47. https://doi.org/10.1177/0049124114540707
 
-### Pitfall 2: Assuming All Normalizations Are Equivalent
+Elzinga, C. H., & Studer, M. (2019). Normalization of distance and similarity in sequence analysis. *Sociological Methods & Research*, 48(4), 877-904. https://doi.org/10.1177/0049124117701487
 
-**Don't**: Assume that `maxlength`, `gmean`, and `ElzingaStuder` will give similar results.
+Gabadinho, A., Ritschard, G., Muller, N. S., & Studer, M. (2011). Analyzing and visualizing state sequences in R with TraMineR. *Journal of Statistical Software*, 40(4), 1-37. https://doi.org/10.18637/jss.v040.i04
 
-**Do**: Understand that different normalization methods can produce different orderings of sequence pairs. Choose based on your needs:
-- Need metric properties? Use `ElzingaStuder`
-- Simple and fast? Use `maxlength` or `gmean`
-- Working with spell-based measures? Use `maxdist` for LCPspell/RLCPspell
-
-### Pitfall 3: Ignoring the Reference Object
-
-**Don't**: Use `ElzingaStuder` normalization without thinking about the reference object.
-
-**Do**: Choose your reference thoughtfully:
-- **Empty sequence**: For DSS analysis, accounts for complexity
-- **Medoid**: For general analysis, represents the "center" of your data
-- **Template**: For specific research questions about deviations from a norm
-
-### Pitfall 4: Normalizing When It's Not Needed
-
-**Don't**: Always normalize without considering whether it's necessary.
-
-**Do**: Consider normalizing when:
-- Sequences have different lengths
-- Comparing across contexts (cohorts, regions, epochs)
-- You need interpretable similarity scores
-- You're analyzing DSS sequences
-
-You might skip normalization if:
-- All sequences have the same length
-- You're doing exploratory analysis and want raw distances
-- The specific distance measure has built-in normalization (like CHI2, EUCLID)
-
-### Best Practice: Start with "auto"
-
-For most users, `norm="auto"` is the best choice. Sequenzo selects the most appropriate normalization method based on:
-- The distance measure you're using
-- Theoretical properties of the method
-- Common practices in the literature
-
-You can always override with a specific method if you have a good reason.
-
-## Real-World Example: Destandardization of Life Courses
-
-Let's walk through the example from Elzinga & Studer (2019) to see normalization in action.
-
-### The Research Question
-
-Are life courses becoming more diverse (destandardized) across birth cohorts?
-
-### The Data
-
-- 5,287 Dutch individuals born 1945-1989
-- Household histories encoded as sequences
-- Three birth cohorts: <1955, 1955-1964, 1965-1974
-
-### Without Normalization
-
-| Cohort | Average Distance | Average Similarity |
-|--------|------------------|-------------------|
-| <1955 | 2.24 | 4.90 |
-| 1955-1964 | 2.93 | 4.95 |
-| 1965-1974 | 3.44 | 5.21 |
-
-**Problem**: Both distances AND similarities increase with younger cohorts. This contradicts expectations—if life courses are more diverse, distances should increase but similarities should decrease.
-
-### With Normalization (Elzinga-Studer)
-
-| Cohort | Average Normalized Distance |
-|--------|----------------------------|
-| <1955 | 0.43 |
-| 1955-1964 | 0.51 |
-| 1965-1974 | 0.54 |
-
-**Solution**: Normalized distances correctly increase, revealing destandardization. The normalization accounts for the fact that younger cohorts have longer, more complex sequences with more features overall.
-
-### Why This Happened
-
-Younger cohorts had:
-- More complex sequences (higher complexity index)
-- More features overall (both common and non-common)
-- Longer sequences due to new phenomena (unmarried cohabitation, divorce)
-
-Raw distances were confounded by sequence complexity. Normalization controlled for this, revealing the true pattern of increasing diversity.
-
-## Summary: Key Takeaways
-
-1. **Normalization rescales distances** to a common, interpretable scale (typically [0, 1])
-
-2. **Why normalize?**
-   - Makes distances comparable across different sequence lengths
-   - Enables direct interpretation as dissimilarity (similarity = 1 - distance)
-   - Preserves metric properties (with proper methods)
-   - Reveals hidden patterns obscured by raw distances
-
-3. **When to normalize?**
-   - Sequences of different lengths
-   - Comparing across contexts (cohorts, regions, epochs)
-   - Analyzing DSS sequences
-   - When you need interpretable similarity scores
-
-4. **Different methods have different properties:**
-   - **maxlength**: Simple but may violate triangle inequality
-   - **gmean**: Good for prefix measures
-   - **maxdist**: Safe for spell-based measures
-   - **YujianBo**: Edit distance correction
-   - **ElzingaStuder (2019)**: Preserves all metric axioms ✅
-
-5. **Sequenzo implements the 2019 method** that TraMineR doesn't yet offer, giving you access to the latest theoretical advances.
-
-6. **Best practice**: Start with `norm="auto"` and let Sequenzo choose, then override if needed.
-
-## Further Reading
-
-### Key Papers
-
-1. **Elzinga, C. H., & Studer, M. (2019)**. "Normalization of Distance and Similarity in Sequence Analysis." *Sociological Methods & Research*, 48(4), 877-904.
-   - The foundational paper on proper normalization
-   - Establishes axiomatic framework
-   - Demonstrates real-world application
-
-2. **Gabadinho, A., Ritschard, G., Müller, N. S., & Studer, M. (2011)**. "Analyzing and Visualizing State Sequences in R with TraMineR." *Journal of Statistical Software*, 40(4), 1-37.
-   - TraMineR's normalization methods
-   - Practical implementation details
-
-3. **Studer, M., & Ritschard, G. (2016)**. "What Matters in Differences between Life Trajectories: A Comparative Review of Sequence Dissimilarity Measures." *Journal of the Royal Statistical Society: Series A*, 179(2), 481-511.
-   - Comprehensive review of distance measures
-   - Discusses normalization in context
-
-4. **Elzinga, C. H., & Studer, M. (2015)**. "Spell Sequences, State Proximities, and Distance Metrics." *Sociological Methods & Research*, 44(1), 3-47.
-   - Discusses normalization for spell-based measures
-   - Introduces SVRspell metric
-
-### Sequenzo Documentation
-
-- [Dissimilarity Measures Guide](./dissimilarity-measures.md): Overview of distance measures and normalization
-- [get_distance_matrix()](../function-library/get-distance-matrix.md): Complete function reference with normalization options
-
-## Conclusion
-
-Normalization is not just a technical detail—it's fundamental to making sequence distances interpretable and comparable. The field has evolved from simple division methods to theoretically grounded approaches that preserve metric properties. The 2019 Elzinga & Studer method represents the current state of the art, and Sequenzo makes it accessible to researchers.
-
-By understanding what normalization is, why it matters, and when to use it, you can make more informed choices in your sequence analysis and avoid common pitfalls. Start with `norm="auto"` for most cases, but don't hesitate to explore the Elzinga-Studer method when you need proper metric properties or are comparing across contexts.
-
-Happy analyzing! 🎯
-
----
+Studer, M., & Ritschard, G. (2016). What matters in differences between life trajectories: A comparative review of sequence dissimilarity measures. *Journal of the Royal Statistical Society: Series A*, 179(2), 481-511. https://doi.org/10.1111/rssa.12125
 
 *Author: Yuqi Liang*

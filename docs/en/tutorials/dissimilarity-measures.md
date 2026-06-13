@@ -1,16 +1,11 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 17:28:43
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-13 09:58:46
- * @FilePath: /SequenzoWebsite/docs/en/tutorials/dissimilarity-measures.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Understanding Dissimilarity Measures in Sequence Analysis
 
-Dissimilarity measures quantify how far apart two sequences are, regardless of the unit (e.g., individuals, firms, regions). But how do we decide how “different” two paths are? That’s where dissimilarity measures come in. 
+> [!TIP] Prerequisite
+> This page builds on [Timing, Duration, and Order](./timing-duration-order.md). If those three concepts are new to you, read that page first.
 
-A dissimilarity measure is just a way of putting a number on “how far apart” two sequences are (not how close, otherwise it would be similarity). The bigger the number, the more different the sequences.
+Dissimilarity measures quantify how far apart two sequences are, regardless of the unit (e.g., individuals, firms, regions). But how do we decide how “different” two paths are? That’s where dissimilarity measures come in.
+
+A dissimilarity measure puts a number on how far apart two sequences are. The bigger the number, the more different the sequences.
 
 ## What Aspects Can Sequences Differ In?
 
@@ -28,42 +23,42 @@ There are several important aspects to understand, because there are multiple as
    * Some focus on **timing** (exact ages or years when things happen).
    * Some focus on **duration** (how long states last).
    * Some focus on **sequencing** (the order of events).
-     
+
     For example:
    * Optimal Matching (OM) treats differences as “edit operations” (insert/delete/substitute) needed to turn one sequence into another.
    * Hamming distance (HAM) compares positions one by one (very timing-sensitive).
    * OMspell compares sequences of spells (runs of states), emphasizing duration.
-     
+
     Each method has its own strengths, so the choice depends on what matters in your research (e.g., your research questions and theories that you use in your research).
 
 2. **Normalization (making distances comparable)**
 
-   Raw distances can be influenced by sequence length or by the set of possible states (e.g., having 3 states vs. 10 states can change the maximum possible distance). To make them comparable, you can normalize them. This means rescaling distances so they lie on a common scale (often between 0 and 1). It is an important point but many studies have neglected it. 
+   Raw distances can be influenced by sequence length or by the set of possible states (e.g., having 3 states vs. 10 states can change the maximum possible distance). To make them comparable, you can normalize them. This means rescaling distances so they lie on a common scale (often between 0 and 1). It is an important point but many studies have neglected it.
 
-   You can choose from `"none"`, `"maxlength"`, `"gmean"`, `"maxdist"`, `"YujianBo"`, or let the function decide automatically with `"auto"`.
+   You can choose from `"none"`, `"maxlength"`, `"gmean"`, `"maxdist"`, `"YujianBo"`, `"ElzingaStuder"`, or let the function decide automatically with `"auto"`. Supported choices depend on the method, so check the function reference before overriding the default.
    For example:
 
-   * `"maxlength"` divides by the maximum possible distance for the longest sequence.
+   * `"maxlength"` divides each pairwise distance by the length of the longer sequence in the pair (times the indel cost, for OM), so longer sequences are not counted as more different just because they have more positions.
    * `"gmean"` uses the geometric mean (often for common-prefix measures).
    * `"YujianBo"` applies a mathematical correction for edit distances.
    * `"auto"` selects the most sensible default based on the chosen method.
-     
-    In this way, users don’t need to know the formulas — they just get distances that are comparable across their dataset.
+
+    In this way, users can start with comparable distances without first deriving each formula by hand.
 
 3. **Substitution and indel costs (how much a change “costs”)**
-   
+
    For edit-based measures (like OM), the distance depends on how costly it is to insert, delete, or substitute states.
 
    * You can set them manually (e.g., indel=1, sm="CONSTANT", and when sm is set to "CONSTANT", sm = 2).
-   * Or you can let the function derive them automatically (e.g., `sm="TRATE"`, `indel="auto"`, we will explain what they mean later in this guide).
+   * Or you can let the function derive them automatically (e.g., `sm="TRATE"`, `indel="auto"`; both are explained below).
 
     Automatic costs are calculated from your data: for example, frequent transitions get lower substitution costs, while rare transitions get higher costs. Similarly, the indel cost can be set as half of the maximum substitution cost, which is a common rule of thumb.
-    
-    This makes the function practical even if you don’t want to decide the numbers yourself. 
+
+    This makes the function practical even if you don’t want to decide the numbers yourself.
 
 4. **Output format**
-   
-   By default, you get a full `n×n` DataFrame with distances between all sequences. For large datasets, you can also request a reduced matrix over unique sequences only, which saves memory. And if you used `refseq`, you’ll get a rectangular `|A|×|B|` DataFrame comparing just those two groups.
+
+   By default, you get a full `n×n` DataFrame with distances between all sequences. For clustering workflows, you can set `full_matrix=False` to get a 1D condensed NumPy vector in scipy squareform order. If you pass a single `refseq` index, you get a Series of distances to that reference row. If you pass `refseq=[A, B]`, you get a rectangular `|A|×|B|` DataFrame comparing the two groups.
 
 So in short:
 
@@ -74,18 +69,19 @@ So in short:
 
 This distance matrix is the starting point for many other analyses, including clustering, visualization, typologies, or regression models on sequence data.
 
-Here’s a clean, beginner-friendly rewrite of “The Main Families of Measures” with the TODOs resolved and the categories clarified. I’ve also fixed the dangling link by referencing your quick-defaults note instead.
-
 ## The Main Families of Measures
 
 ### 1) Edit distances (most commonly used)
 
 These treat differences as “operations” needed to turn one sequence into another, then find the minimum total cost.
 
-* **Optimal Matching (OM):** uses three operations with user-set (or data-driven) costs:
+* **Optimal Matching (OM):** uses three operations with user-set or data-driven costs:
 
-  1. insert a state, 2) delete a state, 3) substitute one state for another.
-     The minimal total edit cost between the two sequences is the distance.
+  1. Insert a state.
+  2. Delete a state.
+  3. Substitute one state for another.
+
+  The minimal total edit cost between the two sequences is the distance.
 
 * OM variants:
 
@@ -98,7 +94,7 @@ Focus: Depending on costs, OM can balance sequencing (order), timing (alignment)
 
 Beginner baseline: If you don’t have a strong prior, a safe starting point is OM with sm="CONSTANT" (substitution cost = 2 for any state change) and indel = 1 (insert/delete cost).
 
-* sm="CONSTANT" (=2): every substitution between two different states costs 2.
+* sm="CONSTANT" (=2 by default): every substitution between two different states costs the same value, 2 under Sequenzo's default setting.
 * indel=1: inserting or deleting a state costs 1.
 * Intuition: indel is half the substitution cost, so small timing misalignments can be fixed by insert/delete rather than forcing a substitution.
 * Example: turning \[A, B, C] into \[A, C] by deleting B costs 1; substituting B→C would cost 2, so deletion is preferred for brief misalignment.
@@ -107,7 +103,7 @@ Beginner baseline: If you don’t have a strong prior, a safe starting point is 
 
 These compare sequences position by position or by the order of shared subsequences; there are no insert/delete operations.
 
-* **Hamming distance (HAM):** position-by-position comparison. If at time t one sequence is MARRIED and the other is SINGLE, that’s a mismatch. Requires equal-length sequences.
+* **Hamming distance (HAM):** position-by-position comparison. If at time t one sequence is MARRIED and the other is SINGLE, that’s a mismatch. HAM and DHD are only defined for equal-length sequences; on unequal lengths they fail, so use OM, LCS, or a distribution-based measure instead.
 
 * **Dynamic Hamming Distance (DHD):** a variant of Hamming with time-varying substitution costs across positions (e.g., early vs. late differences can be weighted differently).
 
@@ -144,13 +140,13 @@ When to use:
   Distribution looks only at “how much time” in each state (ignoring order). Edit distances care a lot about order and timing.
 
 * **HAM vs. OM:**
-  
-  HAM is equivalent to OM with prohibitively large insert/delete costs (so no shifting is allowed). 
+
+  HAM is equivalent to OM with prohibitively large insert/delete costs (so no shifting is allowed), with one extra constraint: HAM is only defined for equal-length sequences, while OM also handles unequal lengths.
 
   OM generalizes HAM by allowing shifts as it can realign sequences via insert/delete when appropriate, so it’s more flexible.
 
 * **LCS vs. OM:**
-  LCS is like OM where substitution costs are high and indels are cheap. Both come from the same family of edit distance.
+  LCS behaves like OM with very high substitution costs and cheap indels, but it is not derived from OM by setting costs: it directly counts the longest ordered subsequence the two sequences share. Both belong to the broader edit-distance family.
 
 * **NMS vs. SVRspell:**
   NMS counts subsequences; SVRspell refines it by weighting long subsequences and durations.
@@ -174,28 +170,37 @@ Think of comparing two songs:
 * **LCS/NMS:** Compare common melodies or riffs, no matter when they appear.
 * **Optimal Matching:** Count how many edits (cut, paste, replace notes) to turn one song into the other.
 
----
-*Note:
+## Using `refseq`
 
 By default, the function computes distances between *all sequences* in your dataset, returning an `n×n` matrix.
 
 But sometimes you only want to compare two groups (e.g., men vs. women, treated vs. control). In that case, you can pass `refseq=[idxs_A, idxs_B]`, where each element is a list of row indices. The result will be an `|A|×|B|` table comparing only those two groups.
 
-> ⚡ **About the `refseq` parameter**
+> **About the `refseq` parameter**
 >
 > The parameter `refseq` comes from TraMineR (the R library for sequence analysis). It means reference sequence (as the name indicates):
 >
-> * If `refseq` is a single sequence (or its index), distances are computed from all sequences to this reference.
+> * If `refseq` is a zero-based row index, distances are computed from all sequences to that reference row.
 > * Since TraMineR v2.2-2 (June 2021), `refseq` can also be a list of two sets of indices `[A, B]`. The function then computes all pairwise distances between the two groups.
 >
 >   * The output is a rectangular `|A| × |B|` distance table.
 >   * This is especially useful when directly comparing two populations (e.g., treated vs. control, men vs. women).
 >
-> Sequenzo follows the same `refseq` behavior as TraMineR.
+> Sequenzo supports the index and two-list forms in the public Python API.
+>
+> One practical warning: with `refseq=[A, B]` the result is a rectangular `|A| × |B|` table, not a symmetric matrix, so it cannot be fed into clustering or any method that expects a full symmetric distance matrix.
+
+## See Also
+
+- [Matrices in Dissimilarity Measures](./matrix-in-dissimilarity-measures.md) separates substitution costs, transition rates, and the distance matrix.
+- [Normalizing Sequences](./normalizing-sequences.md) explains when and how to rescale distances.
+- [Computational Complexity of Dissimilarity Measures](./computational-complexity-of-dissimilarity-measures.md) compares measures by cost at scale.
+- [`get_distance_matrix()`](/en/function-library/get-distance-matrix) documents the API.
+- [Cluster Analysis Methods](./cluster-analysis-methods.md) covers what to do with the resulting matrix.
 
 ## References
 
-Studer, Matthias, and Gilbert Ritschard. "What matters in differences between life trajectories: A comparative review of sequence dissimilarity measures." Journal of the Royal Statistical Society Series A: Statistics in Society 179, no. 2 (2016): 481-511.
+Studer, M., & Ritschard, G. (2016). What matters in differences between life trajectories: A comparative review of sequence dissimilarity measures. *Journal of the Royal Statistical Society: Series A*, 179(2), 481-511. https://doi.org/10.1111/rssa.12125
 
 *Author: Yuqi Liang*
 

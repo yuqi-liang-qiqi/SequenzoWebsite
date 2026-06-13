@@ -1,11 +1,17 @@
 # A Beginner’s Guide to Sequence History Analysis (SHA)
 
+## Before You Start
+
+This page explains the intuition behind sequence history analysis. It connects sequence data to person-period event-history models.
+
+Read this page to see why one person-level sequence can become many risk-set rows, what the event indicator means, and where Sequenzo's event-history tools fit.
+
 Imagine you want to study **when people first get married** and what shapes that timing.
 Most datasets give you a row per person, showing their whole life-course trajectory (for example, their family or relationship status each year). That’s useful for description, but it makes it hard to answer a time-based question like:
 
 > “At each age, what is the chance this person gets married for the first time, and how does that depend on their background and past history?”
 
-Sequence History Analysis (SHA) is designed to solve exactly this problem. It does so by **turning one row per person into many rows per person — one for each time period they are at risk.**
+Sequence History Analysis (SHA) is designed to solve exactly this problem. It does so by **turning one row per person into many rows per person, one for each time period they are at risk.**
 
 ## Step 1. From person-level to person-period
 
@@ -13,12 +19,12 @@ Sequence History Analysis (SHA) is designed to solve exactly this problem. It do
   One person = one row. Columns = states at different ages (e.g., 1 = single, 4 = married, etc.).
 
 * SHA format:
-  One person = many rows. Each row = one year of that person’s life until marriage (or until the data ends if they never marry).
+  One person = many rows. Each row = one observation interval in which the person is still at risk of the event (or until the data ends if the event never happens).
 
 For example:
 
-* If Anna first marries at age 27, she will have 27 rows in the dataset. Row 27 has `event=True` (indicating “she got married”).
-* If Ben never marries by the end of the survey at age 40, he will have 40 rows, all with `event=False`.
+* If Anna is observed yearly from age 18 and first marries during the interval ending at age 27, the person-period table covers the risk intervals from age 18 through the event interval. The event row has `event=True`.
+* If Ben is observed from age 18 through age 40 and never marries, his person-period rows cover those observed risk intervals, all with `event=False`.
 
 This “person-period” dataset is like each person writing a **diary page for every year of their life** up until the event happens.
 
@@ -32,7 +38,7 @@ In the result table, you will see:
 * **state history columns (1, 2, 3, …)**: a record of the person’s trajectory up to this point. These columns let the model “look back” at what the person has experienced so far.
 * **covariates (sex, education, ethnicity, etc.)**: personal background characteristics that don’t change over time (or are measured at baseline).
 
-## Step 3. Why this format is powerful
+## Step 3. Why this format matters
 
 By reshaping the data, you can now ask:
 
@@ -92,4 +98,18 @@ Think of SHA as turning your life-course dataset into a **movie reel**:
 * Then we can ask: “At each frame, what’s the chance that the big event happens?”
 
 That frame-by-frame view is what makes it possible to study timing, risk, and the impact of both background and history on major life events.
+
+---
+
+## See Also
+
+- [Sequence History, EMLT, SAMM, and Spell Survival](/en/event-history-analysis/samm-emlt-and-survival) maps this idea to Sequenzo functions.
+- [`get_sequence_history_data()`](/en/event-history-analysis/samm-emlt-and-survival#sequence-history-data) prepares person-period sequence-history data.
+- [Sequence Analysis Multi-state Model](./multi-state-model.md) explains the related SAMM workflow.
+
+## References
+
+Rossignon, F., Studer, M., Gauthier, J. A., & Le Goff, J. M. (2018). Sequence history analysis (SHA): Estimating the effect of past trajectories on an upcoming event. In G. Ritschard & M. Studer (Eds.), *Sequence analysis and related approaches: Innovative methods and applications* (pp. 83-100). Cham: Springer International Publishing.
+
+*Author: Yuqi Liang*
 

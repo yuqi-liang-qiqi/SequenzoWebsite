@@ -1,5 +1,11 @@
 # Hidden Markov Models: A Beginner’s Guide (2)
 
+## Before You Start
+
+Read [Part 1](./markov-chain-models-01.md) first if you are new to transition matrices and the Markov property.
+
+This part explains why HMMs separate latent states from observed categories, and when HMM/MHMM/NHMM/MNHMM workflows in Sequenzo become more appropriate than an observed-state Markov chain.
+
 ## 1. From Markov Chains to Hidden Markov Models
 
 In [Part 1](./markov-chain-models-01.md), we learned that a Markov chain is a model where:
@@ -17,7 +23,7 @@ However, here is the critical problem:
 
 **In most real scientific settings, we cannot directly observe the true state of the system.**
 
-This means ordinary Markov chains, where states are visible, are too simple for real data.
+This means ordinary Markov chains, where states are visible, can be too restrictive for many latent-state questions.
 
 This is why Hidden Markov Models (HMM) were invented.
 
@@ -49,9 +55,9 @@ Put simply:
 
 ## 3. Why do we need hidden states?
 
-### Because real-world measurements are noisy, imperfect, and incomplete.
+### Real-World Measurements Are Noisy, Imperfect, and Incomplete
 
-### Example 1: Social science — employment trajectories
+### Example 1: Employment trajectories in social science
 
 Suppose we observe a person’s job status each year:
 
@@ -73,7 +79,7 @@ Hidden states let us model:
 
 This is why HMMs (and latent Markov models) are widely used in social sciences particularly sociology.
 
-### Example 2: Bioinformatics — DNA and protein sequences
+### Example 2: DNA and protein sequences in bioinformatics
 
 We observe letters:
 
@@ -88,7 +94,7 @@ But the **true biological state** is something like:
 
 HMMs allow us to infer these hidden roles.
 
-This is why HMMs dominate:
+This is why HMMs are historically important and still widely used in:
 
 * gene finding
 * protein domain detection
@@ -96,13 +102,13 @@ This is why HMMs dominate:
 
 Ordinary Markov chains cannot do this, because they assume the letters *are* the true states.
 
-## 4. Why simple Markov chains rarely have real applications
+## 4. Where simple Markov chains become limited
 
 Although the theory of Markov chains is elegant, they require a strong assumption:
 
 > The observed categories *are* the true underlying states of the process.
 
-This is almost never true in real scientific data.
+This is often only partly true in scientific data.
 
 ### Reason 1. Real states are **not directly observable**
 
@@ -117,7 +123,7 @@ In biology:
 * Nucleotides ≠ functional states
 * Amino acids ≠ protein domains
 
-Ordinary Markov chains assume you directly observe the state, which is unrealistic.
+Ordinary Markov chains assume you directly observe the state. That assumption becomes difficult when the recorded categories are proxies for a deeper process.
 
 ### Reason 2. Real measurements contain **noise, error, misreporting**
 
@@ -128,8 +134,7 @@ Examples include:
 * Biological mutations
 * Temporary fluctuations that do not reflect true state changes
 
-Markov chains cannot model noise.
-HMMs explicitly model it through emission probabilities.
+An ordinary observed-state Markov chain does not separate measurement noise from the state process. HMMs add that separation through emission probabilities.
 
 ### Reason 3. The “true” state is usually **latent**, not observable
 
@@ -141,12 +146,11 @@ Almost every field studies hidden processes:
 * **Social science:** life-course stages behind messy categories
 * **Linguistics/speech:** phoneme states behind sound waves
 
-Markov chains cannot represent hidden processes.
-HMMs were literally designed for this.
+An ordinary observed-state Markov chain represents transitions among observed categories. HMMs add a latent state layer for questions where the process of interest is not directly observed.
 
-### Reason 4. Real sequences often involve **multiple channels**,
+### Reason 4. Real Sequences Often Involve Multiple Channels
 
-and simple Markov chains cannot handle them without exploding.
+Simple observed-state Markov chains can become hard to estimate and interpret when several channels are combined into one large observed state space.
 
 #### (1) What does “multiple channels” mean?
 
@@ -158,7 +162,7 @@ For example, for a person we may observe:
 * Family (Single / Married / Divorced)
 * Health (Healthy / Minor illness / Chronic condition)
 
-These are **three channels (I personally think that "domain" is a more intuitive word)**, each evolving over time.
+These are three observed channels or domains, each evolving over time.
 
 A real sequence looks like:
 
@@ -193,11 +197,11 @@ Your combined state space becomes:
 This is already unmanageable.
 
 And many social science datasets have **20+ categories in each domain**,
-which leads to hundreds of thousands of possible combined states — often more than your sample size.
+which leads to hundreds of thousands of possible combined states, often more than your sample size.
 
-A Markov chain *on the observed states* cannot deal with this explosion.
+A Markov chain *on the observed states* can become hard to estimate or interpret under this explosion.
 
-#### (3) Why does this state explosion make Markov chains unusable?
+#### (3) Why does this state explosion make Markov chains difficult to use?
 
 Because:
 
@@ -207,14 +211,14 @@ Because:
 * the model loses any meaningful interpretation
 * the data cannot support the number of parameters
 
-A huge transition matrix is:
+A huge transition matrix can be:
 
-* impossible to estimate
-* impossible to interpret
-* mathematically fragile
-* statistically worthless
+* difficult to estimate
+* difficult to interpret
+* sensitive to sparse transitions
+* weakly supported by the available data
 
-This is why, in practice, no one does “multi-channel Markov chains” in social science or biology.
+This is why analysts often avoid building one large Markov chain over all channel combinations unless the sample is large and the combined states remain interpretable.
 
 #### (4) How do HMMs solve this?
 
@@ -236,9 +240,9 @@ This means:
 * The hidden layer remains small
 * Multiple channels do NOT cause a combinatorial explosion
 * The model is scalable and interpretable
-* Each channel can be noisy or incomplete without breaking the model
+* Each channel can include measurement noise, and HMM-family workflows can model this uncertainty when the data meet the model's missing-data requirements
 
-Instead of 3240 states, you may only need **4 hidden states**. This is the magic of HMMs.
+Instead of 3240 observed-state combinations, you may only need a small number of hidden states. This is the main modeling advantage of HMMs.
 
 A simple example:
 
@@ -307,7 +311,7 @@ But what if this person:
 * had an illness causing a temporary dip?
 * experienced a misclassification?
 
-A Markov chain **cannot** distinguish actual changes from
+An ordinary observed-state Markov chain does not distinguish actual changes from
 * measurement errors
 * short-term noise
 * inconsistent reporting
@@ -335,7 +339,7 @@ Observed state $Yₜ$:
 Even if someone reports “Temp” occasionally,
 the model still knows they are most likely in “Stable employment”.
 
-This makes HMMs **noise-robust**, which is crucial in real-world data.
+This helps HMMs absorb some observation noise, which is useful when recorded states are imperfect measurements of an underlying process.
 
 #### (4) A simple intuitive analogy
 
@@ -366,8 +370,8 @@ Almost every scientific measurement is:
 
 This means:
 
-**Markov chains take data at face value — which is unrealistic.
-HMMs allow you to model the structure behind messy observations — which is realistic.**
+**Observed-state Markov chains take recorded categories at face value.
+HMMs allow you to model a latent structure behind imperfect observations.**
 
 This is why HMMs became the practical standard.
 
@@ -420,7 +424,7 @@ An HMM infers:
 
 You get a **mechanistic** explanation instead of a **surface** description.
 
-## 7. Why HMMs dominate in practice
+## 7. Why HMMs are widely used in practice
 
 ### In social science
 
@@ -463,23 +467,34 @@ Because market conditions are hidden.
 Markov chains:
 
 * assume the observed state is the true state
-* cannot model noise
-* rarely useful in real data
-* mostly theoretical or for teaching
+* do not separate measurement noise from the state process
+* are useful when the observed states are substantively meaningful
+* often serve as a baseline or building block for richer models
 
 Hidden Markov Models:
 
 * separate hidden process from noisy observations
 * model measurement error
 * handle complex sequences
-* infer real underlying mechanisms
+* infer plausible latent dynamics
 * widely used across biology, social science, speech, economics
 
-**This is why simple Markov chains appear in textbooks,
-but HMMs appear in real research.**
+**Simple Markov chains are often a useful starting point. HMMs become more appropriate when the scientific question involves unobserved stages, measurement error, or several observed channels.**
+
+## See Also
+
+- [Markov Chain Models](/en/markov-chain-models/introduction) shows the current Sequenzo HMM, MHMM, NHMM, and MNHMM workflow.
+- [`build_hmm()`](/en/markov-chain-models/build-hmm) and [`fit_model()`](/en/markov-chain-models/fit-model) document a basic HMM.
+- [`build_mhmm()`](/en/markov-chain-models/build-mhmm) and [`fit_mhmm()`](/en/markov-chain-models/fit-mhmm) document mixture HMMs for latent subgroups.
+- [`build_nhmm()`](/en/markov-chain-models/build-nhmm) and [`fit_nhmm()`](/en/markov-chain-models/fit-nhmm) document covariate-dependent NHMM workflows.
+- [`build_mnhmm()`](/en/markov-chain-models/build-mnhmm) and [`estimate_mnhmm()`](/en/markov-chain-models/estimate-mnhmm) document mixture non-homogeneous HMM workflows.
 
 ## References
 
 Singer, B., & Spilerman, S. (1976). The representation of social processes by Markov models. American journal of sociology, 82(1), 1-54.
 
 Krogh, A. (1998). An introduction to hidden Markov models for biological sequences. In New comprehensive biochemistry (Vol. 32, pp. 45-63). Elsevier.
+
+---
+
+*Author: Yuqi Liang*

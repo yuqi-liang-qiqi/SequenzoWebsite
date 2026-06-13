@@ -1,5 +1,11 @@
 # Markov Chain Models: A Beginner’s Guide (1)
 
+## Before You Start
+
+This page introduces observed-state Markov chains. It is the conceptual starting point for [Hidden Markov Models](./markov-chain-models-02.md) and the package-facing [Markov Chain Models](/en/markov-chain-models/introduction) reference.
+
+Read this first if you want transition matrices and the Markov property to feel concrete before moving into HMMs.
+
 ## 1. What is a Markov chain?
 
 A Markov chain is one of the simplest ways to describe how something **moves from one situation to another over time**.
@@ -14,7 +20,7 @@ In everyday language:
 
 > “Where you will go next depends only on where you are now.”
 
-This makes Markov chains simple, powerful, and surprisingly useful for modeling many real-world processes.
+This makes Markov chains simple and useful for modeling processes where the current state shapes the next state.
 
 ## 2. What is a “state”?
 
@@ -191,7 +197,7 @@ This is how all Markov chain simulations work.
 
 Markov chain = system that moves between states with fixed probabilities.
 
-Essential concepts:
+Key concepts:
 
 1. **States** = categories (e.g., Sunny, Cloudy)
 2. **Transition probabilities** = chances of moving to other states
@@ -206,9 +212,23 @@ Essential concepts:
    * machine behavior
    * biological sequences
 
-They are simple, powerful, and a foundation for more advanced models like:
+They are also a foundation for more advanced models like:
 
 * Hidden Markov models (HMMs)
 * Latent Markov models
 * Deep Markov models
+
+---
+
+## See Also
+
+- [Hidden Markov Models](./markov-chain-models-02.md) explains what changes when the true state is latent.
+- [Markov Chain Models](/en/markov-chain-models/introduction) maps the conceptual model family to Sequenzo functions.
+- [`build_hmm()`](/en/markov-chain-models/build-hmm) and [`fit_model()`](/en/markov-chain-models/fit-model) document the first HMM workflow.
+
+## References
+
+Norris, J. R. (1997). *Markov chains.* Cambridge University Press.
+
+*Author: Yuqi Liang*
 

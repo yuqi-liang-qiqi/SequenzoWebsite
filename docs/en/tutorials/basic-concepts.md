@@ -1,20 +1,12 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-02-21 03:10:43
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-11 11:48:16
- * @FilePath: /SequenzoWebsite/docs/en/tutorials/basic-concepts.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Basic Concepts
 
-Before we dive into the actual usage of the Sequenzo package, it is important to first get familiar with some basic sequence concepts. These are the building blocks we will use later when constructing sequences, calculating distances, and interpreting results. Think of this section as learning the “alphabet” before writing full sentences.
+Before using Sequenzo functions, it helps to learn a few basic sequence concepts. These are the building blocks for constructing sequences, calculating distances, and interpreting results. Think of this section as learning the sequence alphabet before writing full sentences.
 
-To make things concrete, we will use examples from the [German Family Panel *pairfam* dataset](https://www.gesis.org/en/services/finding-and-accessing-data/selected-german-research-projects/pairfam) (“Panel Analysis of Intimate Relationships and Family Dynamics”). This dataset provides a widely used coding scheme for life-course statuses such as education (`EDU`), full-time employment (`FT`), and unemployment (`UNEMP`). These categories are intuitive and easy to understand, so we will use them throughout this tutorial.
+The examples below use the [German Family Panel *pairfam* dataset](https://www.gesis.org/en/services/finding-and-accessing-data/selected-german-research-projects/pairfam) (“Panel Analysis of Intimate Relationships and Family Dynamics”). This dataset provides a widely used coding scheme for life-course statuses such as education (`EDU`), full-time employment (`FT`), and unemployment (`UNEMP`).
 
 ---
 
-### Conceptual Comparison of Sequence Structures
+## Conceptual Comparison of Sequence Structures
 
 | Concept      | Definition                                                                 | Example                                    |
 |--------------|-----------------------------------------------------------------------------|--------------------------------------------|
@@ -33,7 +25,7 @@ The simplest element of a sequence is a **state**. A state is just a label for w
 - `FT` means full-time employment,  
 - `UNEMP` means unemployment or job search.  
 
-Every year (or month, depending on the dataset) you record one state. Together, these states form the person’s trajectory. States are like the “letters” of our sequence alphabet—everything else is built on top of them.
+Every year (or month, depending on the dataset) you record one state. Together, these states form the person’s trajectory. States are like the “letters” of our sequence alphabet. Everything else is built on top of them.
 
 ## Subsequence
 
@@ -47,7 +39,7 @@ From the sequence `(EDU, EDU, FT, FT, UNEMP)`:
 
 Subsequences are used in similarity measures like the **Longest Common Subsequence (LCS)**. This allows us to spot patterns even when two people’s paths don’t line up exactly year by year.  
 
-But the downside is that subsequences ignore **when** things happen. For example, two people may both have `(EDU, FT, UNEMP)` in their lives, but one went through this at ages 18–20, while the other at ages 30–32. Subsequence methods will say they are similar, even though their broader life stories are very different. That’s why subsequences are powerful but sometimes too flexible.
+But the downside is that subsequences ignore **when** things happen. For example, two people may both have `(EDU, FT, UNEMP)` in their lives, but one went through this at ages 18–20, while the other at ages 30–32. Subsequence methods will say they are similar, even though their broader life stories are very different. That’s why subsequences are useful but sometimes too flexible.
 
 ## Spell or Episode
 
@@ -169,5 +161,11 @@ Questions:
 1. Because subsequences focus only on the order of events, not on when they happen (e.g., ages or calendar years).
 2. Spells → since they capture continuous, uninterrupted periods of the same state.
 3. Full sequence → because it records the entire path from start to end.
+
+## See Also
+
+- [Timing, Duration, and Order](./timing-duration-order.md) builds on these terms.
+- [How to Read Sequence Plots](./reading-sequence-plots.md) shows what these concepts look like in figures.
+- [`SequenceData`](/en/function-library/sequence-data) turns your data into these structures.
 
 *Author: Yuqi Liang*

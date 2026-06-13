@@ -1,13 +1,21 @@
+# Latent Class Analysis
+
+## Before You Start
+
+This page explains the intuition behind latent class analysis (LCA) for categorical sequences. It is a conceptual tutorial, not a full implementation page.
+
+Start here if you need the intuition behind latent classes, posterior class probabilities, and the difference between LCA, distance-based clustering, and HMMs.
+
 Imagine you’re looking at the life courses of 10,000 women from age 18 to 70, recorded each year as being in one of four states: Healthy (H), Mild symptoms (M), Limited mobility (L), or Dependent (D).
 
 You see thousands of unique sequences like:
 `HHHHMMMMMLLDD...`, `HHHHHHHHHHHMLL...`, `HHHMMMMMDDD...`, and so on.
 
-At first glance, this looks a bit messey in the data as every person seems different.
+At first glance, this looks a bit messy in the data as every person seems different.
 
-LCA tries to explain this sequence differences by assuming **there are only a few hidden life-course types** that generate these observable patterns. These hidden types (or latent classes) could be thought of as invisible “scripts” that people roughly follow, with some randomness.
+LCA tries to explain these sequence differences by assuming **there are only a few hidden life-course types** that generate these observable patterns. These hidden types (or latent classes) could be thought of as invisible “scripts” that people roughly follow, with some randomness.
 
-#### Step 1. Imagine hidden templates
+## Step 1. Imagine Hidden Templates
 
 Suppose there are three hidden groups. 
 
@@ -23,13 +31,13 @@ For example, the following probabilities describe the expected state distributio
 
 We can see that Class 1 represents people who mostly stay healthy until later life: roughly 9 out of 10 are healthy at age 50, and about 7 out of 10 are still healthy by age 60.
 
-We check the state distribution for each class, and let's say the three latet classes are:
+We check the state distribution for each class, and let's say the three latent classes are:
 
 * **Class 1 Healthy Agers:** people who mostly stay healthy through life.
 * **Class 2 Gradual Decliners:** start healthy but slowly develop mobility limits.
 * **Class 3 Early Frailty:** health problems appear relatively early.
 
-#### Step 2. Model how observed sequences arise
+## Step 2. Model How Observed Sequences Arise
 
 **Each latent class defines a probability distribution** over possible states *at each time point.*
    
@@ -60,7 +68,7 @@ The sequence `H H M L D …` is therefore a *series of outcomes* from these repe
 One Class 1 person might happen to draw *Healthy* at every age; another might draw *Mild* once or twice.
    But statistically, the *distribution* of states in the class matches those class-level probabilities.
 
-#### Step 3. Estimate what the hidden templates must look like
+## Step 3. Estimate What the Hidden Templates Must Look Like
 
 But how do we know who belongs to which class, or what the class probabilities are?
 
@@ -77,7 +85,7 @@ It’s like having a huge bag of sequences and asking:
 
 > “What mix of invisible recipe-cards (latent classes) could have plausibly baked all these sequences?”
 
-#### Step 4. Assign people to their most likely class
+## Step 4. Assign People to Their Most Likely Class
 
 Once the model finds the best-fitting set of classes, we can compute, for each person:
 
@@ -87,19 +95,19 @@ and assign her to the class with the highest posterior probability.
 
 So, a woman who is mostly healthy until age 70 might get 0.90 probability of being “Healthy Ager,” while another whose health drops sharply after 55 might get 0.80 probability of being “Gradual Decliner.”
 
-#### Step 5. Determine how many classes there should be
+## Step 5. Determine How Many Classes There Should Be
 
 Just like in clustering, you must choose how many latent classes to use.
 
-Researchers usually estimate several models (e.g., 2–8 classes) and compare their **Bayesian Information Criterion (BIC)** and **entropy** (classification certainty). The model with the lowest BIC and high entropy (close to 1) is preferred.
+Researchers usually estimate several models (e.g., 2 to 8 classes) and compare their **Bayesian Information Criterion (BIC)** and **entropy** (classification certainty). The model with the lowest BIC and high entropy (close to 1) is preferred.
 
-#### Step 6. Interpret and visualize the classes
+## Step 6. Interpret and Visualize the Classes
 
 Finally, each class is summarized and visualized using sequence plots. For instance, average probabilities of being in each state over time.
 
 Researchers then interpret these classes substantively: “stable health,” “delayed decline,” “early frailty,” etc.
 
-**The underlying idea**
+## The Underlying Idea
 
 Formally, LCA assumes **local independence**: within a latent class, health states at different ages are statistically independent once you know the class.
 
@@ -108,3 +116,19 @@ That’s a simplification as it ignores temporal correlation. But in practice, i
 You can think of it this way:
 
 Each latent class is a “probability generator” that produces many different sequences with similar tendencies, like different dice that have distinct biases for each health outcome at each age.
+
+---
+
+## See Also
+
+- [Sequence Analysis vs. LCA vs. HMM](./sa-lca-and-hmm.md) compares these three approaches.
+- [Markov Chains](./markov-chain-models-01.md) and [Hidden Markov Models](./markov-chain-models-02.md) explain model-based sequence dynamics.
+- [From Sequences to Variables](/en/beyond-basic-clustering/from-sequences-to-variables/introduction) shows how trajectory classes or cluster assignments can enter downstream models.
+
+## References
+
+Collins, L. M., & Lanza, S. T. (2010). *Latent class and latent transition analysis: With applications in the social, behavioral, and health sciences.* John Wiley & Sons.
+
+McCutcheon, A. L. (1987). *Latent class analysis.* Sage.
+
+*Author: Yuqi Liang*

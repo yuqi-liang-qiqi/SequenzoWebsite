@@ -1,270 +1,98 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-10-28 10:48:49
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-10-28 11:13:21
- * @FilePath: /SequenzoWebsite/docs/en/tutorials/sa-vs-regression.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
+# Sequence Analysis vs. Regression
 
+Regression and sequence analysis answer different questions about longitudinal data. Regression is usually designed to estimate effects, associations, or trends. Sequence analysis is designed to compare complete categorical trajectories as ordered objects.
 
-Unlike numerical time series, categorical sequences involve discrete, unordered states with irregular time intervals, making conventional regression-based approaches, which assume numerical and independent observations, ill-suited for such categorical longitudinal data (see Liao et al., 2022). 
+This distinction matters because categorical life-course data often contain information in the order, timing, and duration of states. A regression model can use some of that information if you engineer the right variables, but sequence analysis keeps the trajectory itself as the unit of analysis.
 
-The question would be, how about panel regression? to what extent does it capture order of events and other things that sequence analysis is good at capturing? Let's unpack the conceptual boundary between panel regression and sequence analysis (SA).
+## Before You Start
 
-### 1. What panel regression does well
+You should already know the basic terms from [Basic Concepts](./basic-concepts.md): state, spell, subsequence, and full sequence.
 
-Panel (or longitudinal) regression models, e.g. fixed-effects, random-effects, or growth-curve models, are designed to handle:
+The practical goal is to decide whether a research question belongs closer to regression, sequence analysis, or a hybrid workflow.
 
-* repeated measurements over time,
-* within-person correlation,
-* and possibly time-varying covariates.
+## What Panel Regression Does Well
 
-They estimate **average effects** of predictors on an outcome across time and units, controlling for unobserved heterogeneity.
+Panel or longitudinal regression models are useful when the research question is about an outcome measured over time:
 
-So they are powerful if your research question is:
+- How does education predict income growth?
+- Does health decline faster after job loss?
+- How does a policy change affect employment rates?
 
-> “How does X affect Y over time?”
-> or
-> “Does Y change linearly or quadratically with age?”
+These models can handle repeated observations, within-person correlation, fixed or random effects, time-varying covariates, and nonlinear time trends. They are strong tools when the target is an average association or causal estimand.
 
-### 2. What panel regression assumes (and therefore misses)
+## What Regression Tends To Lose
 
-However, standard panel models make assumptions that limit their ability to capture *sequential or path-dependent dynamics*.
+Standard panel regression treats the data as rows such as person by year. That format is well suited to many outcome questions, but it often separates the full life path into local observations.
 
-Let’s look more closely at **one key limitation of standard panel regression models** — they often **ignore the order of events, or what we call path dependence**.
+Consider two employment sequences:
 
-#### Time as linear slices, not as a sequence of states
+| Person | Sequence | Interpretation |
+| --- | --- | --- |
+| A | `E-U-E` | Job loss followed by recovery |
+| B | `U-E-E` | Early unemployment followed by stability |
 
-In panel regression (like fixed-effects or random-effects models), time is usually treated as a simple index, *t = 1, 2, 3…*, not as a meaningful chain of events.
+Both people spend two years employed and one year unemployed. A model using only counts or year-specific states may treat them as nearly equivalent. Substantively, the ordering is different.
 
-Each time point is just one “slice” of data, assumed to be comparable across individuals.
+You can add lagged terms:
 
-The model can estimate how employment status at time *t* relates to income or well-being at time *t + 1*, but it doesn’t pay attention to **the order in which those statuses appear**.
+```text
+Y_it = alpha_i + beta X_it + rho Y_i,t-1 + error_it
+```
 
-It sees time passing, but not the storyline unfolding.
+This gives the model short-term memory, but it still does not automatically summarize the whole trajectory as a single ordered pattern. Longer memory requires many lags, interactions, or handcrafted features, especially when the states are categorical.
 
-#### Example: Same ingredients, different stories
+## What Sequence Analysis Adds
 
-Imagine we study people’s employment histories, where
-E = employed, U = unemployed.
+Sequence analysis keeps each person's trajectory intact. It compares complete sequences by asking how similar their states, timings, spells, and orders are.
 
-| Person | Sequence | Story                            |
-| ------ | -------- | -------------------------------- |
-| A      | E–U–E    | Lost a job, then recovered       |
-| B      | U–E–E    | Struggled early, then stabilized |
+It is especially useful when the research question is about pathway structure:
 
-To a human eye, these are two very different life paths.
+- What types of careers appear in the data?
+- Do two cohorts follow similar family-formation trajectories?
+- Which groups have more unstable or fragmented life courses?
+- Are there typical pathways before or after a focal transition?
 
-But in a panel regression dataset, they both simply show:
+The usual Sequenzo workflow is:
 
-* 2 years employed, 1 year unemployed,
-* similar employment values at each time.
+1. Build a [`SequenceData`](/en/function-library/sequence-data) object.
+2. Compute distances with [`get_distance_matrix()`](/en/function-library/get-distance-matrix).
+3. Cluster or summarize trajectories.
+4. Use the resulting typologies, distances, or indicators in interpretation or downstream models.
 
-When we reshape these sequences into a “long” panel table, the data look like this:
+## Where Hybrid Workflows Fit
 
-| Person | Time | Employment | Mental health |
-| :----: | :--: | :--------: | :-----------: |
-|    A   |   1  |      1     |       Y₁      |
-|    A   |   2  |      0     |       Y₂      |
-|    A   |   3  |      1     |       Y₃      |
-|    B   |   1  |      0     |       Y₄      |
-|    B   |   2  |      1     |       Y₅      |
-|    B   |   3  |      1     |       Y₆      |
+The choice is not regression or sequence analysis forever. Many strong designs combine them:
 
-Then we estimate something like:
+| Research design | Typical workflow |
+| --- | --- |
+| Sequence types as predictors | Cluster trajectories, then use cluster membership in a regression model. |
+| Outcomes after trajectories | Build representativeness or pseudoclass variables, then model later outcomes. |
+| Group differences in trajectories | Use discrepancy analysis or group comparison before outcome modeling. |
+| Event-history questions | Convert sequence histories into person-period data, then model event risk. |
+| Latent dynamics | Use HMM, MHMM, NHMM, or MNHMM when the question is about latent states or transition probabilities. |
 
-[
-Y_{it} = \alpha_i + \beta , Employment_{it} + \gamma t + \epsilon_{it}
-]
+## Practical Decision Rule
 
-This model asks:
+Use regression when the main question is about an outcome and a set of predictors. Use sequence analysis when the main question is about the structure of the pathway itself. Use a hybrid design when whole trajectories need to become predictors, outcomes, controls, or mechanisms in a larger model.
 
-> “On average, how is employment related to mental health at each time point?”
+| Aspect | Regression | Sequence Analysis |
+| --- | --- | --- |
+| Main unit | Observation, person, or person-time row | Whole trajectory |
+| Typical target | Effect, association, trend, prediction | Pathway structure, similarity, typology |
+| Temporal information | Included through time variables, lags, or features | Built into the sequence representation |
+| Categorical state order | Must be engineered into predictors | Central to the method |
+| Best used for | Outcomes and covariate effects | Timing, duration, order, and trajectory types |
 
-But it **breaks apart** the life story into separate rows.
+## See Also
 
-The sequence “E–U–E” or “U–E–E” disappears — what’s left are isolated dots on a timeline.
+- [Typical Workflow](/en/basics/typical-workflow) shows where regression-adjacent workflows fit in Sequenzo.
+- [From Sequences to Variables](/en/beyond-basic-clustering/from-sequences-to-variables/introduction) explains hard labels, soft memberships, representativeness, and pseudoclass regression.
+- [Sequence History, EMLT, SAMM, and Spell Survival](/en/event-history-analysis/samm-emlt-and-survival) covers event-history-oriented workflows.
 
-So, Person A’s “job loss and recovery” and Person B’s “early struggle then stability” are treated as statistically equivalent.
+## References
 
-#### Why this happens mathematically
+Abbott, A., & Tsay, A. (2000). Sequence analysis and optimal matching methods in sociology: Review and prospect. *Sociological Methods & Research*, 29(1), 3-33.
 
-Panel regression can only see **immediate, local effects**, unless we explicitly give it “memory.”
+Aisenbrey, S., & Fasang, A. E. (2010). New life for old ideas: The "second wave" of sequence analysis bringing the "course" back into the life course. *Sociological Methods & Research*, 38(3), 420-462.
 
-For example, if we add a lag term:
-
-[
-Y_{it} = \alpha_i + \beta X_{it} + \rho Y_{i,t-1} + \epsilon_{it}
-]
-
-the model now knows what happened *one step earlier*.
-But that’s all — it still forgets everything before *t−1*.
-
-To make it remember longer sequences, you’d need to add many lag terms:
-[
-Y_{it} = \alpha_i + \beta_0 X_{it} + \beta_1 X_{i,t-1} + \beta_2 X_{i,t-2} + \ldots
-]
-
-This quickly becomes messy, especially for categorical states (like employment, marriage, or health categories).
-
-It’s also unable to summarize the *overall pattern* whether a person’s path was cyclical, stable, or improving.
-
-#### Why this matters
-
-Life trajectories are often **path-dependent**:
-what happens next depends not only on where you are now, but on *how you got there*.
-
-* Losing a job after ten years of stability feels very different from being unemployed right after school.
-* Having a child before marriage versus after marriage signals different life strategies.
-* Migrating before finding a job versus migrating after securing one tells different stories.
-
-Panel regression can tell you average effects at each point in time, but not these stories of timing, recovery, and turning points.
-
-#### The bigger picture
-
-So while panel models are excellent for estimating **effects over time**,
-they see each year as an independent photo rather than part of a movie.
-
-Sequence analysis, by contrast, reads the *whole film reel* —
-it looks at the order, duration, and timing of transitions as a unified process.
-
-Or in short:
-
-> Panel regression “sees time,”
-> but sequence analysis “sees the story.”
-
-#### **Order irrelevance**
-
-Panel regression models are powerful, but they see time in a very **linear and numeric** way. Time is treated simply as “year 1, year 2, year 3…”, like beads on a string, rather than as a meaningful *sequence of states or events*.
-
-That means these models care about **when** something happens, but not **in what order** things happen.
-
-Suppose we’re studying people’s employment histories, and we record for each year whether they’re *employed (E)* or *unemployed (U)*.
-
-Now imagine two people:
-
-* Person A: **E–U–E**
-* Person B: **U–E–E**
-
-Both spent two years employed and one year unemployed.
-
-To a panel regression, they look *almost identical*:
-
-the same number of employment spells, the same total duration in work and unemployment.
-
-But substantively, these stories are very different:
-
-* Person A lost a job and then recovered.
-* Person B struggled at the start but then found stability.
-
-In a regression dataset, these differences are flattened. Once you summarize each person by variables like “total years employed” or “employment in year t,” the *order* of events disappears. The model no longer knows which came first — the crisis or the recovery.
-
-#### **Why this matters**
-
-Order matters because life processes are often *path-dependent*:
-what happens next depends on *where you’ve been*, not just where you are.
-
-For example:
-
-* Being unemployed after a long stable job might have different psychological and financial effects than being unemployed early in one’s career.
-* Getting married after having a child might not mean the same thing as having a child after marriage.
-* Migrating before getting a job versus getting a job before migrating could reflect very different strategies.
-
-Panel regression can include “lagged variables” (like unemployment at t−1), but that only looks one step back. It can’t easily capture the full chain — the longer storyline of transitions and turning points.
-
-#### **The consequence**
-
-So while panel models are excellent for quantifying *effects at each time point*, they treat each year as a separate data row rather than part of a narrative.
-
-Sequence analysis, by contrast, keeps the story intact — it reads each person’s timeline as a single sentence, not a list of unrelated words.
-
-Excellent — here’s a continuation written in the same explanatory, beginner-friendly tone as the previous section. These two points naturally follow and help readers see the deeper conceptual difference between panel regression and sequence analysis.
-
----
-
-#### **Fixed functional form**
-
-Panel regression assumes that change over time follows a **specific mathematical shape** — most often *linear* (“each year adds the same effect”) or sometimes *quadratic* (“the effect speeds up or slows down”).
-
-That’s a strong assumption. It means the model expects everyone’s trajectory to bend in roughly the same way — like fitting a single curve through all people’s lives.
-
-For example, suppose we study how health changes with age. A panel regression might estimate:
-
-[
-Health_{it} = \alpha_i + \beta_1 Age_{it} + \beta_2 Age_{it}^2 + \epsilon_{it}
-]
-
-This model will give you a neat, smooth curve — maybe health rises in youth and falls later in life.
-But real life rarely behaves that neatly: some people decline early, some stay stable for years, others recover after a setback.
-
-Those “ups and downs,” “turning points,” and “zigzag paths” get smoothed out by the regression line.
-The model only tells you the **average direction**, not the **diversity of patterns** underneath.
-
-Sequence analysis, by contrast, is **non-parametric** — it doesn’t assume a fixed shape or function.
-It takes each person’s actual timeline as it is, compares them, and then groups people with similar *trajectories*, no matter how irregular.
-
-So instead of forcing everyone into one average curve, sequence analysis lets the data reveal *how many different shapes of life paths* actually exist.
-
----
-
-#### **No holistic temporal structure**
-
-Panel regression sees time as a series of separate moments.
-It can tell you whether employment this year predicts income next year,
-but it doesn’t consider the *entire structure of someone’s life course* — how long they stayed in each state, when transitions occurred, and in what order.
-
-Think of it this way:
-
-* Panel regression studies the **frames** of a movie, one by one.
-* Sequence analysis watches the **whole movie** and compares plots.
-
-In panel models, you could add lagged terms (like (X_{i,t-1}), (X_{i,t-2})), but that only creates a chain of short-term dependencies. The model still never sees the *overall pattern* — whether someone’s life is “mostly stable,” “interrupted but recovered,” or “continuously unstable.”
-
-Sequence analysis, on the other hand, treats the **entire sequence as the unit of analysis**.
-It measures similarity between complete life trajectories — taking into account:
-
-* **Timing** (when transitions happen),
-* **Duration** (how long each state lasts),
-* and **Order** (the specific sequence of states).
-
-That’s why sequence analysis is especially suited for questions about **process, rhythm, and structure** — things like career mobility, family formation, or health progression — where *the path itself* is the phenomenon of interest.
-
-### 3. What sequence analysis captures instead
-
-Sequence analysis can capture:
-
-* **Timing** (when transitions occur),
-* **Duration** (how long states last), and
-* **Order** (which state follows which).
-
-It’s particularly suited for categorical, unordered states (e.g., employment status, family type) and for identifying *typical trajectories* or *divergent pathways* without imposing parametric constraints.
-
----
-
-### 4. Middle ground
-
-There are some **hybrid approaches** that bridge the two:
-
-* **Markov and hidden Markov models** (explicitly model transition probabilities over time);
-* **Sequence analysis followed by regression**, where cluster memberships or trajectory types become predictors or outcomes;
-* **Sequence Analysis Multistate Models** (Studer et al. 2018), which combine event-history modeling with SA’s trajectory perspective.
-
----
-
-### 5. Summary comparison
-
-| Aspect                    | Panel Regression                      | Sequence Analysis                 |
-| ------------------------- | ------------------------------------- | --------------------------------- |
-| Data type                 | Usually numeric (can include dummies) | Categorical sequences             |
-| Unit of analysis          | Observation or individual × time      | Whole trajectory                  |
-| Temporal structure        | Linear time trend                     | Order, timing, duration jointly   |
-| Model assumption          | Parametric (linear, FE, RE, etc.)     | Non-parametric / algorithmic      |
-| Captures path dependence? | Limited                               | Central                           |
-| Typical questions         | “What affects Y over time?”           | “What kinds of life paths exist?” |
-
----
-
-In short:
-**Panel regression captures level and trend over time; sequence analysis captures form and structure of life trajectories.**
-If the *ordering of events itself* is substantively meaningful, panel regression will miss it.
+*Author: Yuqi Liang*

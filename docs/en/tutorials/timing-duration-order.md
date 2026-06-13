@@ -1,60 +1,52 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-02-21 03:10:43
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-11 10:46:21
- * @FilePath: /SequenzoWebsite/docs/en/tutorials/video-tutorial.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Timing, Duration, and Order in Sequences
 
-A sequence is simply the list of states a person goes through over time (e.g., Education → Employment → Unemployment → Employment). But how do we compare sequences between people or groups?  
+A sequence is simply the list of states a person goes through over time (e.g., Education → Employment → Unemployment → Employment). But how do we compare sequences between people or groups?
 
-Researchers usually focus on three key aspects: **timing**, **duration**, and **order**. These terms often appear in methodological papers, but they are less commonly explained in classrooms or applied studies—even though they are the foundation for understanding dissimilarity measures.
+Researchers usually focus on three key aspects: **timing**, **duration**, and **order**. These terms often appear in methodological papers, but they are less commonly explained in classrooms or applied studies, even though they are the foundation for understanding dissimilarity measures.
 
 *Note:* Although I mostly use people and life-course examples here, the same concepts apply in many other fields. For instance, firms moving through growth, decline, and renewal stages in management, organizations transitioning across governance structures, industries shifting between boom and crisis in economics, or historical empires rising, fragmenting, and unifying again in history.
 
-### 1. Timing: *When things happen*
+## 1. Timing: *When things happen*
 
 * **Definition:** Timing refers to the age or calendar time (e.g., year, month, or date) at which an event or state occurs.
 * **Example:** Person A has their first child at age 22. Person B has their first child at age 35. Both experience the same event, becoming a parent, but the timing is very different.
 * **Why it matters:** Timing might reflect age norms and life-stage expectations. For instance, marrying in your twenties may be seen differently from marrying in your forties.
 
-### 2. Duration: *How long things last*
+## 2. Duration: *How long things last*
 
 * **Definition:** Duration captures the length of time a person stays in a state before moving on.
 * **Example:** Two people may both experience unemployment. One is unemployed for 2 months, the other for 3 years. Their sequences share the same states, but the **durations** differ sharply.
-* **Why it matters:** Duration helps us distinguish between stable and unstable lives. A short spell of unemployment may have different consequences than long-term unemployment.  
+* **Why it matters:** Duration helps us distinguish between stable and unstable lives. A short spell of unemployment may have different consequences than long-term unemployment.
 
-> 💡 **Quick check:** Why do we say “a short spell of unemployment” here instead of using “state,” “subsequence,” or “sequence”?  
+> **Quick check:** Why do we say “a short spell of unemployment” here instead of using “state,” “subsequence,” or “sequence”?
 > **Answer:** Because a *spell* refers to a continuous block of the same state without interruption. Two months or three years of uninterrupted unemployment each form a spell. A *state* is just one time point, a *subsequence* can skip around, and a *full sequence* covers the entire trajectory. Duration always refers to the length of a spell.
 
-### 3. Order (Sequencing): *In what sequence things happen*
+## 3. Order (Sequencing): *In what sequence things happen*
 
-* **Definition:** Order refers to the arrangement of states — the sequence in which life events occur.
+* **Definition:** Order refers to the arrangement of states, the sequence in which life events occur.
 * **Example:** Person A: Education → Job → Marriage → Parenthood.
   Person B: Education → Parenthood → Job → Marriage.
-  Both may spend the same total time in each state, but the **order** tells a very different life story .
+  Both may spend the same total time in each state, but the **order** tells a very different life story.
 * **Why it matters:** Order captures social norms about “what should come first.” For example, in many societies, marriage before parenthood is considered the “norm,” while reversing the order signals a different trajectory.
 
-### How They Work Together
+## How They Work Together
 
 Timing, duration, and order are not independent. Changing one often affects the others:
 
 * If you delay marriage (timing), you may also shorten the duration of childrearing before retirement.
-* If you spend longer in education (duration), this shifts the timing of entering full-time work and may change the order of later milestones  .
+* If you spend longer in education (duration), this shifts the timing of entering full-time work and may change the order of later milestones.
 
-### A Simple Analogy
+## A Simple Analogy
 
 Think of a **movie**:
 
-* **Order** is the storyline — which scenes happen first, second, last.
-* **Timing** is when each scene occurs on the clock — at minute 5, minute 20, or minute 90.
-* **Duration** is how long each scene lasts — a quick 30-second shot vs. a 15-minute sequence.
+* **Order** is the storyline: which scenes happen first, second, last.
+* **Timing** is when each scene occurs on the clock: at minute 5, minute 20, or minute 90.
+* **Duration** is how long each scene lasts: a quick 30-second shot vs. a 15-minute sequence.
 
 The same “movie” can feel very different if the order of scenes is shuffled, if certain scenes are delayed, or if they drag on too long.
 
-### Why Researchers Care
+## Why Researchers Care
 
 Scholars use these three aspects to understand how societies change:
 
@@ -99,13 +91,13 @@ Why might researchers want to analyze timing, duration, and order separately, in
 
 ### Exercise 1
 
-1. **Timing** — both complete education, but at very different ages.
-2. **Duration** — both are unemployed, but the length of unemployment differs.
-3. **Order** — both marry and become parents, but in different sequences.
+1. **Timing**: both complete education, but at very different ages.
+2. **Duration**: both are unemployed, but the length of unemployment differs.
+3. **Order**: both marry and become parents, but in different sequences.
 
 ### Exercise 2
 
-1. Five spells: `(EDU, EDU, EDU)`, `(FT, FT)`, `(UNEMP, UNEMP)`, `(FT)`.
+1. Four spells: `(EDU, EDU, EDU)`, `(FT, FT)`, `(UNEMP, UNEMP)`, `(FT)`.
 2. The longest spell is `(EDU, EDU, EDU)` (three years).
 3. Year 6 → `UNEMP` (the state at that single time point).
 
@@ -113,13 +105,19 @@ Why might researchers want to analyze timing, duration, and order separately, in
 
 ### Exercise 3
 
-1. **Timing** — the reveal scene occurs earlier or later.
-2. **Duration** — the fight scene lasts a short or long time.
-3. **Order** — the scenes are shown in a different sequence.
+1. **Timing**: the reveal scene occurs earlier or later.
+2. **Duration**: the fight scene lasts a short or long time.
+3. **Order**: the scenes are shown in a different sequence.
 
 ### Exercise 4
 
 Because timing, duration, and order each capture a different dimension of how lives unfold. Two people may experience the same events, but at different ages (timing), for different lengths (duration), or in different sequences (order). Looking at only one aspect risks missing important differences in life trajectories.
+
+## See Also
+
+- [Dissimilarity Measures](./dissimilarity-measures.md) shows how each aspect maps to a distance measure.
+- [Basic Concepts](./basic-concepts.md) defines the underlying terms.
+- [How to Read Sequence Plots](./reading-sequence-plots.md) shows how timing, duration, and order appear in figures.
 
 ## References
 

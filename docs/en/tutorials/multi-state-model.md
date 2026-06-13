@@ -1,125 +1,114 @@
 # Sequence Analysis Multi-state Model
 
-## 1. What problem does SAMM actually solve?
+Sequence Analysis Multi-state Models (SAMM) connect sequence analysis with event history analysis. They are useful when a research question is not only about whether a transition happens, but also about what kind of short trajectory follows that transition.
 
-Sometimes you don’t care about a single “instant event” (e.g., “education → job this month”), you care about what unfolds for a while after a turning point (e.g., “after finishing school, do people quickly settle into a job, bounce between jobs and unemployment, or disappear from the labor force for years?”). Classic event history analysis (EHA) is great for instantaneous transitions but loses the shape of the path that follows. Classic sequence analysis (SA) sees the whole path, but it can’t cleanly relate that path to time-varying covariates without running into “future causes the past” problems.
+## The Problem SAMM Solves
 
-Sometimes you don’t care about a single “instant event” (say, “education → job this month”). You care about what unfolds after a turning point: after finishing school, do people settle quickly into a stable job, bounce between jobs and unemployment, or step out of the labor market for a while? Classic event-history analysis (EHA) TODO 解释为什么叫做 event history，那就是the history of a particular event. is good at timing a jump from one state to another, but it compresses everything that follows into a single outcome and loses the shape of the path. -这句话讲得再清楚一点，有点过于抽象了。而且 multistate model 也能考虑到多次 events。 Classic sequence analysis (SA) preserves the full path, but when you try to link that path to factors that change over time, it’s easy to slip into using information from the future to explain the past. 
+Classic event history analysis models transitions as point events. For example, it can estimate the hazard of moving from education into employment. That is useful, but it treats two very different futures as the same event if both begin with the same first transition.
 
-For example, suppose your research question is: “How does becoming a parent affect the way young people move from education into the labor market?” If you take the standard sequence-analysis approach, you might cluster whole 10-year career sequences into types and then ask whether “having a child” predicts belonging to one type or another. 但是being a parent可能十年内有变化的，这里怎么处理的？ But here’s the catch: many of those children are born years after graduation. If you include that information when explaining what happens at graduation, you’re letting the future leak into the past. In other words, you’re using post-graduation events to explain patterns that begin at the moment of graduation itself. That’s backwards.
+Classic sequence analysis can describe the whole path after graduation, but whole-trajectory clustering can blur time order. If a child is born several years after graduation, using that later event to explain the whole post-graduation trajectory can accidentally let future information explain earlier outcomes.
 
-This makes the results hard to interpret: are you really saying that parenthood influences the transition from education to work, or are you just noticing that people who later become parents tend to have different long-run trajectories? With classic sequence analysis it’s very easy to blur that line, because you’re working with whole trajectories at once. SAMM avoids this by taking the point of graduation as the anchor, cutting out the next stretch of months or years as a “mini-trajectory,” and then relating only the covariates that exist up to and during that window to the outcomes you observe. This way, your analysis reflects the actual unfolding of life in time, not a hindsight reconstruction that folds future information into the past.
+SAMM addresses this problem by anchoring the analysis at a transition and looking forward over a fixed window. The unit becomes a short aligned subsequence after the transition, not the whole life course.
 
-SAMM fixes this by anchoring analysis at the moment of change and then looking forward over a fixed window. Imagine a student who graduates in June 2010. We take the next 36 months as a “mini-trajectory” and ask: does it look stable employment, choppy employment, or exit? At the same time, we only feed the model covariates as they are known up to and during those 36 months—month by month, in order—so we never let later facts (like having a child in 2013) leak back to explain choices in 2010. In short, EHA alone can’t tell stable versus temporary futures 太抽象了, SA alone can mix up time order, and SAMM keeps both the shape and the chronology straight.
+## Core Idea
 
-SAMM stitches the two together. It studies medium-term “mini-trajectories” that start at a transition and last for a fixed window, and then uses multistate EHA to ask: “what raises or lowers the chance of following each kind of mini-trajectory when you exit a given state?” 
+For every transition time, SAMM extracts a window of length `l` after the transition. These windows are then grouped into typical next paths. Event history models can then estimate who is more or less likely to follow each next path.
 
-# 2) One-sentence core idea
+For example, after leaving education, the next 36 months might show:
 
-Cut each long life-course into many short, aligned slices right after transitions (length ℓ you choose), cluster those slices into a few clear “typical next-paths,” then model the hazard of taking each next-path as a function of time-varying covariates. 
+- A stable move into employment.
+- A short employment spell followed by unemployment.
+- A return to education.
+- A longer period outside employment.
 
-# 3) A concrete picture (employment example)
+Instead of modeling only "education to employment," SAMM lets the outcome be "which kind of next path followed the transition?"
 
-Suppose states are Education, Employed, Out-of-employment (OE). Each time someone changes state, grab the next ℓ months (say ℓ=60). Those ℓ-long pieces might look like:
+## The Two Steps
 
-• Edu → five years mostly Employed (“smooth entry to work”)
-• Empl → months in OE then back to Empl (“short setback then recovery”)
-• OE → brief Empl then OE again (“churn/volatile attachment”)
+### Step 1. Build Next-path Types
 
-Cluster those pieces by shape into a small set of “typical next-paths.” Then, for every time someone sits in a given state (e.g., OE), model the competing risks of following each typical next-path, using covariates that can change over time (union status, having a child, a policy shock, etc.).  这里还是不清楚，讲的有问题，但是这三个clusters是没有什么问题的
+Choose a window length `l`, such as 12, 24, 36, or 60 months. For each transition, extract the `l` observations that begin at that transition. Then group these windows, usually separately by starting state, so that windows beginning in education are compared with other windows beginning in education.
 
-# 4) Why not just EHA or just SA?
+The result is a typology of next paths. Each type should be interpretable from plots and representative sequences.
 
-Only EHA: you see “this month’s jump” but you can’t separate “summer job then back to school” from “lasting employment”—both are Edu→Empl. You lose medium-term meaning. 
+### Step 2. Model the Next-path Outcome
 
-Only SA: you see whole trajectories, but you can’t legitimately plug in time-varying covariates measured during the trajectory without anticipatory bias; censoring is also awkward. 
+Turn the next-path type into an event history outcome. From a given starting state, each next-path type becomes a competing risk. Covariates can then explain the hazard of entering one next-path type rather than another.
 
-SAMM keeps the medium-term shape and stays honest about time order. It also handles censoring naturally via EHA. 
+This keeps the time order clear. Covariates should be measured before or during the window being modeled, not after the future path has already unfolded.
 
-# 5) The two SAMM steps, in plain terms
+## Choosing the Window Length
 
-Step 1 — carve and name the “next-paths”
-• Choose a window length ℓ (e.g., 12, 24, 36, 60 months).
-• For every transition time t in a person’s sequence, take states from t to t+ℓ−1 (only if fully observed).
-• Cluster these ℓ-long slices separately by their starting state (all slices that start at Edu clustered together, etc.).
-• The cluster medoids become your human-readable “next-path” labels (e.g., “Edu→Empl (stable)”, “OE→Empl→OE (volatile)”). 
+The window length should match the process you study.
 
-Step 2 — model who follows which next-path
-• Build a multistate competing-risks setup where, from a given state, the “risks” are not target states but your next-path types.
-• Use Cox (continuous time) or discrete-time logit/multinomial (if time is coarse). Use frailty/random intercepts if people can revisit the same state multiple times.
-• Include time-varying covariates (e.g., union, children) and macro shocks (e.g., reunification) to estimate how they change the chance of each next-path. 
+| Window length | What it captures | Tradeoff |
+| --- | --- | --- |
+| Short, such as 12 to 24 months | Immediate consequences of a transition | May miss slower instability or recovery |
+| Medium, such as 36 to 60 months | Medium-term process after a transition | Often a good starting point for early-career questions |
+| Long, such as 72 months or more | A fuller trajectory after the transition | Fewer complete windows and more overlap with whole-trajectory sequence analysis |
 
-# 6) How to choose ℓ (the window length)
+Report sensitivity checks when possible. If the main interpretation survives several plausible values of `l`, the result is easier to trust.
 
-Short ℓ (12–24): captures quick moves; under-detects volatility that plays out slowly.
-Medium ℓ (36–60): a good “process” view for careers/education.
-Long ℓ (72+): closer to whole-trajectory SA; fewer slices are fully observed.
+## How Sequenzo Represents the Workflow
 
-In the original application, results were robust across several ℓ values (12–72). Patterns stayed similar; frequencies and some significance changed as expected (shorter ℓ finds fewer “back-and-forth” patterns). This is a good sensitivity check to report. 
+The SAMM functions in Sequenzo follow the two-step logic:
 
-# 7) What kinds of questions can SAMM answer?
+- `sequence_analysis_multi_state_model()` builds the transition-centered person-period data and the `l`-long subsequence columns.
+- `plot_samm()` visualizes the extracted next paths by starting state.
+- `seqsammseq()` retrieves next paths that begin from a selected state.
+- `set_typology()` lets you attach cluster labels or human-readable labels to next paths.
+- `seqsammeha()` turns the typology into an event-history analysis dataset.
 
-• After unemployment, who goes into stable jobs vs. churns vs. exits? Effects of union/childbirth? 
-• Did a macro shock (policy reform, reunification) push people toward volatility or stability—and in which starting states? 
-• Are “returns to education” becoming more common over time, net of age/period effects? 
+These tools help you prepare the sequence side of the analysis. The final event history model can then be fitted with the statistical modeling tools appropriate for your design.
 
-# 8) What the German reunification example showed 
+The handoff from sequence analysis to event history analysis usually looks like this:
 
-Using SAMM, the authors could distinguish “summer-job blips” from genuine medium-term exits/entries, include censored cases, and detect that East German women faced more post-reunification volatility (e.g., OE–Empl–OE, Empl–OE–Empl) while some stable paths shifted in expected directions. A standard transition-only MM missed parts of this picture. 
+```python
+from sequenzo.with_event_history_analysis import seqsammeha
 
-# 9) Limits and gotchas (say it plainly)
+eha_data = seqsammeha(
+    samm,
+    spell="unemployed",
+    typology=typology,
+    persper=True,
+)
+```
 
-• Garbage in, garbage out: if your ℓ is way off your process timescale, your “next-paths” won’t mean much.
-• Clustering needs to be decent quality; don’t cram wildly different slices into one type. Check silhouette/ASW and visuals. 
-• Interpret carefully: “risk of following a next-path” is not “causal effect.” You still need identification logic if you want causal claims.
-• Keep time order clean: covariates must be measured up to the start and during the risk period—not after the slice you’re predicting.
+Here, `spell` selects the starting state or transition context, `typology` supplies the next-path labels, and `persper=True` returns a person-period table for event history modeling.
 
-# 10) How Sequenzo maps this logic into objects
+## Practical Checklist
 
-Keep this mental map; names match your Python module so users can orient themselves without reading function docs first.
+1. Define a compact state alphabet for the starting states.
+2. Choose a first window length based on the process you study.
+3. Extract next paths and inspect whether transition rows make sense.
+4. Plot next paths by starting state.
+5. Build a typology of next paths through clustering or substantive labels.
+6. Use `seqsammeha()` to create the event-history analysis table.
+7. Fit the event history model using the next-path types as competing outcomes.
+8. Repeat the analysis with one or two alternative window lengths.
 
-• sequence_analysis_multi_state_model(...) → makes a person-period dataset with, for each person-time, the ℓ-long subsequence columns s.1 … s.ℓ, a transition flag, and spell timing helpers. This is the “slice factory.”
-• plot_samm(samm, ...) → shows, for each starting state, the actual colored bars of next-paths when a transition happens. Your Python design uses one subplot per starting state (clearer side-by-side inspection than TraMineR’s grouped single plot).
-• seqsammseq(samm, spell=...) → quickly pull all next-paths that start at a given state (for eyeballing, ad-hoc tabulations, prototype rules).
-• set_typology(...) → let users assign human labels or cluster labels to those next-paths (e.g., “stable job,” “volatile,” “exit”).
-• seqsammeha(...) → produce the exact analysis dataset for EHA (person-period by default, with last-observation flags and one column per next-path type as binary outcomes). That’s the ready-to-model frame.
+## Common Questions
 
-This mirrors the original two-step logic while adopting a subplot-based visualization that preserves individual patterns and scales better to many sequences.
+### Is SAMM Just Clustering and Then Regression?
 
-# 11) Practical workflow (checklist you can follow today)
+Not quite. The clustered units are transition-centered windows, not whole careers. The outcome is a medium-term path type from a specific starting state, which keeps the temporal interpretation closer to event history analysis.
 
-1. Define the process and states clearly. Keep the alphabet small for starting states; it helps model complexity. You can be more detailed for the next-paths if needed (e.g., separate parental leave vs. unemployment in T). 
-2. Pick a first ℓ grounded in your science (e.g., 36 or 60 months for early-career dynamics).
-3. Build the SAMM person-period data; confirm that “transition==True” rows make sense.
-4. Explore visually with plot_samm. Do the slices you see match your intuition (stable entry, churn, exit)?
-5. Create a typology: either cluster elsewhere and map labels in, or hand-label with simple rules for a pilot.
-6. Generate the EHA dataset (seqsammeha). Decide continuous-time (Cox) vs discrete-time (logit). Add random effects if people revisit states. 
-7. Fit competing-risk models: one model per next-path type (cause-specific hazards), or a multinomial discrete-time model if you prefer. Include time-varying covariates and sensible controls (age polynomials, period, season). 
-8. Robustness: vary ℓ; check that big qualitative claims survive. 
-9. Compare with a classic transition-only MM to show what SAMM newly reveals. 
+### How Many Next-path Types Should I Keep?
 
-# 12) How to report SAMM results so readers “get it”
+Keep enough types to separate substantively different futures, but not so many that each type becomes hard to describe. Use cluster quality indicators, visual inspection, and substantive interpretation together.
 
-• One clean figure per starting state showing the next-paths (state distribution or index plots), with short, concrete labels.
-• A small table listing each next-path type with a one-line narrative (“Edu→Empl stable within 3 months; n=...”).
-• A cause-specific hazard table (or multinomial logit) with covariate effects on each next-path. Interpret in plain language: “Having a child increases the chance that an employment spell ends in a long OE path, and reduces the chance of immediate stable re-employment,” etc. 
-• A brief “why SAMM vs. standard MM/SA” paragraph, plus a short robustness note (other ℓ’s, similar story). 
+### Is SAMM Causal?
 
-# 13) FAQs you might have
+No. SAMM gives a time-ordered descriptive or associational framework. Causal claims still require a research design that supports identification.
 
-Q: Isn’t this just “clustering then modeling the cluster label”?
-A: Kind of, but with two crucial twists: (1) the units are aligned slices after transitions, not whole careers; (2) the outcome is a medium-term path type, estimated via competing-risk hazards from a specific starting state. That keeps time order and makes the meaning of “risk” substantive. 
+## See Also
 
-Q: How many next-path types should I keep?
-A: Enough to separate substantively different futures (stable entry, churn, exit), but not so many that types become muddy. Use quality diagnostics and pictures; err on the side of interpretability. 
-
-Q: Can I mix alphabets (coarser for starting states, finer for next-paths)?
-A: Yes. Keep starting states simple (fewer hazard functions), and use a richer alphabet in the slices if it clarifies dynamics (e.g., differentiate part-time vs full-time only in the next-paths). 
-
-Q: Is SAMM causal?
-A: Not by itself. It’s descriptive/associational with clean time ordering. If you want causality, bring identification (designs, instruments, policy discontinuities) on top.
+- [Sequence History Analysis](/en/tutorials/sequence-history-analysis)
+- [Cluster Quality Indicators](/en/tutorials/cluster-quality-indicators)
+- [State Distribution Plot](/en/visualization/state-distribution-plot)
+- [Index Plot](/en/visualization/index-plot)
 
 ## References
 
-
+Studer, M., Struffolino, E., & Fasang, A. E. (2018). Estimating the relationship between time-varying covariates and trajectories: The sequence analysis multistate model procedure. *Sociological Methodology*, 48(1), 103-135.
 

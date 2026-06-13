@@ -1,10 +1,10 @@
-# Computational Complexity of Dissimilarity Measures: A Comprehensive Guide
+# Computational Complexity of Dissimilarity Measures
 
 ## Introduction
 
 When comparing sequences, whether they represent career trajectories, family formation patterns, or health states, you need efficient algorithms that can scale to relatively large datasets. **Computational complexity** tells you how the runtime of an algorithm grows as your data grows, helping you choose the right dissimilarity measure for your problem size.
 
-This tutorial explains what computational complexity is, why it matters (especially for big data), and provides a detailed breakdown of the complexity of different dissimilarity measures implemented in Sequenzo. We'll start with the fundamentals and then dive into specific algorithms, showing you exactly how to analyze their performance.
+This tutorial explains what computational complexity is, why it matters for large sequence datasets, and how the main dissimilarity measures implemented in Sequenzo differ in runtime and memory cost.
 
 ## What is Computational Complexity?
 
@@ -16,13 +16,13 @@ This tutorial explains what computational complexity is, why it matters (especia
 
 Big O notation describes the **worst-case** or **average-case** behavior of an algorithm:
 
-- **O(1)**: Constant time—runtime doesn't depend on input size
-- **O(log n)**: Logarithmic time—runtime grows slowly (e.g., binary search)
-- **O(n)**: Linear time—runtime grows proportionally with input size
-- **O(n log n)**: Linearithmic time—common in efficient sorting algorithms
-- **O(n²)**: Quadratic time—runtime grows with the square of input size
-- **O(n³)**: Cubic time—runtime grows with the cube of input size
-- **O(2ⁿ)**: Exponential time—runtime doubles with each additional input element
+- **O(1)**: Constant time; runtime doesn't depend on input size
+- **O(log n)**: Logarithmic time; runtime grows slowly (e.g., binary search)
+- **O(n)**: Linear time; runtime grows proportionally with input size
+- **O(n log n)**: Linearithmic time; common in efficient sorting algorithms
+- **O(n²)**: Quadratic time; runtime grows with the square of input size
+- **O(n³)**: Cubic time; runtime grows with the cube of input size
+- **O(2ⁿ)**: Exponential time; runtime doubles with each additional input element
 
 #### Space Complexity
 
@@ -39,7 +39,7 @@ When analyzing dissimilarity measures, complexity includes:
 
 ### Why Complexity Matters: The Big Data Perspective
 
-Understanding complexity becomes **critical** when working with large datasets:
+Understanding complexity becomes **important** when working with large datasets:
 
 #### The Scaling Problem
 
@@ -295,7 +295,7 @@ double compute_distance(int i, int j) const {
 - **Preprocessing**: O(n × m × k) but done once
 - **Very efficient** when k is small (e.g., k = number of states)
 
-**When to Use**: Excellent for large datasets when you care about state distributions rather than exact sequence structure.
+**When to Use**: Best suited to large datasets when the analysis focuses on state distributions rather than exact sequence structure.
 
 ### Category 4: Dynamic Programming Edit Distances (OM, LCS, TWED)
 
@@ -555,8 +555,8 @@ Many algorithms can be parallelized:
 | Spell-based | O(n²) | O(s²) for DP table |
 
 **Memory optimization**: 
-- Use `full_matrix=False` to get a `dist` object (stores only lower triangle)
-- Reduces memory by ~50%
+- Use `full_matrix=False` to get a 1D NumPy condensed vector in scipy squareform order
+- Reduces distance-matrix storage by roughly half compared with a full square matrix
 
 ### Optimization Techniques
 
@@ -600,8 +600,15 @@ Many algorithms can be parallelized:
 from sequenzo import SequenceData, get_distance_matrix
 import time
 
-# Load your sequences
-seqdata = SequenceData.from_dataframe(df, id_col='id', state_cols=['t1', 't2', ...])
+time_cols = ["t1", "t2", "t3", "t4"]
+states = ["Education", "Employment", "Unemployment"]
+
+seqdata = SequenceData(
+    df,
+    time=time_cols,
+    id_col="id",
+    states=states,
+)
 
 # Fast: LCP (O(n² × m))
 start = time.time()
@@ -707,5 +714,11 @@ For implementation details, see the source code in:
 - `/sequenzo/dissimilarity_measures/get_distance_matrix.py` (Python interface)
 
 ---
+
+## See Also
+
+- [Dissimilarity Measures](./dissimilarity-measures.md) explains what each measure computes.
+- [Understanding CLARA](./understanding-clara.md) covers clustering when the full matrix is too large.
+- [Large Data and Robustness](/en/big-data/introduction) lists the scalable workflows.
 
 *Author: Yuqi Liang*
