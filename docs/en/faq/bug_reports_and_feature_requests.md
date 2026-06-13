@@ -1,18 +1,10 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-16 22:58:51
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2025-09-18 11:09:39
- * @FilePath: /SequenzoWebsite/docs/en/faq/bug_reports_and_feature_requests.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-# How to report bugs and request features 💬
+# How to Report Bugs and Request Features
 
-We are always very happy to hear from and support our users! Whether you find a bug or have an idea for a new feature, please open an issue on [GitHub Issues](https://github.com/Liang-Team/Sequenzo/issues).
+Bug reports and feature requests are tracked through [GitHub Issues](https://github.com/Liang-Team/Sequenzo/issues). Please open an issue when you find a bug, hit a documentation gap, or want to propose a new workflow.
 
 To help us respond quickly and effectively, please follow the guidelines below.
 
-### 🐞 Bug Report Format
+### Bug Report Format
 
 When reporting a bug, please include:
 
@@ -34,7 +26,7 @@ When reporting a bug, please include:
 4. **Expected behavior**
    A short description of what you thought should happen.
 
-### ✨ Feature Request Format
+### Feature Request Format
 
 When suggesting a feature, please include:
 
@@ -49,9 +41,9 @@ When suggesting a feature, please include:
    * Your typical use case or dataset size
    * Any performance considerations (e.g., “40k sequences, 200 time points, 16GB RAM”)
 
-### ⏱ Response Policy
+### Response Policy
 
-* We will respond as quickly as possible.
+* Maintainers respond as quickly as possible.
 * For requests that are not too large, we aim to fix or implement the feature **within one week** from our response time.
 * Timeline may vary depending on how many requests we receive.
 

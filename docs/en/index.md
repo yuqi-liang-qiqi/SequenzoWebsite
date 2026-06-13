@@ -1,6 +1,6 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
+description: "Fast, scalable Python workflows for social sequence analysis: define categorical trajectories, compute distances, cluster, visualize, and fit advanced sequence models."
 
 hero:
   name: "Sequenzo"
@@ -12,17 +12,22 @@ hero:
       link: /en/basics/about-sequenzo
 
 features:
-  - title: High Performance
-    icon: 🚀
-    details: "Built on Python’s powerful computing capabilities, Sequenzo runs more than 8× faster than R-based tools and continues to handle larger datasets efficiently when R reaches its limits."
+  - title: Faster Analysis at Larger Scale
+    icon: ⚡
+    details: "Benchmarks show 8× faster processing than R-based tools. Compiled distance routines and CLARA-style sampling help large sequence studies stay practical when full pairwise matrices become costly."
+    link: /en/traminer-and-sequenzo/performance-diff
+    linkText: See performance
 
-  - title: Intuitive Functions, Elegant Visualizations, and Comprehensive Tutorials
+  - title: More Rigorous Checks Before Modeling
+    icon: ✅
+    details: "SequenceData turns raw tables into a checked sequence object, validating states, labels, IDs, weights, colors, void values, and missing values before downstream analysis."
+    link: /en/basics/typical-workflow
+    linkText: Start the workflow
+
+  - title: More Precise Method Guidance
     icon: 🎯
-    details: "Sequenzo offers beginner-friendly function design that makes complex sequence analysis easy to start with; a wide range of visualization tools to clearly present patterns; and detailed tutorials that guide you step by step from basic concepts to advanced applications."
-
-  - title: Flexible for a Wide Variety of Scenarios
-    icon: 🌐
-    details: "Perfect for analyzing categorical data and capturing its evolution across research, policy, or business."
+    details: "Research-question-first guides connect users to distance measures, clustering, group comparison, event histories, multidomain analysis, and HMMs, with trade-offs clearly framed."
+    link: /en/tutorials/introduction
+    linkText: Choose a method
 
 ---
-

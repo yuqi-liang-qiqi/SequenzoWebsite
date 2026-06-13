@@ -1,5 +1,35 @@
 # What's New
 
+### 22 May 2026
+
+**Sequenzo v0.1.40** has been released on PyPI (includes changes since v0.1.39).
+
+**Highlights**
+- **seqHMM / model-based sequence analysis**: added MNHMM support, multichannel MHMM fixed-parameter inference, richer seqHMM-style utility coverage, and upgraded NHMM formula handling.
+- **Performance and reliability**: improved KMedoids/PAM performance, hardened C++ distance/release boundaries, and refined CLARA accuracy.
+- **Multidomain and event-history workflows**: updated multidomain sequence analysis and visualization, improved sequence history analysis, and added spell survival analysis in the event-history module.
+- **Packaging**: strengthened Windows and macOS wheel handling, including OpenMP loading and bundled-library fixes.
+- **Distance methods and indicators**: updated OMspell, OMtspell, OMspellRS, LCPspell, and Elzinga-Studer normalization work.
+
+### 14 May 2026
+
+**Sequenzo v0.1.39** has been released on PyPI (includes changes since v0.1.38).
+
+**Highlights**
+- **Feature extraction and decomposition**: updated the feature extraction and selection workflow and decomposition modules.
+- **Discrepancy and group comparison**: aligned discrepancy analysis, event sequences, and group-comparison helpers more closely with the original papers and R implementations.
+- **Clustering**: added/refined fuzzy clustering, property-based clustering, and KMedoids helper functions.
+- **Packaging**: improved Python dependency handling, Windows OpenMP compilation, and wheel build reliability across Python versions.
+
+### 27 Apr 2026
+
+**Sequenzo v0.1.38** has been released on PyPI (includes changes since v0.1.37).
+
+**Highlights**
+- **Dissimilarity measures**: optimized OMspell, OMtspell, OMslen, OMloc, and TWED C++ implementations; fixed TWED normalization behavior.
+- **Dependency compatibility**: added `statsmodels` as a package dependency and adjusted version constraints for older Python versions.
+- **Documentation and benchmarks**: added ablation and extended benchmark visualizations.
+
 ### 29 Mar 2026
 
 **Sequenzo v0.1.37** has been released on PyPI (includes changes since v0.1.36).
@@ -32,7 +62,7 @@
 **Sequenzo v0.1.35** has been released on PyPI (includes changes since v0.1.34).
 
 **Highlights**
-- **Sequences to variables**: added a new feature regarding the workflow to derive covariates from sequences, with tests.
+- **Sequences to variables**: added a workflow for deriving sequence-based covariates, with tests.
 - **Plots**: improved layout for relative frequency plots.
 - **Stress workflow**: updated tutorials; stress module updates (e.g. lazy imports, extended modeling and inference).
 - **Packaging**: fixed import failure involving `importlib.util`.
@@ -53,7 +83,7 @@ Sequenzo version v0.1.33 has been released (includes changes from v0.1.32).
 **New Features & Data:**
 - **Event sequence analysis**: added `with_event_history_analysis` module with functions such as `create_event_sequences`, `find_frequent_subsequences`, `count_subsequence_occurrences`, `compare_groups`, and visualizations (`plot_event_sequences`, `plot_subsequence_frequencies`), plus tutorials and unit tests.
 - **Sequence characteristics**: added functions to capture sequence characteristics (e.g., subsequences, transitions, turbulence, complexity index, within-sequence entropy, spell duration variance, cross-sectional entropy) and corresponding tutorials and unit tests.
-- **Dissimilarity measures**: added new distance methods `OMloc`, `OMslen`, `OMstran`, `TWED`, `LCS`, `NMS`, `NMSMST`, `NMSSTSSoft`, and `SVRspell` to `get_distance_matrix()`.
+- **Dissimilarity measures**: added new distance methods `OMloc`, `OMslen`, `OMstran`, `TWED`, `LCS`, `NMS`, `NMSMST`, soft NMS via `method="NMS"` with `prox`, and `SVRspell` to `get_distance_matrix()`.
 - **LCP-related**: added LCP-related functions; `matrix_display` option for LCP/LCPspell; improved documentation and notebook demos.
 - **Tree analysis** (v0.1.33): added `tree_analysis` module with regression tree analysis for sequence data (TraMineR-style `disstree` / `seqtree`), including `build_distance_tree`, `build_sequence_tree`, `compute_pseudo_variance`, `compute_distance_association`, and visualization helpers.
 - **Elzinga & Studer (2019) normalization**: added reference-based normalization method from Elzinga & Studer (2019).
@@ -189,7 +219,7 @@ Sequenzo version v0.1.27 has been released.
 Sequenzo version v0.1.26 has been released.
 
 **Bug Fixes:**
-- Fixed aic etc. can't be imported issue
+- Fixed an import issue involving `aic` and related helpers.
 
 **Dependencies:**
 - Added hmmlearn settings in pyproject.toml and requirements
@@ -198,7 +228,7 @@ Sequenzo version v0.1.26 has been released.
 
 Sequenzo version v0.1.25 has been released.
 
-In this version, we have implemented the Python version of seqHMM. This is the first release of this feature, and we will continue to optimize it in future updates. Additionally, we have improved various visualization features.
+This version introduced the Python implementation of seqHMM. It was the first release of this feature; further optimization is planned for future updates. This release also improved several visualization features.
 
 ### 11 Nov 2025
 
@@ -212,20 +242,16 @@ making them more user-friendly.
 
 ### 7 Oct 2025
 
-We have just released a new version of Sequenzo (v0.1.19), which fixes the installation issue that some users experienced with pip install sequenzo in v0.1.18.
-
-This update also corrects the transition matrix calculation and introduces a few new but less frequently used methods, including Sequence History Analysis and the Sequence Analysis Multi-State Model.
-
-### 4 Oct 2025
-
-🎉 Exciting milestone: Sequenzo has just welcomed its first external contributor!
-
-Open collaboration means the project is truly taking shape — huge thanks to [Sebastian Daza](https://sdaza.com/) for debugging key issues and improving README. This marks Sequenzo’s first step toward a broader open-source community.
+Sequenzo v0.1.19 fixed the `pip install sequenzo` issue introduced in v0.1.18. It also corrected transition-matrix calculations and added less common methods, including Sequence History Analysis and the Sequence Analysis Multi-State Model.
 
 ### 3 Oct 2025
 
-Upgraded Sequenzo to version 0.1.18. Enhanced Sequenzo by (1) adding entropy and other complexity measures, (2) incorporating advanced models such as sequence history analysis and sequence analysis multi-stte model, as well as (3) supporting the hierarchical clustering Ward D method from R. 
+Sequenzo version v0.1.18 has been released.
+
+This release added entropy and other complexity measures, introduced sequence history analysis and sequence analysis multi-state models, and added support for Ward's D hierarchical clustering method from R.
 
 ### 18 Sep 2025
 
-Updated most of the documentation in both English and Chinese, and upgraded Sequenzo to version 0.1.17.
+Sequenzo version v0.1.17 has been released.
+
+This release updated most of the documentation in both English and Chinese.

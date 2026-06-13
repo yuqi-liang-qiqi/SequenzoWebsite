@@ -20,6 +20,8 @@ export default {
     let prevBtn: HTMLButtonElement | null = null
     let nextBtn: HTMLButtonElement | null = null
     let closeBtn: HTMLButtonElement | null = null
+    let lightboxStage: HTMLElement | null = null
+    let lastFocusedElement: HTMLElement | null = null
     let currentImages: HTMLImageElement[] = []
     let currentIndex = 0
     let keyListenerAttached = false
@@ -29,7 +31,7 @@ export default {
       overlay = document.createElement('div')
       overlay.className = 'spx-lightbox-overlay'
       overlay.innerHTML = `
-        <div class="spx-lightbox-stage" role="dialog" aria-modal="true">
+        <div class="spx-lightbox-stage" role="dialog" aria-modal="true" aria-label="Image preview">
           <div class="spx-lightbox-zone spx-lightbox-zone-left" aria-hidden="true"></div>
           <div class="spx-lightbox-zone spx-lightbox-zone-right" aria-hidden="true"></div>
           <img class="spx-lightbox-image" alt="" />
@@ -45,6 +47,7 @@ export default {
       prevBtn = overlay.querySelector('.spx-lightbox-prev')
       nextBtn = overlay.querySelector('.spx-lightbox-next')
       closeBtn = overlay.querySelector('.spx-lightbox-close')
+      lightboxStage = overlay.querySelector('.spx-lightbox-stage')
       const leftZone = overlay.querySelector('.spx-lightbox-zone-left') as HTMLElement | null
       const rightZone = overlay.querySelector('.spx-lightbox-zone-right') as HTMLElement | null
 
@@ -75,6 +78,12 @@ export default {
       })
     }
 
+    function getLightboxControls() {
+      return [closeBtn, prevBtn, nextBtn].filter((el): el is HTMLButtonElement => {
+        return !!el && el.style.display !== 'none'
+      })
+    }
+
     function attachKeyListener() {
       if (keyListenerAttached) return
       keyListenerAttached = true
@@ -89,6 +98,18 @@ export default {
         } else if (e.key === 'ArrowRight') {
           e.preventDefault()
           showByIndex(currentIndex + 1)
+        } else if (e.key === 'Tab') {
+          const controls = getLightboxControls()
+          if (controls.length === 0) return
+          const first = controls[0]
+          const last = controls[controls.length - 1]
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault()
+            last.focus()
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault()
+            first.focus()
+          }
         }
       })
     }
@@ -97,10 +118,12 @@ export default {
       createOverlayIfNeeded()
       attachKeyListener()
       currentImages = images
+      lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null
       showByIndex(index)
       requestAnimationFrame(() => {
         overlay?.classList.add('active')
         document.documentElement.style.overflow = 'hidden'
+        ;(closeBtn || lightboxStage)?.focus()
       })
     }
 
@@ -108,6 +131,8 @@ export default {
       if (!overlay) return
       overlay.classList.remove('active')
       document.documentElement.style.overflow = ''
+      lastFocusedElement?.focus()
+      lastFocusedElement = null
     }
 
     function showByIndex(index: number) {
@@ -158,10 +183,19 @@ export default {
         img.setAttribute('data-lightbox-bound', '1')
         img.classList.add('spx-lightbox-thumb')
         img.style.cursor = 'zoom-in'
-        img.addEventListener('click', (e) => {
+        img.setAttribute('role', 'button')
+        img.setAttribute('tabindex', '0')
+        img.setAttribute('aria-label', img.alt ? `Open image preview: ${img.alt}` : 'Open image preview')
+        const openFromThumb = (e: Event) => {
           e.preventDefault()
           const indexInGallery = gallery.indexOf(img)
           openLightbox(gallery, indexInGallery >= 0 ? indexInGallery : idx)
+        }
+        img.addEventListener('click', openFromThumb)
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            openFromThumb(e)
+          }
         })
       })
     }

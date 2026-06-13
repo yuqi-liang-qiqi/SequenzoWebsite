@@ -1,11 +1,3 @@
-<!--
- * @Author: Yuqi Liang dawson1900@live.com
- * @Date: 2025-09-12 14:40:49
- * @LastEditors: Yuqi Liang dawson1900@live.com
- * @LastEditTime: 2026-03-02 22:51:38
- * @FilePath: /SequenzoWebsite/docs/en/faq/team_and_acknolwedgements.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 # Team Members and Acknowledgements
 
 We thank the people below for building and supporting Sequenzo.
@@ -39,7 +31,7 @@ We thank the people below for building and supporting Sequenzo.
     </td>
     <td align="center">
       <img src="./img/yapeng.jpeg" width="120" height="120" class="team-photo" alt="Yapeng Wei" />
-      <div><a href="https://www.linkedin.com/in/jan-meyerhoff-liang-97999a170/">Yapeng Wei</a><br/>Master, Social Data Science<br/>University of Oxford (UK)</div>
+      <div>Yapeng Wei<br/>Master, Social Data Science<br/>University of Oxford (UK)</div>
     </td>
   </tr>
   </tbody>
@@ -58,7 +50,7 @@ We thank the people below for building and supporting Sequenzo.
     </td>
     <td align="center">
       <img src="./img/yukun_ming.png" width="120" height="120" class="team-photo" alt="Yukun Ming" />
-      <div><a href="https://www.linkedin.com/in/yukun（stephan）-ming-a13878298">Yukun Ming</a><br/>Master, Business & Finance<br/>Universidad Carlos III de Madrid (Spain)</div>
+      <div>Yukun Ming<br/>Master, Business & Finance<br/>Universidad Carlos III de Madrid (Spain)</div>
     </td>
     <td align="center">
       <img src="./img/sizhu.jpeg" width="120" height="120" class="team-photo" alt="Sizhu Qu" />

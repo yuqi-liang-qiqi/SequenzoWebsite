@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sequenzo.yuqi-liang.tech/sitemap.xml
+LLMs: https://sequenzo.yuqi-liang.tech/llms.txt
