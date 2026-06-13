@@ -21,7 +21,7 @@ diss_matrices, membership_df = get_interactive_combined_typology(
     domains,                          # required: list of SequenceData objects
     method_params,                    # required: list of parameter dicts for distance computation
     domain_names=None,                # optional: custom names for domains
-    norm="zscore",                    # optional: normalization for cluster quality plots
+    norm="zscore",                    # optional: normalization for diagnostics
     interactive=True,                 # optional: whether to prompt for cluster numbers
     predefined_clusters=None          # optional: list of cluster numbers for each domain
 )
@@ -34,8 +34,8 @@ diss_matrices, membership_df = get_interactive_combined_typology(
 | `domains` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each domain you want to combine. Must contain at least two domains. All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. |
 | `method_params` | ✓ | `list[dict]` | A list of parameter dictionaries, one for each domain. Each dictionary must contain at least a `"method"` key specifying the distance measure (e.g., `"OM"`). Other keys can include `"sm"`, `"indel"`, `"norm"`, etc., as used in `get_distance_matrix()`. |
 | `domain_names` | ✗ | `list[str]` or `None` | Custom names for each domain. If `None`, domains are automatically named as `Domain_1`, `Domain_2`, etc. Default = `None`. |
-| `norm` | ✗ | `str` | Normalization method for cluster quality plots shown during interactive mode. Options: `"zscore"`, `"minmax"`, `"none"`. Default = `"zscore"`. |
-| `interactive` | ✗ | `bool` | If `True`, the function will show cluster quality plots and prompt you to enter the number of clusters for each domain. If `False`, you must provide `predefined_clusters`. Default = `True`. |
+| `norm` | ✗ | `str` | Normalization method used for cluster-quality diagnostics when available. Options: `"zscore"`, `"minmax"`, `"none"`. Default = `"zscore"`. |
+| `interactive` | ✗ | `bool` | If `True`, the function prompts you to enter the number of clusters for each domain and attempts to save diagnostic plots when supported by the installed version. If `False`, you must provide `predefined_clusters`. Default = `True`. |
 | `predefined_clusters` | ✗ | `list[int]` or `None` | A list of integers specifying the number of clusters for each domain. Required when `interactive=False`. The length must match the number of domains. Default = `None`. |
 
 ## What It Does
@@ -45,7 +45,7 @@ The function performs the following steps:
 1. **Computes distance matrices:** For each domain, computes a pairwise distance matrix using the parameters specified in `method_params`.
 
 2. **Clusters each domain separately:** Performs hierarchical clustering on each domain's distance matrix. The number of clusters can be determined either:
-   - Interactively: The function displays cluster quality plots and asks you to choose the optimal number of clusters.
+   - Interactively: The function asks you to choose the number of clusters for each domain and may save cluster-quality diagnostics when plotting support is available.
    - Automatically: You provide `predefined_clusters` when `interactive=False`.
 
 3. **Assembles combined typology:** For each individual, combines their cluster labels from all domains using a separator (default: "+"). For example, if someone belongs to cluster 1 in domain A and cluster 2 in domain B, their combined type is "1+2".
@@ -59,7 +59,7 @@ The function performs the following steps:
    - Saves membership table as `combt_membership_table.csv`
    - Saves frequency table showing how many individuals belong to each combined type
    - Saves a bar plot visualizing the frequency distribution
-   - Saves cluster quality plots for each domain (if interactive mode)
+   - Attempts to save cluster-quality diagnostic plots for each domain in interactive mode. If plotting support is unavailable, the workflow continues after a warning.
 
 6. **Returns results:**
    - `diss_matrices`: List of distance matrices (one per domain)
@@ -71,8 +71,7 @@ The function performs the following steps:
 
 ```python
 import pandas as pd
-from sequenzo.define_sequence_data import SequenceData
-from sequenzo.multidomain.combt import get_interactive_combined_typology
+from sequenzo import SequenceData, get_interactive_combined_typology
 
 # Prepare domain 1: Employment sequences
 df1 = pd.DataFrame({
@@ -114,10 +113,7 @@ diss_matrices, membership_df = get_interactive_combined_typology(
 )
 ```
 
-During interactive mode, you'll see:
-- Cluster quality plots for each domain
-- Prompts asking how many clusters you want for each domain
-- Progress messages as the analysis proceeds
+During interactive mode, the function prompts you to enter the number of clusters for each domain and prints progress messages as the analysis proceeds. Depending on the installed plotting support, it may also save cluster-quality diagnostics.
 
 ### 2. Non-interactive usage with predefined clusters
 
@@ -216,13 +212,18 @@ Combined typologies allow you to:
 
 2. **Data alignment is required:** All domains should contain the same individuals, aligned in the same order, and observed over comparable time points. The function will check ID alignment and raise an error if domains do not match.
 
-3. **Interactive mode requirements:** When using interactive mode, make sure you're in an environment where plots can be saved. The function saves plots but doesn't display them interactively to avoid display issues on servers.
+3. **Interactive mode requirements:** When using interactive mode, make sure standard input is available for prompts. Diagnostic plots are attempted when supported, but they are not required for the combined-typology workflow to complete.
 
 4. **Combined type proliferation:** With many domains and many clusters per domain, the number of possible combined types can grow quickly (e.g., 3 domains with 3, 2, 2 clusters = 3×2×2 = 12 possible types). Some types may have very few members. Consider using `merge_sparse_combt_types()` to merge rare types.
 
 5. **Distance computation:** Each domain uses its own distance computation parameters. This allows you to tailor the analysis to each domain's characteristics (e.g., different substitution costs or normalization methods).
 
-## Author
+## See Also
+
+- [Multidomain Overview](/en/multidomain/introduction) maps the multidomain and polyadic workflows.
+- [Typical Workflow](/en/basics/typical-workflow) shows where multidomain analysis fits in the full analysis.
+
+## Authors
 
 Code: Yuqi Liang
 

@@ -43,7 +43,7 @@ get_bic_test(
 | `method` | ✗ | str | Distance method (for example `"OM"`). |
 | `**kwargs` | ✗ | any | Extra distance-method arguments. |
 
-## What It Returns
+## Returns
 
 A NumPy array with BIC-side outputs:
 
@@ -78,6 +78,11 @@ print(bic)
 - Internally this function calls `get_group_differences(..., stat="BIC")`.
 - In multi-sample mode (`s > 0`), returned Bayes-factor columns depend on `BFopt`.
 - The same input constraints apply: exactly two groups among valid cases.
+
+## See Also
+
+- [Section overview](/en/group-comparison/conceptual-guide) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

@@ -1,6 +1,6 @@
 # Tutorial: Linking Life Trajectories to an Outcome with FES
 
-This tutorial shows how to go from life-course sequences to a smaller set of interpretable features that are associated with an outcome, following the workflow in Unterlerchner, Studer, and Gomensoro (2023). You will:
+This workflow turns life-course sequences into a smaller set of interpretable features associated with an outcome, following Unterlerchner, Studer, and Gomensoro (2023). The worked example covers five steps:
 
 1. Prepare `SequenceData`, an outcome, and control covariates.
 2. Load a named settings bundle, called a `preset` in the API (paper-style defaults in one argument).
@@ -11,7 +11,7 @@ This tutorial shows how to go from life-course sequences to a smaller set of int
 The example uses the built-in [Pairfam activity trajectories (month-level)](../datasets/pairfam-activity.md) dataset: 264 monthly observations per person (ages 18 to 40). The original Unterlerchner et al. (2023) paper uses Swiss TREE educational data (access required). Swap in TREE or your own `seqdata`, `outcome`, and `controls` when you have them.
 
 ::: warning Demo vs full replication
-This page walks through how to call each function in order on monthly pairfam activity sequences. That matches the monthly time grid assumed by `preset="unterlerchner2023"` (`timing_bin_width=12.0` = twelve months per bin). It is still not a replication of Unterlerchner (2023): the paper uses TREE educational pathways and income, not pairfam employment states and years of education.
+The code calls each function in order on monthly pairfam activity sequences. That matches the monthly time grid assumed by `preset="unterlerchner2023"` (`timing_bin_width=12.0` = twelve months per bin). It is still not a replication of Unterlerchner (2023): the paper uses TREE educational pathways and income, not pairfam employment states and years of education.
 :::
 
 ## What Is a “Named Settings Bundle”?
@@ -254,7 +254,7 @@ print(validation)
 - Boruta confirmed features may differ from R `Boruta()` with default settings because Sequenzo uses the Python BorutaPy backend. See [Conceptual Guide: Boruta Python vs R](./conceptual-guide.md#boruta-python-vs-r).
 - `time_unit_hint="month"` is metadata only. The `unterlerchner2023` settings bundle also sets `timing_bin_width=12.0`, which is appropriate for this monthly grid.
 - For binary outcomes with binomial residualization, pass `problem_type="classification"`.
-- See [Common mistakes](./conceptual-guide.md#common-mistakes) for additional usage tips.
+- See [Things to keep in mind](./conceptual-guide.md#things-to-keep-in-mind) for additional usage tips.
 
 ## Next Steps
 

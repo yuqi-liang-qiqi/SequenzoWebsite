@@ -76,7 +76,7 @@ The function performs the following steps:
 ### 1. Basic usage after creating combined typology
 
 ```python
-from sequenzo.multidomain.combt import (
+from sequenzo import (
     get_interactive_combined_typology,
     merge_sparse_combt_types
 )
@@ -92,7 +92,7 @@ diss_matrices, membership_df = get_interactive_combined_typology(
 labels = membership_df["CombT"].values
 
 # You need a multidomain distance matrix for merging decisions
-from sequenzo.multidomain.dat import compute_dat_distance_matrix
+from sequenzo import compute_dat_distance_matrix
 distance_matrix = compute_dat_distance_matrix(domains, method_params)
 
 # Merge sparse types
@@ -138,7 +138,7 @@ merged_labels, merge_info = merge_sparse_combt_types(
 For merging combined types, a multidomain distance matrix is recommended:
 
 ```python
-from sequenzo.multidomain.cat import compute_cat_distance_matrix
+from sequenzo import compute_cat_distance_matrix
 
 # Compute multidomain distance matrix using CAT
 md_distance_matrix = compute_cat_distance_matrix(
@@ -259,7 +259,12 @@ However, be cautious about merging if:
 - You're doing exploratory analysis and want to see all possible combinations
 - The merging would combine types that are conceptually very different
 
-## Author
+## See Also
+
+- [Multidomain Overview](/en/multidomain/introduction) maps the multidomain and polyadic workflows.
+- [Typical Workflow](/en/basics/typical-workflow) shows where multidomain analysis fits in the full analysis.
+
+## Authors
 
 Code: Yuqi Liang
 

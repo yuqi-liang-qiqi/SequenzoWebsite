@@ -22,7 +22,7 @@ This workflow follows the methodological logic of Bolano and Studer (2020) and U
 
 Sequenzo implements this workflow in Python and keeps the feature-extraction logic close to the published approach. The main practical difference is in the Boruta selection step. The original R workflow uses R Boruta with a ranger-based random forest and permutation-based importance, whereas Sequenzo relies on the standard [Python BorutaPy package](https://github.com/scikit-learn-contrib/boruta_py), which uses scikit-learn random forests and Gini-based feature importance. Both follow the same Boruta principle of comparing real features with randomized shadow features, but the underlying importance scores are computed differently.
 
-For this reason, Sequenzo and R may not always confirm exactly the same features, even when the same extracted feature matrix and outcome are used. This does not mean that the Python results are wrong; it means that the all-relevant selection step is implemented through a different, standard Boruta backend process. The substantive workflow remains the same: extract interpretable sequence features, select outcome-relevant features, and interpret the selected features carefully. See [Conceptual Guide — Boruta Python vs R](./conceptual-guide.md#boruta-python-vs-r) for details.
+For this reason, Sequenzo and R may not always confirm exactly the same features, even when the same extracted feature matrix and outcome are used. This does not mean that the Python results are wrong; it means that the all-relevant selection step is implemented through a different, standard Boruta backend process. The substantive workflow remains the same: extract interpretable sequence features, select outcome-relevant features, and interpret the selected features carefully. See [Conceptual Guide: Boruta Python vs R](./conceptual-guide.md#boruta-python-vs-r) for details.
 
 ## When Should You Use This Module?
 
@@ -85,13 +85,13 @@ New to this module? Start with the [step-by-step tutorial](./tutorial.md).
 | [`extract_sequence_features()`](./extract-sequence-features.md) | Feature extraction only: duration, timing, and sequencing matrices. No Boruta, no final model. |
 | [`run_feature_extraction_and_selection_pipeline()`](./run-feature-extraction-and-selection-pipeline.md) | Full workflow: extract features, run Boruta, and optionally fit an exploratory final model. |
 | [`select_relevant_features()`](./select-relevant-features.md) | Boruta selection on an existing feature matrix. |
-| [`interpret_selected_features()`](./interpret-selected-features.md#interpret_selected_features) | Summarize confirmed Boruta features by name and index. |
-| [`cluster_correlated_features()`](./interpret-selected-features.md#cluster_correlated_features) | Group correlated selected features before interpretation. |
+| [`interpret_selected_features()`](./interpret-selected-features.md#interpret-selected-features-1) | Summarize confirmed Boruta features by name and index. |
+| [`cluster_correlated_features()`](./interpret-selected-features.md#cluster-correlated-features) | Group correlated selected features before interpretation. |
 | [`clustassoc_like_typology_validation()`](./clustassoc-like-typology-validation.md) | Check whether a clustering solution accounts for a covariate–sequence association, analogous to WeightedCluster `clustassoc()`. |
 
 Helper:
 
-- [`get_feature_extraction_and_selection_config_preset()`](./run-feature-extraction-and-selection-pipeline.md#get_feature_extraction_and_selection_config_preset) — load a named settings bundle from a published workflow. Currently available: `unterlerchner2023`.
+- [`get_feature_extraction_and_selection_config_preset()`](./run-feature-extraction-and-selection-pipeline.md#get-feature-extraction-and-selection-config-preset): load a named settings bundle from a published workflow. Currently available: `unterlerchner2023`.
 
 ## A Typical Workflow
 
@@ -191,12 +191,12 @@ TraMineR provides many of the underlying sequence-analysis concepts, such as sta
 
 ## Included Pages
 
-* [Step-by-step tutorial](./tutorial.md) — link trajectories to an outcome using the Unterlerchner (2023) settings bundle.
-* [Conceptual Guide](./conceptual-guide.md) — duration, timing, sequencing, Boruta, residualization, and common mistakes.
+* [Step-by-step tutorial](./tutorial.md): link trajectories to an outcome using the Unterlerchner (2023) settings bundle.
+* [Conceptual Guide](./conceptual-guide.md): duration, timing, sequencing, Boruta, residualization, and common mistakes.
 * [`extract_sequence_features()`](./extract-sequence-features.md)
 * [`run_feature_extraction_and_selection_pipeline()`](./run-feature-extraction-and-selection-pipeline.md)
 * [`select_relevant_features()`](./select-relevant-features.md)
-* [`interpret_selected_features()`](./interpret-selected-features.md#interpret_selected_features) and [`cluster_correlated_features()`](./interpret-selected-features.md#cluster_correlated_features)
+* [`interpret_selected_features()`](./interpret-selected-features.md#interpret-selected-features-1) and [`cluster_correlated_features()`](./interpret-selected-features.md#cluster-correlated-features)
 * [`clustassoc_like_typology_validation()`](./clustassoc-like-typology-validation.md)
 
 ## Out of Scope in This Module
@@ -218,4 +218,3 @@ Bolano, D., & Studer, M. (2020). The link between previous life trajectories and
 Unterlerchner, L., Studer, M., & Gomensoro, A. (2023). Back to the features. Investigating the relationship between educational pathways and income using sequence analysis and feature extraction and selection approach. *Swiss Journal of Sociology*, 49(2), 417–446.
 
 Kursa, M. B., & Rudnicki, W. R. (2010). Feature selection with the Boruta package. *Journal of Statistical Software*, 36, 1–13.
-

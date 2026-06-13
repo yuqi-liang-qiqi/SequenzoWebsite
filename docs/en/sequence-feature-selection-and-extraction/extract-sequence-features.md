@@ -42,7 +42,7 @@ extract_sequence_features(
 | `seqdata` | ✓ | `SequenceData` | Input sequences. |
 | `state_groups` | ✗ | `dict` / `None` | Map group labels to lists of states. Default: one group per state. |
 | `timing_bin_width` | ✗ | `float` | Bin width in the **same unit as** `seqdata.time` (e.g. `12.0` for monthly grids, `1.0` for yearly age labels). |
-| `time_unit_hint` | ✗ | `"month"` / `"year"` / `"same_as_labels"` | Metadata only; stored in results for reproducibility and self-documentation. Does not change bins—set `timing_bin_width` explicitly. |
+| `time_unit_hint` | ✗ | `"month"` / `"year"` / `"same_as_labels"` | Metadata only; stored in results for reproducibility and self-documentation. Does not change bins; set `timing_bin_width` explicitly. |
 | `timing_include_start` | ✗ | `bool` | Include `START_*` timing features. |
 | `timing_include_end` | ✗ | `bool` | Include `END_*` timing features. |
 | `timing_count_method` | ✗ | `str` | How to count events per bin (default `"any"`). |
@@ -56,7 +56,7 @@ extract_sequence_features(
 | `sequencing_weighted` | ✗ | `bool` | Weighted mining; currently raises `NotImplementedError`. |
 | `ids` | ✗ | `list` / `None` | Row index for output DataFrames. |
 
-## What It Returns
+## Returns
 
 A `dict` with:
 
@@ -112,8 +112,13 @@ features = extract_sequence_features(
 ## Notes
 
 - Sequencing is mined on the **spell-state sequence** (DSS), not the raw panel.
-- `timing_bin_width=12.0` means twelve **time-label units** per bin—not necessarily twelve calendar months unless your grid is monthly.
+- `timing_bin_width=12.0` means twelve **time-label units** per bin, not necessarily twelve calendar months unless your grid is monthly.
 - Weighted sequencing (`sequencing_weighted=True`) is not wired through this entrypoint.
+
+## See Also
+
+- [Section overview](/en/sequence-feature-selection-and-extraction/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

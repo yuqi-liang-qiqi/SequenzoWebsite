@@ -64,7 +64,7 @@ get_sa_kob_decomposition(
 | `min_group_count_per_cluster` | ✗ | `int` | Threshold for common-support warnings. Default: `1`. |
 | `cluster_name_prefix` | ✗ | `str` | Prefix for dummy column names. Default: `"cluster_"`. |
 
-## What It Returns
+## Returns
 
 A `SAKOBDecompositionResult`:
 
@@ -212,6 +212,11 @@ Rowold et al., Table 2 style cluster-by-group table.
 - `fallback_reference` applies to non-cluster controls and coefficients whose owner is `-1`. Neutral clusters use `neutral_cluster_owner` (`0`/`1`) by default, or `None` to route through `fallback_reference`.
 - Scalar `explained` / `unexplained_returns` keep the twofold identity; `by_cluster` uses Yun-normalized attribution.
 - For uncertainty, use [`get_sa_kob_decomposition_bootstrap()`](./get-sa-kob-decomposition-bootstrap).
+
+## See Also
+
+- [Section overview](/en/decomposition/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

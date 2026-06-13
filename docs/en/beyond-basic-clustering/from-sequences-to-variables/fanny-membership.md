@@ -2,7 +2,7 @@
 
 `fanny_membership()` computes a fuzzy membership matrix on a dissimilarity matrix using FANNY (Fuzzy Analysis Clustering). In the Helske et al. (2024) workflow, this matrix feeds **soft classification** or **pseudoclass regression**.
 
-The underlying `fanny()` implementation is a Python port of R `cluster::fanny` (`fanny.c`), including deterministic default initialization and the `caddy` column-reordering step.
+For `k >= 2`, the underlying `fanny()` implementation is a Python port of R `cluster::fanny` (`fanny.c`), including deterministic default initialization and the `caddy` column-reordering step. For `k = 1`, Sequenzo returns the deterministic one-cluster shortcut documented below.
 
 ## Function Usage
 
@@ -22,7 +22,7 @@ fanny_membership(
 
 | Sequenzo | R / packages | Notes |
 | --- | --- | --- |
-| `fanny_membership()` | `cluster::fanny(diss, k, diss=TRUE, memb.exp=m)` | Python port of R `cluster::fanny`; validated in Sequenzo unit tests |
+| `fanny_membership()` | `cluster::fanny(diss, k, diss=TRUE, memb.exp=m)` | Python port of R `cluster::fanny` for tested `k >= 2` cases; `k = 1` is a deterministic Sequenzo shortcut |
 | `m` | `memb.exp` in `fanny` | Helske et al. (2024) use `1.4` |
 | `max_iter`, `tol` | `maxit`, `tol` in `fanny` | Default `tol=1e-15`, same as R |
 | `ini_mem_p` | `iniMem.p` in `cluster::fanny` | Rows must sum to 1 |
@@ -32,7 +32,7 @@ fanny_membership(
 | Parameter | Required | Type | Description |
 | --- | --- | --- | --- |
 | `diss` | ✓ | `ndarray` | Square `(n, n)` distance matrix. |
-| `k` | ✓ | `int` | Number of clusters. Sequenzo follows the R `cluster::fanny` convention: `1 <= k <= n // 2 - 1`. This is an R implementation constraint, not a general fuzzy-clustering bound. For small `n` it is tight — e.g. `n = 4` allows at most `k = 1`; `n = 10` allows at most `k = 4`. |
+| `k` | ✓ | `int` | Number of clusters. For `k >= 2`, Sequenzo follows the R `cluster::fanny` convention: `k <= n // 2 - 1`. This is an R implementation constraint, not a general fuzzy-clustering bound. For `k = 1`, Sequenzo returns the deterministic one-cluster membership matrix directly. |
 | `m` | ✗ | `float` | Fuzziness exponent (`memb_exp` in `fanny`). Must be `> 1`. Default `1.4` (Helske et al. 2024). |
 | `max_iter` | ✗ | `int` | Maximum FANNY iterations. Default `500`. |
 | `tol` | ✗ | `float` | Relative convergence tolerance on the objective. Default `1e-15` (R default). |
@@ -40,7 +40,7 @@ fanny_membership(
 
 There is **no** `random_state` parameter: FANNY initialization is deterministic unless you supply `ini_mem_p`, matching R `cluster::fanny`.
 
-## What It Returns
+## Returns
 
 A tuple `(U, highest_membership_indices)`:
 
@@ -69,7 +69,7 @@ print(U.shape, U.sum(axis=1)[:3])
 ## R Counterpart
 
 - **Closest R function:** `cluster::fanny(diss, k, diss=TRUE, memb.exp=m)`
-- **Mapping note:** Sequenzo's underlying `fanny()` follows R `cluster` `fanny.c`, including the `caddy` column-reordering step and the same `k` bound, default `tol`, and convergence reporting.
+- **Mapping note:** For `k >= 2`, Sequenzo's underlying `fanny()` follows R `cluster` `fanny.c`, including the `caddy` column-reordering step, R's multi-cluster `k` constraint, default `tol`, and convergence reporting. For `k = 1`, Sequenzo uses the deterministic one-cluster shortcut because membership is necessarily all ones.
 
 ## Lower-Level FANNY API
 
@@ -101,8 +101,13 @@ Returns the row index with highest membership in each column of a membership mat
 ## Notes
 
 - Default FANNY initialization follows R when `ini_mem_p` is `None`; there is no random seed to set.
-- For `k == 1`, `fanny()` runs the same iterative routine as R (no Python shortcut). In practice Helske-style workflows use `k >= 2`.
+- For `k == 1`, `fanny()` returns the deterministic one-cluster membership matrix. In practice Helske-style workflows use `k >= 2`, and R-parity tests should be interpreted for the multi-cluster case.
 - Use PAM medoids for representativeness; use FANNY membership for soft classification.
+
+## See Also
+
+- [Section overview](/en/beyond-basic-clustering/from-sequences-to-variables/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

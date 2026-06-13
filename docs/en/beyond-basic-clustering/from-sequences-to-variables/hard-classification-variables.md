@@ -33,7 +33,7 @@ hard_classification_variables(
 | `ids` | ✗ | list / `Index` / `None` | Row index when `as_dataframe=True`. |
 | `as_dataframe` | ✗ | `bool` | If `True`, return a `DataFrame` with columns `C_<label>`; otherwise a NumPy array. |
 
-## What It Returns
+## Returns
 
 `np.ndarray` of shape `(n, K − 1)` or `pd.DataFrame` when `as_dataframe=True`.
 
@@ -72,6 +72,11 @@ print(dummies.shape)
 - The number of unique labels must equal `k`.
 - Categories are ordered by `np.sort(unique(labels))` before applying `reference`.
 - For low-level control over dummy encoding, use [`cluster_labels_to_dummies()`](./cluster-labels-to-dummies.md).
+
+## See Also
+
+- [Section overview](/en/beyond-basic-clustering/from-sequences-to-variables/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

@@ -14,10 +14,16 @@ In the terminology used by Ritschard et al. (2023), CAT is specifically this add
 
 ## Function Usage
 
-A minimal example with only the required parameters:
+A compact distance-matrix example for two domains:
 
 ```python
-result = compute_cat_distance_matrix(channels)
+result = compute_cat_distance_matrix(
+    channels,
+    method="OM",
+    sm=["CONSTANT", "CONSTANT"],
+    indel=1,
+    what="diss",
+)
 ```
 
 A complete example with all available parameters (for advanced customization):
@@ -28,7 +34,7 @@ result = compute_cat_distance_matrix(
     method="OM",                   # optional: dissimilarity measure
     norm="none",                   # optional: normalization method
     indel="auto",                  # optional: insertion/deletion costs
-    sm=None,                       # optional: substitution cost matrices
+    sm=["CONSTANT", "CONSTANT"],   # required for cost/distance output
     with_missing=None,             # optional: whether to consider missing values
     full_matrix=True,              # optional: return full distance matrix
     link="sum",                    # optional: method to link domains ("sum" or "mean")
@@ -48,7 +54,7 @@ result = compute_cat_distance_matrix(
 | `method` | ✗ | `str` | Dissimilarity measure to use when `what="diss"`. Options: `"OM"` (optimal matching), `"LCS"` (longest common subsequence), `"DHD"` (dynamic Hamming distance), `"HAM"` (Hamming distance). Required when `what="diss"`. |
 | `norm` | ✗ | `str` | Normalization method for distances. Options: `"none"`, `"maxlength"`, `"gmean"`, `"maxdist"`. Only used when `what="diss"`. Default = `"none"`. |
 | `indel` | ✗ | `float`, `np.ndarray`, or `list` | Insertion/deletion costs. Can be a single value (applied to all domains and states), a list of values (one per domain), or a list of lists (state-dependent costs per domain). Use `"auto"` to compute automatically. Default = `"auto"`. |
-| `sm` | ✗ | `list[str]` or `list[np.ndarray]` | Substitution cost matrices. Can be a list of method names (e.g., `["TRATE", "CONSTANT"]`) or a list of matrices (2D or 3D arrays for time-varying costs). Required when `what="cost"` or `what="diss"`. Default = `None`. |
+| `sm` | ✗* | `list[str]` or `list[np.ndarray]` | Substitution cost matrices. Can be a list of method names (e.g., `["TRATE", "CONSTANT"]`) or a list of matrices (2D or 3D arrays for time-varying costs). Required when `what="cost"` or `what="diss"`. |
 | `with_missing` | ✗ | `bool` or `list[bool]` | Whether to treat missing values as valid states for each domain. Can be a single value or a list with one value per domain. Default = `None` (automatically detected). |
 | `full_matrix` | ✗ | `bool` | Whether to return the full distance matrix or only the upper triangle. Default = `True`. |
 | `link` | ✗ | `str` | Method to combine costs across domains. Options: `"sum"` (additive) or `"mean"` (average). Default = `"sum"`. |
@@ -57,6 +63,8 @@ result = compute_cat_distance_matrix(
 | `cweight` | ✗ | `list[float]` | Weights for each domain. Used to weight the contribution of each domain to the total cost. If `None`, all domains have equal weight (1.0). Default = `None`. |
 | `what` | ✗ | `str` | What output to return. Options: `"MDseq"` (multidomain sequences), `"cost"` (cost matrices), `"diss"` (distance matrix). Default = `"MDseq"`. |
 | `ch_sep` | ✗ | `str` | Separator used to join states from different domains when building composite state names. Must not appear in any domain's alphabet. Default = `"+"`. |
+
+\*In current Sequenzo releases, provide `sm` explicitly whenever you request CAT costs or distances.
 
 ## What It Does
 
@@ -89,8 +97,7 @@ To see what the combined sequences look like:
 
 ```python
 import pandas as pd
-from sequenzo.define_sequence_data import SequenceData
-from sequenzo.multidomain.cat import compute_cat_distance_matrix
+from sequenzo import SequenceData, compute_cat_distance_matrix
 
 # Domain 1: Employment status
 df1 = pd.DataFrame({
@@ -119,6 +126,7 @@ seqdata_family = SequenceData(
 # Get multidomain sequences
 md_sequences = compute_cat_distance_matrix(
     [seqdata_employment, seqdata_family],
+    sm=["CONSTANT", "CONSTANT"],
     what="MDseq"
 )
 print(md_sequences)
@@ -266,7 +274,12 @@ Returns a pandas DataFrame with pairwise distances between all sequences. The in
 
 5. **Performance:** Computing distances for multidomain sequences can be computationally intensive, especially with many domains and many sequences. The expanded multidomain alphabet can grow quickly as the number of domains and states increases, especially when many state combinations are observed.
 
-## Author
+## See Also
+
+- [Multidomain Overview](/en/multidomain/introduction) maps the multidomain and polyadic workflows.
+- [Typical Workflow](/en/basics/typical-workflow) shows where multidomain analysis fits in the full analysis.
+
+## Authors
 
 Code: Xinyi Li
 

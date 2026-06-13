@@ -38,6 +38,10 @@ compare_groups(
 
 For each subsequence, `compare_groups()` creates a presence/absence indicator showing whether the subsequence occurs in each sequence. It then cross-tabulates this indicator with the group labels and computes a chi-square association statistic. Subsequence patterns are then filtered by the p-value threshold, if provided, and sorted by their strength of association with the grouping variable.
 
+## Returns
+
+`sequenzo.event_sequences.core.SubsequenceList`. SubsequenceList object filtered to discriminating subsequences
+
 ## Example
 
 ```python
@@ -57,6 +61,12 @@ discriminating = compare_groups(
 
 - `group_labels` length must match the number of sequences.
 - `scipy` is required for statistical testing.
+
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
 
 ## Authors
 

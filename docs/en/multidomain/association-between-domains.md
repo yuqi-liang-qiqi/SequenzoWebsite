@@ -70,14 +70,17 @@ The function performs the following steps:
 
 4. **Output formatting:** The results are presented as a DataFrame with one row per domain pair. P-values are marked with significance stars: `*` (p < 0.05), `**` (p < 0.01), `***` (p < 0.001).
 
+## Returns
+
+pd.DataFrame: A result table (rows = domain pairs; columns = df, LRT, v, p-values, etc.), possibly with `strength` and `explanation` columns when `explain=True`. If `cross_table=True`, the cross tables are stored in the `.attrs` dictionary.
+
 ## Examples
 
 ### 1. Basic example: Comparing two domains
 
 ```python
 import pandas as pd
-from sequenzo.define_sequence_data import SequenceData
-from sequenzo.multidomain.association_between_domains import get_association_between_domains
+from sequenzo import SequenceData, get_association_between_domains
 
 # Create data for domain 1: employment status
 df1 = pd.DataFrame({
@@ -117,11 +120,11 @@ result = get_association_between_domains(
 Output:
 
 ```
-📜 Full results table:
+Full results table:
                     df        LRT    p(LRT)        v    p(v)   strength
 Dom1 vs Dom2       1.0  2.345678    0.125  0.342105   0.089  Moderate
 
-📘 Column explanations:
+Column explanations:
   - df       : Degrees of freedom for the test (typically 1 for binary state sequences).
   - LRT      : Likelihood Ratio Test statistic (higher = stronger dependence).
   - p(LRT)   : p-value for LRT + significance stars: * (p<.05), ** (p<.01), *** (p<.001)
@@ -206,7 +209,12 @@ The output DataFrame contains several columns that help you interpret the relati
 
 It's important to note that a statistically significant association (low p-value) doesn't always mean a practically important association. A large sample size can make even very weak associations statistically significant. That's why Cramer's V and the strength label are useful: they tell you about the magnitude of the association, not just whether it exists.
 
-## Author
+## See Also
+
+- [Multidomain Overview](/en/multidomain/introduction) maps the multidomain and polyadic workflows.
+- [Typical Workflow](/en/basics/typical-workflow) shows where multidomain analysis fits in the full analysis.
+
+## Authors
 
 Code: Yuqi Liang
 

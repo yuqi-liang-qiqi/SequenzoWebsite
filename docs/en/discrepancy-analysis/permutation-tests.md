@@ -108,6 +108,11 @@ In practice you usually let the tree functions call this logic for you. Use `tes
 - Association tests and tree fitting can use different `weight_permutation` values on purpose. Check the argument you pass in each call.
 - Bartlett p-values from weighted permutations should be interpreted cautiously. Studer et al. (2011) treat the generalized Levene statistic as the preferred discrepancy-homogeneity tool.
 
+## See Also
+
+- [Section overview](/en/discrepancy-analysis/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
+
 ## Authors
 
 Code: Yuqi Liang

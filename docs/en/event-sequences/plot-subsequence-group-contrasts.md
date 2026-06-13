@@ -87,6 +87,12 @@ plot_subsequence_group_contrasts(
 - **Closest R function:** `plot.subseqelistchisq`
 - **Mapping note:** Residual-based color encoding follows the same visual logic as Figures 3 and 4 in Ritschard et al. (2013).
 
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
+
 ## Authors
 
 Code: Yuqi Liang

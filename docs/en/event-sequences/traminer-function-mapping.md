@@ -25,7 +25,7 @@ For TraMineR users, this is the event-sequence analysis layer (`seqe*` family an
 | [`convert_event_sequences_to_tse`](./convert-event-sequences-to-tse) | `seqe2tse` | Convert event-sequence objects to TSE-style table format. |
 | [`event_sequence_helpers`](./event-sequence-helpers) (`is_event_sequence`, `is_event_sequence_collection`, `get_event_sequence_lengths`, `get_event_sequence_weights`) | `is.eseq`, `is.seqelist`, `seqelength`, `seqeweight` | Helper functions for object checks and metadata access. |
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
 

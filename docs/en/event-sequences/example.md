@@ -1,8 +1,8 @@
 # A Small Worked Example of Event Sequence Analysis
 
-This page gives a small, beginner-friendly example of event sequence analysis in Sequenzo.
+This worked example uses three people to show the basic logic of event sequence analysis in Sequenzo.
 
-The goal is not to cover every function in detail. Instead, the goal is to show the basic logic:
+Rather than covering every function in detail, the example focuses on the basic logic:
 
 1. What the raw event data look like
 2. How to create event sequences
@@ -16,7 +16,7 @@ We use a deliberately small example with only three people.
 Person A: Education -> Full-time work -> Marriage
 Person B: Education -> Full-time work -> Part-time work
 Person C: Education -> Unemployment -> Full-time work
-````
+```
 
 Even this tiny example already shows the key idea of event sequence analysis: we are not only interested in whether events happen, but also in the order in which they happen.
 

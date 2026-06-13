@@ -28,7 +28,7 @@ A `DataFrame` sorted by `hit_count` (descending, when available), then `feature`
 | `index` | Column index in the original `X` matrix. |
 | `hit_count` | Boruta hit count vs shadows when the backend exposes it; usually `None` with BorutaPy. |
 
-With BorutaPy, `hit_count` is usually `None`—this is expected, not a bug. Use `boruta_ranking`, `selected_*`, and `tentative_*` from the selection result for diagnostics.
+With BorutaPy, `hit_count` is usually `None`. This is expected, not a bug. Use `boruta_ranking`, `selected_*`, and `tentative_*` from the selection result for diagnostics.
 
 ### Example
 
@@ -120,11 +120,16 @@ print(clusters[["feature", "cluster_id", "representative_feature"]])
 
 ## Notes
 
-- Pass **selected** features only to `cluster_correlated_features()`—typically `result["X_selected"]` and `result["selected_feature_names"]`.
+- Pass **selected** features only to `cluster_correlated_features()`, typically `result["X_selected"]` and `result["selected_feature_names"]`.
 - With BorutaPy, `interpret_selected_features()` may list `hit_count` as empty for every row; sort by `boruta_ranking` in the original selection result if you need a strength ordering.
 - Average linkage on `1 - |corr|`; distance criterion `t = 1 - abs_corr_threshold`.
 - Empty input (`p = 0`) returns an empty DataFrame with the expected columns.
 - Single-feature input returns one row with `cluster_id = 0`.
+
+## See Also
+
+- [Section overview](/en/sequence-feature-selection-and-extraction/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

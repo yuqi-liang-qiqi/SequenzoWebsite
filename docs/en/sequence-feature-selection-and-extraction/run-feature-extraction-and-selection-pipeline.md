@@ -79,7 +79,7 @@ Returns a frozen `FeatureExtractionAndSelectionConfig` for a **named settings bu
 | `include_controls_in_final_model` | `True` | Add controls to optional final model design matrix. |
 | `fit_final_model` | `False` | Fit exploratory OLS/WLS or logistic model after selection. |
 
-## What It Returns
+## Returns
 
 A `dict` including:
 
@@ -154,9 +154,14 @@ result = run_feature_extraction_and_selection_pipeline(
 
 - Provide **either** `config` **or** `preset`, not both.
 - Multi-class classification: set `residualize_target_with_controls=False` in a custom `config`.
-- Papers often cluster correlated features before interpreting a final regression—use `cluster_correlated_features()` rather than relying on `fit_final_model=True` alone.
+- Papers often cluster correlated features before interpreting a final regression. Use `cluster_correlated_features()` rather than relying on `fit_final_model=True` alone.
 - Requires PyPI package `boruta` (installed with `pip install sequenzo`).
 - With BorutaPy, `hit_counts` and `shadow_hit_counts` in the result are `None`; use `boruta_ranking`, `selected_*`, and `tentative_*` instead.
+
+## See Also
+
+- [Section overview](/en/sequence-feature-selection-and-extraction/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

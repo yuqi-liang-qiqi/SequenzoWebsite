@@ -80,7 +80,7 @@ TraMineR tree functions also accept `max.depth` and `first` as formal argument n
 | `dissdomassoc` | Association between domain-specific distance matrices |
 | `disstreedisplay` / `seqtreedisplay` | Rich tree displays beyond the basic `plot_tree()` helper |
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
 

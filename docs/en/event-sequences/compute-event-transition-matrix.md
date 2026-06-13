@@ -8,7 +8,8 @@
 compute_event_transition_matrix(
     eseq,
     weighted=True,
-    normalize=True
+    normalize=True,
+    use_weights=None
 )
 ```
 
@@ -24,8 +25,9 @@ compute_event_transition_matrix(
 | `event_sequences` (`event_sequences`) | ✓ | EventSequenceData / EventSequenceList | The full event-sequence dataset to summarize. |
 | `weighted` | ✗ | bool | Use sequence weights if available. |
 | `normalize` | ✗ | bool | If `True`, convert counts to row-wise probabilities. |
+| `use_weights` | ✗ | bool / None | Backward-compatible alias for `weighted`. If provided, it overrides `weighted`. |
 
-## What It Returns
+## Returns
 
 A square DataFrame where:
 
@@ -49,6 +51,12 @@ print(tm)
 
 - When `normalize=True`, each non-empty row sums to 1.
 - Use `normalize=False` to get raw weighted counts.
+
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
 
 ## Authors
 

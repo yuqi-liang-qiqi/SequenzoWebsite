@@ -119,11 +119,11 @@ For example, suppose we compare employment trajectories by gender. The method fi
 
 The decomposition is:
 
-1. **Total discrepancy** — how different all sequences are from one another.
-2. **Between-group discrepancy** — the part associated with differences between group centers.
-3. **Within-group discrepancy** — the part that remains among individuals inside the same group.
+1. **Total discrepancy**: how different all sequences are from one another.
+2. **Between-group discrepancy**: the part associated with differences between group centers.
+3. **Within-group discrepancy**: the part that remains among individuals inside the same group.
 
-The group center does not need to be an observed sequence. It plays the same conceptual role as a group mean in ordinary ANOVA.
+The group center does not need to be an observed sequence. It plays the same conceptual role as a group mean in ordinary ANOVA. The center is never constructed explicitly: following Studer et al. (2011), the sums of squared distances to this implicit center are computed directly from the pairwise dissimilarities, so the method works for any distance matrix.
 
 Pseudo R² is the share of total discrepancy explained by the grouping variable. A larger pseudo R² means that group membership accounts for a larger share of trajectory differences.
 

@@ -96,6 +96,12 @@ eseq = EventSequenceData.from_state_sequences(
 - When `event_representation` is an array-like transition definition, it plays a role similar to TraMineR's `tevent` transition matrix; when it is a string such as `"state"`, it uses a built-in conversion rule.
 - Event names with `(`, `)` or `,` may make subsequence string matching harder.
 
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
+
 ## Authors
 
 Code: Yuqi Liang

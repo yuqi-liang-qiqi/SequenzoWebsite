@@ -70,6 +70,10 @@ Typical questions include:
 
 For example, in life course research, we may ask whether people tend to leave home before entering a union, whether childbirth follows marriage, or whether part-time work tends to appear after childbirth. In career research, we may ask whether education is followed by full-time employment, whether unemployment interrupts work trajectories, or whether promotion tends to occur after job changes.
 
+## How This Section Is Organized
+
+The sidebar groups this section by task. [Mine Event Patterns](/en/event-sequences/create-event-sequences) covers building event sequences and finding, counting, and comparing frequent subsequences. [Convert and Inspect](/en/event-sequences/convert-event-sequences-to-tse) covers format conversion and transition checks. [Visualize Event Patterns](/en/event-sequences/plot-event-sequences) covers the five event plots. The same order is expanded step by step below.
+
 ## The Basic Workflow
 
 A typical event-sequence workflow in Sequenzo has four steps.
@@ -213,6 +217,12 @@ In short:
 Patterns of events -> event_sequences
 Modeling transitions or hazards -> with_event_history_analysis
 ```
+
+## See Also
+
+- [Quickstart Example](/en/event-sequences/example) runs a complete event-mining analysis.
+- [Create Event Sequences](/en/event-sequences/create-event-sequences) is the first function in the workflow.
+- [Basic Concepts](/en/tutorials/basic-concepts) explains the state-sequence side of the comparison.
 
 ## Reference
 

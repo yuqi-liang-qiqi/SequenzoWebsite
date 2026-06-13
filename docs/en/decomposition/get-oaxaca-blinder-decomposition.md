@@ -39,7 +39,7 @@ Differences worth noting at the engine level:
 - When `normalize_categorical=True`, categorical terms use Yun normalization and populate `by_category`.
 - `owner_by_category_by_term` implements cluster-specific reference coefficients (Rowold et al., option III).
 
-## What It Returns
+## Returns
 
 A `KOBDecompositionResult` with:
 
@@ -101,6 +101,11 @@ print(result.by_column)
 - Positive `total_gap` means `group0` has the higher mean outcome.
 - With `reference="pooled"`, reference coefficients come from OLS on the pooled sample without a group indicator.
 - Scalar `explained` and `unexplained_returns` always satisfy the twofold identity; normalized `by_category` sums may differ slightly.
+
+## See Also
+
+- [Section overview](/en/decomposition/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

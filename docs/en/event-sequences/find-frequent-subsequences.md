@@ -1,6 +1,17 @@
 # `find_frequent_subsequences()`
 
-`find_frequent_subsequences()` finds event patterns that appear often enough in your event sequences.
+`find_frequent_subsequences()` finds event patterns that appear often enough in your event sequences. It is the core mining step of this section: you set a support threshold (a minimum number or share of sequences that must contain a pattern), and the function returns every subsequence that clears it.
+
+## What It Does
+
+- Searches the event sequences for subsequences whose support reaches `min_support` (count) or `min_support_ratio` (share).
+- How support is counted depends on `search_constraint`; with timestamps, the constraint can also restrict matches by time span or by the gap between events.
+- With `target_subsequences`, it skips discovery and counts only the patterns you name.
+- Returns a `SubsequenceList` that downstream functions such as [`compare_groups()`](/en/event-sequences/compare-groups) and the plotting functions consume.
+
+## Returns
+
+`sequenzo.event_sequences.core.SubsequenceList`. SubsequenceList object with frequent subsequences
 
 ## Function Usage
 
@@ -36,11 +47,6 @@ find_frequent_subsequences(
 | `max_k` | ✗ | int | Maximum number of events in a subsequence (`-1` means no limit). |
 | `weighted` | ✗ | bool | Use sequence weights if available. |
 
-## What It Does
-
-- Scans event sequences for recurring subsequences.
-- Keeps only subsequences that pass your support threshold.
-- Returns a `SubsequenceList` with support and count information.
 
 ## Examples
 
@@ -70,6 +76,12 @@ fsubseq = find_frequent_subsequences(
 - If timestamps are available, `search_constraint` can restrict matches by time span or time gap.
 - Support depends on the counting rule. For example, a presence-based rule counts whether a sequence contains the subsequence, while an occurrence-based rule may count repeated occurrences.
 - Weighted support uses sequence weights from `event_sequences`.
+
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
 
 ## Authors
 

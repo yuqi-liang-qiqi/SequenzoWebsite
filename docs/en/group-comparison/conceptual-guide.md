@@ -1,5 +1,7 @@
 # Comparing Predefined Groups of Sequences with BIC and LRT
 
+> **Note**: Sequenzo currently implements the two-group case. For three or more groups, compare theoretically meaningful pairs of groups.
+
 Sequence analysis is often used to describe and compare trajectories. In many applications, however, we are not only interested in what sequences typically look like. We also want to know whether sequences differ systematically between predefined groups, such as men and women, urban and rural populations, birth cohorts, regions, or treatment groups.
 
 For example, we may ask:
@@ -47,7 +49,7 @@ The BIC/LRT comparison rests on the idea of a sequence gravity centre. A gravity
 
 It should not be read as a simple average sequence. States are categorical, so we cannot average trajectories the way we average income, age, or test scores. It should also not be confused with a medoid. A medoid is an actually observed sequence chosen as most representative of a group. A gravity centre, by contrast, is a hypothetical centre defined so that the total distance from all sequences in the group to that centre is minimized, given the selected distance measure and any weighting or sampling procedure used in the comparison. It need not appear as any row in your dataset.
 
-In simple terms, the gravity centre is the point around which a set of sequences is most tightly organized as “distance” is defined for your analysis.
+In simple terms, the gravity centre is the point around which a set of sequences is most tightly organized as distance is defined for your analysis.
 
 For example, take one group of employment sequences. Some people move quickly from education to full-time work; others pass through unemployment, part-time work, or parental leave. The gravity centre summarizes the central tendency of those trajectories not by averaging states, but by locating the centre that minimizes summed distances from itself to every observed sequence.
 
@@ -62,7 +64,7 @@ If the two groups are very similar, one common centre should describe the pooled
 
 This is the core intuition. The LRT assesses whether that reduction is larger than would be expected by chance. Delta BIC asks whether the gain is large enough to justify the more complex two-centre representation.
 
-A useful analogy is the mean for ordinary numerical outcomes. When comparing two income groups, we might ask whether one overall mean suffices or whether each group needs its own mean. Full sequence vectors cannot be averaged like scalars; nevertheless, the gravity centre plays a similar organisational role to the mean — it supplies a distance-based centre for a bundle of categorical trajectories. It is not “the mean trajectory” in a literal sense.
+A useful analogy is the mean for ordinary numerical outcomes. When comparing two income groups, we might ask whether one overall mean suffices or whether each group needs its own mean. Full sequence vectors cannot be averaged like scalars; nevertheless, the gravity centre plays a similar organisational role to the mean. It supplies a distance-based centre for a bundle of categorical trajectories. It is not the mean trajectory in a literal sense.
 
 ## The basic idea
 
@@ -96,7 +98,7 @@ The Bayesian information criterion (BIC) is a widely used model-comparison crite
 
 BIC and likelihood-ratio tests (LRTs) are both commonly used in model comparison, but they answer different questions. The LRT is usually used to test whether a more flexible model fits significantly better than a simpler version of the same model. BIC is usually used to compare alternative models by balancing model fit against model complexity. They can be reported together, but they should not be understood as a single combined test.
 
-Liao and Fasang (2021) adapt this logic to sequence analysis by comparing a one-group model with a two-group model framed around*gravity centres. The LRT speaks to statistical significance (whether the two-group representation improves fit beyond chance). Delta BIC speaks to degrees of difference or levels of evidence for preferring the two-group model over the one-group model — closer to how they discuss substantive versus statistical significance in their overview.
+Liao and Fasang (2021) adapt this logic to sequence analysis by comparing a one-group model with a two-group model framed around *gravity centres*. The LRT speaks to statistical significance (whether the two-group representation improves fit beyond chance). Delta BIC speaks to degrees of difference or levels of evidence for preferring the two-group model over the one-group model, closer to how they discuss substantive versus statistical significance in their overview.
 
 Compared with a p-value, Delta BIC is more useful for assessing the strength of evidence for treating the groups as distinct. It is not an effect size in the conventional sense (such as Cohen’s *d*). It plays an effect-size-like role in interpretation only insofar as larger positive values indicate stronger support for separate group gravity centres.
 
@@ -108,12 +110,12 @@ Following Kass and Raftery (1995) and the scale used by Liao and Fasang (2021, T
 
 | Delta BIC | Interpretation |
 | --- | --- |
-| 0–2 | Negligible evidence (“not worth more than a bare mention”) |
+| 0–2 | Negligible evidence |
 | 2–6 | Positive evidence |
 | 6–10 | Strong evidence |
 | Greater than 10 | Very strong evidence |
 
-**Negative Delta BIC** can appear in empirical tables (for example, values such as −0.6 or −1.2). That is not an error: it means evidence favours the one-group model — under this distance setup, there is little support for treating the two predefined groups as distinct sequence populations.
+**Negative Delta BIC** can appear in empirical tables (for example, values such as −0.6 or −1.2). That is not an error. It means evidence favours the one-group model under this distance setup, with little support for treating the two predefined groups as distinct sequence populations.
 
 In practice, read LRT and Delta BIC together: statistical detectability (LRT) and strength of evidence for the two-group model (Delta BIC).
 
@@ -123,7 +125,7 @@ Before comparing two groups, we first need to decide what it means for two seque
 
 Different distance measures capture different aspects of sequence difference. Some measures are more sensitive to timing, some to duration, some to sequencing, and some to state substitution.
 
-It is important to note that, in Liao and Fasang’s applications, timing, duration, and ordering are approached by choosing distance measures that emphasize those aspects not by having BIC or LRT decompose group differences into timing versus duration versus order. `get_group_differences()` does not extract those dimensions automatically. It answers: *under this distance definition, is there evidence that the two predefined groups differ?*
+In Liao and Fasang’s applications, timing, duration, and ordering are approached by choosing distance measures that emphasize those aspects, not by having BIC or LRT decompose group differences into timing versus duration versus order. `get_group_differences()` does not extract those dimensions automatically. It answers: *under this distance definition, is there evidence that the two predefined groups differ?*
 
 The test result inherits the meaning of the distance measure. Therefore, changing the distance measure changes the substantive question being tested. For example, a timing-sensitive setup asks about group differences as timing-sensitive distances define them; a duration-sensitive setup asks a different question.
 
@@ -133,9 +135,9 @@ For example:
 - A duration-sensitive distance asks whether groups spend different amounts of time in states as that distance encodes duration.
 - An order-sensitive distance asks whether groups arrange states in different sequences according to that ordering-sensitive metric.
 
-Therefore, always interpret BIC/LRT results together with the chosen distance and its parameters. A significant LRT or a large positive Delta BIC means the groups differ according to that definition of difference, not that the procedure has separately identified “how much” is timing versus duration versus order.
+Therefore, always interpret BIC/LRT results together with the chosen distance and its parameters. A significant LRT or a large positive Delta BIC means the groups differ according to that definition of difference, not that the procedure has separately identified how much is timing versus duration versus order.
 
-The same two groups may appear different under one distance measure but similar under another. That is informative: it suggests group differences along some sequence dimensions more than others as revealed by your distance choices, not by an automatic decomposition inside the test.
+The same two groups may appear different under one distance measure but similar under another. That is informative. It suggests group differences along some sequence dimensions more than others as revealed by your distance choices, not by an automatic decomposition inside the test.
 
 ## When to use this method
 
@@ -156,9 +158,9 @@ This method is not designed to discover groups automatically. If your goal is to
 
 The `sequenzo.group_comparison` module exposes three functions:
 
-- **`get_group_differences()`** — main entry: choose `stat="all"` for both LRT and BIC, or `"LRT"` / `"BIC"` for one side.
-- **`get_lrt_test()`** — shortcut that runs the same comparison but returns only the LRT and p-value columns.
-- **`get_bic_test()`** — shortcut that returns only the BIC-related columns (delta BIC and Bayes-factor outputs).
+- **`get_group_differences()`**. Main entry: choose `stat="all"` for both LRT and BIC, or `"LRT"` / `"BIC"` for one side.
+- **`get_lrt_test()`**. Shortcut that runs the same comparison but returns only the LRT and p-value columns.
+- **`get_bic_test()`**. Shortcut that returns only the BIC-related columns (delta BIC and Bayes-factor outputs).
 
 A typical workflow has four steps.
 
@@ -179,7 +181,7 @@ seqdata = SequenceData(
 ### Step 2: Choose the distance setup and compare two predefined groups
 
 The BIC/LRT comparison computes distances internally from `seqdata`.  
-You should still decide the distance method and parameters because they define what "difference" means.
+You should still decide the distance method and parameters because they define what difference means.
 
 Suppose the dataset contains a grouping variable called `group`. A similar column in a dataset might be "gender" or "region".
 
@@ -200,7 +202,7 @@ result = get_group_differences(
 print(result)
 ```
 
-The returned object is typically a **numeric table** (column names such as `LRT`, `p-value`, `Delta BIC`, and Bayes-factor outputs; exact columns can depend on `stat`, resampling, and `BFopt`). Below is a **fabricated illustration** only — your numbers will differ:
+The returned object is typically a **numeric table** (column names such as `LRT`, `p-value`, `Delta BIC`, and Bayes-factor outputs; exact columns can depend on `stat`, resampling, and `BFopt`). The table below is a fabricated illustration only. Your numbers will differ.
 
 ```text
        LRT  p-value  Delta BIC  Bayes Factor
@@ -209,9 +211,9 @@ The returned object is typically a **numeric table** (column names such as `LRT`
 
 How you might read this toy row:
 
-- **LRT / p-value:** *p* = 0.002 suggests a statistically detectable improvement when moving from one pooled gravity centre to two group-specific centres — **under this distance setup**.
-- **Delta BIC = 4.81:** falls in the **positive evidence** band (2–6), but **not** yet “strong” (6–10): groups look distinguishable, but evidence is **moderate**, not overwhelming — **still under this distance definition**.
-- **Next steps:** inspect plots and run **robustness checks** (alternative distances, sensitivity of substitution costs, etc.).
+- **LRT / p-value:** *p* = 0.002 suggests a statistically detectable improvement when moving from one pooled gravity centre to two group-specific centres under this distance setup.
+- **Delta BIC = 4.81:** falls in the **positive evidence** band (2–6), but not yet the strong evidence band (6–10). Groups look distinguishable, but the evidence is moderate under this distance definition.
+- **Next steps:** inspect plots and run **sensitivity checks** (alternative distances, sensitivity of substitution costs, etc.).
 
 ### Step 3: Interpret the result
 
@@ -219,20 +221,20 @@ Read the output in three layers: statistical detectability, strength of evidence
 
 First, look at the LRT and its p-value. The LRT contrasts the one-group model with the two-group model framed around sequence gravity centres. A small p-value means that allowing the two predefined groups to have separate sequence gravity centres improves the fit more than would be expected by chance. In other words, the two predefined groups are statistically distinguishable under the chosen distance measure.
 
-Second, look at Delta BIC. Delta BIC summarizes the strength of evidence for the two-group model relative to the one-group model. A positive Delta BIC favours the two-group model. Negative values favour the one-group model — see [What the BIC difference tells you](#what-the-bic-difference-tells-you) above for a fuller reading. Larger positive values indicate stronger support for treating the groups as distinct sequence populations (still under that distance).
+Second, look at Delta BIC. Delta BIC summarizes the strength of evidence for the two-group model relative to the one-group model. A positive Delta BIC favours the two-group model. Negative values favour the one-group model. See [What the BIC difference tells you](#what-the-bic-difference-tells-you) above for a fuller reading. Larger positive values indicate stronger support for treating the groups as distinct sequence populations (still under that distance).
 
 The interpretation scale aligned with Kass and Raftery (1995) and Table 1 in Liao and Fasang (2021) is:
 
 | Delta BIC | Interpretation |
 | --- | --- |
-| 0–2 | Negligible evidence (“not worth more than a bare mention”) |
+| 0–2 | Negligible evidence |
 | 2–6 | Positive evidence |
 | 6–10 | Strong evidence |
 | Greater than 10 | Very strong evidence |
 
 Third, tie the result to the distance measure. The procedure does not automatically report whether differences are driven by timing, duration, ordering, or state composition. It tells you whether groups differ as defined by the distance and its parameters. For instance, if you deliberately use a timing-sensitive distance, a large positive Delta BIC supports evidence of group differences in that timing-sensitive sense; with a duration-sensitive distance, you address group contrasts as duration is encoded in that metric.
 
-Read LRT and Delta BIC together. A significant LRT with a small Delta BIC suggests the gap is detectable but evidence for a distinct two-group gravity-centre structure may remain modest. A significant LRT with a large Delta BIC supports a stronger claim that the two predefined populations differ as captured by this distance. If the LRT is not significant and Delta BIC is near zero or negative, there is little reason — under this specification — to treat the groups as substantively distinct.
+Read LRT and Delta BIC together. A significant LRT with a small Delta BIC suggests the gap is detectable but evidence for a distinct two-group gravity-centre structure may remain modest. A significant LRT with a large Delta BIC supports a stronger claim that the two predefined populations differ as captured by this distance. If the LRT is not significant and Delta BIC is near zero or negative, there is little reason under this specification to treat the groups as substantively distinct.
 
 Worked wording example:
 
@@ -251,7 +253,7 @@ At minimum, include:
 
 A concise reporting template might read:
 
-> We compared the two predefined groups using the BIC/LRT sequence comparison procedure with [distance method and parameters]. The LRT indicated [statistical / no statistical] evidence of group difference; Delta BIC indicated [negligible / positive / strong / very strong] evidence for the two-group model relative to the one-group model under this distance definition. Thus the groups appear [not clearly / moderately / strongly] distinguishable as that distance defines difference; we supplemented this with sequence visualizations and [briefly list robustness checks].
+> We compared the two predefined groups using the BIC/LRT sequence comparison procedure with [distance method and parameters]. The LRT indicated [statistical / no statistical] evidence of group difference; Delta BIC indicated [negligible / positive / strong / very strong] evidence for the two-group model relative to the one-group model under this distance definition. Thus the groups appear [weakly / moderately / strongly] distinguishable as that distance defines difference; we supplemented this with sequence visualizations and [robustness checks used].
 
 This keeps conclusions transparent and aligns statistical claims with both evidence strength and the meaning of the chosen distance.
 
@@ -261,7 +263,7 @@ The BIC/LRT comparison should not be read mechanically. Statistical significance
 
 ## Summary
 
-The BIC/LRT group comparison is best understood as a confirmatory complement to sequence visualization. It does not discover sequence types. Instead, under a chosen distance measure, it asks whether two theoretically predefined groups differ enough to justify separate sequence gravity centres rather than a single pooled centre. The LRT targets statistical detectability of that improvement; Delta BIC summarizes how strongly the data support the two-group representation — not an effect size in the classical sense, but a graded measure of evidence. Because results inherit the meaning of the distance, interpretation should always combine test output with the distance specification, visual inspection, and sensitivity analyses.
+The BIC/LRT group comparison is best understood as a confirmatory complement to sequence visualization. It does not discover sequence types. Instead, under a chosen distance measure, it asks whether two theoretically predefined groups differ enough to justify separate sequence gravity centres rather than a single pooled centre. The LRT targets statistical detectability of that improvement; Delta BIC summarizes how strongly the data support the two-group representation. It is not an effect size in the classical sense, but a graded measure of evidence. Because results inherit the meaning of the distance, interpretation should always combine test output with the distance specification, visual inspection, and sensitivity analyses.
 
 *Author: Yuqi Liang*
 

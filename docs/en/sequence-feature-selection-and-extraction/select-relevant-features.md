@@ -45,7 +45,7 @@ Underlying engine: BorutaPy + sklearn random forest (Gini importance), not R ran
 | `random_state` | ✗ | `int` / `None` | Random seed for the forest (default `42`). |
 | `verbose` | ✗ | `bool` | Print Boruta progress. |
 
-## What It Returns
+## Returns
 
 A `dict` with:
 
@@ -98,6 +98,11 @@ Residualize `y` on controls before calling this function if you follow Bolano an
 - Requires PyPI package `boruta` (`pip install sequenzo`).
 - Default random forest uses `n_estimators=800` inside the Boruta wrapper unless you extend `select_all_relevant_features_boruta` with a custom estimator (not exposed on this entrypoint).
 - With BorutaPy, `hit_counts` and `shadow_hit_counts` are `None`. Use `boruta_ranking`, `selected_*`, and `tentative_*` for diagnostics.
+
+## See Also
+
+- [Section overview](/en/sequence-feature-selection-and-extraction/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

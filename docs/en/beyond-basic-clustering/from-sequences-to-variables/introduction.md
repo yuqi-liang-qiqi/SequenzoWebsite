@@ -8,20 +8,20 @@ That workflow is intuitive, but it treats cluster membership as if it were a fix
 
 Sequenzo splits clustering documentation into two places on purpose.
 
-**[Core Functions of Typical Workflow](../../function-library/introduction.md)** covers the standard sequence-analysis pipeline most users start with: build [`SequenceData`](../../function-library/sequence-data.md), compute a distance matrix, then cluster with [`Cluster`](../../function-library/hierarchical-clustering.md) or [`KMedoids`](../../function-library/KMedoids.md), assess quality with [`ClusterQuality`](../../function-library/cluster-quality.md), and inspect results with [`ClusterResults`](../../function-library/cluster-results.md).
+**[Function Reference](../../function-library/introduction.md)** covers the standard sequence-analysis pipeline most users start with: build [`SequenceData`](../../function-library/sequence-data.md), compute a distance matrix, then cluster with [`Cluster`](../../function-library/hierarchical-clustering.md) or [`KMedoids`](../../function-library/KMedoids.md), assess quality with [`ClusterQuality`](../../function-library/cluster-quality.md), and inspect results with [`ClusterResults`](../../function-library/cluster-results.md).
 
-The top-level **Clustering** section in the sidebar is for **additional clustering-related workflows** that go beyond that typical path — for example, turning a clustering solution into regression covariates (this module), and other clustering extensions as they are documented. If you are new to Sequenzo, start with Core Functions; return here when you already have a distance matrix and cluster solution and need Helske-style variables for downstream modelling.
+The **Advanced Clustering and Typologies** section in the sidebar is for **additional clustering-related workflows** that go beyond that typical path. Examples include turning a clustering solution into regression covariates (this module), and other clustering extensions as they are documented. If you are new to Sequenzo, start with the Function Reference; return here when you already have a distance matrix and cluster solution and need Helske-style variables for downstream modelling.
 
 The `sequenzo.clustering.sequences_to_variables` module implements the regression-ready variable constructions described by Helske, Helske, and Chihaya (2024). It turns a distance matrix and a clustering solution into covariates you can use in standard regression models:
 
-- **Representativeness** — continuous measures of how close each sequence is to each representative (typically a PAM medoid).
-- **Hard classification** — cluster membership encoded as `K − 1` dummy variables with one reference category omitted.
-- **Soft classification** — fuzzy membership degrees encoded as `K − 1` continuous predictors with one reference omitted.
-- **Pseudoclass regression** — repeated random hard assignments from membership probabilities, with coefficients combined by Rubin's rules.
+- **Representativeness**: continuous measures of how close each sequence is to each representative (typically a PAM medoid).
+- **Hard classification**: cluster membership encoded as `K − 1` dummy variables with one reference category omitted.
+- **Soft classification**: fuzzy membership degrees encoded as `K − 1` continuous predictors with one reference omitted.
+- **Pseudoclass regression**: repeated random hard assignments from membership probabilities, with coefficients combined by Rubin's rules.
 
 Most functions in this module do **not** compute distances, choose `k`, or fit the final substantive model. The exception is [`pseudoclass_regression()`](./pseudoclass-regression.md), which fits repeated OLS or logit models as part of the pseudoclass procedure. Otherwise, these functions assume you already have a square dissimilarity matrix and, for most workflows, a `KMedoids` result or a membership matrix from FANNY.
 
-For the conceptual background — when hard labels are misleading, how representativeness differs from soft membership, and how to choose an approach — see the [Conceptual Guide](./conceptual-guide.md).
+For the conceptual background (when hard labels are misleading, how representativeness differs from soft membership, and how to choose an approach), see the [Conceptual Guide](./conceptual-guide.md).
 
 The key choice is whether the outcome is assumed to be **class-dependent** or **similarity-based**. If the outcome depends mainly on membership in a small number of real trajectory types, hard or soft classification may be appropriate. If the outcome varies gradually with closeness to ideal trajectories, representativeness is usually more appropriate.
 
@@ -64,7 +64,7 @@ These workflows can be combined. For example, you might cluster for description,
 Most pages assume that you already have:
 
 1. A square symmetric distance matrix from [`get_distance_matrix()`](../../function-library/get-distance-matrix.md), with zeros on the diagonal and no `NA` values.
-2. A clustering solution on that same matrix — usually from [`KMedoids`](../../function-library/KMedoids.md) with `method="PAMonce"`.
+2. A clustering solution on that same matrix, usually from [`KMedoids`](../../function-library/KMedoids.md) with `method="PAMonce"`.
 3. An outcome vector (and optional other covariates) aligned row-for-row with the distance matrix.
 4. A clear substantive reason for the number of clusters `K` and the choice of representatives (medoids).
 
@@ -128,7 +128,7 @@ U, _ = fanny_membership(diss, k=5, m=1.4)
 X_soft = soft_classification_variables(U, reference=0, as_dataframe=True, ids=seqdata.ids)
 ```
 
-Helske et al. (2024) use membership exponent `m = 1.4`. The second return value of `fanny_membership` is `highest_membership_indices` — the row with highest membership in each cluster column. These are **not** PAM medoids and must not be passed to `representativeness_matrix`.
+Helske et al. (2024) use membership exponent `m = 1.4`. The second return value of `fanny_membership` is `highest_membership_indices`, the row with highest membership in each cluster column. These are **not** PAM medoids and must not be passed to `representativeness_matrix`.
 
 ### Pseudoclass (requires `statsmodels`)
 
@@ -154,8 +154,8 @@ print(fit["beta_combined"], fit["se_combined"])
 | Representativeness formula | `R_i^k = 1 − d(i, medoid_k) / d_max`. Values are clipped to `[0, 1]` as a numerical safeguard; when `d_max` is the maximum pairwise distance, the formula already lies in this range. Values do **not** sum to 1 across `k`. |
 | `d_max` | Defaults to the maximum **off-diagonal** entry of `diss` via `max_distance()`. |
 | Reference category | Hard and soft builders omit one cluster column (`reference=0` drops the first cluster in sorted label order). |
-| FANNY | `fanny_membership` wraps `fanny` with `memb_exp=m` and R-style column reordering (`caddy`). Python port of R `cluster::fanny`; deterministic initialization; validated in Sequenzo unit tests. |
-| `k` constraint in FANNY | Sequenzo follows R `cluster::fanny`: `1 <= k <= n // 2 - 1`. This is an R implementation bound, not a general fuzzy-clustering limit. |
+| FANNY | `fanny_membership` wraps `fanny` with `memb_exp=m` and R-style column reordering (`caddy`). Python port of R `cluster::fanny` for `k >= 2`; deterministic initialization; validated in Sequenzo unit tests. |
+| `k` constraint in FANNY | For `k >= 2`, Sequenzo follows R `cluster::fanny`: `k <= n // 2 - 1`. For `k = 1`, Sequenzo returns the deterministic one-cluster membership matrix directly. |
 | Pseudoclass | Requires `K >= 2`. Draws categorical labels from each row of `U`, fits `M` models, combines variances with Rubin's rules. Requires `statsmodels`. |
 | CLARA representativeness | WeightedCluster `seqclararange(..., method="representativeness")` uses the same `1 − d / max.dist` idea inside CLARA; `representativeness_matrix` is the standalone matrix builder on fixed medoids. |
 
@@ -165,7 +165,7 @@ print(fit["beta_combined"], fit["se_combined"])
 | --- | --- | --- |
 | `representativeness_matrix()` | Helske et al. (2024); WeightedCluster `seqclararange(..., method="representativeness")` | No single TraMineR function |
 | `hard_classification_variables()` | Helske et al. (2024) Table 1 hard classification | R workflows usually build dummies manually |
-| `fanny_membership()` | `cluster::fanny(diss, k, diss=TRUE, memb.exp=m)` | Port of R `cluster` FANNY |
+| `fanny_membership()` | `cluster::fanny(diss, k, diss=TRUE, memb.exp=m)` | Port of R `cluster` FANNY for `k >= 2`; deterministic one-cluster shortcut for `k = 1` |
 | `soft_classification_variables()` | Helske et al. (2024) Table 1 soft classification | Omits reference membership column |
 | `pseudoclass_regression()` | Helske et al. (2024) pseudoclass + Rubin (2004) | Not packaged in WeightedCluster |
 | `medoid_indices_from_kmedoids_result()` | Interpreting `wcKMedoids` / `KMedoids` medoid index vector | Converts 1-based medoid indices to sorted 0-based medoid rows |
@@ -173,13 +173,13 @@ print(fit["beta_combined"], fit["se_combined"])
 
 ## Included Pages
 
-- [Conceptual Guide](./conceptual-guide.md) — theory, method choice, and interpretation
+- [Conceptual Guide](./conceptual-guide.md): theory, method choice, and interpretation
 - [`representativeness_matrix()`](./representativeness-matrix.md)
 - [`hard_classification_variables()`](./hard-classification-variables.md)
 - [`fanny_membership()`](./fanny-membership.md)
 - [`soft_classification_variables()`](./soft-classification-variables.md)
 - [`pseudoclass_regression()`](./pseudoclass-regression.md)
-- [KMedoids result helpers](./medoid-indices-from-kmedoids-result.md) — `medoid_indices_from_kmedoids_result`, `cluster_labels_from_kmedoids_result`
+- [KMedoids result helpers](./medoid-indices-from-kmedoids-result.md): `medoid_indices_from_kmedoids_result`, `cluster_labels_from_kmedoids_result`
 - [`max_distance()`](./max-distance.md)
 - [`cluster_labels_to_dummies()`](./cluster-labels-to-dummies.md)
 

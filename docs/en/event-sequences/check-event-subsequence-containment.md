@@ -26,7 +26,7 @@ check_event_subsequence_containment(
 | `target_subsequence` (`target_pattern`) | ✓ | EventSequence / str | The pattern to look for, either as an object or a string like `"(A)-(B,C)"`. |
 | `search_constraint` | ✗ | EventSequenceConstraint | Time and counting constraints. |
 
-## What It Returns
+## Returns
 
 A boolean pandas Series:
 
@@ -46,6 +46,12 @@ contains = check_event_subsequence_containment(
 
 - **Closest R function:** `seqecontain`
 - **Mapping note:** Both functions check whether event sequences contain specified subsequence patterns. In Sequenzo, the target pattern can be provided as a string or an event-sequence object.
+
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
 
 ## Authors
 

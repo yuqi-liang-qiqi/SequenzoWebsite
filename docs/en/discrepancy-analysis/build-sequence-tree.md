@@ -56,7 +56,7 @@ sequence_tree(
 | `squared` | ✗ | `bool` | If `True`, use exponent v = 2 on dissimilarities before tree fitting. Default: `False` (v = 1). |
 | `first_split` | ✗ | `str` | Optional predictor name forced at the root split. |
 
-## What It Returns
+## Returns
 
 The return object has the same structure as `distance_tree()`, with two sequence-specific additions:
 
@@ -133,6 +133,11 @@ plot_tree(tree)
 - All helper functions documented for `distance_tree()` also work on the object returned here.
 - By default, Sequenzo uses nonsquared dissimilarities (v = 1). Set `squared=True` mainly when the dissimilarity is Euclidean, or as a sensitivity check.
 - Use `weight_permutation="diss"` for survey or calibration weights. The default `"replicate"` matches TraMineR and is appropriate only for integer frequency weights.
+
+## See Also
+
+- [Section overview](/en/discrepancy-analysis/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

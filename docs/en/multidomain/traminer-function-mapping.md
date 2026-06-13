@@ -46,7 +46,7 @@ These strategies differ in what is combined: states, costs, distances, or typolo
 - Use `get_association_between_domains()` to diagnose state co-occurrence. For DAT, trajectory association is more directly assessed by correlating domain-specific distance matrices.
 - In papers/reports, always name the strategy explicitly (IDCD/CAT/DAT/CombT), because assumptions differ.
 
-## Author
+## Authors
 
 Documentation: Yuqi Liang
 

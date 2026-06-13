@@ -62,7 +62,7 @@ Plus bootstrap-specific parameters:
 
 See the [SA–KOB page](./get-sa-kob-decomposition) for the full parameter table (`y`, `group`, `cluster_labels`, `k`, silhouette filtering, …).
 
-## What It Returns
+## Returns
 
 A `SAKOBBootstrapResult`:
 
@@ -143,6 +143,11 @@ print(f"Explained: {boot.point_estimate.explained:.4f} [{lo:.4f}, {hi:.4f}]")
 - With `recompute_owners_each_draw=False`, coefficient owners are frozen from the point estimate; faster but ignores owner uncertainty.
 - Stratified bootstrap keeps original group sizes per draw.
 - For generic (non-cluster) KOB bootstrap, use [`get_kob_decomposition_bootstrap()`](./get-kob-decomposition-bootstrap).
+
+## See Also
+
+- [Section overview](/en/decomposition/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

@@ -273,7 +273,7 @@ The closer a person’s trajectory is to long-term non-employment, the higher th
 
 Representativeness has an important advantage over soft classification: it can distinguish between mixed cases and outliers.
 
-A mixed case may be close to two different representative sequences. An outlier may be far from all representatives. Soft classification may not clearly separate these two situations, because membership probabilities usually have to sum to one. Representativeness values do not have to sum to one, so they can better express whether a sequence is well represented at all.
+A mixed case may be close to two different representative sequences. An outlier may be far from all representatives. Soft classification can blur these two situations, because membership probabilities usually have to sum to one. Representativeness values do not have to sum to one, so they can better express whether a sequence is well represented at all.
 
 ## A Simple Example
 
@@ -412,3 +412,14 @@ Representativeness describes how close each sequence is to selected ideal or rep
 For many applied research questions, especially where trajectories vary gradually, representativeness and soft classification are often better choices than hard cluster membership.
 
 The key is to align the method with the theory of the sequence–outcome relationship.
+
+## See Also
+
+- [Introduction](./introduction.md) maps the module functions and shows the code workflow.
+- [Representativeness Matrix](./representativeness-matrix.md), [FANNY Membership](./fanny-membership.md), [Hard Classification Variables](./hard-classification-variables.md), and [Pseudoclass Regression](./pseudoclass-regression.md) document the individual functions.
+- [Sequence Analysis vs. Regression](/en/tutorials/sa-vs-regression) covers the broader design question of combining trajectories with outcome models.
+- [Cluster Quality Indicators](/en/tutorials/cluster-quality-indicators) helps judge whether clusters are strong enough to treat as real groups.
+
+## References
+
+Helske, S., Helske, J., & Chihaya, G. K. (2024). From sequences to variables: Rethinking the relationship between sequences and outcomes. *Sociological Methodology*, 54(1), 27–51.

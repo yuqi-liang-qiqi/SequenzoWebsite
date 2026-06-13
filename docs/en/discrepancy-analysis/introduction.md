@@ -12,7 +12,7 @@ Most pages in this section assume that you already have:
 
 2. A square symmetric distance matrix from [`get_distance_matrix()`](../function-library/get-distance-matrix.md) in `sequenzo.dissimilarity_measures`.
 
-<!-- If you are new to distance matrices, please read the [dissimilarity-measures tutorial](../tutorials/dissimilarity-measures.md) first. Your substantive conclusions depend on the distance method you choose, so keep that choice consistent across the analysis. -->
+If you are new to distance matrices, read the [dissimilarity-measures tutorial](../tutorials/dissimilarity-measures.md) first. Your substantive conclusions depend on the distance method you choose, so keep that choice consistent across the analysis.
 
 ## How This Section Is Organized
 
@@ -31,7 +31,7 @@ Most pages in this section assume that you already have:
 
 The pages below focus on the most common workflow functions. The package also exports helper functions such as `get_leaf_membership()`, `plot_tree()`, and `plot_group_differences_across_positions()`.
 
-## A Beginner-Friendly Workflow
+## Basic Workflow
 
 Follow these steps when you compare predefined groups:
 
@@ -52,13 +52,13 @@ Use discrepancy analysis when you want TraMineR-compatible `dissassoc`, `disstre
 
 ## Included Pages
 
-- [Conceptual Guide](./conceptual-guide.md) — core ideas in plain language
-- [Sequenzo-TraMineR Mapping](./traminer-function-mapping.md) — function correspondence with TraMineR
-- [`single_factor_association()`](./get-group-distance-association.md) — test association between distances and one grouping variable
-- [`compare_groups_across_positions()`](./get-group-differences-by-position.md) — scan group differences along moving time windows
-- [Permutation Tests](./permutation-tests.md) — how randomization is used in this module
-- [`distance_tree()`](./build-distance-tree.md) — build a distance-based regression tree
-- [`sequence_tree()`](./build-sequence-tree.md) — build the same tree from `SequenceData`
+- [Conceptual Guide](./conceptual-guide.md): core ideas in plain language
+- [Sequenzo-TraMineR Mapping](./traminer-function-mapping.md): function correspondence with TraMineR
+- [`single_factor_association()`](./get-group-distance-association.md): test association between distances and one grouping variable
+- [`compare_groups_across_positions()`](./get-group-differences-by-position.md): scan group differences along moving time windows
+- [Permutation Tests](./permutation-tests.md): how randomization is used in this module
+- [`distance_tree()`](./build-distance-tree.md): build a distance-based regression tree
+- [`sequence_tree()`](./build-sequence-tree.md): build the same tree from `SequenceData`
 
 ## Authors
 

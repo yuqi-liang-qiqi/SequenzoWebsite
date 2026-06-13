@@ -17,7 +17,7 @@ For TraMineR users, this matches the TraMineRextras `seqCompare` workflow (overa
 | [`get_lrt_test`](./get-lrt-test) | `seqLRT` | LRT-focused wrapper built on the same overall comparison engine. |
 | [`get_bic_test`](./get-bic-test) | `seqBIC` | BIC-focused wrapper built on the same overall comparison engine. |
 
-## Author
+## Authors
 
 Code and documentation: Yuqi Liang
 

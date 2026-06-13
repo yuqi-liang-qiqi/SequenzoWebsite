@@ -90,6 +90,12 @@ plot_event_parallel_coordinates(
 - **Closest R function:** `seqpcplot` / `plot.seqelist(type="pc")`
 - **Mapping note:** Visual intent is similar, but panel layout and styling are not one-to-one.
 
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
+
 ## Authors
 
 Code: Yuqi Liang

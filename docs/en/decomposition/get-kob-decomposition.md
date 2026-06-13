@@ -58,7 +58,7 @@ These choices correspond to common twofold decomposition references (Jann, 2008)
 | `owner_by_category_by_term` | ✗ | `dict` | Per-category coefficient owners for categorical terms. |
 | `drop_missing` | ✗ | `bool` | Drop rows with non-finite `y` or `X`. Default: `False`. |
 
-## What It Returns
+## Returns
 
 A `KOBDecompositionResult`:
 
@@ -155,6 +155,11 @@ print(result_cat.by_category)
 - Scalar totals keep the raw twofold identity; normalized category tables may sum differently in mixed-reference settings.
 - With `normalize_categorical=True` and omitted `categorical_terms`, Sequenzo auto-detects multi-column terms and emits a warning; pass `categorical_terms` explicitly for non-dummy multi-column terms.
 - For bootstrap uncertainty, use [`get_kob_decomposition_bootstrap()`](./get-kob-decomposition-bootstrap).
+
+## See Also
+
+- [Section overview](/en/decomposition/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

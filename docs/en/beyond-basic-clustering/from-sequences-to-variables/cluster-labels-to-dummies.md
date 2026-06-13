@@ -24,7 +24,7 @@ cluster_labels_to_dummies(labels, k=None, reference=0)
 | `k` | ✗ | `int` / `None` | Number of clusters. Default: `len(unique(labels))`. |
 | `reference` | ✗ | `int` | Reference category in sorted unique-label order (0 = first). Omitted from output. |
 
-## What It Returns
+## Returns
 
 `np.ndarray` of shape `(n, K − 1)`.
 
@@ -43,12 +43,17 @@ For named DataFrame output, use `hard_classification_variables(..., as_dataframe
 
 ## Related Helper
 
-`dummy_column_names(labels, k=None, reference=0, prefix="C")` returns column names for the retained non-reference categories. Names are based on the **original label values** after sorting and dropping the reference category — for example, if sorted labels are `[1, 2, 3, 4, 5]` and `reference=0`, the columns are `C_2`, `C_3`, `C_4`, `C_5`. It is called internally when `hard_classification_variables(..., as_dataframe=True)`.
+`dummy_column_names(labels, k=None, reference=0, prefix="C")` returns column names for the retained non-reference categories. Names are based on the **original label values** after sorting and dropping the reference category. For example, if sorted labels are `[1, 2, 3, 4, 5]` and `reference=0`, the columns are `C_2`, `C_3`, `C_4`, `C_5`. It is called internally when `hard_classification_variables(..., as_dataframe=True)`.
 
 ## Notes
 
 - `len(unique(labels))` must equal `k`.
 - Categories are mapped to `0 … K−1` by sorting unique label values before encoding.
+
+## See Also
+
+- [Section overview](/en/beyond-basic-clustering/from-sequences-to-variables/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

@@ -27,6 +27,18 @@ sequence_data = create_idcd_sequence_from_csvs(
 )
 ```
 
+If your domains are already loaded as pandas DataFrames, use `create_idcd_sequence_from_dfs()` with the same `time_cols`, `id_col`, and optional `domain_state_labels` arguments:
+
+```python
+from sequenzo import create_idcd_sequence_from_dfs
+
+sequence_data = create_idcd_sequence_from_dfs(
+    domain_dfs=[employment_df, family_df],
+    time_cols=time_cols,
+    id_col="id",
+)
+```
+
 ## Entry Parameters
 
 | Parameter | Required | Type | Description |
@@ -35,6 +47,8 @@ sequence_data = create_idcd_sequence_from_csvs(
 | `time_cols` | ✓ | `list[str]` | A list of column names representing time points. These columns must exist in all CSV files specified in `csv_paths`. The order in this list determines the order of time points in the resulting sequences. |
 | `id_col` | ✗ | `str` | The name of the ID column used to align individuals across CSV files. Must exist in all CSV files. Default = `"id"`. |
 | `domain_state_labels` | ✗ | `list[dict]` or `None` | A list of dictionaries, one for each domain, that maps raw state values to human-readable labels. Each dictionary maps the state values found in that domain's CSV to their labels. If `None`, raw state values are used as labels. Default = `None`. |
+
+`create_idcd_sequence_from_dfs()` uses the same alignment and state-combination logic, but takes a list of DataFrames instead of CSV paths.
 
 ## What It Does
 
@@ -65,7 +79,7 @@ The function performs the following steps:
 ### 1. Basic usage with two domains
 
 ```python
-from sequenzo.multidomain.idcd import create_idcd_sequence_from_csvs
+from sequenzo import create_idcd_sequence_from_csvs
 
 # Paths to your CSV files
 csv_paths = [
@@ -200,7 +214,7 @@ sequence_data = create_idcd_sequence_from_csvs(
 )
 
 # Use with distance computation
-from sequenzo.dissimilarity_measures import get_distance_matrix
+from sequenzo import get_distance_matrix
 
 distance_matrix = get_distance_matrix(
     seqdata=sequence_data,
@@ -210,7 +224,7 @@ distance_matrix = get_distance_matrix(
 )
 
 # Use with clustering
-from sequenzo.clustering.hierarchical_clustering import Cluster
+from sequenzo import Cluster
 
 cluster_result = Cluster(matrix=distance_matrix, entity_ids=sequence_data.ids)
 labels = cluster_result.get_cluster_labels(num_clusters=3)
@@ -281,7 +295,12 @@ IDCD differs from CAT and DAT in important ways:
 
 4. **Simplified workflow:** When you prefer combining domains first and then using standard sequence analysis tools, rather than using specialized multidomain distance computation methods.
 
-## Author
+## See Also
+
+- [Multidomain Overview](/en/multidomain/introduction) maps the multidomain and polyadic workflows.
+- [Typical Workflow](/en/basics/typical-workflow) shows where multidomain analysis fits in the full analysis.
+
+## Authors
 
 Code: Yuqi Liang
 

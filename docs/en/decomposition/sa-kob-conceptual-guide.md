@@ -8,8 +8,8 @@ SA–KOB is **descriptive**. It does not establish causality. It answers: *How m
 
 Suppose you compare men and women on pension income. A large gender gap can arise because:
 
-1. **Composition** — men and women follow different life-course patterns (different cluster shares).
-2. **Returns** — men and women receive different outcomes even when they follow similar patterns (different coefficients).
+1. **Composition**: men and women follow different life-course patterns (different cluster shares).
+2. **Returns**: men and women receive different outcomes even when they follow similar patterns (different coefficients).
 
 KOB separates these mechanisms. SA supplies a life-course-sensitive covariate: a **cluster typology** instead of one-dimensional summary measures (e.g., total years employed).
 
@@ -64,8 +64,8 @@ Regression uses `k-1` dummies. One cluster is the **reference category** (coeffi
 
 In Sequenzo:
 
-- `reference_category_index` — position in `categories` (default: first cluster).
-- `reference_cluster_label` — pick baseline by original label instead of index.
+- `reference_category_index`: position in `categories` (default: first cluster).
+- `reference_cluster_label`: pick baseline by original label instead of index.
 
 All `k` clusters still appear in `by_cluster` because SA–KOB always uses categorical normalization.
 
@@ -158,9 +158,9 @@ By default each bootstrap draw **recomputes** cluster owners via the practical m
 
 Using the twofold decomposition (Jann, 2008):
 
-- **Explained (composition)** — differences in mean covariates, weighted by reference coefficients. In SA–KOB, this is mainly **different cluster shares** between groups.
-- **Unexplained returns** — differences in coefficients relative to the reference structure, holding covariate means fixed. This captures **different payoffs to similar life-course patterns**.
-- **Unexplained intercept** — level shift not tied to observed covariates; often reflects unobserved heterogeneity within clusters.
+- **Explained (composition)**: differences in mean covariates, weighted by reference coefficients. In SA–KOB, this is mainly **different cluster shares** between groups.
+- **Unexplained returns**: differences in coefficients relative to the reference structure, holding covariate means fixed. This captures **different payoffs to similar life-course patterns**.
+- **Unexplained intercept**: level shift not tied to observed covariates; often reflects unobserved heterogeneity within clusters.
 
 Policy intuition from Rowold et al.:
 
@@ -179,9 +179,9 @@ Clusters summarize trajectories; individuals still differ inside a cluster. With
 
 Rowold et al. discuss three ways to bring SA into KOB:
 
-1. **Single domain** — one typology (e.g., work only) as covariate. Simplest; matches default SA–KOB usage.
-2. **Separate domain typologies** — work clusters and family clusters as separate covariates.
-3. **Interactions** — cross-domain interaction dummies; many sparse cells.
+1. **Single domain**: one typology (e.g., work only) as covariate. Simplest; matches default SA–KOB usage.
+2. **Separate domain typologies**: work clusters and family clusters as separate covariates.
+3. **Interactions**: cross-domain interaction dummies; many sparse cells.
 
 Sequenzo's `get_sa_kob_decomposition()` implements the **single typology** path. For multiple typologies or controls, pass extra columns through `X_controls`.
 

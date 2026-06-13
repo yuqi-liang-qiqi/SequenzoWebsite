@@ -29,7 +29,7 @@ count_subsequence_occurrences(
 | `search_constraint` | ✗ | EventSequenceConstraint | Optional constraint override. |
 | `include_rules` | ✗ | bool | If `True`, count inside subsequences (rule-mining use case). |
 
-## What It Returns
+## Returns
 
 A matrix with shape `(n_sequences, n_subsequences)`.
 
@@ -58,6 +58,12 @@ counts = count_subsequence_occurrences(fsubseq, counting_method="count")
 
 - If `counting_method` is not provided, the function uses the method in `search_constraint`.
 - The output is a NumPy array for easy downstream analysis.
+
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
 
 ## Authors
 

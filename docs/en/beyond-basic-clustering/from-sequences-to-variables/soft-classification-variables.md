@@ -33,7 +33,7 @@ soft_classification_variables(
 | `as_dataframe` | ✗ | `bool` | If `True`, return a `DataFrame`; otherwise a NumPy array. |
 | `cluster_names` | ✗ | `list` / `None` | Optional length-`K` names; reference name is omitted. Default columns: `P_1`, `P_2`, … |
 
-## What It Returns
+## Returns
 
 `np.ndarray` of shape `(n, K − 1)` or `pd.DataFrame` when `as_dataframe=True`.
 
@@ -67,6 +67,11 @@ print(X_soft.shape)
 - The omitted reference column is not ignored conceptually; it is represented implicitly because all membership columns sum to 1. One column is dropped only to avoid perfect collinearity in regression.
 - Coefficients describe how the outcome changes with membership in each non-reference cluster relative to the omitted reference.
 - Soft membership still forces probabilities to sum to 1 across clusters, so it may not separate mixed cases from poor cluster fit as clearly as representativeness.
+
+## See Also
+
+- [Section overview](/en/beyond-basic-clustering/from-sequences-to-variables/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

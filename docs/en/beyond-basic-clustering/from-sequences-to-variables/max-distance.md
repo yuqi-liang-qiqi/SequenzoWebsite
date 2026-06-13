@@ -21,7 +21,7 @@ max_distance(diss)
 | --- | --- | --- | --- |
 | `diss` | ✓ | `ndarray` | Square `n × n` distance matrix, or a 1D condensed distance vector (SciPy layout). |
 
-## What It Returns
+## Returns
 
 | Type | Description |
 | --- | --- |
@@ -42,7 +42,12 @@ When `d_max=None`, [`representativeness_matrix()`](./representativeness-matrix.m
 
 - Only the upper triangle (pairs `i < j`) is considered; the diagonal is ignored.
 - Square matrices are validated with the same checks as other distance-matrix functions (symmetry, zero diagonal, no `NA`, nonnegative entries). Condensed vectors are also checked for `NA` and negative values before conversion.
-- If all sequences are identical, `d_max` is `0` and representativeness is set to `1` for all entries.
+- If all sequences are identical, `d_max` is `0` and `representativeness_matrix()` sets representativeness to `1` for all entries. Passing `d_max=0` with nonzero distances, or passing a positive `d_max` smaller than the observed maximum distance, is rejected.
+
+## See Also
+
+- [Section overview](/en/beyond-basic-clustering/from-sequences-to-variables/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

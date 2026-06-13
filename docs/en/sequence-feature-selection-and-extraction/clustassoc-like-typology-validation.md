@@ -38,7 +38,7 @@ clustassoc_like_typology_validation(
 | `covariate_is_categorical` | ✗ | `bool` | If `True`, one-hot encode the covariate. |
 | `verbose` | ✗ | `bool` | Print progress per `k`. |
 
-## What It Returns
+## Returns
 
 A `DataFrame` with one row per `k` in `clustering_labels_by_k` (sorted by `k`):
 
@@ -52,7 +52,7 @@ A `DataFrame` with one row per `k` in `clustering_labels_by_k` (sorted by `k`):
 
 If `pseudoR2_original` is 0, unaccounted/accounted shares are `NaN`.
 
-`association_accounted_share` can be **slightly negative** if the covariate pseudo-R² increases after adding clustering—usually from numerical error, model order, weights, or a poor cluster solution. Treat such cases as **no evidence** that the typology accounts for the association.
+`association_accounted_share` can be **slightly negative** if the covariate pseudo-R² increases after adding clustering, usually from numerical error, model order, weights, or a poor cluster solution. Treat such cases as **no evidence** that the typology accounts for the association.
 
 ## Example
 
@@ -83,6 +83,11 @@ print(validation)
 - `diss` must be square; `covariate` and each label vector must have length `n = diss.shape[0]`.
 - Cluster labels are one-hot encoded with `drop_first=True`.
 - Useful after sequence clustering when you need to know how much of a covariate–sequence association is explained by the typology.
+
+## See Also
+
+- [Section overview](/en/sequence-feature-selection-and-extraction/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

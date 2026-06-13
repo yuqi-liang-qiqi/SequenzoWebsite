@@ -45,7 +45,7 @@ get_group_differences(
 | `method` | ✗ | str | Distance method passed to `get_distance_matrix()` (for example `"OM"`). |
 | `**kwargs` | ✗ | any | Extra distance-method arguments forwarded to `get_distance_matrix()`. |
 
-## What It Returns
+## Returns
 
 A NumPy array of numeric results (column layout follows the internal table built before return):
 
@@ -82,6 +82,11 @@ print(result)
 - `group` and `seqdata2` cannot both be `None`.
 - Only two groups are supported among valid cases.
 - Missing values in `group` (or in `set_var` when used) are removed before testing.
+
+## See Also
+
+- [Section overview](/en/group-comparison/conceptual-guide) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

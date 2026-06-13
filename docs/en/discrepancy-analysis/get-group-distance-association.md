@@ -35,7 +35,7 @@ single_factor_association(
 | `weight_permutation` | ✗ | `str` / `None` | How weights enter permutation sampling: `"replicate"`, `"diss"`, `"group"`, or `"none"`. Default: `None` (resolved to `"none"` without weights, otherwise `"replicate"`). |
 | `squared` | ✗ | `bool` | If `True`, use exponent v = 2 on dissimilarities before analysis. Default: `False` (v = 1). |
 
-## What It Returns
+## Returns
 
 A dictionary with the main association summaries and supporting tables.
 
@@ -120,6 +120,11 @@ print(result["groups"])
 - By default, Sequenzo follows Studer et al. (2011) and uses nonsquared dissimilarities (v = 1). Set `squared=True` mainly when the dissimilarity is Euclidean, or as a sensitivity check. Squaring can break the triangle inequality for some sequence distances and change discrepancy contributions.
 - Pseudo R² is a descriptive effect-size summary. Use the permutation p-values when you need inferential guidance.
 - Rows with missing group labels are removed before the analysis.
+
+## See Also
+
+- [Section overview](/en/discrepancy-analysis/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

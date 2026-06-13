@@ -44,7 +44,7 @@ All parameters from `get_kob_decomposition()` apply, plus:
 
 See the [KOB page](./get-kob-decomposition) for `y`, `group`, `X`, and reference parameters.
 
-## What It Returns
+## Returns
 
 A `KOBBootstrapResult`:
 
@@ -111,6 +111,11 @@ print(boot.by_column_confidence_intervals.head())
 - With `stratified=False`, draws are simple row resamples of the full data.
 - Bootstrap recomputes the full decomposition on each draw, including categorical normalization settings.
 - For sequence-cluster typologies, prefer [`get_sa_kob_decomposition_bootstrap()`](./get-sa-kob-decomposition-bootstrap).
+
+## See Also
+
+- [Section overview](/en/decomposition/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

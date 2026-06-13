@@ -34,7 +34,11 @@ networked or group-based processes more broadly.
 A minimal example with only the required parameters:
 
 ```python
-result = linked_polyadic_sequence_analysis(seqlist, return_df=True)
+result = linked_polyadic_sequence_analysis(
+    seqlist,
+    distance_parameters={"sm": "TRATE", "indel": "auto"},
+    return_df=True,
+)
 ```
 
 A complete example with all available parameters:
@@ -44,7 +48,7 @@ result = linked_polyadic_sequence_analysis(
     seqlist,                          # required: list of SequenceData objects
     a=1,                              # optional: randomization type
     method="OM",                      # optional: distance measure method
-    distance_parameters=None,         # optional: additional distance parameters
+    distance_parameters={"sm": "TRATE", "indel": "auto"},  # distance parameters
     weights=None,                     # optional: sampling weights for sequences
     rand_weight_type=1,               # optional: randomization weight strategy
     role_weights=None,                # optional: role-specific weights
@@ -66,7 +70,7 @@ result = linked_polyadic_sequence_analysis(
 | `seqlist` | ✓ | `list[SequenceData]` | A list of `SequenceData` objects, one for each role/position in the polyad. For example, for family analysis: [father_sequences, mother_sequences, child_sequences]. All sequences must have the same number of individuals (polyads) and the same sequence length (time points). |
 | `a` | ✗ | `int` | Randomization type. `1` = resample sequences (keeps sequences intact but shuffles which sequences are grouped together). `2` = resample states within sequences (shuffles states within each sequence). Default = `1`. |
 | `method` | ✗ | `str` | Distance measure method to use for computing dissimilarities. Options: `"OM"` (optimal matching), `"HAM"` (Hamming distance), `"CHI2"`, etc. Default = `"OM"`. |
-| `distance_parameters` | ✗ | `dict` or `None` | Dictionary of additional keyword arguments to pass to `get_distance_matrix()`. Can include parameters like `sm`, `indel`, `norm`, etc. Default = `None`. |
+| `distance_parameters` | ✗* | `dict` or `None` | Dictionary of additional keyword arguments to pass to `get_distance_matrix()`. Can include parameters like `sm`, `indel`, `norm`, etc. Default = `None`. |
 | `weights` | ✗ | `np.ndarray` or `None` | Sampling weights for sequences when generating random polyads. Should be an array of length equal to the number of sequences (polyads). If `None`, uniform weights are used. Default = `None`. |
 | `rand_weight_type` | ✗ | `int` | Strategy for computing randomization weights. `1` = uniform weights. `2` = sample-weight-based weights. Default = `1`. |
 | `role_weights` | ✗ | `list[float]` or `None` | Role-specific importance weights for different sequence sources. Should be a list with one weight per role, summing to 1.0. If `None`, equal weights are assigned. Default = `None`. |
@@ -78,6 +82,8 @@ result = linked_polyadic_sequence_analysis(
 | `verbose` | ✗ | `bool` | Whether to display a progress bar during randomization. Default = `True`. |
 | `return_df` | ✗ | `bool` | If `True`, returns results as a pandas DataFrame with columns: `ObservedDist`, `U`, `V`, `V>0.95`. If `False`, returns a dictionary. At least one of `return_df` or `return_merged_seqdata` must be `True`. Default = `False`. |
 | `return_merged_seqdata` | ✗ | `bool` | If `True`, also returns the merged `SequenceData` object used internally. This merged object contains all sequences from all roles concatenated together, which can be useful for further analysis like clustering or visualization. At least one of `return_df` or `return_merged_seqdata` must be `True`. Default = `False`. |
+
+\*When `method="OM"`, pass `distance_parameters` with at least `sm` and `indel` so the underlying distance matrix can be built.
 
 ## What It Does
 
@@ -104,6 +110,10 @@ The function performs the following steps:
 
 8. **Returns results:** Depending on parameter settings, returns either a DataFrame, a dictionary, or a tuple containing results and merged sequence data.
 
+## Returns
+
+`typing.Union[typing.Dict, pandas.core.frame.DataFrame, typing.Tuple[typing.Dict, sequenzo.define_sequence_data.SequenceData], typing.Tuple[pandas.core.frame.DataFrame, sequenzo.define_sequence_data.SequenceData]]`.
+
 ## Examples
 
 ### 1. Basic family analysis
@@ -112,24 +122,17 @@ Analyze whether family members (father, mother, child) follow similar trajectori
 
 ```python
 import pandas as pd
-from sequenzo.define_sequence_data import SequenceData
-from sequenzo.multidomain.linked_polyad import linked_polyadic_sequence_analysis
+from sequenzo import linked_polyadic_sequence_analysis
 
-# Load sequence data for each family member
-# Assume you have three SequenceData objects already prepared
-father_sequences = SequenceData(...)  # Sequences for fathers
-mother_sequences = SequenceData(...)  # Sequences for mothers
-child_sequences = SequenceData(...)   # Sequences for children
-
-# Each should have the same number of families and same time points
+# Assume these are prepared SequenceData objects with matching family order
+# and the same time points.
 seqlist = [father_sequences, mother_sequences, child_sequences]
 
 # Run analysis
 result_df = linked_polyadic_sequence_analysis(
     seqlist,
     method="OM",
-    sm="TRATE",
-    indel="auto",
+    distance_parameters={"sm": "TRATE", "indel": "auto"},
     T=1000,
     return_df=True
 )
@@ -153,10 +156,7 @@ PolyadID
 Analyze couple synchronization:
 
 ```python
-# Prepare couple sequences
-husband_sequences = SequenceData(...)
-wife_sequences = SequenceData(...)
-
+# Assume husband_sequences and wife_sequences are aligned SequenceData objects.
 seqlist = [husband_sequences, wife_sequences]
 
 # Use custom distance parameters
@@ -189,6 +189,7 @@ result_df = linked_polyadic_sequence_analysis(
     seqlist,
     a=2,  # Resample states within sequences
     method="OM",
+    distance_parameters={"sm": "TRATE", "indel": "auto"},
     T=1000,
     return_df=True
 )
@@ -204,21 +205,37 @@ If you want to perform clustering or visualization on the merged sequences:
 result_df, merged_seqdata = linked_polyadic_sequence_analysis(
     seqlist,
     method="OM",
+    distance_parameters={"sm": "TRATE", "indel": "auto"},
     return_df=True,
     return_merged_seqdata=True
 )
 
 # Use merged_seqdata for clustering
-from sequenzo.clustering.hierarchical_clustering import Cluster
-from sequenzo.dissimilarity_measures import get_distance_matrix
+from sequenzo import Cluster, get_distance_matrix
 
-distance_matrix = get_distance_matrix(merged_seqdata, method="OM")
+distance_matrix = get_distance_matrix(
+    merged_seqdata,
+    method="OM",
+    sm="TRATE",
+    indel="auto",
+)
 cluster_result = Cluster(matrix=distance_matrix, entity_ids=merged_seqdata.ids)
 labels = cluster_result.get_cluster_labels(num_clusters=5)
 
 # Or for visualization
-from sequenzo.visualization import plot_index_plot
-plot_index_plot(merged_seqdata, group=labels)
+import pandas as pd
+from sequenzo import plot_sequence_index
+
+membership_df = pd.DataFrame({
+    "Entity ID": merged_seqdata.ids,
+    "Cluster": labels,
+})
+
+plot_sequence_index(
+    merged_seqdata,
+    group_dataframe=membership_df,
+    group_column_name="Cluster",
+)
 ```
 
 ### 5. Using weighted sampling
@@ -229,10 +246,11 @@ If your sample includes survey weights:
 import numpy as np
 
 # Assume you have survey weights for each family
-family_weights = np.array([1.5, 0.8, 1.2, ...])  # One weight per family
+family_weights = np.array([1.5, 0.8, 1.2, 1.0, 0.9])  # One weight per family
 
 result_df = linked_polyadic_sequence_analysis(
     seqlist,
+    distance_parameters={"sm": "TRATE", "indel": "auto"},
     weights=family_weights,
     rand_weight_type=2,  # Use sample-weight-based randomization weights
     return_df=True
@@ -249,6 +267,7 @@ role_weights = [0.4, 0.4, 0.2]  # Father, Mother, Child
 
 result_df = linked_polyadic_sequence_analysis(
     seqlist,
+    distance_parameters={"sm": "TRATE", "indel": "auto"},
     role_weights=role_weights,
     return_df=True
 )
@@ -267,6 +286,7 @@ pair_weights = np.array([0.5, 0.3, 0.2])  # Weights for pairs (R0-R1, R0-R2, R1-
 
 result_df = linked_polyadic_sequence_analysis(
     seqlist,
+    distance_parameters={"sm": "TRATE", "indel": "auto"},
     pair_weights=pair_weights,
     return_df=True
 )
@@ -343,7 +363,12 @@ The dictionary contains:
    - Consider starting with smaller T (e.g., 100) for testing, then increasing for final analysis
    - Using `n_jobs=-1` significantly speeds up computation on multi-core machines
 
-## Author
+## See Also
+
+- [Multidomain Overview](/en/multidomain/introduction) maps the multidomain and polyadic workflows.
+- [Typical Workflow](/en/basics/typical-workflow) shows where multidomain analysis fits in the full analysis.
+
+## Authors
 
 Code: Yuqi Liang
 

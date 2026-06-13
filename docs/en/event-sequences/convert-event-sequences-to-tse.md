@@ -18,6 +18,10 @@ convert_event_sequences_to_tse(event_sequences)
 | --- | --- | --- | --- |
 | `event_sequences` (`event_sequences`) | ✓ | EventSequenceData / EventSequenceList | The event-sequence dataset to export as a table. |
 
+## Returns
+
+`pandas.core.frame.DataFrame`.
+
 ## Output
 
 A DataFrame with columns:
@@ -42,6 +46,12 @@ print(tse_df.head())
 
 - This is a format conversion only; it does not change your original object.
 - Output is sorted by `id`, `timestamp`, and `event`.
+
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
 
 ## Authors
 

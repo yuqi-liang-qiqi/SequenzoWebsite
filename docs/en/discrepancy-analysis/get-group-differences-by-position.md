@@ -40,7 +40,7 @@ compare_groups_across_positions(
 | `weighted` | ✗ | `bool` | If `True`, use `seqdata.weights` when available. Default: `True`. |
 | `squared` | ✗ | `bool` | If `True`, use exponent v = 2 on local dissimilarities before association summaries. Default: `False` (v = 1). |
 
-## What It Returns
+## Returns
 
 A dictionary with window-wise statistics and discrepancy profiles.
 
@@ -109,6 +109,11 @@ plot_group_differences_across_positions(result, stat="Pseudo R2")
 - `plot_group_differences_across_positions()` can plot one statistic, two statistics on twin axes, or discrepancy profiles.
 - Keep `seqdist_args` aligned with the substantive meaning of your comparison. A timing-sensitive method can produce a different window profile than an order-only method.
 - By default, Sequenzo uses nonsquared dissimilarities (v = 1). Set `squared=True` mainly for sensitivity checks or when the local dissimilarity is naturally Euclidean.
+
+## See Also
+
+- [Section overview](/en/discrepancy-analysis/introduction) maps the surrounding workflow and related functions.
+- [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 

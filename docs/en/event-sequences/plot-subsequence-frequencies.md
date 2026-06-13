@@ -65,6 +65,12 @@ plot_subsequence_frequencies(
 - **Closest R function:** `plot.subseqelist`
 - **Mapping note:** Both visualize subsequence frequencies/support from frequent-subsequence results.
 
+## See Also
+
+- [Event Sequences Introduction](/en/event-sequences/introduction) explains the workflow and data structures.
+- [Quickstart Example](/en/event-sequences/example) shows a complete event-mining run.
+- [Helper Functions](/en/event-sequences/event-sequence-helpers) lists supporting utilities.
+
 ## Authors
 
 Code: Yuqi Liang

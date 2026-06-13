@@ -133,8 +133,14 @@ When categorical normalization is enabled, detailed tables in `by_category` or `
 
 ## Related Sequenzo Modules
 
-- `sequenzo.group_comparison` — overall two-group tests (LRT, BIC)
-- `sequenzo.clustering` — sequence typologies and cluster-quality diagnostics used as SA–KOB inputs
+- `sequenzo.group_comparison`: overall two-group tests (LRT, BIC)
+- `sequenzo.clustering`: sequence typologies and cluster-quality diagnostics used as SA–KOB inputs
+
+## See Also
+
+- [Conceptual Guide: SA–KOB Decomposition](/en/decomposition/sa-kob-conceptual-guide) explains the method in plain language.
+- [Group Comparison](/en/group-comparison/conceptual-guide) covers the two-group tests that often precede decomposition.
+- [Typical Workflow](/en/basics/typical-workflow) shows where decomposition fits.
 
 ## Authors
 

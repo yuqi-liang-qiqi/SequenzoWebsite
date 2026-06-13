@@ -44,6 +44,10 @@ The function performs the following steps:
 
 The key insight of DAT is that if two individuals are very similar in all domains, their distances will be small in all domains, and the sum will also be small. Conversely, if they differ substantially in one or more domains, those differences will contribute to a larger total distance.
 
+## Returns
+
+`numpy.ndarray`. A numpy array representing the combined distance matrix
+
 ## Examples
 
 ### 1. Basic usage with two domains
@@ -51,8 +55,7 @@ The key insight of DAT is that if two individuals are very similar in all domain
 ```python
 import pandas as pd
 import numpy as np
-from sequenzo.define_sequence_data import SequenceData
-from sequenzo.multidomain.dat import compute_dat_distance_matrix
+from sequenzo import SequenceData, compute_dat_distance_matrix
 
 # Domain 1: Employment sequences
 df1 = pd.DataFrame({
@@ -138,9 +141,11 @@ dat_matrix = compute_dat_distance_matrix(sequence_objects, method_params)
 DAT distance matrices are commonly used with Combined Typology (CombT) analysis:
 
 ```python
-from sequenzo.multidomain.combt import get_interactive_combined_typology
-from sequenzo.multidomain.dat import compute_dat_distance_matrix
-from sequenzo.multidomain.combt import merge_sparse_combt_types
+from sequenzo import (
+    compute_dat_distance_matrix,
+    get_interactive_combined_typology,
+    merge_sparse_combt_types,
+)
 
 # First, create combined typology
 diss_matrices, membership_df = get_interactive_combined_typology(
@@ -211,7 +216,12 @@ In practice:
 
 6. **Computational efficiency:** DAT avoids constructing multidomain substitution and indel costs, which is often convenient. However, it still requires computing and storing one distance matrix per domain, so it is not always cheaper in large samples or with many domains.
 
-## Author
+## See Also
+
+- [Multidomain Overview](/en/multidomain/introduction) maps the multidomain and polyadic workflows.
+- [Typical Workflow](/en/basics/typical-workflow) shows where multidomain analysis fits in the full analysis.
+
+## Authors
 
 Code: Yuqi Liang
 
