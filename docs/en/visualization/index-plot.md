@@ -256,7 +256,7 @@ This draws each sequence as a thicker band (2 rows) with a small gap between ban
 
 ## R Counterpart
 
-- **Closest R function:** `seqiplot` / `seqIplot`
+- **Closest R function:** `TraMineR::seqiplot()` / `TraMineR::seqIplot()`
 - **Mapping note:** Direct conceptual match: index plots that show each sequence as a colored line over time.
 
 

@@ -87,7 +87,7 @@ Use regression when the main question is about an outcome and a set of predictor
 
 - [Typical Workflow](/en/basics/typical-workflow) shows where regression-adjacent workflows fit in Sequenzo.
 - [From Sequences to Variables](/en/beyond-basic-clustering/from-sequences-to-variables/introduction) explains hard labels, soft memberships, representativeness, and pseudoclass regression.
-- [Sequence History, EMLT, SAMM, and Spell Survival](/en/event-history-analysis/samm-emlt-and-survival) covers event-history-oriented workflows.
+- [Sequence History, SAMM, and Spell Survival](/en/event-history-analysis/samm-emlt-and-survival) covers event-history-oriented workflows.
 
 ## References
 

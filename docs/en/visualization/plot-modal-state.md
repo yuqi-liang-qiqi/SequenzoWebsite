@@ -105,7 +105,7 @@ This saves a high-resolution figure in your working directory.
 
 ## R Counterpart
 
-- **Closest R function:** `seqmsplot`
+- **Closest R function:** `TraMineR::seqmsplot()`
 - **Mapping note:** Direct conceptual match: modal (most common) state profile over time.
 
 

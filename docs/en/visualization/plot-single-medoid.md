@@ -91,7 +91,7 @@ plot_single_medoid(
 ## R Counterpart
 
 - **Closest R function:** No direct one-function equivalent
-- **Mapping note:** Closest TraMineR workflow is `seqrep` + `seqrplot`, then selecting one representative sequence manually.
+- **Mapping note:** Closest TraMineR workflow is `TraMineR::seqrep()` + `TraMineR::seqrplot()`, then selecting one representative sequence manually.
 
 ## Notes
 

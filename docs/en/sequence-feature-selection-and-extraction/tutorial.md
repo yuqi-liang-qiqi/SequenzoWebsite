@@ -251,7 +251,7 @@ print(validation)
 
 - This tutorial uses built-in pairfam month-level data so the code runs without external files. Unterlerchner et al. (2023) used Swiss TREE data, which is not bundled with Sequenzo.
 - The monthly pairfam grid matches the timing assumptions of `preset="unterlerchner2023"`; substantive results still differ from the paper because the domain and outcome are not the same.
-- Boruta confirmed features may differ from R `Boruta()` with default settings because Sequenzo uses the Python BorutaPy backend. See [Conceptual Guide: Boruta Python vs R](./conceptual-guide.md#boruta-python-vs-r).
+- Boruta confirmed features may differ from R `Boruta::Boruta()` with default settings because Sequenzo uses the Python BorutaPy backend. See [Conceptual Guide: Boruta Python vs R](./conceptual-guide.md#boruta-python-vs-r).
 - `time_unit_hint="month"` is metadata only. The `unterlerchner2023` settings bundle also sets `timing_bin_width=12.0`, which is appropriate for this monthly grid.
 - For binary outcomes with binomial residualization, pass `problem_type="classification"`.
 - See [Things to keep in mind](./conceptual-guide.md#things-to-keep-in-mind) for additional usage tips.

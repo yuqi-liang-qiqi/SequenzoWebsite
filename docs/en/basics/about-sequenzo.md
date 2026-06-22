@@ -23,7 +23,19 @@ Use Sequenzo when you need to:
 - scale clustering with CLARA when full distance matrices become too large;
 - move into group comparison, multidomain analysis, event histories, or HMM-style models.
 
-## Foundations and Inspirations
+## New Modules and Features in Recent Releases
+
+Recent releases expanded Sequenzo beyond the standard distance-and-clustering workflow:
+
+- **HMM-family models:** HMM, MHMM, NHMM, and MNHMM workflows for latent sequence dynamics.
+- **Event-history tools:** sequence history data, SAMM workflows, and spell survival analysis.
+- **Multidomain and polyadic analysis:** tools for trajectories that unfold across several domains or linked actors.
+- **Big-data workflows:** CLARA-style sampling and uniqueness checks for large sequence datasets.
+- **Summary statistics and indicators:** functions for describing datasets, time points, spells, entropy, turbulence, and other sequence characteristics.
+
+See [What's New](/en/changelog) for release-by-release details.
+
+## Sequence Foundations and Inspirations
 
 Its methodological foundations build upon prior work in the R software tradition, especially
 [the TraMineR (Gabadinho et al. 2011) R package](https://traminer.unige.ch/), which

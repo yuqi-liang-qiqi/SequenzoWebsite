@@ -103,7 +103,7 @@ That frame-by-frame view is what makes it possible to study timing, risk, and th
 
 ## See Also
 
-- [Sequence History, EMLT, SAMM, and Spell Survival](/en/event-history-analysis/samm-emlt-and-survival) maps this idea to Sequenzo functions.
+- [Sequence History, SAMM, and Spell Survival](/en/event-history-analysis/samm-emlt-and-survival) maps this idea to Sequenzo functions.
 - [`get_sequence_history_data()`](/en/event-history-analysis/samm-emlt-and-survival#sequence-history-data) prepares person-period sequence-history data.
 - [Sequence Analysis Multi-state Model](./multi-state-model.md) explains the related SAMM workflow.
 
@@ -112,4 +112,3 @@ That frame-by-frame view is what makes it possible to study timing, risk, and th
 Rossignon, F., Studer, M., Gauthier, J. A., & Le Goff, J. M. (2018). Sequence history analysis (SHA): Estimating the effect of past trajectories on an upcoming event. In G. Ritschard & M. Studer (Eds.), *Sequence analysis and related approaches: Innovative methods and applications* (pp. 83-100). Cham: Springer International Publishing.
 
 *Author: Yuqi Liang*
-

@@ -30,6 +30,6 @@ To confirm the installed version:
 python -c "import sequenzo; print(sequenzo.__version__)"
 ```
 
-After installation, run the [Quickstart](/en/basics/quickstart) or open the [coding tutorials in Colab](/en/basics/view-tutorials-online).
+After installation, run the [Quickstart](/en/basics/quickstart) or open [View Our Tutorials Online](/en/basics/view-tutorials-online).
 
 *Author: Yuqi Liang*

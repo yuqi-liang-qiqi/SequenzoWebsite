@@ -15,9 +15,9 @@ count_subsequence_occurrences(
 
 ## TraMineR Parameter Mapping
 
-- `subsequence_results` -> TraMineR `fsub`
-- `counting_method` -> TraMineR `countMethod` in `seqeconstraint()`
-- `search_constraint` -> TraMineR `constraint`
+- `subsequence_results` -> TraMineR `fsub` object
+- `counting_method` -> TraMineR `countMethod` in `TraMineR::seqeconstraint()`
+- `search_constraint` -> `TraMineR::seqeapplysub()` `constraint`
 - `include_rules` -> optional rule-mining behavior when counting within subsequences
 
 ## Entry Parameters
@@ -51,7 +51,7 @@ counts = count_subsequence_occurrences(fsubseq, counting_method="count")
 
 ## R Counterpart
 
-- **Closest R function:** `seqeapplysub`
+- **Closest R function:** `TraMineR::seqeapplysub()`
 - **Mapping note:** Both functions count subsequence matches per sequence, including presence/count-style outputs.
 
 ## Notes

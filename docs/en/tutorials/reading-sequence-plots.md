@@ -81,9 +81,9 @@ After clustering, the standard presentation is one panel per cluster, using the 
 ## See Also
 
 - [Visualization Gallery](/en/visualization/gallery) shows every plot type with code.
-- [Sequence Indicators and Statistics](./sequence-indicators-and-statistics.md) covers the numeric counterparts of these visual summaries.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](./sequence-indicators-and-statistics.md) covers the numeric counterparts of these visual summaries.
 - [Cluster Quality Indicators](./cluster-quality-indicators.md) complements visual inspection of cluster solutions.
-- [Reporting Sequence Analysis](./reporting-sequence-analysis.md) explains how to present plots in a paper.
+- [Reporting Results of the Typical Workflow](./reporting-sequence-analysis.md) explains how to present plots in a paper.
 
 ## References
 

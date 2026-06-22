@@ -1,4 +1,4 @@
-# API Reference
+# Function Reference
 
 Use this page to find the Sequenzo function, class, or workflow page for a task.
 
@@ -15,7 +15,7 @@ New to Sequenzo? Start with the [Quickstart](/en/basics/quickstart) or [Typical 
 | Replace numeric cluster IDs with labels | [`replace_cluster_id_by_labels()`](/en/data-preprocessing/replace-cluster-id-by-labels) |
 | Work with weights | [Working with Weighted Data](/en/basics/weighted-data) |
 
-## Core Workflow
+## Typical Workflow
 
 | Task | Main entry points |
 | --- | --- |
@@ -39,8 +39,8 @@ New to Sequenzo? Start with the [Quickstart](/en/basics/quickstart) or [Typical 
 
 | Task | Main pages |
 | --- | --- |
-| Compute sequence-level indicators | [Sequence Characteristics Indicators](/en/sequence-characteristics-indicators/introduction) |
-| Compute weighted descriptive statistics | [Sequence Statistics](/en/statistics/introduction) |
+| Compute sequence characteristics indicators | [Sequence Characteristics Indicators](/en/sequence-characteristics-indicators/introduction) |
+| Compute weighted descriptive statistics | [Sequence Summary Statistics](/en/statistics/introduction) |
 | Compare Sequenzo and TraMineR naming | [Functions Comparison](/en/traminer-and-sequenzo/functions-comparison) |
 
 ## Visualization
@@ -85,7 +85,7 @@ New to Sequenzo? Start with the [Quickstart](/en/basics/quickstart) or [Typical 
 | --- | --- |
 | Mine event subsequences and event-pattern frequencies | [Event Sequences](/en/event-sequences/introduction) |
 | Convert between event sequences and TSE format | [Event Sequence Helpers](/en/event-sequences/event-sequence-helpers) |
-| Analyze sequence histories, SAMM windows, EMLT coordinates, or spell survival | [Sequence History, EMLT, SAMM, and Spell Survival](/en/event-history-analysis/samm-emlt-and-survival) |
+| Analyze sequence histories, SAMM windows, or spell survival | [Sequence History, SAMM, and Spell Survival](/en/event-history-analysis/samm-emlt-and-survival) |
 
 ## Multidomain, Polyadic, and Relational Analysis
 
@@ -96,13 +96,18 @@ New to Sequenzo? Start with the [Quickstart](/en/basics/quickstart) or [Typical 
 | Scale multidomain workflows | [Scaling Multidomain Workflows](/en/big-data/multidomain-clara) |
 | Analyze level-1 by level-2 relational trajectories | [Hierarchical and Relational Sequence Analysis](/en/hierarchical-sequence-analysis/introduction) |
 
-## Large Data and Robustness
+## Big Data Tools
 
 | Task | Main pages |
 | --- | --- |
 | Use CLARA for large single-domain sequence clustering | [CLARA](/en/big-data/clara) |
 | Plan large multidomain sequence analysis | [Scaling Multidomain Workflows](/en/big-data/multidomain-clara) |
-| Choose scalable clustering and robustness tools | [Large Data and Robustness](/en/big-data/introduction) |
+| Choose scalable clustering tools | [Big Data Tools](/en/big-data/introduction) |
+
+## Uncertainty
+
+| Task | Main pages |
+| --- | --- |
 | Assess sensitivity to transition-timing error | [Timing Uncertainty](/en/uncertainty/timing-uncertainty) |
 
 ## Notes on Completeness

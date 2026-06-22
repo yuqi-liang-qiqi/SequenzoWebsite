@@ -9,7 +9,7 @@
 - [Typical Workflow](https://sequenzo.yuqi-liang.tech/en/basics/typical-workflow): the analysis map, from data to method families
 - [About Sequenzo](https://sequenzo.yuqi-liang.tech/en/basics/about-sequenzo): scope, performance, and relation to R packages
 
-## Core API
+## Typical Workflow Functions
 
 - [Function Reference Map](https://sequenzo.yuqi-liang.tech/en/function-library/introduction): task-based index of public functions
 - [SequenceData](https://sequenzo.yuqi-liang.tech/en/function-library/sequence-data): define the sequence data object
@@ -25,14 +25,14 @@
 - [Dissimilarity Measures](https://sequenzo.yuqi-liang.tech/en/tutorials/dissimilarity-measures): choosing a distance measure
 - [Cluster Quality Indicators](https://sequenzo.yuqi-liang.tech/en/tutorials/cluster-quality-indicators): reading CQI tables
 - [How to Read Sequence Plots](https://sequenzo.yuqi-liang.tech/en/tutorials/reading-sequence-plots): interpreting sequence visualizations
-- [Reporting Sequence Analysis](https://sequenzo.yuqi-liang.tech/en/tutorials/reporting-sequence-analysis): writing up methods for a paper
+- [Reporting Results of the Typical Workflow](https://sequenzo.yuqi-liang.tech/en/tutorials/reporting-sequence-analysis): writing up methods for a paper
 
 ## Method families
 
 - [Visualization Tools](https://sequenzo.yuqi-liang.tech/en/visualization/introduction): plot parameters and gallery
-- [Sequence Indicators](https://sequenzo.yuqi-liang.tech/en/sequence-characteristics-indicators/introduction): per-sequence indicators
+- [Sequence Characteristics Indicators](https://sequenzo.yuqi-liang.tech/en/sequence-characteristics-indicators/introduction): per-sequence indicators
 - [Markov Chain Models](https://sequenzo.yuqi-liang.tech/en/markov-chain-models/introduction): HMM, MHMM, NHMM, MNHMM workflows
-- [Event Pattern Mining](https://sequenzo.yuqi-liang.tech/en/event-sequences/introduction): frequent event subsequences
+- [Event Sequences](https://sequenzo.yuqi-liang.tech/en/event-sequences/introduction): frequent event subsequences
 - [Discrepancy Analysis](https://sequenzo.yuqi-liang.tech/en/discrepancy-analysis/introduction): distance-based group association
 - [Multidomain Analysis](https://sequenzo.yuqi-liang.tech/en/multidomain/introduction): CAT, DAT, IDCD, polyadic workflows
 - [From Sequences to Variables](https://sequenzo.yuqi-liang.tech/en/beyond-basic-clustering/from-sequences-to-variables/introduction): regression-ready variables
@@ -44,7 +44,7 @@
 - [Sequenzo and R](https://sequenzo.yuqi-liang.tech/en/traminer-and-sequenzo/introduction): entry point for TraMineR, WeightedCluster, TraMineRextras, and seqHMM users
 - [Functions Comparison](https://sequenzo.yuqi-liang.tech/en/traminer-and-sequenzo/functions-comparison): R-to-Python function map
 - [Citation Guide](https://sequenzo.yuqi-liang.tech/en/basics/how-to-cite): how to cite the package and documentation
-- [Runnable Notebooks](https://sequenzo.yuqi-liang.tech/en/basics/view-tutorials-online): Google Colab tutorials and source notebooks
+- [View Our Tutorials Online](https://sequenzo.yuqi-liang.tech/en/basics/view-tutorials-online): Google Colab tutorials and source notebooks
 - [Join Our Community](https://sequenzo.yuqi-liang.tech/en/basics/join-our-community): community and contribution entry points
 - [Bug Reports and Feature Requests](https://sequenzo.yuqi-liang.tech/en/faq/bug_reports_and_feature_requests): where to report issues
 - [GitHub Repository](https://github.com/Liang-Team/Sequenzo): source code for the Python package

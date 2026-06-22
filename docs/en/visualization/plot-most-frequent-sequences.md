@@ -2,7 +2,7 @@
 
 `plot_most_frequent_sequences()` draws the Top-N most common full sequences in your data (e.g., the 10 most frequently observed state paths). Each horizontal bar represents one sequence pattern across time; the bar’s height equals that sequence’s percentage in the whole dataset. Colors follow your `SequenceData` state color map so segments match your legend.
 
-This is similar to `seqfplot` in R’s TraMineR.
+This is similar to `TraMineR::seqfplot()`.
 
 ## Function Usage
 
@@ -77,7 +77,7 @@ This saves `top15_sequences.png` in your current working directory (or the folde
 
 ## R Counterpart
 
-- **Closest R function:** `seqfplot`
+- **Closest R function:** `TraMineR::seqfplot()`
 - **Mapping note:** Closest match: display top frequent sequences and their frequencies.
 
 ## Notes

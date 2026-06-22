@@ -118,10 +118,9 @@ Use this workflow when:
 
 ## See Also
 
-- [Section overview](/en/big-data/introduction) maps the surrounding workflow and related functions.
+- [Big Data Tools](/en/big-data/introduction) explains scaling decisions that often accompany uncertainty checks.
 - [Typical Workflow](/en/basics/typical-workflow) shows where this method fits in the full analysis.
 
 ## Authors
 
 Code: Yuqi Liang
-

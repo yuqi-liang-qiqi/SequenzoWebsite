@@ -21,7 +21,7 @@ Choose the research path
   │     (CLARA scales clustering to large data; representatives are typical observed sequences)
   ├─ Compare predefined groups → discrepancy analysis / group comparison / decomposition
   ├─ Model latent dynamics → HMM / MHMM / NHMM / MNHMM
-  ├─ Work across domains → CAT / DAT / IDCD / multidomain CLARA
+  ├─ Work across domains → CAT / DAT / IDCD / scaling guide
   ├─ Study relational pairs → hierarchical and relational sequence analysis
   ├─ Mine event patterns → frequent subsequences / event dynamics
   ├─ Model event histories → sequence history / SAMM / spell survival
@@ -52,11 +52,11 @@ For large datasets, use the [CLARA guide](/en/big-data/clara) after you have cho
 | How do I prepare my own data first? | [Data Preprocessing Overview](/en/data-preprocessing/introduction), then [`SequenceData`](/en/function-library/sequence-data) |
 | How do I compare whole trajectories? | [Dissimilarity Measures](/en/tutorials/dissimilarity-measures), then [`get_distance_matrix()`](/en/function-library/get-distance-matrix) |
 | How many clusters should I keep? | [Cluster Quality Indicators](/en/tutorials/cluster-quality-indicators), then [`ClusterQuality`](/en/function-library/cluster-quality) |
-| What do the sequences look like before modeling? | [Visualization Tools](/en/visualization/introduction), [Sequence Statistics](/en/statistics/introduction), and [Sequence Characteristics Indicators](/en/sequence-characteristics-indicators/introduction) |
+| What do the sequences look like before modeling? | [Visualization Tools](/en/visualization/introduction), [Sequence Summary Statistics](/en/statistics/introduction), and [Sequence Characteristics Indicators](/en/sequence-characteristics-indicators/introduction) |
 | Do predefined groups explain trajectory differences? | [Discrepancy Analysis](/en/discrepancy-analysis/introduction) and [Group Comparison](/en/group-comparison/conceptual-guide) |
 | Are there latent states or latent subgroups? | [Markov Chain Models](/en/markov-chain-models/introduction) |
 | Do several life domains unfold together? | [Multidomain or Polyadic Sequence Analysis](/en/multidomain/introduction) |
-| Do repeated events form frequent patterns? | [Event Pattern Mining](/en/event-sequences/introduction) |
-| Are transition histories or spell durations the focus? | [Event History and Survival](/en/event-history-analysis/samm-emlt-and-survival) |
+| Do repeated events form frequent patterns? | [Event Sequences](/en/event-sequences/introduction) |
+| Are transition histories or spell durations the focus? | [Event History Analysis](/en/event-history-analysis/samm-emlt-and-survival) |
 
 *Author: Yuqi Liang*

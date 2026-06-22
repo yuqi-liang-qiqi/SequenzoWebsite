@@ -11,13 +11,13 @@ This page covers the TraMineR-style representative-sequence API exported by Sequ
 
 ## Public API
 
-| Function | TraMineR counterpart | Main role |
+| Function | R counterpart | Main role |
 | --- | --- | --- |
-| `get_distance_center()` | `disscenter()` | Compute distance-to-center values and optional medoid indices |
-| `get_relative_frequency_groups()` | `dissrf()` | Partition a distance space into relative-frequency groups |
-| `get_relative_frequency_representatives()` | `seqrf()` | Return representative sequences for relative-frequency groups |
-| `get_representative_objects()` | `dissrep()` | Select representative objects using density or score criteria |
-| `get_representative_sequences()` | `seqrep()` | Select representative observed sequences from `SequenceData` |
+| `get_distance_center()` | `TraMineR::disscenter()` | Compute distance-to-center values and optional medoid indices |
+| `get_relative_frequency_groups()` | `TraMineR::dissrf()` | Partition a distance space into relative-frequency groups |
+| `get_relative_frequency_representatives()` | `TraMineR::seqrf()` | Return representative sequences for relative-frequency groups |
+| `get_representative_objects()` | `TraMineR::dissrep()` | Select representative objects using density or score criteria |
+| `get_representative_sequences()` | `TraMineR::seqrep()` | Select representative observed sequences from `SequenceData` |
 
 ## Import
 
@@ -128,4 +128,3 @@ These functions select or describe representative observed sequences. They are r
 ## Authors
 
 Code: Yuqi Liang
-

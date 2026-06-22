@@ -23,8 +23,8 @@ get_bic_test(
 
 ## TraMineR Parameter Mapping
 
-- `seqdata`, `seqdata2`, `group`, `set_var` -> TraMineRextras `seqBIC` data/group inputs
-- `s`, `seed`, `squared`, `weighted`, `opt`, `BFopt` -> `seqBIC` control arguments
+- `seqdata`, `seqdata2`, `group`, `set_var` -> `TraMineRextras::seqBIC()` data/group inputs
+- `s`, `seed`, `squared`, `weighted`, `opt`, `BFopt` -> `TraMineRextras::seqBIC()` control arguments
 
 ## Entry Parameters
 
@@ -70,7 +70,7 @@ print(bic)
 
 ## R Counterpart
 
-- **Closest R function:** TraMineRextras `seqBIC`
+- **Closest R function:** `TraMineRextras::seqBIC()`
 - **Mapping note:** BIC-only wrapper of the same two-group comparison engine.
 
 ## Notes

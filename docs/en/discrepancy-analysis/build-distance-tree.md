@@ -115,7 +115,7 @@ plot_tree(tree, filename="distance_tree.png")
 
 ## R Counterpart
 
-- **Closest R function:** `disstree`
+- **Closest R function:** `TraMineR::disstree()`
 - **Mapping note:** Sequenzo uses the same pseudo-R² split criterion, medoid labeling, and permutation-gated splitting strategy as the TraMineR distance-tree workflow.
 
 ## Notes

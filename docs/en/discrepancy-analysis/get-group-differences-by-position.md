@@ -1,6 +1,6 @@
 # `compare_groups_across_positions()`
 
-`compare_groups_across_positions()` scans a sequence dataset along the time axis and asks where predefined groups show the strongest window-wise local discrepancy. It is the Sequenzo counterpart to the TraMineR `seqdiff` workflow.
+`compare_groups_across_positions()` scans a sequence dataset along the time axis and asks where predefined groups show the strongest window-wise local discrepancy. It is the Sequenzo counterpart to the `TraMineR::seqdiff()` workflow.
 
 Position-wise here means **window-wise local discrepancy analysis**, not a cell-by-cell cross-tabulation of states at each time point unless the window length is effectively one.
 
@@ -57,7 +57,7 @@ At each valid anchor position the function:
 2. Drops rows with missing group labels or invalid sub-sequences unless `with_missing=True`.
 3. Builds a temporary `SequenceData` object for that window.
 4. Computes a local distance matrix with `get_distance_matrix()`.
-5. Calls `single_factor_association()` with `R=0` and `weight_permutation="diss"` when weights are used, matching TraMineR `seqdiff`.
+5. Calls `single_factor_association()` with `R=0` and `weight_permutation="diss"` when weights are used, matching `TraMineR::seqdiff()`.
 
 ## Examples
 

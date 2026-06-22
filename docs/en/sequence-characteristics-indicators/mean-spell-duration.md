@@ -21,7 +21,7 @@ result = get_mean_spell_duration(seqdata, type=1, with_missing=False)
 
 ## TraMineR Mapping
 
-- Equivalent TraMineR functions: `seqivardur` and `seqindic` (`meand` / `meand2`).
+- Equivalent TraMineR functions: `TraMineR::seqivardur()` and `TraMineR::seqindic()` (`meand` / `meand2`).
 
 ## Authors
 
@@ -29,8 +29,8 @@ Code and documentation: Yuqi Liang
 
 ## See Also
 
-- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
+- [Sequence Characteristics Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

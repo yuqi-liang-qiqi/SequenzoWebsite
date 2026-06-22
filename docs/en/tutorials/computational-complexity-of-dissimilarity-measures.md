@@ -719,6 +719,6 @@ For implementation details, see the source code in:
 
 - [Dissimilarity Measures](./dissimilarity-measures.md) explains what each measure computes.
 - [Understanding CLARA](./understanding-clara.md) covers clustering when the full matrix is too large.
-- [Large Data and Robustness](/en/big-data/introduction) lists the scalable workflows.
+- [Big Data Tools](/en/big-data/introduction) lists the scalable workflows.
 
 *Author: Yuqi Liang*

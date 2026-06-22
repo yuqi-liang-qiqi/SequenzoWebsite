@@ -24,7 +24,7 @@ result = get_insecurity_index(seqdata, method="RANK", pow=1.0, bound=False)
 
 ## TraMineR Mapping
 
-- Equivalent TraMineR function: `seqinsecurity`.
+- Equivalent TraMineR function: `TraMineR::seqinsecurity()`.
 
 ## Authors
 
@@ -32,8 +32,8 @@ Code and documentation: Yuqi Liang
 
 ## See Also
 
-- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
+- [Sequence Characteristics Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

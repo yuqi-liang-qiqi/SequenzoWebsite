@@ -85,7 +85,7 @@ Saves `mean_time_by_state.png` in your current working directory (or the path yo
 
 ## R Counterpart
 
-- **Closest R function:** `seqmtplot`
+- **Closest R function:** `TraMineR::seqmtplot()`
 - **Mapping note:** Direct conceptual match: mean time spent in each state.
 
 ## Notes

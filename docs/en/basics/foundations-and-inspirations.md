@@ -1,6 +1,8 @@
-# Foundations and Inspirations
+# Sequence Foundations and Inspirations
 
 Social sequence analysis has a rich methodological tradition. Sequenzo builds on this foundation and brings it into the scientific Python stack with a focus on performance, scale, and accessible workflows.
+
+Where Sequenzo provides accelerated versions of established sequence-analysis workflows, speed is not meant to change the analytical definition of the method. The goal is to preserve the corresponding reference result while making the computation more practical in Python, especially for larger datasets.
 
 The core conceptual framework of Sequenzo draws on several major R packages:
 

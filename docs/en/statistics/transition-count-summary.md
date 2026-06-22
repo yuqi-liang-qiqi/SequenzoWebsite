@@ -37,13 +37,13 @@ print(summary)
 
 ## R Counterpart
 
-- **Closest TraMineR function(s):** `seqtransn` (often summarized with `summary(...)` in R workflows)
-- **Mapping note:** Sequenzo first computes transition counts with `seqtransn`-style logic, then returns a one-row summary table (`count`, `mean`, `median`, `min`, `q1`, `q3`, `max`).
+- **Closest TraMineR function(s):** `TraMineR::seqtransn()` (often summarized with `summary(...)` in R workflows)
+- **Mapping note:** Sequenzo first computes transition counts with `TraMineR::seqtransn()`-style logic, then returns a one-row summary table (`count`, `mean`, `median`, `min`, `q1`, `q3`, `max`).
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

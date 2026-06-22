@@ -1,6 +1,6 @@
 # Discrepancy Analysis: Sequenzo and TraMineR Mapping
 
-This page maps Sequenzo discrepancy-analysis functions to their closest TraMineR counterparts. The R names below are taken from TraMineR core (`dissassoc`, `dissvar`, `disstree`, `seqtree`, `seqdiff`, and related helpers).
+This page maps Sequenzo discrepancy-analysis functions to their closest R counterparts. Most names below are from TraMineR core; `dissindic()` is from TraMineRextras.
 
 ## What This Section Covers
 
@@ -10,30 +10,30 @@ For TraMineR users, this is the `diss*` family plus the `seqdiff` and `seqtree` 
 
 ## Main Mapping Table
 
-| Sequenzo function | TraMineR counterpart | Notes |
+| Sequenzo function | R counterpart | Notes |
 | --- | --- | --- |
-| [`overall_discrepancy`](./conceptual-guide.md) | `dissvar` | Overall discrepancy from a distance matrix; `squared=False` uses v = 1 and `squared=True` uses v = 2. |
-| [`single_factor_association`](./get-group-distance-association.md) | `dissassoc` | Single-factor pseudo-ANOVA on distances; returns pseudo F, pseudo Fbf, pseudo R², Bartlett, and Levene summaries. |
-| [`marginal_factor_association`](./conceptual-guide.md) | repeated `dissassoc` | One `dissassoc()` per covariate column; raw marginal association, not Type II partial effects. |
-| [`multifactor_association`](./conceptual-guide.md) | `dissmfacw` | Multifactor model with Type II-style partial contributions after other covariates are included. |
-| [`distance_multifactor_anova`](./conceptual-guide.md) | `dissmfacw` | Lower-level multifactor engine behind `multifactor_association()`. |
-| [`gower_matrix`](./conceptual-guide.md) | internal Gower-centering step in `dissmfacw` | Centered Gower matrix used for distance-based multifactor ANOVA. |
-| [`individual_indicators`](./conceptual-guide.md) | TraMineRextras `dissindic` | Individual marginality and gain indicators; not exported from TraMineR core. |
-| [`merge_cluster_groups`](./conceptual-guide.md) | `dissmergegroups` | Greedy merging of cluster labels by partition-quality loss. |
-| [`compare_groups_across_positions`](./get-group-differences-by-position.md) | `seqdiff` | Window-wise local discrepancy scan along the time axis. |
-| [`print_group_differences_across_positions`](./get-group-differences-by-position.md) | `print.seqdiff` | Text summary of a `seqdiff` object. |
-| [`plot_group_differences_across_positions`](./get-group-differences-by-position.md) | `plot.seqdiff` | Plot statistics or discrepancy profiles across anchor positions. |
-| [`distance_tree`](./build-distance-tree.md) | `disstree` | Distance-based regression tree on a distance matrix plus predictors. |
-| [`sequence_tree`](./build-sequence-tree.md) | `seqtree` | Sequence-facing wrapper that can compute the distance matrix before calling the tree fitter. |
-| [`test_tree_split`](./build-distance-tree.md) | internal split-significance logic behind `disstree` | Permutation test for one candidate tree split. |
-| [`get_leaf_membership`](./build-distance-tree.md) | `disstreeleaf` | Leaf ID or readable path label for each sequence. |
-| [`get_classification_rules`](./build-distance-tree.md) | `disstree.get.rules` | Human-readable rules for terminal nodes. |
-| [`assign_to_leaves`](./build-distance-tree.md) | `disstree.assign` | Assign new profiles to fitted leaves using tree rules. |
-| [`print_tree`](./build-distance-tree.md) | `print.disstree` / `print.seqtree` | Text display of a fitted tree. |
-| [`plot_tree`](./build-distance-tree.md) | `plot.disstree` / `plot.seqtree` | Graphical tree display. |
-| [`export_tree_to_dot`](./build-distance-tree.md) | `disstree2dot` / `seqtree2dot` | Export a tree to Graphviz DOT format. |
-| [`permutation_test`](./permutation-tests.md) | `TraMineR.permutation` | Generic permutation wrapper. |
-| [`association_permutation_test`](./permutation-tests.md) | `dissassocweighted.*` | Five-statistic `dissassoc` permutation engine used by `single_factor_association()`. |
+| [`overall_discrepancy`](./conceptual-guide.md) | `TraMineR::dissvar()` | Overall discrepancy from a distance matrix; `squared=False` uses v = 1 and `squared=True` uses v = 2. |
+| [`single_factor_association`](./get-group-distance-association.md) | `TraMineR::dissassoc()` | Single-factor pseudo-ANOVA on distances; returns pseudo F, pseudo Fbf, pseudo R², Bartlett, and Levene summaries. |
+| [`marginal_factor_association`](./conceptual-guide.md) | repeated `TraMineR::dissassoc()` | One `dissassoc()` per covariate column; raw marginal association, not Type II partial effects. |
+| [`multifactor_association`](./conceptual-guide.md) | `TraMineR::dissmfacw()` | Multifactor model with Type II-style partial contributions after other covariates are included. |
+| [`distance_multifactor_anova`](./conceptual-guide.md) | `TraMineR::dissmfacw()` | Lower-level multifactor engine behind `multifactor_association()`. |
+| [`gower_matrix`](./conceptual-guide.md) | internal Gower-centering step in `TraMineR::dissmfacw()` | Centered Gower matrix used for distance-based multifactor ANOVA. |
+| [`individual_indicators`](./conceptual-guide.md) | `TraMineRextras::dissindic()` | Individual marginality and gain indicators; not exported from TraMineR core. |
+| [`merge_cluster_groups`](./conceptual-guide.md) | `TraMineR::dissmergegroups()` | Greedy merging of cluster labels by partition-quality loss. |
+| [`compare_groups_across_positions`](./get-group-differences-by-position.md) | `TraMineR::seqdiff()` | Window-wise local discrepancy scan along the time axis. |
+| [`print_group_differences_across_positions`](./get-group-differences-by-position.md) | `print()` on a TraMineR `seqdiff` object | Text summary of a `seqdiff` object; TraMineR registers this as an S3 method. |
+| [`plot_group_differences_across_positions`](./get-group-differences-by-position.md) | `plot()` on a TraMineR `seqdiff` object | Plot statistics or discrepancy profiles across anchor positions; TraMineR registers this as an S3 method. |
+| [`distance_tree`](./build-distance-tree.md) | `TraMineR::disstree()` | Distance-based regression tree on a distance matrix plus predictors. |
+| [`sequence_tree`](./build-sequence-tree.md) | `TraMineR::seqtree()` | Sequence-facing wrapper that can compute the distance matrix before calling the tree fitter. |
+| [`test_tree_split`](./build-distance-tree.md) | internal split-significance logic behind `TraMineR::disstree()` | Permutation test for one candidate tree split. |
+| [`get_leaf_membership`](./build-distance-tree.md) | `TraMineR::disstreeleaf()` | Leaf ID or readable path label for each sequence. |
+| [`get_classification_rules`](./build-distance-tree.md) | `TraMineR::disstree.get.rules()` | Human-readable rules for terminal nodes. |
+| [`assign_to_leaves`](./build-distance-tree.md) | `TraMineR::disstree.assign()` | Assign new profiles to fitted leaves using tree rules. |
+| [`print_tree`](./build-distance-tree.md) | `print()` on TraMineR `disstree` / `seqtree` objects | Text display of a fitted tree; TraMineR registers these as S3 methods. |
+| [`plot_tree`](./build-distance-tree.md) | `TraMineR::disstreedisplay()` / `TraMineR::seqtreedisplay()` | GraphViz-based tree display for fitted distance-tree or sequence-tree objects. |
+| [`export_tree_to_dot`](./build-distance-tree.md) | `TraMineR::disstree2dot()` / `TraMineR::seqtree2dot()` | Export a tree to Graphviz DOT format. |
+| [`permutation_test`](./permutation-tests.md) | TraMineR internal permutation wrapper | Generic permutation wrapper aligned with TraMineR's internal permutation logic. |
+| [`association_permutation_test`](./permutation-tests.md) | TraMineR internal `dissassocweighted.*` helpers | Five-statistic `dissassoc` permutation engine used by `single_factor_association()`. |
 
 ## Parameter Mapping for Core Entry Points
 
@@ -74,11 +74,11 @@ TraMineR tree functions also accept `max.depth` and `first` as formal argument n
 
 | TraMineR function | Typical role |
 | --- | --- |
-| `disscenter` | Gravity center / medoid search from a distance matrix |
-| `dissrep` | Representative sequence selection from distances |
-| `dissrf` | Random forest on distances |
-| `dissdomassoc` | Association between domain-specific distance matrices |
-| `disstreedisplay` / `seqtreedisplay` | Rich tree displays beyond the basic `plot_tree()` helper |
+| `TraMineR::disscenter()` | Gravity center / medoid search from a distance matrix |
+| `TraMineR::dissrep()` | Representative sequence selection from distances |
+| `TraMineR::dissrf()` | Relative-frequency groups from distances |
+| `TraMineR::dissdomassoc()` | Association between domain-specific distance matrices |
+| `TraMineR::disstreedisplay()` / `TraMineR::seqtreedisplay()` | Rich tree displays beyond the basic `plot_tree()` helper |
 
 ## Authors
 

@@ -17,10 +17,10 @@ compare_groups(
 
 ## TraMineR Parameter Mapping
 
-- `subsequence_results` -> TraMineR `fsub`
-- `group_labels` -> TraMineR `group`
-- `test_method` -> Conceptually corresponds to the chi-square association test used by `seqecmpgroup()`
-- `pvalue_threshold` -> TraMineR `pvalue.limit`
+- `subsequence_results` -> TraMineR `fsub` object
+- `group_labels` -> `TraMineR::seqecmpgroup()` `group`
+- `test_method` -> Conceptually corresponds to the chi-square association test used by `TraMineR::seqecmpgroup()`
+- `pvalue_threshold` -> `TraMineR::seqecmpgroup()` `pvalue.limit`
 - `weighted` -> TraMineR weighted behavior
 
 ## Entry Parameters
@@ -54,7 +54,7 @@ discriminating = compare_groups(
 
 ## R Counterpart
 
-- **Closest R function:** `seqecmpgroup`
+- **Closest R function:** `TraMineR::seqecmpgroup()`
 - **Mapping note:** Both functions identify subsequences that best separate groups using chi-square based testing.
 
 ## Notes

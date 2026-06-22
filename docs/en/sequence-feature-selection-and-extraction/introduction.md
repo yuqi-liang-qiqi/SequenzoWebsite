@@ -87,7 +87,7 @@ New to this module? Start with the [step-by-step tutorial](./tutorial.md).
 | [`select_relevant_features()`](./select-relevant-features.md) | Boruta selection on an existing feature matrix. |
 | [`interpret_selected_features()`](./interpret-selected-features.md#interpret-selected-features-1) | Summarize confirmed Boruta features by name and index. |
 | [`cluster_correlated_features()`](./interpret-selected-features.md#cluster-correlated-features) | Group correlated selected features before interpretation. |
-| [`clustassoc_like_typology_validation()`](./clustassoc-like-typology-validation.md) | Check whether a clustering solution accounts for a covariate–sequence association, analogous to WeightedCluster `clustassoc()`. |
+| [`clustassoc_like_typology_validation()`](./clustassoc-like-typology-validation.md) | Check whether a clustering solution accounts for a covariate–sequence association, analogous to `WeightedCluster::clustassoc()`. |
 
 Helper:
 
@@ -182,7 +182,7 @@ Sequenzo provides a Python-native implementation of this workflow. Some function
 | --- | --- | --- |
 | `extract_sequence_features()` | `WeightedCluster::seqpropclust(..., prop.only=TRUE)` | Closest feature-extraction counterpart. Sequenzo implements duration, timing, and sequencing features explicitly in Python. |
 | `select_relevant_features()` | `Boruta::Boruta()` from the R package `Boruta` | Same Boruta idea, but Sequenzo uses Python BorutaPy, so selected features may differ from R. |
-| `run_feature_extraction_and_selection_pipeline()` | `seqpropclust` + `Boruta::Boruta()` + optional `stats::lm()` / `stats::glm()` | Sequenzo convenience pipeline. There is no single R function for this whole workflow. |
+| `run_feature_extraction_and_selection_pipeline()` | `WeightedCluster::seqpropclust()` + `Boruta::Boruta()` + optional `stats::lm()` / `stats::glm()` | Sequenzo convenience pipeline. There is no single R function for this whole workflow. |
 | `preset="unterlerchner2023"` | Unterlerchner et al. (2023) parameterization | Sequenzo settings bundle for reproducing the published workflow logic more easily. |
 | `cluster_correlated_features()` | Correlation-based interpretation step in Unterlerchner et al. (2023) | Python helper for grouping redundant selected features before interpretation. |
 | `clustassoc_like_typology_validation()` | `WeightedCluster::clustassoc()` | Typology-validation helper, separate from the FES pipeline; used when sequence clustering is part of the design. |

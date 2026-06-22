@@ -2,7 +2,7 @@
 
 `plot_subsequence_group_contrasts()` visualizes discriminating subsequences across groups.
 
-It is Sequenzo's closest counterpart to TraMineR `plot.subseqelistchisq`.
+It is Sequenzo's closest counterpart to TraMineR's S3 `plot.subseqelistchisq()` method.
 
 ## Function Usage
 
@@ -30,12 +30,12 @@ plot_subsequence_group_contrasts(
 
 ## TraMineR Parameter Mapping
 
-- `group_contrast_results` -> TraMineR `x`
-- `y_limit_mode` -> TraMineR `ylim`
-- `plot_type` -> TraMineR `ptype`
-- `show_legend` -> TraMineR `with.legend`
-- `legend_text_scale` -> TraMineR `cex.legend`
-- `x_label` / `y_label` -> TraMineR `xlab` / `ylab`
+- `group_contrast_results` -> TraMineR S3 `plot.subseqelistchisq()` `x`
+- `y_limit_mode` -> TraMineR S3 `plot.subseqelistchisq()` `ylim`
+- `plot_type` -> TraMineR S3 `plot.subseqelistchisq()` `ptype`
+- `show_legend` -> TraMineR S3 `plot.subseqelistchisq()` `with.legend`
+- `legend_text_scale` -> TraMineR S3 `plot.subseqelistchisq()` `cex.legend`
+- `x_label` / `y_label` -> TraMineR S3 `plot.subseqelistchisq()` `xlab` / `ylab`
 
 ## Entry Parameters
 
@@ -84,7 +84,7 @@ plot_subsequence_group_contrasts(
 
 ## R Counterpart
 
-- **Closest R function:** `plot.subseqelistchisq`
+- **Closest R method:** TraMineR S3 `plot.subseqelistchisq()`
 - **Mapping note:** Residual-based color encoding follows the same visual logic as Figures 3 and 4 in Ritschard et al. (2013).
 
 ## See Also

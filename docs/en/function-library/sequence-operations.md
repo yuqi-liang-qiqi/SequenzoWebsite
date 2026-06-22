@@ -58,7 +58,7 @@ split_fixed_width_sequences(["AABBCC", "AACCDD"], sl=2, sep="-")
 
 ## Recoding States
 
-`recode_sequence_states()` mirrors the TraMineR `seqrecode()` idea. For `SequenceData` input, it returns a new `SequenceData` object with the recoded alphabet; for DataFrame-like input, it returns a DataFrame.
+`recode_sequence_states()` mirrors the `TraMineR::seqrecode()` idea. For `SequenceData` input, it returns a new `SequenceData` object with the recoded alphabet; for DataFrame-like input, it returns a DataFrame.
 
 ```python
 from sequenzo import recode_sequence_states
@@ -124,16 +124,16 @@ The tie-breaking follows TraMineR-style dynamic programming: substitution or mat
 
 | TraMineR idea | Sequenzo function |
 | --- | --- |
-| `seqconc()` | `concatenate_sequences()` |
-| `seqdecomp()` | `decompose_concatenated_sequences()` |
-| `seqsep()` | `split_fixed_width_sequences()` |
-| `seqrecode()` | `recode_sequence_states()` |
-| `seqshift()` | `shift_sequence_with_missing_padding()` |
-| `seqasnum()` | `convert_sequences_to_numeric_matrix()` |
-| `seqLLCP()` | `longest_common_prefix_length()` |
-| `seqLLCS()` | `longest_common_subsequence_length()` |
-| `seqfind()` | `find_sequence_occurrences()` |
-| `seqalign()` | `pairwise_sequence_alignment()` |
+| `TraMineR::seqconc()` | `concatenate_sequences()` |
+| `TraMineR::seqdecomp()` | `decompose_concatenated_sequences()` |
+| `TraMineR::seqsep()` | `split_fixed_width_sequences()` |
+| `TraMineR::seqrecode()` | `recode_sequence_states()` |
+| TraMineR internal `seqshift()` | `shift_sequence_with_missing_padding()` |
+| TraMineR internal `seqasnum()` | `convert_sequences_to_numeric_matrix()` |
+| `TraMineR::seqLLCP()` | `longest_common_prefix_length()` |
+| `TraMineR::seqLLCS()` | `longest_common_subsequence_length()` |
+| `TraMineR::seqfind()` | `find_sequence_occurrences()` |
+| `TraMineR::seqalign()` | `pairwise_sequence_alignment()` |
 
 ## See Also
 
@@ -144,5 +144,3 @@ The tie-breaking follows TraMineR-style dynamic programming: substitution or mat
 ## Authors
 
 Code: Yuqi Liang
-
-

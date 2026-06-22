@@ -77,7 +77,7 @@ print(R.columns.tolist()[:3])
 
 ## R Counterpart
 
-- **Closest R bundle:** WeightedCluster `seqclararange(..., method="representativeness")` when representativeness is computed inside CLARA.
+- **Closest R bundle:** `WeightedCluster::seqclararange(..., method="representativeness")` when representativeness is computed inside CLARA.
 - **Mapping note:** Sequenzo exposes the same normalization idea as a standalone function on fixed medoid indices. There is no direct TraMineR equivalent.
 
 ## Notes

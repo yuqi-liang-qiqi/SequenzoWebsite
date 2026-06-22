@@ -20,7 +20,7 @@ result = get_entropy_difference(seqdata, norm=True)
 
 ## TraMineR Mapping
 
-- Equivalent TraMineR function: `seqientdiff`.
+- Equivalent TraMineR function: TraMineR internal `seqientdiff()`.
 
 ## Authors
 
@@ -28,8 +28,8 @@ Code and documentation: Yuqi Liang
 
 ## See Also
 
-- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
+- [Sequence Characteristics Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

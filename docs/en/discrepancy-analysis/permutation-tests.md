@@ -67,7 +67,7 @@ The `weight_permutation` argument controls how weights enter permutation samplin
 | --- | --- | --- |
 | `"none"` | You have no weights or want an unweighted permutation test. | Automatically selected when `weights=None`. |
 | `"replicate"` | Each integer weight is a frequency count of aggregated cases. | Default when weights are supplied and `weight_permutation=None`, matching TraMineR `dissassoc()`, `disstree()`, and `seqtree()`. Weights must be integers. |
-| `"diss"` | Weights should enter the statistic, but permutations ignore weights. | Used by TraMineR `seqdiff` and by `compare_groups_across_positions()` for weighted window scans. Recommended for survey or calibration weights when you call `single_factor_association()` or tree functions directly. |
+| `"diss"` | Weights should enter the statistic, but permutations ignore weights. | Used by `TraMineR::seqdiff()` and by `compare_groups_across_positions()` for weighted window scans. Recommended for survey or calibration weights when you call `single_factor_association()` or tree functions directly. |
 | `"group"` | Weights are permuted together with group labels. | Useful when the sampling design ties weights to group structure. |
 
 Choose the mode that matches your weight interpretation. If you are unsure and your data are unweighted, leave `weights=None`.
@@ -98,7 +98,7 @@ In practice you usually let the tree functions call this logic for you. Use `tes
 
 ## R Counterpart
 
-- **Closest R functions:** `dissassocweighted.*`, `TraMineR.permutation`, and the permutation logic behind `disstree`
+- **Closest R functions:** TraMineR internal `dissassocweighted.*` helpers, TraMineR's internal permutation wrapper, and the permutation logic behind `TraMineR::disstree()`
 - **Mapping note:** Sequenzo follows the same weight modes and reproduces the five-statistic `dissassoc` permutation output.
 
 ## Notes

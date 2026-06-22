@@ -22,7 +22,7 @@ result = get_positive_negative_indicators(seqdata, pos_states=[1, 2], neg_states
 
 ## TraMineR Mapping
 
-- Equivalent TraMineR functions: `seqipos` and `seqindic` binary indicators.
+- Equivalent TraMineR functions: `TraMineR::seqipos()` and `TraMineR::seqindic()` binary indicators.
 
 ## Authors
 
@@ -30,8 +30,8 @@ Code and documentation: Yuqi Liang
 
 ## See Also
 
-- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
+- [Sequence Characteristics Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

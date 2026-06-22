@@ -20,7 +20,7 @@ A dictionary with DataFrames: mean duration, variance, and maximum variance.
 
 ## TraMineR Mapping
 
-- Equivalent TraMineR function: `seqivardur`.
+- Equivalent TraMineR function: `TraMineR::seqivardur()`.
 
 ## Authors
 
@@ -28,8 +28,8 @@ Code and documentation: Yuqi Liang
 
 ## See Also
 
-- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
+- [Sequence Characteristics Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

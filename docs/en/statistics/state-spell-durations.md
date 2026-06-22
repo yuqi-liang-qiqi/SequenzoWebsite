@@ -37,13 +37,13 @@ print(dur.head())
 
 ## R Counterpart
 
-- **Closest TraMineR function:** `seqdur`
-- **Mapping note:** This is a direct conceptual and implementation match in Sequenzo (`sequence_statistics.py` calls `seqdur`).
+- **Closest TraMineR function:** `TraMineR::seqdur()`
+- **Mapping note:** This is a direct conceptual and implementation match in Sequenzo (`sequence_statistics.py` calls `TraMineR::seqdur()`).
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

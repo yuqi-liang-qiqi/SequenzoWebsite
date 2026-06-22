@@ -39,8 +39,8 @@ print(tse_df.head())
 
 ## R Counterpart
 
-- **Closest R function:** `seqe2tse`
-- **Mapping note:** Both functions convert event-sequence objects back to a time-stamped event table.
+- **Closest R workflow:** `TraMineR::seqformat(..., to = "TSE")`
+- **Mapping note:** TraMineR also has an internal helper named `seqe2TSE`, but the documented public conversion path is `seqformat(..., to = "TSE")`. Avoid relying on undocumented casing variants.
 
 ## Notes
 

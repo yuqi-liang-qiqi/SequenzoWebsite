@@ -122,8 +122,8 @@ plot_tree(tree)
 
 ## R Counterpart
 
-- **Closest R function:** `seqtree`
-- **Mapping note:** `seqtree` in TraMineR is a sequence-facing wrapper around the same distance-tree logic implemented by `disstree`.
+- **Closest R function:** `TraMineR::seqtree()`
+- **Mapping note:** `TraMineR::seqtree()` is a sequence-facing wrapper around the same distance-tree logic implemented by `TraMineR::disstree()`.
 
 ## Notes
 

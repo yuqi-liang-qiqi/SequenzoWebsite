@@ -36,8 +36,8 @@ print(dss.head())
 
 ## R Counterpart
 
-- **Closest TraMineR function:** `seqdss`
-- **Mapping note:** This is a direct conceptual and implementation match in Sequenzo (`sequence_statistics.py` calls `seqdss`).
+- **Closest TraMineR function:** `TraMineR::seqdss()`
+- **Mapping note:** This is a direct conceptual and implementation match in Sequenzo (`sequence_statistics.py` calls `TraMineR::seqdss()`).
 
 ## Notes
 
@@ -45,8 +45,8 @@ print(dss.head())
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

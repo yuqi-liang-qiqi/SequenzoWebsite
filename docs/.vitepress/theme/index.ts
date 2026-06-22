@@ -214,30 +214,34 @@ export default {
     }
 
     function syncSidebarToActivePage() {
-      const activeLink = document.querySelector(
+      const activeItem = document.querySelector('.VPSidebarItem.is-active') as HTMLElement | null
+      const activeLink = activeItem?.querySelector('a') as HTMLElement | null || document.querySelector(
         '.VPSidebar a[aria-current="page"], .VPSidebar .VPLink.active'
       ) as HTMLElement | null
-      if (!activeLink) return false
+      const activeTarget = activeItem || activeLink
+      if (!activeTarget) return false
 
       // VitePress groups are not <details>; open collapsed ancestors by toggling their buttons.
       const collapsedParents = Array.from(
-        activeLink.closest('.VPSidebar')?.querySelectorAll('.VPSidebarItem.collapsible.collapsed') || []
+        activeTarget.closest('.VPSidebar')?.querySelectorAll('.VPSidebarItem.collapsible.collapsed') || []
       ) as HTMLElement[]
       collapsedParents.forEach((group) => {
-        if (!group.contains(activeLink)) return
-        const toggle = group.querySelector('.item .button') as HTMLButtonElement | null
+        if (!group.contains(activeTarget)) return
+        const toggle = group.querySelector(
+          ':scope > .item button, :scope > .item .caret, :scope > .item .button'
+        ) as HTMLElement | null
         if (toggle) toggle.click()
       })
 
-      const scroller = findScrollableParent(activeLink)
+      const scroller = findScrollableParent(activeTarget)
       if (!scroller) {
-        activeLink.scrollIntoView({ block: 'center' })
+        activeTarget.scrollIntoView({ block: 'center' })
         return true
       }
 
       const scrollerTop = scroller.getBoundingClientRect().top
-      const linkTop = activeLink.getBoundingClientRect().top
-      const delta = linkTop - scrollerTop - scroller.clientHeight / 2 + activeLink.clientHeight / 2
+      const linkTop = activeTarget.getBoundingClientRect().top
+      const delta = linkTop - scrollerTop - scroller.clientHeight / 2 + activeTarget.clientHeight / 2
       scroller.scrollTo({ top: scroller.scrollTop + delta, behavior: 'auto' })
       return true
     }

@@ -185,17 +185,17 @@ You can also visualize group contrasts, event-order structures, and event dynami
 
 This module mirrors the practical logic of TraMineR’s event-sequence tools, while using Python-style names.
 
-| TraMineR         | Sequenzo                                                                    |
-| ---------------- | --------------------------------------------------------------------------- |
-| `seqecreate()`   | `EventSequenceData.from_tse()` / `EventSequenceData.from_state_sequences()` |
-| `seqefsub()`     | `find_frequent_subsequences()`                                              |
-| `seqeapplysub()` | `count_subsequence_occurrences()`                                           |
-| `seqecmpgroup()` | `compare_groups()`                                                          |
-| `seqecontain()`  | `check_event_subsequence_containment()`                                     |
-| `seqe2tse()`     | `convert_event_sequences_to_tse()`                                          |
-| `seqetm()`       | `compute_event_transition_matrix()`                                         |
-| `seqelist`       | `EventSequenceList`                                                         |
-| `eseq`           | `EventSequence`                                                             |
+| R counterpart | Sequenzo |
+| --- | --- |
+| `TraMineR::seqecreate()` | `EventSequenceData.from_tse()` / `EventSequenceData.from_state_sequences()` |
+| `TraMineR::seqefsub()` | `find_frequent_subsequences()` |
+| `TraMineR::seqeapplysub()` | `count_subsequence_occurrences()` |
+| `TraMineR::seqecmpgroup()` | `compare_groups()` |
+| `TraMineR::seqecontain()` | `check_event_subsequence_containment()` |
+| `TraMineR::seqformat(..., to = "TSE")` | `convert_event_sequences_to_tse()` |
+| `TraMineR::seqetm()` | `compute_event_transition_matrix()` |
+| `TraMineR` `seqelist` object | `EventSequenceList` |
+| `TraMineR` `eseq` object | `EventSequence` |
 
 ## Relationship with Other Sequenzo Modules
 
@@ -227,4 +227,3 @@ Modeling transitions or hazards -> with_event_history_analysis
 ## Reference
 
 Ritschard, G., Bürgin, R., & Studer, M. (2013). Exploratory Mining of Life Event Histories. In J. J. McArdle & G. Ritschard (Eds.), Contemporary Issues in Exploratory Data Mining in the Behavioral Sciences (pp. 221–253). Routledge.
-

@@ -1,6 +1,6 @@
 # `clustassoc_like_typology_validation()`
 
-`clustassoc_like_typology_validation()` checks whether sequence cluster solutions at different `k` values account for the association between a covariate and sequence dissimilarities. It is analogous to WeightedCluster `clustassoc()`.
+`clustassoc_like_typology_validation()` checks whether sequence cluster solutions at different `k` values account for the association between a covariate and sequence dissimilarities. It is analogous to `WeightedCluster::clustassoc()`.
 
 Intuitively: if adding cluster labels **greatly reduces** the remaining pseudo-R² of the covariate, the typology has captured much of the sequence variation associated with that covariate. If little changes, the clustering has not absorbed that association.
 
@@ -100,4 +100,3 @@ Documentation: Yuqi Liang
 Bolano, D., & Studer, M. (2020). The link between previous life trajectories and a later life outcome: A feature selection approach.
 
 Unterlerchner, L., Studer, M., & Gomensoro, A. (2023). Back to the features. Investigating the relationship between educational pathways and income using sequence analysis and feature extraction and selection approach. Swiss journal of sociology, 49(2), 417-446.
-

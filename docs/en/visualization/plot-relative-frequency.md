@@ -73,7 +73,7 @@ plot_relative_frequency(
 
 ## R Counterpart
 
-- **Closest R function:** `seqplot(type="rf")` (TraMineR) / related RF tooling in TraMineRextras
+- **Closest R function:** `TraMineR::seqplot(type="rf")` / `TraMineR::seqrf()`; related extension tooling: `TraMineRextras::seqplot.rf()`
 - **Mapping note:** Conceptually aligned with relative-frequency-style sequence visualization.
 
 ## Notes

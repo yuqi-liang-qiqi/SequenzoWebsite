@@ -2,7 +2,7 @@
 
 `plot_event_parallel_coordinates()` draws event sequences as parallel-coordinate-style trajectories.
 
-This function is Sequenzo's closest counterpart to TraMineR `seqpcplot`-style visualization.
+This function is Sequenzo's closest counterpart to `TraMineR::seqpcplot()`-style visualization.
 
 ## Function Usage
 
@@ -87,7 +87,7 @@ plot_event_parallel_coordinates(
 
 ## R Counterpart
 
-- **Closest R function:** `seqpcplot` / `plot.seqelist(type="pc")`
+- **Closest R function:** `TraMineR::seqpcplot()` / `TraMineR::seqplot(type="pc")`
 - **Mapping note:** Visual intent is similar, but panel layout and styling are not one-to-one.
 
 ## See Also

@@ -29,11 +29,11 @@ find_frequent_subsequences(
 
 ## TraMineR Parameter Mapping
 
-- `event_sequences` -> TraMineR `eseq`
-- `target_subsequences` -> TraMineR `str.subseq`
-- `min_support_ratio` -> TraMineR `pmin.support`
-- `search_constraint` -> TraMineR `constraint`
-- `weighted` -> TraMineR `weighted`
+- `event_sequences` -> TraMineR `eseq` object
+- `target_subsequences` -> `TraMineR::seqefsub()` `str.subseq`
+- `min_support_ratio` -> `TraMineR::seqefsub()` `pmin.support`
+- `search_constraint` -> `TraMineR::seqefsub()` `constraint`
+- `weighted` -> `TraMineR::seqefsub()` `weighted`
 
 ## Entry Parameters
 
@@ -66,7 +66,7 @@ fsubseq = find_frequent_subsequences(
 
 ## R Counterpart
 
-- **Closest R function:** `seqefsub`
+- **Closest R function:** `TraMineR::seqefsub()`
 - **Mapping note:** Both functions search for frequent event subsequences using support thresholds and optional time constraints.
 
 ## Notes

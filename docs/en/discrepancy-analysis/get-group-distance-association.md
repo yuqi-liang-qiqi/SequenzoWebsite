@@ -107,7 +107,7 @@ print(result["groups"])
 
 ## R Counterpart
 
-- **Closest R function:** `dissassoc`
+- **Closest R function:** `TraMineR::dissassoc()`
 - **Mapping note:** Sequenzo returns the five-statistic setup used in TraMineR's weighted permutation workflow, including pseudo F, pseudo Fbf, pseudo R², Bartlett, and Levene.
 
 ## Notes

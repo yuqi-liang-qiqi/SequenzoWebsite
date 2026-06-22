@@ -79,13 +79,13 @@
 :root {
   --vp-button-brand-border: transparent;
   --vp-button-brand-text: var(--vp-c-white);
-  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-bg: var(--vp-c-brand-1);
   --vp-button-brand-hover-border: transparent;
   --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-hover-bg: #a94b3d;
   --vp-button-brand-active-border: transparent;
   --vp-button-brand-active-text: var(--vp-c-white);
-  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  --vp-button-brand-active-bg: #913f34;
 }
 
 /**
@@ -110,6 +110,12 @@
   --vp-c-brand-1: #f4d4c9; /* links / badges text */
   --vp-c-brand-2: #eab6aa; /* hover */
   --vp-c-brand-3: #d58f80; /* solid button bg */
+  --vp-button-brand-text: #20120f;
+  --vp-button-brand-bg: #eab6aa;
+  --vp-button-brand-hover-text: #20120f;
+  --vp-button-brand-hover-bg: #f4d4c9;
+  --vp-button-brand-active-text: #20120f;
+  --vp-button-brand-active-bg: #d58f80;
 
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
       #ffe7df 15%,
@@ -254,8 +260,8 @@
   width: 48px;
   height: 48px;
   border-radius: 999px;
-  background: var(--vp-c-brand-3);
-  color: #fff;
+  background: var(--vp-button-brand-bg);
+  color: var(--vp-button-brand-text);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow:
     0 0 0 2px color-mix(in srgb, var(--vp-c-brand-2) 70%, transparent), /* soft brand ring */
@@ -267,7 +273,7 @@
 }
 
 .spx-lightbox-btn:hover {
-  background: var(--vp-c-brand-2);
+  background: var(--vp-button-brand-hover-bg);
 }
 
 .spx-lightbox-btn:active {

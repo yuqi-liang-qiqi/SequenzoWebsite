@@ -2,7 +2,7 @@
 
 `plot_event_dynamics()` visualizes event timing patterns as survival-style or binned event-rate curves.
 
-It is Sequenzo's closest counterpart to TraMineRextras `seqedplot`.
+It is Sequenzo's closest counterpart to `TraMineRextras::seqedplot()`.
 
 ## Function Usage
 
@@ -30,7 +30,7 @@ plot_event_dynamics(
 
 ## TraMineR Parameter Mapping
 
-- `event_sequences` -> TraMineR `seqe`
+- `event_sequences` -> TraMineR `seqe` object
 - `group_labels` -> TraMineR `group`
 - `num_bins` -> TraMineR `breaks`
 - `time_range` -> TraMineR `ages`
@@ -93,8 +93,8 @@ plot_event_dynamics(
 
 ## R Counterpart
 
-- **Closest R function:** TraMineRextras `seqedplot`
-- **Mapping note:** Conceptually follows the same idea of showing event timing and dynamics, but it is not a one-to-one replacement for every `seqedplot` workflow.
+- **Closest R function:** `TraMineRextras::seqedplot()`
+- **Mapping note:** Conceptually follows the same idea of showing event timing and dynamics, but it is not a one-to-one replacement for every `TraMineRextras::seqedplot()` workflow.
 
 ## See Also
 

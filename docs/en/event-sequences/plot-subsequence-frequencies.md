@@ -23,11 +23,11 @@ plot_subsequence_frequencies(
 
 ## TraMineR Parameter Mapping
 
-- `subsequence_results` -> TraMineR `x`
-- `frequency_values` -> TraMineR `freq`
-- `text_scale` -> TraMineR `cex`
-- `title` -> TraMineR `main`
-- `x_label` / `y_label` -> TraMineR `xlab` / `ylab`
+- `subsequence_results` -> TraMineR S3 `plot.subseqelist()` `x`
+- `frequency_values` -> TraMineR S3 `plot.subseqelist()` `freq`
+- `text_scale` -> TraMineR S3 `plot.subseqelist()` `cex`
+- `title` -> TraMineR S3 `plot.subseqelist()` `main`
+- `x_label` / `y_label` -> TraMineR S3 `plot.subseqelist()` `xlab` / `ylab`
 
 ## Entry Parameters
 
@@ -62,7 +62,7 @@ plot_subsequence_frequencies(
 
 ## R Counterpart
 
-- **Closest R function:** `plot.subseqelist`
+- **Closest R method:** TraMineR S3 `plot.subseqelist()`
 - **Mapping note:** Both visualize subsequence frequencies/support from frequent-subsequence results.
 
 ## See Also

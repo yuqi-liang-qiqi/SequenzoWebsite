@@ -10,7 +10,7 @@ Use group comparison when your groups are defined before the analysis, such as g
 | Compare two predefined groups | [`get_group_differences()`](/en/group-comparison/get-group-differences) |
 | Read the likelihood-ratio test | [`get_LRT()`](/en/group-comparison/get-lrt-test) |
 | Read the BIC evidence | [`get_BIC()`](/en/group-comparison/get-bic-test) |
-| Coming from R | [TraMineRextras Mapping](/en/group-comparison/traminer-function-mapping) |
+| Coming from R | [Sequenzo and TraMineR Mapping](/en/group-comparison/traminer-function-mapping) |
 
 ## Typical Workflow
 
@@ -27,4 +27,3 @@ Use group comparison when your groups are defined before the analysis, such as g
 - A significant test does not explain the difference by itself. Pair it with plots and descriptive sequence summaries.
 
 ## Authors
-

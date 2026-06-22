@@ -14,9 +14,9 @@ check_event_subsequence_containment(
 
 ## TraMineR Parameter Mapping
 
-- `event_sequences` -> TraMineR `eseq`
-- `target_subsequence` -> TraMineR `subseq`
-- `search_constraint` -> TraMineR `constraint`
+- `event_sequences` -> TraMineR `eseq` object
+- `target_subsequence` -> `TraMineR::seqecontain()` `subseq`
+- `search_constraint` -> `TraMineR::seqecontain()` `constraint`
 
 ## Entry Parameters
 
@@ -44,7 +44,7 @@ contains = check_event_subsequence_containment(
 
 ## R Counterpart
 
-- **Closest R function:** `seqecontain`
+- **Closest R function:** `TraMineR::seqecontain()`
 - **Mapping note:** Both functions check whether event sequences contain specified subsequence patterns. In Sequenzo, the target pattern can be provided as a string or an event-sequence object.
 
 ## See Also

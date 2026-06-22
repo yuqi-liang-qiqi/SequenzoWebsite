@@ -36,13 +36,13 @@ print(dist.head())
 
 ## R Counterpart
 
-- **Closest TraMineR function:** `seqistatd`
+- **Closest TraMineR function:** `TraMineR::seqistatd()`
 - **Mapping note:** This is a direct conceptual match; Sequenzo computes per-sequence state frequency/distribution output with optional proportions.
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

@@ -1,6 +1,6 @@
 # `get_spell_durations()`
 
-Returns spell durations for each sequence (TraMineR-like `seqdur` behavior).
+Returns spell durations for each sequence (TraMineR-like `TraMineR::seqdur()` behavior).
 
 ## Function Usage
 
@@ -20,7 +20,7 @@ result = get_spell_durations(seqdata, with_missing=False)
 
 ## TraMineR Mapping
 
-- Equivalent TraMineR function: `seqdur`.
+- Equivalent TraMineR function: `TraMineR::seqdur()`.
 
 ## Authors
 
@@ -28,8 +28,8 @@ Code and documentation: Yuqi Liang
 
 ## See Also
 
-- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
+- [Sequence Characteristics Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

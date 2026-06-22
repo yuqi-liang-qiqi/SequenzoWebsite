@@ -1,4 +1,4 @@
-# Reporting Sequence Analysis
+# Reporting Results of the Typical Workflow
 
 A sequence analysis involves many small decisions: the state alphabet, the distance measure, the cost settings, the clustering method, and the number of clusters. Each decision can change the resulting typology. Readers and reviewers can only evaluate your findings if those decisions are stated, and the long-running debate about optimal matching in sociology was, in large part, a debate about undocumented and unjustified settings (Abbott & Tsay, 2000; Aisenbrey & Fasang, 2010).
 

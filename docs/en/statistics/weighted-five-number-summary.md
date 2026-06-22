@@ -41,8 +41,8 @@ print(summary)
 
 ## R Counterpart
 
-- **Closest R function:** `weighted.fivenum`
-- **Mapping note:** Sequenzo marks this as equivalent helper behavior in code and returns weighted five-number statistics.
+- **Closest R counterpart:** No TraMineR public function. Use a weighted-quantile helper in R when you need a weighted five-number summary.
+- **Mapping note:** Sequenzo exposes this as a documented Python helper for weighted descriptive summaries, not as a TraMineR public API wrapper.
 
 ## Notes
 
@@ -51,8 +51,8 @@ print(summary)
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

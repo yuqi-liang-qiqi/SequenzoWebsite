@@ -15,7 +15,7 @@ For Sequenzo users, this source is useful because it explains where the repeated
 ## Related Sequenzo Pages
 
 - [College Students' Stress Dataset](/en/datasets/stress-data)
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics)
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics)
 - [Group Comparison](/en/group-comparison/introduction)
 - [Typical Workflow](/en/basics/typical-workflow)
 

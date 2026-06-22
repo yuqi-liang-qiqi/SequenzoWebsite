@@ -8,26 +8,44 @@ hero:
   tagline: Fast, scalable, and intuitive. Built for big data, designed for every discipline in social sciences.
   actions:
     - theme: brand
-      text: Documentations
+      text: Documentation
       link: /en/basics/about-sequenzo
 
 features:
-  - title: Faster Analysis at Larger Scale
-    icon: ⚡
-    details: "Benchmarks show 8× faster processing than R-based tools. Compiled distance routines and CLARA-style sampling help large sequence studies stay practical when full pairwise matrices become costly."
+  - title: High Performance
+    icon: 🚀
+    details: "Project benchmarks show about 8× faster processing than R-based tools in tested distance workflows. Optimized kernels and CLARA workflows help larger studies stay practical."
     link: /en/traminer-and-sequenzo/performance-diff
     linkText: See performance
 
-  - title: More Rigorous Checks Before Modeling
-    icon: ✅
-    details: "SequenceData turns raw tables into a checked sequence object, validating states, labels, IDs, weights, colors, void values, and missing values before downstream analysis."
-    link: /en/basics/typical-workflow
-    linkText: Start the workflow
+  - title: Flexible Across Scenarios
+    icon: 🌍
+    details: "Learn from life-course, family, school-to-work, multidomain, political, historical, and stress datasets before adapting Sequenzo to your own trajectories."
+    link: /en/datasets/introduction
+    linkText: See datasets
 
-  - title: More Precise Method Guidance
-    icon: 🎯
-    details: "Research-question-first guides connect users to distance measures, clustering, group comparison, event histories, multidomain analysis, and HMMs, with trade-offs clearly framed."
+  - title: Guidance for Newcomers
+    icon: 🧭
+    details: "Start from a research question, then follow a clear path through sequence definition, distance calculation, clustering, plots, and interpretation."
     link: /en/tutorials/introduction
-    linkText: Choose a method
+    linkText: Choose a guide
+
+  - title: New Modules and Features
+    icon: ✨
+    details: "Explore HMM-family models, event-history tools, multidomain workflows, big-data routines, summary statistics, and sequence-characteristics indicators added in recent releases."
+    link: /en/basics/about-sequenzo#new-modules-and-features-in-recent-releases
+    linkText: See what's new
+
+  - title: See the Visualization Gallery
+    icon: 📊
+    details: "Preview state distributions, index plots, medoids, relative frequencies, transition views, and other displays before choosing figures for your analysis."
+    link: /en/visualization/gallery
+    linkText: Open gallery
+
+  - title: See Our Tutorials Online
+    icon: 💻
+    details: "Open notebooks and scripts in Colab or GitHub, including quickstart, clustering, multidomain, polyadic, and HMM workflows."
+    link: /en/basics/view-tutorials-online
+    linkText: Open tutorials
 
 ---

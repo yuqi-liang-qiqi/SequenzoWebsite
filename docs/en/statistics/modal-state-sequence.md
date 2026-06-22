@@ -38,13 +38,13 @@ print(modal)
 
 ## R Counterpart
 
-- **Closest TraMineR function:** `seqmodst`
+- **Closest TraMineR function:** `TraMineR::seqmodst()`
 - **Mapping note:** This is a direct conceptual match; Sequenzo wraps modal-state computation with optional weighting and missing-state handling.
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

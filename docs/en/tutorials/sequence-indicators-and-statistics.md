@@ -1,25 +1,25 @@
-# Sequence Indicators and Statistics
+# Sequence Summary Statistics vs Sequence Characteristics Indicators
 
 After you create a `SequenceData` object, the first question is often descriptive. You may want to know which states dominate, how often people switch states, whether some trajectories are more fragmented than others, or whether one cluster contains longer spells than another. These questions do not always require a distance matrix.
 
-Sequenzo separates three kinds of quantities. **Sequence statistics** summarize a dataset, a time point, or a distribution of states. **Sequence indicators** summarize each individual sequence as a numeric value. **Distances** compare pairs of sequences. They are connected, but they answer different questions.
+Sequenzo separates three kinds of quantities. **Sequence summary statistics** summarize a dataset, a time point, or a distribution of states. **Sequence characteristics indicators** summarize each individual sequence as a numeric value. **Distances** compare pairs of sequences. They are connected, but they answer different questions.
 
-This tutorial explains when to use statistics, when to use indicators, and how both support clustering, group comparison, regression, and interpretation.
+This tutorial explains when to use summary statistics, when to use characteristics indicators, and how both support clustering, group comparison, regression, and interpretation.
 
 ## What These Numbers Answer
 
-Sequence statistics answer questions about the sample. For example, a state distribution tells you the share of people in each state at each time point. A modal state sequence tells you the most frequent state at each position. Mean time by state tells you how much time, on average, people spend in education, employment, unemployment, or another state.
+Sequence summary statistics answer questions about the sample. For example, a state distribution tells you the share of people in each state at each time point. A modal state sequence tells you the most frequent state at each position. Mean time by state tells you how much time, on average, people spend in education, employment, unemployment, or another state.
 
-Sequence indicators answer questions about individual trajectories. A within-sequence entropy value describes how diverse one person’s sequence is. A transition count describes how often that person changes state. A turbulence or complexity score summarizes several aspects of change and diversity into one number.
+Sequence characteristics indicators answer questions about individual trajectories. A within-sequence entropy value describes how diverse one person's sequence is. A transition count describes how often that person changes state. A turbulence or complexity score summarizes several aspects of change and diversity into one number.
 
 Distances answer pairwise comparison questions. They ask how different sequence A is from sequence B under a chosen dissimilarity measure. You need distances for clustering, medoids, discrepancy analysis, and many group-comparison workflows. You do not need distances to compute basic descriptive statistics or many individual indicators.
 
 | Question | Use | Example page |
 | --- | --- | --- |
-| What states are common at each time point? | Sequence statistics | [State distribution](/en/statistics/individual-state-distribution) |
-| How much time is spent in each state? | Sequence statistics | [Mean time by state](/en/statistics/mean-time-by-state) |
-| How diverse is each individual sequence? | Individual indicators | [Within-sequence entropy](/en/sequence-characteristics-indicators/within-sequence-entropy) |
-| How unstable is each trajectory? | Individual indicators | [Number of transitions](/en/sequence-characteristics-indicators/number-of-transitions), [volatility](/en/sequence-characteristics-indicators/volatility) |
+| What states are common at each time point? | Sequence summary statistics | [State distribution](/en/statistics/individual-state-distribution) |
+| How much time is spent in each state? | Sequence summary statistics | [Mean time by state](/en/statistics/mean-time-by-state) |
+| How diverse is each individual sequence? | Sequence characteristics indicators | [Within-sequence entropy](/en/sequence-characteristics-indicators/within-sequence-entropy) |
+| How unstable is each trajectory? | Sequence characteristics indicators | [Number of transitions](/en/sequence-characteristics-indicators/number-of-transitions), [volatility](/en/sequence-characteristics-indicators/volatility) |
 | Which sequences are close to each other? | Distances | [`get_distance_matrix()`](/en/function-library/get-distance-matrix) |
 
 ## Reading Common Indicators
@@ -56,8 +56,8 @@ Use distances when the question is relational. Clustering, medoids, discrepancy 
 
 ## See Also
 
-- [Sequence Indicators](/en/sequence-characteristics-indicators/introduction) lists every indicator function.
-- [Sequence Statistics](/en/statistics/introduction) lists every summary function.
+- [Sequence Characteristics Indicators](/en/sequence-characteristics-indicators/introduction) lists every indicator function.
+- [Sequence Summary Statistics](/en/statistics/introduction) lists every summary function.
 - [How to Read Sequence Plots](./reading-sequence-plots.md) covers the visual counterparts.
 
 ## References

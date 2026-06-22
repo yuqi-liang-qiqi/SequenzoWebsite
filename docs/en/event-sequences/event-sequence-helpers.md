@@ -12,7 +12,7 @@ is_event_sequence(eseq[0])
 
 ### R Counterpart
 
-- **Closest R function:** `is.eseq`
+- **Closest R function:** `TraMineR::is.eseq()`
 - **Mapping note:** Same intent: check whether an object is one event sequence.
 
 ## `is_event_sequence_collection(obj)`
@@ -25,7 +25,7 @@ is_event_sequence_collection(eseq)
 
 ### R Counterpart
 
-- **Closest R function:** `is.seqelist`
+- **Closest R function:** `TraMineR::is.seqelist()`
 - **Mapping note:** Same intent: check whether an object is an event-sequence collection.
 
 ## `get_event_sequence_lengths(obj)`
@@ -42,7 +42,7 @@ all_len = get_event_sequence_lengths(eseq)
 
 ### R Counterpart
 
-- **Closest R function:** `seqelength`
+- **Closest R function:** `TraMineR::seqelength()`
 - **Mapping note:** Same helper purpose: retrieve event-sequence lengths.
 
 ## `get_event_sequence_weights(obj)`
@@ -55,7 +55,7 @@ w = get_event_sequence_weights(eseq)
 
 ### R Counterpart
 
-- **Closest R function:** `seqeweight`
+- **Closest R function:** `TraMineR::seqeweight()`
 - **Mapping note:** Same helper purpose: retrieve event-sequence weights.
 
 ## See Also

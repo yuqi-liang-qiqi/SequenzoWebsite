@@ -41,7 +41,7 @@ print(result)
 
 ## R Counterpart
 
-- **Closest R function:** `weighted.mean`
+- **Closest R function:** `stats::weighted.mean()`
 - **Mapping note:** Sequenzo marks this as equivalent helper behavior in code and exposes the same core weighted-mean intent.
 
 ## Notes
@@ -51,8 +51,8 @@ print(result)
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

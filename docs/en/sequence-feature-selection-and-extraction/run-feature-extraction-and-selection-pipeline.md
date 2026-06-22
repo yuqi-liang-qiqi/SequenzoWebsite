@@ -35,7 +35,7 @@ Returns a frozen `FeatureExtractionAndSelectionConfig` for a **named settings bu
 | --- | --- |
 | Feature extraction step | `WeightedCluster::seqpropclust(..., prop.only=TRUE)` |
 | Boruta step | `Boruta::Boruta(residuals(confounder_model) ~ ., data=features)` |
-| Optional final model | `lm()` / `glm()` on selected features |
+| Optional final model | `stats::lm()` / `stats::glm()` on selected features |
 | `preset="unterlerchner2023"` | Unterlerchner et al. (2023) parameterization |
 | Residualization | OLS/WLS (regression); binomial deviance residuals (binary classification) |
 
@@ -147,7 +147,7 @@ result = run_feature_extraction_and_selection_pipeline(
 
 ## R Counterpart
 
-- **Closest R workflow:** `seqpropclust(..., prop.only=TRUE)` + `Boruta()` on residualized outcomes + optional `lm()` / `glm()`
+- **Closest R workflow:** `WeightedCluster::seqpropclust(..., prop.only=TRUE)` + `Boruta::Boruta()` on residualized outcomes + optional `stats::lm()` / `stats::glm()`
 - **Mapping note:** Not one R function; papers script these steps. Boruta confirmed sets may differ from R because Sequenzo uses BorutaPy (see [Conceptual Guide](./conceptual-guide.md#boruta-python-vs-r)).
 
 ## Notes

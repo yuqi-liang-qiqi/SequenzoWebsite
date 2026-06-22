@@ -162,7 +162,7 @@ This saves a high-resolution figure with custom dimensions and larger font size 
 
 ## R Counterpart
 
-- **Closest R function:** `seqdplot`
+- **Closest R function:** `TraMineR::seqdplot()`
 - **Mapping note:** Direct conceptual match: state distributions across time positions.
 
 

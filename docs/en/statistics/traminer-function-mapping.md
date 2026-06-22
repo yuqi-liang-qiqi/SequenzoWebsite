@@ -1,6 +1,6 @@
 # Statistical Helpers: Sequenzo and TraMineR Mapping
 
-This page maps Sequenzo statistics functions to their closest TraMineR counterparts for users migrating from R.
+This page maps Sequenzo statistics functions to their closest R counterparts for users migrating from R. Most sequence summaries align with TraMineR core; the general weighted helpers are not TraMineR-specific public APIs.
 
 ## What This Section Covers
 
@@ -11,18 +11,17 @@ The `statistics` section focuses on aggregation and reporting helpers after core
 
 ## Mapping Table
 
-| Sequenzo function | TraMineR counterpart | Notes |
+| Sequenzo function | R counterpart | Notes |
 | --- | --- | --- |
-| [`get_distinct_state_sequences`](./distinct-state-sequences) | `seqdss` | In code, implemented via `seqdss` (`sequence_statistics.py`). |
-| [`get_state_spell_durations`](./state-spell-durations) | `seqdur` | In code, implemented via `seqdur` (`sequence_statistics.py`). |
-| [`get_mean_time_by_state`](./mean-time-by-state) | `seqmeant` | In code/docstring marked equivalent to `seqmeant`. |
-| [`get_individual_state_distribution`](./individual-state-distribution) | `seqistatd` | In code/docstring marked equivalent to `seqistatd`. |
-| [`get_modal_state_sequence`](./modal-state-sequence) | `seqmodst` | In code/docstring marked equivalent to `seqmodst`. |
-| [`get_sequence_length_summary`](./sequence-length-summary) | `seqlength` (summary table added in Sequenzo) | Sequenzo computes `seqlength`-style values, then returns summary stats (`count`, `mean`, `median`, `q1`, `q3`, etc.). |
-| [`get_transition_count_summary`](./transition-count-summary) | `seqtransn` (summary table added in Sequenzo) | Sequenzo computes `seqtransn`-style values, then returns summary stats (`count`, `mean`, `median`, `q1`, `q3`, etc.). |
-| [`get_weighted_mean`](./weighted-mean) | `weighted.mean` | In code/docstring marked equivalent to `weighted.mean` helper behavior. |
-| [`get_weighted_variance`](./weighted-variance) | `weighted.var` | In code/docstring marked equivalent to `weighted.var` helper behavior. |
-| [`get_weighted_five_number_summary`](./weighted-five-number-summary) | `weighted.fivenum` | In code/docstring marked equivalent to `weighted.fivenum` helper behavior. |
+| [`get_distinct_state_sequences`](./distinct-state-sequences) | `TraMineR::seqdss()` | In code, implemented via `TraMineR::seqdss()` (`sequence_statistics.py`). |
+| [`get_state_spell_durations`](./state-spell-durations) | `TraMineR::seqdur()` | In code, implemented via `TraMineR::seqdur()` (`sequence_statistics.py`). |
+| [`get_mean_time_by_state`](./mean-time-by-state) | `TraMineR::seqmeant()` | In code/docstring marked equivalent to `TraMineR::seqmeant()`. |
+| [`get_individual_state_distribution`](./individual-state-distribution) | `TraMineR::seqistatd()` | In code/docstring marked equivalent to `TraMineR::seqistatd()`. |
+| [`get_modal_state_sequence`](./modal-state-sequence) | `TraMineR::seqmodst()` | In code/docstring marked equivalent to `TraMineR::seqmodst()`. |
+| [`get_sequence_length_summary`](./sequence-length-summary) | `TraMineR::seqlength()` (summary table added in Sequenzo) | Sequenzo computes `TraMineR::seqlength()`-style values, then returns summary stats (`count`, `mean`, `median`, `q1`, `q3`, etc.). |
+| [`get_transition_count_summary`](./transition-count-summary) | `TraMineR::seqtransn()` (summary table added in Sequenzo) | Sequenzo computes `TraMineR::seqtransn()`-style values, then returns summary stats (`count`, `mean`, `median`, `q1`, `q3`, etc.). |
+| [`get_weighted_mean`](./weighted-mean) | `stats::weighted.mean()` | In code/docstring marked equivalent to `stats::weighted.mean()` helper behavior. |
+| [`get_weighted_variance`](./weighted-variance) | No TraMineR public counterpart; closest behavior is TraMineR internal `wtd.var()`-style weighted variance | General weighted numeric summary, not a TraMineR sequence-analysis entry point. |
+| [`get_weighted_five_number_summary`](./weighted-five-number-summary) | No TraMineR public counterpart; general weighted quantile/five-number summary helper | General weighted descriptive summary, not a TraMineR sequence-analysis entry point. |
 
 ## Authors
-

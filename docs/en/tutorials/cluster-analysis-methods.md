@@ -94,7 +94,7 @@ Whichever method you choose, the distance measure still matters first. A poor di
 - [Dissimilarity Measures](/en/tutorials/dissimilarity-measures)
 - [Cluster Quality Indicators](/en/tutorials/cluster-quality-indicators)
 - [Understanding CLARA](/en/tutorials/understanding-clara)
-- [Reporting Sequence Analysis](/en/tutorials/reporting-sequence-analysis)
+- [Reporting Results of the Typical Workflow](/en/tutorials/reporting-sequence-analysis)
 
 ## References
 

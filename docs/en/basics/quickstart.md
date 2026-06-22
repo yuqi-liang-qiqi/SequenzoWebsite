@@ -2,7 +2,7 @@
 
 Run a complete six-step analysis with a bundled dataset: load data, define sequences, compute distances, cluster, compare candidate cluster counts, and export memberships.
 
-Before running the code, install Sequenzo locally or use a hosted notebook. See [Installing](/en/basics/installing) for local setup and [Runnable Notebooks](/en/basics/view-tutorials-online) for Colab.
+Before running the code, install Sequenzo locally or use a hosted notebook. See [Installing](/en/basics/installing) for local setup and [View Our Tutorials Online](/en/basics/view-tutorials-online) for Colab.
 
 The example uses `country_co2_emissions_global_deciles`. It classifies each country-year's CO₂ emissions per capita into global deciles from `D1 (Very Low)` to `D10 (Very High)`. See [CO₂ Emissions](/en/datasets/CO2-emissions) for how the deciles are built.
 
@@ -83,4 +83,4 @@ print(members.head())
 - [Basic Concepts](/en/tutorials/basic-concepts), [Timing, Duration, and Order](/en/tutorials/timing-duration-order), and [Dissimilarity Measures](/en/tutorials/dissimilarity-measures) explain the core choices.
 - [Cluster Quality Indicators](/en/tutorials/cluster-quality-indicators) and [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) help with interpretation.
 - [`SequenceData`](/en/function-library/sequence-data), [`get_distance_matrix()`](/en/function-library/get-distance-matrix), and [`ClusterQuality`](/en/function-library/cluster-quality) document the APIs used above.
-- [Tutorials](/en/tutorials/introduction) gives a reading path by research goal, and [Runnable Notebooks](/en/basics/view-tutorials-online) links to Colab examples.
+- [Tutorials](/en/tutorials/introduction) gives a reading path by research goal, and [View Our Tutorials Online](/en/basics/view-tutorials-online) links to Colab examples.

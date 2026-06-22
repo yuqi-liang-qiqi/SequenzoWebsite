@@ -30,10 +30,10 @@ extract_sequence_features(
 
 | Sequenzo | R / packages | Notes |
 | --- | --- | --- |
-| Duration block | `seqistatd()`; `seqpropclust(..., properties="duration")` | Spell-step totals |
+| Duration block | `TraMineR::seqistatd()`; `WeightedCluster::seqpropclust(..., properties="duration")` | Spell-step totals |
 | Timing block | Custom bins on spell start/end (Unterlerchner 2023) | No single TraMineR equivalent |
-| Sequencing block | `seqecreate` → `seqefsub` → `seqeapplysub`; `properties="pattern"` | DSS spell path |
-| Spell conversion | `seqdss()`, `seqdur()`, `seqformat(..., to="SPELL")` | Via `convert_seqdata_to_spells` |
+| Sequencing block | `TraMineR::seqecreate()` → `TraMineR::seqefsub()` → `TraMineR::seqeapplysub()`; `WeightedCluster::seqpropclust(..., properties="pattern")` | DSS spell path |
+| Spell conversion | `TraMineR::seqdss()`, `TraMineR::seqdur()`, `TraMineR::seqformat(..., to="SPELL")` | Via `convert_seqdata_to_spells` |
 
 ## Entry Parameters
 

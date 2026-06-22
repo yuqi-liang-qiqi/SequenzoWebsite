@@ -1,4 +1,4 @@
-# Sequence History, EMLT, SAMM, and Spell Survival
+# Sequence History, SAMM, and Spell Survival
 
 This page covers event-history-oriented tools that connect sequence analysis with transition modeling, local trajectory windows, and survival-style summaries.
 
@@ -11,22 +11,22 @@ These tools are different from [Event Sequences](/en/event-sequences/introductio
 | Use this when | The question is about transition histories, local windows after a state, or spell duration. |
 | You need before starting | A `SequenceData` object and a clear focal state, event, or spell-duration question. |
 | Do not use this when | You want frequent event-pattern mining; use [Event Sequences](/en/event-sequences/introduction). |
-| Next step | Choose EMLT for coordinates, SAMM for post-transition windows, or spell survival for duration. |
+| Next step | Choose sequence-history data for person-period modeling, SAMM for post-transition windows, or spell survival for duration. |
 
 ## Public API Map
 
 | Task | Functions or classes |
 | --- | --- |
-| Estimate EMLT sequence coordinates | `compute_emlt()`, `seqemlt()`, `EMLTResult` |
 | Build sequence-history data | `get_sequence_history_data()`, `person_level_to_person_period()` |
 | Run Sequence Analysis Multi-State Models | `SAMM`, `sequence_analysis_multi_state_model()`, `seqsamm()` |
 | Prepare SAMM sequence windows | `seqsammseq()`, `set_typology()` |
 | Connect SAMM to event-history analysis | `seqsammeha()` |
 | Analyze spell survival | `get_spell_survival_analysis()`, `plot_spell_survival_analysis()`, `SpellSurvivalResult` |
+| Estimate time-localized sequence coordinates | `compute_emlt()`, `seqemlt()`, `EMLTResult` |
 
-## EMLT: Time-Localized Sequence Coordinates
+## Related Sequence Coordinates: EMLT
 
-EMLT follows the TraMineRextras `seqemlt()` workflow. It builds time-stamped situation profiles, applies a time-discounted transformation, and returns PCA-style sequence coordinates.
+EMLT follows the `TraMineRextras::seqemlt()` workflow. It builds time-stamped situation profiles, applies a time-discounted transformation, and returns PCA-style sequence coordinates.
 
 ```python
 from sequenzo import compute_emlt
@@ -67,7 +67,7 @@ samm = sequence_analysis_multi_state_model(seqdata, sublength=4)
 employment_windows = seqsammseq(samm, spell="employment")
 ```
 
-The alias `seqsamm()` is provided for TraMineRextras compatibility. Prefer `sequence_analysis_multi_state_model()` in new Python code when readability matters.
+The alias `seqsamm()` is provided for `TraMineRextras::seqsamm()` compatibility. Prefer `sequence_analysis_multi_state_model()` in new Python code when readability matters.
 
 ## Void vs. Missing Values
 
@@ -115,4 +115,3 @@ Use this when the duration of a spell is the main object of interest, rather tha
 ## Authors
 
 Code: Yuqi Liang
-

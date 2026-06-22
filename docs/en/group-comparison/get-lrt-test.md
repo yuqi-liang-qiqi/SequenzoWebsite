@@ -23,8 +23,8 @@ get_lrt_test(
 
 ## TraMineR Parameter Mapping
 
-- `seqdata`, `seqdata2`, `group`, `set_var` -> TraMineRextras `seqLRT` data/group inputs
-- `s`, `seed`, `squared`, `weighted`, `opt` -> `seqLRT` control arguments
+- `seqdata`, `seqdata2`, `group`, `set_var` -> `TraMineRextras::seqLRT()` data/group inputs
+- `s`, `seed`, `squared`, `weighted`, `opt` -> `TraMineRextras::seqLRT()` control arguments
 
 ## Entry Parameters
 
@@ -70,7 +70,7 @@ print(lrt)
 
 ## R Counterpart
 
-- **Closest R function:** TraMineRextras `seqLRT`
+- **Closest R function:** `TraMineRextras::seqLRT()`
 - **Mapping note:** LRT-only wrapper of the same two-group comparison engine.
 
 ## Notes

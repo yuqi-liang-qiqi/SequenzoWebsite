@@ -24,8 +24,8 @@ get_group_differences(
 
 ## TraMineR Parameter Mapping
 
-- `seqdata`, `seqdata2`, `group`, `set_var` -> TraMineRextras `seqCompare` data/group inputs
-- `s`, `seed`, `stat`, `squared`, `weighted`, `opt`, `BFopt` -> `seqCompare` control arguments
+- `seqdata`, `seqdata2`, `group`, `set_var` -> `TraMineRextras::seqCompare()` data/group inputs
+- `s`, `seed`, `stat`, `squared`, `weighted`, `opt`, `BFopt` -> `TraMineRextras::seqCompare()` control arguments
 
 ## Entry Parameters
 
@@ -74,7 +74,7 @@ print(result)
 
 ## R Counterpart
 
-- **Closest R function:** TraMineRextras `seqCompare`
+- **Closest R function:** `TraMineRextras::seqCompare()`
 - **Mapping note:** Same one-group vs two-group comparison logic.
 
 ## Notes

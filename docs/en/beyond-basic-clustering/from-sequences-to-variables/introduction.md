@@ -10,7 +10,7 @@ Sequenzo splits clustering documentation into two places on purpose.
 
 **[Function Reference](../../function-library/introduction.md)** covers the standard sequence-analysis pipeline most users start with: build [`SequenceData`](../../function-library/sequence-data.md), compute a distance matrix, then cluster with [`Cluster`](../../function-library/hierarchical-clustering.md) or [`KMedoids`](../../function-library/KMedoids.md), assess quality with [`ClusterQuality`](../../function-library/cluster-quality.md), and inspect results with [`ClusterResults`](../../function-library/cluster-results.md).
 
-The **Advanced Clustering and Typologies** section in the sidebar is for **additional clustering-related workflows** that go beyond that typical path. Examples include turning a clustering solution into regression covariates (this module), and other clustering extensions as they are documented. If you are new to Sequenzo, start with the Function Reference; return here when you already have a distance matrix and cluster solution and need Helske-style variables for downstream modelling.
+The **Beyond Basic Clustering** section in the sidebar is for **additional clustering-related workflows** that go beyond that typical path. Examples include turning a clustering solution into regression covariates (this module), and other clustering extensions as they are documented. If you are new to Sequenzo, start with the Function Reference; return here when you already have a distance matrix and cluster solution and need Helske-style variables for downstream modelling.
 
 The `sequenzo.clustering.sequences_to_variables` module implements the regression-ready variable constructions described by Helske, Helske, and Chihaya (2024). It turns a distance matrix and a clustering solution into covariates you can use in standard regression models:
 
@@ -157,13 +157,13 @@ print(fit["beta_combined"], fit["se_combined"])
 | FANNY | `fanny_membership` wraps `fanny` with `memb_exp=m` and R-style column reordering (`caddy`). Python port of R `cluster::fanny` for `k >= 2`; deterministic initialization; validated in Sequenzo unit tests. |
 | `k` constraint in FANNY | For `k >= 2`, Sequenzo follows R `cluster::fanny`: `k <= n // 2 - 1`. For `k = 1`, Sequenzo returns the deterministic one-cluster membership matrix directly. |
 | Pseudoclass | Requires `K >= 2`. Draws categorical labels from each row of `U`, fits `M` models, combines variances with Rubin's rules. Requires `statsmodels`. |
-| CLARA representativeness | WeightedCluster `seqclararange(..., method="representativeness")` uses the same `1 − d / max.dist` idea inside CLARA; `representativeness_matrix` is the standalone matrix builder on fixed medoids. |
+| CLARA representativeness | `WeightedCluster::seqclararange(..., method="representativeness")` uses the same `1 − d / max.dist` idea inside CLARA; `representativeness_matrix` is the standalone matrix builder on fixed medoids. |
 
 ## Python ↔ R or Literature Mapping
 
 | Sequenzo | Closest R / literature counterpart | Notes |
 | --- | --- | --- |
-| `representativeness_matrix()` | Helske et al. (2024); WeightedCluster `seqclararange(..., method="representativeness")` | No single TraMineR function |
+| `representativeness_matrix()` | Helske et al. (2024); `WeightedCluster::seqclararange(..., method="representativeness")` | No single TraMineR function |
 | `hard_classification_variables()` | Helske et al. (2024) Table 1 hard classification | R workflows usually build dummies manually |
 | `fanny_membership()` | `cluster::fanny(diss, k, diss=TRUE, memb.exp=m)` | Port of R `cluster` FANNY for `k >= 2`; deterministic one-cluster shortcut for `k = 1` |
 | `soft_classification_variables()` | Helske et al. (2024) Table 1 soft classification | Omits reference membership column |

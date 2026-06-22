@@ -15,6 +15,8 @@ function extractDescription(filePath: string): string | undefined {
     text = text.replace(/<!--[\s\S]*?-->/g, '')
     text = text.replace(/```[\s\S]*?```/g, '')
     text = text.replace(/\$\$[\s\S]*?\$\$/g, '')
+    text = text.replace(/<style[\s\S]*?<\/style>/gi, '')
+    text = text.replace(/<script[\s\S]*?<\/script>/gi, '')
     text = text.replace(/<[^>]+>/g, '')
     for (const block of text.split(/\n\s*\n/)) {
       const line = block.trim()
@@ -63,10 +65,22 @@ export default defineConfig({
     // Per-page Open Graph tags so shared links preview with the page's own
     // title and summary instead of the site-wide defaults.
     const head = (pageData.frontmatter.head ??= [])
+    const upsertMeta = (matchKey: 'property' | 'name', matchValue: string, content: string) => {
+      const existing = head.find((entry) => {
+        const attrs = entry[1] as Record<string, string> | undefined
+        return entry[0] === 'meta' && attrs?.[matchKey] === matchValue
+      })
+      if (existing) {
+        const attrs = existing[1] as Record<string, string>
+        attrs.content = content
+      } else {
+        head.push(['meta', { [matchKey]: matchValue, content }])
+      }
+    }
     const ogTitle = pageData.title || 'Sequenzo'
-    head.push(['meta', { property: 'og:title', content: ogTitle }])
+    upsertMeta('property', 'og:title', ogTitle)
     if (pageData.description) {
-      head.push(['meta', { property: 'og:description', content: pageData.description }])
+      upsertMeta('property', 'og:description', pageData.description)
     }
   }
 })

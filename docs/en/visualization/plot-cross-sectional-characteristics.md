@@ -233,7 +233,7 @@ C  0.000000  0.333333  0.333333
 
 ## R Counterpart
 
-- **Closest R function:** `seqHtplot` (and `seqstatd` for underlying distribution statistics)
+- **Closest R function:** `TraMineR::seqHtplot()` (and `TraMineR::seqstatd()` for underlying distribution statistics)
 - **Mapping note:** Conceptually aligned for cross-sectional entropy/distribution-over-time interpretation.
 
 ## Authors
@@ -246,4 +246,3 @@ Documentation: Yuqi Liang
 - [How to Read Sequence Plots](/en/tutorials/reading-sequence-plots) explains how to interpret and choose plot types.
 - [Visualization Gallery](/en/visualization/gallery) shows all plots with code.
 - [Visualization Tools](/en/visualization/introduction) documents shared parameters.
-

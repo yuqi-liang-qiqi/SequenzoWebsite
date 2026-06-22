@@ -97,7 +97,7 @@ print_transition_matrix(seqdata, tm)       # nicely formatted console output (4 
 
 ## R Counterpart
 
-- **Closest R function:** `seqtrate` (matrix computation)
+- **Closest R function:** `TraMineR::seqtrate()` (matrix computation)
 - **Mapping note:** TraMineR focuses on transition-rate computation, while Sequenzo also provides a ready heatmap plot.
 
 ## Notes
@@ -119,5 +119,4 @@ Code: Yuqi Liang
 Documentation: Yuqi Liang
 
 Edited by: Yuqi Liang
-
 

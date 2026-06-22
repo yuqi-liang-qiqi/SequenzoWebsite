@@ -26,11 +26,11 @@ EventSequenceData.from_state_sequences(
 
 ## TraMineR Parameter Mapping
 
-- `data` / `id` / `timestamp` / `event` -> TraMineR `data` / `id` / `timestamp` / `event`
-- `seqdata` -> TraMineR `seqdata`
-- `event_representation` -> TraMineR `tevent`-like conversion rule
-- `use_labels` -> TraMineR `use.labels`
-- `weighted` -> TraMineR `weighted`
+- `data` / `id` / `timestamp` / `event` -> `TraMineR::seqecreate()` `data` / `id` / `timestamp` / `event`
+- `seqdata` -> `TraMineR::seqecreate()` `seqdata`
+- `event_representation` -> `TraMineR::seqecreate()` `tevent`-like conversion rule
+- `use_labels` -> `TraMineR::seqecreate()` `use.labels`
+- `weighted` -> `TraMineR::seqecreate()` `weighted`
 - `event_labels_order` -> TraMineR `alphabet`
 
 ## Entry Parameters
@@ -87,7 +87,7 @@ eseq = EventSequenceData.from_state_sequences(
 
 ## R Counterpart
 
-- **Closest R function:** `seqecreate`
+- **Closest R function:** `TraMineR::seqecreate()`
 - **Mapping note:** Sequenzo follows the same core idea: build event-sequence objects from TSE-style input (`id`, `timestamp`, `event`) or from state sequences, via `EventSequenceData` constructors.
 
 ## Notes

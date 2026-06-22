@@ -53,7 +53,7 @@ Use discrepancy analysis when you want TraMineR-compatible `dissassoc`, `disstre
 ## Included Pages
 
 - [Conceptual Guide](./conceptual-guide.md): core ideas in plain language
-- [Sequenzo-TraMineR Mapping](./traminer-function-mapping.md): function correspondence with TraMineR
+- [Sequenzo and TraMineR Mapping](./traminer-function-mapping.md): function correspondence with TraMineR core and related extension-package helpers
 - [`single_factor_association()`](./get-group-distance-association.md): test association between distances and one grouping variable
 - [`compare_groups_across_positions()`](./get-group-differences-by-position.md): scan group differences along moving time windows
 - [Permutation Tests](./permutation-tests.md): how randomization is used in this module

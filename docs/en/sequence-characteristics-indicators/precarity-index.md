@@ -22,7 +22,7 @@ result = get_precarity_index(seqdata, otto=0.2, a=1.0, b=1.2, method="TRATEDSS")
 
 ## TraMineR Mapping
 
-- Equivalent TraMineR function: `seqprecarity`.
+- Equivalent TraMineR function: `TraMineR::seqprecarity()`.
 
 ## Authors
 
@@ -30,8 +30,8 @@ Code and documentation: Yuqi Liang
 
 ## See Also
 
-- [Sequence Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
+- [Sequence Characteristics Indicators Overview](/en/sequence-characteristics-indicators/introduction) maps all indicator families.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use indicators versus statistics or distances.
 
 ## References
 

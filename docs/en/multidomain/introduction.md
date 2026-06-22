@@ -11,7 +11,7 @@ Multidomain methods study how several trajectories unfold together. Use these pa
 | How do I combine separate domain typologies? | [Combined Typology](/en/multidomain/combined-typology), [Merge Sparse CombT Types](/en/multidomain/merge-sparse-combt-types) |
 | How do I analyze linked family members or other polyads? | [Linked Polyadic Sequence Analysis](/en/multidomain/linked-polyadic-sequence-analysis) |
 | How do I model nested or relational trajectories? | [Hierarchical and Relational Analysis](/en/hierarchical-sequence-analysis/introduction) |
-| How do I translate a TraMineR multidomain workflow? | [Sequenzo-TraMineR Mapping](/en/multidomain/traminer-function-mapping) |
+| How do I translate a multidomain R workflow? | [Sequenzo and TraMineR Mapping](/en/multidomain/traminer-function-mapping) |
 
 ## Practical Starting Point
 
@@ -24,4 +24,3 @@ Start with CAT or DAT when the same individuals have several aligned domains. St
 - [Linked Polyadic Sequence Analysis](/en/multidomain/linked-polyadic-sequence-analysis) covers paired-entity designs.
 
 ## Authors
-

@@ -15,8 +15,8 @@ compute_event_transition_matrix(
 
 ## TraMineR Parameter Mapping
 
-- `event_sequences` -> TraMineR `eseq`
-- `weighted` -> TraMineR `weighted`
+- `event_sequences` -> TraMineR `eseq` object
+- `weighted` -> `TraMineR::seqetm()` `weighted`
 
 ## Entry Parameters
 
@@ -44,7 +44,7 @@ print(tm)
 
 ## R Counterpart
 
-- **Closest R function:** `seqetm`
+- **Closest R function:** `TraMineR::seqetm()`
 - **Mapping note:** This is a practical Sequenzo helper for summarizing adjacent event-to-event movements. It is related to transition-focused event-sequence workflows, but it should not be confused with the formal event-sequence definition of a transition, where a transition may contain several simultaneous events.
 
 ## Notes

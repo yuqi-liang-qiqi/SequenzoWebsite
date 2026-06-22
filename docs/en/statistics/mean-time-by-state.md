@@ -44,13 +44,13 @@ print(mt)
 
 ## R Counterpart
 
-- **Closest TraMineR function:** `seqmeant`
+- **Closest TraMineR function:** `TraMineR::seqmeant()`
 - **Mapping note:** This is a direct conceptual match; Sequenzo forwards to `get_mean_time_in_states(...)` with equivalent options.
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

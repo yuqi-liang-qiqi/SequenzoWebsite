@@ -16,7 +16,7 @@ The module is designed for two linked questions:
 | Do not use this when | Your data are ordinary one-person sequences with no relational or multilevel pair structure. |
 | Next step | Start with `run_hierarchical_sequence_analysis()` for a full workflow, or `cluster_pair_trajectories()` for scalable typologies. |
 
-## Core Workflow
+## Typical Workflow
 
 | Step | Function or class | Purpose |
 | --- | --- | --- |

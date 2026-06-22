@@ -42,8 +42,8 @@ print(result)
 
 ## R Counterpart
 
-- **Closest R function:** `weighted.var`
-- **Mapping note:** Sequenzo marks this as equivalent helper behavior in code and exposes weighted variance with method-based estimation.
+- **Closest R counterpart:** No TraMineR public function. The closest TraMineR source-level behavior is its internal `wtd.var()` helper; in general R workflows, weighted variance is usually supplied by a helper package or custom function.
+- **Mapping note:** Sequenzo exposes this as a documented Python helper with method-based estimation, rather than as a wrapper around a TraMineR public API.
 
 ## Notes
 
@@ -52,8 +52,8 @@ print(result)
 
 ## See Also
 
-- [Sequence Statistics Overview](/en/statistics/introduction) maps all summary functions.
-- [Sequence Indicators and Statistics](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
+- [Sequence Summary Statistics Overview](/en/statistics/introduction) maps all summary functions.
+- [Sequence Summary Statistics vs Sequence Characteristics Indicators](/en/tutorials/sequence-indicators-and-statistics) explains when to use statistics versus indicators or distances.
 
 ## Authors
 

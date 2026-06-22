@@ -94,7 +94,7 @@ DUR_WithPartner
 
 These features are useful when the substantive mechanism is exposure. For example, time spent unemployed may matter for later income or health; time spent in tertiary education may matter for later earnings; time spent in a partnership may matter for later family or economic outcomes.
 
-In Sequenzo, duration is measured in **sequence-position steps** (`duration_steps`). This follows the spirit of TraMineR `seqistatd()` and WeightedCluster `seqpropclust` with `properties="duration"`.
+In Sequenzo, duration is measured in **sequence-position steps** (`duration_steps`). This follows the spirit of `TraMineR::seqistatd()` and `WeightedCluster::seqpropclust()` with `properties="duration"`.
 
 Duration is not automatically measured in calendar months unless your sequence time grid is monthly.
 
@@ -149,7 +149,7 @@ A B C
 
 for sequencing feature extraction. This prevents long durations from being counted as repeated sequencing information.
 
-This follows the logic of TraMineR `seqecreate` → `seqefsub` → `seqeapplysub` and WeightedCluster `properties="pattern"`.
+This follows the logic of `TraMineR::seqecreate()` → `TraMineR::seqefsub()` → `TraMineR::seqeapplysub()` and `WeightedCluster::seqpropclust()` with `properties="pattern"`.
 
 Parameters `sequencing_max_k` and `sequencing_min_support` control the maximum subsequence length and the minimum prevalence required for a subsequence to be retained.
 
@@ -304,7 +304,7 @@ A typical FES analysis follows this logic:
 * `time_unit_hint="month"` is metadata for reproducibility and self-documentation. It does not automatically change the bin width.
 * FES is the overall workflow; Boruta is the current feature-selection method implemented in this module.
 * Boruta-confirmed features can be correlated or redundant. Use `cluster_correlated_features()` before interpreting them as separate findings.
-* Confirmed features may differ from R `Boruta()` with default settings because Sequenzo uses the Python BorutaPy backend.
+* Confirmed features may differ from R `Boruta::Boruta()` with default settings because Sequenzo uses the Python BorutaPy backend.
 * Numeric `0/1` outcomes default to regression under `problem_type="auto"`. Pass `problem_type="classification"` when binary classification and binomial residualization are intended.
 * `fit_final_model=True` is an exploratory convenience option, not the main published workflow. Cluster correlated features before a final regression.
 * Empty `hit_count` values in `interpret_selected_features()` are expected with BorutaPy. Use `boruta_ranking`, `selected_*`, and `tentative_*` for diagnostics.

@@ -9,18 +9,6 @@ export const en = defineConfig({
     nav: [
       { text: 'Install', link: '/en/basics/installing' },
       { text: 'Quickstart', link: '/en/basics/quickstart' },
-      { text: 'Guides', link: '/en/tutorials/introduction' },
-      { text: 'API Reference', link: '/en/function-library/introduction' },
-      {
-        text: 'Resources',
-        items: [
-          { text: 'Cite Sequenzo', link: '/en/basics/how-to-cite' },
-          { text: 'Changelog', link: '/en/changelog' },
-          { text: 'Issues and Requests', link: '/en/faq/bug_reports_and_feature_requests' },
-          { text: 'Coming from R', link: '/en/traminer-and-sequenzo/introduction' },
-          { text: 'Community', link: '/en/basics/join-our-community' },
-        ]
-      },
     ],
 
     sidebar: [
@@ -29,29 +17,26 @@ export const en = defineConfig({
         collapsed: true,
         items: [
           {
-            text: 'Project Context',
+            text: 'About Sequenzo',
+            link: '/en/basics/about-sequenzo',
             collapsed: false,
             items: [
               {
-                text: 'About Sequenzo',
-                link: '/en/basics/about-sequenzo'
-              },
-              {
-                text: 'Foundations and Inspirations',
+                text: 'Sequence Foundations and Inspirations',
                 link: '/en/basics/foundations-and-inspirations'
               },
               {
-                text: 'Cite Sequenzo',
+                text: '📖 How to Cite Us?',
                 link: '/en/basics/how-to-cite'
               },
               {
-                text: 'Community',
+                text: 'Join Our Community',
                 link: '/en/basics/join-our-community'
               }
             ]
           },
           {
-            text: 'Core Onboarding',
+            text: 'Onboarding',
             collapsed: false,
             items: [
               {
@@ -63,11 +48,11 @@ export const en = defineConfig({
                 link: '/en/basics/quickstart'
               },
               {
-                text: 'Core Workflow',
+                text: 'Typical Workflow',
                 link: '/en/basics/typical-workflow'
               },
               {
-                text: 'Run Examples in Colab',
+                text: 'View Our Tutorials Online',
                 link: '/en/basics/view-tutorials-online'
               }
             ]
@@ -85,15 +70,11 @@ export const en = defineConfig({
                 link: '/en/basics/handle-missing-values'
               },
               {
-                text: 'Plot Colors',
-                link: '/en/basics/colors'
-              },
-              {
                 text: 'Working with Weighted Data',
                 link: '/en/basics/weighted-data'
               },
               {
-                text: 'Large Data Concepts',
+                text: 'Big Data Concepts',
                 link: '/en/basics/if-you-have-big-data'
               }
             ]
@@ -101,7 +82,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Guides',
+        text: 'Conceptual Guides',
         collapsed: true,
         items: [
           {
@@ -121,11 +102,7 @@ export const en = defineConfig({
                 link: '/en/tutorials/timing-duration-order'
               },
               {
-                text: 'How to Read Sequence Plots',
-                link: '/en/tutorials/reading-sequence-plots'
-              },
-              {
-                text: 'Sequence Indicators and Statistics',
+                text: 'Sequence Summary Statistics vs Sequence Characteristics Indicators',
                 link: '/en/tutorials/sequence-indicators-and-statistics'
               },
               {
@@ -139,7 +116,7 @@ export const en = defineConfig({
             ]
           },
           {
-            text: 'Comparing and Clustering Sequences',
+            text: 'Dissimilarity-Based Clustering',
             collapsed: false,
             items: [
               {
@@ -171,13 +148,13 @@ export const en = defineConfig({
                 link: '/en/tutorials/understanding-clara'
               },
               {
-                text: 'Reporting Sequence Analysis',
+                text: 'Reporting Results of the Typical Workflow',
                 link: '/en/tutorials/reporting-sequence-analysis'
               }
             ]
           },
           {
-            text: 'Probabilistic and Event Models',
+            text: 'Probabilistic Models',
             collapsed: false,
             items: [
               {
@@ -195,7 +172,13 @@ export const en = defineConfig({
               {
                 text: 'Sequence Analysis vs. LCA vs. HMM',
                 link: '/en/tutorials/sa-lca-and-hmm'
-              },
+              }
+            ]
+          },
+          {
+            text: 'Event Models',
+            collapsed: false,
+            items: [
               {
                 text: 'Sequence History Analysis',
                 link: '/en/tutorials/sequence-history-analysis'
@@ -293,7 +276,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Core Workflow API',
+        text: 'Typical Workflow Functions',
         collapsed: true,
         items: [
           {
@@ -345,11 +328,43 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Sequence-Level Indicators',
+        text: 'Sequence Summary Statistics',
+        collapsed: true,
+        items: [
+          { text: 'Overview', link: '/en/statistics/introduction' },
+          { text: 'Sequence Summary Statistics vs Sequence Characteristics Indicators', link: '/en/tutorials/sequence-indicators-and-statistics' },
+          { text: 'Sequenzo and TraMineR Mapping', link: '/en/statistics/traminer-function-mapping' },
+          {
+            text: 'Sequence Summaries',
+            collapsed: true,
+            items: [
+              { text: 'Distinct State Sequences', link: '/en/statistics/distinct-state-sequences' },
+              { text: 'State Spell Durations', link: '/en/statistics/state-spell-durations' },
+              { text: 'Mean Time by State', link: '/en/statistics/mean-time-by-state' },
+              { text: 'Individual State Distribution', link: '/en/statistics/individual-state-distribution' },
+              { text: 'Modal State Sequence', link: '/en/statistics/modal-state-sequence' },
+              { text: 'Sequence Length Summary', link: '/en/statistics/sequence-length-summary' },
+              { text: 'Transition Count Summary', link: '/en/statistics/transition-count-summary' },
+            ]
+          },
+          {
+            text: 'Weighted Summary Statistics',
+            collapsed: true,
+            items: [
+              { text: 'Weighted Mean', link: '/en/statistics/weighted-mean' },
+              { text: 'Weighted Variance', link: '/en/statistics/weighted-variance' },
+              { text: 'Weighted Five-Number Summary', link: '/en/statistics/weighted-five-number-summary' },
+            ]
+          },
+        ]
+      },
+      {
+        text: 'Sequence Characteristics Indicators',
         collapsed: true,
         items: [
           { text: 'Overview', link: '/en/sequence-characteristics-indicators/introduction' },
-          { text: 'Sequenzo-TraMineR Mapping', link: '/en/sequence-characteristics-indicators/traminer-function-mapping' },
+          { text: 'Sequence Summary Statistics vs Sequence Characteristics Indicators', link: '/en/tutorials/sequence-indicators-and-statistics' },
+          { text: 'Sequenzo and TraMineR Mapping', link: '/en/sequence-characteristics-indicators/traminer-function-mapping' },
           {
             text: 'Length and Duration',
             collapsed: true,
@@ -400,36 +415,6 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Dataset Summary Statistics',
-        collapsed: true,
-        items: [
-          { text: 'Overview', link: '/en/statistics/introduction' },
-          { text: 'Sequenzo-TraMineR Mapping', link: '/en/statistics/traminer-function-mapping' },
-          {
-            text: 'Dataset and Sequence Summaries',
-            collapsed: true,
-            items: [
-              { text: 'Distinct State Sequences', link: '/en/statistics/distinct-state-sequences' },
-              { text: 'State Spell Durations', link: '/en/statistics/state-spell-durations' },
-              { text: 'Mean Time by State', link: '/en/statistics/mean-time-by-state' },
-              { text: 'Individual State Distribution', link: '/en/statistics/individual-state-distribution' },
-              { text: 'Modal State Sequence', link: '/en/statistics/modal-state-sequence' },
-              { text: 'Sequence Length Summary', link: '/en/statistics/sequence-length-summary' },
-              { text: 'Transition Count Summary', link: '/en/statistics/transition-count-summary' },
-            ]
-          },
-          {
-            text: 'Weighted Summary Statistics',
-            collapsed: true,
-            items: [
-              { text: 'Weighted Mean', link: '/en/statistics/weighted-mean' },
-              { text: 'Weighted Variance', link: '/en/statistics/weighted-variance' },
-              { text: 'Weighted Five-Number Summary', link: '/en/statistics/weighted-five-number-summary' },
-            ]
-          },
-        ]
-      },
-      {
         text: 'Visualization Tools',
         collapsed: true,
         items: [
@@ -442,7 +427,11 @@ export const en = defineConfig({
             link: '/en/visualization/gallery'
           },
           {
-            text: 'Sequenzo-TraMineR Mapping',
+            text: 'How to Read Sequence Plots',
+            link: '/en/tutorials/reading-sequence-plots'
+          },
+          {
+            text: 'Sequenzo and TraMineR Mapping',
             link: '/en/visualization/traminer-function-mapping'
           },
           {
@@ -504,7 +493,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Advanced Clustering and Typologies',
+        text: 'Beyond Basic Clustering',
         collapsed: true,
         items: [
           {
@@ -572,7 +561,7 @@ export const en = defineConfig({
             link: '/en/discrepancy-analysis/introduction'
           },
           {
-            text: 'Sequenzo-TraMineR Mapping',
+            text: 'Sequenzo and TraMineR Mapping',
             link: '/en/discrepancy-analysis/traminer-function-mapping'
           },
           {
@@ -614,7 +603,7 @@ export const en = defineConfig({
             link: '/en/group-comparison/conceptual-guide'
           },
           {
-            text: 'TraMineRextras Mapping',
+            text: 'Sequenzo and TraMineR Mapping',
             link: '/en/group-comparison/traminer-function-mapping'
           },
           {
@@ -850,7 +839,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Event Sequences and Event History',
+        text: 'Event Sequences',
         collapsed: true,
         items: [
           {
@@ -859,7 +848,7 @@ export const en = defineConfig({
           },
           { text: 'Quickstart Example', link: '/en/event-sequences/example' },
           {
-            text: 'Sequenzo-TraMineR Mapping',
+            text: 'Sequenzo and TraMineR Mapping',
             link: '/en/event-sequences/traminer-function-mapping'
           },
           {
@@ -931,9 +920,15 @@ export const en = defineConfig({
           {
             text: 'Helper Functions',
             link: '/en/event-sequences/event-sequence-helpers'
-          },
+          }
+        ]
+      },
+      {
+        text: 'Event History Analysis',
+        collapsed: true,
+        items: [
           {
-            text: 'EMLT, SAMM, and Spell Survival',
+            text: 'Sequence History, SAMM, and Spell Survival',
             link: '/en/event-history-analysis/samm-emlt-and-survival'
           }
         ]
@@ -947,7 +942,7 @@ export const en = defineConfig({
             link: '/en/multidomain/introduction'
           },
           {
-            text: 'Sequenzo-TraMineR Mapping',
+            text: 'Sequenzo and TraMineR Mapping',
             link: '/en/multidomain/traminer-function-mapping'
           },
           {
@@ -985,7 +980,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Large Data and Robustness',
+        text: 'Big Data Tools',
         collapsed: true,
         items: [
           {
@@ -1003,11 +998,17 @@ export const en = defineConfig({
           {
             text: 'Scaling Multidomain Workflows',
             link: '/en/big-data/multidomain-clara'
-          },
+          }
+        ]
+      },
+      {
+        text: 'Uncertainty',
+        collapsed: true,
+        items: [
           {
             text: 'Timing Uncertainty',
             link: '/en/uncertainty/timing-uncertainty'
-          },
+          }
         ]
       },
       {
@@ -1033,7 +1034,7 @@ export const en = defineConfig({
         ]
       },
       {
-        text: 'Project Resources',
+        text: 'Resources',
         collapsed: true,
         items: [
           {
@@ -1056,10 +1057,14 @@ export const en = defineConfig({
       },
     ],
 
-    editLink: {
-      pattern: 'https://github.com/yuqi-liang-qiqi/SequenzoWebsite/edit/main/docs/:path',
-      text: 'Edit this page on GitHub'
-    },
+    ...(process.env.SHOW_EDIT_LINK === '1' || process.env.SHOW_EDIT_LINK === 'true'
+      ? {
+          editLink: {
+            pattern: 'https://github.com/yuqi-liang-qiqi/SequenzoWebsite/edit/main/docs/:path',
+            text: 'Edit this page on GitHub'
+          }
+        }
+      : {}),
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Liang-Team/Sequenzo' }

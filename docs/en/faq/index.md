@@ -13,4 +13,4 @@ Find support channels, contributor credits, and citation guidance for Sequenzo.
 
 ## Citing Sequenzo
 
-- [Cite Sequenzo](/en/basics/how-to-cite): how to cite the package and documentation.
+- [How to Cite Us?](/en/basics/how-to-cite): how to cite the package and documentation.

@@ -92,7 +92,7 @@ Property-based clustering uses sequence-derived features to build interpretable 
 | --- | --- |
 | `extract_sequence_properties()` | Extract state, duration, transition, pattern, and complexity properties |
 | `property_based_clustering()` | Build a discrepancy tree from extracted properties |
-| `seqpropclust()` | TraMineR/WeightedCluster-compatible alias |
+| `seqpropclust()` | `WeightedCluster::seqpropclust()`-compatible alias |
 | `cluster_split_schedule()` | Order tree splits by global relevance |
 | `cut_tree()` | Cut a property tree into groups |
 | `prune_property_tree()` | Prune the tree to a simpler typology |
@@ -124,4 +124,3 @@ Use this approach when interpretability of the splitting variables matters as mu
 ## Authors
 
 Code: Yuqi Liang
-
