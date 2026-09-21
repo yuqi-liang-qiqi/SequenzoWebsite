@@ -37,6 +37,31 @@
     - `values()` / `to_numeric()` 给下游算法使用；
     - `get_legend()` / `get_colormap()` 直接用于绘图。
 
+## 不等长序列
+
+输入表仍然必须是矩形。观察窗口**之外**的格子用 `"%"`（void）填上，并把 `"%"` 放进 `states`，然后照常构造 `SequenceData`。不需要另写一套画图函数：index / medoid 图会把 `"%"` 画成空白，图例里也不会出现 `"%"`。
+
+职业史从 spell 起点对齐（第 1 人只观察到 2 个月，第 2 人 4 个月）：
+
+| Entity ID | 1          | 2          | 3   | 4   |
+|-----------|------------|------------|-----|-----|
+| 1         | Education  | Education  | %   | %   |
+| 2         | Education  | Work       | Work| Work|
+
+```python
+seq = SequenceData(
+    data=df,
+    time=["1", "2", "3", "4"],
+    states=["Education", "Work", "%"],  # 把 "%" 放进状态空间
+    id_col="Entity ID",
+)
+plot_sequence_index(seq)  # 后面的 "%" 是空白，图例里没有 "%"
+```
+
+共享日历窗口也是同一套 padding：入职前、离职后都写 `"%"`。
+
+**Void 和 missing 不是一回事：** `"%"` 表示这个位置本来就不该有状态（窗口外）。Missing（NaN / `"Missing"`）表示窗口**里面**状态未知。只有整张表都是真实状态、不需要 padding 时，才设 `void=None`。
+
 ## 用法（Function Usage）
 
 仅包含必需参数的最小示例（足以满足大多数用例）：
@@ -77,6 +102,7 @@ sequence = SequenceData(
 | `weights`          |        ✗         | ndarray     | 行权重（row weights），默认全为 1。 |
 | `start`            |        ✗         | int         | 数据概览（summaries）中的起始索引，默认 1。 |
 | `custom_colors`    |        ✗         | list        | 用户自定颜色列表（custom color list），长度需与 `states` 一致。 |
+| `void`             |        ✗         | str 或 None | 观察窗口**之外**的 padding 符号（不等长序列）。默认 `"%"`。数据里有 `%` 时必须写进 `states`。画图时这些格子是空白，图例不含 `%`。和窗口内的 missing 不是一回事。不 padding 时才设 `void=None`。 |
 
 > **说明**
 

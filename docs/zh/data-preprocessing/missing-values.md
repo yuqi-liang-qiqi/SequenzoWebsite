@@ -14,6 +14,14 @@ ogImage: true
 
 此函数提供 DataFrame 中缺失数据的快速摘要，并可选择将其可视化。它报告每列和每行的缺失值，并提供两种可视化模式：矩阵视图和条形图。这有助于在序列分析之前诊断数据质量问题。
 
+## Missing 和 void 不是一回事（不等长序列）
+
+`summarize_missing_values()` 找的是 **missing**：pandas 的 `NaN`，以及 `"Missing"` / `"NaN"` 这类字符串。它们表示观察窗口**里面**状态未知。
+
+这和 **void** padding 不同。序列长短不一的时候，先把窗口**之外**的格子填成 `"%"`（或你设的 `void` 符号），**再**交给 `SequenceData`。Void 表示那个位置本来就不该有状态——比如 spell 已经结束，或共享日历上还没入职。不要把这些格子改成 missing，也不要指望 `summarize_missing_values()` 把 `"%"` 当成缺失。
+
+构造 `SequenceData` 时把 `"%"` 放进 `states`。Index 图会把这些格子画成空白，图例里也不会出现 `"%"`。完整例子见 [`SequenceData`](/zh/function-library/sequence-data)。
+
 ## 用法
 
 ```python
@@ -248,6 +256,10 @@ Missing Count
 <Figure size 1000x500 with 0 Axes>
 ```
 ![output_col.png](image/output_col.png)
+
+## 另见
+
+- [`SequenceData`](/zh/function-library/sequence-data)：预处理之后的下一步，以及如何用 void（`"%"`）而不是 missing 来 pad 不等长序列。
 
 ## 作者
 

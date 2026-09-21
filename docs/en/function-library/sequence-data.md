@@ -35,6 +35,31 @@ Each row represents an individual (a sequence), and each column represents a tim
 3. Optionally provide an ID column for stable indexing and clustering.
 4. Initialize `SequenceData`, then use `values` / `to_numeric()` for downstream algorithms or `get_legend()` / `get_colormap()` for plotting.
 
+## Unequal-length sequences
+
+The table still has to be rectangular. Pad every cell **outside** that person's observation window with `"%"` (void), put `"%"` in `states`, and construct `SequenceData` as usual. You do not need a separate plot function: index plots, medoid plots, and legends already treat `"%"` as blank padding, not as a state.
+
+Career histories aligned at the start of the spell (person 1 observed for two months, person 2 for four):
+
+| Entity ID | 1          | 2          | 3   | 4   |
+|-----------|------------|------------|-----|-----|
+| 1         | Education  | Education  | %   | %   |
+| 2         | Education  | Work       | Work| Work|
+
+```python
+seq = SequenceData(
+    data=df,
+    time=["1", "2", "3", "4"],
+    states=["Education", "Work", "%"],  # include "%" in the state space
+    id_col="Entity ID",
+)
+plot_sequence_index(seq)  # trailing "%" cells are blank; the legend has no "%"
+```
+
+A shared calendar window uses the same padding: `"%"` before labour-market entry and after exit.
+
+**Void vs missing:** `"%"` means there is no state to record (outside the window). Missing (NaN / `"Missing"`) means the state is unknown *inside* the window. Pass `void=None` only when every cell is a real state and you are not padding.
+
 ## Function Usage
 
 A minimal example with only the required parameters (sufficient for most use cases):
@@ -82,7 +107,7 @@ sequence = SequenceData(
 | `custom_colors`                    | ✗        | list      | User-specified color list. Must match the final state count, or the non-missing state count when Sequenzo auto-adds `Missing`. |
 | `additional_colors`                | ✗        | dict      | Assign custom colors to specific states, e.g. `{"Other": "#BDBDBD"}`. Cannot be used with `custom_colors`. |
 | `missing_values`                   | ✗        | int/float/str/list | Custom missing value indicators. Default: auto-detect (NaN, "Missing", "NaN"). Examples: `99`, `[99, "N/A"]`. |
-| `void`                             | ✗        | str or None | Symbol for positions outside the observation window, following TraMineR's `seqdef` convention. Default = `"%"`. Void marks time points before entry or after exit; it is a different concept from missing values, which are unknown states inside the window. |
+| `void`                             | ✗        | str or None | Padding symbol for positions **outside** the observation window (unequal-length sequences). Default = `"%"`. Include it in `states` if it appears in the data. Plots hide these cells and omit them from the legend. Not the same as missing values inside the window. Pass `void=None` for complete tables with no padding. |
 | `alpha`                            | ✗        | float     | Opacity for all state colors (0–1). Default = 1.0.      |
 
 > **Note**
@@ -93,7 +118,7 @@ sequence = SequenceData(
 
 ## Returns
 
-A `SequenceData` instance: the standardized sequence object that downstream functions consume. Its most-used attributes are `values` (encoded sequence array), `ids` (entity identifiers), `states` and `labels` (the alphabet and display names), and `weights`. Methods such as `describe()`, `to_numeric()`, `get_legend()`, and `get_colormap()` are documented below.
+A `SequenceData` instance: the standardized sequence object that downstream functions consume. Its most-used attributes are `values` (encoded sequence array), `ids` (entity identifiers), `states` and `labels` (the state space and display names), and `weights`. Methods such as `describe()`, `to_numeric()`, `get_legend()`, and `get_colormap()` are documented below.
 
 ## Key rules to remember
 
@@ -170,11 +195,12 @@ A `SequenceData` instance: the standardized sequence object that downstream func
 | Method                     | Returns            | Description                                                        |
 | -------------------------- | ------------------ |--------------------------------------------------------------------|
 | `get_colormap()`           | ListedColormap     | Colormap aligned to codes 1...N.                                   |
-| `get_legend()`             | (handles, labels)  | Prebuilt legend for plotting.                                      |
+| `get_legend()`             | (handles, labels)  | Prebuilt legend for plotting. Void padding is omitted by default. |
 | `describe()`               | print              | Dataset summary with missing overview and weights.                 |
 | `plot_legend()`            | None               | Displays or saves the state legend, with vertical or horizontal layout. |
 | `to_numeric()`             | ndarray            | Integer-coded sequence data as NumPy array.                        |
 | `to_dataframe()`           | DataFrame          | Processed sequence dataset.                                        |
+| `values_for_plot()`        | ndarray            | Encoded sequences with void cells masked so plots show a blank, not a state. |
 | `show_color_palette()`     | dict               | Preview default colors for this instance's states.                 |
 | `show_default_color_palette(n_states, ...)` | dict | Static: preview colors for given number of states. |
 

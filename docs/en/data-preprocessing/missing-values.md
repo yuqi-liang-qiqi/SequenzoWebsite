@@ -4,6 +4,14 @@
 
 This function provides a quick summary of missing data in a DataFrame and optionally visualizes it. It reports both per-column and per-row missingness and offers two visualization modes: a matrix view and a bar chart. This helps users diagnose data quality issues before sequence analysis.
 
+## Missing vs void (unequal-length sequences)
+
+`summarize_missing_values()` looks for **missing** cells: pandas `NaN`, and strings such as `"Missing"` or `"NaN"`. Those mean the state is unknown **inside** the observation window.
+
+That is not the same as **void** padding. If sequences have different lengths, pad every cell **outside** the window with `"%"` (or another `void` symbol) **before** you call `SequenceData`. Void means there is no state to record there — for example after a spell has already ended, or before labour-market entry on a shared calendar. Do not recode those cells as missing, and do not expect `summarize_missing_values()` to treat `"%"` as missing.
+
+When you later construct `SequenceData`, include `"%"` in `states`. Index plots draw those cells blank and omit `"%"` from the legend. Details and a worked table are in [`SequenceData`](/en/function-library/sequence-data#unequal-length-sequences).
+
 ## Usage
 
 ```python
@@ -242,7 +250,7 @@ Missing Count
 ## See Also
 
 - [Data Preprocessing Overview](/en/data-preprocessing/introduction) maps the preparation pipeline.
-- [`SequenceData`](/en/function-library/sequence-data) is the next step after preprocessing.
+- [`SequenceData`](/en/function-library/sequence-data) is the next step after preprocessing, including how to pad unequal-length sequences with void (`"%"`) rather than missing.
 
 ## Authors
 
