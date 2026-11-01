@@ -71,6 +71,8 @@ If you would like to customize the visualization, please see the following table
 | `x_tick_rotation` | ✗      | float/None   | Degrees to slant tick labels. `None` auto-rotates long calendar stamps (~35°). Use `0` for horizontal, `45` for a mild slant, `90` for vertical. Helps neighbouring panels (C1 next to C2) avoid colliding labels.                                                                                                                   |
 | `max_ticks`     | ✗        | int/None     | Cap on how many x tick positions to show. Useful for long series.                                                                                                                                                                                                                                                                   |
 
+Tick text is drawn with `clip_on=False` and the figure bottom margin is sized via `xtick_bottom_margin()` so flat or slanted labels are not shaved off the canvas. Saves also use a small `pad_inches` under `bbox_inches="tight"`.
+
 ## What It Does
 
 * Converts sequence values into a color matrix where rows are sequences and columns are time points.

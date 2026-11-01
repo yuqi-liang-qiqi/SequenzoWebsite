@@ -64,6 +64,7 @@ plot_sequence_index(sequence_data,
 | `x_tick_rotation` | ✗      | float/None   | 刻度文字旋转角度。`None` 会对较长的日历标签自动旋转约 35°。`0` 为横排，`45` 为斜排，`90` 为竖排。相邻面板（C1 紧挨 C2）时，斜/竖可以减少文字撞在一起。 |
 | `max_ticks`     | ✗        | int/None     | 最多显示多少个 x 刻度位置；时间很长时很有用。 |
 
+刻度文字使用 `clip_on=False`，图的底边距由 `xtick_bottom_margin()` 按是否旋转自动预留，避免横排/斜排文字被裁切；保存时在 `bbox_inches="tight"` 下还会留一点 `pad_inches`。
 
 ## 功能说明
 
