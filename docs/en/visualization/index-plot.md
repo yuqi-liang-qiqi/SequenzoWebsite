@@ -67,6 +67,9 @@ If you would like to customize the visualization, please see the following table
 | `hide_y_axis`   | ✗        | bool         | If `True`, hides y-axis ticks, labels, and spine for all subplots. Useful with `proportional_scaling` for cleaner plots. Default = `False`.                                                                                                                                                                                          |
 | `sequence_gap`  | ✗        | int          | Number of blank rows between each sequence band (0 = no gap, 1 = small gap, 2 = larger). Default = `0`.                                                                                                                                                                                                                                |
 | `sequence_rows` | ✗        | int          | Number of rows each sequence occupies. Use >1 for thicker bars (e.g. 3 = 3× thicker). With `sequence_gap`, gap height is 1/`sequence_rows` of bar height. Default = `1`.                                                                                                                                                               |
+| `x_tick_labels` | ✗        | str          | Where to draw **time-point text** (month numbers, `Sep.93`, …). `"bottom"` (default): tick *marks* on every panel; text + `xlabel` only on the bottom row. `"all"`: text on every panel. `"none"`: marks only, no text.                                                                                                              |
+| `x_tick_rotation` | ✗      | float/None   | Degrees to slant tick labels. `None` auto-rotates long calendar stamps (~35°). Use `0` for horizontal, `45` for a mild slant, `90` for vertical. Helps neighbouring panels (C1 next to C2) avoid colliding labels.                                                                                                                   |
+| `max_ticks`     | ✗        | int/None     | Cap on how many x tick positions to show. Useful for long series.                                                                                                                                                                                                                                                                   |
 
 ## What It Does
 
@@ -189,6 +192,32 @@ plot_sequence_index(
     fontsize=14
 )
 ```
+
+### 7. Multi-row grid: time text only on the bottom row
+
+When you stack several panels, repeating `Sep.93` / month numbers on every row becomes noisy. Keep tick **marks** everywhere, but show the text only once at the bottom. Slant calendar labels if neighbouring columns are close:
+
+```python
+plot_sequence_index(
+    seqdata,
+    group_dataframe=membership_table,
+    group_column_name="Cluster",
+    layout="grid",
+    nrows=1,
+    ncols=4,
+    xlabel="Month",
+    x_tick_labels="bottom",   # text only on the bottom row
+    x_tick_rotation=45,       # 0 = flat; 45 = slant; 90 = vertical
+    max_ticks=6,
+    title="Clusters with shared time axis style",
+)
+```
+
+- `"bottom"` (default): clearest for multi-row figures.
+- `"all"`: every panel gets time text (fine for a single row with short labels).
+- `"none"`: marks only.
+
+For aligning **columns across methods** (so similar medoids share a column), see [`align_cluster_orders()`](./align-cluster-orders.md).
 
 This saves a high-resolution figure with custom dimensions and larger font size to `index_by_country.png` in your working directory.
 

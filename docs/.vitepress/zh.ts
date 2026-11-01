@@ -181,6 +181,10 @@ export const zh = defineConfig({
           {
             text: '单个 Medoid 图',
             link: '/zh/visualization/plot_single_medoid'
+          },
+          {
+            text: '跨方法对齐 Cluster 列顺序',
+            link: '/zh/visualization/align_cluster_orders'
           }
         ]
       },

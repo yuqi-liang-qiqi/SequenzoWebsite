@@ -60,6 +60,9 @@ plot_sequence_index(sequence_data,
 | `sequence_selection` | ✗   | str/list     | 选择显示哪些序列的方法：`"all"`（展示全部序列），`"first_n"` （显示前 `n` 个序列），`"last_n"` （显示最后 `n` 个序列），或者显示指定特定 ID 的序列 。默认值是 `"all"`。                                                             |
 | `n_sequences`   | ✗        | int          | 当使用参数 `"first_n"` 或者 `"last_n"` 时展示的序列数目。默认值是 `10`。                                                                                                                        |
 | `show_sequence_ids` | ✗    | bool         | 如果是 `True`，在 y 轴上展示实际的序列 ID，而不是序列编号。此参数在传入的 `sequence_selection` 是序列 ID 的列表时最有用。默认值是 `False`。                                                                              |
+| `x_tick_labels` | ✗        | str          | 在哪里画**时间点文字**（月份数字、`Sep.93` 等）。`"bottom"`（默认）：每个面板都有刻度线，但文字和 `xlabel` 只出现在最底行。`"all"`：每个面板都写文字。`"none"`：只有刻度线，没有文字。 |
+| `x_tick_rotation` | ✗      | float/None   | 刻度文字旋转角度。`None` 会对较长的日历标签自动旋转约 35°。`0` 为横排，`45` 为斜排，`90` 为竖排。相邻面板（C1 紧挨 C2）时，斜/竖可以减少文字撞在一起。 |
+| `max_ticks`     | ✗        | int/None     | 最多显示多少个 x 刻度位置；时间很长时很有用。 |
 
 
 ## 功能说明
@@ -138,6 +141,32 @@ plot_sequence_index(
 ```
 
 这将一个高分辨率的图表保存到你工作目录下的 `index_by_country.png` 文件中。
+
+### 5. 多行图：时间文字只出现在最底行
+
+多行并排时，每一行都写 `Sep.93` / 月份数字会很吵。可以让**刻度线**每行都有，文字只在最底行出现；日历标签太长时再斜着写：
+
+```python
+plot_sequence_index(
+    seqdata,
+    group_dataframe=membership_table,
+    group_column_name="Cluster",
+    layout="grid",
+    nrows=1,
+    ncols=4,
+    xlabel="Month",
+    x_tick_labels="bottom",   # 文字只在最底行
+    x_tick_rotation=45,       # 0=横排；45=斜排；90=竖排
+    max_ticks=6,
+    title="多簇对比（统一时间轴样式）",
+)
+```
+
+- `"bottom"`（默认）：多行图最清晰。
+- `"all"`：每个面板都写时间文字（单行、短标签时可用）。
+- `"none"`：只有刻度线。
+
+若要把**不同方法**的相似 medoid 排到同一列，见 [`align_cluster_orders()`](./align_cluster_orders.md)。
 
 ## 作者
 

@@ -459,6 +459,10 @@ export const en = defineConfig({
                 link: '/en/visualization/plot-single-medoid'
               },
               {
+                text: 'Align Cluster Orders',
+                link: '/en/visualization/align-cluster-orders'
+              },
+              {
                 text: 'Longitudinal Characteristics Plot',
                 link: '/en/visualization/plot-longitudinal-characteristics'
               }
