@@ -1,6 +1,6 @@
 # Pairfam Activity Trajectories Dataset
 
-This dataset contains German 1,027 individuals of employment/activity trajectories. It is derived from the **German Family Panel (pairfam, Release 14.2)** and was pre-processed by the authors of [Sequence Analysis (Raab & Struffolino, 2022)](https://sa-book.github.io/). It is designed for teaching and learning sequence analysis by providing ready-to-use trajectories of employment status.
+This dataset contains German employment/activity trajectories for **1,027** individuals (month-level extract). It is derived from the teaching data accompanying [Sequence Analysis (Raab & Struffolino, 2022)](https://sa-book.github.io/). The companion site documents that those teaching examples come from the **German Family Panel (pairfam), Release 10.0**, shared with permission for instructional use (GESIS ZA5678, DOI [10.4232/pairfam.5678.10.0.0](https://doi.org/10.4232/pairfam.5678.10.0.0)).
 
 We provide two versions of the dataset:
 - **Year-level data**: 22 yearly observations with state abbreviations
@@ -9,20 +9,20 @@ We provide two versions of the dataset:
 ::: warning Important Notes
 - **The IDs are different** between year-level and month-level data and cannot be directly linked.
 - **State encoding differs**: Year-level uses text abbreviations (e.g., "EDU", "FT"), while month-level uses numeric codes (1–8).
-- The underlying state definitions remain the same across both versions.
+- The month-level **activity** and **family** files share the same 1,027 respondent IDs and can be aligned for multidomain analysis; year-level IDs cannot.
 :::
 
 ## Data origin and processing
 
-* **Source**: [pairfam](http://www.pairfam.de), a large-scale longitudinal survey on partnership and family dynamics in Germany.
+* **Source**: Companion teaching extract (`Activitybio` / multichannel materials) based on pairfam Release 10.0. The shipped month-level file has **1,027** respondents (identical IDs to `pairfam_family_by_month`).
 
-* **Processing by book authors**: Employment and activity status was categorized into 8 distinct states representing different types of labor market participation and non-participation.
+* **Processing by book authors**: Employment and activity status was categorized into eight states (see encoding table).
 
-* **Our preprocessing**: To make the data more convenient to use, we performed a minor preprocessing step, converting `state1 ... state264` to `1 ... 264` before adding it to our prepared dataset.
+* **Our preprocessing**: Column renaming only (`activity1`…`activity264` or `state1`…`state264` → `1`…`264`). **State integers were not recoded.**
 
-  We used `clean_time_columns_auto()` to rename time columns such as `state1` ... `state264` to `1` ... `264` before packaging the prepared dataset.
+  Cleaning code: [pairfam_and_little_green_book/code](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/pairfam_and_little_green_book/code).
 
-  For more details on how we cleaned and prepared the data, see the [data cleaning code repository](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/pairfam_and_little_green_book/code).
+* **Verification**: Against companion text-label activity sequences, numeric codes 1–8 map one-for-one to EDU, MIL/CS, PT, FT, SELF, PLEAVE, MARGINAL, UNEMP over all 264 months (crosstab diagonal). Some older Sequenzo tutorials used a different eight-label wording; prefer this table.
 
 * **Result**: An **8-state alphabet**.
 
@@ -43,7 +43,7 @@ We provide two versions of the dataset:
 
 **File**: `pairfam_activity_by_year.csv`
 
-This dataset contains 1,029 individuals observed over 22 years. The states are encoded directly as **text abbreviations** (e.g., "EDU", "FT", "PT", "PLEAVE").
+This dataset contains **1,027** individuals observed over 22 years. The states are encoded directly as **text abbreviations** (e.g., "EDU", "FT", "PT", "PLEAVE").
 
 ::: warning No Covariates
 Unlike the month-level data, the year-level data **does not include any covariates**. The `id` column contains randomly generated identifiers created during our preprocessing and **cannot be linked** to other datasets or the month-level data.
@@ -53,7 +53,7 @@ Unlike the month-level data, the year-level data **does not include any covariat
 
 | Column       | Description                                                                       |
 | ------------ | --------------------------------------------------------------------------------- |
-| `id`         | Individual identifier (simple sequential integers: 194, 896, 284, ..., cannot be linked to other datasets)            |
+| `id`         | Individual identifier (simple sequential integers; cannot be linked to other datasets) |
 | `1` … `22`   | Yearly activity trajectory states, encoded as **abbreviations** (e.g., "EDU", "FT") |
 
 ### Sample data
@@ -104,18 +104,13 @@ Besides the state sequences, the dataset includes several covariates:
 
 Here columns `1`–`5` show the first five months of the trajectory, coded as 1–8 according to the state table above.
 
-## Multichannel data (reference only)
-
-For multichannel sequence analysis combining both family and activity trajectories, see the `MultiChannel.csv` file documented in the [Pairfam Family Trajectories](./pairfam-family.md#multichannel-data-reference-only) page.
-
-Note that `MultiChannel.csv` is **not supported** by `load_dataset()` and is provided for reference only. You can download it manually from the [month-level data sources](https://github.com/Liang-Team/Sequenzo/tree/main/original_datasets_and_cleaning/pairfam_and_little_green_book/data_sources/month_level) repository.
-
 ## Reference
 
 Raab, M., & Struffolino, E. (2022). Sequence analysis (Vol. 190). Sage Publications.
 
 ## See Also
 
+- [pairfam family trajectories](./pairfam-family.md) — family channel for the same month-level IDs.
 - [Datasets Overview](/en/datasets/introduction) helps choose a dataset by research question.
 - [`SequenceData`](/en/function-library/sequence-data) shows how to define sequences from a dataset.
 - [Quickstart](/en/basics/quickstart) runs a complete analysis on a bundled dataset.

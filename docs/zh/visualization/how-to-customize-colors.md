@@ -123,14 +123,14 @@ states = list(range(1, 10))                  # 1..9
 # 2）人类可读的标签（字符串）
 labels = [
     "Single, no child",
-    "LAT, no child",
-    "Cohabiting, no child",
-    "Married, no child",
     "Single, with child(ren)",
+    "Living apart together, no child",
     "LAT, with child(ren)",
+    "Cohabiting, no child",
     "Cohabiting, with child(ren)",
+    "Married, no child",
     "Married, 1 child",
-    "Married, 2+ children"
+    "Married, 2+ children",
 ]
 
 # 3) 全新调色板（9 种颜色，顺序与“州”相同）
@@ -169,7 +169,7 @@ sequence_data.plot_legend()
 [>] Number of time points: 264
 [>] Min/Max sequence length: 264 / 264
 [>] States: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-[>] Labels: ['Single, no child', 'Living apart together, no child', 'Cohabiting, no child', 'Married, no child', 'Single, with child(ren)', 'LAT, with child(ren)', 'Cohabiting, with child(ren)', 'Married, 1 child', 'Married, 2+ children']
+[>] Labels: ['Single, no child', 'Single, with child(ren)', 'Living apart together, no child', 'LAT, with child(ren)', 'Cohabiting, no child', 'Cohabiting, with child(ren)', 'Married, no child', 'Married, 1 child', 'Married, 2+ children']
 [>] Weights: Provided (total weight=2346.268, mean=1.257, std=1.046)
 ```
 
