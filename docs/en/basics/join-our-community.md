@@ -12,7 +12,7 @@ Join our WeChat group here:
 <div align="center">
    <div align="center">
 
-![Join our WeChat](./img/wechat.jpg)
+![Join our WeChat](./img/wechat.png)
 
 </div>
 

@@ -12,7 +12,7 @@
 
 <div align="center">
 
-![Join our WeChat](./img/wechat.jpg)
+![Join our WeChat](./img/wechat.png)
 
 </div>
 
